@@ -28,6 +28,7 @@
             openssl
             pkg-config
             sass
+            tailwindcss
             exa
             fd
             nodejs

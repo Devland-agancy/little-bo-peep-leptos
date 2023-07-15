@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Audiowide";
+  src: url("fonts/Audiowide-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Baskerville Regular";
+  src: url("fonts/Baskerville-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Baskerville Bold";
+  src: url("fonts/Baskerville-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Baskerville Italic";
+  src: url("fonts/Baskerville-Italic.ttf")
+}
+
+@font-face {
+  font-family: "Clicker Script";
+  src: url("fonts/ClickerScript-Regular.ttf")
+}
+
+@font-face {
+  font-family: "IndieFlower";
+  src: url("fonts/IndieFlower-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Menlo";
+  src: url("fonts/Menlo.ttc")
+}
+
+@font-face {
+  font-family: "PollerOne";
+  src: url("fonts/PollerOne-Regular.ttf")
+}
+
+@font-face {
+  font-family: "PrincessJohn";
+  src: url("fonts/PrincessJohn.ttf")
+}
+
+@font-face {
+  font-family: "SongMyung";
+  src: url("fonts/SongMyung-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Tomorrow";
+  src: url("fonts/Tomorrow-Regular.ttf")
+}
+
