@@ -1,3 +1,4 @@
+use crate::article::Article;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::header::Header;
 
@@ -19,7 +20,9 @@ pub fn App(cx: Scope) -> impl IntoView {
 
         // sets the document title
         <Title text="Little Bo Peep"/>
-        <Link href="/images/book_favicon_sized_v2_dev.png" rel="icon" />
+        <Link href="/images/book_favicon_sized_v2.png" rel="icon" />
+        <Script src="/mathjax_setup.js" />
+        <Script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type_="text/javascript"/>
 
         // content for this welcome page
         <Router fallback=|cx| {
@@ -33,22 +36,9 @@ pub fn App(cx: Scope) -> impl IntoView {
             <main>
                 <Header />
                 <Routes>
-                    <Route path="" view=|cx| view! { cx, <HomePage/> }/>
+                    <Route path="" view=|cx| view! { cx, <Article/> }/>
                 </Routes>
             </main>
         </Router>
-    }
-}
-
-/// Renders the home page of your application.
-#[component]
-fn HomePage(cx: Scope) -> impl IntoView {
-    // Creates a reactive value to update the button
-    let (count, set_count) = create_signal(cx, 0);
-    let on_click = move |_| set_count.update(|count| *count += 1);
-
-    view! { cx,
-        <button on:click=on_click>"Click Me: " {count}</button>
-        <img src="/images/hamburger.svg" />
     }
 }
