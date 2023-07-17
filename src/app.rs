@@ -16,7 +16,8 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Stylesheet id="leptos" href="/pkg/little-bo-peep.css"/>
 
         // sets the document title
-        <Title text="Welcome to Leptos"/>
+        <Title text="Little Bo Peep"/>
+        <Link href="/images/book_favicon_sized_v2_dev.png" rel="icon" />
 
         // content for this welcome page
         <Router fallback=|cx| {
@@ -46,5 +47,6 @@ fn HomePage(cx: Scope) -> impl IntoView {
     view! { cx,
         <h1 class="bg-stone-300">"Welcome to Leptos!"</h1>
         <button on:click=on_click>"Click Me: " {count}</button>
+        <img src="/images/hamburger.svg" />
     }
 }
