@@ -29,6 +29,7 @@ pub fn App(cx: Scope) -> impl IntoView {
             .into_view(cx)
         }>
             <main>
+                <Header />
                 <Routes>
                     <Route path="" view=|cx| view! { cx, <HomePage/> }/>
                 </Routes>
@@ -45,8 +46,20 @@ fn HomePage(cx: Scope) -> impl IntoView {
     let on_click = move |_| set_count.update(|count| *count += 1);
 
     view! { cx,
-        <h1 class="bg-stone-300">"Welcome to Leptos!"</h1>
         <button on:click=on_click>"Click Me: " {count}</button>
         <img src="/images/hamburger.svg" />
+    }
+}
+
+#[component]
+fn Header(cx: Scope) -> impl IntoView {
+    view! {cx,
+        <div class="w-full">
+            <div class="flex justify-center items-center fixed lg:absolute w-full bg-white z-50 border-b border-t-10 h-14">
+                <div class="font-clickerscript text-3xl pt-2 self-end lg:col-start-2 lg:pl-2">
+                    <a href="/">"Little Bo Peep"</a>
+                </div>
+            </div>
+        </div>
     }
 }
