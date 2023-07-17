@@ -36,7 +36,7 @@ pub fn App(cx: Scope) -> impl IntoView {
             <main>
                 <Header />
                 <Routes>
-                    <Route path="" view=|cx| view! { cx, <Article/> }/>
+                    <Route path="" view=crate::article::ch_1::view />
                 </Routes>
             </main>
         </Router>

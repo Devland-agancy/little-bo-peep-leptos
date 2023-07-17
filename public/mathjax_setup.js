@@ -61,4 +61,15 @@ window.MathJax = {
       '[tex]/color'
     ]
   },
+  startup: {
+    ready: () => {
+      MathJax.startup.defaultReady();
+      MathJax.startup.promise.then(() => {
+        document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
+          elem.classList.remove("hidden-on-startup");
+          elem.classList.add("animate-appear");
+        });
+      });
+    }
+  }
 };

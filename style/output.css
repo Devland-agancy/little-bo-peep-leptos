@@ -667,6 +667,10 @@ video {
   font-family: Baskerville Bold;
 }
 
+.font-baskerville-italic {
+  font-family: Baskerville Italic;
+}
+
 .font-clickerscript {
   font-family: Clicker Script;
 }
@@ -679,11 +683,6 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-xl {
@@ -769,6 +768,10 @@ video {
   src: url("/fonts/Tomorrow-Regular.ttf")
 }
 
+.hidden-on-startup {
+  opacity: 0
+}
+
 .hover\:fill-stone-600:hover {
   fill: #57534e;
 }
@@ -823,4 +826,3 @@ video {
     padding-top: 5rem;
   }
 }
-
