@@ -15,6 +15,13 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 </div>
             </div>
         </div>
+        <MathJaxTypeset/>
+    }
+}
+
+#[component]
+fn MathJaxTypeset(cx: Scope) -> impl IntoView {
+    view! { cx,
         <script>
             window.MathJax.typesetPromise().then(() => {
                 document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
