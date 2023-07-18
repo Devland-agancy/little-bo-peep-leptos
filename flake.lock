@@ -1,5 +1,38 @@
 {
   "nodes": {
+    "crate2nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1642002335,
+        "narHash": "sha256-s/ts3lI9ImiKMAhZTh6ReHPoxxXcp9w8z+1JjrZpm1U=",
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "rev": "d9854e53b5f17dc2a7fb5e8c7a32bb2299bd0a0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "rev": "d9854e53b5f17dc2a7fb5e8c7a32bb2299bd0a0a",
+        "type": "github"
+      }
+    },
+    "devshell": {
+      "locked": {
+        "lastModified": 1642188268,
+        "narHash": "sha256-DNz4xScpXIn7rSDohdayBpPR9H9OWCMDOgTYegX081k=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "696acc29668b644df1740b69e1601119bf6da83b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "696acc29668b644df1740b69e1601119bf6da83b",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -70,6 +103,8 @@
     },
     "root": {
       "inputs": {
+        "crate2nix": "crate2nix",
+        "devshell": "devshell",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay"

@@ -1,0 +1,10 @@
+[devshell]
+packages = [
+  "rustc",
+  "cargo",
+  "cargo-edit",
+  "flyctl",
+  "sass",
+  "pkg-config",
+  "tailwindcss"
+]
