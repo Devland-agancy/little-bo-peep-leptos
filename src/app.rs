@@ -1,4 +1,3 @@
-use crate::article::Article;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::header::Header;
 
@@ -36,7 +35,8 @@ pub fn App(cx: Scope) -> impl IntoView {
             <main>
                 <Header />
                 <Routes>
-                    <Route path="" view=crate::article::ch_1::view />
+                    <Route path="" view=crate::page::home::View />
+                    <Route path="/article/ch_1" view=crate::page::article::ch_1::View />
                 </Routes>
             </main>
         </Router>

@@ -1,6 +1,7 @@
 use leptos::*;
 
-pub mod ch_1;
+pub mod article;
+pub mod home;
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
