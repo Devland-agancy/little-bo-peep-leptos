@@ -15,6 +15,14 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 </div>
             </div>
         </div>
+        <script>
+            window.MathJax.typesetPromise().then(() => {
+                document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
+                  elem.classList.remove("hidden-on-startup");
+                  elem.classList.add("animate-appear");
+                });
+            });
+        </script>
     }
 }
 
