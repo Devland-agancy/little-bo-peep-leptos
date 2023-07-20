@@ -68,3 +68,10 @@ fn Paragraph(cx: Scope, children: Children) -> impl IntoView {
         </span>
     }
 }
+
+#[component]
+fn Italic(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <span class="font-baskerville-italic">{children(cx)}</span>
+    }
+}

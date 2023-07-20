@@ -38,11 +38,26 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 "are both positive. But "
                 <Math>r#"$\sqrt{4}$"#</Math>
                 " is, by definition, the unique "
-                <span class="font-baskerville-italic">"nonnegative "</span>
+                <Italic>"nonnegative "</Italic>
                 "solution to "
                 <Math>r#"$x^2 = 4$"#</Math>
                 ". Hence, and whether you like it or not,"
             </Paragraph>
+            <MathBlock>
+                r#"$$
+                    \sqrt{(-2)^2} = 2 
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "and, in particular, it is "
+                <Italic>"not "</Italic>
+                "true that"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                    \sqrt{x^{2}} \hspace{0.1em} = \hspace{0.1em} x
+                $$"#
+            </MathBlock>
         </Columns>
     }
 }
