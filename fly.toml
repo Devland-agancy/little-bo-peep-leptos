@@ -1,0 +1,54 @@
+# fly.toml app configuration file generated for little-bo-peep-leptos on 2023-07-20T10:36:36-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "little-bo-peep-leptos"
+primary_region = "cdg"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+# # fly.toml file generated on 2023-03-27T17:22:55-07:00
+
+# app = "little-bo-peep"
+
+# [[services]]
+#   internal_port = 3000
+#   processes = [ "app" ]
+#   protocol = "tcp"
+
+
+#   [[services.ports]]
+#   handlers = [ "http" ]
+#   port = 80
+#   force_https = true
+
+#   [[services.ports]]
+#   handlers = [ "tls", "http" ]
+#   port = 443
+
+#   [[services.tcp_checks]]
+#   grace_period = "1s"
+#   interval = "15s"
+#   restart_limit = 0
+#   timeout = "2s"
+
+#   [[services.http_checks]]
+#   interval = "10s"
+#   grace_period = "5s"
+#   method = "get"
+#   path = "/"
+#   protocol = "http"
+#   timeout = "2s"
+#   tls_skip_verify = false
+#   headers = { }
+
+# [mounts]
+# source="little-bo-peep"
+# destination="/little-bo-peep"

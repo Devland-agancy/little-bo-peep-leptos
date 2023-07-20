@@ -1,36 +1,23 @@
-# syntax = docker/dockerfile:1.4
+FROM rustlang/rust:nightly-bullseye as builder
 
-# Rust
-FROM rust:1.61.0-slim-bullseye AS rust-builder
-
+RUN cargo install --locked cargo-leptos
+RUN rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+RUN rustup target add wasm32-unknown-unknown
+RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-RUN --mount=type=cache,target=/app/target \
-		--mount=type=cache,target=/usr/local/cargo/registry \
-		--mount=type=cache,target=/usr/local/cargo/git \
-		--mount=type=cache,target=/usr/local/rustup \
-		set -eux; \
-		rustup toolchain install nightly --allow-downgrade; \
-		rustup target add wasm32-unknown-unknown; \
-		cargo install cargo-generate; \
-		npm install
-	 	cargo leptos build --release; \
-		objcopy --compress-debug-sections target/release/little-bo-peep-leptos ./little-bo-peep-leptos
+ENV LEPTOS_BIN_TARGET_TRIPLE="x86_64-unknown-linux-gnu"
+RUN cargo leptos --manifest-path=./Cargo.toml build --release -vv
 
-# App f
-FROM debian:11.3-slim
-
-RUN set -eux; \
-		export DEBIAN_FRONTEND=noninteractive; \
-	  apt update; \
-		apt install --yes --no-install-recommends bind9-dnsutils iputils-ping iproute2 curl ca-certificates htop; \
-		apt clean autoclean; \
-		apt autoremove --yes; \
-		rm -rf /var/lib/{apt,dpkg,cache,log}/; \
-		echo "Installed base utils!"
-
-WORKDIR app
-
-COPY --from=rust-builder /app/little-bo-peep-exp ./little-bo-peep-exp
-COPY --from=elm-builder /app/dist ./dist
-CMD ["./little-bo-peep-exp"]
+FROM rustlang/rust:nightly-bullseye as runner
+COPY --from=builder /app/target/server/x86_64-unknown-linux-gnu/release/little-bo-peep /app/
+COPY --from=builder /app/target/site /app/site
+COPY --from=builder /app/Cargo.toml /app/
+WORKDIR /app
+ENV RUST_LOG="info"
+ENV LEPTOS_OUTPUT_NAME="little-bo-peep"
+ENV LEPTOS_ENVIRONMENT="production"
+ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
+ENV LEPTOS_SITE_ROOT="site"
+EXPOSE 3000
+CMD ["/app/little-bo-peep"]
