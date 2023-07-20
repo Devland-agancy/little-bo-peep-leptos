@@ -12,9 +12,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_right = move || page_state() == PageState::ShowRight;
 
     view! { cx,
-        <div
-            class="pt-14 lg:pt-20 hidden-on-startup"
-        >    {move || page_state.get().to_string()}
+        <div class="pt-14 lg:pt-20 hidden-on-startup" >
             <div class="absolute flex justify-center align-center w-full overflow-hidden" id="Article">
                 <div
                     class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
@@ -96,7 +94,10 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button
-                on:click=move |_| set_page_state.update(|value| *value = PageState::ShowRight)
+                on:click=move |_| set_page_state.update(|value| *value = match value {
+                    PageState::ShowArticle => PageState::ShowRight,
+                    PageState::ShowRight => PageState::ShowArticle
+                })
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
             >
