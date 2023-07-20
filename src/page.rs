@@ -1,12 +1,33 @@
 use leptos::*;
+use std::fmt;
 
 pub mod article;
 pub mod home;
 
+#[derive(Debug, Clone)]
+enum PageState {
+    ShowArticle,
+    ShowRight,
+}
+
+impl fmt::Display for PageState {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            PageState::ShowArticle => write!(f, "ShowArticle"),
+            PageState::ShowRight => write!(f, "ShowRight"),
+        }
+    }
+}
+
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
+    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
+
     view! { cx,
-        <div class="pt-14 lg:pt-20 hidden-on-startup">
+        <div
+            on:click=move |_| set_page_state.update(|value| *value = PageState::ShowRight)
+            class="pt-14 lg:pt-20 hidden-on-startup"
+        >    {move || page_state.get().to_string()}
             <div class="absolute flex justify-center align-center w-full overflow-hidden" id="Article">
                 <div class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0">
                     <div class="font-baskerville w-full">
@@ -81,7 +102,7 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button
-                style=format!("transform: translate{}", translate)
+                style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
             >
                 <img src=src />
