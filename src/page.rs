@@ -75,3 +75,17 @@ fn Italic(cx: Scope, children: Children) -> impl IntoView {
         <span class="font-baskerville-italic">{children(cx)}</span>
     }
 }
+
+#[component]
+fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl IntoView {
+    view! {cx,
+        <div class="col-start-3 h-0 flex items-center justify-start">
+            <button
+                style=format!("transform: translate{}", translate)
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
+            >
+                <img src=src />
+            </button>
+        </div>
+    }
+}

@@ -48,6 +48,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     \sqrt{(-2)^2} = 2 
                 $$"#
             </MathBlock>
+            <ImageRight translate="(-2rem, 1.5rem)" src="/images/svg_cloud_minus_two_squared.svg" />
             <Paragraph>
                 "and, in particular, it is "
                 <Italic>"not "</Italic>
