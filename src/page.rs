@@ -76,7 +76,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
             class=("pointer-events-none", show_article)
             class=("opacity-100", show_right)
             class=("-translate-x-3/4", show_right)
-            class=("md:-translate-x-[85%])", show_right)
+            class=("md:-translate-x-[85%]", show_right)
         >
         </button>
     }
