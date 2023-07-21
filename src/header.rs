@@ -72,7 +72,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         <h2 class="pl-4 font-baskerville-italic text-2xl">"Chapters"</h2>
         <MenuButton/>
         </div>
-        <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 pt-12 bg-stone-100">
+        <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 pt-14 bg-stone-100">
         <MenuItems />
         </div>
         </div>

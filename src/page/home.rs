@@ -21,6 +21,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             "Chapter 1: A Few Refreshers"
                         </Link>
                     </li>
+                    <li>
+                         <Link href="article/ch_2">
+                            "Chapter 2: Slopes"
+                        </Link>
+                    </li>
                 </ul>
             </Paragraph>
         </Columns>
