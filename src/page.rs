@@ -12,7 +12,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
-        <div class="pt-14 lg:pt-20 hidden-on-startup">
+        <div class="pt-14 lg:pt-20 hidden-on-startup overscroll-none">
         <div
             class="absolute flex justify-center align-center w-full pb-14"
             class=("overflow-hidden", show_article)

@@ -68,10 +68,11 @@ const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
 fn MenuOpen(cx: Scope) -> impl IntoView {
     view! {cx,
         <div class="w-full z-50 fixed right-0 flex self-start font-baskerville text-xl leading-tight select-none">
-        <div class="absolute z-50 right-0 top-0">
+        <div class="absolute z-50 right-0 top-0 w-80 flex items-center justify-between">
+        <h2 class="pl-4 font-baskerville-italic text-2xl">"Chapters"</h2>
         <MenuButton/>
         </div>
-        <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 pt-14 bg-stone-100 h-full">
+        <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 pt-12 bg-stone-100">
         <MenuItems />
         </div>
         </div>
@@ -118,7 +119,6 @@ fn MenuButton(cx: Scope) -> impl IntoView {
             })
             class="flex items-center justify-center h-8 w-9 m-3 rounded transition fill-stone-500 hover:fill-stone-600"
             class=("bg-stone-300", menu_open)
-            class=("shadow-inner", menu_open)
         >
             <HamburgerIcon/>
         </button>
