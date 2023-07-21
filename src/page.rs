@@ -86,7 +86,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
 fn ArticleTitle(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
         <div class="lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
-            <h1 class="lg:col-start-2 text-4xl p-4">
+            <h1 class="lg:col-start-2 text-3xl lg:text-4xl p-4">
                 {children(cx)}
             </h1>
         </div>
