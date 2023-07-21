@@ -7,15 +7,12 @@ use state::PageState;
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
-    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
-    provide_context(cx, set_page_state);
-    provide_context(cx, page_state);
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
         <div class="pt-14 lg:pt-20 hidden-on-startup">
-        {move || format!("{}", page_state())}
         <div
             class="absolute flex justify-center align-center w-full pb-14"
             class=("overflow-hidden", show_article)
@@ -38,10 +35,34 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
+pub fn Paragraph(
+    cx: Scope,
+    children: Children,
+    #[prop(default = false)] indent: bool,
+) -> impl IntoView {
+    view! {cx,
+        <span
+            class="col-start-2 px-4"
+            class=("indent-10", indent)
+        >
+            {children(cx)}
+        </span>
+    }
+}
+
+#[component]
+pub fn Columns(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] lg:translate-x-0 grid grid-cols-[1000px_100%_1000px] lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
+            {children(cx)}
+        </div>
+    }
+}
+
+#[component]
 fn ColumnButton(cx: Scope) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).expect("page_state context to exist");
-    let set_page_state =
-        use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
 
     let show_right = move || page_state() == PageState::ShowRight;
     let show_article = move || page_state() == PageState::ShowArticle;
@@ -87,15 +108,6 @@ fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn Columns(cx: Scope, children: Children) -> impl IntoView {
-    view! {cx,
-        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] lg:translate-x-0 grid grid-cols-[1000px_100%_1000px] lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
-            {children(cx)}
-        </div>
-    }
-}
-
-#[component]
 fn Math(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
         <div class="inline-block indent-0">
@@ -110,22 +122,6 @@ fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
         <div class="indent-0 text-xl min-h-[4rem] flex items-center justify-center col-start-2">
             {children(cx)}
         </div>
-    }
-}
-
-#[component]
-fn Paragraph(
-    cx: Scope,
-    children: Children,
-    #[prop(default = false)] indent: bool,
-) -> impl IntoView {
-    view! {cx,
-        <span
-            class="col-start-2 px-4"
-            class=("indent-10", indent)
-        >
-            {children(cx)}
-        </span>
     }
 }
 

@@ -1,3 +1,4 @@
+use crate::page::*;
 use cfg_if::cfg_if;
 use http::status::StatusCode;
 use leptos::*;
@@ -8,7 +9,7 @@ use leptos_axum::ResponseOptions;
 
 #[derive(Clone, Debug, Error)]
 pub enum AppError {
-    #[error("Not Found")]
+    #[error("No content found at that address.")]
     NotFound,
 }
 
@@ -55,6 +56,10 @@ pub fn ErrorTemplate(
     }}
 
     view! {cx,
+        <Article>
+        <Columns>
+        <Paragraph>
+        <div class="rounded bg-stone-100 my-10 p-4 font-menlo text-sm">
         <h1>{if errors.len() > 1 {"Errors"} else {"Error"}}</h1>
         <For
             // a function that returns the items we're iterating over; a signal is fine
@@ -68,9 +73,13 @@ pub fn ErrorTemplate(
                 view! {
                     cx,
                     <h2>{error_code.to_string()}</h2>
-                    <p>"Error: " {error_string}</p>
+                    <p>{error_string}</p>
                 }
             }
         />
+        </div>
+        </Paragraph>
+        </Columns>
+        </Article>
     }
 }

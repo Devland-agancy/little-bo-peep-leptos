@@ -23,14 +23,70 @@ fn Title(cx: Scope) -> impl IntoView {
     }
 }
 
+#[derive(Debug, Clone, PartialEq)]
+pub enum MenuState {
+    Open,
+    Closed,
+}
+
 #[component]
 fn ChapterMenu(cx: Scope) -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+
+    let menu_closed = move || menu_state() == MenuState::Closed;
+
+    view! {cx,
+        <Show
+            when=menu_closed
+            fallback=|cx| view! { cx, <MenuOpen/> }
+        >
+            <MenuClosed/>
+        </Show>
+    }
+}
+
+#[component]
+fn MenuClosed(cx: Scope) -> impl IntoView {
     view! {cx,
         <div class="absolute right-0">
-            <button class="flex items-center justify-center h-8 w-9 m-3 fill-stone-500 hover:fill-stone-600 bg-white transition">
-                <HamburgerIcon />
-            </button>
+            <MenuButton/>
         </div>
+    }
+}
+
+#[component]
+fn MenuOpen(cx: Scope) -> impl IntoView {
+    view! {cx,
+        <div class="z-50 fixed right-0 flex self-start font-baskerville text-xl leading-loose select-none">
+            <div class="absolute z-50 right-0 top-0">
+                <MenuButton/>
+            </div>
+            <div class="h-screen z-40 px-4 pt-14 bg-stone-100 h-full"><ul><li><a href="/article/ch_1" class="text-stone-900 hover:text-sky-800">Chapter 1: A Few Refreshers</a></li><li><a href="/article/ch_2" class="text-stone-900 hover:text-sky-800">Chapter 2: Slopes</a></li></ul>
+            </div>
+        </div>
+    }
+}
+
+#[component]
+fn MenuButton(cx: Scope) -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+
+    let menu_open = move || menu_state() == MenuState::Open;
+    let menu_closed = move || menu_state() == MenuState::Closed;
+
+    view! {cx ,
+        <button
+            on:click=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::Open,
+                MenuState::Open => MenuState::Closed
+            })
+            class="flex items-center justify-center h-8 w-9 m-3 rounded transition fill-stone-500 hover:fill-stone-600"
+            class=("bg-stone-300", menu_open)
+            class=("shadow-inner", menu_open)
+        >
+            <HamburgerIcon/>
+        </button>
     }
 }
 

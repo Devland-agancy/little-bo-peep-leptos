@@ -1,5 +1,6 @@
 use crate::error_template::{AppError, ErrorTemplate};
-use crate::header::Header;
+use crate::header::{Header, MenuState};
+use crate::page::state::PageState;
 
 use leptos::*;
 use leptos_meta::*;
@@ -9,6 +10,14 @@ use leptos_router::*;
 pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context(cx);
+
+    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
+    provide_context(cx, set_page_state);
+    provide_context(cx, page_state);
+
+    let (menu_state, set_menu_state) = create_signal(cx, MenuState::Closed);
+    provide_context(cx, set_menu_state);
+    provide_context(cx, menu_state);
 
     view! {
         cx,
@@ -27,16 +36,14 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Router fallback=|cx| {
             let mut outside_errors = Errors::default();
             outside_errors.insert_with_default_key(AppError::NotFound);
-            view! { cx,
-                <ErrorTemplate outside_errors/>
-            }
+            view! { cx, <ErrorTemplate outside_errors/> }
             .into_view(cx)
         }>
             <main>
-                <Header />
+                <Header/>
                 <Routes>
-                    <Route path="" view=crate::page::home::View />
-                    <Route path="/article/ch_1" view=crate::page::article::ch_1::View />
+                    <Route path="" view=crate::page::home::View/>
+                    <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
                 </Routes>
             </main>
         </Router>
