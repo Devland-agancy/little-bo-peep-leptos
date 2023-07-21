@@ -15,9 +15,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
             <Paragraph>
-                <span class="font-baskerville-bold indent-0">
-                    "Square Roots. "
-                </span>
+                <Bold>"Square Roots. "</Bold>
                 "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
             </Paragraph>
             <MathBlock>
@@ -76,6 +74,33 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>r#"$\pm \sqrt{4}$"# "."</Math>
                 " This is what happens, for example, in the  maybe-well-known formula"
             </Paragraph>
+            <MathBlock>
+                r#"$$
+                    x = {-b \pm \sqrt{b^2 - 4ac} \over 2a}
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "for the solutions to the quadratic equation "
+                <Math>r#"$ax^2 + bx + c = 0$"# ".)"</Math>
+            </Paragraph>
+            <Paragraph indent=true>
+                "Now we can ponder, say, "
+            </Paragraph>
+            <MathBlock>r#"$$\sqrt{0.5}$$"#</MathBlock>
+            <Paragraph>
+                "whose value is—by definition—the unique nonnegative solution to"
+            </Paragraph>
+            <MathBlock>r#"$$x^2 = 0.5$$"# "."</MathBlock>
+            <Paragraph>
+               "As beginners, there's nothing wrong with trying to solve this equation by trial and error. With "
+                <Math>r#"$x = \frac{1}{4}$"# ","</Math>
+                " for example, we find"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                   x^2 = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4} 
+                $$"#
+            </MathBlock>
         </Columns>
     }
 }

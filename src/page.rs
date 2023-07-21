@@ -15,15 +15,14 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 
     view! { cx,
         <div class="pt-14 lg:pt-20 hidden-on-startup">
+        {move || format!("{}", page_state())}
         <div
-            class="absolute flex justify-center align-center w-full"
+            class="absolute flex justify-center align-center w-full pb-14"
             class=("overflow-hidden", show_article)
             id="Article"
         >
         <div
-            class="w-full md:w-192 lg:w-full"
-            class="transition duration-300"
-            class="lg:overflow-visible lg:translate-x-0"
+            class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
             class=("-translate-x-3/4", show_right)
             class=("md:-translate-x-[85%]", show_right)
         >
@@ -50,10 +49,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
     view! {cx,
         <button
             on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
-            class="z-40 bg-stone-300/50 hover:bg-stone-400/50"
-            class="transition duration-300"
-            class="lg:hidden absolute grid grid-cols-4 justify-end items-center"
-            class="w-full md:w-192 lg:w-full h-full lg:translate-0"
+            class="z-40 bg-stone-300/50 hover:bg-stone-400/50 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full md:w-192 lg:w-full h-full lg:translate-0"
             style="-webkit-tap-highlight-color: transparent;"
             class=("opacity-0", show_article)
             class=("pointer-events-none", show_article)
@@ -137,6 +133,13 @@ fn Paragraph(
 fn Italic(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
         <span class="font-baskerville-italic">{children(cx)}</span>
+    }
+}
+
+#[component]
+fn Bold(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <span class="font-baskerville-bold">{children(cx)}</span>
     }
 }
 
