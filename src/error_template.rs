@@ -59,7 +59,7 @@ pub fn ErrorTemplate(
         <Article>
         <Columns>
         <Paragraph>
-        <div class="rounded bg-stone-100 my-10 p-4 font-menlo text-sm">
+        <div class="rounded bg-stone-200 my-10 p-4 font-menlo text-sm">
         <h1>{if errors.len() > 1 {"Errors"} else {"Error"}}</h1>
         <For
             // a function that returns the items we're iterating over; a signal is fine

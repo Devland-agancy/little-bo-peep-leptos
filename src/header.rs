@@ -67,11 +67,20 @@ const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
 #[component]
 fn MenuOpen(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="z-50 fixed right-0 flex self-start font-baskerville text-xl leading-tight select-none">
+        <div class="w-full z-50 fixed right-0 flex self-start font-baskerville text-xl leading-tight select-none">
         <div class="absolute z-50 right-0 top-0">
-            <MenuButton/>
+        <MenuButton/>
         </div>
-        <div class="h-screen z-40 px-4 pt-14 bg-stone-100 h-full">
+        <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 pt-14 bg-stone-100 h-full">
+        <MenuItems />
+        </div>
+        </div>
+    }
+}
+
+#[component]
+fn MenuItems(cx: Scope) -> impl IntoView {
+    view! {cx,
         <ul>
         {MENU_ITEMS
             .into_iter()
@@ -79,8 +88,6 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             .collect_view(cx)
         }
         </ul>
-        </div>
-        </div>
     }
 }
 
