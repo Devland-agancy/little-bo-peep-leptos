@@ -9,23 +9,57 @@ use state::PageState;
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
     provide_context(cx, set_page_state);
+    provide_context(cx, page_state);
     let show_right = move || page_state() == PageState::ShowRight;
 
     view! { cx,
         <div class="pt-14 lg:pt-20 hidden-on-startup" >
-            <div class="absolute flex justify-center align-center w-full overflow-hidden" id="Article">
-                <div
-                    class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
-                    class=("-translate-x-3/4", show_right)
-                    class=("md:-translate-x-[85%]", show_right)
-                >
-                    <div class="font-baskerville w-full">
-                        {children(cx)}
-                    </div>
-                </div>
-            </div>
+        <div class="absolute flex justify-center align-center w-full overflow-hidden" id="Article">
+        <div
+            class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
+            class=("-translate-x-3/4", show_right)
+            class=("md:-translate-x-[85%]", show_right)
+        >
+        <div class="font-baskerville w-full">
+            {children(cx)}
+        </div>
+        </div>
+            <ColumnButton/>
+        </div>
         </div>
         <MathJaxTypeset/>
+    }
+}
+
+#[component]
+fn ColumnButton(cx: Scope) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).expect("page_state context to exist");
+
+    let show_right = move || page_state() == PageState::ShowRight;
+    let show_article = move || page_state() == PageState::ShowArticle;
+
+    view! {cx,
+        <button
+            class="z-40 bg-stone-300/50 hover:bg-stone-400/50 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full md:w-192 lg:w-full h-full lg:translate-0"
+            class=("opacity-0", show_article)
+            class=("pointer-events-none", show_article)
+            class=("opacity-100", show_right)
+            class=("-translate-x-3/4", show_right)
+            class=("md:-translate-x-[85%])", show_right)
+            style="-webkit-tap-highlight-color: transparent;"
+        >
+        </button>
+    }
+}
+
+#[component]
+fn ArticleTitle(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <div class="lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
+            <h1 class="lg:col-start-2 text-4xl p-4">
+                {children(cx)}
+            </h1>
+        </div>
     }
 }
 
@@ -104,5 +138,17 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
                 <img src=src />
             </button>
         </div>
+    }
+}
+
+#[component]
+fn Link(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
+    view! {cx,
+        <a
+            href=href
+            class="text-stone-900 hover:text-sky-800"
+        >
+            {children(cx)}
+        </a>
     }
 }

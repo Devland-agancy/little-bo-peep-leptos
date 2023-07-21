@@ -4,20 +4,9 @@ use super::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! {cx,
         <Article>
-            <ArticleTitle />
+            <ArticleTitle>"Chapter 1: A Few Refreshers"</ArticleTitle>
             <ArticleBody />
         </Article>
-    }
-}
-
-#[component]
-fn ArticleTitle(cx: Scope) -> impl IntoView {
-    view! {cx,
-        <div class="lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
-            <h1 class="lg:col-start-2 text-4xl p-4">
-                "Chapter 1: A Few Refreshers"
-            </h1>
-        </div>
     }
 }
 

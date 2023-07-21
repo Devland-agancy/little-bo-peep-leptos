@@ -4,6 +4,7 @@ use super::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! {cx,
         <Article>
+            <ArticleTitle>"Chapters"</ArticleTitle>
             <ArticleBody />
         </Article>
     }
@@ -14,22 +15,13 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
             <Paragraph>
-                <span class="font-baskerville-bold indent-0">
-                    "Square Roots. "
-                </span>
-                "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
-            </Paragraph>
-            <MathBlock>
-                r#"$$(-2) \times (-2) = 4\qquad\textrm{and}\qquad 2 \times 2 = 4$$"#
-            </MathBlock>
-            <Paragraph>
-                "are both positive. But "
-                <Math>r#"$\sqrt{4}$"#</Math>
-                " is, by definition, the unique "
-                <span class="font-baskerville-italic">"nonnegative "</span>
-                "solution to "
-                <Math>r#"$x^2 = 4$"#</Math>
-                ". Hence, and whether you like it or not,"
+                <ul class="text-3xl">
+                    <li>
+                         <Link href="article/ch_1">
+                            "Chapter 1: A Few Refreshers"
+                        </Link>
+                    </li>
+                </ul>
             </Paragraph>
         </Columns>
     }
