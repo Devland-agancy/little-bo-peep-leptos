@@ -54,16 +54,44 @@ fn MenuClosed(cx: Scope) -> impl IntoView {
     }
 }
 
+struct MenuItem {
+    title: &'static str,
+    url: &'static str,
+}
+
+const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
+    ("Chapter 1: A Few Refreshers", "ch_1"),
+    ("Chapter 2: Slopes", "ch_2"),
+];
+
 #[component]
 fn MenuOpen(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="z-50 fixed right-0 flex self-start font-baskerville text-xl leading-loose select-none">
-            <div class="absolute z-50 right-0 top-0">
-                <MenuButton/>
-            </div>
-            <div class="h-screen z-40 px-4 pt-14 bg-stone-100 h-full"><ul><li><a href="/article/ch_1" class="text-stone-900 hover:text-sky-800">Chapter 1: A Few Refreshers</a></li><li><a href="/article/ch_2" class="text-stone-900 hover:text-sky-800">Chapter 2: Slopes</a></li></ul>
-            </div>
+        <div class="z-50 fixed right-0 flex self-start font-baskerville text-xl leading-tight select-none">
+        <div class="absolute z-50 right-0 top-0">
+            <MenuButton/>
         </div>
+        <div class="h-screen z-40 px-4 pt-14 bg-stone-100 h-full">
+        <ul>
+        {MENU_ITEMS
+            .into_iter()
+            .map(|(title, url)| view! {cx, <MenuItem href=url>{title}</MenuItem>})
+            .collect_view(cx)
+        }
+        </ul>
+        </div>
+        </div>
+    }
+}
+
+#[component]
+fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
+    view! {cx,
+        <li class="-indent-4 px-4 pb-2">
+        <a href=["/article/", href].concat() class="text-stone-900 hover:text-sky-800">
+        {children(cx)}
+        </a>
+        </li>
     }
 }
 
