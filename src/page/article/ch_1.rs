@@ -29,8 +29,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 " is, by definition, the unique "
                 <Italic>"nonnegative "</Italic>
                 "solution to "
-                <Math>r#"$x^2 = 4$"#</Math>
-                ". Hence, and whether you like it or not,"
+                <Math>r#"$x^2 = 4$"# "."</Math>
+                " Hence, and whether you like it or not,"
             </Paragraph>
             <MathBlock>
                 r#"$$
@@ -48,9 +48,34 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             </Paragraph>
             <MathBlock>
                 r#"$$
-                    \sqrt{x^{2}} \hspace{0.1em} = \hspace{0.1em} x
+                    \sqrt{x^{2}} \rt{0.1} = \rt{0.1} x
                 $$"#
             </MathBlock>
+            <Paragraph>
+                "for every real number "
+                <Math>r#"$x$"# "."</Math>
+                " Instead we have"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                    \sqrt{x^{2}} \rt{0.1} = \rt{0.1} |x|
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "for every real number "
+                <Math>r#"$x$"# ","</Math>
+                " where "
+                <Math>r#"$|x|$"#</Math>
+                " denotes the absolute value of "
+                <Math>r#"$x$"# "."</Math>
+            </Paragraph>
+            <Paragraph indent=true>
+                "(Nb: If ever you want to indicate both solutions of the equation "
+                <Math>r#"$x^2 = 4$"#</Math>
+                " you can always use the notation "
+                <Math>r#"$\pm \sqrt{4}$"# "."</Math>
+                " This is what happens, for example, in the  maybe-well-known formula"
+            </Paragraph>
         </Columns>
     }
 }

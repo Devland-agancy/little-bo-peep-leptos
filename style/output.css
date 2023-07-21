@@ -724,6 +724,10 @@ video {
   text-indent: 0px;
 }
 
+.indent-10 {
+  text-indent: 2.5rem;
+}
+
 .font-baskerville {
   font-family: Baskerville Regular;
 }
@@ -854,6 +858,14 @@ video {
 
 .hidden-on-startup {
   opacity: 0
+}
+
+.first\:indent-4:first-child {
+  text-indent: 1rem;
+}
+
+.first\:indent-10:first-child {
+  text-indent: 2.5rem;
 }
 
 .hover\:bg-stone-400\/50:hover {
