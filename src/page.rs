@@ -12,7 +12,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
-        <div class="pt-14 lg:pt-20 hidden-on-startup overscroll-none">
+        <div class="pt-14 lg:pt-20 overscroll-none">
         <div
             class="absolute flex justify-center align-center w-full pb-14"
             class=("overflow-hidden", show_article)
@@ -110,16 +110,16 @@ fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 #[component]
 fn Math(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="inline-block indent-0">
+        <span class="inline-block indent-0 hidden-on-startup">
             {children(cx)}
-        </div>
+        </span>
     }
 }
 
 #[component]
 fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="indent-0 text-xl min-h-[4rem] flex items-center justify-center col-start-2">
+        <div class="indent-0 text-xl min-h-[4rem] flex items-center justify-center col-start-2 hidden-on-startup">
             {children(cx)}
         </div>
     }
