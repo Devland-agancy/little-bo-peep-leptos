@@ -110,7 +110,7 @@ fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 #[component]
 fn Math(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <span class="inline-block indent-0 hidden-on-startup">
+        <span class="w-fit h-0 inline-flex items-baseline indent-0 hidden-on-startup">
             {children(cx)}
         </span>
     }
@@ -119,7 +119,7 @@ fn Math(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="indent-0 text-xl min-h-[4rem] flex items-center justify-center col-start-2 hidden-on-startup">
+        <div class="indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
             {children(cx)}
         </div>
     }
