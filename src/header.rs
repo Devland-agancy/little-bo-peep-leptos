@@ -106,24 +106,45 @@ fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView 
 #[component]
 fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
 
     let menu_open = move || menu_state() == MenuState::Open;
-    let menu_closed = move || menu_state() == MenuState::Closed;
 
-    view! {cx ,
+    view! {cx,
+        <Show
+            when=menu_open
+            fallback=|cx| view! {cx, <MenuButtonClosed/>}
+        >
+            <MenuButtonOpen/>
+        </Show>
+    }
+}
+
+#[component]
+fn MenuButtonClosed(cx: Scope) -> impl IntoView {
+    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+    view! {cx,
         <button
             on:click=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Open,
                 MenuState::Open => MenuState::Closed
             })
-            class="flex items-center justify-center h-8 w-9 m-3 rounded transition"
-            class=("fill-[rgb(30,30,30)]", menu_closed)
-            class=("hover:fill-stone-600", menu_closed)
-            class=("bg-stone-900", menu_open)
-            class=("fill-stone-100", menu_open)
-            class=("hover:bg-stone-700", menu_open)
-            class=("hover:fill-stone-50", menu_open)
+            class="flex items-center justify-center h-8 w-9 m-3 rounded bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
+        >
+            <HamburgerIcon/>
+        </button>
+    }
+}
+
+#[component]
+fn MenuButtonOpen(cx: Scope) -> impl IntoView {
+    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+    view! {cx,
+        <button
+            on:click=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::Open,
+                MenuState::Open => MenuState::Closed
+            })
+            class="flex items-center justify-center h-8 w-9 m-3 rounded bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
         >
             <HamburgerIcon/>
         </button>
