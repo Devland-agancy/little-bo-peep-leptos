@@ -128,7 +128,7 @@ fn MenuButtonClosed(cx: Scope) -> impl IntoView {
                 MenuState::Closed => MenuState::Open,
                 MenuState::Open => MenuState::Closed
             })
-            class="flex items-center justify-center h-8 w-9 m-3 rounded bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
+            class="flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
         >
             <HamburgerIcon/>
         </button>
@@ -144,7 +144,7 @@ fn MenuButtonOpen(cx: Scope) -> impl IntoView {
                 MenuState::Closed => MenuState::Open,
                 MenuState::Open => MenuState::Closed
             })
-            class="flex items-center justify-center h-8 w-9 m-3 rounded bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
+            class="flex items-center justify-center h-8 w-8 m-3 bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
         >
             <HamburgerIcon/>
         </button>
@@ -154,9 +154,12 @@ fn MenuButtonOpen(cx: Scope) -> impl IntoView {
 #[component]
 fn HamburgerIcon(cx: Scope) -> impl IntoView {
     view! {cx,
-        <svg height="25px" width="30px" viewBox="0 0 450 512">
-            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z">
-            </path>
+        <svg width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
+         <g>
+          <rect x="5" y="6" width="20" height="3" rx="1.5" ry="1.5"/>
+          <rect x="5" y="13.5" width="20" height="3" rx="1.5" ry="1.5"/>
+          <rect x="5" y="21" width="20" height="3" rx="1.5" ry="1.5"/>
+         </g>
         </svg>
     }
 }
