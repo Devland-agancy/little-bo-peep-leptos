@@ -117,7 +117,9 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                 MenuState::Closed => MenuState::Open,
                 MenuState::Open => MenuState::Closed
             })
-            class="flex items-center justify-center h-8 w-9 m-3 rounded transition fill-stone-800 hover:fill-stone-600"
+            class="flex items-center justify-center h-8 w-9 m-3 rounded transition"
+            class=("fill-[rgb(30,30,30)]", menu_closed)
+            class=("hover:fill-stone-600", menu_closed)
             class=("bg-stone-900", menu_open)
             class=("fill-stone-100", menu_open)
             class=("hover:bg-stone-700", menu_open)
