@@ -57,6 +57,10 @@
   src: url("/fonts/Tomorrow-Regular.ttf")
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .hidden-on-startup {
   opacity: 0;
   width: 0;
