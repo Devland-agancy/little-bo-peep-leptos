@@ -1042,12 +1042,34 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:leading-relaxed {
     line-height: 1.625;
+  }
+
+  .sm\:leading-5 {
+    line-height: 1.25rem;
   }
 }
 
 @media (min-width: 768px) {
+  .md\:absolute {
+    position: absolute;
+  }
+
+  .md\:h-auto {
+    height: auto;
+  }
+
   .md\:w-192 {
     width: 42rem;
   }
@@ -1100,6 +1122,10 @@ video {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:h-auto {
+    height: auto;
   }
 
   .lg\:w-full {
