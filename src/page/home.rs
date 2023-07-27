@@ -15,7 +15,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
             <Paragraph>
-                <ul class="text-2xl lg:text-3xl">
+                <ul class="leading-9 text-2xl lg:text-3xl">
                     <li>
                          <Link href="article/ch_1">
                             "Chapter 1: A Few Refreshers"

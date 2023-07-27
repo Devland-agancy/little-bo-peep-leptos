@@ -891,6 +891,10 @@ video {
   line-height: .75rem;
 }
 
+.leading-9 {
+  line-height: 2.25rem;
+}
+
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
