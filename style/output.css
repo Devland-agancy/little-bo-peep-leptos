@@ -615,20 +615,16 @@ video {
   height: 2rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
-.h-screen {
-  height: 100vh;
-}
-
 .h-\[125vh\] {
   height: 125vh;
 }
 
 .h-\[calc\(100vh_-_56px\)\] {
   height: calc(100vh - 56px);
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-2\/3 {
@@ -730,8 +726,8 @@ video {
   overflow: hidden;
 }
 
-.overflow-scroll {
-  overflow: scroll;
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .overscroll-none {
@@ -980,6 +976,10 @@ video {
 
 .hidden-on-startup {
   opacity: 0;
+  width: 0;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
   width: 0;
 }
 

@@ -67,7 +67,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         </div>
         <div class="w-full z-50 fixed lg:absolute right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none">
             <div class="absolute right-0 w-2/3 max-w-xs h-[125vh] lg:h-auto z-40 bg-stone-100">
-                <div class="h-[calc(100vh_-_56px)] px-4 py-3 overflow-scroll">
+                <div class="scrollbar-hidden h-[calc(100vh_-_56px)] px-4 py-3 overflow-y-scroll">
                     <h2 class="font-baskerville-italic text-xl sm:text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />
                 </div>
