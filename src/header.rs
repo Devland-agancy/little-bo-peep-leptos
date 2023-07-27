@@ -54,11 +54,6 @@ fn MenuClosed(cx: Scope) -> impl IntoView {
     }
 }
 
-struct MenuItem {
-    title: &'static str,
-    url: &'static str,
-}
-
 const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
     ("Chapter 1: A Few Refreshers", "ch_1"),
     ("Chapter 2: Slopes", "ch_2"),
@@ -70,9 +65,9 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         <div class="absolute right-0">
             <MenuButton/>
         </div>
-        <div class="w-full z-50 fixed right-0 top-14 flex self-start font-baskerville text-xl leading-tight select-none">
-            <div class="absolute right-0 max-w-full w-80 h-screen z-40 px-4 py-2 bg-stone-100">
-                <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
+        <div class="w-full z-50 fixed right-0 top-14 flex self-start font-baskerville text-xl leading-3 md:leading-5 select-none">
+            <div class="absolute right-0 w-2/3 max-w-xs h-screen z-40 px-4 py-2 bg-stone-100">
+                <h2 class="font-baskerville-italic text-xl md:text-2xl pb-2">"Chapters"</h2>
                 <MenuItems />
             </div>
         </div>
@@ -96,7 +91,10 @@ fn MenuItems(cx: Scope) -> impl IntoView {
 fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
     view! {cx,
         <li class="-indent-4 px-4 pb-2">
-        <a href=["/article/", href].concat() class="text-stone-900 hover:text-sky-800">
+        <a
+            href=["/article/", href].concat()
+            class="text-stone-900 hover:text-sky-800 text-lg md:text-xl"
+        >
         {children(cx)}
         </a>
         </li>
