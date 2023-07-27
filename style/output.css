@@ -623,6 +623,10 @@ video {
   height: 100vh;
 }
 
+.h-\[125vh\] {
+  height: 125vh;
+}
+
 .w-2\/3 {
   width: 66.666667%;
 }
