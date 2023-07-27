@@ -627,6 +627,10 @@ video {
   height: 125vh;
 }
 
+.h-\[calc\(100vh_-_56px\)\] {
+  height: calc(100vh - 56px);
+}
+
 .w-2\/3 {
   width: 66.666667%;
 }
@@ -724,6 +728,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .overscroll-none {
