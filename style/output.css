@@ -554,10 +554,6 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .right-0 {
   right: 0px;
 }
@@ -619,8 +615,8 @@ video {
   height: 2rem;
 }
 
-.h-\[125vh\] {
-  height: 125vh;
+.h-\[200vh\] {
+  height: 200vh;
 }
 
 .h-\[calc\(100vh_-_56px\)\] {
@@ -629,10 +625,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[200vh\] {
-  height: 200vh;
 }
 
 .w-2\/3 {
@@ -742,6 +734,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .overflow-y-scroll {

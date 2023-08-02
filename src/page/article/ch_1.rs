@@ -98,9 +98,123 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
+               x^2 = \frac{1}{4}\times\frac{1}{4} = \frac{1}{16} 
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "so "
+            <Math>r#"$x = \frac{1}{4}$"#</Math>
+            "is not a solution of the equation, being apparently too small. Increasing "
+            <Math>r#"$x$"#</Math>
+            " to "
+            <Math>r#"$x = \frac{1}{2}$"# ","</Math>
+            " say, we find"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
                x^2 = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4} 
             $$"#
         </MathBlock>
+        <Paragraph>
+            "which is better, since "
+            <Math>r#"$1/4$"#</Math>
+            " is closer to "
+            <Math>r#"$1/2$"# ","</Math>
+            " but still too small. Increasing "
+            <Math>r#"$x$"#</Math>
+            " by "
+            <Math>r#"$1/4$"#</Math>
+            " again, say, to "
+            <Math>r#"$x = \frac{3}{4}$"# ","</Math>
+            " we find"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                x^2 = \frac{3}{4}\times\frac{3}{4} = \frac{9}{16}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "which—surprise!—is actually pretty close to "
+            <Math>r#"$1/2$"# ","</Math>
+            " as "
+            <Math>r#"$1/2 = 8/16$"# "."</Math>
+            " And since "
+            <Math>r#"$9/16 > 0.5$"# ", "</Math>
+            <Math>r#"$\sqrt{0.5}$"#</Math>
+            " must be a little "
+            <Italic>"less"</Italic>
+            " than "
+            <Math>r#"$\frac{3}{4} = 0.75$"# "."</Math>
+        </Paragraph>
+        <Paragraph indent=true>
+            "In last resort, and in reasonably good agreement with our
+            observations, a calculator reveals that"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            \sqrt{0.5} = 0.7071067...
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "where the decimals trail off with no pattern. (This number is irrational.) Even so, the fact that "
+            <Math>r#"$\sqrt{0.5}$"#</Math>
+            " is "
+            <Italic>"greater"</Italic>
+            " than "
+            <Math>r#"$0.5$"#</Math>
+            " is often perceived as counterintuitive."
+        </Paragraph>
+        <Paragraph indent=true>
+            "You can think of it this way: multiplying a value by "
+            <Math>r#"$0.7071$"# ","</Math>
+            " or approximately "
+            <Math>r#"$\sqrt{0.5}$"# ","</Math>
+            " is like taking "
+            <Math>r#"$70.71\%$"#</Math>
+            " of that value—for example, say, "
+        </Paragraph>
+        <MathBlock>
+        r#"$$
+        605 \cdot 0.7071 = 427.7955
+        $$"#
+        </MathBlock>
+        <Paragraph>
+            " is "
+            <Math>r#"$70.71\%$"#</Math>
+            " of "
+            <Math>r#"$605$"# ","</Math>
+            " and so on—so if we multiply "
+            <Italic>twice</Italic>
+            " by "
+            <Math>r#"$0.7071$"#</Math>
+            " we obtain "
+            <Math>"“" r#"$70.71\%$"#</Math>
+            " of "
+            <Math>r#"$70.71\%$"# "”"</Math>
+            " and it just so happens that "
+            <Math>"“" r#"$70.71\%$"#</Math>
+            " of "
+            <Math>r#"$70.71\%$"# "”"</Math>
+            " is close to "
+            <Math>r#"$50\%$"# "."</Math>
+        </Paragraph>
+        <Paragraph indent=true>
+            "The point is: if "
+            <Math>"“" r#"$X\%$"#</Math>
+            " of "
+            <Math>r#"$X\%$"# "”"</Math>
+            " equals "
+            <Math>r#"$50\%$"# ","</Math>
+            " then, of course, "
+            <Math>r#"$\hspace{0.03em}X > 50$"#</Math>
+            "—that much seems logical—and, with
+            a little thought, the same phenomenon explains why "
+            <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
+        </Paragraph>
+        <Paragraph>
+            <Bold>"Fractions and Division."</Bold>
+            " An elementary fraction, or division, such as "
+        </Paragraph>
         </Columns>
     }
 }

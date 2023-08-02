@@ -119,7 +119,7 @@ fn Math(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
+        <div class="overflow-x-auto indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
             {children(cx)}
         </div>
     }
