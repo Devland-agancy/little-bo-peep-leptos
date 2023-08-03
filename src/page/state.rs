@@ -4,6 +4,7 @@ use std::fmt;
 pub enum PageState {
     ShowArticle,
     ShowRight,
+    ShowLeft,
 }
 
 impl fmt::Display for PageState {
@@ -11,6 +12,7 @@ impl fmt::Display for PageState {
         match self {
             PageState::ShowArticle => write!(f, "ShowArticle"),
             PageState::ShowRight => write!(f, "ShowRight"),
+            PageState::ShowLeft => write!(f, "ShowLeft"),
         }
     }
 }

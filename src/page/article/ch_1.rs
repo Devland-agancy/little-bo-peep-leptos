@@ -310,6 +310,94 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$40$"# "."</Math>
             " (Interesting, no?)"
         </Paragraph>
+        <Paragraph>
+            <Bold>"Distributivity."</Bold>
+            " As you might already know, a number that multiplies a sum can be bought “inside” the sum. For example, "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                5(10 + 2) \,=\, 5\!\cdot\!10 \,+\, 5\!\cdot\!2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "(five times twelve equals fifty plus ten), or "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                a(b + c) = ab + ac
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "more generally. This property is known as the "
+            <Italic>"distributivity of multiplication over addition"</Italic>
+            ", or "
+            <Italic>"distributivity"</Italic>
+            " for short. "
+        </Paragraph>
+        <Paragraph>
+            "(We might finally clarify that "
+            <Math>"‘" r#"$\cdot$"# "’"</Math>
+            " means “times”, i.e., the same as "
+            <Math>"‘" r#"$\times$"# "’"</Math>
+            " Moreover, when we write"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            5\!\cdot\!10 \,+\, 5\!\cdot\!2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "we really mean"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (5\!\cdot\!10) + (5\!\cdot\!2)
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "as opposed to something else, such as"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            ((5\!\cdot\!10) + 5)\!\cdot\! 2,
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "because multiplication takes precedence over addition, by
+                default.)"
+        </Paragraph>
+        <Paragraph indent=Indent::Line>
+            "A little more generally, one has such identities as"
+        </Paragraph>
+        <ImageLeft
+            translate="(0,0)"
+            src="/images/325.svg"
+        />
+        <MathBlock>
+            r#"$$
+            (a + b)(C + D) = (a + b)C + (a + b)D
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (a + b)(C + D) = (a + b)C + (a + b)D
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "by one application of distributivity, while"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (a + b)C = aC + bC\\
+            (a + b)D = aD + bD
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "by distributivity again."
+        </Paragraph>
         </Columns>
     }
 }

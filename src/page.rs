@@ -9,6 +9,7 @@ use state::PageState;
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
+    let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
@@ -22,6 +23,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
             class=("-translate-x-3/4", show_right)
             class=("md:-translate-x-[85%]", show_right)
+            class=("translate-x-3/4", show_left)
+            class=("md:translate-x-[85%]", show_left)
         >
         <div class="font-baskerville w-full">
             {children(cx)}
@@ -73,6 +76,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
 
     let show_right = move || page_state() == PageState::ShowRight;
+    let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! {cx,
@@ -85,6 +89,9 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
             class=("opacity-100", show_right)
             class=("-translate-x-3/4", show_right)
             class=("md:-translate-x-[85%]", show_right)
+            class=("opacity-100", show_left)
+            class=("translate-x-3/4", show_left)
+            class=("md:translate-x-[85%]", show_left)
         >
         </button>
     }
@@ -171,7 +178,28 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
             <button
                 on:click=move |_| set_page_state.update(|value| *value = match value {
                     PageState::ShowArticle => PageState::ShowRight,
-                    PageState::ShowRight => PageState::ShowArticle
+                    _ => PageState::ShowArticle
+                })
+                style=move || format!("transform: translate{}", translate)
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
+            >
+                <img src=src />
+            </button>
+        </div>
+    }
+}
+
+#[component]
+fn ImageLeft(cx: Scope, translate: &'static str, src: &'static str) -> impl IntoView {
+    let set_page_state =
+        use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
+
+    view! {cx,
+        <div class="col-start-1 h-0 flex items-center justify-end">
+            <button
+                on:click=move |_| set_page_state.update(|value| *value = match value {
+                    PageState::ShowArticle => PageState::ShowLeft,
+                    _ => PageState::ShowArticle
                 })
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
