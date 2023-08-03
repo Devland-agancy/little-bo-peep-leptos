@@ -67,7 +67,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " denotes the absolute value of "
             <Math>r#"$x$"# "."</Math>
         </Paragraph>
-        <Paragraph indent=true>
+        <Paragraph indent=Indent::Line>
             "(Nb: If ever you want to indicate both solutions of the equation "
             <Math>r#"$x^2 = 4$"#</Math>
             " you can always use the notation "
@@ -83,14 +83,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "for the solutions to the quadratic equation "
             <Math>r#"$ax^2 + bx + c = 0$"# ".)"</Math>
         </Paragraph>
-        <Paragraph indent=true>
+        <Paragraph indent=Indent::Line>
             "Now we can ponder, say, "
         </Paragraph>
         <MathBlock>r#"$$\sqrt{0.5}$$"#</MathBlock>
         <Paragraph>
             "whose value is—by definition—the unique nonnegative solution to"
         </Paragraph>
-        <MathBlock>r#"$$x^2 = 0.5$$"# "."</MathBlock>
+        <MathBlock>r#"$$x^2 = 0.5.$$"#</MathBlock>
         <Paragraph>
            "As beginners, there's nothing wrong with trying to solve this equation by trial and error. With "
             <Math>r#"$x = \frac{1}{4}$"# ","</Math>
@@ -146,7 +146,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " than "
             <Math>r#"$\frac{3}{4} = 0.75$"# "."</Math>
         </Paragraph>
-        <Paragraph indent=true>
+        <Paragraph indent=Indent::Line>
             "In last resort, and in reasonably good agreement with our
             observations, a calculator reveals that"
         </Paragraph>
@@ -164,7 +164,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$0.5$"#</Math>
             " is often perceived as counterintuitive."
         </Paragraph>
-        <Paragraph indent=true>
+        <Paragraph indent=Indent::Line>
             "You can think of it this way: multiplying a value by "
             <Math>r#"$0.7071$"# ","</Math>
             " or approximately "
@@ -198,7 +198,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " is close to "
             <Math>r#"$50\%$"# "."</Math>
         </Paragraph>
-        <Paragraph indent=true>
+        <Paragraph indent=Indent::Line>
             "The point is: if "
             <Math>"“" r#"$X\%$"#</Math>
             " of "
@@ -214,6 +214,40 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             <Bold>"Fractions and Division."</Bold>
             " An elementary fraction, or division, such as "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                {50 \over 2}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "can be thought of in a few different ways:"
+        </Paragraph>
+        <Paragraph indent=Indent::Block>
+            <List>
+                <Item>
+                    "Fifty halves (i.e., "
+                    <Math>r#"$50 \times \frac{1}{2}$"#</Math>
+                    ")."
+                </Item>
+                <Item>
+                    "The size obtained when something of size fifty is divided into two equal parts (answer: "
+                    <Math>r#"$25$"#</Math>
+                    ")."
+                </Item>
+                <Item>
+                    "The number of times that "
+                    <Math>r#"$2$"#</Math>
+                    " goes into "
+                    <Math>r#"$50$"#</Math>
+                    " (answer: "
+                    <Math>r#"$25$"# ","</Math>
+                    " because it takes twenty-five "
+                    <Math>r#"$2$"# "s"</Math>
+                    " to make up "
+                    <Math>r#"$50$"# ")."</Math>
+                </Item>
+            </List>
         </Paragraph>
         </Columns>
     }

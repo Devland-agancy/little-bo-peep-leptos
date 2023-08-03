@@ -696,6 +696,10 @@ video {
           user-select: none;
 }
 
+.list-decimal {
+  list-style-type: decimal;
+}
+
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -738,6 +742,14 @@ video {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-visible {
+  overflow-y: visible;
 }
 
 .overflow-y-scroll {
@@ -796,6 +808,10 @@ video {
   padding: 1rem;
 }
 
+.p-10 {
+  padding: 2.5rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -824,6 +840,10 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pl-10 {
+  padding-left: 2.5rem;
 }
 
 .-indent-4 {
@@ -999,6 +1019,10 @@ video {
 
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
+}
+
+mjx-container {
+  width: 100%;
 }
 
 .hover\:bg-stone-400\/50:hover {

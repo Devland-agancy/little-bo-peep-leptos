@@ -34,16 +34,24 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     }
 }
 
+#[derive(PartialEq)]
+pub enum Indent {
+    None,
+    Line,
+    Block,
+}
+
 #[component]
 pub fn Paragraph(
     cx: Scope,
     children: Children,
-    #[prop(default = false)] indent: bool,
+    #[prop(default = Indent::None)] indent: Indent,
 ) -> impl IntoView {
     view! {cx,
         <span
             class="col-start-2 px-4"
-            class=("indent-10", indent)
+            class=("indent-10", indent == Indent::Line)
+            class=("pl-10", indent == Indent::Block)
         >
             {children(cx)}
         </span>
@@ -119,7 +127,7 @@ fn Math(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="overflow-x-auto indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
+        <div class="overflow-x-auto overflow-y-visible indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
             {children(cx)}
         </div>
     }
@@ -169,5 +177,23 @@ fn Link(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
         >
             {children(cx)}
         </a>
+    }
+}
+
+#[component]
+fn List(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <ol class="p-4 list-decimal">
+            {children(cx)}
+        </ol>
+    }
+}
+
+#[component]
+fn Item(cx: Scope, children: Children) -> impl IntoView {
+    view! {cx,
+        <li>
+            {children(cx)}
+        </li>
     }
 }
