@@ -249,6 +249,41 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </Item>
             </List>
         </Paragraph>
+        <Paragraph>
+            "But "
+            <Math>r#"$50/2$"#</Math>
+            " is a ratio of integers, which makes things particularly nice! For a ratio of decimals, such as, say, "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            {1 \over 0.01}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "our possible points of view are going to be more restricted. Thankfully, however, we can still characterize this fraction as the answer to the question “how many times does $0.01$ go into $1$?” as in the third option above. And, indeed,"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            {1 \over 0.01} \,=\,100
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "because "
+            <Math>r#"$0.01$"#</Math>
+            " goes "
+            <Math>r#"$100$"#</Math>
+            " times into "
+            <Math>r#"$1$"# "."</Math>
+            " For that matter, "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            { 1 \over 0.001} = 1000,\qquad{1 \over 0.0001} = 10000,\quad\,\,\,\,\textrm{(etc)}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
+        </Paragraph>
         </Columns>
     }
 }
