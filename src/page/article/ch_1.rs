@@ -370,7 +370,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "A little more generally, one has such identities as"
         </Paragraph>
         <ImageLeft
-            translate="(0,0)"
+            translate="(2rem,1.7rem)"
             src="/images/325.svg"
         />
         <MathBlock>

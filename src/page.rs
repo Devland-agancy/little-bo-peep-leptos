@@ -172,6 +172,8 @@ fn Bold(cx: Scope, children: Children) -> impl IntoView {
 fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl IntoView {
     let set_page_state =
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let show_right = move || page_state() == PageState::ShowRight;
 
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
@@ -181,7 +183,8 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
                     _ => PageState::ShowArticle
                 })
                 style=move || format!("transform: translate{}", translate)
-                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
+                class=("pointer-events-none", show_right)
             >
                 <img src=src />
             </button>
@@ -193,6 +196,8 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
 fn ImageLeft(cx: Scope, translate: &'static str, src: &'static str) -> impl IntoView {
     let set_page_state =
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let show_left = move || page_state() == PageState::ShowLeft;
 
     view! {cx,
         <div class="col-start-1 h-0 flex items-center justify-end">
@@ -202,7 +207,8 @@ fn ImageLeft(cx: Scope, translate: &'static str, src: &'static str) -> impl Into
                     _ => PageState::ShowArticle
                 })
                 style=move || format!("transform: translate{}", translate)
-                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none"
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
+                class=("pointer-events-none", show_left)
             >
                 <img src=src />
             </button>
