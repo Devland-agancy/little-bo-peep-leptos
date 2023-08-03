@@ -124,10 +124,24 @@ fn Math(cx: Scope, children: Children) -> impl IntoView {
     }
 }
 
+#[derive(PartialEq)]
+pub enum Height {
+    Fit,
+    Small,
+}
+
 #[component]
-fn MathBlock(cx: Scope, children: Children) -> impl IntoView {
+fn MathBlock(
+    cx: Scope,
+    children: Children,
+    #[prop(default = Height::Small)] height: Height,
+) -> impl IntoView {
     view! {cx,
-        <div class="overflow-x-auto overflow-y-visible indent-0 text-xl h-20 flex items-center justify-center col-start-2 hidden-on-startup">
+        <div
+            class="overflow-x-auto overflow-y-visible indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
+            class=("h-20", height == Height::Small)
+            class=("h-fit", height == Height::Fit)
+        >
             {children(cx)}
         </div>
     }

@@ -284,6 +284,32 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
         </Paragraph>
+        <Paragraph>
+            <Bold>"Note."</Bold>
+            " In general, the ratio of two decimal numbers can be turned into a ratio of integers by multiplying the ratio top and bottom by a suitable power of "
+            <Math>r#"$10$"# "."</Math>
+            " E.g.: "
+        </Paragraph>
+        <MathBlock>
+            r#"$$ {1.42 \over 0.8} = {100 \cdot 1.42 \over 100 \cdot 0.8} = {142 \over 80} = {71 \over 40}. $$"#
+        </MathBlock>
+        <Paragraph>
+            "This example was chosen randomly, and, if you allow, we would like to see how large "
+            <Math>r#"$71/40$"#</Math>
+            " really is (one second!): "
+        </Paragraph>
+        <MathBlock height=Height::Fit>
+            r#"$$ \begin{align} {71 \over 40} \,&=\, {40 + 30 + 1 \over 40} \,=\, {40 \over 40} + {30 \over 40} + {1 \over 40}\\ \,&=\, 1 + {3 \over 4} + {1 \over 4}\!\cdot \!{1 \over 10}\rule{0pt}{1.5em}\\ \,&=\, 1 + 0.75 + 0.025 = 1.775\rule{0pt}{1.5em} \end{align} $$"#
+        </MathBlock>
+        <Paragraph>
+            "...so we find, among others, that "
+            <Math>r#"$71$"#</Math>
+            " is exactly "
+            <Math>r#"$77.5\%$"#</Math>
+            " greater than "
+            <Math>r#"$40$"# "."</Math>
+            " (Interesting, no?)"
+        </Paragraph>
         </Columns>
     }
 }
