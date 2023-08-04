@@ -832,6 +832,11 @@ video {
   padding-bottom: 0.75rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .pb-14 {
   padding-bottom: 3.5rem;
 }
@@ -882,6 +887,10 @@ video {
 
 .indent-10 {
   text-indent: 2.5rem;
+}
+
+.-indent-6 {
+  text-indent: -1.5rem;
 }
 
 .font-baskerville {

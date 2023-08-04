@@ -92,7 +92,7 @@ fn MenuItems(cx: Scope) -> impl IntoView {
 #[component]
 fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
     view! {cx,
-        <li class="-indent-4 px-4 pb-1.5 sm:pb-2">
+        <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
             href=["/article/", href].concat()
             class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"
