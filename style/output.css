@@ -708,6 +708,10 @@ video {
   animation: appear 0.3s ease 0s 1 normal forwards;
 }
 
+.touch-none {
+  touch-action: none;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
