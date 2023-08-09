@@ -3,8 +3,8 @@ use leptos::*;
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="w-full">
-            <div class="flex justify-center items-center fixed lg:absolute w-full bg-white z-50 border-b border-t-10 h-14">
+        <div class="select-none w-full">
+            <div class="select-none flex justify-center items-center fixed lg:absolute w-full bg-white z-50 border-b border-t-10 h-14">
                 <Title />
                 <ChapterMenu />
             </div>
@@ -15,7 +15,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="w-full md:w-192 lg:w-full pl-4 lg:grid lg:grid-cols-[1fr_32.5rem_1fr]" id="Header">
+        <div class="select-none w-full md:w-192 lg:w-full pl-4 lg:grid lg:grid-cols-[1fr_32.5rem_1fr]" id="Header">
             <div class="font-clickerscript text-3xl pt-2 self-end lg:col-start-2 lg:pl-2">
                 <a href="/">"Little Bo Peep"</a>
             </div>
@@ -69,8 +69,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             <MenuButton/>
         </div>
         <div class="w-full z-50 fixed translate-x-0 translate-y-0 lg:absolute right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none">
-            <div class="touch-none overscroll-none absolute right-0 w-2/3 max-w-xs h-[200vh] lg:h-auto z-40 bg-stone-100">
-                <div class="scrollbar-hidden h-[calc(100vh_-_56px)] lg:h-full px-4 py-3 overflow-y-hidden">
+            <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs h-[200vh] lg:h-auto z-40 bg-stone-100">
+                <div class="select-none scrollbar-hidden h-[calc(100vh_-_56px)] lg:h-full px-4 py-3 overflow-y-hidden">
                     <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />
                 </div>
@@ -129,24 +129,24 @@ fn MenuButtonClosed(cx: Scope) -> impl IntoView {
 
     view! {cx,
         <button
-            on:mousedown=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::OpenPressed,
                 MenuState::ClosedPressed => MenuState::OpenPressed,
                 MenuState::Open => MenuState::ClosedPressed,
                 MenuState::OpenPressed => MenuState::ClosedPressed
             })
-            on:mouseleave=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerleave=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::ClosedPressed => MenuState::Open,
                 MenuState::OpenPressed => MenuState::Closed,
                 _ => *value
             })
-            on:mouseup=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
                 MenuState::ClosedPressed => MenuState::Closed,
                 MenuState::Open => MenuState::Open,
                 MenuState::OpenPressed => MenuState::Open
             })
-            class="flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
+            class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
         >
             <HamburgerIcon/>
         </button>
@@ -159,24 +159,24 @@ fn MenuButtonOpen(cx: Scope) -> impl IntoView {
 
     view! {cx,
         <button
-            on:mousedown=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::OpenPressed,
                 MenuState::ClosedPressed => MenuState::OpenPressed,
                 MenuState::Open => MenuState::ClosedPressed,
                 MenuState::OpenPressed => MenuState::ClosedPressed
             })
-            on:mouseleave=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerleave=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::ClosedPressed => MenuState::Open,
                 MenuState::OpenPressed => MenuState::Closed,
                 _ => *value
             })
-            on:mouseup=move |_| set_menu_state.update(|value| *value = match value {
+            on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
                 MenuState::ClosedPressed => MenuState::Closed,
                 MenuState::Open => MenuState::Open,
                 MenuState::OpenPressed => MenuState::Open
             })
-            class="flex items-center justify-center h-8 w-8 m-3 bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
+            class="select-none flex items-center justify-center h-8 w-8 m-3 bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
         >
             <HamburgerIcon/>
         </button>
