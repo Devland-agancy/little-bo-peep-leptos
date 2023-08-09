@@ -51,7 +51,7 @@ fn ChapterMenu(cx: Scope) -> impl IntoView {
 #[component]
 fn MenuClosed(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="absolute right-0">
+        <div class="h-14 absolute right-0 lg:fixed bg-white border-l border-b">
             <MenuButton/>
         </div>
     }
@@ -65,11 +65,11 @@ const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
 #[component]
 fn MenuOpen(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="absolute right-0">
+        <div class="h-14 absolute right-0 lg:fixed border-l border-b">
             <MenuButton/>
         </div>
-        <div class="w-full z-50 fixed translate-x-0 translate-y-0 lg:absolute right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none">
-            <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs h-[200vh] lg:h-auto z-40 bg-stone-100">
+        <div class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none">
+            <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs h-[200vh] z-40 bg-stone-100">
                 <div class="select-none scrollbar-hidden h-[calc(100vh_-_56px)] lg:h-full px-4 py-3 overflow-y-hidden">
                     <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />

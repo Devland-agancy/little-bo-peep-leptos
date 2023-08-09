@@ -782,8 +782,16 @@ video {
   border-radius: 0.25rem;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-l {
+  border-left-width: 1px;
 }
 
 .bg-stone-100 {
@@ -1129,6 +1137,10 @@ mjx-container {
 @media (min-width: 1024px) {
   .lg\:pointer-events-none {
     pointer-events: none;
+  }
+
+  .lg\:fixed {
+    position: fixed;
   }
 
   .lg\:absolute {
