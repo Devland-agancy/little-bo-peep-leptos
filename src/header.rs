@@ -23,17 +23,20 @@ fn Title(cx: Scope) -> impl IntoView {
     }
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Copy)]
 pub enum MenuState {
     Open,
+    OpenPressed,
     Closed,
+    ClosedPressed,
 }
 
 #[component]
 fn ChapterMenu(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
 
-    let menu_closed = move || menu_state() == MenuState::Closed;
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
     view! {cx,
         <Show
@@ -107,7 +110,8 @@ fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView 
 fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
 
-    let menu_open = move || menu_state() == MenuState::Open;
+    let menu_open =
+        move || menu_state() == MenuState::Open || menu_state() == MenuState::OpenPressed;
 
     view! {cx,
         <Show
@@ -122,11 +126,25 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 #[component]
 fn MenuButtonClosed(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+
     view! {cx,
         <button
-            on:click=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::Closed => MenuState::Open,
-                MenuState::Open => MenuState::Closed
+            on:mousedown=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::OpenPressed,
+                MenuState::ClosedPressed => MenuState::OpenPressed,
+                MenuState::Open => MenuState::ClosedPressed,
+                MenuState::OpenPressed => MenuState::ClosedPressed
+            })
+            on:mouseleave=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::ClosedPressed => MenuState::Open,
+                MenuState::OpenPressed => MenuState::Closed,
+                _ => *value
+            })
+            on:mouseup=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::Closed,
+                MenuState::ClosedPressed => MenuState::Closed,
+                MenuState::Open => MenuState::Open,
+                MenuState::OpenPressed => MenuState::Open
             })
             class="flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
         >
@@ -138,11 +156,25 @@ fn MenuButtonClosed(cx: Scope) -> impl IntoView {
 #[component]
 fn MenuButtonOpen(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+
     view! {cx,
         <button
-            on:click=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::Closed => MenuState::Open,
-                MenuState::Open => MenuState::Closed
+            on:mousedown=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::OpenPressed,
+                MenuState::ClosedPressed => MenuState::OpenPressed,
+                MenuState::Open => MenuState::ClosedPressed,
+                MenuState::OpenPressed => MenuState::ClosedPressed
+            })
+            on:mouseleave=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::ClosedPressed => MenuState::Open,
+                MenuState::OpenPressed => MenuState::Closed,
+                _ => *value
+            })
+            on:mouseup=move |_| set_menu_state.update(|value| *value = match value {
+                MenuState::Closed => MenuState::Closed,
+                MenuState::ClosedPressed => MenuState::Closed,
+                MenuState::Open => MenuState::Open,
+                MenuState::OpenPressed => MenuState::Open
             })
             class="flex items-center justify-center h-8 w-8 m-3 bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
         >
