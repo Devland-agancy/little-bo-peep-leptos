@@ -70,6 +70,11 @@
   width: 0;
 }
 
+.scrollbar-hidden{
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
 mjx-container {
   width: 100%;
 }

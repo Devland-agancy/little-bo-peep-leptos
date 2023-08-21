@@ -52,7 +52,7 @@ pub fn Paragraph(
 ) -> impl IntoView {
     view! {cx,
         <span
-            class="col-start-2 px-4"
+            class="col-start-2 px-4 text-justify"
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
         >
@@ -243,5 +243,14 @@ fn Item(cx: Scope, children: Children) -> impl IntoView {
         <li>
             {children(cx)}
         </li>
+    }
+}
+
+#[component]
+fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
+    view! {cx,
+        <div class="px-4 my-10 relative col-start-2 overflow-x-scroll scrollbar-hidden md:overflow-visible" style= move ||  format!("height: {}px", height)>
+            <img src=src style= move ||  format!("height: {}px", height) class="max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto"/>
+        </div>
     }
 }

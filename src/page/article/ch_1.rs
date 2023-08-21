@@ -18,6 +18,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Bold>"Square Roots. "</Bold>
             "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
         </Paragraph>
+        <Image src="/images/charts.svg" height=800 />
         <MathBlock>
             r#"$$(-2) \times (-2) = 4\qquad\textrm{and}\qquad 2 \times 2 = 4$$"#
         </MathBlock>
