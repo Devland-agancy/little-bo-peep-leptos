@@ -6,6 +6,9 @@ pub fn Header(cx: Scope) -> impl IntoView {
         <div class="select-none w-full">
             <div class="select-none flex justify-center items-center fixed lg:absolute w-full bg-white z-50 border-b border-t-10 h-14">
                 <Title />
+                <div class="h-14 w-14 absolute right-0 lg:fixed border-l border-b">
+                    <MenuButton/>
+                </div>
                 <ChapterMenu />
             </div>
         </div>
@@ -39,21 +42,11 @@ fn ChapterMenu(cx: Scope) -> impl IntoView {
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
     view! {cx,
-        <Show
+        <MenuOpen/>
+        /* <Show
             when=menu_closed
             fallback=|cx| view! { cx, <MenuOpen/> }
-        >
-            <MenuClosed/>
-        </Show>
-    }
-}
-
-#[component]
-fn MenuClosed(cx: Scope) -> impl IntoView {
-    view! {cx,
-        <div class="h-14 absolute right-0 lg:fixed bg-white border-l border-b">
-            <MenuButton/>
-        </div>
+         ><div></div></Show> */
     }
 }
 
@@ -64,13 +57,17 @@ const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
 
 #[component]
 fn MenuOpen(cx: Scope) -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+
     view! {cx,
-        <div class="h-14 absolute right-0 lg:fixed border-l border-b">
-            <MenuButton/>
-        </div>
-        <div class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none">
-            <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs h-[200vh] z-40 bg-stone-100">
-                <div class="select-none scrollbar-hidden h-[calc(100vh_-_56px)] lg:h-full px-4 py-3 overflow-y-hidden">
+        <div class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear delay-75 duration-300"
+           style=move || format!("transform: translateX({})", if menu_closed() { "100%"} else { "0" })
+         >
+            <div
+             class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)]">
+                <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] lg:h-full px-4 py-3 overflow-y-hidden">
                     <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />
                 </div>
@@ -108,23 +105,6 @@ fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView 
 
 #[component]
 fn MenuButton(cx: Scope) -> impl IntoView {
-    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-
-    let menu_open =
-        move || menu_state() == MenuState::Open || menu_state() == MenuState::OpenPressed;
-
-    view! {cx,
-        <Show
-            when=menu_open
-            fallback=|cx| view! {cx, <MenuButtonClosed/>}
-        >
-            <MenuButtonOpen/>
-        </Show>
-    }
-}
-
-#[component]
-fn MenuButtonClosed(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
 
     view! {cx,
@@ -146,37 +126,7 @@ fn MenuButtonClosed(cx: Scope) -> impl IntoView {
                 MenuState::Open => MenuState::Open,
                 MenuState::OpenPressed => MenuState::Open
             })
-            class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600 active:bg-stone-900 active:fill-stone-100"
-        >
-            <HamburgerIcon/>
-        </button>
-    }
-}
-
-#[component]
-fn MenuButtonOpen(cx: Scope) -> impl IntoView {
-    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
-
-    view! {cx,
-        <button
-            on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::Closed => MenuState::OpenPressed,
-                MenuState::ClosedPressed => MenuState::OpenPressed,
-                MenuState::Open => MenuState::ClosedPressed,
-                MenuState::OpenPressed => MenuState::ClosedPressed
-            })
-            on:pointerleave=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::ClosedPressed => MenuState::Open,
-                MenuState::OpenPressed => MenuState::Closed,
-                _ => *value
-            })
-            on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::Closed => MenuState::Closed,
-                MenuState::ClosedPressed => MenuState::Closed,
-                MenuState::Open => MenuState::Open,
-                MenuState::OpenPressed => MenuState::Open
-            })
-            class="select-none flex items-center justify-center h-8 w-8 m-3 bg-stone-900 fill-stone-100 hover:bg-stone-700 hover:fill-stone-50 active:bg-transparent active:fill-[rgb(30,30,30)]"
+            class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600"
         >
             <HamburgerIcon/>
         </button>
@@ -185,12 +135,23 @@ fn MenuButtonOpen(cx: Scope) -> impl IntoView {
 
 #[component]
 fn HamburgerIcon(cx: Scope) -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+
     view! {cx,
         <svg width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
          <g>
-          <rect x="5" y="6" width="20" height="3" rx="1.5" ry="1.5"/>
-          <rect x="5" y="13.5" width="20" height="3" rx="1.5" ry="1.5"/>
-          <rect x="5" y="21" width="20" height="3" rx="1.5" ry="1.5"/>
+          <rect x="5" y="6" width="20" height="3" rx="1.5" ry="1.5"
+            class=move || format!("menu-icon-svg {}", if menu_closed() { "" } else { "close-icon-svg-1" })
+          />
+          <rect x="5" y="13.5" width="20" height="3" rx="1.5" ry="1.5"
+            class="menu-icon-svg"
+            style=move || format!("opacity: {}", if menu_closed() { "100"} else { "0" })
+          />
+          <rect x="5" y="21" width="20" height="3" rx="1.5" ry="1.5"
+            class=move || format!("menu-icon-svg {}", if menu_closed() { "" } else { "close-icon-svg-2" })
+          />
          </g>
         </svg>
     }

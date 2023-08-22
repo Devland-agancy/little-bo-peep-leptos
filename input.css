@@ -78,3 +78,15 @@
 mjx-container {
   width: 100%;
 }
+
+.menu-icon-svg{
+  transition: all 0.3s ease;;
+}
+
+.close-icon-svg-1 {
+  transform: translate(10px, -1px) rotate(48deg);
+}
+
+.close-icon-svg-2 {
+  transform: translate(-12px, 10px) rotate(-45deg);
+}
