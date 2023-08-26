@@ -4,9 +4,9 @@ use leptos::*;
 pub fn Header(cx: Scope) -> impl IntoView {
     view! {cx,
         <div class="select-none w-full">
-            <div class="select-none flex justify-center items-center fixed lg:absolute w-full bg-white z-50 border-b border-t-10 h-14">
-                <Title />
-                <div class="h-14 w-14 absolute right-0 lg:fixed border-l border-b">
+            <div class="select-none flex justify-center items-center fixed lg:absolute bg-white z-50 border-b border-t-10 h-14 border-r-0 lg:border-r w-full lg:w-[calc(100vw-3.5rem)]">
+                    <Title />
+                <div class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b">
                     <MenuButton/>
                 </div>
                 <ChapterMenu />
@@ -18,7 +18,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="select-none w-full md:w-192 lg:w-full pl-4 lg:grid lg:grid-cols-[1fr_32.5rem_1fr]" id="Header">
+        <div class="select-none w-full md:w-192 lg:w-full pl-4 lg:pl-[calc(1rem+3.5rem)] lg:grid lg:grid-cols-[1fr_32.5rem_1fr]" id="Header">
             <div class="font-clickerscript text-3xl pt-2 self-end lg:col-start-2 lg:pl-2">
                 <a href="/">"Little Bo Peep"</a>
             </div>
@@ -36,17 +36,8 @@ pub enum MenuState {
 
 #[component]
 fn ChapterMenu(cx: Scope) -> impl IntoView {
-    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-
-    let menu_closed =
-        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-
     view! {cx,
         <MenuOpen/>
-        /* <Show
-            when=menu_closed
-            fallback=|cx| view! { cx, <MenuOpen/> }
-         ><div></div></Show> */
     }
 }
 
@@ -62,7 +53,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
     view! {cx,
-        <div class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear delay-75 duration-300"
+        <div  class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
            style=move || format!("transform: translateX({})", if menu_closed() { "100%"} else { "0" })
          >
             <div
