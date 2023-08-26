@@ -1,4 +1,5 @@
 use leptos::*;
+use leptos_use::{breakpoints_tailwind, use_breakpoints, BreakpointsTailwind};
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -6,9 +7,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
         <div class="select-none w-full">
             <div class="select-none flex justify-center items-center fixed lg:absolute bg-white z-50 border-b border-t-10 h-14 border-r-0 lg:border-r w-full lg:w-[calc(100vw-3.5rem)]">
                     <Title />
-                <div class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b">
                     <MenuButton/>
-                </div>
                 <ChapterMenu />
             </div>
         </div>
@@ -97,20 +96,42 @@ fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView 
 #[component]
 fn MenuButton(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+
+    let (button_opacity, set_button_opacity) =
+        create_signal::<f64>(cx, 1_f64 - window().scroll_y().unwrap() / 5000_f64);
+
+    let screen_width = use_breakpoints(cx, breakpoints_tailwind());
+    let screen_gt_md = screen_width.gt(BreakpointsTailwind::Lg);
+
+    window_event_listener(ev::scroll, move |_| {
+        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64);
+    });
 
     view! {cx,
+        <div
+           style = move || format!("opacity: {}", if menu_closed() && screen_gt_md() { button_opacity() } else { 1_f64 })
+           class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b transition-opacity">
         <button
+            on:mouseover=move |_| set_button_opacity(1_f64)
             on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::OpenPressed,
                 MenuState::ClosedPressed => MenuState::OpenPressed,
                 MenuState::Open => MenuState::ClosedPressed,
                 MenuState::OpenPressed => MenuState::ClosedPressed
             })
-            on:pointerleave=move |_| set_menu_state.update(|value| *value = match value {
-                MenuState::ClosedPressed => MenuState::Open,
-                MenuState::OpenPressed => MenuState::Closed,
-                _ => *value
-            })
+            on:pointerleave=move |_| {
+                set_menu_state.update(|value| {
+                    *value = match value {
+                        MenuState::ClosedPressed => MenuState::Open,
+                        MenuState::OpenPressed => MenuState::Closed,
+                        _ => *value,
+                    }
+                });
+                set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
+            }
             on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
                 MenuState::ClosedPressed => MenuState::Closed,
@@ -118,9 +139,11 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                 MenuState::OpenPressed => MenuState::Open
             })
             class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600"
+
         >
             <HamburgerIcon/>
         </button>
+        </div>
     }
 }
 
