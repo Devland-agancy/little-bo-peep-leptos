@@ -1,5 +1,4 @@
 use leptos::*;
-use leptos_use::{breakpoints_tailwind, use_breakpoints, BreakpointsTailwind};
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -102,17 +101,19 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
     let (button_opacity, set_button_opacity) =
         create_signal::<f64>(cx, 1_f64 - window().scroll_y().unwrap() / 5000_f64);
+    let (screen_lg, set_screen_lg) = create_signal::<bool>(cx, true);
 
-    let screen_width = use_breakpoints(cx, breakpoints_tailwind());
-    let screen_gt_md = screen_width.gt(BreakpointsTailwind::Lg);
-
+    /* create_effect(cx, move |_| {
+        let screen_width = use_breakpoints(cx, breakpoints_tailwind());
+        set_screen_lg(screen_width.gt(BreakpointsTailwind::Lg)());
+    }); */
     window_event_listener(ev::scroll, move |_| {
         set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64);
     });
 
     view! {cx,
         <div
-           style = move || format!("opacity: {}", if menu_closed() && screen_gt_md() { button_opacity() } else { 1_f64 })
+           style = move || format!("opacity: {}", if menu_closed() && screen_lg() { button_opacity() } else { 1_f64 })
            class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b transition-opacity">
         <button
             on:mouseover=move |_| set_button_opacity(1_f64)
