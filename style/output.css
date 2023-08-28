@@ -640,6 +640,8 @@ video {
   height: calc(100vh - 56px);
 }
 
+
+
 .h-8 {
   height: 2rem;
 }
@@ -1199,9 +1201,27 @@ mjx-container {
   .md\:overflow-visible {
     overflow: visible;
   }
+
+  
 }
 
 @media (min-width: 1024px) {
+  .lg\:border-l-0{
+    border-left-width: 0;
+  }
+
+  .lg\:border-r{
+    border-right-width: 1px;
+  }
+
+  .lg\:w-\[calc\(100vw-3\.5rem\)\] {
+    width: calc(100vw - 3.5rem);
+  }
+
+  .lg\:pl-\[calc\(1rem\+3\.5rem\)\] {
+    padding-left: calc(1rem + 3.5rem);
+  }
+
   .lg\:pointer-events-none {
     pointer-events: none;
   }

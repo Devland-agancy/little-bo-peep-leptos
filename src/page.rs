@@ -13,9 +13,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
-        <div class="pt-14 lg:pt-20 overscroll-none">
+        <div class="pt-14 lg:pt-20 overscroll-none ">
         <div
-            class="absolute flex justify-center align-center w-full pb-14"
+            class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
             class=("overflow-hidden", show_article)
             id="Article"
         >
@@ -30,7 +30,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             {children(cx)}
         </div>
         </div>
-            <ColumnButton/>
+            <ColumnButton />
         </div>
         </div>
         <MathJaxTypeset/>
@@ -58,6 +58,20 @@ pub fn Paragraph(
         >
             {children(cx)}
         </span>
+    }
+}
+
+#[component]
+fn Span(
+    cx: Scope,
+    #[prop(default = false)] bold: bool,
+    #[prop(default = false)] italic: bool,
+    children: Children,
+) -> impl IntoView {
+    view! {cx,
+        <span class=("font-baskerville-italic", italic)
+              class=("font-bold", bold)
+        >{children(cx)}</span>
     }
 }
 
@@ -151,20 +165,6 @@ fn MathBlock(
         >
             {children(cx)}
         </div>
-    }
-}
-
-#[component]
-fn Italic(cx: Scope, children: Children) -> impl IntoView {
-    view! {cx,
-        <span class="font-baskerville-italic">{children(cx)}</span>
-    }
-}
-
-#[component]
-fn Bold(cx: Scope, children: Children) -> impl IntoView {
-    view! {cx,
-        <span class="font-baskerville-bold">{children(cx)}</span>
     }
 }
 

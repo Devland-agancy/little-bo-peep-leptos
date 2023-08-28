@@ -15,11 +15,19 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
         <Paragraph>
-        <Bold>"The Definition. "</Bold>
+        <Span bold=true>"The Definition. "</Span>
         "The "
-        <Italic>"slope "</Italic>
+        <Span italic=true bold=true>"slope "</Span>
         "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
         </Paragraph>
+        <ImageRight
+            translate="(-2rem, 1.5rem)"
+            src="/images/svg_cloud_minus_two_squared.svg"
+        />
+        <ImageLeft
+            src="/images/big_cloud.svg"
+            translate="(-2rem, 1.5rem)"
+        />
         </Columns>
     }
 }

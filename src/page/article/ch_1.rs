@@ -15,7 +15,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
         <Paragraph>
-            <Bold>"Square Roots. "</Bold>
+            <Span bold=true>"Square Roots. "</Span>
             "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
         </Paragraph>
         <Image src="/images/charts.svg" height=800 />
@@ -26,7 +26,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "are both positive. But "
             <Math>r#"$\sqrt{4}$"#</Math>
             " is, by definition, the unique "
-            <Italic>"nonnegative "</Italic>
+            <Span italic=true bold=true>"nonnegative "</Span>
             "solution to "
             <Math>r#"$x^2 = 4$"# "."</Math>
             " Hence, and whether you like it or not,"
@@ -42,7 +42,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         />
         <Paragraph>
             "and, in particular, it is "
-            <Italic>"not "</Italic>
+            <Span italic=true>"not "</Span>
             "true that"
         </Paragraph>
         <MathBlock>
@@ -143,7 +143,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$9/16 > 0.5$"# ", "</Math>
             <Math>r#"$\sqrt{0.5}$"#</Math>
             " must be a little "
-            <Italic>"less"</Italic>
+            <Span italic=true>"less"</Span>
             " than "
             <Math>r#"$\frac{3}{4} = 0.75$"# "."</Math>
         </Paragraph>
@@ -160,7 +160,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "where the decimals trail off with no pattern. (This number is irrational.) Even so, the fact that "
             <Math>r#"$\sqrt{0.5}$"#</Math>
             " is "
-            <Italic>"greater"</Italic>
+            <Span italic=true>"greater"</Span>
             " than "
             <Math>r#"$0.5$"#</Math>
             " is often perceived as counterintuitive."
@@ -185,7 +185,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " of "
             <Math>r#"$605$"# ","</Math>
             " and so on—so if we multiply "
-            <Italic>twice</Italic>
+            <Span italic=true>twice</Span>
             " by "
             <Math>r#"$0.7071$"#</Math>
             " we obtain "
@@ -213,7 +213,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
         <Paragraph>
-            <Bold>"Fractions and Division."</Bold>
+            <Span bold=(true)>"Fractions and Division."</Span>
             " An elementary fraction, or division, such as "
         </Paragraph>
         <MathBlock>
@@ -286,7 +286,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
         </Paragraph>
         <Paragraph>
-            <Bold>"Note."</Bold>
+            <Span bold=(true)>"Note."</Span>
             " In general, the ratio of two decimal numbers can be turned into a ratio of integers by multiplying the ratio top and bottom by a suitable power of "
             <Math>r#"$10$"# "."</Math>
             " E.g.: "
@@ -312,7 +312,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " (Interesting, no?)"
         </Paragraph>
         <Paragraph>
-            <Bold>"Distributivity."</Bold>
+            <Span bold=(true)>"Distributivity."</Span>
             " As you might already know, a number that multiplies a sum can be bought “inside” the sum. For example, "
         </Paragraph>
         <MathBlock>
@@ -330,9 +330,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
             "more generally. This property is known as the "
-            <Italic>"distributivity of multiplication over addition"</Italic>
+            <Span italic=true>"distributivity of multiplication over addition"</Span>
             ", or "
-            <Italic>"distributivity"</Italic>
+            <Span italic=true>"distributivity"</Span>
             " for short. "
         </Paragraph>
         <Paragraph>
