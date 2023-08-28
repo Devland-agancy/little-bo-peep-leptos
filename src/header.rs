@@ -1,5 +1,8 @@
-use leptos::*;
-
+use leptos::{
+    ev::{resize, scroll},
+    *,
+};
+use leptos_use::{use_event_listener, use_media_query};
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
     view! {cx,
@@ -99,21 +102,27 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
-    let (button_opacity, set_button_opacity) =
-        create_signal::<f64>(cx, 1_f64 - window().scroll_y().unwrap() / 5000_f64);
-    let (screen_lg, set_screen_lg) = create_signal::<bool>(cx, true);
+    let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
+    let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
 
-    /* create_effect(cx, move |_| {
-        let screen_width = use_breakpoints(cx, breakpoints_tailwind());
-        set_screen_lg(screen_width.gt(BreakpointsTailwind::Lg)());
-    }); */
-    window_event_listener(ev::scroll, move |_| {
+    create_effect(cx, move |_| {
         set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64);
+
+        let _ = use_event_listener(cx, window(), scroll, move |_| {
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
+        });
+    });
+
+    create_effect(cx, move |_| {
+        set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 1024_f64);
+        window_event_listener(resize, move |_| {
+            set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 1024_f64);
+        })
     });
 
     view! {cx,
         <div
-           style = move || format!("opacity: {}", if menu_closed() && screen_lg() { button_opacity() } else { 1_f64 })
+           style = move || format!("opacity: {}", if menu_closed() && screen_is_lg()  { button_opacity() } else { 1_f64 })
            class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b transition-opacity">
         <button
             on:mouseover=move |_| set_button_opacity(1_f64)
@@ -131,7 +140,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                         _ => *value,
                     }
                 });
-                set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
             }
             on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
