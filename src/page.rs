@@ -248,9 +248,24 @@ fn Item(cx: Scope, children: Children) -> impl IntoView {
 
 #[component]
 fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+
     view! {cx,
-        <div class="px-4 my-10 relative col-start-2 overflow-x-scroll scrollbar-hidden md:overflow-visible" style= move ||  format!("height: {}px", height)>
-            <img src=src style= move ||  format!("height: {}px", height) class="max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto"/>
+
+        <div
+            class="px-4 my-10 relative col-start-2  scrollbar-hidden md:overflow-visible"
+            style= move || format!("height: {}px", height)
+            class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle )
+            class=("translate-x-full", move || page_state() == PageState::ShowRight )
+            class=("-translate-x-full", move || page_state() == PageState::
+            ShowLeft )
+
+        >
+            <img
+                src=src style= move ||  format!("height: {}px", height)
+                class="max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto"
+            />
         </div>
+
     }
 }
