@@ -58,7 +58,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
            style=move || format!("transform: translateX({})", if menu_closed() { "100%"} else { "0" })
          >
             <div
-             class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)]">
+             class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)] translate-y-0 lg:translate-y-[-2px]">
                 <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] lg:h-full px-4 py-3 overflow-y-hidden">
                     <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />
@@ -123,7 +123,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     view! {cx,
         <div
            style = move || format!("opacity: {}", if menu_closed() && screen_is_lg()  { button_opacity() } else { 1_f64 })
-           class="h-14 w-14 fixed right-0 border-l lg:border-l-0 border-b transition-opacity">
+           class="h-14 w-14 fixed right-0 border-l lg:border-l-0 lg:border-b transition-opacity">
         <button
             on:mouseover=move |_| set_button_opacity(1_f64)
             on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {

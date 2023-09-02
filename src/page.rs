@@ -80,7 +80,7 @@ fn Span(
 ) -> impl IntoView {
     view! {cx,
         <span class=("font-baskerville-italic", italic)
-              class=("font-bold", bold)
+              class=("font-baskerville-bold", bold)
         >{children(cx)}</span>
     }
 }
