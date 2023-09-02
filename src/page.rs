@@ -44,17 +44,27 @@ pub enum Indent {
     Block,
 }
 
+#[derive(PartialEq)]
+pub enum Align {
+    None,
+    Center,
+    Right,
+}
+
 #[component]
 pub fn Paragraph(
     cx: Scope,
     children: Children,
     #[prop(default = Indent::None)] indent: Indent,
+    #[prop(default = Align::None)] align: Align,
 ) -> impl IntoView {
     view! {cx,
         <span
             class="col-start-2 px-4 text-justify"
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
+            class=("text-center", align == Align::Center)
+            class=("text-right", align == Align::Right)
         >
             {children(cx)}
         </span>

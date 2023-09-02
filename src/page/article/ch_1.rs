@@ -18,15 +18,24 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Span bold=true>"Square Roots. "</Span>
             "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
         </Paragraph>
-        <Image src="/images/charts.svg" height=800 />
-        <MathBlock>
-            r#"$$(-2) \times (-2) = 4\qquad\textrm{and}\qquad 2 \times 2 = 4$$"#
+        <MathBlock height=Height::Fit>
+            r#"$$
+             (-2) \times (-2) = 4 
+             $$"#
+        </MathBlock>
+        <Paragraph align=Align::Center>
+          and
+        </Paragraph>
+        <MathBlock height=Height::Fit>
+            r#"$$
+             2 \times 2 = 4 
+            $$"#
         </MathBlock>
         <Paragraph>
             "are both positive. But "
             <Math>r#"$\sqrt{4}$"#</Math>
             " is, by definition, the unique "
-            <Span italic=true bold=true>"nonnegative "</Span>
+            <Span italic=true>"nonnegative "</Span>
             "solution to "
             <Math>r#"$x^2 = 4$"# "."</Math>
             " Hence, and whether you like it or not,"
@@ -277,13 +286,16 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$1$"# "."</Math>
             " For that matter, "
         </Paragraph>
-        <MathBlock>
+        <MathBlock height=Height::Fit>
             r#"$$
-            { 1 \over 0.001} = 1000,\qquad{1 \over 0.0001} = 10000,\quad\,\,\,\,\textrm{(etc)}
+            \begin{align*}
+            { 1 \over 0.001} &= 1000\rule{0pt}{1.5em}  \\
+            \qquad{1 \over 0.0001} &= 10000\rule{0pt}{1.5em}
+            \end{align*}
             $$"#
         </MathBlock>
         <Paragraph>
-            "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
+            "(etc) by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
         </Paragraph>
         <Paragraph>
             <Span bold=(true)>"Note."</Span>
@@ -391,9 +403,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "by one application of distributivity, while"
         </Paragraph>
         <MathBlock>
-            r#"$$
-            (a + b)C = aC + bC\\
-            (a + b)D = aD + bD
+            r#"$$ \begin{align}
+                (a + b)C = aC + bC\rule{0pt}{1.5em} \\
+                (a + b)D = aD + bD\rule{0pt}{1.5em}
+                \end{align}
             $$"#
         </MathBlock>
         <Paragraph>
