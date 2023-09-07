@@ -221,7 +221,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             a little thought, the same phenomenon explains why "
             <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
-        <Paragraph>
+        <Paragraph margin_top=18>
             <Span bold=(true)>"Fractions and Division."</Span>
             " An elementary fraction, or division, such as "
         </Paragraph>
@@ -274,7 +274,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
-            {1 \over 0.01} \,=\,100
+            \begin{align*}
+
+            {1 \over 0.01} \,&=\,100
+            \end{align*}
+
             $$"#
         </MathBlock>
         <Paragraph>
@@ -286,18 +290,19 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$1$"# "."</Math>
             " For that matter, "
         </Paragraph>
-        <MathBlock height=Height::Fit>
+        <MathBlock margin_left=61 height=Height::Fit>
             r#"$$
             \begin{align*}
-            { 1 \over 0.001} &= 1000\rule{0pt}{1.5em}  \\
-            \qquad{1 \over 0.0001} &= 10000\rule{0pt}{1.5em}
+            { 1 \over 0.001} &= 1000\textrm{,} \hspace{20px}\up{2}  \\
+            { 1 \over 0.0001} &= 10000 \hspace{20px}\up{2}
+            \,\textrm{(etc),}
             \end{align*}
             $$"#
         </MathBlock>
         <Paragraph>
-            "(etc) by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
+            "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
         </Paragraph>
-        <Paragraph>
+        <Paragraph margin_top=18>
             <Span bold=(true)>"Note."</Span>
             " In general, the ratio of two decimal numbers can be turned into a ratio of integers by multiplying the ratio top and bottom by a suitable power of "
             <Math>r#"$10$"# "."</Math>
@@ -323,7 +328,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$40$"# "."</Math>
             " (Interesting, no?)"
         </Paragraph>
-        <Paragraph>
+        <Paragraph margin_top=18>
             <Span bold=(true)>"Distributivity."</Span>
             " As you might already know, a number that multiplies a sum can be bought “inside” the sum. For example, "
         </Paragraph>
@@ -347,7 +352,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Span italic=true>"distributivity"</Span>
             " for short. "
         </Paragraph>
-        <Paragraph>
+        <Paragraph indent=Indent::Line>
             "(We might finally clarify that "
             <Math>"‘" r#"$\cdot$"# "’"</Math>
             " means “times”, i.e., the same as "
@@ -382,15 +387,17 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph indent=Indent::Line>
             "A little more generally, one has such identities as"
         </Paragraph>
-        <ImageLeft
-            translate="(2rem,1.7rem)"
-            src="/images/325.svg"
-        />
+
         <MathBlock>
             r#"$$
             (a + b)(C + D) = (a + b)C + (a + b)D
             $$"#
         </MathBlock>
+        <ImageLeft
+            translate="(0rem,1.7rem)"
+            src="/images/325.svg"
+            hiddenInMobile=true
+        />
         <Paragraph>
             "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
         </Paragraph>
@@ -402,7 +409,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "by one application of distributivity, while"
         </Paragraph>
-        <MathBlock>
+        <MathBlock height=Height::Fit>
             r#"$$ \begin{align}
                 (a + b)C = aC + bC\rule{0pt}{1.5em} \\
                 (a + b)D = aD + bD\rule{0pt}{1.5em}
