@@ -7,7 +7,7 @@ use leptos_use::{use_event_listener, use_media_query};
 pub fn Header(cx: Scope) -> impl IntoView {
     view! {cx,
         <div class="select-none w-full">
-            <div class="select-none flex justify-center items-center fixed lg:absolute bg-white z-50 border-b border-t-10 h-14 border-r-0 lg:border-r w-full lg:w-[calc(100vw-3.5rem)]">
+            <div class="select-none flex justify-center items-center fixed sm:absolute bg-white z-50 border-b border-t-10 h-14 border-r-0 sm:border-r w-full sm:w-[calc(100vw-3.5rem)]">
                     <Title />
                     <MenuButton/>
                 <ChapterMenu />
@@ -19,8 +19,8 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="select-none w-full md:w-192 lg:w-full pl-4 lg:pl-[calc(1rem+3.5rem)] lg:grid lg:grid-cols-[1fr_32.5rem_1fr]" id="Header">
-            <div class="font-clickerscript text-3xl pt-2 self-end lg:col-start-2 lg:pl-2">
+        <div class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_32.5rem_1fr]" id="Header">
+            <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2">
                 <a href="/">"Little Bo Peep"</a>
             </div>
         </div>
@@ -58,8 +58,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
            style=move || format!("transform: translateX({})", if menu_closed() { "100%"} else { "0" })
          >
             <div
-             class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)] translate-y-0 lg:translate-y-[-2px]">
-                <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] lg:h-full px-4 py-3 overflow-y-hidden">
+             class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)] translate-y-0 sm:translate-y-[-1px]">
+                <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] sm:h-full px-4 py-3 overflow-y-hidden">
                     <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
                     <MenuItems />
                 </div>
@@ -106,24 +106,24 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
 
     create_effect(cx, move |_| {
-        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64);
+        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64);
 
         let _ = use_event_listener(cx, window(), scroll, move |_| {
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64)
         });
     });
 
     create_effect(cx, move |_| {
-        set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 1024_f64);
+        set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
         window_event_listener(resize, move |_| {
-            set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 1024_f64);
+            set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
         })
     });
 
     view! {cx,
         <div
            style = move || format!("opacity: {}", if menu_closed() && screen_is_lg()  { button_opacity() } else { 1_f64 })
-           class="h-14 w-14 fixed right-0 border-l lg:border-l-0 lg:border-b transition-opacity">
+           class="h-14 w-14 fixed right-0 border-l sm:border-l-0 sm:border-b transition-opacity">
         <button
             on:mouseover=move |_| set_button_opacity(1_f64)
             on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {

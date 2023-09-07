@@ -13,18 +13,21 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! { cx,
-        <div class="pt-14 lg:pt-20 overscroll-none ">
+        <div class="pt-14 xl:pt-20 overscroll-none ">
         <div
             class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
             class=("overflow-hidden", show_article)
             id="Article"
         >
         <div
-            class="w-full md:w-192 lg:w-full transition duration-300 lg:overflow-visible lg:translate-x-0"
+            class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
             class=("-translate-x-3/4", show_right)
-            class=("md:-translate-x-[85%]", show_right)
+            class=("sm:-translate-x-[65%]", show_right)
+            class=("md:-translate-x-[55%]", show_right)
             class=("translate-x-3/4", show_left)
-            class=("md:translate-x-[85%]", show_left)
+            class=("sm:translate-x-[65%]", show_left)
+            class=("md:translate-x-[55%]", show_left)
+
         >
         <div class="font-baskerville w-full">
             {children(cx)}
@@ -57,14 +60,18 @@ pub fn Paragraph(
     children: Children,
     #[prop(default = Indent::None)] indent: Indent,
     #[prop(default = Align::None)] align: Align,
+    #[prop(default = 0)] margin_top: i16,
 ) -> impl IntoView {
     view! {cx,
         <span
-            class="col-start-2 px-4 text-justify"
+            class="col-start-2 px-4"
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
             class=("text-center", align == Align::Center)
             class=("text-right", align == Align::Right)
+            class=("text-left", align == Align::None)
+            style=format!("margin-top: {}px", margin_top)
+
         >
             {children(cx)}
         </span>
@@ -88,7 +95,7 @@ fn Span(
 #[component]
 pub fn Columns(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] lg:translate-x-0 grid grid-cols-[1000px_100%_1000px] lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
+        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] sm:translate-x-0 grid grid-cols-[1000px_100%_1000px] sm:grid sm:grid-cols-[1fr_32.5rem_1fr]">
             {children(cx)}
         </div>
     }
@@ -106,16 +113,16 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
     view! {cx,
         <button
             on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
-            class="z-40 bg-stone-300/50 hover:bg-stone-400/50 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full md:w-192 lg:w-full h-full lg:translate-0"
+            class="z-40 bg-stone-300/50 hover:bg-stone-400/50 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
             style="-webkit-tap-highlight-color: transparent;"
             class=("opacity-0", show_article)
             class=("pointer-events-none", show_article)
             class=("opacity-100", show_right)
             class=("-translate-x-3/4", show_right)
-            class=("md:-translate-x-[85%]", show_right)
+            class=("lg:-translate-x-[85%]", show_right)
             class=("opacity-100", show_left)
             class=("translate-x-3/4", show_left)
-            class=("md:translate-x-[85%]", show_left)
+            class=("lg:translate-x-[85%]", show_left)
         >
         </button>
     }
@@ -124,8 +131,8 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
 #[component]
 fn ArticleTitle(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="lg:grid lg:grid-cols-[1fr_32.5rem_1fr]">
-            <h1 class="lg:col-start-2 text-3xl lg:text-4xl p-4">
+        <div class="sm:grid sm:grid-cols-[1fr_32.5rem_1fr]">
+            <h1 class="sm:col-start-2 text-3xl sm:text-4xl p-4">
                 {children(cx)}
             </h1>
         </div>
@@ -166,12 +173,17 @@ fn MathBlock(
     cx: Scope,
     children: Children,
     #[prop(default = Height::Small)] height: Height,
+    #[prop(default = 0)] margin_right: i16,
+    #[prop(default = 0)] margin_left: i16,
 ) -> impl IntoView {
     view! {cx,
         <div
             class="overflow-x-auto overflow-y-visible indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
+            style=format!("margin-right: {}px", margin_right)
+            style=format!("margin-left: {}px", margin_left)
+
         >
             {children(cx)}
         </div>
@@ -203,14 +215,19 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
 }
 
 #[component]
-fn ImageLeft(cx: Scope, translate: &'static str, src: &'static str) -> impl IntoView {
+fn ImageLeft(
+    cx: Scope,
+    translate: &'static str,
+    src: &'static str,
+    #[prop(default = false)] hiddenInMobile: bool,
+) -> impl IntoView {
     let set_page_state =
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
 
     view! {cx,
-        <div class="col-start-1 h-0 flex items-center justify-end">
+        <div class="col-start-1 h-0 flex items-center justify-end relative">
             <button
                 on:click=move |_| set_page_state.update(|value| *value = match value {
                     PageState::ShowArticle => PageState::ShowLeft,
@@ -221,6 +238,11 @@ fn ImageLeft(cx: Scope, translate: &'static str, src: &'static str) -> impl Into
                 class=("pointer-events-none", show_left)
             >
                 <img src=src />
+                <Show fallback=|_| () when=move || hiddenInMobile >
+                    <div class="block lg:hidden absolute -right-10 top-1/2">
+                        e
+                    </div>
+                </Show>
             </button>
         </div>
     }
