@@ -1232,6 +1232,10 @@ mjx-container {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
+  .sm\:grid-cols-\[1fr_30\.5rem_1fr\] {
+    grid-template-columns: 1fr 30.5rem 1fr;
+  }
+
   .sm\:grid-cols-\[1fr_32\.5rem_1fr\] {
     grid-template-columns: 1fr 32.5rem 1fr;
   }

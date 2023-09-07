@@ -19,7 +19,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     view! {cx,
-        <div class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_32.5rem_1fr]" id="Header">
+        <div class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_30.5rem_1fr]" id="Header">
             <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2">
                 <a href="/">"Little Bo Peep"</a>
             </div>

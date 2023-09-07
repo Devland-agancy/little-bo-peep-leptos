@@ -95,7 +95,7 @@ fn Span(
 #[component]
 pub fn Columns(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] sm:translate-x-0 grid grid-cols-[1000px_100%_1000px] sm:grid sm:grid-cols-[1fr_32.5rem_1fr]">
+        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] sm:translate-x-0 grid grid-cols-[1000px_100%_1000px] sm:grid sm:grid-cols-[1fr_30.5rem_1fr]">
             {children(cx)}
         </div>
     }
@@ -131,7 +131,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
 #[component]
 fn ArticleTitle(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="sm:grid sm:grid-cols-[1fr_32.5rem_1fr]">
+        <div class="sm:grid sm:grid-cols-[1fr_30.5rem_1fr]">
             <h1 class="sm:col-start-2 text-3xl sm:text-4xl p-4">
                 {children(cx)}
             </h1>
