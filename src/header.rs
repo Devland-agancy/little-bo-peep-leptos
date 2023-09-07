@@ -140,7 +140,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                         _ => *value,
                     }
                 });
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 5000_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64)
             }
             on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
