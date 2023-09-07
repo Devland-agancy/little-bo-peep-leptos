@@ -579,12 +579,12 @@ video {
   top: 3.5rem;
 }
 
-.-right-10 {
-  right: -2.5rem;
+.right-\[-1\.9rem\] {
+  right: -1.9rem;
 }
 
-.top-1\/2 {
-  top: 50%;
+.top-\[45\%\] {
+  top: 45%;
 }
 
 .z-50 {
@@ -668,6 +668,10 @@ video {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .min-h-\[calc\(100vh_-_55px\)\] {
@@ -1194,6 +1198,10 @@ mjx-container {
 
   .sm\:grid {
     display: grid;
+  }
+
+  .sm\:hidden {
+    display: none;
   }
 
   .sm\:h-full {

@@ -239,8 +239,8 @@ fn ImageLeft(
             >
                 <img src=src />
                 <Show fallback=|_| () when=move || hiddenInMobile >
-                    <div class="block lg:hidden absolute -right-10 top-1/2">
-                        e
+                    <div class="block sm:hidden absolute right-[-1.9rem] top-[45%]">
+                        <img src="/images/squiggle.png" class="h-10" />
                     </div>
                 </Show>
             </button>
