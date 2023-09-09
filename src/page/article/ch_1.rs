@@ -221,7 +221,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             a little thought, the same phenomenon explains why "
             <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
-        <Paragraph margin_top=18>
+        <Paragraph margin_top=15>
             <Span bold=(true)>"Fractions and Division."</Span>
             " An elementary fraction, or division, such as "
         </Paragraph>
@@ -302,7 +302,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "by the same reasoning, which explains why dividing by smaller and smaller numbers produces larger and larger results (and, by extension, why dividing by $0$ is undefined)."
         </Paragraph>
-        <Paragraph margin_top=18>
+        <Paragraph margin_top=15>
             <Span bold=(true)>"Note."</Span>
             " In general, the ratio of two decimal numbers can be turned into a ratio of integers by multiplying the ratio top and bottom by a suitable power of "
             <Math>r#"$10$"# "."</Math>
@@ -328,7 +328,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$40$"# "."</Math>
             " (Interesting, no?)"
         </Paragraph>
-        <Paragraph margin_top=18>
+        <Paragraph margin_top=15>
             <Span bold=(true)>"Distributivity."</Span>
             " As you might already know, a number that multiplies a sum can be bought “inside” the sum. For example, "
         </Paragraph>
@@ -411,8 +411,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock height=Height::Fit>
             r#"$$ \begin{align}
-                (a + b)C = aC + bC\rule{0pt}{1.5em} \\
-                (a + b)D = aD + bD\rule{0pt}{1.5em}
+                (a + b)C = aC + bC \\
+                (a + b)D = aD + bD\up{1.5}
                 \end{align}
             $$"#
         </MathBlock>
