@@ -219,7 +219,7 @@ fn ImageLeft(
     cx: Scope,
     translate: &'static str,
     src: &'static str,
-    #[prop(default = false)] hiddenInMobile: bool,
+    #[prop(default = false)] hidden_in_mobile: bool,
 ) -> impl IntoView {
     let set_page_state =
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
@@ -238,9 +238,9 @@ fn ImageLeft(
                 class=("pointer-events-none", show_left)
             >
                 <img src=src />
-                <Show fallback=|_| () when=move || hiddenInMobile >
-                    <div class="block sm:hidden absolute right-[-1.9rem] top-[45%]">
-                        <img src="/images/squiggle.png" class="h-10" />
+                <Show fallback=|_| () when=move || hidden_in_mobile >
+                    <div class="block sm:hidden absolute right-[-1.9rem] top-[42%]">
+                        <img src="/images/squiggle.png" class="h-11" />
                     </div>
                 </Show>
             </button>

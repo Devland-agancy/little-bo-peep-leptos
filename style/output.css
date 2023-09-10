@@ -583,8 +583,8 @@ video {
   right: -1.9rem;
 }
 
-.top-\[45\%\] {
-  top: 45%;
+.top-\[42\%\] {
+  top: 42%;
 }
 
 .z-50 {
@@ -670,8 +670,8 @@ video {
   height: fit-content;
 }
 
-.h-10 {
-  height: 2.5rem;
+.h-11 {
+  height: 2.75rem;
 }
 
 .min-h-\[calc\(100vh_-_55px\)\] {
@@ -1234,10 +1234,6 @@ mjx-container {
 
   .sm\:grid-cols-\[1fr_30\.5rem_1fr\] {
     grid-template-columns: 1fr 30.5rem 1fr;
-  }
-
-  .sm\:grid-cols-\[1fr_32\.5rem_1fr\] {
-    grid-template-columns: 1fr 32.5rem 1fr;
   }
 
   .sm\:overflow-visible {

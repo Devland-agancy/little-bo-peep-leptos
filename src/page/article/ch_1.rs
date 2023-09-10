@@ -396,7 +396,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <ImageLeft
             translate="(0rem,1.7rem)"
             src="/images/325.svg"
-            hiddenInMobile=true
+            hidden_in_mobile=true
         />
         <Paragraph>
             "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
