@@ -14,7 +14,17 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     let left_image_width = use_context::<ReadSignal<f64>>(cx).unwrap();
+    let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
 
+    create_effect(cx, move |_| {
+        if show_right() {
+            log!("{}", right_image_x_pos());
+            window().scroll_to_with_x_and_y(right_image_x_pos(), window().scroll_y().unwrap())
+        } else {
+            window().scroll_to_with_x_and_y(0_f64, window().scroll_y().unwrap())
+        }
+    });
+    // for right_images we autoscroll to their position
     view! { cx,
         <div
          on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
@@ -26,10 +36,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         >
         <div
             class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
-            class=("-translate-x-3/4", show_right)
-            class=("sm:-translate-x-[65%]", show_right)
-            class=("md:-translate-x-[55%]", show_right)
-
             // for left image we transle based on image width
             style=move || {
              if show_left() {
@@ -204,6 +210,8 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
 
+    let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
+    let image_ref = create_node_ref::<Img>(cx);
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button
@@ -213,12 +221,13 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
                         PageState::ShowArticle => PageState::ShowRight,
                         _ => PageState::ShowArticle
                     });
+                    set_right_image_x_pos.update(|val| *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left() - 50_f64))
                 }
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_right)
             >
-                <img src=src  />
+                <img src=src node_ref=image_ref />
             </button>
         </div>
     }
