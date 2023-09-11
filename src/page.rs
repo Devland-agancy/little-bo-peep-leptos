@@ -2,18 +2,23 @@ pub mod article;
 pub mod home;
 pub mod state;
 
-use leptos::*;
+use leptos::{html::Img, *};
 use state::PageState;
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
 
+    let left_image_width = use_context::<ReadSignal<f64>>(cx).unwrap();
+
     view! { cx,
-        <div class="pt-14 xl:pt-20 overscroll-none ">
+        <div
+         on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
+         class="pt-14 xl:pt-20 overscroll-none ">
         <div
             class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
             class=("overflow-hidden", show_article)
@@ -24,16 +29,18 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             class=("-translate-x-3/4", show_right)
             class=("sm:-translate-x-[65%]", show_right)
             class=("md:-translate-x-[55%]", show_right)
-            class=("translate-x-3/4", show_left)
-            class=("sm:translate-x-[65%]", show_left)
-            class=("md:translate-x-[55%]", show_left)
 
+            // for left image we transle based on image width
+            style=move || {
+             if show_left() {
+                format!("transform: translateX({}px)", left_image_width())
+            } else {"".to_string()}}
         >
         <div class="font-baskerville w-full">
-            {children(cx)}
+        {children(cx)}
         </div>
         </div>
-            <ColumnButton />
+        <ColumnButton />
         </div>
         </div>
         <MathJaxTypeset/>
@@ -111,9 +118,9 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
     let show_article = move || page_state() == PageState::ShowArticle;
 
     view! {cx,
-        <button
+        <div
             on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
-            class="z-40 bg-stone-300/50 hover:bg-stone-400/50 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
+            class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
             style="-webkit-tap-highlight-color: transparent;"
             class=("opacity-0", show_article)
             class=("pointer-events-none", show_article)
@@ -124,7 +131,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
             class=("translate-x-3/4", show_left)
             class=("lg:translate-x-[85%]", show_left)
         >
-        </button>
+        </div>
     }
 }
 
@@ -200,15 +207,18 @@ fn ImageRight(cx: Scope, translate: &'static str, src: &'static str) -> impl Int
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button
-                on:click=move |_| set_page_state.update(|value| *value = match value {
-                    PageState::ShowArticle => PageState::ShowRight,
-                    _ => PageState::ShowArticle
-                })
+                on:click=move |e| {
+                    e.stop_propagation();
+                    set_page_state.update(|value| *value = match value {
+                        PageState::ShowArticle => PageState::ShowRight,
+                        _ => PageState::ShowArticle
+                    });
+                }
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_right)
             >
-                <img src=src />
+                <img src=src  />
             </button>
         </div>
     }
@@ -226,18 +236,25 @@ fn ImageLeft(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
 
+    let set_left_image_width = use_context::<WriteSignal<f64>>(cx).unwrap();
+    let image_ref = create_node_ref::<Img>(cx);
+
     view! {cx,
         <div class="col-start-1 h-0 flex items-center justify-end relative">
             <button
-                on:click=move |_| set_page_state.update(|value| *value = match value {
+                on:click=move |e| {
+                    e.stop_propagation();
+                    set_page_state.update(|value| *value = match value {
                     PageState::ShowArticle => PageState::ShowLeft,
                     _ => PageState::ShowArticle
-                })
+                    });
+                    set_left_image_width.update(|value| *value = f64::from(image_ref().unwrap().offset_width()))
+                }
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_left)
             >
-                <img src=src />
+                <img src=src node_ref=image_ref />
                 <Show fallback=|_| () when=move || hidden_in_mobile >
                     <div class="block sm:hidden absolute right-[-1.9rem] top-[42%]">
                         <img src="/images/squiggle.png" class="h-11" />
