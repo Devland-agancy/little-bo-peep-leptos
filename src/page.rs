@@ -1,9 +1,13 @@
 pub mod article;
 pub mod home;
 pub mod state;
-
-use leptos::{html::Img, *};
+use gloo_timers::future::TimeoutFuture;
+use leptos::{ev::click, html::Img, *};
+use leptos_use::use_event_listener;
 use state::PageState;
+use std::time::Duration;
+
+use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -17,17 +21,40 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
 
     create_effect(cx, move |_| {
+        let mut options = ScrollToOptions::new();
+        options.behavior(ScrollBehavior::Smooth);
         if show_right() {
-            log!("{}", right_image_x_pos());
-            window().scroll_to_with_x_and_y(right_image_x_pos(), window().scroll_y().unwrap())
+            options.left(right_image_x_pos());
+            window().scroll_to_with_scroll_to_options(&options)
         } else {
-            window().scroll_to_with_x_and_y(0_f64, window().scroll_y().unwrap())
-        }
+            options.left(0_f64);
+            window().scroll_to_with_scroll_to_options(&options)
+        };
+    });
+
+    create_effect(cx, move |_| {
+        let cleanup = use_event_listener(cx, window(), click, move |_| {
+            if show_right() {
+                let mut options = ScrollToOptions::new();
+                options.behavior(ScrollBehavior::Smooth);
+                options.left(0_f64);
+                window().scroll_to_with_scroll_to_options(&options);
+                set_timeout(
+                    move || set_page_state.update(|value| *value = PageState::ShowArticle),
+                    Duration::from_secs(1),
+                )
+            } else if show_left() {
+                set_page_state.update(|value| *value = PageState::ShowArticle)
+            }
+        });
     });
     // for right_images we autoscroll to their position
     view! { cx,
         <div
-         on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
+         on:click=move |_| {
+
+        }
+
          class="pt-14 xl:pt-20 overscroll-none ">
         <div
             class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
@@ -125,7 +152,7 @@ fn ColumnButton(cx: Scope) -> impl IntoView {
 
     view! {cx,
         <div
-            on:click=move |_| set_page_state.update(|value| *value = PageState::ShowArticle)
+
             class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
             style="-webkit-tap-highlight-color: transparent;"
             class=("opacity-0", show_article)

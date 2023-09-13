@@ -25,6 +25,7 @@ thiserror = "1.0.38"
 tracing = { version = "0.1.37", optional = true }
 http = "0.2.8"
 leptos-use = { version = "0.6.3", features = ["ssr"] }
+gloo-timers = { version = "0.2", features = ["futures"] }
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
@@ -104,3 +105,7 @@ lib-features = ["hydrate"]
 #
 # Optional. Defaults to false.
 lib-default-features = false
+
+[dependencies.web-sys]
+version = "0.3.64"
+features = ["ScrollToOptions", "ScrollBehavior"]
