@@ -419,6 +419,69 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "by distributivity again."
         </Paragraph>
-        </Columns>
+        <Paragraph margin_top=15 >
+            <Span bold=true>"Example 1. "</Span> "One has"
+        </Paragraph>
+        <MathBlock height=Height::Fit>
+            r#"$$
+                \begin{align}
+                (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
+                                    \,&=\, 100 \,+\, 40 \,+\, 20 \,+\, 8\\
+                                    \,&=\, 168
+                \end{align}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "so $12" r#"$$ \space  \times \space  $$"# "14 = 168$."
+        </Paragraph>
+        <Paragraph margin_top=15>
+            <Span bold=true>"Example 2. "</Span> "One has"
+        </Paragraph>
+        <MathBlock height=Height::Fit>
+            r#"$$
+                \begin{align}
+                (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
+                                    \,&=\, 100 \,+\, 30 \,+\, 30 \,+\, 9\\
+                                    \,&=\, 169
+                \end{align}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "so $13" r#"$$ \space  \times \space  $$"# "13 = 160$."
+        </Paragraph>
+        <Paragraph  margin_top=15>
+            "(The fact that $13" r#"$$   \times   $$"# " 13$ is exactly one
+                greater than $12" r#"$$   \times   $$"# " 14$ is a bit curious indeed.)"
+        </Paragraph>
+        <Paragraph  indent=Indent::Line>
+            "If we start from the afore-mentioned identity"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (a + b)(C + D) \,=\, aC + bC + aD + bD
+            $$"#
+        </MathBlock>
+        <Paragraph>
+        "and set $C = a$, $D = b$, we find"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (a + b)(a + b) \,=\, aa + ba + ab + bb
+            $$"#
+        </MathBlock>
+        <Paragraph>
+        "or, equivalently,"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            (a + b)^2 = a^2 + 2ab + b^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "since $(a + b)(a + b) = (a + b)^2$, $aa = a^2$ and $bb = b^2$. (This
+            is the" <Span italic=true>" binomial expansion of degree two "</Span>, "but such terminology
+            is not very important at this stage.)"
+        </Paragraph>
+    </Columns>
     }
 }
