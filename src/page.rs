@@ -25,20 +25,20 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         options.behavior(ScrollBehavior::Smooth);
         if show_right() {
             options.left(right_image_x_pos());
-            window().scroll_to_with_scroll_to_options(&options)
+            window().scroll_with_scroll_to_options(&options)
         } else {
             options.left(0_f64);
-            window().scroll_to_with_scroll_to_options(&options)
+            window().scroll_with_scroll_to_options(&options)
         };
     });
 
     create_effect(cx, move |_| {
-        let cleanup = use_event_listener(cx, window(), click, move |_| {
+        let _ = use_event_listener(cx, window(), click, move |_| {
             if show_right() {
                 let mut options = ScrollToOptions::new();
                 options.behavior(ScrollBehavior::Smooth);
                 options.left(0_f64);
-                window().scroll_to_with_scroll_to_options(&options);
+                window().scroll_with_scroll_to_options(&options);
                 set_timeout(
                     move || set_page_state.update(|value| *value = PageState::ShowArticle),
                     Duration::from_secs(1),
