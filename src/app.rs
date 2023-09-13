@@ -33,7 +33,7 @@ pub fn App(cx: Scope) -> impl IntoView {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
         <Stylesheet id="leptos" href="/pkg/little-bo-peep.css"/>
-
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1" />
         // sets the document title
         <Title text="Little Bo Peep"/>
         <Link href="/images/book_favicon_sized_v2.png" rel="icon" />
