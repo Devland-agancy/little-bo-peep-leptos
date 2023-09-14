@@ -1,8 +1,7 @@
 pub mod article;
 pub mod home;
 pub mod state;
-use gloo_timers::future::TimeoutFuture;
-use leptos::{ev::click, html::Img, *};
+use leptos::{ev::click, html::{Img, Div}, *};
 use leptos_use::use_event_listener;
 use state::PageState;
 use std::time::Duration;
@@ -17,16 +16,26 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
     let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
+    let article_node = create_node_ref::<Div>(cx);
 
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
         options.behavior(ScrollBehavior::Smooth);
         if show_right() {
             options.left(right_image_x_pos());
-            window().scroll_with_scroll_to_options(&options)
+            window().scroll_with_scroll_to_options(&options);
+             set_timeout(move || {
+                let _ = article_node().unwrap().style("transition", "none");
+                let _ = article_node().unwrap().style("transform", "translateX(100%)");
+
+                options.left(right_image_x_pos() + window().inner_width().unwrap().as_f64().unwrap());
+                options.behavior(ScrollBehavior::Instant);
+                window().scroll_with_scroll_to_options(&options);
+            }, Duration::from_millis(800)); 
         } else {
             options.left(0_f64);
-            window().scroll_with_scroll_to_options(&options)
+            window().scroll_with_scroll_to_options(&options);
+          
         };
     });
 
@@ -34,13 +43,22 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         let _ = use_event_listener(cx, window(), click, move |_| {
             if show_right() {
                 let mut options = ScrollToOptions::new();
-                options.behavior(ScrollBehavior::Smooth);
-                options.left(0_f64);
+                let _ = article_node().unwrap().style("transition", "none");
+                let _ = article_node().unwrap().style("transform", "none");
+                options.left(right_image_x_pos());
+                options.behavior(ScrollBehavior::Instant);
                 window().scroll_with_scroll_to_options(&options);
-                set_timeout(
-                    move || set_page_state.update(|value| *value = PageState::ShowArticle),
-                    Duration::from_secs(1),
-                )
+                set_timeout(move || {
+                    options.behavior(ScrollBehavior::Smooth);
+                    options.left(0_f64);
+                    window().scroll_with_scroll_to_options(&options);
+                    set_timeout(
+                        move || set_page_state.update(|value| *value = PageState::ShowArticle),
+                        Duration::from_secs(1),
+                    )
+                }, Duration::from_millis(100));
+                
+
             } else if show_left() {
                 set_page_state.update(|value| *value = PageState::ShowArticle)
             }
@@ -51,6 +69,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         <div
          class="pt-14 xl:pt-20 overscroll-none ">
         <div
+            node_ref=article_node
             class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
             class=("overflow-hidden", show_article)
             id="Article"
@@ -61,9 +80,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             style=move || {
                 if show_left() {
                     format!("transform: translateX(100%)")
-                } else if show_right() {
-                    String::from("transform: translateX(100%)")
-                } else { "".to_string() }
+                }  else { "".to_string() }
             }
         >
         <div class="font-baskerville w-full">
@@ -283,7 +300,7 @@ fn ImageLeft(
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_left)
             >
-                <img src=src node_ref=image_ref />
+                <img src=src />
                 <Show fallback=|_| () when=move || hidden_in_mobile >
                     <div class="block sm:hidden absolute right-[-1.9rem] top-[42%]">
                         <img src="/images/squiggle.png" class="h-11" />
