@@ -184,9 +184,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " of that value—for example, say, "
         </Paragraph>
         <MathBlock>
-        r#"$$
-        605 \cdot 0.7071 = 427.7955
-        $$"#
+            r#"$$
+                605 \cdot 0.7071 = 427.7955
+            $$"#
         </MathBlock>
         <Paragraph>
             " is "
@@ -453,7 +453,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "(The fact that $13" r#"$$   \times   $$"# " 13$ is exactly one
                 greater than $12" r#"$$   \times   $$"# " 14$ is a bit curious indeed.)"
         </Paragraph>
-        <Paragraph  indent=Indent::Line>
+        <Paragraph indent=Indent::Line>
             "If we start from the afore-mentioned identity"
         </Paragraph>
         <MathBlock>
@@ -482,6 +482,120 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             is the" <Span italic=true>" binomial expansion of degree two "</Span>, "but such terminology
             is not very important at this stage.)"
         </Paragraph>
+        <Paragraph margin_top=15>
+        <Span bold=true>"Example 3. "</Span> "By the last formula (or “binomial expansion of degree two”),"
+        </Paragraph>
+        <MathBlock height=Height::Fit>
+            r#"$$
+            \begin{align}
+                \up{1} (10 + 3)^2 \,&=\, 10\!\cdot\!10 \,+\, 2\!\cdot\!3\!\cdot\!10 \,+\, 3\!\cdot\!3 \\
+                \up{1} \,&=\, 100 + 60 + 9 \\
+                \up{1} \,&=\, 169
+            \end{align}
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            which agrees with Example 2.
+        </Paragraph>
+        <Paragraph margin_top=15>
+           "On the other hand, setting $C = a$, $D = -b$ in"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                \,\,\,(a + b)(C + D) = aC + aD + bC + bD
+            $$"#
+        </MathBlock>
+        <Paragraph>
+           "gives"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                \,\,\,(a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "or, less pedantically,"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            \,\,\,(a + b)(a - b) = aa - ab + ba - bb
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "or"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                \,\,\,(a + b)(a - b) = a^2 - b^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "since" <Math>r#"$- ab + ba = 0$"#</Math> ", " <Math>r#"$aa = a^2$"#</Math> ", " <Math>r#"$bb = b^2$"#</Math>". Note that"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            \,\,\,a^2 - b^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "is"
+        </Paragraph>
+        <Paragraph align=Align::Center>
+            <Span italic=true>"a difference of squares"</Span>
+        </Paragraph>
+        <Paragraph margin_top=15>
+        "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>"."
+		"(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
+		"(PS: “Factored” means “written as a product”.)"
+        </Paragraph>
+        <Paragraph margin_top=15>
+            <Span bold=true>"Example 4. "</Span> "Since"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                19 = 100 - 81 = 10^2 - 9^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "is a difference of squares, $19$ can be factored. (On the other
+                hand $19$ is a prime number, but nevermind.)"
+        </Paragraph>
+        <Paragraph margin_top=15>
+            <Span bold=true>"Example 5. "</Span> "The algebraic expression "
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            1 - x^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "can be factored, because"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                1 = 1^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "implies that"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+                1 - x^2
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "truly is “a difference of squares”. And, indeed,"
+        </Paragraph>
+        <MathBlock>
+            r#"$$
+            1 - x^2 = (1 - x)(1 + x)
+            $$"#
+        </MathBlock>
+        <Paragraph>
+            "as per “" <Math>r#"$ a^2 - b^2 = (a - b)(a + b) $"#</Math> "”."
+        </Paragraph>
+		
     </Columns>
     }
 }
