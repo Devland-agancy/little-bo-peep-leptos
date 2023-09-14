@@ -15,10 +15,6 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, set_page_state);
     provide_context(cx, page_state);
 
-    let (left_image_width, set_left_image_width) = create_signal(cx, 0_f64);
-    provide_context(cx, left_image_width);
-    provide_context(cx, set_left_image_width);
-
     let (right_image_x_pos, set_right_image_x_pos) = create_signal(cx, 0_f64);
     provide_context(cx, right_image_x_pos);
     provide_context(cx, set_right_image_x_pos);

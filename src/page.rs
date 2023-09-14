@@ -16,8 +16,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_right = move || page_state() == PageState::ShowRight;
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
-
-    let left_image_width = use_context::<ReadSignal<f64>>(cx).unwrap();
     let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
 
     create_effect(cx, move |_| {
@@ -51,10 +49,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     // for right_images we autoscroll to their position
     view! { cx,
         <div
-         on:click=move |_| {
-
-        }
-
          class="pt-14 xl:pt-20 overscroll-none ">
         <div
             class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
@@ -65,9 +59,12 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
             // for left image we transle based on image width
             style=move || {
-             if show_left() {
-                format!("transform: translateX({}px)", left_image_width())
-            } else {"".to_string()}}
+                if show_left() {
+                    format!("transform: translateX(100%)")
+                } else if show_right() {
+                    String::from("transform: translateX(100%)")
+                } else { "".to_string() }
+            }
         >
         <div class="font-baskerville w-full">
         {children(cx)}
@@ -272,9 +269,6 @@ fn ImageLeft(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
 
-    let set_left_image_width = use_context::<WriteSignal<f64>>(cx).unwrap();
-    let image_ref = create_node_ref::<Img>(cx);
-
     view! {cx,
         <div class="col-start-1 h-0 flex items-center justify-end relative">
             <button
@@ -284,7 +278,6 @@ fn ImageLeft(
                     PageState::ShowArticle => PageState::ShowLeft,
                     _ => PageState::ShowArticle
                     });
-                    set_left_image_width.update(|value| *value = f64::from(image_ref().unwrap().offset_width()))
                 }
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
