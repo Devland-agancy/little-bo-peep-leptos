@@ -1,12 +1,12 @@
 pub mod article;
 pub mod home;
 pub mod state;
-use leptos::{ev::click, html::{Img, Div}, *};
+use leptos::{ev::{click, touchend, EventDescriptor, touchstart}, html::{Img, Div}, *};
 use leptos_use::use_event_listener;
 use state::PageState;
 use std::time::Duration;
 
-use web_sys::{ScrollBehavior, ScrollToOptions};
+use web_sys::{ScrollBehavior, ScrollToOptions, Touch, Event};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -40,7 +40,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, window(), click, move |_| {
+        let article_mode = move || -> () {
+            log!("clicked");
             if show_right() {
                 let mut options = ScrollToOptions::new();
                 let _ = article_node().unwrap().style("transition", "none");
@@ -62,7 +63,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             } else if show_left() {
                 set_page_state.update(|value| *value = PageState::ShowArticle)
             }
-        });
+        };
+        let _ = use_event_listener(cx, window(), click, move |_|article_mode());
     });
     // for right_images we autoscroll to their position
     view! { cx,
