@@ -232,7 +232,7 @@ fn MathBlock(
 ) -> impl IntoView {
     view! {cx,
         <div
-            class="overflow-x-auto overflow-y-visible indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
+            class="overflow-x-auto indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
             style=format!("margin-right: {}px", margin_right)

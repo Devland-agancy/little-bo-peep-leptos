@@ -330,7 +330,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <Paragraph margin_top=15>
             <Span bold=(true)>"Distributivity."</Span>
-            " As you might already know, a number that multiplies a sum can be bought “inside” the sum. For example, "
+            " As you might already know, a number that multiplies a sum can be brought “inside” the sum. For example, "
         </Paragraph>
         <MathBlock>
             r#"$$
@@ -357,7 +357,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>"‘" r#"$\cdot$"# "’"</Math>
             " means “times”, i.e., the same as "
             <Math>"‘" r#"$\times$"# "’"</Math>
-            " Moreover, when we write"
+            ". Moreover, when we write"
         </Paragraph>
         <MathBlock>
             r#"$$
@@ -390,7 +390,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
         <MathBlock>
             r#"$$
-            (a + b)(C + D) = (a + b)C + (a + b)D
+            (a + b)(C + D) = aC + aD + bC + bD
             $$"#
         </MathBlock>
         <ImageLeft
@@ -479,7 +479,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
             "since $(a + b)(a + b) = (a + b)^2$, $aa = a^2$ and $bb = b^2$. (This
-            is the" <Span italic=true>" binomial expansion of degree two "</Span>, "but such terminology
+            is the" <Span italic=true>" binomial expansion of degree two, "</Span> "but such terminology
             is not very important at this stage.)"
         </Paragraph>
         <Paragraph margin_top=15>
