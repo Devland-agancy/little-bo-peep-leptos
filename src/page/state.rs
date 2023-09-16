@@ -5,6 +5,7 @@ pub enum PageState {
     ShowArticle,
     ShowRight,
     ShowLeft,
+    FreeScroll
 }
 
 impl fmt::Display for PageState {
@@ -13,6 +14,8 @@ impl fmt::Display for PageState {
             PageState::ShowArticle => write!(f, "ShowArticle"),
             PageState::ShowRight => write!(f, "ShowRight"),
             PageState::ShowLeft => write!(f, "ShowLeft"),
+            PageState::FreeScroll => write!(f, "FreeScroll"),
+
         }
     }
 }

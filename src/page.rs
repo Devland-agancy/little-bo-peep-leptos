@@ -1,12 +1,12 @@
 pub mod article;
 pub mod home;
 pub mod state;
-use leptos::{ev::{click, touchend, EventDescriptor, touchstart}, html::{Img, Div}, *};
+use leptos::{ev::{click, touchend, EventDescriptor, touchstart, resize}, html::{Img, Div}, *};
 use leptos_use::use_event_listener;
 use state::PageState;
 use std::time::Duration;
 
-use web_sys::{ScrollBehavior, ScrollToOptions, Touch, Event};
+use web_sys::{ScrollBehavior, ScrollToOptions, Touch, Event, UiEvent};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -24,7 +24,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         if show_right() {
             options.left(right_image_x_pos());
             window().scroll_with_scroll_to_options(&options);
-             set_timeout(move || {
+            set_timeout(move || {
                 let _ = article_node().unwrap().style("transition", "none");
                 let _ = article_node().unwrap().style("transform", "translateX(100%)");
 
@@ -44,21 +44,32 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             log!("clicked");
             if show_right() {
                 let mut options = ScrollToOptions::new();
-                let _ = article_node().unwrap().style("transition", "none");
-                let _ = article_node().unwrap().style("transform", "none");
+                /* options.behavior(ScrollBehavior::Smooth);
                 options.left(right_image_x_pos());
-                options.behavior(ScrollBehavior::Instant);
-                window().scroll_with_scroll_to_options(&options);
-                set_timeout(move || {
-                    options.behavior(ScrollBehavior::Smooth);
-                    options.left(0_f64);
+
+                set_timeout( || { */
+                    if window().inner_width().unwrap().as_f64().unwrap() > window().scroll_x().unwrap() {
+                        let _ = article_node().unwrap().style("transition",  "all 0.3s ease 0.1s"); 
+                        options.left(0_f64);
+
+                    }else{
+                        let _ = article_node().unwrap().style("transition", "none"); 
+                        options.left( window().scroll_x().unwrap() - window().inner_width().unwrap().as_f64().unwrap());
+
+                    }
+                    options.behavior(ScrollBehavior::Instant);
                     window().scroll_with_scroll_to_options(&options);
-                    set_timeout(
-                        move || set_page_state.update(|value| *value = PageState::ShowArticle),
-                        Duration::from_secs(1),
-                    )
-                }, Duration::from_millis(100));
-                
+                    let _ = article_node().unwrap().style("transform", "none");
+                    set_timeout(move || {
+                        options.behavior(ScrollBehavior::Smooth);
+                        options.left(0_f64);
+                        window().scroll_with_scroll_to_options(&options);
+                        set_timeout(
+                            move || set_page_state.update(|value| *value = PageState::ShowArticle),
+                            Duration::from_secs(1),
+                        )
+                    }, Duration::from_millis(100));
+               /*  }, Duration::from_millis(100)); */
 
             } else if show_left() {
                 set_page_state.update(|value| *value = PageState::ShowArticle)
@@ -70,27 +81,27 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     view! { cx,
         <div
          class="pt-14 xl:pt-20 overscroll-none ">
-        <div
-            node_ref=article_node
-            class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
-            class=("overflow-hidden", show_article)
-            id="Article"
-        >
-        <div
-            class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
-            // for left image we transle based on image width
-            style=move || {
-                if show_left() {
-                    format!("transform: translateX(100%)")
-                }  else { "".to_string() }
-            }
-        >
-        <div class="font-baskerville w-full">
-        {children(cx)}
-        </div>
-        </div>
-        <ColumnButton />
-        </div>
+            <div
+                node_ref=article_node
+                class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
+                class=("overflow-hidden", show_article)
+                id="Article"
+            >
+                <div
+                    class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
+                    // for left image we transle based on image width
+                    style=move || {
+                        if show_left() {
+                            format!("transform: translateX(100%)")
+                        }  else { "".to_string() }
+                    }
+                >
+                    <div class="font-baskerville w-full">
+                        {children(cx)}
+                    </div>
+                </div>
+                <ColumnButton />
+            </div>
         </div>
         <MathJaxTypeset/>
     }
@@ -232,9 +243,39 @@ fn MathBlock(
     #[prop(default = 0)] margin_right: i16,
     #[prop(default = 0)] margin_left: i16,
 ) -> impl IntoView {
+    let node_ref = create_node_ref::<Div>(cx);
+    let (is_wide, set_is_wide) = create_signal(cx, false);
+    let set_page_state =
+    use_context::<WriteSignal<PageState>>(cx).unwrap();
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let show_right = move || page_state() == PageState::ShowRight;
+
+     create_effect(cx, move |_|{
+        if node_ref().is_some() {
+            let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
+            let window_width = window().inner_width().unwrap().as_f64().unwrap();
+            if math_box_width > window_width {
+               request_animation_frame(move || set_is_wide(true) )  ;
+            }
+        }
+    }); 
+    create_effect(cx, move |_|{
+        let cleanup = use_event_listener(cx, window(), resize, move |evt: UiEvent| {
+            if node_ref().is_some() {
+                let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
+                let window_width = window().inner_width().unwrap().as_f64().unwrap();
+                if math_box_width > window_width {
+                    set_is_wide(true);
+                }else{
+                    set_is_wide(false);
+                }
+            }
+        });
+    });
     view! {cx,
         <div
-            class="overflow-x-auto indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
+            node_ref=node_ref
+            class="relative indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
             style=format!("margin-right: {}px", margin_right)
@@ -242,6 +283,16 @@ fn MathBlock(
 
         >
             {children(cx)}
+            <div
+                on:click=move |e| {
+                    e.stop_propagation();
+                    set_page_state.update(|value| *value = PageState::ShowRight);
+                } 
+                class="block cursor-pointer absolute h-full right-0 top-0 w-2 transition-opacity"
+                style=move || format!("opacity: {}", if is_wide() && page_state() == PageState::ShowArticle { "1" } else { "0" } )
+            >
+                <img src="/images/construction.png" class="h-full" />
+            </div>
         </div>
     }
 }
