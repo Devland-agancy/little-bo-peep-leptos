@@ -288,10 +288,10 @@ fn MathBlock(
                     e.stop_propagation();
                     set_page_state.update(|value| *value = PageState::ShowRight);
                 } 
-                class="block cursor-pointer absolute h-full right-0 top-0 w-2 transition-opacity"
+                class="block cursor-pointer absolute h-full right-0 top-0 w-4 transition-opacity"
                 style=move || format!("opacity: {}", if is_wide() && page_state() == PageState::ShowArticle { "1" } else { "0" } )
             >
-                <img src="/images/construction.png" class="h-full" />
+                <img src="/images/construction.png" class="h-full w-full" />
             </div>
         </div>
     }
