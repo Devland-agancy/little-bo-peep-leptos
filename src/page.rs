@@ -1,12 +1,12 @@
 pub mod article;
 pub mod home;
 pub mod state;
-use leptos::{ev::{click, touchend, EventDescriptor, touchstart, resize}, html::{Img, Div}, *};
+use leptos::{ev::{click,  resize}, html::{Img, Div}, *};
 use leptos_use::use_event_listener;
 use state::PageState;
 use std::time::Duration;
-
-use web_sys::{ScrollBehavior, ScrollToOptions, Touch, Event, UiEvent};
+use leptos_router::A;
+use web_sys::{ScrollBehavior, ScrollToOptions, UiEvent};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -40,42 +40,42 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let article_mode = move || -> () {
-            log!("clicked");
-            if show_right() {
-                let mut options = ScrollToOptions::new();
-                /* options.behavior(ScrollBehavior::Smooth);
-                options.left(right_image_x_pos());
+       
+            let cleanup = use_event_listener(cx, window(), click, move |_|{
+                log!("clicked");
+                if show_right() {
+                    let mut options = ScrollToOptions::new();
+                    /* options.behavior(ScrollBehavior::Smooth);
+                    options.left(right_image_x_pos());
 
-                set_timeout( || { */
-                    if window().inner_width().unwrap().as_f64().unwrap() > window().scroll_x().unwrap() {
-                        let _ = article_node().unwrap().style("transition",  "all 0.3s ease 0.1s"); 
-                        options.left(0_f64);
+                    set_timeout( || { */
+                        if window().inner_width().unwrap().as_f64().unwrap() > window().scroll_x().unwrap() {
+                            let _ = article_node().unwrap().style("transition",  "all 0.3s ease 0.1s"); 
+                            options.left(0_f64);
 
-                    }else{
-                        let _ = article_node().unwrap().style("transition", "none"); 
-                        options.left( window().scroll_x().unwrap() - window().inner_width().unwrap().as_f64().unwrap());
+                        }else{
+                            let _ = article_node().unwrap().style("transition", "none"); 
+                            options.left( window().scroll_x().unwrap() - window().inner_width().unwrap().as_f64().unwrap());
 
-                    }
-                    options.behavior(ScrollBehavior::Instant);
-                    window().scroll_with_scroll_to_options(&options);
-                    let _ = article_node().unwrap().style("transform", "none");
-                    set_timeout(move || {
-                        options.behavior(ScrollBehavior::Smooth);
-                        options.left(0_f64);
+                        }
+                        options.behavior(ScrollBehavior::Instant);
                         window().scroll_with_scroll_to_options(&options);
-                        set_timeout(
-                            move || set_page_state.update(|value| *value = PageState::ShowArticle),
-                            Duration::from_secs(1),
-                        )
-                    }, Duration::from_millis(100));
-               /*  }, Duration::from_millis(100)); */
+                        let _ = article_node().unwrap().style("transform", "none");
+                        set_timeout(move || {
+                            options.behavior(ScrollBehavior::Smooth);
+                            options.left(0_f64);
+                            window().scroll_with_scroll_to_options(&options);
+                            set_timeout(
+                                move || set_page_state.update(|value| *value = PageState::ShowArticle),
+                                Duration::from_secs(1),
+                            )
+                        }, Duration::from_millis(100));
+                /*  }, Duration::from_millis(100)); */
 
-            } else if show_left() {
-                set_page_state.update(|value| *value = PageState::ShowArticle)
-            }
-        };
-        let _ = use_event_listener(cx, window(), click, move |_|article_mode());
+                } else if show_left() {
+                    set_page_state.update(|value| *value = PageState::ShowArticle)
+                }
+            });
     });
     // for right_images we autoscroll to their position
     view! { cx,
@@ -368,12 +368,13 @@ fn ImageLeft(
 #[component]
 fn Link(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
     view! {cx,
-        <a
+        <A
+            on:click=move |e| { e.stop_propagation() }
             href=href
             class="text-stone-900 hover:text-sky-800"
         >
             {children(cx)}
-        </a>
+        </A>
     }
 }
 
