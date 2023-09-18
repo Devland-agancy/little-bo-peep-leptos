@@ -50,7 +50,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, window(), click, move |_|{
+        let _ = use_event_listener(cx, document(), click, move |_|{
             log!("clicked");
             if show_right() || show_left() {
                 let mut options = ScrollToOptions::new();
