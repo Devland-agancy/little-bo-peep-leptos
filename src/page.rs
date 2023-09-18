@@ -26,9 +26,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             window().scroll_with_scroll_to_options(&options);
             set_timeout(move || {
                 let _ = article_node().unwrap().style("transition", "none");
-                let _ = article_node().unwrap().style("transform", "translateX(100%)");
+                let _ = article_node().unwrap().style("transform", "translateX(1500px)");
 
-                options.left(right_image_x_pos() + window().inner_width().unwrap().as_f64().unwrap());
+                options.left(right_image_x_pos() + 1500_f64);
                 options.behavior(ScrollBehavior::Instant);
                 window().scroll_with_scroll_to_options(&options);
             }, Duration::from_millis(800)); 
@@ -40,8 +40,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-       
-            let cleanup = use_event_listener(cx, window(), click, move |_|{
+            let _ = use_event_listener(cx, window(), click, move |_|{
                 log!("clicked");
                 if show_right() {
                     let mut options = ScrollToOptions::new();
@@ -49,13 +48,14 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                     options.left(right_image_x_pos());
 
                     set_timeout( || { */
-                        if window().inner_width().unwrap().as_f64().unwrap() > window().scroll_x().unwrap() {
+                        if 1500_f64 > window().scroll_x().unwrap() {
                             let _ = article_node().unwrap().style("transition",  "all 0.3s ease 0.1s"); 
                             options.left(0_f64);
-
+                            log!("first case")
                         }else{
                             let _ = article_node().unwrap().style("transition", "none"); 
-                            options.left( window().scroll_x().unwrap() - window().inner_width().unwrap().as_f64().unwrap());
+                            options.left( window().scroll_x().unwrap() - 1500_f64);
+                            log!("second case")
 
                         }
                         options.behavior(ScrollBehavior::Instant);
@@ -92,7 +92,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                     // for left image we transle based on image width
                     style=move || {
                         if show_left() {
-                            format!("transform: translateX(100%)")
+                            format!("transform: translateX(1500px)")
                         }  else { "".to_string() }
                     }
                 >
@@ -162,7 +162,7 @@ fn Span(
 #[component]
 pub fn Columns(cx: Scope, children: Children) -> impl IntoView {
     view! {cx,
-        <div class="relative text-xl sm:leading-relaxed -translate-x-[1000px] sm:translate-x-0 grid grid-cols-[1000px_100%_1000px] sm:grid sm:grid-cols-[1fr_30.5rem_1fr]">
+        <div class="relative text-xl sm:leading-relaxed -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid sm:grid-cols-[1fr_30.5rem_1fr]">
             {children(cx)}
         </div>
     }
