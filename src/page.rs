@@ -32,50 +32,44 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 options.behavior(ScrollBehavior::Instant);
                 window().scroll_with_scroll_to_options(&options);
             }, Duration::from_millis(800)); 
-        } else {
-            options.left(0_f64);
+        } else if show_left() {
+            if article_node().is_some() {
+                let _ = article_node().unwrap().style("transition", "none");
+                let _ = article_node().unwrap().style("transform", "translateX(1500px)");
+            } 
+            options.left( 1500_f64);
+            options.behavior(ScrollBehavior::Instant);
             window().scroll_with_scroll_to_options(&options);
-          
+
+            set_timeout(move || {
+                options.left( 1000_f64);
+                options.behavior(ScrollBehavior::Smooth);
+                window().scroll_with_scroll_to_options(&options);
+            }, Duration::from_millis(100)); 
         };
     });
 
     create_effect(cx, move |_| {
-            let _ = use_event_listener(cx, window(), click, move |_|{
-                log!("clicked");
-                if show_right() {
-                    let mut options = ScrollToOptions::new();
-                    /* options.behavior(ScrollBehavior::Smooth);
-                    options.left(right_image_x_pos());
-
-                    set_timeout( || { */
-                        if 1500_f64 > window().scroll_x().unwrap() {
-                            let _ = article_node().unwrap().style("transition",  "all 0.3s ease 0.1s"); 
-                            options.left(0_f64);
-                            log!("first case")
-                        }else{
-                            let _ = article_node().unwrap().style("transition", "none"); 
-                            options.left( window().scroll_x().unwrap() - 1500_f64);
-                            log!("second case")
-
-                        }
-                        options.behavior(ScrollBehavior::Instant);
-                        window().scroll_with_scroll_to_options(&options);
-                        let _ = article_node().unwrap().style("transform", "none");
-                        set_timeout(move || {
-                            options.behavior(ScrollBehavior::Smooth);
-                            options.left(0_f64);
-                            window().scroll_with_scroll_to_options(&options);
-                            set_timeout(
-                                move || set_page_state.update(|value| *value = PageState::ShowArticle),
-                                Duration::from_secs(1),
-                            )
-                        }, Duration::from_millis(100));
-                /*  }, Duration::from_millis(100)); */
-
-                } else if show_left() {
-                    set_page_state.update(|value| *value = PageState::ShowArticle)
-                }
-            });
+        let _ = use_event_listener(cx, window(), click, move |_|{
+            log!("clicked");
+            if show_right() || show_left() {
+                let mut options = ScrollToOptions::new();
+                options.behavior(ScrollBehavior::Smooth);
+                options.left(1500_f64);
+                window().scroll_with_scroll_to_options(&options);
+                set_timeout(move || {
+                    let _ = article_node().unwrap().style("transition", "none"); 
+                    let _ = article_node().unwrap().style("transform", "translateX(0)");
+                    options.behavior(ScrollBehavior::Instant);
+                    options.left(0_f64);
+                    window().scroll_with_scroll_to_options(&options);
+                    set_timeout(
+                        move || set_page_state.update(|value| *value = PageState::ShowArticle),
+                        Duration::from_millis(700),
+                    )
+                }, Duration::from_millis(800));
+            }
+        });
     });
     // for right_images we autoscroll to their position
     view! { cx,
@@ -90,11 +84,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 <div
                     class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
                     // for left image we transle based on image width
-                    style=move || {
-                        if show_left() {
-                            format!("transform: translateX(1500px)")
-                        }  else { "".to_string() }
-                    }
+                  
                 >
                     <div class="font-baskerville w-full">
                         {children(cx)}
