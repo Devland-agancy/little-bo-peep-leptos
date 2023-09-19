@@ -709,6 +709,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
+        <Image src="/images/exercises.png" height=130/>
+        <Tabs>
+            <TabElement scroll_to="#exo_1" label="1" />
+            <TabElement scroll_to="#exo_1" label="2" />
+        </Tabs>
+        <Paragraph id="exo_1" margin_top=15>
+            "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
+        </Paragraph>
     </Columns>
     }
 }

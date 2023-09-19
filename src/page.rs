@@ -6,7 +6,7 @@ use leptos_use::use_event_listener;
 use state::PageState;
 use std::time::Duration;
 use leptos_router::A;
-use web_sys::{ScrollBehavior, ScrollToOptions, UiEvent};
+use web_sys::{ScrollBehavior, ScrollToOptions, UiEvent, ScrollIntoViewOptions};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -118,9 +118,12 @@ pub fn Paragraph(
     #[prop(default = Indent::None)] indent: Indent,
     #[prop(default = Align::None)] align: Align,
     #[prop(default = 0)] margin_top: i16,
+    #[prop(optional)] id: &'static str,
+
 ) -> impl IntoView {
     view! {cx,
         <span
+            id=id
             class="col-start-2 px-4"
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
@@ -242,10 +245,13 @@ fn MathBlock(
 
      create_effect(cx, move |_|{
         if node_ref().is_some() {
-            let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
-            let window_width = window().inner_width().unwrap().as_f64().unwrap();
-            if math_box_width > window_width {
-               request_animation_frame(move || set_is_wide(true) )  ;
+            let math_box = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0);
+            if math_box.is_some() {
+                let math_box_width = math_box.unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
+                let window_width = window().inner_width().unwrap().as_f64().unwrap();
+                if math_box_width > window_width {
+                    request_animation_frame(move || set_is_wide(true) )  ;
+                }
             }
         }
     }); 
@@ -393,8 +399,8 @@ fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
     view! {cx,
 
         <div
-            class="px-4 my-10 relative col-start-2  scrollbar-hidden md:overflow-visible"
-            style= move || format!("height: {}px", height)
+            class="px-4 my-10 relative col-start-2 scrollbar-hidden md:overflow-x-visible"
+            style= move || format!("height: {}px", height + 10)
             class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle )
             class=("translate-x-full", move || page_state() == PageState::ShowRight )
             class=("-translate-x-full", move || page_state() == PageState::
@@ -409,3 +415,37 @@ fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
 
     }
 }
+
+#[component]
+fn Tabs(cx: Scope, children: Children) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    view! {cx,
+        <div
+            class="text-xl flex items-center justify-center gap-10 col-start-2 hidden-on-startup"
+        >
+            {children(cx)}
+        </div>
+    }
+}
+
+#[component]
+fn TabElement(cx: Scope, label: &'static str, scroll_to: &'static str) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+
+    view! {cx,
+        <div
+            on:click= move |e| {
+                    let scroll_to_element = document().query_selector(scroll_to).unwrap_or(None);
+                    if scroll_to_element.is_some() {
+                        let mut options = ScrollIntoViewOptions::new();
+                        options.behavior(ScrollBehavior::Smooth);
+                        scroll_to_element.unwrap().scroll_into_view_with_scroll_into_view_options(&options) 
+                    }
+            }
+            class="cursor-pointer hover:font-bold"
+        >
+            {label}
+        </div>
+    }
+}
+
