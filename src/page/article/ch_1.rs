@@ -14,9 +14,6 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     view! {cx,
         <Columns>
-        <div class="h-0 relative col-start-1"> <div class=" w-[1500px] h-[100000px] bg-red-700"></div>
-       
-        </div>
         <Paragraph>
             <Span bold=true>"Square Roots. "</Span>
             "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
@@ -675,7 +672,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph >
-           "for" <Span italic=true>"every"</Span> "real number " <Math>r#"n$"#</Math> " because of the formula"
+           "for" <Span italic=true>"every"</Span> "real number " <Math>r#"$n$"#</Math> " because of the formula"
         </Paragraph>
         <MathBlock>
             r#"$$
