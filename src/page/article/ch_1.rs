@@ -549,7 +549,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
         "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>"."
 		"(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
-		"(PS: “Factored” means “written as a product”.)"
+		" (PS: “Factored” means “written as a product”.)"
         </Paragraph>
         <Paragraph margin_top=15>
             <Span bold=true>"Example 4. "</Span> "Since"
@@ -598,7 +598,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "as per “" <Math>r#"$ a^2 - b^2 = (a - b)(a + b) $"#</Math> "”."
         </Paragraph>
-        <Paragraph>
+        <Paragraph margin_top=15>
             "In relation to distributivity, we should also mention the
             simple but important fact that multiplying a difference by" <Math>r#"$-1$"#</Math> <Span italic=true>"reverses"</Span>
             "the difference. That is,"
@@ -619,7 +619,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "because, indeed,"
         </Paragraph>
-        <MathBlock>
+        <MathBlock height=Height::Fit>
             r#"$$
                 \begin{align}
                 (-1)(a - b) \,&=\, (-1)(a + (-b)) \\
