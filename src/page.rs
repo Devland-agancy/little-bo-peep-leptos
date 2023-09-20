@@ -356,7 +356,7 @@ fn ImageLeft(
             >
                 <img src=src />
                 <Show fallback=|_| () when=move || hidden_in_mobile >
-                    <div class="block sm:hidden absolute right-[-1.9rem] top-[42%]">
+                    <div class="block sm:hidden absolute right-[-1.9rem] top-[46%]">
                         <img src="/images/squiggle.png" class="h-11" />
                     </div>
                 </Show>
