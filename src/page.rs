@@ -25,9 +25,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             options.left(right_image_x_pos());
             window().scroll_with_scroll_to_options(&options);
             set_timeout(move || {
-                let _ = article_node().unwrap().style("transition", "none");
-                let _ = article_node().unwrap().style("transform", "translateX(1500px)");
-                let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)");
+                let _ = article_node().unwrap().style("left", "1500px");
+                /* let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)"); */
 
                 options.left(right_image_x_pos() + 1500_f64);
                 options.behavior(ScrollBehavior::Instant);
@@ -35,9 +34,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             }, Duration::from_millis(800)); 
         } else if show_left() {
             if article_node().is_some() {
-                let _ = article_node().unwrap().style("transition", "none");
-                let _ = article_node().unwrap().style("transform", "translateX(1500px)");
-                let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)");
+                let _ = article_node().unwrap().style("left", "1500px");
+                /* let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)"); */
             } 
             options.left( 1500_f64);
             options.behavior(ScrollBehavior::Instant);
@@ -60,9 +58,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 options.left(1500_f64);
                 window().scroll_with_scroll_to_options(&options);
                 set_timeout(move || {
-                    let _ = article_node().unwrap().style("transition", "none"); 
-                    let _ = article_node().unwrap().style("transform", "translateX(0)");
-                    let _ = article_node().unwrap().style("-webkit-transform", "translateX(0)");
+                    let _ = article_node().unwrap().style("left", "0");
+                   /*  let _ = article_node().unwrap().style("-webkit-transform", "translateX(0)"); */
 
                     options.behavior(ScrollBehavior::Instant);
                     options.left(0_f64);
