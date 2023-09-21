@@ -25,8 +25,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             src="/images/svg_cloud_minus_two_squared.svg"
         />
         <ImageLeft
-            src="/images/big_cloud.svg"
-            translate="(-2rem, 1.5rem)"
+            src="/images/325.svg"
+            translate="(0rem, 1.5rem)"
+            hidden_in_mobile=true
         />
         </Columns>
     }
