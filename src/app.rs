@@ -49,6 +49,7 @@ pub fn App(cx: Scope) -> impl IntoView {
                     <Route path="" view=crate::page::home::View/>
                     <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
                     <Route path="/article/ch_2" view=crate::page::article::ch_2::View/>
+                    <Route path="/article/ch_3" view=crate::page::article::ch_3::View/>
                 </Routes>
             </main>
         </Router>
