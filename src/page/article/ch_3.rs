@@ -32,31 +32,19 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph>
             "or, less pedantically,"
             </Paragraph>
-            <MathBlock>
-                r#"$$
-                \,\,\,(a + b)(a - b) = aa - ab + ba - bb
-                $$"#
-            </MathBlock>
+         
             <Paragraph>
                 "or"
             </Paragraph>
-            <MathBlock>
-                r#"$$
-                    \,\,\,(a + b)(a - b) = a^2 - b^2
-                $$"#
-            </MathBlock>
+          
             <Paragraph>
-                "since" <Math>r#"$- ab + ba = 0$"#</Math> ", " <Math>r#"$aa = a^2$"#</Math> ", " <Math>r#"$bb = b^2$"#</Math>". Note that"
+                "since" 
             </Paragraph>
             <ImageRight
             translate="(-2rem, 1.5rem)"
             src="/images/svg_cloud_minus_two_squared.svg"
         />
-            <MathBlock>
-                r#"$$
-                \,\,\,a^2 - b^2
-                $$"#
-            </MathBlock>
+            
             <Paragraph>
                 "is"
             </Paragraph>
