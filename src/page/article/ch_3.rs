@@ -32,11 +32,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph>
             "or, less pedantically,"
             </Paragraph>
-            <MathBlock>
-            r#"$$
-                \sqrt{(-2)^2} = 2 
-            $$"#
-        </MathBlock>
+              <MathBlock>
+              "$$ (-2)^2 = 2 $$"
+            </MathBlock>
             <Paragraph>
                 "or"
             </Paragraph>
