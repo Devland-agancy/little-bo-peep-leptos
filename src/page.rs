@@ -237,42 +237,10 @@ fn MathBlock(
     #[prop(default = 0)] margin_right: i16,
     #[prop(default = 0)] margin_left: i16,
 ) -> impl IntoView {
-    let node_ref = create_node_ref::<Div>(cx);
-    let (is_wide, set_is_wide) = create_signal(cx, false);
-    let set_page_state =
-    use_context::<WriteSignal<PageState>>(cx).unwrap();
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let show_right = move || page_state() == PageState::ShowRight;
-
-     create_effect(cx, move |_|{
-        if node_ref().is_some() {
-            let math_box = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0);
-            if math_box.is_some() {
-                let math_box_width = math_box.unwrap().client_width() as f64;
-                let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width > window_width {
-                    request_animation_frame(move || set_is_wide(true) )  ;
-                }
-            }
-        }
-    }); 
-    create_effect(cx, move |_|{
-        let cleanup = use_event_listener(cx, window(), resize, move |evt: UiEvent| {
-            if node_ref().is_some() {
-                let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
-                let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width > window_width {
-                    set_is_wide(true);
-                }else{
-                    set_is_wide(false);
-                }
-            }
-        });
-    });
+   
     view! {cx,
         <div
-            node_ref=node_ref
-            class="relative indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
+            class="overflow-x-auto indent-0 text-xl flex items-center justify-center col-start-2 hidden-on-startup"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
             style=format!("margin-right: {}px", margin_right)
@@ -280,17 +248,7 @@ fn MathBlock(
 
         >
             {children(cx)}
-            <div
-                on:click=move |e| {
-                    e.stop_propagation();
-                    set_page_state.update(|value| *value = PageState::ShowRight);
-                } 
-                class="block cursor-pointer absolute h-full right-0 top-0 w-4 transition-opacity"
-                class=("pointer-events-none", move || page_state() == PageState::ShowRight)
-                style=move || format!("opacity: {}", if is_wide() && page_state() == PageState::ShowArticle { "1" } else { "0" } )
-            >
-                <img src="/images/construction.png" class="h-full w-full" />
-            </div>
+           
         </div>
     }
 }
