@@ -51,7 +51,42 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph align=Align::Center>
                 <Span italic=true>"a difference of squares"</Span>
             </Paragraph>
-           
+            <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>  <Paragraph>
+            <Span bold=true>"The Definition. "</Span>
+            "The "
+            <Span italic=true bold=true>"slope "</Span>
+            "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
+            </Paragraph>
         
         </Columns>
     }
