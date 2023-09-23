@@ -90,3 +90,13 @@ mjx-container {
 .close-icon-svg-2 {
   transform: translate(-12px, 10px) rotate(-45deg);
 }
+
+.animated-height-0 {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 1s;
+}
+
+.animated-height-full {
+  grid-template-rows: 1fr;
+}

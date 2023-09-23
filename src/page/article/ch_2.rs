@@ -28,7 +28,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 src="/images/325.svg"
                 translate="(0rem, 1.5rem)"
                 hidden_in_mobile=true
-            />
+            >""</ImageLeft>
         </Columns>
     }
 }

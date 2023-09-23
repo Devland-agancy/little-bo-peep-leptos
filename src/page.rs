@@ -240,7 +240,7 @@ fn MathBlock(
    
     view! {cx,
         <div
-            class=" text-xl flex items-center justify-center col-start-2 hidden-on-startup"
+            class="text-xl flex items-center justify-center col-start-2 hidden-on-startup overflow-x-auto"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
             style=format!("margin-right: {}px", margin_right)
@@ -289,6 +289,10 @@ fn ImageLeft(
     translate: &'static str,
     src: &'static str,
     #[prop(default = false)] hidden_in_mobile: bool,
+    children: Children,
+    #[prop(default = "")] children_translate: &'static str,
+    #[prop(default = false)] absolute: bool,
+
 ) -> impl IntoView {
     let set_page_state =
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
@@ -308,8 +312,15 @@ fn ImageLeft(
                 style=move || format!("transform: translate{}", translate)
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_left)
+                class=("absolute", absolute)
+
             >
                 <img src=src />
+                <div
+                    style=move || format!("transform: translate{}", children_translate)
+                >
+                    {children(cx)}
+                </div>
                 <Show fallback=|_| () when=move || hidden_in_mobile >
                     <div class="block sm:hidden absolute right-[-1.9rem] top-[46%]">
                         <img src="/images/squiggle.png" class="h-11" />
@@ -356,7 +367,6 @@ fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
 
     view! {cx,
-
         <div
             class="px-4 my-10 relative col-start-2 scrollbar-hidden md:overflow-x-visible"
             style= move || format!("height: {}px", height + 10)
@@ -364,7 +374,6 @@ fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
             class=("translate-x-full", move || page_state() == PageState::ShowRight )
             class=("-translate-x-full", move || page_state() == PageState::
             ShowLeft )
-
         >
             <img
                 src=src style= move ||  format!("height: {}px", height)
@@ -408,3 +417,65 @@ fn TabElement(cx: Scope, label: &'static str, scroll_to: &'static str) -> impl I
     }
 }
 
+#[component]
+pub fn Grid(
+    cx: Scope,
+    children: Children,
+    #[prop(default = 0)] margin_top: i16,
+    #[prop(optional)] id: &'static str,
+    #[prop(default = 0)] cols: i16,
+   /*  #[prop(default = Indent::None)] indent: Indent,
+    #[prop(default = Align::None)] align: Align,
+    */
+
+) -> impl IntoView {
+    view! {cx,
+        <span
+            id=id
+            class="col-start-2 px-4 grid flex-wrap min-h-fit gap-4"
+            style=format!("grid-template-columns: repeat({}, 1fr)  ;margin-top: {}px", cols, margin_top)
+        >
+            {children(cx)}
+        </span>
+    }
+}
+
+#[component]
+fn Solution(cx: Scope, children: Children) -> impl IntoView {
+    let (visible, set_visible) = create_signal(cx, false);
+    let (visible_effect, set_visible_effect) = create_signal(cx, false);
+
+    view! {cx,
+        <div
+            class="px-4 my-10 relative col-start-2"
+        >
+            <img 
+                class="w-2/3 mx-auto cursor-pointer" 
+                src="/images/solution.png"  
+                on:click=move |_| {
+                    if visible() {
+                        set_timeout(move ||{
+                            set_visible_effect(false)
+                        }, Duration::from_millis(1000))
+                    } else {
+                        set_visible_effect(true)
+                    }
+                    set_visible(!visible());
+                }
+            />
+        </div>
+        <div
+            class="col-start-2 px-4 min-h-fit overflow-y-hidden animated-height-0"
+            class=("pointer-events-none", move || visible() == false)
+            class=("animated-height-full", move || visible() == true)
+        >
+            <div  
+                class="transition duration-1000 overflow-hidden"
+                /* class=("-translate-y-full", move || visible() == false) */
+            >
+                {children(cx)}
+            </div>
+        </div>
+
+    }
+}

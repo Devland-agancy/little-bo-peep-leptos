@@ -32,13 +32,20 @@ module.exports = {
       },
       animation: {
         appear: "appear 0.3s ease 0s 1 normal forwards",
+        /*  height_increase: "height_increase 1s ease 0.2s 1 normal forwards" */
       },
-
+      transitionProperty: {
+        dropdown: "all 1s",
+      },
       keyframes: {
         appear: {
           "0%": { opacity: "0%" },
           "100%": { opacity: "100%" },
         },
+        /* height_increase: {
+          "0%": { height: "0" },
+          "100%": { height: "100%" },
+        }, */
       },
     },
   },

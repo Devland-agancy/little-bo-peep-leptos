@@ -108,4 +108,9 @@ lib-default-features = false
 
 [dependencies.web-sys]
 version = "0.3.64"
-features = ["ScrollToOptions", "ScrollBehavior", "ScrollIntoViewOptions"]
+features = [
+  "ScrollToOptions",
+  "ScrollBehavior",
+  "ScrollIntoViewOptions",
+  "AddEventListenerOptions",
+]

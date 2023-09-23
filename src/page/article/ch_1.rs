@@ -397,7 +397,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             translate="(0rem,1.1rem)"
             src="/images/325.svg"
             hidden_in_mobile=true
-        />
+        >""</ImageLeft>
         <Paragraph>
             "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
         </Paragraph>
@@ -712,11 +712,133 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Image src="/images/exercises.png" height=130/>
         <Tabs>
             <TabElement scroll_to="#exo_1" label="1" />
-            <TabElement scroll_to="#exo_1" label="2" />
+            <TabElement scroll_to="#exo_2" label="2" />
         </Tabs>
         <Paragraph id="exo_1" margin_top=15>
-            "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
+            <Span bold=true>"Exercise 1."</Span>
+            "True or false (and, if possible, explain):"
         </Paragraph>
+
+        <Grid margin_top=15 cols=3>
+            <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
+            <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
+            <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
+            <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
+            <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
+            <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
+            <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
+            <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
+            <Span>"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
+        </Grid>
+        
+
+        <Solution>
+            <Paragraph margin_top=15>
+                "Part by part:"
+            </Paragraph>
+            <Paragraph margin_top=15>
+                "a. (True) We have"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                    0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
+            </Paragraph>
+
+            <Paragraph margin_top=15>
+                "b. (True) We have"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                  0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+            </Paragraph>
+            <Paragraph margin_top=15>
+              "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
+            </Paragraph>
+            <MathBlock height=Height::Fit>
+                r#"$$
+                    \begin{align}
+                    &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
+                    =&\,\, \up{1.3}
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
+                    =&\,\, \up{1.3}
+                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
+                    =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
+                    (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
+                    =& \,\, \up{1.4} 2
+                    \end{align}
+                $$"#
+            </MathBlock>
+            <ImageLeft src="/images/17.svg" translate="(-25.8rem, -7rem)" children_translate="(-19.5rem, 2rem)" absolute=true hidden_in_mobile=true>
+                <Math>
+                    r#"$$ s \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times \sqrt[2]{\up{0.75}\sqrt[3]{2}}\, =\, \sqrt[3]{\up{0.64}2} $$"#
+                </Math>
+            </ImageLeft>
+        </Solution>
+
+        <Paragraph id="exo_2" margin_top=15>
+            <Span bold=true>"Exercise 2."</Span>
+            "True or false (and, if possible, explain):"
+        </Paragraph>
+
+        <Grid margin_top=15 cols=3>
+            <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
+            <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
+            <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
+            <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
+            <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
+            <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
+            <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
+            <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
+            <Span>"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
+        </Grid>
+        
+
+        <Solution>
+            <Paragraph margin_top=15>
+                "Part by part:"
+            </Paragraph>
+            <Paragraph margin_top=15>
+                "a. (True) We have"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                    0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
+            </Paragraph>
+
+            <Paragraph margin_top=15>
+                "b. (True) We have"
+            </Paragraph>
+            <MathBlock>
+                r#"$$
+                  0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
+                $$"#
+            </MathBlock>
+            <Paragraph>
+                "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+            </Paragraph>
+        </Solution>
     </Columns>
     }
 }
