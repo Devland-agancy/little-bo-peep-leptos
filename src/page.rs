@@ -443,7 +443,17 @@ pub fn Grid(
 #[component]
 fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let (visible, set_visible) = create_signal(cx, false);
-    let (visible_effect, set_visible_effect) = create_signal(cx, false);
+    let (content_height, set_content_height) = create_signal(cx, 0);
+    let node_ref = create_node_ref::<Div>(cx);
+    create_effect(cx, move |_|{
+        if node_ref().is_some() {
+            if visible() {
+                set_content_height(node_ref().unwrap().offset_height())
+            }else{
+                set_content_height(0)
+            }
+        }
+    });
 
     view! {cx,
         <div
@@ -453,28 +463,24 @@ fn Solution(cx: Scope, children: Children) -> impl IntoView {
                 class="w-2/3 mx-auto cursor-pointer" 
                 src="/images/solution.png"  
                 on:click=move |_| {
-                    if visible() {
-                        set_timeout(move ||{
-                            set_visible_effect(false)
-                        }, Duration::from_millis(1000))
-                    } else {
-                        set_visible_effect(true)
-                    }
                     set_visible(!visible());
                 }
             />
         </div>
         <div
-            class="col-start-2 px-4 min-h-fit overflow-y-hidden animated-height-0"
+            class="col-start-2 px-4 transition-[height] duration-1000 overflow-y-clip"
             class=("pointer-events-none", move || visible() == false)
             class=("animated-height-full", move || visible() == true)
+            style=move || format!("height: {}px", content_height())
         >
             <div  
-                class="transition duration-1000 overflow-hidden"
-                /* class=("-translate-y-full", move || visible() == false) */
+                node_ref=node_ref
+                class="transition-all duration-1000"
+                class=("-translate-y-full", move || visible() == false) 
             >
                 {children(cx)}
             </div>
+
         </div>
 
     }

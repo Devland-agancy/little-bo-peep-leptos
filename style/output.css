@@ -886,12 +886,12 @@ video {
   overflow-x: auto;
 }
 
-.overflow-x-hidden {
-  overflow-x: hidden;
-}
-
 .overflow-y-hidden {
   overflow-y: hidden;
+}
+
+.overflow-y-clip {
+  overflow-y: clip;
 }
 
 .overflow-x-scroll {
@@ -1096,6 +1096,18 @@ video {
 
 .transition-opacity {
   transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-\[height\] {
+  transition-property: height;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
