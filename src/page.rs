@@ -240,7 +240,7 @@ fn MathBlock(
    
     view! {cx,
         <div
-            class="text-xl flex items-center justify-center col-start-2 hidden-on-startup overflow-x-auto"
+            class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup overflow-x-auto"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
             style=format!("margin-right: {}px", margin_right)

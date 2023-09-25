@@ -587,14 +587,6 @@ video {
   top: 3.5rem;
 }
 
-.right-\[-1\.9rem\] {
-  right: -1.9rem;
-}
-
-.top-\[46\%\] {
-  top: 46%;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -1212,6 +1204,12 @@ video {
 
 mjx-container {
   width: 100%;
+}
+
+.mathblock mjx-container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-icon-svg{

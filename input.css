@@ -79,6 +79,12 @@ mjx-container {
   width: 100%;
 }
 
+.mathblock mjx-container {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
 .menu-icon-svg{
   transition: all 0.3s ease;;
 }

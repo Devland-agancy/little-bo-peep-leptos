@@ -1,15 +1,19 @@
 window.MathJax = {
   svg: {
-    mtextInheritFont: true
+    mtextInheritFont: true,
   },
   chtml: {
-    mtextInheritFont: true
+    mtextInheritFont: true,
   },
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    inlineMath: [
+      ["$", "$"],
+      ["\\(", "\\)"],
+    ],
     processEscapes: true,
     macros: {
-      dblcol: "\\!\\rt{0.1}\\mathrel{\\raise.13ex{\\substack{\\small \\circ \\\\ \\small \\circ}}}",
+      dblcol:
+        "\\!\\rt{0.1}\\mathrel{\\raise.13ex{\\substack{\\small \\circ \\\\ \\small \\circ}}}",
       hc: "\\!\\rt{0.1}\\mathrel{\\raise.13ex{\\substack{\\small \\circ \\\\ \\small \\circ}}}",
       rr: "\\mathbb{R}",
       zz: "\\mathbb{Z}",
@@ -25,7 +29,7 @@ window.MathJax = {
       ra: "\\rightarrow",
       back: "\\backslash",
       sqt: "{\\color{white} *\\!\\!\\!}",
-      up: ["\\rule{0pt}{#1em}", 1],   // vspace doesn't seem to work / exist ?
+      up: ["\\rule{0pt}{#1em}", 1], // vspace doesn't seem to work / exist ?
       dn: ["\\Rule{0pt}{0em}{#1em}", 1],
       rt: ["\\hspace{#1em}", 1],
       hlfbk: "\\!\\hspace{0.1em}",
@@ -50,16 +54,14 @@ window.MathJax = {
       ddz: "{d \\over dz}\\hspace{0.1em}",
       ov: ["\\overline{#1}", 1],
       floor: ["\\lfloor{#1}\\rfloor", 1],
-      faketextelement: "{\\color{white}\\text{*}}\\!\\!\\!\\rt{0.1}"
-    }
+      faketextelement: "{\\color{white}\\text{*}}\\!\\!\\!\\rt{0.1}",
+    },
   },
   options: {
-    enableMenu: false
+    enableMenu: false,
   },
   loader: {
-    load: [
-      '[tex]/color'
-    ]
+    load: ["output/svg"],
   },
   startup: {
     ready: () => {
@@ -70,6 +72,6 @@ window.MathJax = {
           elem.classList.add("animate-appear");
         });
       });
-    }
-  }
+    },
+  },
 };

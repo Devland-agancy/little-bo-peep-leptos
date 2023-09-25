@@ -432,7 +432,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "so $12" r#"$$ \space  \times \space  $$"# "14 = 168$."
+            "so " <Math>r#"$12 \space \times \space 14 = 168$"#</Math> " ."
         </Paragraph>
         <Paragraph margin_top=15>
             <Span bold=true>"Example 2. "</Span> "One has"
@@ -447,11 +447,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "so $13" r#"$$ \space  \times \space  $$"# "13 = 160$."
+            "so " <Math>r#"$ 13 \space \times \space 13 = 160$"#</Math> " ."
         </Paragraph>
         <Paragraph  margin_top=15>
-            "(The fact that $13" r#"$$   \times   $$"# " 13$ is exactly one
-                greater than $12" r#"$$   \times   $$"# " 14$ is a bit curious indeed.)"
+            "(The fact that " <Math>r#"$13 \times 13$"#</Math> " is exactly one
+                greater than " <Math>r#"$12 \times 14$"#</Math> " is a bit curious indeed.)"
         </Paragraph>
         <Paragraph indent=Indent::Line>
             "If we start from the afore-mentioned identity"
@@ -462,7 +462,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-        "and set $C = a$, $D = b$, we find"
+        "and set "<Math>r#"$C = a \space , \space D = b$"#</Math> " , we find"
         </Paragraph>
         <MathBlock>
             r#"$$
@@ -478,7 +478,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "since $(a + b)(a + b) = (a + b)^2$, $aa = a^2$ and $bb = b^2$. (This
+            "since "<Math>r#"$(a + b)(a + b) = (a + b)^2 \text{ , } aa = a^2 \text{ and } bb = b^2$"#</Math> " . (This
             is the" <Span italic=true>" binomial expansion of degree two, "</Span> "but such terminology
             is not very important at this stage.)"
         </Paragraph>
@@ -498,7 +498,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             which agrees with Example 2.
         </Paragraph>
         <Paragraph margin_top=15>
-           "On the other hand, setting $C = a$, $D = -b$ in"
+           "On the other hand, setting "<Math>r#"$ C = a \text{ , } D = -b $"#</Math>" in"
         </Paragraph>
         <MathBlock>
             r#"$$
