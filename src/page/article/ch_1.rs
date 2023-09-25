@@ -530,7 +530,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "since" <Math>r#"$- ab + ba = 0$"#</Math> ", " <Math>r#"$aa = a^2$"#</Math> ", " <Math>r#"$bb = b^2$"#</Math>". Note that"
+            "since " <Math>r#"$- ab + ba = 0$"#</Math> ", " <Math>r#"$aa = a^2$"#</Math> ", " <Math>r#"$bb = b^2$"#</Math>". Note that"
         </Paragraph>
         <MathBlock>
             r#"$$

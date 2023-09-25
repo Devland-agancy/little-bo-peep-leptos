@@ -79,6 +79,10 @@ mjx-container {
   width: 100%;
 }
 
+mjx-container svg {
+  display: inline !important;
+}
+
 .mathblock mjx-container {
   display: flex !important;
   justify-content: center;
