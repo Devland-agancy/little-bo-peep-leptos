@@ -785,12 +785,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     =& \,\, \up{1.4} 2
                     \end{align}
                 $$"#
-            </MathBlock>
-            <ImageLeft src="/images/17.svg" translate="(-25.8rem, -7rem)" children_translate="(-19.5rem, 2rem)" absolute=true hidden_in_mobile=true>
-                <Math>
-                    r#"$$ s \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times \sqrt[2]{\up{0.75}\sqrt[3]{2}}\, =\, \sqrt[3]{\up{0.64}2} $$"#
-                </Math>
-            </ImageLeft>
+                </MathBlock>
+                <ImageLeft src="/images/17.svg" translate="" children_translate="(13rem, 2rem)" absolute=true top=320 left=-530 hidden_in_mobile=true squiggle_right="-2.7rem">
+                    <Math>
+                        r#"$$ s \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times \sqrt[2]{\up{0.75}\sqrt[3]{2}}\, =\, \sqrt[3]{\up{0.64}2} $$"#
+                    </Math>
+                </ImageLeft>
         </Solution>
 
         <Paragraph id="exo_2" margin_top=15>
