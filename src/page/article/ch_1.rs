@@ -478,7 +478,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "since "<Math>r#"$(a + b)(a + b) = (a + b)^2 \text{ , } aa = a^2 \text{ and } bb = b^2$"#</Math> " . (This
+            "since "<Math>r#"$(a + b)(a + b) = (a + b)^2 $"#</Math> " , " <Math>r#"$ aa = a^2 $"#</Math> " , " <Math>r#"$ bb = b^2$"#</Math> " . (This
             is the" <Span italic=true>" binomial expansion of degree two, "</Span> "but such terminology
             is not very important at this stage.)"
         </Paragraph>
@@ -498,7 +498,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             which agrees with Example 2.
         </Paragraph>
         <Paragraph margin_top=15>
-           "On the other hand, setting "<Math>r#"$ C = a \text{ , } D = -b $"#</Math>" in"
+           "On the other hand, setting "<Math>r#"$ C = a $"#</Math> " , " <Math>r#"$ D = -b $"#</Math>" in"
         </Paragraph>
         <MathBlock>
             r#"$$
