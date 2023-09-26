@@ -61,7 +61,7 @@ window.MathJax = {
     enableMenu: false,
   },
   loader: {
-    load: ["output/svg"],
+    load: ["[tex]/color"],
   },
   startup: {
     ready: () => {

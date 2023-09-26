@@ -34,7 +34,7 @@ pub fn App(cx: Scope) -> impl IntoView {
         <Title text="Little Bo Peep"/>
         <Link href="/images/book_favicon_sized_v2.png" rel="icon" />
         <Script  src="/mathjax_setup.js" />
-        <Script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" type_="text/javascript"/>
+        <Script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type_="text/javascript"/>
 
         // content for this welcome page
         <Router fallback=|cx| {

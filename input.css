@@ -79,7 +79,7 @@ mjx-container {
   width: 100%;
 }
 
-mjx-container svg {
+/* mjx-container svg {
   display: inline !important;
 }
 
@@ -87,7 +87,7 @@ mjx-container svg {
   display: flex !important;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .menu-icon-svg{
   transition: all 0.3s ease;;

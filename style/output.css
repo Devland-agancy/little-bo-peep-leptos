@@ -1206,7 +1206,7 @@ mjx-container {
   width: 100%;
 }
 
-mjx-container svg {
+/* mjx-container svg {
   display: inline !important;
 }
 
@@ -1214,6 +1214,9 @@ mjx-container svg {
   display: flex !important;
   justify-content: center;
   align-items: center;
+} */
+
+mjx-math {
 }
 
 .menu-icon-svg{
