@@ -1,0 +1,470 @@
+<!doctype html>
+<html>
+<head>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG'></script>
+    <!-- <script src="MathJax-master/MathJax.js?config=TeX-AMS_SVG"></script> -->
+	<script src="js/mathjaxconfig_without_cache.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/css_cant_edit.css" />
+	<link type="text/css" rel="stylesheet" href="css/css_can_edit.css" />
+	<link type="text/css" rel="stylesheet" href="css/css_unparseable.css" />
+	<style>
+		.mock_up_bottom_buffer { height: 100px; }
+	</style>
+</head>
+<body>
+	<p class="chapter_title">Chapter 1: A Few Refreshers</p>
+
+	<!-- Elm, Elm-Markup -->
+	<!-- functional frontend language -->
+	<!-- (too opinionated to work well with MathJax?) -->
+
+	<p class="noi">
+		<b>Square Roots.</b>
+		You might remember that “minus times minus is plus”
+		and that “plus times plus is plus”.
+		(Why? The enemy of my enemy is my friend.)
+		So any nonzero number multiplied by itself is positive.
+		For example,
+		$$
+		(-2) \times (-2) = 4
+		$$
+		and
+		$$
+		2 \times 2 = 4
+		$$
+		are both positive. But $\sqrt{4}$ is, by definition,
+		the unique <i>nonnegative</i> solution to $x^2 = 4$.
+		Hence, and whether you like it or not,
+	</p>
+	<div style="position:relative;">
+		<div class="abs_middle_anchor">
+			<div style="position:absolute;left:18em;top:-1.65em;">
+				<img src="ch1figs/svg_cloud_minus_two_squared.svg" style="position:absolute;width:600px;left:-9.06em;top:-6.02em;"/>
+				$$
+				(-2)^2 = 4,\,\, \sqrt{4} = 2
+				$$
+			</div>
+		</div>
+		$$
+		\sqrt{(-2)^2} = 2
+		$$
+	</div>
+	<p class="noi">
+		and, in particular, it is <i>not</i> true that
+		$$
+		\sqrt{x^{2}} \rt{0.1} = \rt{0.1} x
+		$$
+		for every real number $x$. Instead we have
+		$$
+		\sqrt{x^{2}} \rt{0.1} = \rt{0.1} |x|
+		$$
+		for every real number $x$, where $|x|$ 
+		denotes the absolute value of $x$.
+	</p>
+
+	<p class="cheatingten">
+		(Nb: If ever you want to indicate both solutions of the
+		equation $x^2 = 4$ you can always use the notation 
+		“$\pm \sqrt{4}$”. 
+		This is what happens, for example, in the 
+		maybe-well-known formula
+		$$
+		x = {-b \pm \sqrt{b^2 - 4ac} \over 2a}
+		$$
+	</p><p class="noi">
+		for the solutions to the quadratic equation $ax^2 + bx + c = 0$.)
+	</p>
+
+	<p>
+		Now we can ponder, say,
+		$$
+		\sqrt{0.5}
+		$$
+		whose value is&mdash;by definition&mdash;the unique nonnegative solution
+		to
+		$$
+		x^2 = 0.5.
+		$$
+		As beginners, there's nothing wrong with trying to solve this equation by
+		trial and error. With $x = \frac{1}{4}$, for example, we find
+		$$
+		x^2 = \frac{1}{4}\times\frac{1}{4} = \frac{1}{16}
+		$$
+		so $x = \frac{1}{4}$ is not a solution of the equation, being 
+		apparently too small. Increasing $x$ to $x = \frac{1}{2}$, say, we find
+		$$
+		x^2 = \frac{1}{2}\times\frac{1}{2} = \frac{1}{4}
+		$$
+		which is better, since $1/4$ is closer to $1/2$, but still too
+		small. Increasing $x$ by $1/4$ again, say, to $x = \frac{3}{4}$, we find
+		$$
+		x^2 = \frac{3}{4}\times\frac{3}{4} = \frac{9}{16}
+		$$
+		which&mdash;surprise!&mdash;is actually pretty close to $1/2$, as 
+		$1/2 = 8/16$. And since $9/16 > 0.5$, $\sqrt{0.5}$ must be a little
+		<i>less</i> than $\frac{3}{4} = 0.75$.
+	</p>
+
+	<p>
+		In last resort, and in reasonably good agreement with our 
+		observations, a calculator reveals that
+		$$
+		\sqrt{0.5} = 0.7071067...
+		$$
+		where the decimals trail off with no pattern. (This number is irrational.) Even so, the fact that $\sqrt{0.5}$ is <i>greater</i> than $0.5$
+		is often perceived as counterintuitive.
+	</p>
+
+	<p>
+		You can think of it this way: multiplying a value by $0.7071$, or approximately $\sqrt{0.5}$, is like taking $70.71\%$ 
+		of that value&mdash;for example, say,
+		$$
+		605 \cdot 0.7071 = 427.7955
+		$$
+		is $70.71\%$ of $605$, and so on&mdash;so if we multiply
+		<i>twice</i> by $0.7071$ we obtain “$70.71\%$ of $70.71\%$” 
+		and it just so happens that <span style="white-space:nowrap">“$70.71\%$</span> of $70.71\%$” is 
+		close to $50\%$.
+	</p>
+
+	<p>
+		The point is: if
+		“$X\%$ of $X\%$” equals $50\%$, 
+		then, of course, $\rt{0.03}X > 50$&mdash;that much seems logical&mdash;and, with
+		a little thought, the same phenomenon explains why
+		$\sqrt{0.5} > 0.5$.
+	</p>
+
+	<p class="nb">
+		<b>Fractions and Division.</b> 
+		An elementary fraction, or division, such as
+		$$
+		{50 \over 2}
+		$$
+		can be thought of in a few different ways:
+	</p>
+
+	<div class="column">
+		<ol style="margin-left:50px; margin-top:20px; margin-bottom:0px;">
+
+		<li>Fifty halves (i.e., $50 \times \frac{1}{2}$).</li>
+
+		<li>The size obtained when something of size fifty is
+			divided into two equal parts (answer: $25$).</li>
+
+		<li>The number of times that $2$ goes into $50$
+			(answer: $25$, because it takes twenty-five $2$'s to make up $50$).</li>
+		</ol>
+	</div>
+
+	<p class="nb">
+		But $50/2$ is a ratio of integers, which makes things particularly nice! 
+		For a ratio of decimals, such as, say,
+		$$
+		{1 \over 0.01}
+		$$
+		our possible points of view are going to be more restricted.
+		Thankfully, 
+		however, we can still characterize this fraction
+		as the answer to the question “how many times does $0.01$
+		go into $1$?” as in the third option above. And, indeed,
+		$$
+		{1 \over 0.01} \,=\,100
+		$$
+		because $0.01$ goes $100$ times into $1$. For that matter,
+		$$
+		{ 1 \over 0.001} = 1000,\qquad{1 \over 0.0001} = 10000,\quad\,\,\,\,\textrm{(etc)}
+		$$
+		by the same reasoning, which explains why dividing 
+		by smaller and smaller numbers produces larger and larger
+		results (and, by extension, why dividing by $0$ is undefined).
+	</p>
+
+	<p class="nb">
+		<b>Note.</b> In general, the ratio of two decimal numbers can be
+		turned into a ratio of integers by multiplying the ratio top
+		and bottom by a suitable power of $10$. E.g.:
+		$$
+		{1.42 \over 0.8} = {100 \cdot 1.42 \over 100 \cdot 0.8} = {142 \over 80} = {71 \over 40}.
+		$$
+		This example was chosen randomly, and, if you allow, we would
+		like to see how large $71/40$ really is (one second!):
+		$$
+		\begin{align}
+		{71 \over 40} \,&=\, {40 + 30 + 1 \over 40} \,=\, {40 \over 40} + {30 \over 40} + {1 \over 40}\\
+		\,&=\, 1 + {3 \over 4} + {1 \over 4}\!\cdot \!{1 \over 10}\up{1.5}\\
+		\,&=\, 1 + 0.75 + 0.025 = 1.775\up{1.5}
+		\end{align}
+		$$
+		...so we find, among others, that $71$ is exactly $77.5\%$ greater
+		than $40$. (Interesting, no?)
+	</p>
+
+	<p class="nb">
+		<b>Distributivity.</b>
+		As you might already know, a number that multiplies a sum can be 
+		brought “inside” the sum. For example,
+		$$
+		5(10 + 2) \,=\, 5\!\cdot\!10 \,+\, 5\!\cdot\!2
+		$$
+		(five times twelve equals fifty plus ten), or
+		$$
+		a(b + c) = ab + ac
+		$$
+		more generally. This property is known as the <i>distributivity
+		of multiplication over addition</i>, or <i>distributivity</i> for 
+		short.
+	</p>
+
+	<p>
+		(We might finally clarify that &lsquo;$\cdot$&rsquo; means “times”, 
+		i.e., the same as &lsquo;$\times$&rsquo;. Moreover, when we write
+		$$
+		5\!\cdot\!10 \,+\, 5\!\cdot\!2
+		$$
+		we really mean
+		$$
+		(5\!\cdot\!10) + (5\!\cdot\!2)
+		$$
+		as opposed to something else, such as
+		$$
+		((5\!\cdot\!10) + 5)\!\cdot\! 2,
+		$$
+	</p><p class="noi">
+		because multiplication takes precedence over addition, by
+		default.)
+	</p>
+
+	<p>
+		A little more generally, one has such identities as
+	</p>
+	<div style="position:relative;">
+		<div class="abs_middle_anchor">
+			<img src="ch1figs/svg_abCD_D.svg" style="position:absolute;width:400px;right:12.5em;top:-7.9em;"/>
+		</div>
+		$$
+		(a + b)(C + D) \,=\, aC + bC + aD + bD
+		$$
+	</div>
+	<p class="noi">
+		that come from multiplying every term of the first parenthesis
+		with every term of the second parenthesis. Indeed,
+		$$
+		(a + b)(C + D) = (a + b)C + (a + b)D
+		$$
+		by one application of distributivity, while
+		$$
+		(a + b)C = aC + bC
+		$$
+		$$
+		(a + b)D = aD + bD
+		$$
+		by distributivity again.
+	</p>
+
+	<p class="nb">
+		<b>Example 1.</b> One has
+		$$
+		\begin{align}
+		(10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
+							\,&=\, 100 \,+\, 40 \,+\, 20 \,+\, 8\\
+							\,&=\, 168
+		\end{align}
+		$$
+		so $12 \times 14 = 168$.
+	</p>
+
+	<p class="nb">
+		<b>Example 2.</b> One has
+		$$
+		\begin{align}
+		(10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
+							\,&=\, 100 \,+\, 30 \,+\, 30 \,+\, 9\\
+							\,&=\, 169
+		\end{align}
+		$$
+		so $13 \times 13 = 169$.
+	</p>
+
+	<p class="nb">
+		(The fact that $13 \times 13$ is exactly one 
+		greater than $12 \times 14$ is a bit curious indeed.)
+	</p>
+
+	<p>
+		If we start from the afore-mentioned identity
+		$$
+		(a + b)(C + D) \,=\, aC + bC + aD + bD
+		$$
+		and set $C = a$, $D = b$, we find
+		$$
+		(a + b)(a + b) \,=\, aa + ba + ab + bb
+		$$
+		or, equivalently,
+		$$
+		(a + b)^2 = a^2 + 2ab + b^2
+		$$
+	</p><p class="noi">
+		since $(a + b)(a + b) = (a + b)^2$, $aa = a^2$ and $bb = b^2$. (This
+		is the <i>binomial expansion of degree two</i>, but such terminology
+		is not very important at this stage.)
+	</p>
+
+	<p class="nb">
+		<b>Example 3.</b> 
+		By the last formula (or “binomial expansion of degree two”),
+		$$
+		\begin{align}
+		\up{1} (10 + 3)^2 \,&=\, 10\!\cdot\!10 \,+\, 2\!\cdot\!3\!\cdot\!10 \,+\, 3\!\cdot\!3 \\
+		\up{1} \,&=\, 100 + 60 + 9 \\
+		\up{1} \,&=\, 169
+		\end{align}
+		$$
+		which agrees with Example 2.
+	</p>
+
+	<p class="nb">
+		On the other hand, setting $C = a$, $D = -b$ in
+		$$
+		\,\,\,(a + b)(C + D) = aC + aD + bC + bD
+		$$
+		gives
+		$$
+		\,\,\,(a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
+		$$
+		or, less pedantically,
+		$$
+		\,\,\,(a + b)(a - b) = aa - ab + ba - bb
+		$$
+		or
+		$$
+		\,\,\,(a + b)(a - b) = a^2 - b^2
+		$$
+		since $- ab + ba = 0$, $aa = a^2$, $bb = b^2$. Note that
+		$$
+		\,\,\,a^2 - b^2
+		$$
+		is
+	</p><p class="cq">
+		a difference of squares
+	</p><p class="acq">
+		whence <i>a difference of squares can always be factored</i>. 
+		(Factored as $(a + b)(a - b)$, that is.)
+		(PS: “Factored” means “written as a product”.)
+		<!-- (PS: We say that
+		something has been “factored” when it is written
+		as a product.) -->
+	</p>
+
+	<p class="nb">
+		<b>Example 4.</b> Since
+		$$
+							19 = 100 - 81 = 10^2 - 9^2
+		$$
+		is a difference of squares, $19$ can be factored. (On the other
+		hand $19$ is a prime number, but nevermind.)
+	</p>
+
+	<p class="nb">
+		<b>Example 5</b>. The algebraic expression
+		$$
+		1 - x^2
+		$$
+		can be factored, because
+		$$
+		1 = 1^2
+		$$
+		implies that
+		$$
+		1 - x^2
+		$$
+		truly is “a difference of squares”. And, indeed,
+		$$
+		1 - x^2 = (1 - x)(1 + x)
+		$$
+		as per “$\rt{0.04}a^2 - b^2 = (a - b)(a + b)$”.
+	</p>
+
+	<p class="nb">
+		In relation to distributivity, we should also mention the
+		simple but important fact that multiplying a difference by $-1$ <i>reverses</i>
+		the difference. That is,
+		$$
+		(-1)(a - b) \,=\, b - a
+		$$
+		or, for short,
+		$$
+		-(a - b) \,=\, b - a
+		$$
+		because, indeed,
+		$$
+		\begin{align}
+		(-1)(a - b) \,&=\, (-1)(a + (-b)) \\
+		\,&=\, (-1)a + (-1)(-b) \\
+		\,&=\, -a + b
+		\end{align}
+		$$
+		by distributivity (used in the second step).
+	</p>
+
+	<p class="nb">
+		<b>Example 6.</b> We have $-(10 - 3) = 3 - 10$. 
+		(Because $-7 = -7$, as it would be, haha.)
+	</p>
+
+	<p class="nb" style="display:block">
+		<b>Epilogue.</b> Do you remember the near miss between
+		$$
+		12\cdot 14 \,=\, 168
+		$$
+		and
+		$$
+				13 \cdot 13 \,=\, 13^2 \,=\, 169
+		$$
+		...? Well if you observe, additionally, that
+		$$
+		\begin{align}
+		11\,\cdot\,13 &= 12^2 - 1\\
+
+		10\,\cdot\,12 &= 11^2 - 1\\
+
+		9\,\cdot\,11 &= 10^2 - 1
+		\end{align}
+		$$
+		(etc) you might become suspicious of a pattern! But the
+		mystery is rather thin: we have
+		$$
+		(n - 1)(n + 1) \,=\, n^2 - 1
+		$$
+		for <i>every</i> real number $n$ because of the formula
+		$$
+		(a - b)(a + b) \,=\, a^2 - b^2
+		$$
+		for a difference of squares!
+	</p>
+
+	<p class="nb">
+		<b>Vocabulary.</b> 
+		A pair of algebraic expressions of the form
+		$$
+		a + b,\, a - b
+		$$
+		is called a <i>conjugate pair</i>. For example,
+		$$
+		n + 1,\, n - 1
+		$$
+		is a conjugate pair, as is
+		$$
+		\sqrt{3} + \sqrt{2},\,\, \sqrt{3} - \sqrt{2}
+		$$
+		and so on. (Generally speaking, conjugate pairs are good 
+		things to multiply together.)
+	</p>
+
+	<div class="mock_up_bottom_buffer"></div>
+
+	<script src="js/1.js"></script>
+	<script src="js/2.js"></script>
+	<script src="js/4.js"></script>
+</body>
+</html>

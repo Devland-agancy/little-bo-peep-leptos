@@ -447,7 +447,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph>
-            "so " <Math>r#"$ 13 \space \times \space 13 = 160$"#</Math> " ."
+            "so " <Math>r#"$ 13 \space \times \space 13 = 169$"#</Math> " ."
         </Paragraph>
         <Paragraph  margin_top=15>
             "(The fact that " <Math>r#"$13 \times 13$"#</Math> " is exactly one
@@ -544,7 +544,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Span italic=true>"a difference of squares"</Span>
         </Paragraph>
         <Paragraph margin_top=15>
-        "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>"."
+        "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>" . "
 		"(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
 		" (PS: “Factored” means “written as a product”.)"
         </Paragraph>
@@ -597,7 +597,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <Paragraph margin_top=15>
             "In relation to distributivity, we should also mention the
-            simple but important fact that multiplying a difference by" <Math>r#"$-1$"#</Math> <Span italic=true>"reverses"</Span>
+            simple but important fact that multiplying a difference by" <Math>r#"$-1$"#</Math> <Span italic=true>" reverses "</Span>
             "the difference. That is,"
         </Paragraph>
         <MathBlock>
@@ -672,7 +672,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <Paragraph >
-           "for" <Span italic=true>"every"</Span> "real number " <Math>r#"$n$"#</Math> " because of the formula"
+           "for" <Span italic=true>" every "</Span> "real number " <Math>r#"$n$"#</Math> " because of the formula"
         </Paragraph>
         <MathBlock>
             r#"$$
@@ -709,7 +709,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image src="/images/exercises.png" height=130/>
+        <Image src="/images/exercises.png" height=130 mobile_height=90/>
         <Tabs>
             <TabElement scroll_to="#exo_1" label="1" />
             <TabElement scroll_to="#exo_2" label="2" />
@@ -719,7 +719,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "True or false (and, if possible, explain):"
         </Paragraph>
 
-        <Grid margin_top=15 cols=3>
+        <Grid margin_top=15 cols=3 sm_cols=2>
             <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
             <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
             <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>

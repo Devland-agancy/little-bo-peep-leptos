@@ -4,6 +4,7 @@ pub mod state;
 use leptos::{ev::{click,  resize}, html::{Img, Div}, *};
 use leptos_use::use_event_listener;
 use state::PageState;
+use wasm_bindgen::JsValue;
 use std::time::Duration;
 use leptos_router::A;
 use web_sys::{ScrollBehavior, ScrollToOptions, UiEvent, ScrollIntoViewOptions};
@@ -235,7 +236,7 @@ fn MathBlock(
     children: Children,
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 0)] margin_right: i16,
-    #[prop(default = 0)] margin_left: i16,
+    #[prop(default = 12)] margin_left: i16,
 ) -> impl IntoView {
    
     view! {cx,
@@ -243,6 +244,7 @@ fn MathBlock(
             class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup overflow-x-auto"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
+
             style=format!("margin-right: {}px", margin_right)
             style=format!("margin-left: {}px", margin_left)
 
@@ -371,20 +373,28 @@ fn Item(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
-fn Image(cx: Scope, src: &'static str, height: u32) -> impl IntoView {
+fn Image(cx: Scope, src: &'static str, height: i32, #[prop(default = -1)] mobile_height: i32) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let (screen_mobile, set_screen_mobile) = create_signal(cx, height);
 
+    create_effect(cx, move |_|{
+        if window().inner_width().unwrap().as_f64().unwrap() <= 640_f64 && mobile_height > -1 {
+            set_screen_mobile(mobile_height)
+        }
+    });
     view! {cx,
         <div
             class="px-4 my-10 relative col-start-2 scrollbar-hidden md:overflow-x-visible"
-            style= move || format!("height: {}px", height + 10)
+            style= move || format!("height: {}px", screen_mobile() + 10)
+            
             class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle )
             class=("translate-x-full", move || page_state() == PageState::ShowRight )
             class=("-translate-x-full", move || page_state() == PageState::
             ShowLeft )
+
         >
             <img
-                src=src style= move ||  format!("height: {}px", height)
+                src=src style= move ||  format!("height: {}px", screen_mobile())
                 class="max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto"
             />
         </div>
@@ -432,16 +442,23 @@ pub fn Grid(
     #[prop(default = 0)] margin_top: i16,
     #[prop(optional)] id: &'static str,
     #[prop(default = 0)] cols: i16,
-   /*  #[prop(default = Indent::None)] indent: Indent,
-    #[prop(default = Align::None)] align: Align,
-    */
+    #[prop(default = -1)] sm_cols: i16,
 
 ) -> impl IntoView {
+
+    let (_cols, set_cols) = create_signal(cx, cols);
+
+    create_effect(cx, move |_|{
+        if window().inner_width().unwrap().as_f64().unwrap() <= 640_f64 && sm_cols > -1 {
+            set_cols(sm_cols)
+        }
+    });
+
     view! {cx,
         <span
             id=id
             class="col-start-2 px-4 grid flex-wrap min-h-fit gap-4"
-            style=format!("grid-template-columns: repeat({}, 1fr)  ;margin-top: {}px", cols, margin_top)
+            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px", _cols(), margin_top)
         >
             {children(cx)}
         </span>

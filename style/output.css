@@ -715,6 +715,10 @@ video {
   width: fit-content;
 }
 
+.w-\[95\%\] {
+  width: 95%;
+}
+
 .max-w-xs {
   max-width: 20rem;
 }
@@ -1215,9 +1219,6 @@ mjx-container {
   justify-content: center;
   align-items: center;
 } */
-
-mjx-math {
-}
 
 .menu-icon-svg{
   transition: all 0.3s ease;
