@@ -126,7 +126,7 @@ pub fn Paragraph(
     view! {cx,
         <span
             id=id
-            class="col-start-2 px-4"
+            class="col-start-2 px-4 block"
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
             class=("text-center", align == Align::Center)
@@ -149,9 +149,7 @@ fn Span(
     children: Children,
 ) -> impl IntoView {
     view! {cx,
-        <span class=("font-baskerville-italic", italic)
-              class=("font-baskerville-bold", bold)
-              class=move || format!("{}", _class)
+        <span class=move || format!("{} {} {}", _class, if italic {"font-baskerville-italic"} else { "" }, if bold {"font-baskerville-bold"} else { "" }) 
         >{children(cx)}</span>
     }
 }
@@ -252,7 +250,7 @@ fn MathBlock(
         if node_ref().is_some() {
             let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
             let window_width = window().inner_width().unwrap().as_f64().unwrap();
-            if math_box_width > window_width {
+            if math_box_width + 24_f64 > window_width {
                request_animation_frame(move || set_is_wide(true) )  ;
             }
         }
@@ -262,7 +260,7 @@ fn MathBlock(
             if node_ref().is_some() {
                 let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width > window_width {
+                if math_box_width + 24_f64 > window_width {
                     set_is_wide(true);
                 }else{
                     set_is_wide(false);
@@ -538,14 +536,14 @@ fn Solution(cx: Scope, children: Children) -> impl IntoView {
         </div>
         <div
             class="col-start-2 px-4 transition-[height] duration-1000 overflow-y-clip relative"
-            class=("pointer-events-none", move || visible() == false)
-            class=("animated-height-full", move || visible() == true)
-            style=move || format!("height: {}px", content_height())
+            class=("pointer-events-none", move || !visible())
+            class=("animated-height-full", move || visible())
+            style=move || format!("height: {}px", content_height() + if visible() { 40 } else { 0 })
         >
             <div  
                 node_ref=node_ref
                 class="transition-all duration-1000"
-                class=("-translate-y-full", move || visible() == false) 
+                class=("-translate-y-full", move || !visible()) 
             >
                 {children(cx)}
             </div>

@@ -728,7 +728,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
             <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
             <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
-            <Span _class="col-span-full">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
+            <Span _class="col-span-full sm:col-span-1">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
         </Grid>
         
 
@@ -786,7 +786,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     \end{align}
                 $$"#
                 </MathBlock>
-                <ImageLeft src="/images/17.svg" translate="" absolute=true top=320 left=-358 hidden_in_mobile=true squiggle_right="-2.7rem">""
+                <ImageLeft src="/images/17.svg" translate="" absolute=true top=500 left=-358 hidden_in_mobile=true squiggle_right="-2.7rem" squiggle_top="30%">""
                 </ImageLeft>
                 <Paragraph >
                     "and"
@@ -815,13 +815,139 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         \end{align}
                     $$"#
                 </MathBlock>
-                <ImageLeft src="/images/18.svg" translate="" absolute=true top=600 left=-440 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
+                <ImageLeft src="/images/18.svg" translate="" absolute=true top=740 left=-440 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
                 </ImageLeft>
-                <Paragraph >
-                "so " <Math>r#"$  \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                \sqrt[3]{\up{0.75}\sqrt[2]{2}} \,=\, \sqrt[2]{\up{0.65}2} $"#</Math>
-            </Paragraph>
+                <Paragraph>
+                    "so " <Math>r#"$  \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \,=\, \sqrt[2]{\up{0.65}2} $"#</Math>
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    "Technically, however, a number $x$ such that"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        x^6 = 2
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "is not necessarily "<Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math>" , because
+                    "<Math>r#"$ x = -\sqrt[6]{\up{0.6}2} $"#</Math>" satisfies this equation
+                    as well!"
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    "The last step, therefore, is to note that "<Math>r#"$ \sqrt[2]{\up{0.76}\sqrt[3]{2}} $"#</Math>" and "<Math>r#"$ \sqrt[3]{\up{0.76}\sqrt[2]{2}} $"#</Math>" are both" <Span italic=true>" nonnegative "</Span>"numbers (taken as obvious),
+                    and which implies that they are the "<Span italic=true>"unique nonnegative"</Span>
+                    " solution to "<Math>r#"$ x^6 = 2 $"#</Math>
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    "d. (True) In general, "
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        {\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "for all "<Math>r#"$ x \geq 0 $"#</Math>" "<Math>r#"$ y > 0 $"#</Math>" (you each root to be defined),
+                    so"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        {\sqrt{2} \over 2} = {\sqrt{2} \over \sqrt{4}} = \sqrt{\up{0.8}2 \over 4} = \sqrt{0.5}
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "...ta-daa!"
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    <Span italic=true>"Note 1."</Span>" One can also proceed by “direct verification”:"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        \left({\sqrt{2} \over 2}\right)^{\!2} = {\sqrt{2} \over 2}\cdot{\sqrt{2} \over 2}
+                        = {\sqrt{2}\cdot\sqrt{2} \over 4} = {2 \over 4} = 0.5.
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "(This, together with the fact that "<Math>r#"${\sqrt{2} \over 2}$"#</Math>" is not negative, establishes that " <Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>".)"
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    "e. (True) Using the “"<Math>r#"${\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}$"#</Math>"” identity:"
+                  
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                      {1 \over \sqrt{2}} = {\sqrt{1} \over \sqrt{2}} = \sqrt{\up{0.8}1 \over 2} = \sqrt{0.5}.
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "Or by direct verification:"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        \left({1 \over \sqrt{2}}\right)^{\!2} = {1 \over \sqrt{2}}\cdot{1 \over \sqrt{2}}
+                        = {1 \over \sqrt{2}\cdot\sqrt{2}} = {1 \over 2} = 0.5.
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    " (And "<Math>r#"$1 \over \sqrt{2}$"#</Math>" is nonnegative.) Or by reducing to part d:"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                     {1 \over \sqrt{2}} = {\sqrt{2} \over \sqrt{2} \cdot \sqrt{2}} = {\sqrt{2} \over 2}.
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "(The point being: we already know that "<Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>" by part d.)"
+                </Paragraph>
+                <Paragraph margin_top=15>
+                    "f. (True) We have"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        2^{30} = 2^{10} \times 2^{10} \times 2^{10} = (2^{10})^3
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "and"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                    (2^{10})^3 = (1024)^3 > 1000^3.
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    <Span italic=true>"Note 2."</Span>" The first ten or so powers of "<Math>r#"$ 2 $"#</Math>" are worth knowing by heart (here's "<Span italic=true>"eleven"</Span> " powers, mind you): "
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                    r#"$$
+                        \begin{array}{c|c}
+                        \,\,\,\,n\,\,\,\, & 2^n\dn{0.3} \\ \hline
+                        0 & 1 \up{1.1}\\
+                        1 & 2 \\
+                        2 & 4 \\
+                        3 & 8 \\
+                        4 & 16 \\
+                        5 & 32 \\
+                        6 & 64 \\
+                        7 & 128 \\
+                        8 & 256 \\
+                        9 & 512 \\
+                        10 & 1024
+                        \end{array}
+                    $$"#
+                </MathBlock>
+                <Paragraph>
+                    "Among which, the fact that"
+                </Paragraph>
+                <MathBlock height=Height::Fit>
+                r#"$$
+                2^{10} \approx 10^3
+                $$"#
+            </MathBlock>
+               
+                
         </Solution>
 
         <Paragraph id="exo_2" margin_top=15>

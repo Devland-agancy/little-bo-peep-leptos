@@ -1276,6 +1276,10 @@ mjx-container {
     position: absolute;
   }
 
+  .sm\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
   .sm\:col-start-2 {
     grid-column-start: 2;
   }
