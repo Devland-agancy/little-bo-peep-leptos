@@ -248,11 +248,12 @@ fn MathBlock(
 
      create_effect(cx, move |_|{
         if node_ref().is_some() {
-            let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
+            let math_box = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0);
+            let math_box_width = math_box.unwrap().client_width() as f64;
             let window_width = window().inner_width().unwrap().as_f64().unwrap();
-            if math_box_width + 24_f64 > window_width {
-               request_animation_frame(move || set_is_wide(true) )  ;
-            }
+                if math_box_width + 24_f64 > window_width {
+                    request_animation_frame(move || set_is_wide(true) )  ;
+                }
         }
     }); 
     create_effect(cx, move |_|{
