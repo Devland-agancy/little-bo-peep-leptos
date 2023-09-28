@@ -143,6 +143,7 @@ pub fn Paragraph(
 #[component]
 fn Span(
     cx: Scope,
+    #[prop(default = "")] _class: &'static str,
     #[prop(default = false)] bold: bool,
     #[prop(default = false)] italic: bool,
     children: Children,
@@ -150,6 +151,7 @@ fn Span(
     view! {cx,
         <span class=("font-baskerville-italic", italic)
               class=("font-baskerville-bold", bold)
+              class=move || format!("{}", _class)
         >{children(cx)}</span>
     }
 }
@@ -499,7 +501,7 @@ pub fn Grid(
     view! {cx,
         <span
             id=id
-            class="col-start-2 px-4 grid flex-wrap min-h-fit gap-4"
+            class="col-start-2 px-4 grid flex-wrap min-h-fit gap-4 place-items-center"
             style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px", _cols(), margin_top)
         >
             {children(cx)}

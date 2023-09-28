@@ -603,6 +603,10 @@ video {
   z-index: 10;
 }
 
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
 .col-start-2 {
   grid-column-start: 2;
 }
@@ -844,6 +848,10 @@ video {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.place-items-center {
+  place-items: center;
 }
 
 .items-center {
