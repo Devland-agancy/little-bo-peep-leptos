@@ -587,6 +587,10 @@ video {
   top: 3.5rem;
 }
 
+.-top-1 {
+  top: -0.25rem;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -629,6 +633,10 @@ video {
   margin-right: auto;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .block {
   display: block;
 }
@@ -643,6 +651,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.hidden {
+  display: none;
 }
 
 .h-14 {
@@ -715,8 +727,8 @@ video {
   width: fit-content;
 }
 
-.w-\[95\%\] {
-  width: 95%;
+.w-10 {
+  width: 2.5rem;
 }
 
 .max-w-xs {
@@ -876,10 +888,6 @@ video {
 
 .overflow-scroll {
   overflow: scroll;
-}
-
-.overflow-x-auto {
-  overflow-x: auto;
 }
 
 .overflow-y-hidden {
