@@ -1,4 +1,11 @@
 use super::*;
+use leptos::*;
+
+use crate::componants::Paragraph::*;
+use crate::componants::Article::*;
+use crate::componants::ArticleTitle::*;
+use crate::componants::Columns::*;
+use crate::componants::Link::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {

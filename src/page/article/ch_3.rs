@@ -1,4 +1,20 @@
+use crate::componants::MathBlock::*;
+use crate::componants::Math::*;
+use crate::componants::Paragraph::*;
+use crate::componants::Image::*;
+use crate::componants::ImageLeft::*;
+use crate::componants::ImageRight::*;
+use crate::componants::Article::*;
+use crate::componants::ArticleTitle::*;
+use crate::componants::Span::*;
+use crate::componants::Solution::*;
+use crate::componants::Grid::*;
+use crate::componants::List::*;
+use crate::componants::Columns::*;
+use crate::componants::Tabs::*;
+
 use super::*;
+use leptos::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {

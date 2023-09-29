@@ -1,8 +1,10 @@
-use crate::page::*;
 use cfg_if::cfg_if;
 use http::status::StatusCode;
 use leptos::*;
 use thiserror::Error;
+use crate::componants::Paragraph::*;
+use crate::componants::Article::*;
+use crate::componants::Columns::*;
 
 #[cfg(feature = "ssr")]
 use leptos_axum::ResponseOptions;

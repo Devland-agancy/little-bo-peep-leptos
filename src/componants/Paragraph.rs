@@ -1,0 +1,42 @@
+use leptos::*;
+
+#[derive(PartialEq)]
+pub enum Indent {
+    None,
+    Line,
+    Block,
+}
+
+#[derive(PartialEq)]
+pub enum Align {
+    None,
+    Center,
+    Right,
+}
+
+#[component]
+pub fn Paragraph(
+    cx: Scope,
+    children: Children,
+    #[prop(default = Indent::None)] indent: Indent,
+    #[prop(default = Align::None)] align: Align,
+    #[prop(default = 0)] margin_top: i16,
+    #[prop(optional)] id: &'static str,
+
+) -> impl IntoView {
+    view! {cx,
+        <span
+            id=id
+            class="col-start-2 px-4 block"
+            class=("indent-10", indent == Indent::Line)
+            class=("pl-10", indent == Indent::Block)
+            class=("text-center", align == Align::Center)
+            class=("text-right", align == Align::Right)
+            class=("text-left", align == Align::None)
+            style=format!("margin-top: {}px", margin_top)
+
+        >
+            {children(cx)}
+        </span>
+    }
+}

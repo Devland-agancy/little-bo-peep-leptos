@@ -2,7 +2,8 @@ use leptos::{
     ev::{resize, scroll},
     *,
 };
-use leptos_use::{use_event_listener, use_media_query};
+use leptos_use::{use_event_listener};
+
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
     view! {cx,
