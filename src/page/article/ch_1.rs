@@ -410,7 +410,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <ImageLeft
-            translate="(0rem,1.1rem)"
+            translate="(0.2rem,1.1rem)"
             src="/images/325.svg"
             hidden_in_mobile=true
         >""</ImageLeft>

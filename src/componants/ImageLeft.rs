@@ -12,7 +12,7 @@ pub fn ImageLeft(
     #[prop(optional)] left: i32,
     #[prop(default = "")] children_translate: &'static str,
 
-    #[prop(default = "-1.9rem")] squiggle_right: &'static str,
+    #[prop(default = "-1.7rem")] squiggle_right: &'static str,
     #[prop(default = "46%")] squiggle_top: &'static str,
     
     children: Children,
