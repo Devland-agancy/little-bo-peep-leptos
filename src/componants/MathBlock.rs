@@ -15,6 +15,9 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 0)] margin_right: i16,
     #[prop(default = 12)] margin_left: i16,
+    #[prop(default = "-0.25rem 0 auto auto")] arrow_position: &'static str,
+    #[prop(default = false)] arrow_hidden: bool,
+
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
@@ -70,8 +73,9 @@ pub fn MathBlock(
                         set_right_image_x_pos(80_f64);
                     }
                 } 
-                class="block cursor-pointer absolute h-full right-0 -top-1 w-10"
-                class=("hidden", move || !is_wide())
+                class="block cursor-pointer absolute h-full w-10"
+                class=("hidden", move || !is_wide() | arrow_hidden)
+                style=move || format!("inset: {}", arrow_position)
              >
             <img src="/images/cartoon_arrow.svg" class="ml-auto"/>
         </div>

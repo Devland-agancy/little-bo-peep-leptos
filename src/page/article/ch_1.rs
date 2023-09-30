@@ -438,7 +438,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15 >
             <Span bold=true>"Example 1. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit>
+        <MathBlock height=Height::Fit arrow_position="6rem 1rem auto auto">
             r#"$$
                 \begin{align}
                 (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -453,7 +453,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             <Span bold=true>"Example 2. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit>
+        <MathBlock height=Height::Fit arrow_hidden=true>
             r#"$$
                 \begin{align}
                 (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
@@ -560,7 +560,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Span italic=true>"a difference of squares"</Span>
         </Paragraph>
         <Paragraph margin_top=15>
-        "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>" . "
+        "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>". "
 		"(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
 		" (PS: “Factored” means “written as a product”.)"
         </Paragraph>
@@ -725,7 +725,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image src="/images/exercises.png" height=130 mobile_height=90/>
+        <Image src="/images/exercises.png" height=100 mobile_height=95/>
         <Tabs>
             <TabElement scroll_to="#exo_1" label="1" />
             <TabElement scroll_to="#exo_2" label="2" />
@@ -778,7 +778,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph margin_top=15>
               "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
             </Paragraph>
-            <MathBlock height=Height::Fit>
+            <MathBlock height=Height::Fit arrow_position="11.75rem 0 auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -807,7 +807,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph >
                 "and"
             </Paragraph>
-            <MathBlock height=Height::Fit>
+            <MathBlock height=Height::Fit arrow_position="11.75rem 0 auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
