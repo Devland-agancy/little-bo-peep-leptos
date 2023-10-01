@@ -34,7 +34,7 @@ pub fn ImageLeft(
                     });
                 }
                 style=move || format!("transform: translate{}; left: {}px; top: {}px", translate, left, top)
-                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10 relative"
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_left)
                 class=("absolute", move || absolute)
             >
