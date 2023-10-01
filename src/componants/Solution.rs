@@ -28,7 +28,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
             />
         </div>
         <div
-            class="col-start-2 px-4 transition-[height] duration-1000 overflow-y-clip relative"
+            class="col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
             class=("pointer-events-none", move || !visible())
             class=("animated-height-full", move || visible())
             style=move || format!("height: {}px", content_height() + if visible() { 40 } else { 0 })
