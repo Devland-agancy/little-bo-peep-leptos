@@ -5,6 +5,7 @@ pub enum Indent {
     None,
     Line,
     Block,
+    Custom(&'static str)
 }
 
 #[derive(PartialEq)]
@@ -33,7 +34,10 @@ pub fn Paragraph(
             class=("text-center", align == Align::Center)
             class=("text-right", align == Align::Right)
             class=("text-left", align == Align::None)
-            style=format!("margin-top: {}px", margin_top)
+            style=format!("margin-top: {}px; text-indent: {}", margin_top, match indent {
+                Indent::Custom(s) => s,
+                _ => ""
+            })
 
         >
             {children(cx)}
