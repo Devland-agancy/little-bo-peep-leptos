@@ -15,7 +15,7 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 0)] margin_right: i16,
     #[prop(default = 12)] margin_left: i16,
-    #[prop(default = "-0.25rem 0 auto auto")] arrow_position: &'static str,
+    #[prop(default = "-0.25rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
 
 ) -> impl IntoView {
@@ -26,6 +26,8 @@ pub fn MathBlock(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
+    
+    let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 
      create_effect(cx, move |_|{
         if node_ref().is_some() {
@@ -34,8 +36,14 @@ pub fn MathBlock(
 
                 let math_box_width = math_box.unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width + 24_f64 > window_width {
-                    request_animation_frame(move || set_is_wide(true) )  ;
+                if math_box_width + 5_f64 > window_width {
+                    request_animation_frame(move || {
+                        set_margin_left_active(false);
+                        log!("falseeee");
+                        if math_box_width + 5_f64 - margin_left as f64 > window_width{
+                            set_is_wide(true)
+                        }
+                    });
                 }
             }
         }
@@ -45,10 +53,14 @@ pub fn MathBlock(
             if node_ref().is_some() {
                 let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width + 24_f64 > window_width {
-                    set_is_wide(true);
+                if math_box_width + 5_f64 > window_width {
+                    set_margin_left_active(false);
+                    if math_box_width + 5_f64 - margin_left as f64 > window_width{
+                        set_is_wide(true)
+                    }
                 }else{
                     set_is_wide(false);
+                    set_margin_left_active(true);
                 }
             }
         });
@@ -61,7 +73,7 @@ pub fn MathBlock(
             class=("h-fit", height == Height::Fit)
 
             style=format!("margin-right: {}px", margin_right)
-            style=format!("margin-left: {}px", margin_left)
+            style=move || format!("margin-left: {}px", if margin_left_active() {margin_left}else{0})
 
         >
             {children(cx)}
@@ -77,7 +89,7 @@ pub fn MathBlock(
                 class=("hidden", move || !is_wide() | arrow_hidden)
                 style=move || format!("inset: {}", arrow_position)
              >
-            <img src="/images/cartoon_arrow.svg" class="ml-auto"/>
+            <img src="/images/dot 2.svg" class="ml-auto"/>
         </div>
         </div>
     }

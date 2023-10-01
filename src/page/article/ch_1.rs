@@ -519,7 +519,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
-                \,\,\,(a + b)(C + D) = aC + aD + bC + bD
+                (a + b)(C + D) = aC + aD + bC + bD
             $$"#
         </MathBlock>
         <Paragraph>
@@ -527,7 +527,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
-                \,\,\,(a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
+                (a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
             $$"#
         </MathBlock>
         <Paragraph>
@@ -535,7 +535,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
-            \,\,\,(a + b)(a - b) = aa - ab + ba - bb
+            (a + b)(a - b) = aa - ab + ba - bb
             $$"#
         </MathBlock>
         <Paragraph>
