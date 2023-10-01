@@ -64,7 +64,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <ImageRight
             translate="(-2rem, 1.5rem)"
             src="/images/svg_cloud_minus_two_squared.svg"
-        />
+        >""</ImageRight>
         <Paragraph>
             "and, in particular, it is "
             <Span italic=true>"not "</Span>
@@ -989,7 +989,13 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     10^{9}\fw\te{km}
                 $$"#
             </MathBlock>
-           /*  <ImageRight src="/images/104.svg" translate="" absolute=true top=3050 right=-470 /> */
+            <ImageRight src="/images/104.svg" translate="" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" ><Math>
+                r#"$
+                    %10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = (10^{15}\cdot 10^{-6})\fw\te{km} = 10^{15 + (-6)}\fw\te{km} = 10^{9}\fw\te{km}
+                    10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
+                $"#
+            </Math>
+            </ImageRight>
            
             
         </Solution>

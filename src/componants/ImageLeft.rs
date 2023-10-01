@@ -10,7 +10,7 @@ pub fn ImageLeft(
     #[prop(default = false)] absolute: bool,
     #[prop(optional)] top: i32,
     #[prop(optional)] left: i32,
-    #[prop(default = "")] children_translate: &'static str,
+    #[prop(default = "")] children_inset: &'static str,
 
     #[prop(default = "-1.5rem")] squiggle_right: &'static str,
     #[prop(default = "46%")] squiggle_top: &'static str,
@@ -34,12 +34,12 @@ pub fn ImageLeft(
                     });
                 }
                 style=move || format!("transform: translate{}; left: {}px; top: {}px", translate, left, top)
-                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
+                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10 relative"
                 class=("pointer-events-none", show_left)
                 class=("absolute", move || absolute)
             >
                 <div
-                    style=move || format!("transform: translate{}", children_translate)
+                    style=move || format!("inset: {}", children_inset)
                 >
                     {children(cx)}
                 </div>

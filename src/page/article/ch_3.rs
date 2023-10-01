@@ -39,7 +39,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <ImageRight
                 translate="(-2rem, 1.5rem)"
                 src="/images/svg_cloud_minus_two_squared.svg"
-            />
+            >""</ImageRight>
             <ImageLeft
                 src="/images/325.svg"
                 translate="(0rem, 1.5rem)"
@@ -61,7 +61,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <ImageRight
             translate="(-2rem, 1.5rem)"
             src="/images/svg_cloud_minus_two_squared.svg"
-        />
+            >""</ImageRight>
             
             <Paragraph>
                 "is"
