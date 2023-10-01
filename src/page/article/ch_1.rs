@@ -39,7 +39,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
              (-2) \times (-2) = 4 
              $$"#
         </MathBlock>
-        <Paragraph align=Align::Center>
+        <Paragraph align=Align::Center indent=Indent::Custom("1rem")>
           and
         </Paragraph>
         <MathBlock height=Height::Fit>
@@ -130,7 +130,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "so "
             <Math>r#"$x = \frac{1}{4}$"#</Math>
-            "is not a solution of the equation, being apparently too small. Increasing "
+            " is not a solution of the equation, being apparently too small. Increasing "
             <Math>r#"$x$"#</Math>
             " to "
             <Math>r#"$x = \frac{1}{2}$"# ","</Math>
@@ -165,8 +165,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             " as "
             <Math>r#"$1/2 = 8/16$"# "."</Math>
             " And since "
-            <Math>r#"$9/16 > 0.5$"# ", "</Math>
-            <Math>r#"$\sqrt{0.5}$"#</Math>
+            <Math>r#"$9/16 > 0.5$"#</Math>
+            ", "
+            <Math>r#"$ \sqrt{0.5} $"#</Math>
             " must be a little "
             <Span italic=true>"less"</Span>
             " than "
@@ -410,7 +411,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $$"#
         </MathBlock>
         <ImageLeft
-            translate="(0.2rem,1.1rem)"
+            translate="(0.4rem,1.1rem)"
             src="/images/325.svg"
             hidden_in_mobile=true
         >""</ImageLeft>
@@ -725,7 +726,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image src="/images/exercises.png" height=100 mobile_height=95/>
+        <Image src="/images/exercises.png" height=107 mobile_height=97/>
         <Tabs>
             <TabElement scroll_to="#exo_1" label="1" />
             <TabElement scroll_to="#exo_2" label="2" />
