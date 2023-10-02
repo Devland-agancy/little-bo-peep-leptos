@@ -1,5 +1,7 @@
 use leptos::{html::{Img} ,*};
+use web_sys::HtmlDivElement;
 use crate::page::state::PageState;
+use wasm_bindgen::JsCast;
 
 #[component]
 pub fn ImageRight(
@@ -9,6 +11,8 @@ pub fn ImageRight(
   #[prop(default = false)] absolute: bool,
   #[prop(optional)] top: i32,
   #[prop(optional)] right: i32,
+
+  #[prop(default = "")] attached_to: &'static str,
 
   #[prop(default = "")] children_inset: &'static str,
   children: Children
@@ -22,7 +26,15 @@ pub fn ImageRight(
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
     let image_ref = create_node_ref::<Img>(cx);
 
-   /*  let styleStr = move || format!("transform: translate{}; left: {}px; right: {}px; top: {}px", translate, left , right , top ) */
+   let (top_pos, set_top_pos) = create_signal(cx, top);
+   create_effect(cx, move |_|{
+        if attached_to != "" {
+            let el = document().get_element_by_id(attached_to);
+            if el.is_some() {
+                set_top_pos(el.unwrap().dyn_into::<HtmlDivElement>().unwrap().offset_top())
+            }
+        }
+   });
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button
@@ -34,7 +46,7 @@ pub fn ImageRight(
                     });
                     set_right_image_x_pos.update(|val| *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left() - 50_f64))
                 }
-                style=move || format!("transform: translate{}; right: {}px; top: {}px", translate, right, top )
+                style=move || format!("transform: translate{}; right: {}px; top: {}px", translate, right, top_pos() )
                 class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
                 class=("pointer-events-none", show_right)
                 class=("absolute", move || absolute)

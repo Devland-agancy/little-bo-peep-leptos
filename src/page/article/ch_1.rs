@@ -986,12 +986,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph>
                 "this is"
             </Paragraph>
-            <MathBlock height=Height::Fit>
+            <MathBlock id="104" height=Height::Fit>
                 r#"$$
                     10^{9}\fw\te{km}
                 $$"#
             </MathBlock>
-            <ImageRight src="/images/104.svg" translate="" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" ><Math>
+            <ImageRight src="/images/104.svg" translate="(0, -44%)" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" attached_to="104" ><Math>
                 r#"$
                     %10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = (10^{15}\cdot 10^{-6})\fw\te{km} = 10^{15 + (-6)}\fw\te{km} = 10^{9}\fw\te{km}
                     10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots

@@ -18,7 +18,6 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
     create_effect(cx, move |_|{
         let _ = use_event_listener(cx, window(), resize, move |_|{
-            log!("heig: {}", node_ref().unwrap().offset_height());
             if node_ref().is_some() {
                 if visible() {
                     set_content_height(node_ref().unwrap().offset_height())

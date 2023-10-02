@@ -13,6 +13,7 @@ pub enum Height {
 pub fn MathBlock(
     cx: Scope,
     children: Children,
+    #[prop(default = "")] id: &'static str,
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 12)] margin_right: i16,
     #[prop(default = 12)] margin_left: i16,
@@ -77,6 +78,7 @@ pub fn MathBlock(
     view! {cx,
         <div
             node_ref=node_ref
+            id=id
             class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative"
             class=("h-20", height == Height::Small)
             class=("h-fit", height == Height::Fit)
