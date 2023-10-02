@@ -2,6 +2,7 @@ use leptos::{html::{ Div}, ev::{resize}, *};
 use leptos_use::use_event_listener;
 use crate::page::state::PageState;
 use web_sys::{ UiEvent};
+use rand::Rng;
 
 #[derive(PartialEq)]
 pub enum Height {
@@ -28,6 +29,10 @@ pub fn MathBlock(
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
     
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
+
+    let dots = vec!["dot", "dot 1", "dot 2", "dot 3", "dot 4", "dot 5"];
+    let mut rng = rand::thread_rng();
+    let randomDot = dots[rng.gen_range(0..=5)];
 
      create_effect(cx, move |_|{
         if node_ref().is_some() {
@@ -93,7 +98,7 @@ pub fn MathBlock(
                 class=("hidden", move || !is_wide() | arrow_hidden)
                 style=move || format!("inset: {}", arrow_position)
              >
-            <img src="/images/dot 2.svg" class="ml-auto"/>
+            <img src=format!("/images/{}.svg", randomDot) class="ml-auto"/>
         </div>
         </div>
     }
