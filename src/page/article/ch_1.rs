@@ -202,7 +202,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <MathBlock>
             r#"$$
+            \begin{align}
             605 \cdot 0.7071 = 427.7955
+            \end{align}
             $$"#
         </MathBlock>
         <Paragraph>
