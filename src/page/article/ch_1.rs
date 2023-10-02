@@ -39,7 +39,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
              (-2) \times (-2) = 4 
              $$"#
         </MathBlock>
-        <Paragraph align=Align::Center indent=Indent::Custom("1rem")>
+        <Paragraph align=Align::Center>
           and
         </Paragraph>
         <MathBlock height=Height::Fit>
@@ -307,7 +307,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Math>r#"$1$"# "."</Math>
             " For that matter, "
         </Paragraph>
-        <MathBlock margin_left=61 height=Height::Fit>
+        <MathBlock margin_left=61 margin_right=0 height=Height::Fit>
             r#"$$
             \begin{align*}
             { 1 \over 0.001} &= 1000\textrm{,} \hspace{20px}\up{2}  \\

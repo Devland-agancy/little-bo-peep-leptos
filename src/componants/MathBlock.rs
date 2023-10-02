@@ -13,7 +13,7 @@ pub fn MathBlock(
     cx: Scope,
     children: Children,
     #[prop(default = Height::Small)] height: Height,
-    #[prop(default = 0)] margin_right: i16,
+    #[prop(default = 12)] margin_right: i16,
     #[prop(default = 12)] margin_left: i16,
     #[prop(default = "-0.25rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
@@ -58,7 +58,11 @@ pub fn MathBlock(
                     if math_box_width + 5_f64 - margin_left as f64 > window_width{
                         set_is_wide(true)
                     }
-                }else{
+                }/* else if math_box_width >= window_width {
+                    set_margin_left_active(true);
+                    set_is_wide(false);
+                } */
+                else{
                     set_is_wide(false);
                     set_margin_left_active(true);
                 }
@@ -73,7 +77,7 @@ pub fn MathBlock(
             class=("h-fit", height == Height::Fit)
 
             style=format!("margin-right: {}px", margin_right)
-            style=move || format!("margin-left: {}px", if margin_left_active() {margin_left}else{0})
+            style=move || format!("margin-left: {}px; margin-right: {}px", if margin_left_active() {margin_left}else{0}, if margin_left_active() {margin_right}else{0})
 
         >
             {children(cx)}
