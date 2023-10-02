@@ -1,4 +1,5 @@
-use leptos::{html::{Div}, *};
+use leptos::{html::{Div}, *, ev::resize};
+use leptos_use::use_event_listener;
 
 #[component]
 pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
@@ -13,6 +14,19 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
                 set_content_height(0)
             }
         }
+    });
+
+    create_effect(cx, move |_|{
+        let _ = use_event_listener(cx, window(), resize, move |_|{
+            log!("heig: {}", node_ref().unwrap().offset_height());
+            if node_ref().is_some() {
+                if visible() {
+                    set_content_height(node_ref().unwrap().offset_height())
+                }else{
+                    set_content_height(0)
+                }
+            }
+        });
     });
 
     view! {cx,
