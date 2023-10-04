@@ -725,18 +725,31 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 \sqrt{3} + \sqrt{2},\,\, \sqrt{3} - \sqrt{2}
             $$"#
         </MathBlock>
-        <Paragraph margin_top=15>
+        <Paragraph>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
         <Image src="/images/exercises.png" height=107 mobile_height=97/>
-        <Tabs>
-            <TabElement scroll_to="#exo_1" label="1" />
-            <TabElement scroll_to="#exo_2" label="2" />
+        <Tabs 
+         /*  tab_elements=||{
+            vec![
+                view! {cx, <TabElement scroll_to="#exo_1" label="1" /> },
+                view! {cx, <TabElement scroll_to="#exo_2" label="2" /> }
+            ]
+        } */>
+            <TabElement scroll_to="#exo_1" label="1" >
+                <Paragraph id="exo_1" margin_top=15>
+                    <Span bold=true>"Exercise 1."</Span>
+                    "True or false (and, if possible, explain):"
+                </Paragraph>
+            </TabElement>
+            <TabElement scroll_to="#exo_2" label="2" >
+                <Paragraph id="exo_2" margin_top=15>
+                    <Span bold=true>"Exercise 2."</Span>
+                    "True or false (and, if possible, explain):"
+                </Paragraph>
+            </TabElement> 
         </Tabs>
-        <Paragraph id="exo_1" margin_top=15>
-            <Span bold=true>"Exercise 1."</Span>
-            "True or false (and, if possible, explain):"
-        </Paragraph>
+        
 
         <Grid margin_top=15 cols=3 sm_cols=2>
             <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
