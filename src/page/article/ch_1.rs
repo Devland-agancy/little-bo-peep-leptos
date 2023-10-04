@@ -765,7 +765,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         
 
         <Solution>
-            <Paragraph margin_top=15>
+            <Paragraph>
                 "Part by part:"
             </Paragraph>
             <Paragraph margin_top=15>

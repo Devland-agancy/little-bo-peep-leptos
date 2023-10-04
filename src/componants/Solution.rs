@@ -30,7 +30,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
     view! {cx,
         <div
-            class="px-4 my-10 relative col-start-2"
+            class="px-4 my-9 relative col-start-2"
         >
             <img 
                 class="w-2/3 mx-auto cursor-pointer" 
