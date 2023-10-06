@@ -46,7 +46,8 @@ pub fn MathBlock(
                         set_margin_left_active(false);
                         log!("falseeee");
                         if math_box_width - 2_f64  > window_width{
-                            set_is_wide(true)
+                            set_is_wide(true);
+                            set_margin_left_active(true);
                         }
                     });
                 }
@@ -61,7 +62,8 @@ pub fn MathBlock(
                 if math_box_width + margin_left as f64 - 2_f64 > window_width {
                     set_margin_left_active(false);
                     if math_box_width - 2_f64  > window_width{
-                        set_is_wide(true)
+                        set_is_wide(true);
+                        set_margin_left_active(true);
                     }
                 }/* else if math_box_width >= window_width {
                     set_margin_left_active(true);
