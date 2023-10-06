@@ -1,4 +1,4 @@
-FROM rustlang/rust:nightly-bullseye as builder
+FROM rust:1.73-bullseye as builder
 
 RUN cargo install --locked cargo-leptos
 RUN rustup component add rust-src
@@ -9,7 +9,7 @@ COPY . .
 ENV LEPTOS_BIN_TARGET_TRIPLE="x86_64-unknown-linux-gnu"
 RUN cargo leptos --manifest-path=./Cargo.toml build --release -vv
 
-FROM rustlang/rust:nightly-bullseye as runner
+FROM rust:1.73-bullseye as runner
 COPY --from=builder /app/target/server/x86_64-unknown-linux-gnu/release/little-bo-peep /app/
 COPY --from=builder /app/target/site /app/site
 COPY --from=builder /app/Cargo.toml /app/
