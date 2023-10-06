@@ -850,9 +850,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <ImageLeft src="/images/18.svg" translate="" absolute=true top=740 left=-440 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
             </ImageLeft>
             <Paragraph>
-                "so " <Math>r#"$  \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                \sqrt[3]{\up{0.75}\sqrt[2]{2}} \,=\, \sqrt[2]{\up{0.65}2} $"#</Math>
+                "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
+                (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2 $"# "."</Math>
             </Paragraph>
             <Paragraph margin_top=15 indent=Indent::Line>
                 "Technically, however, a number $x$ such that"
@@ -870,7 +869,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph margin_top=15 indent=Indent::Line>
                 "The last step, therefore, is to note that "<Math>r#"$ \sqrt[2]{\up{0.76}\sqrt[3]{2}} $"#</Math>" and "<Math>r#"$ \sqrt[3]{\up{0.76}\sqrt[2]{2}} $"#</Math>" are both" <Span italic=true>" nonnegative "</Span>"numbers (taken as obvious),
                 and which implies that they are the "<Span italic=true>"unique nonnegative"</Span>
-                " solution to "<Math>r#"$ x^6 = 2 $"#</Math>
+                " solution to "<Math>r#"$ x^6 = 2 $"#</Math> "."
             </Paragraph>
             <Paragraph margin_top=15>
                 "d. (True) In general, "
@@ -881,7 +880,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
             </MathBlock>
             <Paragraph>
-                "for all "<Math>r#"$ x \geq 0 $"#</Math>" "<Math>r#"$ y > 0 $"#</Math>" (you each root to be defined),
+                "for all "<Math>r#"$ x \geq 0 $"#</Math>" ", " "<Math>r#"$ y > 0 $"#</Math>" (you need each root to be defined),
                 so"
             </Paragraph>
             <MathBlock height=Height::Fit>
