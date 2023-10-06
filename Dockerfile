@@ -1,13 +1,18 @@
 FROM rustlang/rust:nightly-bullseye as builder
 
-RUN cargo install --locked cargo-leptos
-RUN rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz
+RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
+RUN cp cargo-binstall /usr/local/cargo/bin
+
+# Install cargo-leptos
+RUN cargo binstall cargo-leptos -y
+
 RUN rustup target add wasm32-unknown-unknown
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 ENV LEPTOS_BIN_TARGET_TRIPLE="x86_64-unknown-linux-gnu"
-RUN cargo leptos --manifest-path=./Cargo.toml build --release -vv
+RUN cargo leptos build --release -vv
 
 FROM rustlang/rust:nightly-bullseye as runner
 COPY --from=builder /app/target/server/x86_64-unknown-linux-gnu/release/little-bo-peep /app/
