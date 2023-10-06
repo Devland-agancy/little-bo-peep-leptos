@@ -1,7 +1,6 @@
 use leptos::{html::{ Div}, ev::{resize}, *};
 use leptos_use::use_event_listener;
 use crate::page::state::PageState;
-use web_sys::{ UiEvent};
 use rand::Rng;
 
 #[derive(PartialEq)]
@@ -42,11 +41,11 @@ pub fn MathBlock(
 
                 let math_box_width = math_box.unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width + 5_f64 > window_width {
+                if math_box_width + margin_left as f64 - 2_f64 > window_width {
                     request_animation_frame(move || {
                         set_margin_left_active(false);
                         log!("falseeee");
-                        if math_box_width + 5_f64 - margin_left as f64 > window_width{
+                        if math_box_width - 2_f64  > window_width{
                             set_is_wide(true)
                         }
                     });
@@ -55,13 +54,13 @@ pub fn MathBlock(
         }
     }); 
     create_effect(cx, move |_|{
-        let cleanup = use_event_listener(cx, window(), resize, move |evt: UiEvent| {
+        let _ = use_event_listener(cx, window(), resize, move |_| {
             if node_ref().is_some() {
                 let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width + 5_f64 > window_width {
+                if math_box_width + margin_left as f64 - 2_f64 > window_width {
                     set_margin_left_active(false);
-                    if math_box_width + 5_f64 - margin_left as f64 > window_width{
+                    if math_box_width - 2_f64  > window_width{
                         set_is_wide(true)
                     }
                 }/* else if math_box_width >= window_width {
@@ -100,7 +99,7 @@ pub fn MathBlock(
                 class=("hidden", move || !is_wide() | arrow_hidden)
                 style=move || format!("inset: {}", arrow_position)
              >
-            <img src=format!("/images/{}.svg", randomDot) class="ml-auto"/>
+            <img src="/images/cream.svg" class="ml-auto h-3"/>
         </div>
         </div>
     }

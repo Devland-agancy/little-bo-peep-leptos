@@ -696,6 +696,10 @@ video {
   height: fit-content;
 }
 
+.h-3 {
+  height: 0.75rem;
+}
+
 .min-h-\[calc\(100vh_-_55px\)\] {
   min-height: calc(100vh - 55px);
 }

@@ -794,7 +794,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph margin_top=15>
               "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
             </Paragraph>
-            <MathBlock height=Height::Fit arrow_position="11.75rem 0 auto auto">
+            <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -823,7 +823,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             <Paragraph >
                 "and"
             </Paragraph>
-            <MathBlock height=Height::Fit arrow_position="11.75rem 0 auto auto">
+            <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
