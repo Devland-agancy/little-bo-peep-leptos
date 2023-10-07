@@ -37,8 +37,10 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>,children: ChildrenFn) -> impl I
             key=|label| label.0
             view=move |cx, label| {
                 view! {cx,
-                     <div class="col-start-2 transition-[height] duration-1000 overflow-y-clip      relative"
-                        class=("hidden", move || selected_tab() != label.0)> {label.1} 
+                     <div class="col-start-2 relative transition-opacity duration-500"
+                        class=("opacity-0", move || selected_tab() != label.0)
+                        class=("h-0", move || selected_tab() != label.0)
+                        class=("transition-none", move || selected_tab() != label.0)> {label.1} 
                      </div> 
                     }
             }
