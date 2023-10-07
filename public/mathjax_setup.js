@@ -75,3 +75,19 @@ window.MathJax = {
     },
   },
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reloaders = document.querySelectorAll(".math_reloader");
+  console.log(reloaders);
+  reloaders.forEach((rl) =>
+    rl.addEventListener("click", () => {
+      setTimeout(() => {
+        MathJax.typeset();
+        document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
+          elem.classList.remove("hidden-on-startup");
+          elem.classList.add("animate-appear");
+        });
+      }, 0);
+    })
+  );
+});

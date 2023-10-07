@@ -25,14 +25,10 @@ pub fn MathBlock(
     let set_page_state =
     use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let show_right = move || page_state() == PageState::ShowRight;
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
     
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 
-    let dots = vec!["dot", "dot 1", "dot 2", "dot 3", "dot 4", "dot 5"];
-    let mut rng = rand::thread_rng();
-    let randomDot = dots[rng.gen_range(0..=5)];
 
      create_effect(cx, move |_|{
         if node_ref().is_some() {

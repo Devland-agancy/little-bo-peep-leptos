@@ -32,6 +32,8 @@ module.exports = {
       },
       animation: {
         appear: "appear 0.3s ease 0s 1 normal forwards",
+        "appear-slow": "appear 1s ease 0s 1 normal forwards",
+
         /*  height_increase: "height_increase 1s ease 0.2s 1 normal forwards" */
       },
       transitionProperty: {

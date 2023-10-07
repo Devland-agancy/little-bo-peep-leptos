@@ -111,7 +111,6 @@ pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 #[component]
 pub fn ColumnButton(cx: Scope) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
 
     let show_right = move || page_state() == PageState::ShowRight;
     let show_left = move || page_state() == PageState::ShowLeft;

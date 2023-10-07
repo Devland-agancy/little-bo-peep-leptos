@@ -23,12 +23,14 @@ pub fn Paragraph(
     #[prop(default = Align::None)] align: Align,
     #[prop(default = 0)] margin_top: i16,
     #[prop(optional)] id: &'static str,
+    #[prop(optional)] classes: &'static str,
+
 
 ) -> impl IntoView {
     view! {cx,
         <span
             id=id
-            class="col-start-2 px-4 block"
+            class=format!("col-start-2 px-4 block {}", classes)
             class=("indent-10", indent == Indent::Line)
             class=("pl-10", indent == Indent::Block)
             class=("text-center", align == Align::Center)

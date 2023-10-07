@@ -13,7 +13,6 @@ use crate::componants::List::*;
 use crate::componants::Columns::*;
 use crate::componants::Tabs::*;
 
-use super::*;
 use leptos::*;
 
 #[component]
@@ -729,337 +728,324 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
         <Image src="/images/exercises.png" height=107 mobile_height=97/>
-        <Tabs 
-         /*  tab_elements=||{
-            vec![
-                view! {cx, <TabElement scroll_to="#exo_1" label="1" /> },
-                view! {cx, <TabElement scroll_to="#exo_2" label="2" /> }
-            ]
-        } */>
-            <TabElement scroll_to="#exo_1" label="1" >
-                <Paragraph id="exo_1" margin_top=15>
+        <Tabs labels=vec!["1", "2"]>
+             <TabElement > 
+                <Paragraph classes="animate-appear-slow" margin_top=15>
                     <Span bold=true>"Exercise 1."</Span>
                     "True or false (and, if possible, explain):"
                 </Paragraph>
-            </TabElement>
-            <TabElement scroll_to="#exo_2" label="2" >
-                <Paragraph id="exo_2" margin_top=15>
+                <Grid classes="animate-appear-slow" margin_top=15 cols=3 sm_cols=2>
+                    <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
+                    <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
+                    <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
+                    <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
+                    <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
+                    <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
+                    <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
+                    <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
+                    <Span _class="col-span-full sm:col-span-1">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
+                </Grid>
+                
+        
+                <Solution>
+                    <Paragraph>
+                        "Part by part:"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "a. (True) We have"
+                    </Paragraph>
+                    <MathBlock>
+                        r#"$$
+                            0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
+                    </Paragraph>
+        
+                    <Paragraph margin_top=15>
+                        "b. (True) We have"
+                    </Paragraph>
+                    <MathBlock>
+                        r#"$$
+                        0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                    "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
+                        r#"$$
+                            \begin{align}
+                            &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
+                            =&\,\, \up{1.3}
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
+                            =&\,\, \up{1.3}
+                            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
+                            =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
+                            (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
+                            =& \,\, \up{1.4} 2
+                            \end{align}
+                        $$"#
+                    </MathBlock>
+                    <ImageLeft src="/images/17.svg" translate="" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-2.7rem" squiggle_top="30%">""
+                    </ImageLeft>
+                    <Paragraph >
+                        "and"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
+                        r#"$$
+                            \begin{align}
+                            &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
+                            =&\,\, \up{1.3}
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
+                            =& \,\, \up{1.3}
+                            (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
+                            (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
+                            =&\,\, \up{1.3}
+                            \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
+                            =&\,\, \up{1.4} 2
+                            \end{align}
+                        $$"#
+                    </MathBlock>
+                    <ImageLeft src="/images/18.svg" translate="" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
+                    </ImageLeft>
+                    <Paragraph>
+                        "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
+                        (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2 $"# "."</Math>
+                    </Paragraph>
+                    <Paragraph margin_top=15 indent=Indent::Line>
+                        "Technically, however, a number $x$ such that"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            x^6 = 2
+                        $$"#
+                    </MathBlock>
+                    <Paragraph >
+                        "is not necessarily "<Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math>" , because
+                        "<Math>r#"$ x = -\sqrt[6]{\up{0.6}2} $"#</Math>" satisfies this equation
+                        as well!"
+                    </Paragraph>
+                    <Paragraph margin_top=15 indent=Indent::Line>
+                        "The last step, therefore, is to note that "<Math>r#"$ \sqrt[2]{\up{0.76}\sqrt[3]{2}} $"#</Math>" and "<Math>r#"$ \sqrt[3]{\up{0.76}\sqrt[2]{2}} $"#</Math>" are both" <Span italic=true>" nonnegative "</Span>"numbers (taken as obvious),
+                        and which implies that they are the "<Span italic=true>"unique nonnegative"</Span>
+                        " solution to "<Math>r#"$ x^6 = 2 $"#</Math> "."
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "d. (True) In general, "
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            {\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "for all "<Math>r#"$ x \geq 0 $"#</Math>" ", " "<Math>r#"$ y > 0 $"#</Math>" (you need each root to be defined),
+                        so"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            {\sqrt{2} \over 2} = {\sqrt{2} \over \sqrt{4}} = \sqrt{\up{0.8}2 \over 4} = \sqrt{0.5}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "...ta-daa!"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        <Span italic=true>"Note 1."</Span>" One can also proceed by “direct verification”:"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            \left({\sqrt{2} \over 2}\right)^{\!2} = {\sqrt{2} \over 2}\cdot{\sqrt{2} \over 2}
+                            = {\sqrt{2}\cdot\sqrt{2} \over 4} = {2 \over 4} = 0.5.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "(This, together with the fact that "<Math>r#"${\sqrt{2} \over 2}$"#</Math>" is not negative, establishes that " <Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>".)"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "e. (True) Using the “"<Math>r#"${\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}$"#</Math>"” identity:"
+                        
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            {1 \over \sqrt{2}} = {\sqrt{1} \over \sqrt{2}} = \sqrt{\up{0.8}1 \over 2} = \sqrt{0.5}.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "Or by direct verification:"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            \left({1 \over \sqrt{2}}\right)^{\!2} = {1 \over \sqrt{2}}\cdot{1 \over \sqrt{2}}
+                            = {1 \over \sqrt{2}\cdot\sqrt{2}} = {1 \over 2} = 0.5.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        " (And "<Math>r#"$1 \over \sqrt{2}$"#</Math>" is nonnegative.) Or by reducing to part d:"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            {1 \over \sqrt{2}} = {\sqrt{2} \over \sqrt{2} \cdot \sqrt{2}} = {\sqrt{2} \over 2}.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "(The point being: we already know that "<Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>" by part d.)"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "f. (True) We have"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            2^{30} = 2^{10} \times 2^{10} \times 2^{10} = (2^{10})^3
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        (2^{10})^3 = (1024)^3 > 1000^3.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        <Span italic=true>"Note 2."</Span>" The first ten or so powers of "<Math>r#"$ 2 $"#</Math>" are worth knowing by heart (here's "<Span italic=true>"eleven"</Span> " powers, mind you): "
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            \begin{array}{c|c}
+                            \,\,\,\,n\,\,\,\, & 2^n\dn{0.3} \\ \hline
+                            0 & 1 \up{1.1}\\
+                            1 & 2 \\
+                            2 & 4 \\
+                            3 & 8 \\
+                            4 & 16 \\
+                            5 & 32 \\
+                            6 & 64 \\
+                            7 & 128 \\
+                            8 & 256 \\
+                            9 & 512 \\
+                            10 & 1024
+                            \end{array}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "Among which, the fact that"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        2^{10} \approx 10^3
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "can be particularly useful to know!
+                        For example, if a 1-millimeter-thick napkin is folded 50 times over, doubling
+                        the width each time, one obtains something of thickness"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        2^{50}\fw\te{mm} = (2^{10})^5\fw\te{mm} \approx (10^3)^5\fw\te{mm} = 10^{15}\fw\te{mm}.
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "As"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        1\fw\te{mm} = 10^{-6}\fw\te{km}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "this is"
+                    </Paragraph>
+                    <MathBlock id="104" height=Height::Fit>
+                        r#"$$
+                            10^{9}\fw\te{km}
+                        $$"#
+                    </MathBlock>
+                    <ImageRight src="/images/104.svg" translate="(0, -44%)" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" attached_to="104" ><Math>
+                        r#"$
+                            %10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = (10^{15}\cdot 10^{-6})\fw\te{km} = 10^{15 + (-6)}\fw\te{km} = 10^{9}\fw\te{km}
+                            10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
+                        $"#
+                    </Math>
+                    </ImageRight>
+                
+                    
+                </Solution>
+             </TabElement> 
+             <TabElement > 
+                <Paragraph classes="animate-appear-slow" margin_top=15>
                     <Span bold=true>"Exercise 2."</Span>
                     "True or false (and, if possible, explain):"
                 </Paragraph>
-            </TabElement> 
+                <Grid classes="animate-appear-slow" margin_top=15 cols=3>
+                    <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
+                    <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
+                    <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
+                    <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
+                    <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
+                    <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
+                    <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
+                    <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
+                    <Span>"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
+                </Grid>
+                
+
+                <Solution>
+                    <Paragraph margin_top=15>
+                        "Part by part:"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "a. (True) We have"
+                    </Paragraph>
+                    <MathBlock>
+                        r#"$$
+                            0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
+                    </Paragraph>
+
+                    <Paragraph margin_top=15>
+                        "b. (True) We have"
+                    </Paragraph>
+                    <MathBlock>
+                        r#"$$
+                        0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+                    </Paragraph>
+                </Solution>
+             </TabElement>  
         </Tabs>
         
-
-        <Grid margin_top=15 cols=3 sm_cols=2>
-            <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
-            <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
-            <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
-            <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
-            <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
-            <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
-            <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
-            <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
-            <Span _class="col-span-full sm:col-span-1">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
-        </Grid>
-        
-
-        <Solution>
-            <Paragraph>
-                "Part by part:"
-            </Paragraph>
-            <Paragraph margin_top=15>
-                "a. (True) We have"
-            </Paragraph>
-            <MathBlock>
-                r#"$$
-                    0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
-            </Paragraph>
-
-            <Paragraph margin_top=15>
-                "b. (True) We have"
-            </Paragraph>
-            <MathBlock>
-                r#"$$
-                  0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
-            </Paragraph>
-            <Paragraph margin_top=15>
-              "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
-            </Paragraph>
-            <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
-                r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
-                    =&\,\, \up{1.3}
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
-                    =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
-                    (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
-                    =& \,\, \up{1.4} 2
-                    \end{align}
-                $$"#
-            </MathBlock>
-            <ImageLeft src="/images/17.svg" translate="" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-2.7rem" squiggle_top="30%">""
-            </ImageLeft>
-            <Paragraph >
-                "and"
-            </Paragraph>
-            <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
-                r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
-                    =& \,\, \up{1.3}
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
-                    =&\,\, \up{1.4} 2
-                    \end{align}
-                $$"#
-            </MathBlock>
-            <ImageLeft src="/images/18.svg" translate="" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
-            </ImageLeft>
-            <Paragraph>
-                "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
-                (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2 $"# "."</Math>
-            </Paragraph>
-            <Paragraph margin_top=15 indent=Indent::Line>
-                "Technically, however, a number $x$ such that"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    x^6 = 2
-                $$"#
-            </MathBlock>
-            <Paragraph >
-                "is not necessarily "<Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math>" , because
-                "<Math>r#"$ x = -\sqrt[6]{\up{0.6}2} $"#</Math>" satisfies this equation
-                as well!"
-            </Paragraph>
-            <Paragraph margin_top=15 indent=Indent::Line>
-                "The last step, therefore, is to note that "<Math>r#"$ \sqrt[2]{\up{0.76}\sqrt[3]{2}} $"#</Math>" and "<Math>r#"$ \sqrt[3]{\up{0.76}\sqrt[2]{2}} $"#</Math>" are both" <Span italic=true>" nonnegative "</Span>"numbers (taken as obvious),
-                and which implies that they are the "<Span italic=true>"unique nonnegative"</Span>
-                " solution to "<Math>r#"$ x^6 = 2 $"#</Math> "."
-            </Paragraph>
-            <Paragraph margin_top=15>
-                "d. (True) In general, "
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    {\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "for all "<Math>r#"$ x \geq 0 $"#</Math>" ", " "<Math>r#"$ y > 0 $"#</Math>" (you need each root to be defined),
-                so"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    {\sqrt{2} \over 2} = {\sqrt{2} \over \sqrt{4}} = \sqrt{\up{0.8}2 \over 4} = \sqrt{0.5}
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "...ta-daa!"
-            </Paragraph>
-            <Paragraph margin_top=15>
-                <Span italic=true>"Note 1."</Span>" One can also proceed by “direct verification”:"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    \left({\sqrt{2} \over 2}\right)^{\!2} = {\sqrt{2} \over 2}\cdot{\sqrt{2} \over 2}
-                    = {\sqrt{2}\cdot\sqrt{2} \over 4} = {2 \over 4} = 0.5.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "(This, together with the fact that "<Math>r#"${\sqrt{2} \over 2}$"#</Math>" is not negative, establishes that " <Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>".)"
-            </Paragraph>
-            <Paragraph margin_top=15>
-                "e. (True) Using the “"<Math>r#"${\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}$"#</Math>"” identity:"
-                
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    {1 \over \sqrt{2}} = {\sqrt{1} \over \sqrt{2}} = \sqrt{\up{0.8}1 \over 2} = \sqrt{0.5}.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "Or by direct verification:"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    \left({1 \over \sqrt{2}}\right)^{\!2} = {1 \over \sqrt{2}}\cdot{1 \over \sqrt{2}}
-                    = {1 \over \sqrt{2}\cdot\sqrt{2}} = {1 \over 2} = 0.5.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                " (And "<Math>r#"$1 \over \sqrt{2}$"#</Math>" is nonnegative.) Or by reducing to part d:"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    {1 \over \sqrt{2}} = {\sqrt{2} \over \sqrt{2} \cdot \sqrt{2}} = {\sqrt{2} \over 2}.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "(The point being: we already know that "<Math>r#"${\sqrt{2} \over 2} = \sqrt{0.5}$"#</Math>" by part d.)"
-            </Paragraph>
-            <Paragraph margin_top=15>
-                "f. (True) We have"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    2^{30} = 2^{10} \times 2^{10} \times 2^{10} = (2^{10})^3
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "and"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                (2^{10})^3 = (1024)^3 > 1000^3.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                <Span italic=true>"Note 2."</Span>" The first ten or so powers of "<Math>r#"$ 2 $"#</Math>" are worth knowing by heart (here's "<Span italic=true>"eleven"</Span> " powers, mind you): "
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                    \begin{array}{c|c}
-                    \,\,\,\,n\,\,\,\, & 2^n\dn{0.3} \\ \hline
-                    0 & 1 \up{1.1}\\
-                    1 & 2 \\
-                    2 & 4 \\
-                    3 & 8 \\
-                    4 & 16 \\
-                    5 & 32 \\
-                    6 & 64 \\
-                    7 & 128 \\
-                    8 & 256 \\
-                    9 & 512 \\
-                    10 & 1024
-                    \end{array}
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "Among which, the fact that"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                2^{10} \approx 10^3
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "can be particularly useful to know!
-                For example, if a 1-millimeter-thick napkin is folded 50 times over, doubling
-                the width each time, one obtains something of thickness"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                2^{50}\fw\te{mm} = (2^{10})^5\fw\te{mm} \approx (10^3)^5\fw\te{mm} = 10^{15}\fw\te{mm}.
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "As"
-            </Paragraph>
-            <MathBlock height=Height::Fit>
-                r#"$$
-                1\fw\te{mm} = 10^{-6}\fw\te{km}
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "this is"
-            </Paragraph>
-            <MathBlock id="104" height=Height::Fit>
-                r#"$$
-                    10^{9}\fw\te{km}
-                $$"#
-            </MathBlock>
-            <ImageRight src="/images/104.svg" translate="(0, -44%)" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" attached_to="104" ><Math>
-                r#"$
-                    %10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = (10^{15}\cdot 10^{-6})\fw\te{km} = 10^{15 + (-6)}\fw\te{km} = 10^{9}\fw\te{km}
-                    10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
-                $"#
-            </Math>
-            </ImageRight>
-           
-            
-        </Solution>
-
-        <Paragraph id="exo_2" margin_top=15>
-            <Span bold=true>"Exercise 2."</Span>
-            "True or false (and, if possible, explain):"
-        </Paragraph>
-
-        <Grid margin_top=15 cols=3>
-            <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
-            <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
-            <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
-            <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
-            <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
-            <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
-            <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
-            <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
-            <Span>"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
-        </Grid>
-        
-
-        <Solution>
-            <Paragraph margin_top=15>
-                "Part by part:"
-            </Paragraph>
-            <Paragraph margin_top=15>
-                "a. (True) We have"
-            </Paragraph>
-            <MathBlock>
-                r#"$$
-                    0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
-            </Paragraph>
-
-            <Paragraph margin_top=15>
-                "b. (True) We have"
-            </Paragraph>
-            <MathBlock>
-                r#"$$
-                  0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
-                $$"#
-            </MathBlock>
-            <Paragraph>
-                "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
-            </Paragraph>
-        </Solution>
     </Columns>
     }
 }

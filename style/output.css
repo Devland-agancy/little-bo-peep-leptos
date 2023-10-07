@@ -821,6 +821,21 @@ video {
           animation: appear 0.3s ease 0s 1 normal forwards;
 }
 
+@keyframes appear {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.animate-appear-slow {
+  -webkit-animation: appear 1s ease 0s 1 normal forwards;
+          animation: appear 1s ease 0s 1 normal forwards;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -1101,6 +1116,10 @@ video {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition {
