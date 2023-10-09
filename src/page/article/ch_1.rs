@@ -993,8 +993,108 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $"#
                     </Math>
                     </ImageRight>
-                
-                    
+                    <Paragraph>
+                        "or "<Span italic=true>"one billion"</Span>" kilometers. By comparison, the distance from the Earth to the Sun is a mere " <Math>r#"$150$"#</Math>" million kilometers."
+                    </Paragraph>
+                    <Paragraph margin_top=15 indent=Indent::Block>
+                        "(The point being: that we could go from the relatively mysterious"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \te{“}2^{50}\fw\te{mm}\te{”}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "to the relatively less mysterious"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \te{“}\fw10^{15}\te{mm}\te{”}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "by the approximation  " <Math>r#"$2^{10} \approx 10^3$"#</Math>" .)"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "g. (True) As an inequality can be multiplied on both sides
+                        by a positive number while preserving the inequality, one has"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            & {1 \over 0.95} > 1.05\\
+                            \iff & 1 > 1.05 \cdot 0.95\up{1.4}\\
+                            \iff & 1 > (1 + 0.05)(1 - 0.05)\up{1.4}\\
+                            \iff & 1 > 1 - 0.05^2\up{1.4}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "(using the fact that " <Math>r#"$(1+x)(1-x) = 1-x^2$"#</Math>" , of"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            \te{“}\,(a+b)(a-b) = a^2-b^2\,\te{”}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "fame), and since the " <Span italic=true>"last"</Span>" inequality is true,
+                        the " <Span italic=true>"first"</Span>" inequality is true! (Recall that
+                            “ " <Math>r#"$\!\iff\!$"#</Math>" ” means “if and only if”.)"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        <Span italic=true>"Note 3."</Span> "More generally, even though " 
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            {1 \over 1 - \epsilon} > 1 + \epsilon
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number " <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to " <Math>r#"${1 \over 1 - \epsilon}$"#</Math> " . For example," 
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            %{1 \over 0.99}
+                            1.01
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                       "is a good approximation to" 
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                            %1.01
+                            {1 \over 0.99}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "while" 
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                          1.001
+                          %{1 \over 0.999}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "is a good approximation to" 
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        %1.001
+                        \,{1 \over 0.999},
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "etc." 
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "h. (True) Here are the first few powers of $-1$ (note
+                        how each additional multiplication by $-1$ simply changes the sign of the
+                        previous result):" 
+                    </Paragraph>
+
                 </Solution>
              </TabElement> 
              <TabElement > 
