@@ -1094,6 +1094,29 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         how each additional multiplication by $-1$ simply changes the sign of the
                         previous result):" 
                     </Paragraph>
+                    <Grid margin_top=15 cols=3 place_items="end">
+                       
+                        <Span><Math>r#"$ (-1)^1 = $"#</Math></Span>
+                        <Span><Math>r#"$ (-1) = $"#</Math></Span>
+                        <Span><Math>r#"$ -1 $"#</Math></Span>
+
+                        <Span><Math>r#"$ (-1)^2 = $"#</Math></Span>
+                        <Span><Math>r#"$ (-1)\times (-1) = $"#</Math></Span>
+                        <Span><Math>r#"$ 1 $"#</Math></Span>
+
+                        <Span><Math>r#"$ (-1)^3 = $"#</Math></Span>
+                        <Span><Math>r#"$ (-1)\times(-1)\times (-1) = $"#</Math></Span>
+                        <Span><Math>r#"$ -1 $"#</Math></Span>
+
+                        <Span><Math>r#"$ (-1)^4 = $"#</Math></Span>
+                        <Span><Math>r#"$ (-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
+                        <Span><Math>r#"$ 1 $"#</Math></Span>
+
+                        <Span><Math>r#"$ (-1)^5 = $"#</Math></Span>
+                        <Span><Math>r#"$ \,\,\,(-1)\times(-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
+                        <Span><Math>r#"$ -1 $"#</Math></Span>
+
+                    </Grid>
 
                 </Solution>
              </TabElement> 

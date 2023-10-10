@@ -9,6 +9,10 @@ pub fn Grid(
     #[prop(default = 0)] cols: i16,
     #[prop(default = -1)] sm_cols: i16,
     #[prop(optional)] classes: &'static str,
+    #[prop(default= "center")] place_items: &'static str,
+    #[prop(default= "1rem")] gap: &'static str,
+
+
 
 ) -> impl IntoView {
 
@@ -23,8 +27,9 @@ pub fn Grid(
     view! {cx,
         <span
             id=id
-            class=format!("col-start-2 px-4 grid flex-wrap min-h-fit gap-4 place-items-center {}", classes)
-            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px; animation: appear 2s ease 0s 1 normal forwards;", _cols(), margin_top)
+            class=format!("col-start-2 px-4 grid flex-wrap min-h-fit {}", classes)
+
+            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}", _cols(), margin_top, place_items, gap)
         >
             {children(cx)}
         </span>

@@ -115,3 +115,51 @@ mjx-container {
   background: #ffecd9;
   font-weight: bold;
 }
+
+/* solution svg css */
+
+.solution_button_svg {
+  position: absolute;
+  left: 0px;
+  top: 28px;
+  width: 515px;
+  height: 100px;
+}
+
+.solution_button_inscription {
+  position: absolute;
+  left: 231px;
+  top: 38px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.notes_header_inscription {
+  position: absolute;
+  left: 242px;
+  top: 37px;
+  pointer-events: none;
+}
+
+.solution_button_div {
+  height: 51px;
+  padding-top: 28px;
+}
+
+.pointing_finger_backhand {
+  fill: white;
+  stroke: white;
+  stroke-width: 1;
+}
+
+.pointing_finger_knuckle_zone {
+  fill: white;
+  stroke: white;
+  stroke-width: 4;
+}
+
+.pointing_finger_cuff_zone {
+  fill: white;
+  stroke: white;
+  stroke-width: 3;
+}
