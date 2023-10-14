@@ -727,7 +727,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image src="/images/exercises.png" height=107 mobile_height=97/>
+        <Image src="/images/exercises.png" height=109 mobile_height=99/>
         <Tabs labels=vec!["1", "2"]>
              <TabElement > 
                 <Paragraph classes="animate-appear-slow" margin_top=15>
