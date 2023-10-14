@@ -1,3 +1,4 @@
+#![allow(non_snake_case, dead_code)]
 use cfg_if::cfg_if;
 pub mod app;
 pub mod error_template;
