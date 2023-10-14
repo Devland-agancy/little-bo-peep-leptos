@@ -970,6 +970,11 @@ video {
   background-color: transparent;
 }
 
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .fill-\[rgb\(30\2c 30\2c 30\)\] {
   fill: rgb(30,30,30);
 }
@@ -1348,10 +1353,6 @@ mjx-container {
 
 .hover\:fill-stone-600:hover {
   fill: #57534e;
-}
-
-.hover\:font-bold:hover {
-  font-weight: 700;
 }
 
 .hover\:text-sky-800:hover {
