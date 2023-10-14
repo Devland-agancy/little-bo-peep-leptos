@@ -14,8 +14,8 @@ pub fn MathBlock(
     children: Children,
     #[prop(default = "")] id: &'static str,
     #[prop(default = Height::Small)] height: Height,
-    #[prop(default = 12)] margin_right: i16,
-    #[prop(default = 12)] margin_left: i16,
+    #[prop(default = 16)] margin_right: i16,
+    #[prop(default = 16)] margin_left: i16,
     #[prop(default = "-0.25rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
 
