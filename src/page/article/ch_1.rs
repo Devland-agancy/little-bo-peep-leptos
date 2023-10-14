@@ -440,7 +440,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15 >
             <Span bold=true>"Example 1. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="6rem 1rem auto auto">
+        <MathBlock height=Height::Fit arrow_position="4.3rem 0rem auto auto">
             r#"$$
                 \begin{align}
                 (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -455,7 +455,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             <Span bold=true>"Example 2. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_hidden=true>
+        <MathBlock height=Height::Fit arrow_position="4.3rem 0rem auto auto">
             r#"$$
                 \begin{align}
                 (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
@@ -777,7 +777,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph margin_top=15>
                     "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
                     </Paragraph>
-                    <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
+                    <MathBlock height=Height::Fit arrow_position="9.3rem 0rem auto auto">
                         r#"$$
                             \begin{align}
                             &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -806,7 +806,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph >
                         "and"
                     </Paragraph>
-                    <MathBlock height=Height::Fit arrow_position="10rem 0.6rem auto auto">
+                    <MathBlock height=Height::Fit arrow_position="9.3rem 0rem auto auto">
                         r#"$$
                             \begin{align}
                             &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
