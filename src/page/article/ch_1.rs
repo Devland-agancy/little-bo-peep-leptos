@@ -1117,6 +1117,27 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         <Span><Math>r#"$ -1 $"#</Math></Span>
 
                     </Grid>
+                    <Paragraph margin_top=15>
+                        "(Etc.) Obviously, even powers of "<Math>r#"$ (-1) $"#</Math>" are equal to "<Math>r#"$ 1 $"#</Math>", while odd powers of "<Math>r#"$ (-1)$ $"#</Math>" are equal to "<Math>r#"$ -1 $"#</Math>". As "<Math>r#"$ -101 $"#</Math>" is odd, "<Math>r#"$ (-1)^{101} $"#</Math>" is
+                        "<Math>r#"$ -1 $"#</Math>"."
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        "(False) We have"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$${100 \over 99} = {99 + 1 \over 99} = 1 + {1 \over 99}$$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$${101 \over 100} = {100 + 1 \over 100} = 1 + {1 \over 100}$$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "so the smaller of the two fractions is "<Math>r#"$ {101 \over 100} $"#</Math>" , since "<Math>r#"${1 \over 100} < {1 \over 99}$"#</Math>" ."
+                    </Paragraph>
+                    
+
 
                 </Solution>
              </TabElement> 
