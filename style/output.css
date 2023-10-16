@@ -642,6 +642,10 @@ video {
   margin-left: auto;
 }
 
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -702,6 +706,10 @@ video {
 
 .h-3 {
   height: 0.75rem;
+}
+
+.h-\[37px\] {
+  height: 37px;
 }
 
 .min-h-\[calc\(100vh_-_55px\)\] {
@@ -968,11 +976,6 @@ video {
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .fill-\[rgb\(30\2c 30\2c 30\)\] {
@@ -1303,22 +1306,17 @@ mjx-container {
 
 /* solution svg css */
 
-.solution_button_svg {
-  position: absolute;
-  left: 0px;
-  top: 28px;
-  width: 515px;
-  height: 100px;
+.solution_button_svg{
+  transform: translateX(32%);
 }
 
 .solution_button_inscription {
-  position: absolute;
-  left: 231px;
-  top: 38px;
-  pointer-events: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  transform: translateY(-35px);
+  margin: auto;
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .notes_header_inscription {
@@ -1349,6 +1347,48 @@ mjx-container {
   fill: white;
   stroke: white;
   stroke-width: 3;
+}
+
+.focus_alpha_fill{
+  fill: #0000;
+}
+
+.solution_button_transition {
+  transition: 0.3s;
+}
+
+.active_solution_button_rect {
+  fill: #ffe3ed;
+  stroke: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active_solution_button_lip {
+  stroke-width: 1.2px;
+  stroke: #000;
+  fill: none;
+}
+
+.inactive_solution_button_lip {
+  stroke-width: 1.4px;
+  stroke: #464646;
+  fill: none;
+}
+
+.inactive_solution_button_rect {
+  fill: #ebebeb;
+  stroke: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inactive_solution_button_hands {
+  fill: #333;
+}
+
+.active_solution_button_hands {
+  fill: black;
 }
 
 .hover\:fill-stone-600:hover {

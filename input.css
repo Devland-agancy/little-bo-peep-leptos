@@ -118,20 +118,15 @@ mjx-container {
 
 /* solution svg css */
 
-.solution_button_svg {
-  position: absolute;
-  left: 0px;
-  top: 28px;
-  width: 515px;
-  height: 100px;
+.solution_button_svg{
+  transform: translateX(32%);
 }
 
 .solution_button_inscription {
-  position: absolute;
-  left: 231px;
-  top: 38px;
-  pointer-events: none;
-  user-select: none;
+  transform: translateY(-35px);
+  margin: auto;
+  display: block;
+  width: fit-content;
 }
 
 .notes_header_inscription {
@@ -162,4 +157,46 @@ mjx-container {
   fill: white;
   stroke: white;
   stroke-width: 3;
+}
+
+.focus_alpha_fill{
+  fill: #0000;
+}
+
+.solution_button_transition {
+  transition: 0.3s;
+}
+
+.active_solution_button_rect {
+  fill: #ffe3ed;
+  stroke: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.active_solution_button_lip {
+  stroke-width: 1.2px;
+  stroke: #000;
+  fill: none;
+}
+
+.inactive_solution_button_lip {
+  stroke-width: 1.4px;
+  stroke: #464646;
+  fill: none;
+}
+
+.inactive_solution_button_rect {
+  fill: #ebebeb;
+  stroke: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inactive_solution_button_hands {
+  fill: #333;
+}
+
+.active_solution_button_hands {
+  fill: black;
 }
