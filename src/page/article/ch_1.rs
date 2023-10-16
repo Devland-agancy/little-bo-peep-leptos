@@ -1092,9 +1092,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph margin_top=15>
                         "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):" 
                     </Paragraph>
-                    <MathBlock height=Height::Fit child_tag="span" arrow_position="14.3rem 0rem 0rem 20rem">
+                    <MathBlock height=Height::Fit child_tag="span" arrow_position="14.3rem 0rem 0rem 85%">
                         <div class="w-full">
-                            <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end">
+                            <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
                         
                                 <Span><Math>r#"$ (-1)^1 = $"#</Math></Span>
                                 <Span><Math>r#"$ (-1) = $"#</Math></Span>
