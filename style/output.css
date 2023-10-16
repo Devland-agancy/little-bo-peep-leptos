@@ -943,6 +943,10 @@ video {
   overscroll-behavior: none;
 }
 
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }

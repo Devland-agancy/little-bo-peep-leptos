@@ -5,6 +5,7 @@ pub fn Grid(
     cx: Scope,
     children: Children,
     #[prop(default = 0)] margin_top: i16,
+    #[prop(default = 0)] margin_bottom: i16,
     #[prop(optional)] id: &'static str,
     #[prop(default = 0)] cols: i16,
     #[prop(default = -1)] sm_cols: i16,
@@ -28,8 +29,7 @@ pub fn Grid(
         <span
             id=id
             class=format!("col-start-2 px-4 grid flex-wrap min-h-fit {}", classes)
-
-            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}", _cols(), margin_top, place_items, gap)
+            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}", _cols(), margin_top, margin_bottom, place_items, gap)
         >
             {children(cx)}
         </span>

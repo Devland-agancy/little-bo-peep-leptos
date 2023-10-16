@@ -16,8 +16,9 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
-    #[prop(default = "-0.25rem 0.2rem auto auto")] arrow_position: &'static str,
+    #[prop(default = "4rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
+    #[prop(default = "mjx-math")] child_tag: &'static str,
 
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
@@ -29,10 +30,9 @@ pub fn MathBlock(
     
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 
-
-     create_effect(cx, move |_|{
+    create_effect(cx, move |_|{
         if node_ref().is_some() {
-            let math_box = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0);
+            let math_box = node_ref().unwrap().get_elements_by_tag_name(child_tag).item(0);
             if math_box.is_some(){
 
                 let math_box_width = math_box.unwrap().client_width() as f64;
@@ -53,7 +53,7 @@ pub fn MathBlock(
     create_effect(cx, move |_|{
         let _ = use_event_listener(cx, window(), resize, move |_| {
             if node_ref().is_some() {
-                let math_box_width = node_ref().unwrap().get_elements_by_tag_name("mjx-math").item(0).unwrap().client_width() as f64;
+                let math_box_width = node_ref().unwrap().get_elements_by_tag_name(child_tag).item(0).unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
                 if math_box_width + margin_left as f64 - 2_f64 > window_width {
                     set_margin_left_active(false);
@@ -61,10 +61,7 @@ pub fn MathBlock(
                         set_is_wide(true);
                         set_margin_left_active(true);
                     }
-                }/* else if math_box_width >= window_width {
-                    set_margin_left_active(true);
-                    set_is_wide(false);
-                } */
+                }
                 else{
                     set_is_wide(false);
                     set_margin_left_active(true);
@@ -97,8 +94,8 @@ pub fn MathBlock(
                 class=("hidden", move || !is_wide() | arrow_hidden)
                 style=move || format!("inset: {}", arrow_position)
              >
-            <img src="/images/cream.svg" class="ml-auto h-3"/>
-        </div>
+                <img src="/images/cream.svg" class="ml-auto h-3"/>
+            </div>
         </div>
     }
 }

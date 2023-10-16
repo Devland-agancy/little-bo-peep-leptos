@@ -440,7 +440,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15 >
             <Span bold=true>"Example 1. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.3rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
             r#"$$
                 \begin{align}
                 (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -455,7 +455,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph margin_top=15>
             <Span bold=true>"Example 2. "</Span> "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.3rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
             r#"$$
                 \begin{align}
                 (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
@@ -516,7 +516,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             which agrees with Example 2.
         </Paragraph>
         <Paragraph margin_top=15>
-           "On the other hand, setting "<Math>r#"$ C = a $"#</Math> " , " <Math>r#"$ D = -b $"#</Math>" in"
+           "On the other hand, setting "<Math>r#"$ C = a $"#</Math> ", " <Math>r#"$ D = -b $"#</Math>" in"
         </Paragraph>
         <MathBlock>
             r#"$$
@@ -760,7 +760,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."
+                        "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> "."
                     </Paragraph>
         
                     <Paragraph margin_top=15>
@@ -772,7 +772,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+                        "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> "."
                     </Paragraph>
                     <Paragraph margin_top=15>
                     "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
@@ -836,7 +836,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
                         (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2 $"# "."</Math>
                     </Paragraph>
-                    <Paragraph margin_top=15 indent=Indent::Line>
+                    <Paragraph indent=Indent::Line>
                         "Technically, however, a number $x$ such that"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
@@ -844,12 +844,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             x^6 = 2
                         $$"#
                     </MathBlock>
-                    <Paragraph >
+                    <Paragraph>
                         "is not necessarily "<Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math>" , because
                         "<Math>r#"$ x = -\sqrt[6]{\up{0.6}2} $"#</Math>" satisfies this equation
                         as well!"
                     </Paragraph>
-                    <Paragraph margin_top=15 indent=Indent::Line>
+                    <Paragraph indent=Indent::Line>
                         "The last step, therefore, is to note that "<Math>r#"$ \sqrt[2]{\up{0.76}\sqrt[3]{2}} $"#</Math>" and "<Math>r#"$ \sqrt[3]{\up{0.76}\sqrt[2]{2}} $"#</Math>" are both" <Span italic=true>" nonnegative "</Span>"numbers (taken as obvious),
                         and which implies that they are the "<Span italic=true>"unique nonnegative"</Span>
                         " solution to "<Math>r#"$ x^6 = 2 $"#</Math> "."
@@ -996,7 +996,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph>
                         "or "<Span italic=true>"one billion"</Span>" kilometers. By comparison, the distance from the Earth to the Sun is a mere " <Math>r#"$150$"#</Math>" million kilometers."
                     </Paragraph>
-                    <Paragraph margin_top=15 indent=Indent::Block>
+                    <Paragraph indent=Indent::Block>
                         "(The point being: that we could go from the relatively mysterious"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
@@ -1013,7 +1013,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "by the approximation  " <Math>r#"$2^{10} \approx 10^3$"#</Math>" .)"
+                        "by the approximation  " <Math>r#"$2^{10} \approx 10^3$"#</Math>".)"
                     </Paragraph>
                     <Paragraph margin_top=15>
                         "g. (True) As an inequality can be multiplied on both sides
@@ -1030,7 +1030,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "(using the fact that " <Math>r#"$(1+x)(1-x) = 1-x^2$"#</Math>" , of"
+                        "(using the fact that " <Math>r#"$(1+x)(1-x) = 1-x^2$"#</Math>", of"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1039,8 +1039,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     </MathBlock>
                     <Paragraph>
                         "fame), and since the " <Span italic=true>"last"</Span>" inequality is true,
-                        the " <Span italic=true>"first"</Span>" inequality is true! (Recall that
-                            “ " <Math>r#"$\!\iff\!$"#</Math>" ” means “if and only if”.)"
+                        the " <Span italic=true>"first"</Span>" inequality is true! (Recall that"
+                        <span class="whitespace-nowrap">" “" <Math>r#"$\!\iff\!$"#</Math>"” "</span> "means “if and only if”.)"
                     </Paragraph>
                     <Paragraph margin_top=15>
                         <Span italic=true>"Note 3."</Span> "More generally, even though " 
@@ -1051,7 +1051,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number " <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to " <Math>r#"${1 \over 1 - \epsilon}$"#</Math> " . For example," 
+                        "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number " <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to " <Math>r#"${1 \over 1 - \epsilon}$"#</Math> ". For example," 
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1090,35 +1090,37 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         "etc." 
                     </Paragraph>
                     <Paragraph margin_top=15>
-                        "h. (True) Here are the first few powers of $-1$ (note
-                        how each additional multiplication by $-1$ simply changes the sign of the
-                        previous result):" 
+                        "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):" 
                     </Paragraph>
-                    <Grid margin_top=15 cols=3 place_items="end">
-                       
-                        <Span><Math>r#"$ (-1)^1 = $"#</Math></Span>
-                        <Span><Math>r#"$ (-1) = $"#</Math></Span>
-                        <Span><Math>r#"$ -1 $"#</Math></Span>
+                    <MathBlock height=Height::Fit child_tag="span" arrow_position="14.3rem 0rem 0rem 20rem">
+                        <div class="w-full">
+                            <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end">
+                        
+                                <Span><Math>r#"$ (-1)^1 = $"#</Math></Span>
+                                <Span><Math>r#"$ (-1) = $"#</Math></Span>
+                                <Span><Math>r#"$ -1 $"#</Math></Span>
 
-                        <Span><Math>r#"$ (-1)^2 = $"#</Math></Span>
-                        <Span><Math>r#"$ (-1)\times (-1) = $"#</Math></Span>
-                        <Span><Math>r#"$ 1 $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)^2 = $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)\times (-1) = $"#</Math></Span>
+                                <Span><Math>r#"$ 1 $"#</Math></Span>
 
-                        <Span><Math>r#"$ (-1)^3 = $"#</Math></Span>
-                        <Span><Math>r#"$ (-1)\times(-1)\times (-1) = $"#</Math></Span>
-                        <Span><Math>r#"$ -1 $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)^3 = $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)\times(-1)\times (-1) = $"#</Math></Span>
+                                <Span><Math>r#"$ -1 $"#</Math></Span>
 
-                        <Span><Math>r#"$ (-1)^4 = $"#</Math></Span>
-                        <Span><Math>r#"$ (-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
-                        <Span><Math>r#"$ 1 $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)^4 = $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
+                                <Span><Math>r#"$ 1 $"#</Math></Span>
 
-                        <Span><Math>r#"$ (-1)^5 = $"#</Math></Span>
-                        <Span><Math>r#"$ \,\,\,(-1)\times(-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
-                        <Span><Math>r#"$ -1 $"#</Math></Span>
+                                <Span><Math>r#"$ (-1)^5 = $"#</Math></Span>
+                                <Span><Math>r#"$ \,\,\,(-1)\times(-1)\times(-1)\times(-1)\times(-1) = $"#</Math></Span>
+                                <Span><Math>r#"$ -1 $"#</Math></Span>
 
-                    </Grid>
+                            </Grid>
+                        </div>
+                    </MathBlock >
                     <Paragraph margin_top=15>
-                        "(Etc.) Obviously, even powers of "<Math>r#"$ (-1) $"#</Math>" are equal to "<Math>r#"$ 1 $"#</Math>", while odd powers of "<Math>r#"$ (-1)$ $"#</Math>" are equal to "<Math>r#"$ -1 $"#</Math>". As "<Math>r#"$ -101 $"#</Math>" is odd, "<Math>r#"$ (-1)^{101} $"#</Math>" is
+                        "(Etc.) Obviously, even powers of "<Math>r#"$ (-1) $"#</Math>" are equal to "<Math>r#"$ 1 $"#</Math>", while odd powers of "<Math>r#"$ (-1) $"#</Math>" are equal to "<Math>r#"$ -1 $"#</Math>". As "<Math>r#"$ -101 $"#</Math>" is odd, "<Math>r#"$ (-1)^{101} $"#</Math>" is
                         "<Math>r#"$ -1 $"#</Math>"."
                     </Paragraph>
                     <Paragraph margin_top=15>
