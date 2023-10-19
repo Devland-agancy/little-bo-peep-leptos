@@ -801,8 +801,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             \end{align}
                         $$"#
                     </MathBlock>
-                    <ImageLeft attached_to="sqrt-1" src="/images/17.svg" translate="(30px, 50px)" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-0.9rem" squiggle_top="30%">""
-                    </ImageLeft>
+                    <ImageLeft attached_to="sqrt-1" src="/images/17.svg" translate="(30px, 50px)" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-0.9rem" squiggle_top="30%">""</ImageLeft>
                     <Paragraph >
                         "and"
                     </Paragraph>
@@ -830,8 +829,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             \end{align}
                         $$"#
                     </MathBlock>
-                    <ImageLeft attached_to="sqrt-2" src="/images/18.svg" translate="(30px, 48px)" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="0" squiggle_top="36%">""
-                    </ImageLeft>
+                    <ImageLeft attached_to="sqrt-2" src="/images/18.svg" translate="(30px, 48px)" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="0" squiggle_top="36%">""</ImageLeft>
                     <Paragraph>
                         "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
                         (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2 $"# "."</Math>
