@@ -193,9 +193,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph indent=Indent::Line>
             "You can think of it this way: multiplying a value by "
             <Math>r#"$0.7071$"#</Math>
-            " , or approximately "
+            ", or approximately "
             <Math>r#"$\sqrt{0.5}$"#</Math>
-            " , is like taking "
+            ", is like taking "
             <Math>r#"$70.71\%$"#</Math>
             " of that value—for example, say, "
         </Paragraph>
@@ -727,7 +727,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
             "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image src="/images/exercises.png" height=109 mobile_height=99/>
+        <Image src="/images/seperator.png" height=30 imageClasses="w-full" containerClasses="flex items-center" />
         <Tabs labels=vec!["1", "2"]>
              <TabElement > 
                 <Paragraph classes="animate-appear-slow" margin_top=15>
@@ -777,7 +777,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph margin_top=15>
                     "c. (True) In fact, "<Math>r#"$ \sqrt[2]{\up{0.75}\sqrt[3]{2}} $"#</Math> " and " <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
                     </Paragraph>
-                    <MathBlock height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+                    <MathBlock id="sqrt-1" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
                         r#"$$
                             \begin{align}
                             &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -801,12 +801,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             \end{align}
                         $$"#
                     </MathBlock>
-                    <ImageLeft src="/images/17.svg" translate="" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-2.7rem" squiggle_top="30%">""
+                    <ImageLeft attached_to="sqrt-1" src="/images/17.svg" translate="(30px, 50px)" absolute=true top=480 left=-361 hidden_in_mobile=true squiggle_right="-0.9rem" squiggle_top="30%">""
                     </ImageLeft>
                     <Paragraph >
                         "and"
                     </Paragraph>
-                    <MathBlock height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+                    <MathBlock id="sqrt-2" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
                         r#"$$
                             \begin{align}
                             &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
@@ -830,7 +830,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             \end{align}
                         $$"#
                     </MathBlock>
-                    <ImageLeft src="/images/18.svg" translate="" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="-1.7rem" squiggle_top="36%">""
+                    <ImageLeft attached_to="sqrt-2" src="/images/18.svg" translate="(30px, 48px)" absolute=true top=730 left=-443 hidden_in_mobile=true squiggle_right="0" squiggle_top="36%">""
                     </ImageLeft>
                     <Paragraph>
                         "so " <Math>r#"$  (\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 =
@@ -973,26 +973,27 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph>
                         "As"
                     </Paragraph>
-                    <MathBlock height=Height::Fit>
+                    <MathBlock id="104" height=Height::Fit>
                         r#"$$
                         1\fw\te{mm} = 10^{-6}\fw\te{km}
                         $$"#
                     </MathBlock>
+                    <ImageRight src="/images/104.svg" translate="(50px, -44%)" absolute=true top=3050 right=-470 children_inset="47% 32% auto auto" attached_to="104">
+                        <Math>
+                            r#"$
+                                10^{15}\te{mm} = 10^{15}(10^{-6}\te{km})
+                            $"#
+                        </Math>
+                    </ImageRight>
                     <Paragraph>
                         "this is"
                     </Paragraph>
-                    <MathBlock id="104" height=Height::Fit>
+                    <MathBlock height=Height::Fit>
                         r#"$$
                             10^{9}\fw\te{km}
                         $$"#
                     </MathBlock>
-                    <ImageRight src="/images/104.svg" translate="(0, -44%)" absolute=true top=3050 right=-470 children_inset="48% 28% auto auto" attached_to="104" ><Math>
-                        r#"$
-                            %10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = (10^{15}\cdot 10^{-6})\fw\te{km} = 10^{15 + (-6)}\fw\te{km} = 10^{9}\fw\te{km}
-                            10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
-                        $"#
-                    </Math>
-                    </ImageRight>
+                    
                     <Paragraph>
                         "or "<Span italic=true>"one billion"</Span>" kilometers. By comparison, the distance from the Earth to the Sun is a mere " <Math>r#"$150$"#</Math>" million kilometers."
                     </Paragraph>

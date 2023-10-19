@@ -1,4 +1,5 @@
-use leptos::{html::{Img} ,*};
+use leptos::{html::{Img} ,*, ev::resize};
+use leptos_use::use_event_listener;
 use web_sys::HtmlDivElement;
 use crate::page::state::PageState;
 use wasm_bindgen::JsCast;
@@ -35,6 +36,16 @@ pub fn ImageRight(
             }
         }
    });
+   create_effect(cx, move |_|{
+        let _ = use_event_listener(cx, window(), resize, move |_| {
+            if attached_to != "" {
+                let el = document().get_element_by_id(attached_to);
+                if el.is_some() {
+                set_top_pos(el.unwrap().dyn_into::<HtmlDivElement>().unwrap().offset_top())
+                }
+            }
+        });
+    });
     view! {cx,
         <div class="col-start-3 h-0 flex items-center justify-start">
             <button

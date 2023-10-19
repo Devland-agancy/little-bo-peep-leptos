@@ -112,8 +112,9 @@ mjx-container {
 }
 
 .tab:hover, .tab.active {
-  background: #ffecd9;
+  background: #ecffa8;
   font-weight: bold;
+  border-radius: 4px;
 }
 
 /* solution svg css */

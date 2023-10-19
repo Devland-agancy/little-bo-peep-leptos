@@ -107,10 +107,10 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
 
     create_effect(cx, move |_| {
-        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64);
+        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
 
         let _ = use_event_listener(cx, window(), scroll, move |_| {
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
         });
     });
 
@@ -124,7 +124,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     view! {cx,
         <div
            style = move || format!("opacity: {}", if menu_closed() && screen_is_lg()  { button_opacity() } else { 1_f64 })
-           class="h-14 w-14 fixed right-0 border-l sm:border-l-0 sm:border-b transition-opacity">
+           class="h-14 w-14 fixed right-0 sm:border-b transition-opacity">
         <button
             on:mouseover=move |_| set_button_opacity(1_f64)
             on:pointerdown=move |_| set_menu_state.update(|value| *value = match value {
@@ -141,7 +141,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                         _ => *value,
                     }
                 });
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 2000_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
             }
             on:pointerup=move |_| set_menu_state.update(|value| *value = match value {
                 MenuState::Closed => MenuState::Closed,
