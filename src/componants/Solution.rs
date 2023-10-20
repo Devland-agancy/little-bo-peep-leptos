@@ -89,7 +89,7 @@ pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView where
                     </g>
                 </g>
             </svg>
-            <span class="solution_button_inscription"><i>"solution"</i></span>
+            <span class="solution_button_inscription font-baskerville-italic">"solution"</span>
         </div>
     }
 }

@@ -111,8 +111,8 @@ mjx-container {
   grid-template-rows: 1fr;
 }
 
-.tab:hover, .tab.active {
-  background: #ecffa8;
+.tab:hover:not(.disabled) > path:first-child {
+  fill: #aff160 !important;
   font-weight: bold;
   border-radius: 4px;
 }

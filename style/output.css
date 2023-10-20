@@ -804,11 +804,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.rotate-180 {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -961,10 +956,6 @@ video {
 
 .border-r-0 {
   border-right-width: 0px;
-}
-
-.border-l {
-  border-left-width: 1px;
 }
 
 .bg-stone-200 {
@@ -1307,8 +1298,8 @@ mjx-container {
   grid-template-rows: 1fr;
 }
 
-.tab:hover, .tab.active {
-  background: #ecffa8;
+.tab:hover:not(.disabled) > path:first-child {
+  fill: #aff160 !important;
   font-weight: bold;
   border-radius: 4px;
 }
@@ -1458,10 +1449,6 @@ mjx-container {
 
   .sm\:border-r {
     border-right-width: 1px;
-  }
-
-  .sm\:border-l-0 {
-    border-left-width: 0px;
   }
 
   .sm\:border-b {
