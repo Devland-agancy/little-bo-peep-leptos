@@ -1137,9 +1137,195 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph>
                         "so the smaller of the two fractions is "<Math>r#"$ {101 \over 100} $"#</Math>" , since "<Math>r#"${1 \over 100} < {1 \over 99}$"#</Math>" ."
                     </Paragraph>
+                    <Paragraph margin_top=15>
+                        <Span italic=true>"Note 4."</Span> " The difference"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$${1 \over 99} - {1 \over 100}$$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "is interesting in its own right, being connected to a famous infinite sum."
+                    </Paragraph>
+                    <Paragraph indent=Indent::Line>
+                        "To visualize this sum, picture a hare poised at "<Math>r#"$x = 0 $"#</Math>" on the number line. This hare runs forward by one unit and backwards by half a unit, stopping at the number"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$1 - \frac{1}{2}$$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "by virtue of this back-and-forth movement. The hare then proceeds to run forward by "<Span italic=true>"half"</Span>" a unit and back by a "<Span italic=true>"third"</Span>" of a unit, stopping at"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                        &\, \left(1 - {1 \over 2}\right)\\
+                        + \,&\, \left({1 \over 2} - {1 \over 3}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!}\\
+                        \hline
+                        = \,&\, \left(1 - {1 \over 3}\right)^{\color{white} a^{a^a}}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "for another break. Keeping with this pattern, the hare then stops at"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            &\, \left(1 - {1 \over 2}\right)\\
+                            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
+                            + \,&\, \left({1 \over 3} - {1 \over 4}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!}\\
+                            \hline
+                            = \,&\, \left(1 - {1 \over 4}\right)^{\color{white} a^{a^a}}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and then at"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            &\, \left(1 - {1 \over 2}\right)\\
+                            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
+                            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
+                            + \,&\, \left({1 \over 4} - {1 \over 5}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!}\\
+                            \hline
+                            = \,&\, \left(1 - {1 \over 5}\right)^{\color{white} a^{a^a}}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and so on. Clearly, the successive positions at which the hare stops
+                        are approaching the number "<Math>r#"$ 1 $"#</Math>" from the left, pointing to the fact that the "<Span italic=true>"infinite"</Span>" sum"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            &\, \left(1 - {1 \over 2}\right)\\
+                            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
+                            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
+                            + \,&\, \left({1 \over 4} - {1 \over 5}\right)\\
+                            + \,&\, \left({1 \over 5} - {1 \over 6}\right)\\
+                            + \,&\, \left({1 \over 6} - {1 \over 7}\right)\\
+                            + \,&\, \,\,\,\,\,\,\,\,\dots\up{1.3}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "is “equal” (in some sense) to "<Math>r#"$ 1 $"#</Math>". But how much, exactly, is the "<Math>r#"$ n $"#</Math>"-th term"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over n} - {1 \over n+1}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "of the sum? (By the way, this "<Math>r#"$ n $"#</Math>"-th term is the difference
+                        "<Math>r#"${1 \over 99} - {1 \over 100}$"#</Math>" for "<Math>r#"$ n = 99 $"#</Math>", which is how we came to be reminded of this infinite sum in the first place.) Well..."
+                    </Paragraph>
+                    <MathBlock id="svg-24" height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            {1 \over n} - {1 \over n+1} &= {1 \over n}\cdot{n+1 \over n+1}\, - \,
+                            {1 \over n+1}\cdot{n \over n}\up{1.5}\\
+                            &= {n+1 \over n(n+1)} - {n \over n(n+1)}\up{1.5}\\
+                            &= {1 \over n(n+1)}\up{1.5}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <ImageRight attached_to="svg-24" top=4000 right=-470  src="/images/24.svg" translate="(-65px, -20%)" absolute=true children_inset="20% 6% auto auto" >
+                        <MathBlock height=Height::Fit>
+                            r#"$$
+                            \begin{align}
+                                {1 \over 99} - {1 \over 100}
+                                &= {1 \over 99}\cdot{100 \over 100}\, - \,{1 \over 100}\cdot{99 \over 99}\up{1.5}\\
+                                &= {100 \over 99\cdot 100} - {99 \over 99\cdot 100}\up{1.5}\\
+                                &= {1 \over 99\cdot 100}\up{1.5}
+                                \end{align}
+                            $$"#
+                        </MathBlock>
+                    </ImageRight>
+                    <Paragraph>
+                        "...it's that much. (For example,"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 1} - {1 \over 2} = {1 \over 1 \cdot 2} = {1 \over 2}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "and"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 2} - {1 \over 3} = {1 \over 2 \cdot 3} = {1 \over 6}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                    "and so on.) So the infinite sum"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        \begin{align}
+                            &\, \left(1 - {1 \over 2}\right)\\
+                            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
+                            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
+                            + \,&\, \left({1 \over 4} - {1 \over 5}\right)\\
+                            + \,&\, \left({1 \over 5} - {1 \over 6}\right)\\
+                            + \,&\, \left({1 \over 6} - {1 \over 7}\right)\\
+                            + \,&\, \,\,\,\,\,\,\,\,\dots\up{1.3}\dn{1}\\ \hline
+                            = \,&\, 1\up{1.5}
+                        \end{align}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "can also be written"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 1 \cdot 2} + {1 \over 2 \cdot 3} + {1 \over 3 \cdot 4} + {1 \over 4 \cdot 5} + {1 \over 5 \cdot 6} + \dots \,=\, 1
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "(or"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 2} + {1 \over 6} + {1 \over 12} + {1 \over 20} + {1 \over 30} + \dots \,=\, 1
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "equivalently) which is not obvious at first glance, and kind of interesting!"
+                    </Paragraph>
+                    <Paragraph margin_top=15>
+                        <Span italic=true>"Note 5."</Span>" The fact that"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "means, in particular, that "<Math>r#"${1 \over n} - {1 \over n+1}$"#</Math>" is roughly "<Math>r#"${1 \over n^2}$"#</Math>" for large "<Math>r#"$n$"#</Math>", which is sometimes handy to know.
+                        For example,"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 10} - {1 \over 11}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "is approximately "<Math>r#"$1/10^2 = 0.01$"#</Math>", while"
+                    </Paragraph>
+                    <MathBlock height=Height::Fit>
+                        r#"$$
+                        {1 \over 100} - {1 \over 101}
+                        $$"#
+                    </MathBlock>
+                    <Paragraph>
+                        "is approximately "<Math>r#"$1/100^2 = 0.01^2 = 0.0001$"#</Math>", etc."
+                    </Paragraph>
                     
-
-
                 </Solution>
              </TabElement> 
              <TabElement > 
