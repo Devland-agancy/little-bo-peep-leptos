@@ -1342,19 +1342,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     "is "<Span italic=true>"roughly"</Span><Math>r#"$ 1/n^2 $"#</Math>" for large "<Math>r#"$ n $"#</Math>". But how far off
                     is this exactly? (I.e., what is the difference between "<Math>r#"${1 \over n} - {1 \over n+1}$"#</Math>" and "<Math>r#"${1 \over n^2}$"#</Math>"$?) And "<Span italic=true>"roughly"</Span>" how much is this far-offness, for large "<Math>r#"$n$"#</Math>"?"
                 </Paragraph>
-                
-                <Grid classes="animate-appear-slow" margin_top=15 cols=3 sm_cols=2>
-                    <Span>"a. " <Math>r#"$ 0.9^2 < 0.9 $"#</Math></Span>
-                    <Span>"b. " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math></Span>
-                    <Span>"c. " <Math>r#"$ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $"#</Math></Span>
-                    <Span>"d. " <Math>r#"${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$"#</Math></Span>
-                    <Span>"e. " <Math>r#"$ {1 \over \sqrt{2}} = \sqrt{0.5} $"#</Math></Span>
-                    <Span>"f. " <Math>r#"$ 2^{30} > 1000^3 $"#</Math></Span>
-                    <Span>"g. " <Math>r#"$ {1 \over 0.95} > 1.05 $"#</Math></Span>
-                    <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
-                    <Span _class="col-span-full sm:col-span-1">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
-                </Grid>
-                
 
                 <Solution>
                     <Paragraph margin_top=15>
