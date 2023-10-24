@@ -67,7 +67,7 @@ pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView where
             set_active(!active());
             on_click(e)
         } class="column solution_button_div cursor-pointer mb-16">
-            <svg class="mx-auto h-[37px]">
+            <svg class="mx-auto h-[37px] overflow-visible">
                 <g class="solution_button_svg">
                     <rect id="solution_button_focus_rect" class= "focus_alpha_fill" x="-7" y="-7" width="123" height="50"/>
                     
