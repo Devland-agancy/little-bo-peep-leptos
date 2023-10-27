@@ -1,16 +1,16 @@
-use crate::componants::MathBlock::*;
-use crate::componants::Math::*;
-use crate::componants::Paragraph::*;
+use crate::componants::Article::*;
+use crate::componants::ArticleTitle::*;
+use crate::componants::Columns::*;
+use crate::componants::Grid::*;
 use crate::componants::Image::*;
 use crate::componants::ImageLeft::*;
 use crate::componants::ImageRight::*;
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Span::*;
-use crate::componants::Solution::*;
-use crate::componants::Grid::*;
 use crate::componants::List::*;
-use crate::componants::Columns::*;
+use crate::componants::Math::*;
+use crate::componants::MathBlock::*;
+use crate::componants::Paragraph::*;
+use crate::componants::Solution::*;
+use crate::componants::Span::*;
 use crate::componants::Tabs::*;
 
 use leptos::*;
@@ -563,8 +563,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <Paragraph margin_top=15>
         "whence" <Span italic=true>a "a difference of squares can always be factored"</Span>". "
-		"(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
-		" (PS: “Factored” means “written as a product”.)"
+        "(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
+        " (PS: “Factored” means “written as a product”.)"
         </Paragraph>
         <Paragraph margin_top=15>
             <Span bold=true>"Example 4. "</Span> "Since"
@@ -647,7 +647,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             "by distributivity (used in the second step)."
         </Paragraph>
         <Paragraph margin_top=15>
-            <Span bold=true>"Example 6. "</Span> "We have " <Math>r#"$-(10 - 3) = 3 - 10$"#</Math> ". 
+            <Span bold=true>"Example 6. "</Span> "We have " <Math>r#"$-(10 - 3) = 3 - 10$"#</Math> ".
             (Because "<Math>r#"$ -7 = -7 $"#</Math> ", as it would be, haha.)"
         </Paragraph>
         <Paragraph margin_top=15>
@@ -729,8 +729,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <Image src="/images/seperator.png" height=50 imageClasses="w-[160px]" containerClasses="flex items-center" />
         <Tabs labels=vec!["1", "2"]>
-             <TabElement > 
-                <Paragraph classes="animate-appear-slow" margin_top=15>
+             <TabElement >
+                <Paragraph classes="animate-appear-slow">
                     <Span bold=true>"Exercise 1."</Span>
                     "True or false (and, if possible, explain):"
                 </Paragraph>
@@ -745,8 +745,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Span>"h. " <Math>r#"$ (-1)^{101} = -1 $"#</Math></Span>
                     <Span _class="col-span-full sm:col-span-1">"i. " <Math>r#"$ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $"#</Math></Span>
                 </Grid>
-                
-        
+
+
                 <Solution>
                     <Paragraph>
                         "Part by part:"
@@ -762,7 +762,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph>
                         "and " <Math>r#"$ 0.81 < 0.9 $"#</Math> "."
                     </Paragraph>
-        
+
                     <Paragraph margin_top=15>
                         "b. (True) We have"
                     </Paragraph>
@@ -886,7 +886,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     </Paragraph>
                     <Paragraph margin_top=15>
                         "e. (True) Using the “"<Math>r#"${\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}$"#</Math>"” identity:"
-                        
+
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -991,7 +991,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                             10^{9}\fw\te{km}
                         $$"#
                     </MathBlock>
-                    
+
                     <Paragraph>
                         "or "<Span italic=true>"one billion"</Span>" kilometers. By comparison, the distance from the Earth to the Sun is a mere " <Math>r#"$150$"#</Math>" million kilometers."
                     </Paragraph>
@@ -1042,7 +1042,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         <span class="whitespace-nowrap">" “" <Math>r#"$\!\iff\!$"#</Math>"” "</span> "means “if and only if”.)"
                     </Paragraph>
                     <Paragraph margin_top=15>
-                        <Span italic=true>"Note 3."</Span> "More generally, even though " 
+                        <Span italic=true>"Note 3."</Span> "More generally, even though "
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1050,7 +1050,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number " <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to " <Math>r#"${1 \over 1 - \epsilon}$"#</Math> ". For example," 
+                        "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number " <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to " <Math>r#"${1 \over 1 - \epsilon}$"#</Math> ". For example,"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1059,7 +1059,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                       "is a good approximation to" 
+                       "is a good approximation to"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1068,7 +1068,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "while" 
+                        "while"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1077,7 +1077,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "is a good approximation to" 
+                        "is a good approximation to"
                     </Paragraph>
                     <MathBlock height=Height::Fit>
                         r#"$$
@@ -1086,15 +1086,15 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         $$"#
                     </MathBlock>
                     <Paragraph>
-                        "etc." 
+                        "etc."
                     </Paragraph>
                     <Paragraph margin_top=15>
-                        "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):" 
+                        "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):"
                     </Paragraph>
                     <MathBlock height=Height::Fit child_tag="span" arrow_position="14.3rem 0rem 0rem 85%">
                         <div class="w-full">
                             <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
-                        
+
                                 <Span><Math>r#"$ (-1)^1 = $"#</Math></Span>
                                 <Span><Math>r#"$ (-1) = $"#</Math></Span>
                                 <Span><Math>r#"$ -1 $"#</Math></Span>
@@ -1325,11 +1325,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     <Paragraph>
                         "is approximately "<Math>r#"$1/100^2 = 0.01^2 = 0.0001$"#</Math>", etc."
                     </Paragraph>
-                    
+
                 </Solution>
-             </TabElement> 
-             <TabElement > 
-                <Paragraph classes="animate-appear-slow" margin_top=15>
+             </TabElement>
+             <TabElement >
+                <Paragraph classes="animate-appear-slow">
                     <Span bold=true>"Exercise 2."</Span>
                     "In the solution to Exercise 1, we observed how the difference"
                 </Paragraph>
@@ -1371,9 +1371,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                         "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so " <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
                     </Paragraph>
                 </Solution>
-             </TabElement>  
+             </TabElement>
         </Tabs>
-        
+
     </Columns>
     }
 }
