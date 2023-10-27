@@ -6,7 +6,7 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 COPY rust-toolchain.toml .
-RUN rustup toolchain install nightly-2023-10-23
+RUN rustup toolchain install nightly-2023-10-24
 
 RUN wget https://github.com/cargo-bins/cargo-binstall/releases/latest/download/cargo-binstall-x86_64-unknown-linux-musl.tgz
 RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
