@@ -46,30 +46,38 @@ pub fn ImageRight(
             }
         });
     });
-    view! {cx,
-        <div class="col-start-3 h-0 flex items-center justify-start">
-            <button
-                on:click=move |e| {
-                    e.stop_propagation();
-                    set_page_state.update(|value| *value = match value {
-                        PageState::ShowArticle => PageState::ShowRight,
-                        _ => PageState::ShowArticle
-                    });
-                    set_right_image_x_pos.update(|val| *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left() - 50_f64))
-                }
-                style=move || format!("transform: translate{}; right: {}px; top: {}px", translate, right, top_pos() )
-                class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
-                class=("pointer-events-none", show_right)
-                class=("absolute", move || absolute)
-            >
-                <div
-                    class="absolute"
-                    style=move || format!("inset: {}", children_inset)
-                >
-                    {children(cx)}
-                </div>
-                <img src=src node_ref=image_ref />
-            </button>
-        </div>
+    view! { cx,
+      <div class="col-start-3 h-0 flex items-center justify-start">
+        <button
+          on:click=move |e| {
+              e.stop_propagation();
+              set_page_state
+                  .update(|value| {
+                      *value = match value {
+                          PageState::ShowArticle => PageState::ShowRight,
+                          _ => PageState::ShowArticle,
+                      };
+                  });
+              set_right_image_x_pos
+                  .update(|val| {
+                      *val = f64::from(
+                          image_ref().unwrap().get_bounding_client_rect().left() - 50_f64,
+                      );
+                  })
+          }
+
+          style=move || {
+              format!("transform: translate{}; right: {}px; top: {}px", translate, right, top_pos())
+          }
+          class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
+          class=("pointer-events-none", show_right)
+          class=("absolute", move || absolute)
+        >
+          <div class="absolute" style=move || format!("inset: {}", children_inset)>
+            {children(cx)}
+          </div>
+          <img src=src node_ref=image_ref/>
+        </button>
+      </div>
     }
 }

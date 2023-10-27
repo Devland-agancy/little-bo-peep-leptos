@@ -69,33 +69,40 @@ pub fn MathBlock(
             }
         });
     });
-    view! {cx,
+    view! { cx,
+      <div
+        node_ref=node_ref
+        id=id
+        class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative"
+        class=("h-20", height == Height::Small)
+        class=("h-fit", height == Height::Fit)
+
+        style=format!("margin-right: {}px", margin_right)
+        style=move || {
+            format!(
+                "margin-left: {}px; margin-right: {}px",
+                if margin_left_active() { margin_left } else { 0 },
+                if margin_left_active() { margin_right } else { 0 },
+            )
+        }
+      >
+
+        {children(cx)}
         <div
-            node_ref=node_ref
-            id=id
-            class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative"
-            class=("h-20", height == Height::Small)
-            class=("h-fit", height == Height::Fit)
+          on:click=move |e| {
+              e.stop_propagation();
+              if page_state() == PageState::ShowArticle {
+                  set_page_state.update(|value| *value = PageState::ShowRight);
+                  set_right_image_x_pos(80_f64);
+              }
+          }
 
-            style=format!("margin-right: {}px", margin_right)
-            style=move || format!("margin-left: {}px; margin-right: {}px", if margin_left_active() {margin_left}else{0}, if margin_left_active() {margin_right}else{0})
-
+          class="block cursor-pointer absolute h-full w-10"
+          class=("hidden", move || !is_wide() | arrow_hidden)
+          style=move || format!("inset: {}", arrow_position)
         >
-            {children(cx)}
-            <div
-                on:click=move |e| {
-                    e.stop_propagation();
-                    if page_state() == PageState::ShowArticle {
-                        set_page_state.update(|value| *value = PageState::ShowRight);
-                        set_right_image_x_pos(80_f64);
-                    }
-                } 
-                class="block cursor-pointer absolute h-full w-10"
-                class=("hidden", move || !is_wide() | arrow_hidden)
-                style=move || format!("inset: {}", arrow_position)
-             >
-                <img src="/images/cream.svg" class="ml-auto h-3"/>
-            </div>
+          <img src="/images/cream.svg" class="ml-auto h-3"/>
         </div>
+      </div>
     }
 }

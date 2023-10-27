@@ -27,22 +27,26 @@ pub fn Paragraph(
 
 
 ) -> impl IntoView {
-    view! {cx,
-        <span
-            id=id
-            class=format!("col-start-2 px-4 block {}", classes)
-            class=("indent-10", indent == Indent::Line)
-            class=("pl-10", indent == Indent::Block)
-            class=("text-center", align == Align::Center)
-            class=("text-right", align == Align::Right)
-            class=("text-left", align == Align::None)
-            style=format!("margin-top: {}px; text-indent: {}", margin_top, match indent {
+    view! { cx,
+      <span
+        id=id
+        class=format!("col-start-2 px-4 block {}", classes)
+        class=("indent-10", indent == Indent::Line)
+        class=("pl-10", indent == Indent::Block)
+        class=("text-center", align == Align::Center)
+        class=("text-right", align == Align::Right)
+        class=("text-left", align == Align::None)
+        style=format!(
+            "margin-top: {}px; text-indent: {}",
+            margin_top,
+            match indent {
                 Indent::Custom(s) => s,
-                _ => ""
-            })
+                _ => "",
+            },
+        )
+      >
 
-        >
-            {children(cx)}
-        </span>
+        {children(cx)}
+      </span>
     }
 }

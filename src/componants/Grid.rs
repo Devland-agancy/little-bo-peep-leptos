@@ -25,13 +25,22 @@ pub fn Grid(
         }
     });
 
-    view! {cx,
-        <span
-            id=id
-            class=format!("col-start-2 px-4 grid flex-wrap min-h-fit {}", classes)
-            style=move || format!("grid-template-columns: repeat({}, 1fr) ;margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}", _cols(), margin_top, margin_bottom, place_items, gap)
-        >
-            {children(cx)}
-        </span>
+    view! { cx,
+      <span
+        id=id
+        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit {}", classes)
+        style=move || {
+            format!(
+                "grid-template-columns: repeat({}, 1fr) ;margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
+                _cols(),
+                margin_top,
+                margin_bottom,
+                place_items,
+                gap,
+            )
+        }
+      >
+        {children(cx)}
+      </span>
     }
 }

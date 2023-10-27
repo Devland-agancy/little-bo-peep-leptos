@@ -27,36 +27,37 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, set_solution_open);
     provide_context(cx, solution_open);
 
-    view! {
-        cx,
+    view! { cx,
+      // injects a stylesheet into the document <head>
+      // id=leptos means cargo-leptos will hot-reload this stylesheet
+      <Stylesheet id="leptos" href="/pkg/little-bo-peep.css"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1"/>
+      <meta name="format-detection" content="telephone=no"/>
+      // sets the document title
+      <Title text="Little Bo Peep"/>
+      <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
+      <Script src="/mathjax_setup.js" defer="true"/>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        type_="text/javascript"
+        defer="true"
+      />
 
-        // injects a stylesheet into the document <head>
-        // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/little-bo-peep.css"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1" />
-        <meta name="format-detection" content="telephone=no" />
-        // sets the document title
-        <Title text="Little Bo Peep"/>
-        <Link href="/images/book_favicon_sized_v2.png" rel="icon" />
-        <Script  src="/mathjax_setup.js"  defer="true"/>
-        <Script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type_="text/javascript" defer="true"/>
-
-        // content for this welcome page
-        <Router fallback=|cx| {
-            let mut outside_errors = Errors::default();
-            outside_errors.insert_with_default_key(AppError::NotFound);
-            view! { cx, <ErrorTemplate outside_errors/> }
-            .into_view(cx)
-        }>
-            <main>
-                <Header/>
-                <Routes>
-                    <Route path="" view=crate::page::home::View/>
-                    <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
-                    <Route path="/article/ch_2" view=crate::page::article::ch_2::View/>
-                    <Route path="/article/ch_3" view=crate::page::article::ch_3::View/>
-                </Routes>
-            </main>
-        </Router>
+      // content for this welcome page
+      <Router fallback=|cx| {
+          let mut outside_errors = Errors::default();
+          outside_errors.insert_with_default_key(AppError::NotFound);
+          view! { cx, <ErrorTemplate outside_errors/> }.into_view(cx)
+      }>
+        <main>
+          <Header/>
+          <Routes>
+            <Route path="" view=crate::page::home::View/>
+            <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
+            <Route path="/article/ch_2" view=crate::page::article::ch_2::View/>
+            <Route path="/article/ch_3" view=crate::page::article::ch_3::View/>
+          </Routes>
+        </main>
+      </Router>
     }
 }

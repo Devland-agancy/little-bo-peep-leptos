@@ -70,41 +70,36 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
     // for right_images we autoscroll to their position
     view! { cx,
+      <div class="pt-14 xl:pt-20 overscroll-none ">
         <div
-         class="pt-14 xl:pt-20 overscroll-none ">
-            <div
-                node_ref=article_node
-                class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
-                class=("overflow-hidden", show_article)
-                id="Article"
-            >
-                <div
-                    class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0"
-                    // for left image we transle based on image width
-                  
-                >
-                    <div class="font-baskerville w-full">
-                        {children(cx)}
-                    </div>
-                </div>
-                <ColumnButton />
-            </div>
+          node_ref=article_node
+          class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
+          class=("overflow-hidden", show_article)
+          id="Article"
+        >
+          <div class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0">
+            // for left image we transle based on image width
+
+            <div class="font-baskerville w-full">{children(cx)}</div>
+          </div>
+          <ColumnButton/>
         </div>
-        <MathJaxTypeset/>
+      </div>
+      <MathJaxTypeset/>
     }
 }
 
 #[component]
 pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
     view! { cx,
-        <script>
-            window.MathJax.typesetPromise().then(() => {
-                document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
-                  elem.classList.remove("hidden-on-startup");
-                  elem.classList.add("animate-appear");
-                });
+      <script>
+        window.MathJax.typesetPromise().then(() => {
+            document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
+              elem.classList.remove("hidden-on-startup");
+              elem.classList.add("animate-appear");
             });
-        </script>
+        });
+      </script>
     }
 }
 
@@ -116,20 +111,19 @@ pub fn ColumnButton(cx: Scope) -> impl IntoView {
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
 
-    view! {cx,
-        <div
+    view! { cx,
+      <div
 
-            class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
-            style="-webkit-tap-highlight-color: transparent;"
-            class=("opacity-0", show_article)
-            class=("pointer-events-none", show_article)
-            class=("opacity-100", show_right)
-            class=("-translate-x-3/4", show_right)
-            class=("lg:-translate-x-[85%]", show_right)
-            class=("opacity-100", show_left)
-            class=("translate-x-3/4", show_left)
-            class=("lg:translate-x-[85%]", show_left)
-        >
-        </div>
+        class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
+        style="-webkit-tap-highlight-color: transparent;"
+        class=("opacity-0", show_article)
+        class=("pointer-events-none", show_article)
+        class=("opacity-100", show_right)
+        class=("-translate-x-3/4", show_right)
+        class=("lg:-translate-x-[85%]", show_right)
+        class=("opacity-100", show_left)
+        class=("translate-x-3/4", show_left)
+        class=("lg:translate-x-[85%]", show_left)
+      ></div>
     }
 }

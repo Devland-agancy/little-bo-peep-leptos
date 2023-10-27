@@ -8,8 +8,14 @@ pub fn Span(
     #[prop(default = false)] italic: bool,
     children: Children,
 ) -> impl IntoView {
-    view! {cx,
-        <span class=move || format!("{} {} {}", _class, if italic {"font-baskerville-italic"} else { "" }, if bold {"font-baskerville-bold"} else { "" })
-        >{children(cx)}</span>
+    view! { cx,
+      <span class=move || {
+          format!(
+              "{} {} {}",
+              _class,
+              if italic { "font-baskerville-italic" } else { "" },
+              if bold { "font-baskerville-bold" } else { "" },
+          )
+      }>{children(cx)}</span>
     }
 }
