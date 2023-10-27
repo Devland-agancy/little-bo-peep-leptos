@@ -1,28 +1,29 @@
-use leptos::{html::{Div}, *, ev::resize};
+use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 use web_sys::MouseEvent;
 
 #[component]
 pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
-    let (visible, set_visible) = create_signal(cx, false);
+    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
+    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
-    create_effect(cx, move |_|{
+    create_effect(cx, move |_| {
         if node_ref().is_some() {
-            if visible() {
+            if solution_open() {
                 set_content_height(node_ref().unwrap().offset_height())
-            }else{
+            } else {
                 set_content_height(0)
             }
         }
     });
 
-    create_effect(cx, move |_|{
-        let _ = use_event_listener(cx, window(), resize, move |_|{
+    create_effect(cx, move |_| {
+        let _ = use_event_listener(cx, window(), resize, move |_| {
             if node_ref().is_some() {
-                if visible() {
+                if solution_open() {
                     set_content_height(node_ref().unwrap().offset_height())
-                }else{
+                } else {
                     set_content_height(0)
                 }
             }
@@ -34,19 +35,19 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
             class="px-4 my-9 relative col-start-2"
         >
             <SolutionSVG on_click=move |_| {
-                set_visible(!visible());
+                set_solution_open(!solution_open())
             }/>
         </div>
         <div
             class="col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
-            class=("pointer-events-none", move || !visible())
-            class=("animated-height-full", move || visible())
-            style=move || format!("height: {}px", content_height() + if visible() { 40 } else { 0 })
+            class=("pointer-events-none", move || !solution_open())
+            class=("animated-height-full", move || solution_open())
+            style=move || format!("height: {}px", content_height() + if solution_open() { 40 } else { 0 })
         >
-            <div  
+            <div
                 node_ref=node_ref
                 class="transition-all duration-1000"
-                class=("-translate-y-full", move || !visible()) 
+                class=("-translate-y-full", move || !solution_open())
             >
                 {children(cx)}
             </div>
@@ -56,13 +57,13 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     }
 }
 
-
 #[component]
-pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView where
-    F: Fn(MouseEvent) + 'static, {
-    
+pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView
+where
+    F: Fn(MouseEvent) + 'static,
+{
     let (active, set_active) = create_signal(cx, true);
-    view! {cx, 
+    view! {cx,
         <div on:click=move |e| {
             set_active(!active());
             on_click(e)
@@ -70,18 +71,18 @@ pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView where
             <svg class="mx-auto h-[37px] overflow-visible">
                 <g class="solution_button_svg">
                     <rect id="solution_button_focus_rect" class= "focus_alpha_fill" x="-7" y="-7" width="123" height="50"/>
-                    
-                    <rect id="solution_button_focus_rect" class="solution_button_transition" 
+
+                    <rect id="solution_button_focus_rect" class="solution_button_transition"
                         class=("active_solution_button_rect" , move || active())
                         class=("inactive_solution_button_rect" , move || !active())
 
                     width="109" height="36"/>
 
-                    <path id="solution_button_lip" class= "solution_button_transition" 
+                    <path id="solution_button_lip" class= "solution_button_transition"
                     class=("active_solution_button_lip" , move || active())
                     class=("inactive_solution_button_lip" , move || !active()) d="M 0 10 v -10 h 109 v 10 M 0 26 v 10 h 109 v -10"/>
 
-                    <g id="solution_button_finger_pair" class="solution_button_transition" 
+                    <g id="solution_button_finger_pair" class="solution_button_transition"
                     class=("active_solution_button_hands" , move || active())
                     class=("inactive_solution_button_hands" , move || !active())>
                         <SVGLeftFinger transform="translate(101.5, 18)"/>
@@ -96,7 +97,7 @@ pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView where
 
 #[component]
 fn SVGLeftFinger(cx: Scope, #[prop(default = "")] transform: &'static str) -> impl IntoView {
-    view! {cx, 
+    view! {cx,
         <g transform=transform>
             <g id="finger_pointing_left" transform="scale(0.0386)" >
             <path d="M 659,423 C 698,401 747,260 782,350 C 806,442 905,378 971,392 C 1062,405 1072,291 1117,239 C 1202,252 1300,297 1379,240 C 1424,229 1492,138 1525,174 C 1540,269 1622,283 1703,276 C 1830,277 1958,275 2084,258 C 2062,231 1961,259 1911,252 C 1844,247 1762,260 1705,225 C 1724,184 1776,161 1760,100 C 1757,53 1726,-86 1745,-71 C 1746,4 1758,84 1740,155 C 1699,88 1757,12 1724,-57 C 1689,-139 1672,-228 1634,-309 C 1623,-341 1550,-339 1617,-364 C 1694,-405 1779,-360 1860,-368 C 1890,-358 2000,-376 1911,-382 C 1825,-373 1743,-408 1657,-401 C 1613,-377 1473,-381 1533,-303 C 1439,-307 1342,-353 1250,-316 C 1173,-304 1094,-314 1019,-298 C 905,-290 786,-318 679,-270 C 587,-245 495,-219 402,-200 C 274,-148 149,-88 20,-38 C -35,27 72,104 139,76 C 213,53 284,40 358,11 C 422,-1 501,-6 562,6 C 527,72 453,138 474,218 C 495,275 581,268 543,344 C 544,407 610,418 659,423 Z"/>

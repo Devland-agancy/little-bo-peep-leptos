@@ -23,6 +23,10 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, set_menu_state);
     provide_context(cx, menu_state);
 
+    let (solution_open, set_solution_open) = create_signal(cx, false);
+    provide_context(cx, set_solution_open);
+    provide_context(cx, solution_open);
+
     view! {
         cx,
 
