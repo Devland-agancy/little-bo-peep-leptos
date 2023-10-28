@@ -57,6 +57,7 @@ fn LabelsView(
           fill=move || {
               format!("{}", if selected_tab() != _vec().len() - 1 { "#EEFFAA" } else { "#bbbbbb" })
           }
+
           fill-opacity="0.4"
           stroke="black"
           stroke-width="1.5"

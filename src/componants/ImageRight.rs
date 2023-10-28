@@ -69,6 +69,7 @@ pub fn ImageRight(
           style=move || {
               format!("transform: translate{}; right: {}px; top: {}px", translate, right, top_pos())
           }
+
           class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10"
           class=("pointer-events-none", show_right)
           class=("absolute", move || absolute)

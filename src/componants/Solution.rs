@@ -42,6 +42,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
             format!("height: {}px", content_height() + if solution_open() { 40 } else { 0 })
         }
       >
+
         <div
           node_ref=node_ref
           class="transition-all duration-1000"
@@ -66,6 +67,7 @@ where
             set_active(!active());
             on_click(e)
         }
+
         class="column solution_button_div cursor-pointer mb-16"
       >
         <svg class="mx-auto h-[37px] overflow-visible">

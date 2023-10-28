@@ -130,6 +130,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                 if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
             )
         }
+
         class="h-14 w-14 fixed right-0 sm:border-b transition-opacity"
       >
         <button
@@ -198,7 +199,8 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
             class=move || {
                 format!("menu-icon-svg {}", if menu_closed() { "" } else { "close-icon-svg-1" })
             }
-          ></rect>
+          >
+          </rect>
           <rect
             x="5"
             y="13.5"
@@ -219,7 +221,8 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
             class=move || {
                 format!("menu-icon-svg {}", if menu_closed() { "" } else { "close-icon-svg-2" })
             }
-          ></rect>
+          >
+          </rect>
         </g>
       </svg>
     }

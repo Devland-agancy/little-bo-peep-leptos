@@ -339,7 +339,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               \end{align}
           $$"#
         </MathBlock>
-        <Paragraph>"so " <Math>r#"$12 \space \times \space 14 = 168$"#</Math> " ."</Paragraph>
+        <Paragraph>"so " <Math>r#"$12 \space \times \space 14 = 168$"#</Math> "."</Paragraph>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 2. "</Span>
           "One has"
@@ -353,7 +353,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               \end{align}
           $$"#
         </MathBlock>
-        <Paragraph>"so " <Math>r#"$ 13 \space \times \space 13 = 169$"#</Math> " ."</Paragraph>
+        <Paragraph>"so " <Math>r#"$ 13 \space \times \space 13 = 169$"#</Math> "."</Paragraph>
         <Paragraph margin_top=15>
           "(The fact that " <Math>r#"$13 \times 13$"#</Math> " is exactly one
           greater than " <Math>r#"$12 \times 14$"#</Math> " is a bit curious indeed.)"
@@ -364,9 +364,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           (a + b)(C + D) \,=\, aC + bC + aD + bD
           $$"#
         </MathBlock>
-        <Paragraph>
-          "and set " <Math>r#"$C = a \space , \space D = b$"#</Math> " , we find"
-        </Paragraph>
+        <Paragraph>"and set " <Math>r#"$C = a, \space D = b$"#</Math> ", we find"</Paragraph>
         <MathBlock>
           r#"$$
           (a + b)(a + b) \,=\, aa + ba + ab + bb
@@ -379,8 +377,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>
-          "since " <Math>r#"$(a + b)(a + b) = (a + b)^2 $"#</Math> " , "
-          <Math>r#"$ aa = a^2 $"#</Math> " , " <Math>r#"$ bb = b^2$"#</Math> " . (This
+          "since " <Math>r#"$(a + b)(a + b) = (a + b)^2 $"#</Math> ", "
+          <Math>r#"$ aa = a^2 $"#</Math> ", " <Math>r#"$ bb = b^2$"#</Math> ". (This
           is the" <Span italic=true>" binomial expansion of degree two, "</Span>
           "but such terminology
           is not very important at this stage.)"
@@ -487,7 +485,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>"as per “" <Math>r#"$ a^2 - b^2 = (a - b)(a + b) $"#</Math> "”."</Paragraph>
         <Paragraph margin_top=15>
           "In relation to distributivity, we should also mention the
-          simple but important fact that multiplying a difference by" <Math>r#"$-1$"#</Math>
+          simple but important fact that multiplying a difference by " <Math>r#"$-1$"#</Math>
           <Span italic=true>" reverses "</Span> "the difference. That is,"
         </Paragraph>
         <MathBlock>
@@ -674,7 +672,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <ImageLeft
                 attached_to="sqrt-1"
                 src="/images/17.svg"
-                translate="(30px, 50px)"
+                translate="(30px, 65px)"
                 absolute=true
                 top=480
                 left=-361
@@ -712,7 +710,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <ImageLeft
                 attached_to="sqrt-2"
                 src="/images/18.svg"
-                translate="(10px, 48px)"
+                translate="(10px, 66px)"
                 absolute=true
                 top=730
                 left=-443
@@ -738,7 +736,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
               </MathBlock>
               <Paragraph>
-                "is not necessarily " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> " , because
+                "is not necessarily " <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ", because
                 " <Math>r#"$ x = -\sqrt[6]{\up{0.6}2} $"#</Math> " satisfies this equation
                 as well!"
               </Paragraph>
@@ -900,7 +898,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 " kilometers. By comparison, the distance from the Earth to the Sun is a mere "
                 <Math>r#"$150$"#</Math> " million kilometers."
               </Paragraph>
-              <Paragraph indent=Indent::Block>
+              <Paragraph indent=Indent::Line>
                 "(The point being: that we could go from the relatively mysterious"
               </Paragraph>
               <MathBlock height=Height::Fit>
