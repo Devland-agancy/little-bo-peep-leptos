@@ -945,7 +945,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               </Paragraph>
               <Paragraph margin_top=15>
                 <Span italic=true>"Note 3."</Span>
-                "More generally, even though "
+                " More generally, even though "
               </Paragraph>
               <MathBlock height=Height::Fit>
                 r#"$$
@@ -953,7 +953,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
               </MathBlock>
               <Paragraph>
-                "for any small " <Math>r#"$ \epsilon > 0$"#</Math> " , the number "
+                "for any small " <Math>r#"$ \epsilon > 0$"#</Math> ", the number "
                 <Math>r#"$1 + \epsilon$"#</Math> " remains a good approximation to "
                 <Math>r#"${1 \over 1 - \epsilon}$"#</Math> ". For example,"
               </Paragraph>
@@ -1062,7 +1062,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               </MathBlock>
               <Paragraph>
                 "so the smaller of the two fractions is " <Math>r#"$ {101 \over 100} $"#</Math>
-                " , since " <Math>r#"${1 \over 100} < {1 \over 99}$"#</Math> " ."
+                ", since " <Math>r#"${1 \over 100} < {1 \over 99}$"#</Math> "."
               </Paragraph>
               <Paragraph margin_top=15>
                 <Span italic=true>"Note 4."</Span>
@@ -1159,7 +1159,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     {1 \over n} - {1 \over n+1} &= {1 \over n}\cdot{n+1 \over n+1}\, - \,
                     {1 \over n+1}\cdot{n \over n}\up{1.5}\\
                     &= {n+1 \over n(n+1)} - {n \over n(n+1)}\up{1.5}\\
-                    &= {1 \over n(n+1)}\up{1.5}
+                    &= {1 \over n(n+1)}\up{1.7}
                 \end{align}
                 $$"#
               </MathBlock>
@@ -1260,7 +1260,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <TabElement>
             <Paragraph classes="animate-appear-slow">
               <Span bold=true>"Exercise 2."</Span>
-              "In the solution to Exercise 1, we observed how the difference"
+              " In the solution to Exercise 1, we observed how the difference"
             </Paragraph>
             <MathBlock>
               r#"$$
