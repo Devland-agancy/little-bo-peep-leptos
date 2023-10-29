@@ -882,7 +882,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               >
                 <Math>
                   r#"$
-                      10^{15}\te{mm} = 10^{15}(10^{-6}\te{km})
+                      10^{15} \space \te{mm} = 10^{15}(10^{-6} \space \te{km})
                   $"#
                 </Math>
               </ImageRight>
