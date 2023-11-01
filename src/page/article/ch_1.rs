@@ -1168,9 +1168,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 top=4000
                 right=-470
                 src="/images/24.svg"
-                translate="(-65px, -20%)"
+                translate="(-65px, -25%)"
                 absolute=true
-                children_inset="20% 6% auto auto"
+                children_inset="25% 6% auto auto"
               >
                 <MathBlock height=Height::Fit>
                   r#"$$
@@ -1268,11 +1268,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               $$"#
             </MathBlock>
             <Paragraph classes="animate-appear-slow">
-              "is " <Span italic=true>"roughly"</Span> <Math>r#"$ 1/n^2 $"#</Math> " for large "
+              "is " <Span italic=true>"roughly "</Span> <Math>r#"$ 1/n^2 $"#</Math> " for large "
               <Math>r#"$ n $"#</Math> ". But how far off
               is this exactly? (I.e., what is the difference between "
               <Math>r#"${1 \over n} - {1 \over n+1}$"#</Math> " and "
-              <Math>r#"${1 \over n^2}$"#</Math> "$?) And " <Span italic=true>"roughly"</Span>
+              <Math>r#"${1 \over n^2}$"#</Math> " ?) And " <Span italic=true>"roughly"</Span>
               " how much is this far-offness, for large " <Math>r#"$n$"#</Math> "?"
             </Paragraph>
 
