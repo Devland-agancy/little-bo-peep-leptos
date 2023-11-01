@@ -873,7 +873,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               </MathBlock>
               <ImageRight
                 src="/images/104.svg"
-                translate="(50px, -44%)"
+                translate="(50px, -41%)"
                 absolute=true
                 top=3050
                 right=-470
