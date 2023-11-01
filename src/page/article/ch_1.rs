@@ -672,7 +672,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <ImageLeft
                 attached_to="sqrt-1"
                 src="/images/17.svg"
-                translate="(30px, 65px)"
+                translate="(30px, 46%)"
                 absolute=true
                 top=480
                 left=-361
@@ -710,13 +710,13 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <ImageLeft
                 attached_to="sqrt-2"
                 src="/images/18.svg"
-                translate="(10px, 66px)"
+                translate="(10px, 49%)"
                 absolute=true
                 top=730
                 left=-443
                 hidden_in_mobile=true
                 squiggle_right="-1.1rem"
-                squiggle_top="36%"
+                squiggle_top="37%"
               >
                 ""
               </ImageLeft>
@@ -1170,7 +1170,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 src="/images/24.svg"
                 translate="(-65px, -25%)"
                 absolute=true
-                children_inset="25% 6% auto auto"
+                children_inset="25% 3.5% auto auto"
               >
                 <MathBlock height=Height::Fit>
                   r#"$$
