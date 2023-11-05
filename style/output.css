@@ -1215,6 +1215,14 @@ video {
   width: 0;
 } */
 
+.MathJax_SVG{
+  font-size: 100%;
+  position: relative;
+  display: block !important;
+  width: fit-content !important;
+  margin: auto !important;
+}
+
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
 }
