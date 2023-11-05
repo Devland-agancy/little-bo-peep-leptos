@@ -61,10 +61,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.hidden-on-startup {
+/* .hidden-on-startup {
   opacity: 0;
   width: 0;
-}
+} */
 
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
