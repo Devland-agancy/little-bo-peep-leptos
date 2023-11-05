@@ -38,7 +38,7 @@ pub fn App(cx: Scope) -> impl IntoView {
       <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
       <Script src="/mathjax_setup.js" defer="true"/>
       <Script
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG"
         type_="text/javascript"
         defer="true"
       />
