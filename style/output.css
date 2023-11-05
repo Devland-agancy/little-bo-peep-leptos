@@ -1223,6 +1223,11 @@ video {
   margin: auto !important;
 }
 
+span .MathJax_SVG{
+  display: block !important;
+  margin: 0 !important;
+}
+
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
 }
