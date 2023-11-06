@@ -1210,10 +1210,10 @@ video {
   -webkit-tap-highlight-color: transparent;
 }
 
- .hidden-on-startup {
+/*  .hidden-on-startup {
   opacity: 0;
   width: 0;
-} 
+}  */
 
 .MathJax_SVG{
   font-size: 100%;
