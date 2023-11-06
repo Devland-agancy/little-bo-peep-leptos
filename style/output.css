@@ -1210,10 +1210,10 @@ video {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* .hidden-on-startup {
+ .hidden-on-startup {
   opacity: 0;
   width: 0;
-} */
+} 
 
 .MathJax_SVG{
   font-size: 100%;
@@ -1224,8 +1224,8 @@ video {
 }
 
 span .MathJax_SVG{
-  display: block !important;
-  margin: 0 !important;
+  display: block ruby !important;
+  margin: 0 !important
 }
 
 .scrollbar-hidden::-webkit-scrollbar {

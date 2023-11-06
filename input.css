@@ -83,19 +83,10 @@
   -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
 
-mjx-container {
-  width: 100%;
+span .MathJax_SVG{
+  display: block ruby !important;
+  margin: 0 !important;
 }
-
-/* mjx-container svg {
-  display: inline !important;
-}
-
-.mathblock mjx-container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-} */
 
 .menu-icon-svg{
   transition: all 0.3s ease;;
