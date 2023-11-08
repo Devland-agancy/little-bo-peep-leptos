@@ -9,6 +9,8 @@ fn LabelsView(
     set_selected_tab: WriteSignal<usize>,
 ) -> impl IntoView {
     let (_vec, set_vec) = create_signal(cx, vec);
+    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
+
     view! { cx,
       <svg
         width="43"
@@ -20,7 +22,8 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
             if selected_tab() != 0 {
-                set_selected_tab(selected_tab() - 1)
+                set_selected_tab(selected_tab() - 1);
+                set_solution_open(false)
             }
         }
       >
@@ -46,7 +49,8 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == _vec().len() - 1)
         on:click=move |_| {
             if selected_tab() != _vec().len() - 1 {
-                set_selected_tab(selected_tab() + 1)
+                set_selected_tab(selected_tab() + 1);
+                set_solution_open(false)
             }
         }
       >
@@ -159,7 +163,7 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     view! { cx,
-      <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-10">
+      <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-8">
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
       </div>
       <For

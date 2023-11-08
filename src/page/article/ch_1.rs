@@ -600,7 +600,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Tabs labels=vec!["1", "2"]>
           <TabElement>
             <Paragraph classes="animate-appear-slow">
-              <Span bold=true>"Exercise 1."</Span>
+              <Span bold=true>"Exercise 1 ."</Span>
               "True or false (and, if possible, explain):"
             </Paragraph>
             <Grid classes="animate-appear-slow" margin_top=15 cols=3 sm_cols=2>
@@ -1272,7 +1272,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <Math>r#"$ n $"#</Math> ". But how far off
               is this exactly? (I.e., what is the difference between "
               <Math>r#"${1 \over n} - {1 \over n+1}$"#</Math> " and "
-              <Math>r#"${1 \over n^2}$"#</Math> " ?) And " <Span italic=true>"roughly"</Span>
+              <Math>r#"${1 \over n^2}$"#</Math> "?) And " <Span italic=true>"roughly"</Span>
               " how much is this far-offness, for large " <Math>r#"$n$"#</Math> "?"
             </Paragraph>
 

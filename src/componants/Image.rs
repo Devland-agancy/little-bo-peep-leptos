@@ -1,13 +1,19 @@
-use leptos::*;
 use crate::page::state::PageState;
+use leptos::*;
 
 #[component]
-pub fn Image(cx: Scope, src: &'static str, height: i32, #[prop(default = -1)] mobile_height: i32, 
-#[prop(default = "")] containerClasses: &'static str , #[prop(default = "")] imageClasses: &'static str) -> impl IntoView {
+pub fn Image(
+    cx: Scope,
+    src: &'static str,
+    height: i32,
+    #[prop(default = -1)] mobile_height: i32,
+    #[prop(default = "")] containerClasses: &'static str,
+    #[prop(default = "")] imageClasses: &'static str,
+) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let (screen_mobile, set_screen_mobile) = create_signal(cx, height);
 
-    create_effect(cx, move |_|{
+    create_effect(cx, move |_| {
         if window().inner_width().unwrap().as_f64().unwrap() <= 640_f64 && mobile_height > -1 {
             set_screen_mobile(mobile_height)
         }
@@ -16,7 +22,7 @@ pub fn Image(cx: Scope, src: &'static str, height: i32, #[prop(default = -1)] mo
       <div
         class=move || {
             format!(
-                "px-4 my-10 relative col-start-2 scrollbar-hidden md:overflow-x-visible {}",
+                "px-4 my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible {}",
                 containerClasses,
             )
         }

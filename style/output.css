@@ -608,17 +608,22 @@ video {
   margin-bottom: 2.5rem;
 }
 
-.my-9 {
-  margin-top: 2.25rem;
-  margin-bottom: 2.25rem;
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
+.my-\[2\.7rem\] {
+  margin-top: 2.7rem;
+  margin-bottom: 2.7rem;
 }
 
-.mb-16 {
-  margin-bottom: 4rem;
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .ml-auto {
@@ -1210,22 +1215,18 @@ video {
   -webkit-tap-highlight-color: transparent;
 }
 
-/*  .hidden-on-startup {
+/* .hidden-on-startup {
   opacity: 0;
   width: 0;
-}  */
+} */
 
 .MathJax_SVG{
   font-size: 100%;
   position: relative;
   display: block !important;
+  width: -moz-fit-content !important;
   width: fit-content !important;
   margin: auto !important;
-}
-
-span .MathJax_SVG{
-  display: block ruby !important;
-  margin: 0 !important
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -1239,19 +1240,10 @@ span .MathJax_SVG{
   /* Internet Explorer and Edge */
 }
 
-mjx-container {
-  width: 100%;
+span .MathJax_SVG{
+  display: block ruby !important;
+  margin: 0 !important;
 }
-
-/* mjx-container svg {
-  display: inline !important;
-}
-
-.mathblock mjx-container {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-} */
 
 .menu-icon-svg{
   transition: all 0.3s ease;
