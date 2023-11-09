@@ -308,7 +308,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
           "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
-          <ImageLeft src="/images/325.svg" hidden_in_mobile=true pos_y="7rem" squiggle_right="-1.8rem" squiggle_top="45%">
+          <ImageLeft src="/images/325.svg" hidden_in_mobile=true pos_y="-7rem" squiggle_right="-1.8rem" squiggle_top="45%">
             ""
           </ImageLeft>
         </Paragraph>
@@ -864,7 +864,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageRight
                   src="/images/104.svg"
-                  pos_y="-155%"
+                  pos_y="-160%"
                   pos_x="-65px"
                   children_y="47%"
                   children_x="28%"
