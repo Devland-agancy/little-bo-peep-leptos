@@ -1223,7 +1223,7 @@ video {
 .MathJax_SVG{
   font-size: 100%;
   position: relative;
-  display: block !important;
+  display: ruby !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
   margin: auto !important;
