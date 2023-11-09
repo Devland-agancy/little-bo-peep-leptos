@@ -84,7 +84,7 @@
 }
 
 span .MathJax_SVG{
-  display: block ruby !important;
+  display: ruby !important;
   margin: 0 !important;
 }
 
