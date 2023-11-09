@@ -53,10 +53,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           r#"$$
               \sqrt{(-2)^2} = 2 
           $$"#
+          <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_y="-25%" >
+            ""
+          </ImageRight>
         </MathBlock>
-        <ImageRight translate="(-2rem, 1.5rem)" src="/images/svg_cloud_minus_two_squared.svg">
-          ""
-        </ImageRight>
         <Paragraph>
           "and, in particular, it is " <Span italic=true>"not "</Span> "true that"
         </Paragraph>
@@ -306,11 +306,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           (a + b)(C + D) = aC + aD + bC + bD
           $$"#
         </MathBlock>
-        <ImageLeft translate="(0.4rem,1.1rem)" src="/images/325.svg" hidden_in_mobile=true>
-          ""
-        </ImageLeft>
         <Paragraph>
           "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
+          <ImageLeft src="/images/325.svg" hidden_in_mobile=true pos_y="7rem" squiggle_right="-1.8rem" squiggle_top="45%">
+            ""
+          </ImageLeft>
         </Paragraph>
         <MathBlock>
           r#"$$
@@ -668,20 +668,16 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     =& \,\, \up{1.4} 2
                     \end{align}
                 $$"#
+                <ImageLeft
+                  src="/images/17.svg"
+                  pos_y="28%"
+                  hidden_in_mobile=true
+                  squiggle_right="-0.9rem"
+                  squiggle_top="30%"
+                >
+                  ""
+                </ImageLeft>
               </MathBlock>
-              <ImageLeft
-                attached_to="sqrt-1"
-                src="/images/17.svg"
-                translate="(30px, 46%)"
-                absolute=true
-                top=480
-                left=-361
-                hidden_in_mobile=true
-                squiggle_right="-0.9rem"
-                squiggle_top="30%"
-              >
-                ""
-              </ImageLeft>
               <Paragraph>"and"</Paragraph>
               <MathBlock id="sqrt-2" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
                 r#"$$
@@ -706,20 +702,16 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     =&\,\, \up{1.4} 2
                     \end{align}
                 $$"#
+                <ImageLeft
+                  src="/images/18.svg"
+                  hidden_in_mobile=true
+                  squiggle_right="-0.9rem"
+                  squiggle_top="37%"
+                  pos_y="27%"
+                >
+                  ""
+                </ImageLeft>
               </MathBlock>
-              <ImageLeft
-                attached_to="sqrt-2"
-                src="/images/18.svg"
-                translate="(10px, 49%)"
-                absolute=true
-                top=730
-                left=-443
-                hidden_in_mobile=true
-                squiggle_right="-1.1rem"
-                squiggle_top="37%"
-              >
-                ""
-              </ImageLeft>
               <Paragraph>
                 "so "
                 <Math>
@@ -870,22 +862,20 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 r#"$$
                 1\fw\te{mm} = 10^{-6}\fw\te{km}
                 $$"#
+                <ImageRight
+                  src="/images/104.svg"
+                  pos_y="-155%"
+                  pos_x="-65px"
+                  children_y="47%"
+                  children_x="28%"
+                >
+                  <Math>
+                    r#"$
+                        10^{15} \space \te{mm} = 10^{15}(10^{-6} \space \te{km})
+                    $"#
+                  </Math>
+                </ImageRight>
               </MathBlock>
-              <ImageRight
-                src="/images/104.svg"
-                translate="(50px, -41%)"
-                absolute=true
-                top=3050
-                right=-470
-                children_inset="47% 32% auto auto"
-                attached_to="104"
-              >
-                <Math>
-                  r#"$
-                      10^{15} \space \te{mm} = 10^{15}(10^{-6} \space \te{km})
-                  $"#
-                </Math>
-              </ImageRight>
               <Paragraph>"this is"</Paragraph>
               <MathBlock height=Height::Fit>
                 r#"$$
@@ -1162,27 +1152,27 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     &= {1 \over n(n+1)}\up{1.7}
                 \end{align}
                 $$"#
+                <ImageRight
+                  src="/images/24.svg"
+                  pos_y="-36%"
+                  children_x="25%"
+                  children_y="23.5%"
+                  squiggle_left="-1.2rem"
+                  squiggle_top="32%"
+                  hidden_in_mobile={true}
+                >
+                  <MathBlock height=Height::Fit>
+                    r#"$$
+                    \begin{align}
+                        {1 \over 99} - {1 \over 100}
+                        &= {1 \over 99}\cdot{100 \over 100}\, - \,{1 \over 100}\cdot{99 \over 99}\up{1.5}\\
+                        &= {100 \over 99\cdot 100} - {99 \over 99\cdot 100}\up{1.5}\\
+                        &= {1 \over 99\cdot 100}\up{1.5}
+                        \end{align}
+                    $$"#
+                  </MathBlock>
+                </ImageRight>
               </MathBlock>
-              <ImageRight
-                attached_to="svg-24"
-                top=4000
-                right=-470
-                src="/images/24.svg"
-                translate="(-65px, -25%)"
-                absolute=true
-                children_inset="25% 3.5% auto auto"
-              >
-                <MathBlock height=Height::Fit>
-                  r#"$$
-                  \begin{align}
-                      {1 \over 99} - {1 \over 100}
-                      &= {1 \over 99}\cdot{100 \over 100}\, - \,{1 \over 100}\cdot{99 \over 99}\up{1.5}\\
-                      &= {100 \over 99\cdot 100} - {99 \over 99\cdot 100}\up{1.5}\\
-                      &= {1 \over 99\cdot 100}\up{1.5}
-                      \end{align}
-                  $$"#
-                </MathBlock>
-              </ImageRight>
               <Paragraph>"...it's that much. (For example,"</Paragraph>
               <MathBlock height=Height::Fit>
                 r#"$$

@@ -5,7 +5,7 @@ pub enum Indent {
     None,
     Line,
     Block,
-    Custom(&'static str)
+    Custom(&'static str),
 }
 
 #[derive(PartialEq)]
@@ -24,13 +24,11 @@ pub fn Paragraph(
     #[prop(default = 0)] margin_top: i16,
     #[prop(optional)] id: &'static str,
     #[prop(optional)] classes: &'static str,
-
-
 ) -> impl IntoView {
     view! { cx,
       <span
         id=id
-        class=format!("col-start-2 px-4 block {}", classes)
+        class=format!("col-start-2 px-4 block relative {}", classes)
         class=("indent-10", indent == Indent::Line)
         class=("pl-10", indent == Indent::Block)
         class=("text-center", align == Align::Center)

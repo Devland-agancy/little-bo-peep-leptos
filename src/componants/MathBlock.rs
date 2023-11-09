@@ -1,6 +1,6 @@
-use leptos::{html::{ Div}, ev::{resize}, *};
-use leptos_use::use_event_listener;
 use crate::page::state::PageState;
+use leptos::{ev::resize, html::Div, *};
+use leptos_use::use_event_listener;
 use rand::Rng;
 
 #[derive(PartialEq)]
@@ -18,30 +18,30 @@ pub fn MathBlock(
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "4rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
-    #[prop(default = "mjx-math")] child_tag: &'static str,
-
+    #[prop(default = "svg")] child_tag: &'static str,
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
-    let set_page_state =
-    use_context::<WriteSignal<PageState>>(cx).unwrap();
+    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
-    
+
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 
-    create_effect(cx, move |_|{
+    create_effect(cx, move |_| {
         if node_ref().is_some() {
-            let math_box = node_ref().unwrap().get_elements_by_tag_name(child_tag).item(0);
-            if math_box.is_some(){
-
+            let math_box = node_ref()
+                .unwrap()
+                .get_elements_by_tag_name(child_tag)
+                .item(0);
+            if math_box.is_some() {
                 let math_box_width = math_box.unwrap().client_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
                 if math_box_width + margin_left as f64 - 2_f64 > window_width {
                     request_animation_frame(move || {
                         set_margin_left_active(false);
                         log!("falseeee");
-                        if math_box_width - 2_f64  > window_width{
+                        if math_box_width - 2_f64 > window_width {
                             set_is_wide(true);
                             set_margin_left_active(true);
                         }
@@ -49,22 +49,27 @@ pub fn MathBlock(
                 }
             }
         }
-    }); 
-    create_effect(cx, move |_|{
+    });
+    create_effect(cx, move |_| {
         let _ = use_event_listener(cx, window(), resize, move |_| {
             if node_ref().is_some() {
-                let math_box_width = node_ref().unwrap().get_elements_by_tag_name(child_tag).item(0).unwrap().client_width() as f64;
-                let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if math_box_width + margin_left as f64 - 2_f64 > window_width {
-                    set_margin_left_active(false);
-                    if math_box_width - 2_f64  > window_width{
-                        set_is_wide(true);
+                let math_box = node_ref()
+                    .unwrap()
+                    .get_elements_by_tag_name(child_tag)
+                    .item(0);
+                if math_box.is_some() {
+                    let math_box_width = math_box.unwrap().client_width() as f64;
+                    let window_width = window().inner_width().unwrap().as_f64().unwrap();
+                    if math_box_width + margin_left as f64 - 2_f64 > window_width {
+                        set_margin_left_active(false);
+                        if math_box_width - 2_f64 > window_width {
+                            set_is_wide(true);
+                            set_margin_left_active(true);
+                        }
+                    } else {
+                        set_is_wide(false);
                         set_margin_left_active(true);
                     }
-                }
-                else{
-                    set_is_wide(false);
-                    set_margin_left_active(true);
                 }
             }
         });

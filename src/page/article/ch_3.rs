@@ -1,11 +1,11 @@
-use crate::componants::MathBlock::*;
-use crate::componants::Paragraph::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
 use crate::componants::Article::*;
 use crate::componants::ArticleTitle::*;
-use crate::componants::Span::*;
 use crate::componants::Columns::*;
+use crate::componants::ImageLeft::*;
+use crate::componants::ImageRight::*;
+use crate::componants::MathBlock::*;
+use crate::componants::Paragraph::*;
+use crate::componants::Span::*;
 
 use leptos::*;
 
@@ -31,10 +31,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           </Span>
           "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
         </Paragraph>
-        <ImageRight translate="(-2rem, 1.5rem)" src="/images/svg_cloud_minus_two_squared.svg">
+        <ImageRight  src="/images/svg_cloud_minus_two_squared.svg">
           ""
         </ImageRight>
-        <ImageLeft src="/images/325.svg" translate="(0rem, 1.5rem)" hidden_in_mobile=true>
+        <ImageLeft src="/images/325.svg"  hidden_in_mobile=true>
           ""
         </ImageLeft>
         <Paragraph>"or, less pedantically,"</Paragraph>
@@ -42,7 +42,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>"or"</Paragraph>
 
         <Paragraph>"since"</Paragraph>
-        <ImageRight translate="(-2rem, 1.5rem)" src="/images/svg_cloud_minus_two_squared.svg">
+        <ImageRight  src="/images/svg_cloud_minus_two_squared.svg">
           ""
         </ImageRight>
 
