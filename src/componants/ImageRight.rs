@@ -55,7 +55,7 @@ pub fn ImageRight(
               set_right_image_x_pos
                   .update(|val| {
                       *val = f64::from(
-                          image_ref().unwrap().get_bounding_client_rect().left() - 50_f64,
+                          image_ref().unwrap().get_bounding_client_rect().left(),
                       );
                   })
           }
