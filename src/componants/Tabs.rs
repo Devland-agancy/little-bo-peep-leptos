@@ -176,7 +176,7 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
                 class="col-start-2 relative transition-opacity duration-500"
                 class=("opacity-0", move || selected_tab() != label.0)
                 class=("h-0", move || selected_tab() != label.0)
-                class=("w-0", move || selected_tab() != label.0)
+
                 class=("transition-none", move || selected_tab() != label.0)
               >
                 {label.1}

@@ -31,10 +31,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           </Span>
           "of a line is a mathematical measure of how “steep” a line is. Here are a few examples (for an explanation of the values, see below):"
         </Paragraph>
-        <ImageRight  src="/images/svg_cloud_minus_two_squared.svg">
-          ""
-        </ImageRight>
-        <ImageLeft src="/images/325.svg"  hidden_in_mobile=true>
+        <ImageRight src="/images/svg_cloud_minus_two_squared.svg">""</ImageRight>
+        <ImageLeft src="/images/325.svg" hidden_in_mobile=true>
           ""
         </ImageLeft>
         <Paragraph>"or, less pedantically,"</Paragraph>
@@ -42,9 +40,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>"or"</Paragraph>
 
         <Paragraph>"since"</Paragraph>
-        <ImageRight  src="/images/svg_cloud_minus_two_squared.svg">
-          ""
-        </ImageRight>
+        <ImageRight src="/images/svg_cloud_minus_two_squared.svg">""</ImageRight>
 
         <Paragraph>"is"</Paragraph>
         <Paragraph align=Align::Center>

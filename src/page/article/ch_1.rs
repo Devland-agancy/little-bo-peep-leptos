@@ -52,8 +52,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"#
-          <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="-1rem" pos_y="-25%" >
+          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="-1rem" pos_y="-25%">
             ""
           </ImageRight>
         </MathBlock>
@@ -308,7 +307,13 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
           "that come from multiplying every term of the first parenthesis with every term of the second parenthesis. Indeed,"
-          <ImageLeft src="/images/325.svg" hidden_in_mobile=true pos_y="-7rem" squiggle_right="-1.8rem" squiggle_top="45%">
+          <ImageLeft
+            src="/images/325.svg"
+            hidden_in_mobile=true
+            pos_y="-7rem"
+            squiggle_right="-1.8rem"
+            squiggle_top="45%"
+          >
             ""
           </ImageLeft>
         </Paragraph>
@@ -1159,7 +1164,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   children_y="23.5%"
                   squiggle_left="-1.2rem"
                   squiggle_top="32%"
-                  hidden_in_mobile={true}
+                  hidden_in_mobile=true
                 >
                   <MathBlock height=Height::Fit>
                     r#"$$
@@ -1267,24 +1272,96 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             </Paragraph>
 
             <Solution>
-              <Paragraph margin_top=15>"Part by part:"</Paragraph>
-              <Paragraph margin_top=15>"a. (True) We have"</Paragraph>
-              <MathBlock>
-                r#"$$
-                    0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
-                $$"#
-              </MathBlock>
-              <Paragraph>"and " <Math>r#"$ 0.81 < 0.9 $"#</Math> " ."</Paragraph>
+              <Paragraph margin_top=15>
+                "Since"
+                <MathBlock>
+                  r#"$$
+                  {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
+                  $$"#
+                  <ImageRight
+                    src="/images/25.svg"
+                    children_y="10%"
+                    children_x="37%"
+                    pos_x="-4rem"
+                    pos_y="-23%"
+                  >
+                    <MathBlock>
+                      r#"$$
+                      {1 \over 99\cdot 100}
+                      $$"#
+                    </MathBlock>
+                  </ImageRight>
+                </MathBlock> "(as previously computed) is smaller than"
+              </Paragraph>
+              <Paragraph margin_top=15>
+                <MathBlock>
+                  r#"$$
+                  {1 \over n^2}
+                  $$"#
+                  <ImageRight
+                    src="/images/26.svg"
+                    children_y="10%"
+                    children_x="32%"
+                    pos_x="-4rem"
+                    pos_y="-23%"
+                  >
+                    <MathBlock>
+                      r#"$$
+                      {1 \over 99\cdot 100}
+                      $$"#
+                    </MathBlock>
+                  </ImageRight>
+                </MathBlock>
+                "we will compute the difference"
 
-              <Paragraph margin_top=15>"b. (True) We have"</Paragraph>
-              <MathBlock>
-                r#"$$
-                0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
-                $$"#
-              </MathBlock>
-              <Paragraph>
-                "and " <Math>r#"$ 0.1 $"#</Math> " is nonnegative, so "
-                <Math>r#"$ \sqrt{0.01} = 0.1 $"#</Math> " ."
+                <MathBlock>
+                  r#"$$
+                  {1 \over n^2} - {1 \over n(n+1)}
+                  $$"#
+                </MathBlock>
+                "as opposed to the “other” difference"
+                <MathBlock>
+                  r#"$$
+                  {1 \over n(n+1)} - {1 \over n^2}
+                  $$"#
+                </MathBlock>
+              </Paragraph>
+
+              <Paragraph margin_top=15>
+                "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
+                <MathBlock>
+                  r#"$$
+                  \begin{align}
+                  {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot
+                  {n \over n}\\
+                  &= {n+1 \over n^2(n+1)} - {n \over n^2(n+1)}\up{1.5}\\
+                  &= {1 \over n^2(n+1)}\up{1.5}
+                  \end{align}
+                  $$"#
+                  <ImageRight
+                    src="/images/27.svg"
+                    children_y="10%"
+                    children_x="32%"
+                    pos_x="-4rem"
+                    pos_y="-23%"
+                  >
+                    <MathBlock>
+                      r#" $$
+                      \begin{align}
+                      {1 \over 99^2} - {1 \over 99\cdot 100} &=
+                      {1 \over 99^2}\cdot{100 \over 100}\, - \,
+                      {1 \over 99\cdot 100}\cdot{99 \over 99}\\
+                      &= {100 \over 99^2 \cdot 100} - {99 \over 99^2 \cdot 100}\up{1.5}\\
+                      &= {1 \over 99^2\cdot 100}\up{1.5}
+                      \end{align}
+                      $$"#
+                    </MathBlock>
+                  </ImageRight>
+                </MathBlock>
+                "which, for large "<Math>"$n$"</Math>", is roughly"
+                <MathBlock>
+                  r#" $${1 \over n^3}$$ "#
+                </MathBlock>
               </Paragraph>
             </Solution>
           </TabElement>
