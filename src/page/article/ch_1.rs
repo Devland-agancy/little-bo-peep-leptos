@@ -645,7 +645,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to "
                 <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
               </Paragraph>
-              <MathBlock id="sqrt-1" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+              <MathBlock id="sqrt-1" height=Height::Fit arrow_position="8.5rem 0rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -679,7 +679,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </ImageLeft>
               </MathBlock>
               <Paragraph>"and"</Paragraph>
-              <MathBlock id="sqrt-2" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+              <MathBlock id="sqrt-2" height=Height::Fit arrow_position="8.5rem 0rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
@@ -978,7 +978,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <Paragraph margin_top=15>
                 "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):"
               </Paragraph>
-              <MathBlock height=Height::Fit child_tag="span" arrow_position="14.3rem 0rem 0rem 85%">
+              <MathBlock height=Height::Fit child_tag="span" arrow_position="13.3rem 0rem 0rem 90%">
                 <div class="w-full">
                   <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
 
