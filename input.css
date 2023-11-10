@@ -61,10 +61,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* .hidden-on-startup {
+ .hidden-on-startup {
   opacity: 0;
   width: 0;
-} */
+} 
 
 .MathJax_SVG{
   font-size: 100%;
@@ -81,6 +81,10 @@
 .scrollbar-hidden{
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
+
+mjx-container {
+  width: 100%;
 }
 
 span .MathJax_SVG{
