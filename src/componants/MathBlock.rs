@@ -18,7 +18,7 @@ pub fn MathBlock(
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "4rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
-    #[prop(default = "svg")] child_tag: &'static str,
+    #[prop(default = "mjx-math")] child_tag: &'static str,
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
@@ -106,7 +106,7 @@ pub fn MathBlock(
           class=("hidden", move || !is_wide() | arrow_hidden)
           style=move || format!("inset: {}", arrow_position)
         >
-          <img src="/images/cream.svg" class="ml-auto h-3"/>
+          <img src="/images/cream.svg" class="m-3 h-3"/>
         </div>
       </div>
     }
