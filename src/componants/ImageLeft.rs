@@ -41,41 +41,50 @@ pub fn ImageLeft(
     });
 
     view! { cx,
-        <button
-          node_ref=image_ref
-          on:click=move |e| {
-              e.stop_propagation();
-              set_page_state
-                  .update(|value| {
-                      *value = match value {
-                          PageState::ShowArticle => PageState::ShowLeft,
-                          _ => PageState::ShowArticle,
-                      };
-                  });
-          }
+      <button
+        node_ref=image_ref
+        on:click=move |e| {
+            e.stop_propagation();
+            set_page_state
+                .update(|value| {
+                    *value = match value {
+                        PageState::ShowArticle => PageState::ShowLeft,
+                        _ => PageState::ShowArticle,
+                    };
+                });
+        }
 
-          style=move || {
-              format!("transform: translateX({});left: -{}px; top: {}",  pos_x, left_pos(),  if pos_y != "" { pos_y } else { match position {
-                "bottom" => "50%",
-                "top" => "0",
-                 _ => "auto",
-              }})
-          }
+        style=move || {
+            format!(
+                "transform: translateX({});left: -{}px; top: {}",
+                pos_x,
+                left_pos(),
+                if pos_y != "" {
+                    pos_y
+                } else {
+                    match position {
+                        "bottom" => "50%",
+                        "top" => "0",
+                        _ => "auto",
+                    }
+                },
+            )
+        }
 
-          class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10 absolute"
-          class=("pointer-events-none", show_left)
-        >
-          <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
-          <img  src=src/>
+        class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10 absolute"
+        class=("pointer-events-none", show_left)
+      >
+        <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
+        <img src=src/>
 
-          <Show fallback=|_| () when=move || hidden_in_mobile>
-            <div
-              class="block sm:hidden absolute"
-              style=move || format!("right: {}; top: {}", squiggle_right, squiggle_top)
-            >
-              <img src="/images/squiggle.png" class="h-11"/>
-            </div>
-          </Show>
-        </button>
+        <Show fallback=|_| () when=move || hidden_in_mobile>
+          <div
+            class="block sm:hidden absolute"
+            style=move || format!("right: {}; top: {}", squiggle_right, squiggle_top)
+          >
+            <img src="/images/squiggle.png" class="h-11"/>
+          </div>
+        </Show>
+      </button>
     }
 }
