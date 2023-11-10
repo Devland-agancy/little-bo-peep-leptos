@@ -600,7 +600,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Tabs labels=vec!["1", "2"]>
           <TabElement>
             <Paragraph classes="animate-appear-slow">
-              <Span bold=true>"Exercise 1 ."</Span>
+              <Span bold=true>"Exercise 1. "</Span>
               "True or false (and, if possible, explain):"
             </Paragraph>
             <Grid classes="animate-appear-slow" margin_top=15 cols=3 sm_cols=2>
