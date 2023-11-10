@@ -1233,6 +1233,10 @@ span .MathJax_SVG{
   margin: 0 !important;
 }
 
+.MathJax_SVG svg{
+  transform: translateY(2px);
+}
+
 .menu-icon-svg{
   transition: all 0.3s ease;
 }
