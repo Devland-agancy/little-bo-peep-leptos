@@ -1203,10 +1203,10 @@ video {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* .hidden-on-startup {
+.hidden-on-startup {
   opacity: 0;
   width: 0;
-} */
+}
 
 .MathJax_SVG{
   font-size: 100%;
@@ -1228,13 +1228,13 @@ video {
   /* Internet Explorer and Edge */
 }
 
+mjx-container {
+  width: 100%;
+}
+
 span .MathJax_SVG{
   display: block !important;
   margin: 0 !important;
-}
-
-.MathJax_SVG svg{
-  transform: translateY(2px);
 }
 
 .menu-icon-svg{
