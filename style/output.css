@@ -911,6 +911,10 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-l {
+  border-left-width: 1px;
+}
+
 .border-r-0 {
   border-right-width: 0px;
 }
@@ -1369,6 +1373,10 @@ span .MathJax_SVG{
     grid-column-start: 2;
   }
 
+  .sm\:mt-\[1px\] {
+    margin-top: 1px;
+  }
+
   .sm\:grid {
     display: grid;
   }
@@ -1405,6 +1413,10 @@ span .MathJax_SVG{
 
   .sm\:border-b {
     border-bottom-width: 1px;
+  }
+
+  .sm\:border-l-0 {
+    border-left-width: 0px;
   }
 
   .sm\:border-r {

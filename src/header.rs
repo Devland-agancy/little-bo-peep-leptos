@@ -2,7 +2,7 @@ use leptos::{
     ev::{resize, scroll},
     *,
 };
-use leptos_use::{use_event_listener};
+use leptos_use::use_event_listener;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -131,7 +131,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
             )
         }
 
-        class="h-14 w-14 fixed right-0 sm:border-b transition-opacity"
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b transition-opacity sm:mt-[1px]"
       >
         <button
           on:mouseover=move |_| set_button_opacity(1_f64)
