@@ -36,7 +36,7 @@ pub fn App(cx: Scope) -> impl IntoView {
       // sets the document title
       <Title text="Little Bo Peep"/>
       <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
-      <Script src="/mathjax_setup.js" defer=true/>
+      <Script src="/mathjax_setup.js" defer="true"/>
       <Script
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
         type_="text/javascript"
