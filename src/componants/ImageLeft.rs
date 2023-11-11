@@ -1,7 +1,10 @@
 use std::time::Duration;
 
 use crate::page::state::PageState;
-use leptos::{html::Button, *};
+use leptos::{
+    html::{Button, Img},
+    *,
+};
 
 #[component]
 pub fn ImageLeft(
@@ -10,7 +13,7 @@ pub fn ImageLeft(
     #[prop(default = false)] hidden_in_mobile: bool,
     #[prop(default = "center")] position: &'static str,
     #[prop(default = "")] pos_y: &'static str,
-    #[prop(default = "")] pos_x: &'static str,
+    #[prop(default = "0px")] pos_x: &'static str,
 
     #[prop(default = "-1.5rem")] squiggle_right: &'static str,
     #[prop(default = "30%")] squiggle_top: &'static str,
@@ -25,24 +28,11 @@ pub fn ImageLeft(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
 
-    let image_ref = create_node_ref::<Button>(cx);
-    let (left_pos, set_left_pos) = create_signal(cx, 0);
-
-    create_effect(cx, move |_| {
-        if image_ref().is_some() {
-            set_left_pos(image_ref().unwrap().offset_width());
-            set_timeout(
-                move || {
-                    set_left_pos(image_ref().unwrap().offset_width());
-                },
-                Duration::from_millis(1),
-            )
-        }
-    });
+    let image_ref = create_node_ref::<Img>(cx);
 
     view! { cx,
       <button
-        node_ref=image_ref
+
         on:click=move |e| {
             e.stop_propagation();
             set_page_state
@@ -56,9 +46,8 @@ pub fn ImageLeft(
 
         style=move || {
             format!(
-                "transform: translateX({});left: -{}px; top: {}",
+                "transform: translateX(calc({} - 100%)); top: {}",
                 pos_x,
-                left_pos(),
                 if pos_y != "" {
                     pos_y
                 } else {
@@ -75,7 +64,7 @@ pub fn ImageLeft(
         class=("pointer-events-none", show_left)
       >
         <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
-        <img src=src/>
+        <img node_ref=image_ref src=src/>
 
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
