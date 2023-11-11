@@ -52,7 +52,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="4rem" pos_y="-2rem">
+          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="1rem" pos_y="-2rem">
             ""
           </ImageRight>
         </MathBlock>
@@ -311,6 +311,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             src="/images/325.svg"
             hidden_in_mobile=true
             pos_y="-8rem"
+            pos_x="-1rem"
             squiggle_right="-0.8rem"
             squiggle_top="45%"
           >
@@ -676,6 +677,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <ImageLeft
                   src="/images/17.svg"
                   pos_y="3.5rem"
+                  pos_x="-3.2rem"
                   hidden_in_mobile=true
                   squiggle_right="-4rem"
                   squiggle_top="30%"
@@ -713,6 +715,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   squiggle_right="-4rem"
                   squiggle_top="37%"
                   pos_y="3.2rem"
+                  pos_x="-3.2rem"
                 >
                   ""
                 </ImageLeft>
@@ -1282,7 +1285,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/25.svg"
                     children_y="10%"
                     children_x="37%"
-                    pos_x="-2rem"
+                    pos_x="3.3rem"
                     pos_y="-1.5rem"
                   >
                     <MathBlock>
@@ -1302,7 +1305,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/26.svg"
                     children_y="10%"
                     children_x="32%"
-                    pos_x="-2rem"
+                    pos_x="3rem"
                     pos_y="-1.5rem"
                   >
                     <MathBlock>
@@ -1342,7 +1345,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/27.svg"
                     children_y="40%"
                     children_x="20%"
-                    pos_x="1.65rem"
+                    pos_x="-1.65rem"
                     pos_y="-3.1rem"
                     hidden_in_mobile={true}
                   >

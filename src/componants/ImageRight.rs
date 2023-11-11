@@ -54,7 +54,7 @@ pub fn ImageRight(
 
         style=move || {
             format!(
-                "transform: translateX(calc({} + 100%)); top: {}",
+                "transform: translateX(calc(0px + 100%)); right: {}; top: {}",
                 pos_x,
                 if pos_y != "" {
                     pos_y
