@@ -27,7 +27,6 @@ http = "0.2.8"
 leptos-use = { version = "0.6.3", features = ["ssr"] }
 gloo-timers = { version = "0.2", features = ["futures"] }
 rand = "0.8"
-#elm_to_view = { path = "../Elm-markup-to-leptos" }
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
