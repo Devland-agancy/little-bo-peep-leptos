@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 use web_sys::MouseEvent;
@@ -30,6 +32,14 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
         });
     });
 
+    let (bot_div, set_bot_div) = create_signal(cx, false);
+    create_effect(cx, move |_| {
+        if solution_open() {
+            set_timeout(move || set_bot_div(false), Duration::from_secs(1))
+        } else {
+            set_timeout(move || set_bot_div(true), Duration::from_secs(1))
+        }
+    });
     view! { cx,
       <div class="px-4 my-5 relative col-start-2">
         <SolutionSVG on_click=move |_| { set_solution_open(!solution_open()) }/>
@@ -52,6 +62,11 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
         </div>
 
       </div>
+      <Show fallback=|_| () when=move || bot_div()>
+        <div class="bg-green-100 h-[150px]">
+
+        </div>
+      </Show>
     }
 }
 

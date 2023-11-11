@@ -662,6 +662,10 @@ video {
   height: 2rem;
 }
 
+.h-\[150px\] {
+  height: 150px;
+}
+
 .h-\[37px\] {
   height: 37px;
 }
@@ -690,10 +694,6 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
-}
-
-.w-0 {
-  width: 0px;
 }
 
 .w-10 {
@@ -917,6 +917,11 @@ video {
 
 .border-r-0 {
   border-right-width: 0px;
+}
+
+.bg-green-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
 }
 
 .bg-stone-100 {
