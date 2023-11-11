@@ -4,7 +4,7 @@ RUN tar -xvf cargo-binstall-x86_64-unknown-linux-musl.tgz
 RUN cp cargo-binstall /usr/local/cargo/bin
 RUN cargo binstall cargo-leptos -y
 RUN rustup target add wasm32-unknown-unknown
-RUN cargo install -f wasm-bindgen-cli --version 0.2.87
+RUN cargo binstall -f wasm-bindgen-cli --version 0.2.87
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
