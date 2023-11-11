@@ -53,10 +53,12 @@ pub fn ImageRight(
                         _ => PageState::ShowArticle,
                     };
                 });
+            if page_state() == PageState::ShowRight{
             set_right_image_x_pos
                 .update(|val| {
                     *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left());
                 })
+            }
         }
 
         style=move || {
