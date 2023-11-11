@@ -1,6 +1,6 @@
-use leptos::{ev::{click}, html::{Div}, *};
-use leptos_use::use_event_listener;
 use crate::page::state::PageState;
+use leptos::{ev::click, html::Div, *};
+use leptos_use::use_event_listener;
 use std::time::Duration;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
@@ -12,59 +12,71 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
     let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
-    let article_node = create_node_ref::<Div>(cx);
+    let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
+
+    // can_click is for disabling click on page transition
+    let (can_click, set_can_click) = create_signal(cx, true);
 
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
         options.behavior(ScrollBehavior::Smooth);
         if show_right() {
+            set_can_click(false);
             options.left(right_image_x_pos());
             window().scroll_with_scroll_to_options(&options);
-            set_timeout(move || {
-                let _ = article_node().unwrap().style("left", "1500px");
-                /* let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)"); */
-
-                options.left(right_image_x_pos() + 1500_f64);
-                options.behavior(ScrollBehavior::Instant);
-                window().scroll_with_scroll_to_options(&options);
-            }, Duration::from_millis(800)); 
+            set_timeout(
+                move || {
+                    let _ = article_node().unwrap().style("left", "1500px");
+                    options.left(right_image_x_pos() + 1500_f64);
+                    options.behavior(ScrollBehavior::Instant);
+                    window().scroll_with_scroll_to_options(&options);
+                    set_can_click(true);
+                },
+                Duration::from_millis(800),
+            );
         } else if show_left() {
             if article_node().is_some() {
                 let _ = article_node().unwrap().style("left", "1500px");
-                /* let _ = article_node().unwrap().style("-webkit-transform", "translateX(1500px)"); */
-            } 
-            options.left( 1500_f64);
+            }
+            options.left(1500_f64);
             options.behavior(ScrollBehavior::Instant);
             window().scroll_with_scroll_to_options(&options);
 
-            set_timeout(move || {
-                options.left( 1000_f64);
-                options.behavior(ScrollBehavior::Smooth);
-                window().scroll_with_scroll_to_options(&options);
-            }, Duration::from_millis(100)); 
+            set_timeout(
+                move || {
+                    options.left(1000_f64);
+                    options.behavior(ScrollBehavior::Smooth);
+                    window().scroll_with_scroll_to_options(&options);
+                },
+                Duration::from_millis(100),
+            );
         };
     });
 
     create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, document(), click, move |_|{
-            log!("clicked");
-            if show_right() || show_left() {
+        let _ = use_event_listener(cx, document(), click, move |_| {
+            if (show_right() || show_left()) && can_click() {
                 let mut options = ScrollToOptions::new();
                 options.behavior(ScrollBehavior::Smooth);
                 options.left(1500_f64);
                 window().scroll_with_scroll_to_options(&options);
-                set_timeout(move || {
-                    let _ = article_node().unwrap().style("left", "0");
-                   /*  let _ = article_node().unwrap().style("-webkit-transform", "translateX(0)"); */
-
-                    options.behavior(ScrollBehavior::Instant);
-                    options.left(0_f64);
-                    window().scroll_with_scroll_to_options(&options);
-                    set_timeout(
-                        move || set_page_state.update(|value| *value = PageState::ShowArticle),
-                        Duration::from_millis(700),
-                    )
-                }, Duration::from_millis(800));
+                set_can_click(false);
+                set_timeout(
+                    move || {
+                        let _ = article_node().unwrap().style("left", "0");
+                        options.behavior(ScrollBehavior::Instant);
+                        options.left(0_f64);
+                        window().scroll_with_scroll_to_options(&options);
+                        set_timeout(
+                            move || {
+                                set_page_state.update(|value| *value = PageState::ShowArticle);
+                                set_can_click(true);
+                            },
+                            Duration::from_millis(700),
+                        )
+                    },
+                    Duration::from_millis(800),
+                );
             }
         });
     });
