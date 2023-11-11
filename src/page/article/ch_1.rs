@@ -52,7 +52,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="-1rem" pos_y="-25%">
+          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="-4rem" pos_y="-2rem">
             ""
           </ImageRight>
         </MathBlock>
@@ -310,8 +310,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <ImageLeft
             src="/images/325.svg"
             hidden_in_mobile=true
-            pos_y="-7rem"
-            squiggle_right="-1.8rem"
+            pos_y="-8rem"
+            squiggle_right="-0.8rem"
             squiggle_top="45%"
           >
             ""
@@ -675,9 +675,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageLeft
                   src="/images/17.svg"
-                  pos_y="28%"
+                  pos_y="3.5rem"
                   hidden_in_mobile=true
-                  squiggle_right="-0.9rem"
+                  squiggle_right="-4rem"
                   squiggle_top="30%"
                 >
                   ""
@@ -710,9 +710,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <ImageLeft
                   src="/images/18.svg"
                   hidden_in_mobile=true
-                  squiggle_right="-0.9rem"
+                  squiggle_right="-4rem"
                   squiggle_top="37%"
-                  pos_y="27%"
+                  pos_y="3.2rem"
                 >
                   ""
                 </ImageLeft>
@@ -869,8 +869,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageRight
                   src="/images/104.svg"
-                  pos_y="-200%"
-                  pos_x="-65px"
+                  pos_y="-6.5rem"
+                  pos_x="-3rem"
                   children_y="47%"
                   children_x="34%"
                 >
@@ -1159,7 +1159,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageRight
                   src="/images/24.svg"
-                  pos_y="-36%"
+                  pos_y="-4.8rem"
                   children_x="25%"
                   children_y="23.5%"
                   squiggle_left="-1.2rem"
@@ -1282,8 +1282,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/25.svg"
                     children_y="10%"
                     children_x="37%"
-                    pos_x="-4rem"
-                    pos_y="-23%"
+                    pos_x="-2rem"
+                    pos_y="-1.5rem"
                   >
                     <MathBlock>
                       r#"$$
@@ -1302,8 +1302,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/26.svg"
                     children_y="10%"
                     children_x="32%"
-                    pos_x="-4rem"
-                    pos_y="-23%"
+                    pos_x="-2rem"
+                    pos_y="-1.5rem"
                   >
                     <MathBlock>
                       r#"$$
@@ -1343,7 +1343,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     children_y="40%"
                     children_x="20%"
                     pos_x="1.65rem"
-                    pos_y="-38%"
+                    pos_y="-3.1rem"
                     hidden_in_mobile={true}
                   >
                     <MathBlock>
