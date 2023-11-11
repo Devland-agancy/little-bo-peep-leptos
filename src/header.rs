@@ -131,7 +131,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
             )
         }
 
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b transition-opacity sm:mt-[1px]"
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b sm:mt-[1px]"
       >
         <button
           on:mouseover=move |_| set_button_opacity(1_f64)
