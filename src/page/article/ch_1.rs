@@ -1329,7 +1329,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
               <Paragraph margin_top=15>
                 "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
-                <MathBlock>
+                <MathBlock height=Height::Fit>
                   r#"$$
                   \begin{align}
                   {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot
@@ -1340,13 +1340,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   $$"#
                   <ImageRight
                     src="/images/27.svg"
-                    children_y="10%"
-                    children_x="32%"
-                    pos_x="-4rem"
-                    pos_y="-23%"
+                    children_y="40%"
+                    children_x="20%"
+                    pos_x="1.65rem"
+                    pos_y="-38%"
+                    hidden_in_mobile={true}
                   >
                     <MathBlock>
-                      r#" $$
+                      r#"$$
                       \begin{align}
                       {1 \over 99^2} - {1 \over 99\cdot 100} &=
                       {1 \over 99^2}\cdot{100 \over 100}\, - \,
@@ -1360,8 +1361,43 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </MathBlock>
                 "which, for large "<Math>"$n$"</Math>", is roughly"
                 <MathBlock>
-                  r#" $${1 \over n^3}$$ "#
+                  r#"$$ {1 \over n^3} $$"#
                 </MathBlock>
+              </Paragraph>
+              <Paragraph margin_top=15>
+                "since "<Math>r#"$ n^2(n+1) \approx n^3 $"#</Math>" for large "<Math>"$n$"</Math>"."
+              </Paragraph>
+
+              <Paragraph margin_top=15>
+                <Span italic={true}>"Example 1. "</Span>
+                "Above, we estimated"
+                <MathBlock height=Height::Fit>
+                  r#"$$
+                  {1 \over 10} - {1 \over 11}
+                  $$"#
+                </MathBlock>
+                "to be roughly "<Math>"$1/100 = 0.01$"</Math>", but "<Math>"$1/100$"</Math>" is bigger than the actual value of
+                "<Math>r#"${1 \over 10\cdot 11} = {1 \over 110}$"#</Math>" by"
+                <MathBlock>
+                  r#"$$ {1 \over 10^2\cdot 11}$$"#
+                </MathBlock>
+              </Paragraph>
+
+              <Paragraph margin_top=15>
+                "or close to "<Math>"$1/10^3 = 0.001$"</Math>". (So"
+                <MathBlock height=Height::Fit>
+                  r#"$$
+                  {1 \over 10} - {1 \over 11}
+                  $$"#
+                </MathBlock>
+                "is about "<Math>"$0.01$"</Math>", while making an error of about "<Math>"$0.001$"</Math>".)
+                (In fact,"
+                <MathBlock>
+                  r#"$$ {1 \over 10^2\cdot 11}$$"#
+                </MathBlock>
+                "is"
+                <Span>"less"</Span>
+                "than "<Math>"$1/10^3$"</Math>", so the error is <i>less</i> than "<Math>"$0.001$"</Math>".)"
               </Paragraph>
             </Solution>
           </TabElement>
