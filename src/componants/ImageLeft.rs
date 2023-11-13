@@ -20,6 +20,7 @@ pub fn ImageLeft(
 
     #[prop(default = "")] children_x: &'static str,
     #[prop(default = "")] children_y: &'static str,
+    #[prop(default = 0)] width: i32,
 
     children: Children,
 ) -> impl IntoView {
@@ -64,7 +65,7 @@ pub fn ImageLeft(
         class=("pointer-events-none", show_left)
       >
         <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
-        <img node_ref=image_ref src=src/>
+        <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
 
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
