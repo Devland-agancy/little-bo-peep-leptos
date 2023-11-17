@@ -32,7 +32,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
         });
     });
 
-    let (bot_div, set_bot_div) = create_signal(cx, false);
+    let (bot_div, set_bot_div) = create_signal(cx, true);
     create_effect(cx, move |_| {
         if solution_open() {
             set_timeout(move || set_bot_div(false), Duration::from_secs(1))
@@ -62,7 +62,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
         </div>
 
       </div>
-      <Show fallback=|_| () when=move || bot_div()>
+      <Show fallback=|_| () when=move || !solution_open() || bot_div()>
         <div class="bg-green-100 h-[150px]">
 
         </div>
