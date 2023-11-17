@@ -20,13 +20,14 @@ simple_logger = "4"
 tokio = { version = "1.25.0", optional = true }
 tower = { version = "0.4.13", optional = true }
 tower-http = { version = "0.4", features = ["fs"], optional = true }
-wasm-bindgen = "=0.2.88"
+wasm-bindgen = "=0.2.87"
 thiserror = "1.0.38"
 tracing = { version = "0.1.37", optional = true }
 http = "0.2.8"
 leptos-use = { version = "0.6.3", features = ["ssr"] }
 gloo-timers = { version = "0.2", features = ["futures"] }
 rand = "0.8"
+elm_to_view = { path = "../Elm-markup-to-leptos" }
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
@@ -67,7 +68,7 @@ style-file = "style/output.css"
 assets-dir = "public"
 
 # The IP and port (ex: 127.0.0.1:3000) where the server serves the content. Use it in your server setup.
-site-addr = "127.0.0.1:4000"
+site-addr = "127.0.0.1:5000"
 
 # The port to use for automatic reload monitoring
 reload-port = 3001

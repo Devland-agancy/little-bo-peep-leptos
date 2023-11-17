@@ -47,6 +47,7 @@ fn ChapterMenu(cx: Scope) -> impl IntoView {
 const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
     ("Chapter 1: A Few Refreshers", "ch_1"),
     ("Chapter 2: Slopes", "ch_2"),
+    ("Chapter 3: 33", "ch_3"),
 ];
 
 #[component]
