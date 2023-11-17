@@ -1299,7 +1299,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   </ImageRight>
                 </MathBlock> "(as previously computed) is smaller than"
               </Paragraph>
-              <Paragraph margin_top=15>
+              <Paragraph>
                 <MathBlock>
                   r#"$$
                   {1 \over n^2}
@@ -1334,7 +1334,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </MathBlock>
               </Paragraph>
 
-              <Paragraph margin_top=15>
+              <Paragraph>
                 "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
                 <MathBlock height=Height::Fit>
                   r#"$$
