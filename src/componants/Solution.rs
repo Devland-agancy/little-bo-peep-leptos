@@ -40,9 +40,16 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
             set_timeout(move || set_bot_div(true), Duration::from_secs(1))
         }
     });
+
+    let (transition, set_transition) = create_signal(cx, false);
+
     view! { cx,
       <div class="px-4 my-5 relative col-start-2">
-        <SolutionSVG on_click=move |_| { set_solution_open(!solution_open()) }/>
+        <SolutionSVG on_click=move |_| {
+            set_transition(true);
+            set_timeout(move || set_transition(false), Duration::from_millis(1100));
+            set_solution_open(!solution_open())
+        }/>
       </div>
       <div
         class="col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
@@ -55,8 +62,9 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
         <div
           node_ref=node_ref
-          class="transition-all duration-1000"
           class=("-translate-y-full", move || !solution_open())
+          class=("duration-1000", move || transition())
+          class=("transition-all", move || transition())
         >
           {children(cx)}
         </div>
@@ -64,7 +72,6 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
       </div>
       <Show fallback=|_| () when=move || !solution_open() || bot_div()>
         <div class="bg-green-100 h-[150px]">
-
         </div>
       </Show>
     }
