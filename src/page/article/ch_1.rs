@@ -1351,10 +1351,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     children_x="20%"
                     pos_x="-1.6rem"
                     pos_y="-5.2rem"
-                    hidden_in_mobile={true}
+                    hidden_in_mobile=true
                     width=607
-
                   >
+
                     <MathBlock>
                       r#"$$
                       \begin{align}
@@ -1367,46 +1367,44 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                       $$"#
                     </MathBlock>
                   </ImageRight>
-                </MathBlock>
-                "which, for large "<Math>"$n$"</Math>", is roughly"
-                <MathBlock>
-                  r#"$$ {1 \over n^3} $$"#
-                </MathBlock>
+                </MathBlock> "which, for large " <Math>"$n$"</Math> ", is roughly"
+                <MathBlock>r#"$$ {1 \over n^3} $$"#</MathBlock>
               </Paragraph>
               <Paragraph margin_top=15>
-                "since "<Math>r#"$ n^2(n+1) \approx n^3 $"#</Math>" for large "<Math>"$n$"</Math>"."
+                "since " <Math>r#"$ n^2(n+1) \approx n^3 $"#</Math> " for large " <Math>"$n$"</Math>
+                "."
               </Paragraph>
 
               <Paragraph margin_top=15>
-                <Span italic={true}>"Example 1. "</Span>
+                <Span italic=true>"Example 1. "</Span>
                 "Above, we estimated"
                 <MathBlock height=Height::Fit>
                   r#"$$
                   {1 \over 10} - {1 \over 11}
                   $$"#
                 </MathBlock>
-                "to be roughly "<Math>"$1/100 = 0.01$"</Math>", but "<Math>"$1/100$"</Math>" is bigger than the actual value of
-                "<Math>r#"${1 \over 10\cdot 11} = {1 \over 110}$"#</Math>" by"
-                <MathBlock>
-                  r#"$$ {1 \over 10^2\cdot 11}$$"#
-                </MathBlock>
+                "to be roughly "
+                <Math>"$1/100 = 0.01$"</Math>
+                ", but "
+                <Math>"$1/100$"</Math>
+                " is bigger than the actual value of
+                "
+                <Math>r#"${1 \over 10\cdot 11} = {1 \over 110}$"#</Math>
+                " by"
+                <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock>
               </Paragraph>
 
               <Paragraph margin_top=15>
-                "or close to "<Math>"$1/10^3 = 0.001$"</Math>". (So"
+                "or close to " <Math>"$1/10^3 = 0.001$"</Math> ". (So"
                 <MathBlock height=Height::Fit>
                   r#"$$
                   {1 \over 10} - {1 \over 11}
                   $$"#
-                </MathBlock>
-                "is about "<Math>"$0.01$"</Math>", while making an error of about "<Math>"$0.001$"</Math>".)
-                (In fact,"
-                <MathBlock>
-                  r#"$$ {1 \over 10^2\cdot 11}$$"#
-                </MathBlock>
-                "is"
-                <Span>"less"</Span>
-                "than "<Math>"$1/10^3$"</Math>", so the error is <i>less</i> than "<Math>"$0.001$"</Math>".)"
+                </MathBlock> "is about " <Math>"$0.01$"</Math> ", while making an error of about "
+                <Math>"$0.001$"</Math> ".)
+                (In fact," <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock> "is"
+                <Span>"less"</Span> "than " <Math>"$1/10^3$"</Math>
+                ", so the error is <i>less</i> than " <Math>"$0.001$"</Math> ".)"
               </Paragraph>
             </Solution>
           </TabElement>
