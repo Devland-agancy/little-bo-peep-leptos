@@ -22,7 +22,7 @@ pub fn Image(
       <div
         class=move || {
             format!(
-                "px-4 my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible {}",
+                "px-4 my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible mt-[45px] {}",
                 containerClasses,
             )
         }

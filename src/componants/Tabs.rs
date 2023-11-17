@@ -163,7 +163,7 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     view! { cx,
-      <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-8">
+      <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-[31px] mt-[2px]">
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
       </div>
       <For
