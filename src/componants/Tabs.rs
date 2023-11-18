@@ -1,5 +1,14 @@
+use crate::utils::get_chapter::get_chapter;
 use leptos::{html::Div, html::Svg, *};
+use leptos_router::use_location;
+use serde::{Deserialize, Serialize};
+use serde_json;
 use web_sys::Node;
+#[derive(Serialize, Deserialize)]
+struct Exercice {
+    ex_number: String,
+    ex_chapter: String,
+}
 
 #[component]
 fn LabelsView(
@@ -161,6 +170,45 @@ fn EndLabelsView(
 pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let location = use_location(cx);
+    let _location = location.clone();
+
+    create_effect(cx, move |_| {
+        let mut stored_selected_tab = None;
+
+        match window().local_storage() {
+            Ok(Some(storage)) => {
+                let key = format!("{}_exercice", get_chapter(&location));
+                stored_selected_tab = Some(storage.get_item(&key))
+            }
+            _ => {}
+        }
+        if let Some(sst) = stored_selected_tab {
+            match sst {
+                Ok(Some(value)) => {
+                    set_selected_tab(value.parse::<usize>().unwrap());
+                }
+                _ => {}
+            }
+        }
+    });
+
+    create_effect(cx, move |_| match window().local_storage() {
+        Ok(Some(storage)) => {
+            log!(
+                "{} ,ss {}",
+                document().location().unwrap().pathname().unwrap(),
+                selected_tab().to_string()
+            );
+            let exo = Exercice {
+                ex_number: selected_tab().to_string(),
+                ex_chapter: get_chapter(&_location),
+            };
+            let key = format!("{}_exercice", exo.ex_chapter);
+            let _ = storage.set_item(&key, &exo.ex_number);
+        }
+        _ => (),
+    });
 
     view! { cx,
       <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-[31px] mt-[2px]">
@@ -168,7 +216,6 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
       </div>
       <For
         each=move || children(cx).nodes.into_iter().enumerate()
-
         key=|label| label.0
         view=move |cx, label| {
             view! { cx,
@@ -176,7 +223,6 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
                 class="col-start-2 relative transition-opacity duration-500"
                 class=("opacity-0", move || selected_tab() != label.0)
                 class=("h-0", move || selected_tab() != label.0)
-
                 class=("transition-none", move || selected_tab() != label.0)
               >
                 {label.1}
