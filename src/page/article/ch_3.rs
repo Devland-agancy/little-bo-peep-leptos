@@ -8,8 +8,8 @@ use crate::componants::MathBlock::*;
 use crate::componants::Paragraph::*;
 use crate::componants::Span::*;
 
-use elm_to_view::elm_to_view;
 use leptos::*;
+//use elm_to_view::elm_to_view;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
@@ -25,8 +25,9 @@ pub fn View(cx: Scope) -> impl IntoView {
 
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
-    elm_to_view! {
-      cx,
-      "/home/chaker/code/lp/little-bo-peep-leptos/public/chapters/chapter2.emu"
-    }
+    view! {cx, "s"}
+    //elm_to_view! {
+    //  cx,
+    //  "/home/chaker/code/lp/little-bo-peep-leptos/public/chapters/chapter2.emu"
+    //}
 }
