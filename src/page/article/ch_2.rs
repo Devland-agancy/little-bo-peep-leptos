@@ -16,7 +16,7 @@ use leptos::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle>"Chapter 2: Slopes"</ArticleTitle>
+        <ArticleTitle>"Chapter 2: The Slope Formula"</ArticleTitle>
       <Columns>
         <ArticleBody/>
       </Columns>
@@ -31,7 +31,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
       r#"
       |> Paragraph 
 
-          *The Definition.*
+          *Slopes.*
           The %slope% of a line is a mathematical measure of how
           “steep” a line is.
           Here are a few examples (for an explanation of the values,
@@ -43,7 +43,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
       |> Paragraph    
           
-          The slope of a line is...
+          To explain now, The slope of a line is...
 
       |> Paragraph   
           margin_top = 15
