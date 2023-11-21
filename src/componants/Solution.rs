@@ -11,13 +11,19 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
     create_effect(cx, move |_| {
-        if node_ref().is_some() {
-            if solution_open() {
-                set_content_height(node_ref().unwrap().offset_height())
-            } else {
-                set_content_height(0)
-            }
-        }
+        if solution_open() {}
+        set_timeout(
+            move || {
+                if node_ref().is_some() {
+                    if solution_open() {
+                        set_content_height(node_ref().unwrap().offset_height())
+                    } else {
+                        set_content_height(0)
+                    }
+                }
+            },
+            Duration::from_secs(1),
+        )
     });
 
     create_effect(cx, move |_| {
