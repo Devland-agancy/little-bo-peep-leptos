@@ -1370,7 +1370,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </MathBlock> "which, for large " <Math>"$n$"</Math> ", is roughly"
                 <MathBlock>r#"$$ {1 \over n^3} $$"#</MathBlock>
               </Paragraph>
-              <Paragraph margin_top=15>
+              <Paragraph>
                 "since " <Math>r#"$ n^2(n+1) \approx n^3 $"#</Math> " for large " <Math>"$n$"</Math>
                 "."
               </Paragraph>
