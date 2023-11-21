@@ -29,8 +29,7 @@ pub fn Image(
 
         style=move || format!("height: {}px", screen_mobile() + 10)
         class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle)
-        class=("translate-x-full", move || page_state() == PageState::ShowRight)
-        class=("-translate-x-full", move || page_state() == PageState::ShowLeft)
+
       >
 
         <img
