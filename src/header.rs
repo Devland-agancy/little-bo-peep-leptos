@@ -135,7 +135,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b sm:mt-[1px]"
         class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
-        class=("sm:border-b-0", move || !menu_closed())
+        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
       >
         <button
           on:mouseover=move |_| set_button_opacity(1_f64)
