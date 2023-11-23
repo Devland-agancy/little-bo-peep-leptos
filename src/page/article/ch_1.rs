@@ -1336,7 +1336,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
               <Paragraph>
                 "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
-                <MathBlock height=Height::Fit>
+                <MathBlock height=Height::Fit arrow_position="7.5rem -2rem auto auto" show_arrow_at_width=640>
                   r#"$$
                   \begin{align}
                   {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot
@@ -1351,7 +1351,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     children_x="20%"
                     pos_x="-1.6rem"
                     pos_y="-5.2rem"
-                    hidden_in_mobile=true
                     width=607
                   >
 
