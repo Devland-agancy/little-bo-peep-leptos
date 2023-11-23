@@ -6,6 +6,8 @@ pub fn Image(
     cx: Scope,
     src: &'static str,
     height: i32,
+    #[prop(default = -1)] width: i32,
+
     #[prop(default = -1)] mobile_height: i32,
     #[prop(default = "")] containerClasses: &'static str,
     #[prop(default = "")] imageClasses: &'static str,
@@ -27,14 +29,42 @@ pub fn Image(
             )
         }
 
-        style=move || format!("height: {}px", screen_mobile() + 10)
+        style=move || format!(
+          "height: {}{}; width: {}{}",
+          if screen_mobile() > 0 {
+             ( screen_mobile() +  10 ).to_string()
+          } else { "".to_string() },
+          if screen_mobile() > 0 {
+            "px"
+          } else { "auto" },
+          if width > 0 {
+            width.to_string()
+          } else { "auto".to_string() },
+          if width > 0 {
+            "px"
+          } else { "auto" }
+          )
         class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle)
 
       >
 
         <img
           src=src
-          style=move || format!("height: {}px", screen_mobile())
+          style=move || format!(
+            "height: {}{}; width: {}{}",
+            if screen_mobile() > 0 {
+               screen_mobile().to_string()
+            } else { "".to_string() },
+            if screen_mobile() > 0 {
+              "px"
+            } else { "auto" },
+            if width > 0 {
+              width.to_string()
+            } else { "auto".to_string() },
+            if width > 0 {
+              "px"
+            } else { "auto" }
+            )
           class=move || {
               format!(
                   "max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto {}",
