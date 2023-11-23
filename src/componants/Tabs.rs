@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use crate::utils::get_chapter::get_chapter;
 use leptos::{html::Div, html::Svg, *};
 use leptos_router::use_location;
@@ -210,6 +212,18 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
         _ => (),
     });
 
+    let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
+    create_effect(cx, move |_| {
+        if solution_open() {
+            set_timeout(
+                move || set_solution_fully_opened(true),
+                Duration::from_secs(1),
+            )
+        } else {
+            set_solution_fully_opened(false)
+        }
+    });
+
     view! { cx,
       <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-[31px] mt-[2px]">
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
@@ -231,7 +245,7 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
         }
       />
 
-      <Show fallback=|_| () when=move || solution_open()>
+      <Show fallback=|_| () when=move || solution_fully_opened() >
         <div class="text-xl flex items-center justify-center gap-2 col-start-2">
           <EndLabelsView
             vec=labels.clone()
