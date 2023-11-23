@@ -106,12 +106,14 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
+    let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
 
     create_effect(cx, move |_| {
         set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
 
         let _ = use_event_listener(cx, window(), scroll, move |_| {
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
+            set_window_scroll(window().scroll_y().unwrap())
         });
     });
 
@@ -132,7 +134,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
         }
 
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b sm:mt-[1px]"
-        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() )
+        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
       >
         <button
           on:mouseover=move |_| set_button_opacity(1_f64)
