@@ -1,5 +1,6 @@
 use crate::page::state::PageState;
-use leptos::*;
+use leptos::{ev::resize, *};
+use leptos_use::use_event_listener;
 
 #[component]
 pub fn Image(
@@ -20,34 +21,42 @@ pub fn Image(
             set_screen_mobile(mobile_height)
         }
     });
+
+    let (image_is_wide, set_image_is_wide) = create_signal(cx, false);
+    create_effect(cx, move |_| {
+        set_image_is_wide(window().inner_width().unwrap().as_f64().unwrap() <= width as f64)
+    });
+
+    create_effect(cx, move |_| {
+        let _ = use_event_listener(cx, window(), resize, move |_| {
+            set_image_is_wide(window().inner_width().unwrap().as_f64().unwrap() <= width as f64)
+        });
+    });
+
     view! { cx,
       <div
         class=move || {
             format!(
-                "px-4 my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible mt-[45px] {}",
+                "my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible mt-[45px] {} {}",
+                if !image_is_wide() {
+                  "px-4"
+                } else {
+                  ""
+                 },
                 containerClasses,
             )
         }
-
         style=move || format!(
-          "height: {}{}; width: {}{}",
+          "height: {}{}; ",
           if screen_mobile() > 0 {
              ( screen_mobile() +  10 ).to_string()
           } else { "".to_string() },
           if screen_mobile() > 0 {
             "px"
           } else { "auto" },
-          if width > 0 {
-            width.to_string()
-          } else { "auto".to_string() },
-          if width > 0 {
-            "px"
-          } else { "auto" }
           )
         class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle)
-
       >
-
         <img
           src=src
           style=move || format!(
@@ -67,7 +76,12 @@ pub fn Image(
             )
           class=move || {
               format!(
-                  "max-w-none md:absolute md:-translate-x-1/2 md:left-1/2 m-auto {}",
+                  "max-w-none m-auto {} {}",
+                  if !image_is_wide() {
+                    "absolute -translate-x-1/2 left-1/2"
+                  } else {
+                    ""
+                   },
                   imageClasses,
               )
           }
