@@ -609,9 +609,9 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.my-\[2\.7rem\] {
-  margin-top: 2.7rem;
-  margin-bottom: 2.7rem;
+.my-\[15px\] {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .mb-12 {
@@ -620,6 +620,10 @@ video {
 
 .mb-\[31px\] {
   margin-bottom: 31px;
+}
+
+.mb-\[40px\] {
+  margin-bottom: 40px;
 }
 
 .mt-\[2px\] {

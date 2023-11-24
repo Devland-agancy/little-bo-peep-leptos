@@ -37,7 +37,7 @@ pub fn Image(
       <div
         class=move || {
             format!(
-                "my-[2.7rem] relative col-start-2 scrollbar-hidden md:overflow-x-visible mt-[45px] {} {}",
+                "my-[15px] relative col-start-2 scrollbar-hidden md:overflow-x-visible {} {}",
                 if !image_is_wide() {
                   "px-4"
                 } else {
