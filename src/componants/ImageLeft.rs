@@ -21,6 +21,7 @@ pub fn ImageLeft(
     #[prop(default = "")] children_x: &'static str,
     #[prop(default = "")] children_y: &'static str,
     #[prop(default = 0)] width: i32,
+    #[prop(default = false)] clickable_on_desktop: bool,
 
     children: Children,
 ) -> impl IntoView {
@@ -61,8 +62,9 @@ pub fn ImageLeft(
             )
         }
 
-        class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 lg:pointer-events-none z-10 absolute"
+        class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute"
         class=("pointer-events-none", show_left)
+        class=("lg:pointer-events-none", move || !clickable_on_desktop)
       >
         <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
         <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
