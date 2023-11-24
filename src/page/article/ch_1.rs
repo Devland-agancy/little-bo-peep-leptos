@@ -1353,6 +1353,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     pos_x="-1.6rem"
                     pos_y="-5.2rem"
                     width=607
+                    clickable_on_desktop=true
                   >
 
                     <MathBlock>
