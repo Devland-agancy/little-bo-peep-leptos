@@ -48,8 +48,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
       |> Paragraph   
           margin_top = 15
+          align = Align::Center
 
-          the number of units the line goes up with each unit to the right
+          %the number of units the line goes up with each unit to the right%
           
       |> Paragraph
           margin_top = 15
@@ -57,6 +58,33 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           ...assuming that numbers on the $y$-axis increase going up and that 
           numbers on the $x$-axis increase going right, as is usually the case.
           One can also describe slope as...
+
+      |> Paragraph   
+          margin_top = 15
+          align = Align::Center
+          
+          %the amount of vertical change per unit of horizontal change%
+
+      |> Paragraph   
+          margin_top = 15
+          
+          ...more elegantly.
+
+      |> Paragraph   
+          indent = Indent::Block
+
+          Thus, for example, the line below has slope 1 because it goes up by $1$ unit for each unit to the right:
+
+      |> Image
+          width = 380 
+          height = 349 
+          src="/images/slope_1_example.svg"
+
+      |> Paragraph   
+
+          On the other hand, the line below has slope $-0.5$, because it goes up 
+          by %minus% $0.5$ units with each unit to the right:
+  
       "#
     }
 }
