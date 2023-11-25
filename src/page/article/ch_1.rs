@@ -1404,8 +1404,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </MathBlock> "is about " <Math>"$0.01$"</Math> ", while making an error of about "
                 <Math>"$0.001$"</Math> ".)
                 (In fact," <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock> "is"
-                <Span>"less"</Span> "than " <Math>"$1/10^3$"</Math>
-                ", so the error is <i>less</i> than " <Math>"$0.001$"</Math> ".)"
+                <Span italic=true>" less "</Span> "than " <Math>"$1/10^3$"</Math>
+                ", so the error is "<Span italic=true>"less"</Span>" than " <Math>"$0.001$"</Math> ".)"
               </Paragraph>
             </Solution>
           </TabElement>
