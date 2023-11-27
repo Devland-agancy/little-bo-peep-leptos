@@ -595,7 +595,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               \sqrt{3} + \sqrt{2},\,\, \sqrt{3} - \sqrt{2}
           $$"#
         </MathBlock>
-        <Paragraph>
+        <Paragraph id="exo">
           "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
         <Image

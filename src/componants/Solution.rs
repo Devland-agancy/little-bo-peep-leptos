@@ -1,6 +1,10 @@
 use std::time::Duration;
 
-use leptos::{ev::resize, html::Div, *};
+use leptos::{
+    ev::{click, resize},
+    html::Div,
+    *,
+};
 use leptos_use::use_event_listener;
 use web_sys::MouseEvent;
 
@@ -100,14 +104,22 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView
 where
-    F: Fn(MouseEvent) + 'static,
+    F: Fn(MouseEvent) + 'static + Clone,
 {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let button = create_node_ref(cx);
+
+    create_effect(cx, move |_| {
+        let on_click_clone = on_click.clone();
+        let _ = use_event_listener(cx, button, click, move |e| {
+            on_click_clone(e);
+        });
+    });
 
     view! { cx,
       <div
-        on:click=move |e| { on_click(e) }
-
+        id="solution-button"
+        node_ref = button
         class="column solution_button_div cursor-pointer mb-12"
       >
         <svg class="mx-auto h-[37px] overflow-visible">
