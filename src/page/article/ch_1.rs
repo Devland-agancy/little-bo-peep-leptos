@@ -458,8 +458,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>
-          "is a difference of squares, $19$ can be factored. (On the other
-              hand $19$ is a prime number, but nevermind.)"
+          "is a difference of squares, " <Math>r#"$19$"#</Math> " can be factored. (On the other
+              hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
         </Paragraph>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 5. "</Span>
