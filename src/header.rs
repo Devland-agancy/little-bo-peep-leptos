@@ -4,11 +4,13 @@ use leptos::{
 };
 use leptos_use::use_event_listener;
 
+use crate::page::state::PageState;
+
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
     view! { cx,
       <div class="select-none w-full">
-        <div class="select-none flex justify-center items-center fixed sm:absolute bg-white z-50 border-b border-t-10 h-14 border-r-0 sm:border-r w-full sm:w-[calc(100vw-3.5rem)]">
+        <div class="select-none flex justify-center items-center fixed sm:absolute bg-white z-50 h-14  w-full sm:w-[calc(100vw-3.5rem)]">
           <Title/>
           <MenuButton/>
           <ChapterMenu/>
@@ -19,12 +21,15 @@ pub fn Header(cx: Scope) -> impl IntoView {
 
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_30.5rem_1fr]"
+        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_30.5rem_1fr] border-b h-full border-r-0 sm:border-r"
+        class=("sm:hidden", move || page_state() != PageState::ShowArticle)
         id="Header"
       >
-        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2">
+        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 sm:pb-2">
           <a href="/">"Little Bo Peep"</a>
         </div>
       </div>
@@ -133,7 +138,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
             )
         }
 
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b sm:mt-[1px]"
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b"
         class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
         class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
       >

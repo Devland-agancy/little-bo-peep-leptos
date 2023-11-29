@@ -85,7 +85,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
       <div class="pt-14 xl:pt-20 overscroll-none ">
         <div
           node_ref=article_node
-          class="absolute flex justify-center align-center w-full pb-14 min-h-screen"
+          class="relative flex justify-center align-center w-full pb-14 min-h-screen"
           class=("overflow-hidden", show_article)
           id="Article"
         >
@@ -94,7 +94,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 
             <div class="font-baskerville w-full">{children(cx)}</div>
           </div>
-          <ColumnButton/>
+          <ColumnButtonLeft />
+          <ColumnButtonRight />
+
         </div>
       </div>
       <MathJaxTypeset/>
@@ -116,7 +118,7 @@ pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn ColumnButton(cx: Scope) -> impl IntoView {
+pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
 
     let show_right = move || page_state() == PageState::ShowRight;
@@ -125,9 +127,31 @@ pub fn ColumnButton(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
+        style="width: 1500px;"
+        class="z-40 transition duration-300 absolute grid grid-cols-4 justify-end items-center w-full h-full translate-x-3/4 lg:translate-x-[85%]"
+        class=("opacity-0", show_article)
+        class=("pointer-events-none", show_article)
+        class=("opacity-100", show_left)
+        class=("-translate-x-3/4", show_left)
+        class=("lg:-translate-x-[85%]", show_left)
+        class=("opacity-100", show_right)
 
+      ></div>
+    }
+}
+
+#[component]
+pub fn ColumnButtonLeft(cx: Scope) -> impl IntoView {
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+
+    let show_right = move || page_state() == PageState::ShowRight;
+    let show_left = move || page_state() == PageState::ShowLeft;
+    let show_article = move || page_state() == PageState::ShowArticle;
+
+    view! { cx,
+      <div
+        style="width: 1500px;"
         class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
-        style="-webkit-tap-highlight-color: transparent;"
         class=("opacity-0", show_article)
         class=("pointer-events-none", show_article)
         class=("opacity-100", show_right)
