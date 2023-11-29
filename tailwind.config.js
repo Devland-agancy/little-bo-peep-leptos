@@ -49,6 +49,9 @@ module.exports = {
           "100%": { height: "100%" },
         }, */
       },
+      screens: {
+        sm: "520px",
+      },
     },
   },
   plugins: [],

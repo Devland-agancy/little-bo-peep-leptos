@@ -1380,7 +1380,7 @@ span .MathJax_SVG{
   color: rgb(7 89 133 / var(--tw-text-opacity));
 }
 
-@media (min-width: 640px) {
+@media (min-width: 520px) {
   .sm\:absolute {
     position: absolute;
   }
@@ -1421,6 +1421,10 @@ span .MathJax_SVG{
 
   .sm\:grid-cols-\[1fr_30\.5rem_1fr\] {
     grid-template-columns: 1fr 30.5rem 1fr;
+  }
+
+  .sm\:grid-cols-\[1fr_456px_1fr\] {
+    grid-template-columns: 1fr 456px 1fr;
   }
 
   .sm\:overflow-visible {
