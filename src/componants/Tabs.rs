@@ -109,8 +109,10 @@ fn EndLabelsView(
         class="tab cursor-pointer overflow-visible z-10"
         on:click=move |_| {
           document().get_element_by_id("exo").unwrap().scroll_into_view();
-          document().get_element_by_id("solution-button").unwrap().dyn_into::<web_sys::HtmlElement>()
-           .unwrap().click();
+
+          // this line closes the solution
+          /* document().get_element_by_id("solution-button").unwrap().dyn_into::<web_sys::HtmlElement>()
+           .unwrap().click(); */
         }
       >
 
