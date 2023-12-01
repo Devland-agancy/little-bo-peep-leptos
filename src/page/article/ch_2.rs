@@ -41,6 +41,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           src="/images/chapter_2_1.svg"
           width=450
           height=890
+          id="test-bg"
 
       |> Paragraph    
           

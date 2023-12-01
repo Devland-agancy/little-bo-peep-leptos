@@ -204,3 +204,7 @@ span .MathJax_SVG{
 .active_solution_button_hands {
   fill: black;
 }
+
+#test-bg{
+  background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
+}

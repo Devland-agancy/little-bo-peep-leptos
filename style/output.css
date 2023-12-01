@@ -1367,6 +1367,10 @@ span .MathJax_SVG{
   fill: black;
 }
 
+#test-bg{
+  background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }

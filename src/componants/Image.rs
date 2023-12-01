@@ -8,7 +8,7 @@ pub fn Image(
     src: &'static str,
     height: i32,
     #[prop(default = -1)] width: i32,
-
+    #[prop(default = "")] id: &'static str,
     #[prop(default = -1)] mobile_height: i32,
     #[prop(default = "")] containerClasses: &'static str,
     #[prop(default = "")] imageClasses: &'static str,
@@ -58,6 +58,7 @@ pub fn Image(
         class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle)
       >
         <img
+          id=id
           src=src
           style=move || format!(
             "height: {}{}; width: {}{}",
