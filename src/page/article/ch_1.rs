@@ -600,8 +600,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </Paragraph>
         <Image
           src="/images/seperator.png"
-          height=50
-          imageClasses="w-[160px]"
+          height="50px"
+          width="160px"
           containerClasses="flex items-center mt-[45px] mb-[40px]"
         />
         <Tabs labels=vec!["1", "2"]>
