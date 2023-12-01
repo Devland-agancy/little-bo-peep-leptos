@@ -76,6 +76,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
         |> Image
             src="/images/slope_1_example.svg"
+            containerClasses="pl-[2px]"
 
         |> Paragraph   
 
@@ -84,6 +85,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     
         |> Image
             src="/images/slope_0.5_example.svg"
+            containerClasses="pl-[19.5px]"
 
         |> Paragraph   
 

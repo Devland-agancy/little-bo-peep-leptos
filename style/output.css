@@ -554,10 +554,6 @@ video {
   position: relative;
 }
 
-.left-1\/2 {
-  left: 50%;
-}
-
 .right-0 {
   right: 0px;
 }
@@ -728,10 +724,6 @@ video {
   width: 2rem;
 }
 
-.w-\[160px\] {
-  width: 160px;
-}
-
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -751,11 +743,6 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
-}
-
-.-translate-x-1\/2 {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-translate-x-3\/4 {
@@ -999,6 +986,14 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pl-\[19\.5px\] {
+  padding-left: 19.5px;
+}
+
+.pl-\[2px\] {
+  padding-left: 2px;
 }
 
 .pt-14 {
@@ -1421,10 +1416,6 @@ span .MathJax_SVG{
   .sm\:translate-y-\[-1px\] {
     --tw-translate-y: -1px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .sm\:grid-cols-\[1fr_30\.5rem_1fr\] {
-    grid-template-columns: 1fr 30.5rem 1fr;
   }
 
   .sm\:grid-cols-\[1fr_456px_1fr\] {
