@@ -76,8 +76,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           Thus, for example, the line below has slope 1 because it goes up by $1$ unit for each unit to the right:
 
       |> Image
-          width = 380 
-          height = 349 
+          width = 363 
+          height = 330 
           src="/images/slope_1_example.svg"
 
       |> Paragraph   
@@ -85,6 +85,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           On the other hand, the line below has slope $-0.5$, because it goes up 
           by %minus% $0.5$ units with each unit to the right:
   
+      |> Image
+          width = 363 
+          height = 330 
+          src="/images/slope_0.5_example.svg"
+
       "#
     }
 }
