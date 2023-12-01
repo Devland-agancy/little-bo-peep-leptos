@@ -72,7 +72,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           ...more elegantly.
 
       |> Paragraph   
-          indent = Indent::Block
+          indent = Indent::Line
 
           Thus, for example, the line below has slope 1 because it goes up by $1$ unit for each unit to the right:
 
