@@ -28,7 +28,7 @@ pub fn Image(
         <img
           id=id
           src=src
-          style= move || format!("height: {}; width: {};", width)
+          style= move || format!("height: {}; width: {};", height, width)
           class=move || {
               format!(
                   "max-w-none m-auto {}",
