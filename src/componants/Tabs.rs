@@ -107,7 +107,6 @@ fn EndLabelsView(
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         class="tab cursor-pointer overflow-visible z-10"
-        class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
           document().get_element_by_id("exo").unwrap().scroll_into_view();
           document().get_element_by_id("solution-button").unwrap().dyn_into::<web_sys::HtmlElement>()
@@ -127,15 +126,12 @@ fn EndLabelsView(
         <Show
           fallback=move |_| {
               view! { cx,
-                <line x1="14.2655" y1="27.435" x2="28.4077" y2="13.2928" stroke="black" stroke-width="2"/>
-                <line x1="14.7071" y1="13.4111" x2="28.8492" y2="27.5532" stroke="black" stroke-width="2"/>
+                <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
               }
           }
           when=move || selected_tab() == _vec().len() - 1
         >
-        <line x1="14.2655" y1="27.435" x2="28.4077" y2="13.2928" stroke="black" stroke-width="2"/>
-        <line x1="14.7071" y1="13.4111" x2="28.8492" y2="27.5532" stroke="black" stroke-width="2"/>
-
+        <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
         </Show>
 
       </svg>
