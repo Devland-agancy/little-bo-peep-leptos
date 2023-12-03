@@ -29,6 +29,8 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     view! { cx,
       <Columns>
+        <Paragraph                margin_top = 15 > "" r#""#<Span bold=true>r#"Measuring Slope."#</Span>r#""# r#"The slope of a line is also the ratio of vertical change"# r#"to horizontal change between any two distinct points "#<Math>r#"$A$"#</Math>r#", "#<Math>r#"$B$"#</Math>r#""# r#"on the line:"# </Paragraph   > <Image             src="/images/31.svg" /> <Paragraph    > "" r#""#<MathBlock>r#"$$ \te{slope} = {\te{vertical change from $A$ to $B$} \over \te{horizontal change from $A$ to $B$}} $$"#</MathBlock>r#""# r#"Indeed, dividing the vertical change by the horizontal change"# r#"gives the per-horizontal-unit vertical change."# </Paragraph   > <Paragraph                margin_top=15 > "" r#"More precisely, if"# r#""#<MathBlock>r#"$$ A = (x_1, y_1) $$"#</MathBlock>r#""# r#"and"# r#""#<MathBlock>r#"$$ B = (x_2, y_2) $$"#</MathBlock>r#""# r#"then"# r#""#<MathBlock>r#"$$ x_2 - x_1 $$"#</MathBlock>r#""# r#"and"# r#""#<MathBlock>r#"$$ y_2 - y_1 $$"#</MathBlock>r#""# r#"are the horizontal "# <i > "" r#"&amp;"# </i> r#"the vertical change, respectively,"# r#"from "#<Math>r#"$A$"#</Math>r#" to "#<Math>r#"$B$"#</Math>r#", so"# <MathBlock > "" r#"\te{slope} = {y_2 - y_1 \over x_2 - x_1} "# <ImageRight                     src="/images/32.svg"                     width=600 > ""</ImageRight> </MathBlock> </Paragraph   >
+
         <Paragraph>
           <Span bold=true>"Square Roots. "</Span>
           "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"

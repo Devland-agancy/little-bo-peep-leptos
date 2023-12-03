@@ -6,6 +6,8 @@ use crate::componants::ImageLeft::*;
 use crate::componants::ImageRight::*;
 
 use crate::componants::Math::*;
+use crate::componants::MathBlock::*;
+
 use crate::componants::Paragraph::*;
 use crate::componants::Span::*;
 
@@ -98,6 +100,49 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             The slope of a line is also the ratio of vertical change
             to horizontal change between any two distinct points $A$, $B$
             on the line:
+
+        |> Image
+            src="/images/31.svg"
+
+        |> Paragraph   
+
+            $$ \te{slope} = {\te{vertical change from \$A\$ to \$B\$} \over \te{horizontal change from \$A\$ to \$B\$}} $$
+            Indeed, dividing the vertical change by the horizontal change
+            gives the per-horizontal-unit vertical change.
+
+        |> Paragraph   
+            margin_top=15
+
+            More precisely, if
+            $$ A = (x_1, y_1) $$
+            and
+            $$ B = (x_2, y_2) $$
+            then
+            $$ x_2 - x_1 $$
+            and
+            $$ y_2 - y_1 $$
+            are the horizontal %&% the vertical change, respectively,
+            from $A$ to $B$, so
+
+            |> MathBlock
+
+                $$\te{slope} = {y_2 - y_1 \over x_2 - x_1}$$
+
+                |> ImageRight
+                    src="/images/32.svg"
+                    width=600
+
+        |> Paragraph   
+
+            more succinctly. We call this the %slope formula%.
+
+        |> Paragraph   
+            margin_top = 15
+
+            *Example 1.*
+            A line that passes through the points $$A = (-2, 5)$$ and $$B = (4, 1)$$
+            has slope
+            $$ \frac{1 - 5}{4 - (-2)} = \frac{-4}{6} = - \frac{2}{3}. $$
             
       "#
     }
