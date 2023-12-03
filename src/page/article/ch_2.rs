@@ -45,7 +45,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
         |> Paragraph    
             
-            To explain now, The slope of a line is...
+            To explain now, the slope of a line is...
 
         |> Paragraph   
             margin_top = 15
