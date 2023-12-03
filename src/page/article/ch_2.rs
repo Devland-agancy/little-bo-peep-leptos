@@ -18,7 +18,7 @@ use leptos::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle>"Chapter 2: The Slope Formula"</ArticleTitle>
+        <ArticleTitle on_mobile="Chapter 2: Slopes">"Chapter 2: The Slope Formula"</ArticleTitle>
       <Columns>
         <ArticleBody/>
       </Columns>
@@ -143,7 +143,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             A line that passes through the points $$A = (-2, 5)$$ and $$B = (4, 1)$$
             has slope
             $$ \frac{1 - 5}{4 - (-2)} = \frac{-4}{6} = - \frac{2}{3}. $$
-            
+
       "#
     }
 }

@@ -1387,6 +1387,10 @@ span .MathJax_SVG{
     grid-column-start: 2;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:grid {
     display: grid;
   }

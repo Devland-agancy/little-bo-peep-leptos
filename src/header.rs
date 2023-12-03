@@ -49,9 +49,9 @@ fn ChapterMenu(cx: Scope) -> impl IntoView {
     view! { cx, <MenuOpen/> }
 }
 
-const MENU_ITEMS: &'static [(&'static str, &'static str)] = &[
-    ("Chapter 1: A Few Refreshers", "ch_1"),
-    ("Chapter 2: Slopes", "ch_2"),
+const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
+    ("Chapter 1: A Few Refreshers", "", "ch_1"),
+    ("Chapter 2: The Slope Formula", "Chapter 2: Slopes", "ch_2"),
 ];
 
 #[component]
@@ -81,7 +81,7 @@ fn MenuItems(cx: Scope) -> impl IntoView {
       <ul>
         {MENU_ITEMS
             .into_iter()
-            .map(|(title, url)| view! { cx, <MenuItem href=url>{title}</MenuItem> })
+            .map(|(title, on_mobile, url)| view! { cx, <MenuItem label=title on_mobile=on_mobile href=url /> })
             .collect_view(cx)}
 
       </ul>
@@ -89,14 +89,20 @@ fn MenuItems(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn MenuItem(cx: Scope, href: &'static str, children: Children) -> impl IntoView {
+fn MenuItem(
+    cx: Scope,
+    href: &'static str,
+    label: &'static str,
+    #[prop(optional)] on_mobile: &'static str,
+) -> impl IntoView {
     view! { cx,
       <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
           href=["/article/", href].concat()
           class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"
         >
-          {children(cx)}
+        <span class="sm:hidden">{if on_mobile == "" {label} else {on_mobile}}</span>
+        <span class="hidden sm:block">{label}</span>
         </a>
       </li>
     }
