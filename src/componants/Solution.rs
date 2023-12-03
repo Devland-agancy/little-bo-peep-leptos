@@ -94,10 +94,10 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
         </div>
 
       </div>
-     /*  <Show fallback=|_| () when=move || !solution_open() || bot_div()>
-        <div class="bg-green-100 h-[150px]">
+       <Show fallback=|_| () when=move || !solution_open() || bot_div()>
+        <div class="h-[150px]">
         </div>
-      </Show> */
+      </Show>
     }
 }
 
