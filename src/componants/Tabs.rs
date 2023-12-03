@@ -6,7 +6,7 @@ use leptos_router::use_location;
 use serde::{Deserialize, Serialize};
 use serde_json;
 use wasm_bindgen::JsCast;
-
+use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 #[derive(Serialize, Deserialize)]
 struct Exercice {
     ex_number: String,
@@ -108,7 +108,9 @@ fn EndLabelsView(
         xmlns="http://www.w3.org/2000/svg"
         class="tab cursor-pointer overflow-visible z-10"
         on:click=move |_| {
-          document().get_element_by_id("exo").unwrap().scroll_into_view();
+          let mut options = ScrollIntoViewOptions::new();
+          options.behavior(ScrollBehavior::Smooth);
+          document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
 
           // this line closes the solution
           /* document().get_element_by_id("solution-button").unwrap().dyn_into::<web_sys::HtmlElement>()
