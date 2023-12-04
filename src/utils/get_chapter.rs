@@ -1,7 +1,7 @@
 use leptos::SignalGet;
 use leptos_router::Location;
 
-pub fn get_chapter(location: &Location) -> String {
+pub fn get_chapter(location: Location) -> String {
     location
         .pathname
         .get()
