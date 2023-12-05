@@ -1,17 +1,17 @@
 use super::*;
 use leptos::*;
 
-use crate::componants::Paragraph::*;
 use crate::componants::Article::*;
 use crate::componants::ArticleTitle::*;
 use crate::componants::Columns::*;
 use crate::componants::Link::*;
+use crate::componants::Paragraph::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle>"Chapters"</ArticleTitle>
+        <ArticleTitle label="Chapters"/>
         <ArticleBody/>
       </Article>
     }

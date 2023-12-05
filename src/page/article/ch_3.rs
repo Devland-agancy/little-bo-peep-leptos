@@ -13,7 +13,7 @@ use leptos::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle>"Chapter 2: Slopes"</ArticleTitle>
+        <ArticleTitle label="Chapter 2: Slopes"/>
         <ArticleBody/>
       </Article>
     }
