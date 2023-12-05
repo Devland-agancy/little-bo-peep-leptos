@@ -95,9 +95,13 @@ fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
+    let set_route = use_context::<WriteSignal<&str>>(cx).unwrap();
     view! { cx,
       <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
+          on:click=move |_|{
+            set_route(href);
+          }
           href=["/article/", href].concat()
           class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"
         >

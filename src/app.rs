@@ -27,6 +27,36 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, set_solution_open);
     provide_context(cx, solution_open);
 
+    let (route, set_route) = create_signal(cx, "");
+    provide_context(cx, set_route);
+    provide_context(cx, route);
+
+    create_effect(cx, move |_| {
+        // execute on every route change
+        route();
+        let script = document().create_element("script");
+        match script {
+            Ok(elem) => {
+                let _ = elem.set_attribute("id", "mathjax-rendered");
+                let _ = elem.set_attribute("type", "text/javascript");
+                let _ = elem.set_attribute("src", "/mathjax.js");
+                let head = document().get_elements_by_tag_name("head").item(0);
+
+                if let Some(_head) = head {
+                    if let Some(mathEl) = document().get_element_by_id("mathjax-rendered") {
+                        let _ = mathEl.remove();
+                    }
+
+                    let _ = _head.append_child(&elem);
+                }
+            }
+            _ => {}
+        }
+
+        /*       script.type = "text/javascript";
+        script.src  = "https://example.com/MathJax.js?config=TeX-AMS-MML_CHTML";
+        document.getElementsByTagName("head")[0].appendChild(script); */
+    });
     view! { cx,
       // injects a stylesheet into the document <head>
       // id=leptos means cargo-leptos will hot-reload this stylesheet
@@ -36,12 +66,11 @@ pub fn App(cx: Scope) -> impl IntoView {
       // sets the document title
       <Title text="Little Bo Peep"/>
       <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
-      <Script src="/mathjax_setup.js" defer="true"/>
       <Script
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG"
         type_="text/javascript"
-        defer="true"
       />
+      <script type_="text/x-mathjax-config" src="/mathjax_setup.js" />
 
       // content for this welcome page
       <Router fallback=|cx| {

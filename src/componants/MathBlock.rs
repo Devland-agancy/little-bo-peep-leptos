@@ -18,7 +18,7 @@ pub fn MathBlock(
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "4rem 0.2rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
-    #[prop(default = "mjx-math")] child_tag: &'static str,
+    #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);

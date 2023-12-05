@@ -1,17 +1,16 @@
-window.MathJax = {
-  svg: {
-    mtextInheritFont: true,
-  },
-  chtml: {
-    mtextInheritFont: true,
-  },
-  tex: {
-    inlineMath: [
-      ["$", "$"],
-      ["\\(", "\\)"],
-    ],
-    processEscapes: true,
-    macros: {
+let delay_typeset = false;
+
+MathJax.Hub.Config({
+  ShowMathMenu: false,
+  extensions: ["tex2jax.js"],
+  skipStartupTypeset: delay_typeset,
+  // "SVG": {font: "STIX-Web", mtextFontInherit: true, useGlobalCache: true},
+  SVG: { mtextFontInherit: true, useGlobalCache: true },
+  "HTML-CSS": { mtextFontInherit: true, font: "STIX-Web" },
+  tex2jax: { inlineMath: [["$", "$"]], processEscapes: true },
+  TeX: {
+    extensions: ["color.js"],
+    Macros: {
       dblcol:
         "\\!\\rt{0.1}\\mathrel{\\raise.13ex{\\substack{\\small \\circ \\\\ \\small \\circ}}}",
       hc: "\\!\\rt{0.1}\\mathrel{\\raise.13ex{\\substack{\\small \\circ \\\\ \\small \\circ}}}",
@@ -55,23 +54,12 @@ window.MathJax = {
       ov: ["\\overline{#1}", 1],
       floor: ["\\lfloor{#1}\\rfloor", 1],
       faketextelement: "{\\color{white}\\text{*}}\\!\\!\\!\\rt{0.1}",
-    },
+    }, // end Macros
   },
-  options: {
-    enableMenu: false,
-  },
-  loader: {
-    load: ["output/svg"],
-  },
-  startup: {
-    ready: () => {
-      MathJax.startup.defaultReady();
-      MathJax.startup.promise.then(() => {
-        document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
-          elem.classList.remove("hidden-on-startup");
-          elem.classList.add("animate-appear");
-        });
-      });
-    },
-  },
-};
+});
+
+if (delay_typeset) {
+  setTimeout(() => {
+    MathJax.Hub.Typeset();
+  }, 2000);
+}
