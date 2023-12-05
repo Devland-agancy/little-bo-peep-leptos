@@ -131,6 +131,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 |> ImageRight
                     src="/images/32.svg"
                     width=600
+                    hidden_in_mobile=true
+                    squiggle_top="44%"
+                    squiggle_left="-0.5rem"
 
         |> Paragraph   
 
@@ -144,6 +147,48 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             has slope
             $$ \frac{1 - 5}{4 - (-2)} = \frac{-4}{6} = - \frac{2}{3}. $$
 
+        |> Paragraph   
+            align = Align::Center
+
+            \* \* \* \*
+
+        |> Paragraph   
+            margin_top = 15
+
+            (The main thing to understand about Example 1 is that
+            $$ 1 - 5 $$
+            is the vertical change from $A$ to $B$, while
+            $$ 4 - (-2) $$
+            is the horizontal change from $A$ to $B$.)
+
+        |> Paragraph   
+            margin_top = 15
+
+            *Sign Combinations.*
+            Technically, quantities such as
+            $$ x_2 - x_1$$
+            and
+            $$ y_2 - y_1 $$
+
+        |> Paragraph   
+
+            are not distances but %differences% (or, equivalently, %changes%).
+            A distance, by definition, is a nonnegative number, while a
+            difference carries no such restriction.
+        |> Paragraph   
+            indent = Indent::Line
+
+            In particular, since
+            $$ x_2 - x_1 $$
+            can be positive or negative, while
+            $$ y_2 - y_1 $$
+
+        |> Paragraph   
+
+            can be positive or negative or zero (more on zero below),
+            the following sign
+            combinations arise (lines of slope zero not included):
+        
       "#
     }
 }
