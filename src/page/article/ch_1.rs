@@ -1308,14 +1308,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   <ImageRight
                     src="/images/26.svg"
                     children_y="15%"
-                    children_x="33%"
+                    children_x="37%"
                     pos_x="5rem"
                     pos_y="-1.9rem"
                     width=362
                   >
                     <MathBlock>
                       r#"$$
-                      {1 \over 99\cdot 100}
+                      {1 \over 99^2}
                       $$"#
                     </MathBlock>
                   </ImageRight>
