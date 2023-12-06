@@ -25,7 +25,7 @@ fn Title(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid sm:grid-cols-[1fr_456px_1fr] border-b h-full border-r-0 sm:border-r"
+        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid gridColsWidth border-b h-full border-r-0 sm:border-r"
         class=("sm:hidden", move || page_state() != PageState::ShowArticle)
         id="Header"
       >

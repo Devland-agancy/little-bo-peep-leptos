@@ -1365,6 +1365,12 @@ span .MathJax_SVG{
   background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
 }
 
+@media (min-width: 520px) {
+  .gridColsWidth {
+    grid-template-columns: 1fr 488px 1fr;
+  }
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }
@@ -1419,10 +1425,6 @@ span .MathJax_SVG{
   .sm\:translate-y-\[-1px\] {
     --tw-translate-y: -1px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .sm\:grid-cols-\[1fr_456px_1fr\] {
-    grid-template-columns: 1fr 456px 1fr;
   }
 
   .sm\:overflow-visible {
