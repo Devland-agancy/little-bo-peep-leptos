@@ -111,7 +111,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             gives the per-horizontal-unit vertical change.
 
         |> Paragraph   
-            margin_top=15
 
             More precisely, if
             $$ A = (x_1, y_1) $$
