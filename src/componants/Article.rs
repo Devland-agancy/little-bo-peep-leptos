@@ -53,34 +53,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         };
     });
 
-    create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, document(), click, move |_| {
-            if (show_right() || show_left()) && can_click() {
-                let mut options = ScrollToOptions::new();
-                options.behavior(ScrollBehavior::Smooth);
-                options.left(1500_f64);
-                window().scroll_with_scroll_to_options(&options);
-                set_can_click(false);
-                set_timeout(
-                    move || {
-                        let _ = article_node().unwrap().style("left", "0");
-                        options.behavior(ScrollBehavior::Instant);
-                        options.left(0_f64);
-                        window().scroll_with_scroll_to_options(&options);
-                        set_timeout(
-                            move || {
-                                set_page_state.update(|value| *value = PageState::ShowArticle);
-                                set_can_click(true);
-                            },
-                            Duration::from_millis(700),
-                        )
-                    },
-                    Duration::from_millis(800),
-                );
-            }
-        });
-    });
-    // for right_images we autoscroll to their position
     view! { cx,
       <div class="pt-14 xl:pt-20 overscroll-none ">
         <div

@@ -933,10 +933,6 @@ video {
   background-color: rgb(231 229 228 / var(--tw-bg-opacity));
 }
 
-.bg-transparent {
-  background-color: transparent;
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1361,18 +1357,10 @@ span .MathJax_SVG{
   fill: black;
 }
 
-#test-bg{
-  background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
-}
-
 @media (min-width: 520px) {
   .gridColsWidth {
     grid-template-columns: 1fr 488px 1fr;
   }
-}
-
-.hover\:border-b-0:hover {
-  border-bottom-width: 0px;
 }
 
 .hover\:fill-stone-600:hover {
@@ -1385,10 +1373,6 @@ span .MathJax_SVG{
 }
 
 @media (min-width: 520px) {
-  .sm\:absolute {
-    position: absolute;
-  }
-
   .sm\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -1435,16 +1419,8 @@ span .MathJax_SVG{
     border-bottom-width: 1px;
   }
 
-  .sm\:border-b-0 {
-    border-bottom-width: 0px;
-  }
-
   .sm\:border-l-0 {
     border-left-width: 0px;
-  }
-
-  .sm\:border-r {
-    border-right-width: 1px;
   }
 
   .sm\:pb-2 {

@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "little-bo-peep-leptos-v2"
+app = "little-bo-peep-leptos-2d-mode"
 primary_region = "hkg"
 
 [build]

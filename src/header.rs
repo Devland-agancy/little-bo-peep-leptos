@@ -10,7 +10,7 @@ use crate::page::state::PageState;
 pub fn Header(cx: Scope) -> impl IntoView {
     view! { cx,
       <div class="select-none w-full">
-        <div class="select-none flex justify-center items-center fixed sm:absolute bg-white z-50 h-14  w-full sm:w-[calc(100vw-3.5rem)]">
+        <div class="select-none flex justify-center items-center fixed bg-white z-50 h-14  w-full sm:w-[calc(100vw-3.5rem)]">
           <Title/>
           <MenuButton/>
           <ChapterMenu/>
@@ -25,8 +25,7 @@ fn Title(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid gridColsWidth border-b h-full border-r-0 sm:border-r"
-        class=("sm:hidden", move || page_state() != PageState::ShowArticle)
+        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid gridColsWidth border-b h-full border-r-0"
         id="Header"
       >
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 sm:pb-2">
@@ -119,6 +118,28 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
+    view! { cx,
+      <div
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b bg-white"
+
+      >
+        <button
+          class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
+        >
+
+          <HamburgerIcon/>
+        </button>
+      </div>
+    }
+}
+
+#[component]
+fn HamburgerIcon(cx: Scope) -> impl IntoView {
+    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
     let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
@@ -140,20 +161,15 @@ fn MenuButton(cx: Scope) -> impl IntoView {
     });
 
     view! { cx,
-      <div
+      <svg
         style=move || {
-            format!(
-                "opacity: {}",
-                if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
-            )
-        }
+          format!(
+              "opacity: {}",
+              if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
+          )
+      }
 
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b"
-        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
-        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
-      >
-        <button
-          on:mouseover=move |_| set_button_opacity(1_f64)
+      on:mouseover=move |_| set_button_opacity(1_f64)
           on:pointerdown=move |_| {
               set_menu_state
                   .update(|value| {
@@ -190,23 +206,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
                   })
           }
 
-          class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600"
-        >
-
-          <HamburgerIcon/>
-        </button>
-      </div>
-    }
-}
-
-#[component]
-fn HamburgerIcon(cx: Scope) -> impl IntoView {
-    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-    let menu_closed =
-        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-
-    view! { cx,
-      <svg width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
+       width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
         <g>
           <rect
             x="5"
