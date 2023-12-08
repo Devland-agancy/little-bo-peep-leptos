@@ -203,9 +203,6 @@ span .MathJax_SVG{
   fill: black;
 }
 
-#test-bg{
-  background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
-}
 
 @media (min-width: 520px) {
   .gridColsWidth {
