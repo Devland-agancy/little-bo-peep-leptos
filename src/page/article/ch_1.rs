@@ -677,8 +677,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageLeft
                   src="/images/17.svg"
-                  pos_y="3.5rem"
-                  pos_x="-3.2rem"
+                  pos_y="3.6rem"
+                  pos_x="-3rem"
                   hidden_in_mobile=true
                   squiggle_right="-4rem"
                   squiggle_top="30%"
@@ -715,8 +715,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   hidden_in_mobile=true
                   squiggle_right="-4rem"
                   squiggle_top="37%"
-                  pos_y="3.2rem"
-                  pos_x="-3.2rem"
+                  pos_y="3.65rem"
+                  pos_x="-3rem"
                 >
                   ""
                 </ImageLeft>
