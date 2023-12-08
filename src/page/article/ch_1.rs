@@ -1348,8 +1348,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   $$"#
                   <ImageRight
                     src="/images/27.svg"
-                    children_y="40%"
-                    children_x="20%"
+                    children_y="42%"
+                    children_x="23%"
                     pos_x="-1.6rem"
                     pos_y="-5.2rem"
                     width=607
