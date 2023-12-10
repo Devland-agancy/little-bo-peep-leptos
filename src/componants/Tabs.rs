@@ -1,12 +1,13 @@
 use std::time::Duration;
 
 use crate::utils::get_chapter::get_chapter;
-use leptos::*;
-use leptos_router::use_location;
+use leptos::{html::nav, *};
+use leptos_router::{use_location, use_navigate, LocationChange, NavigateOptions, State};
 use serde::{Deserialize, Serialize};
 use serde_json;
 use wasm_bindgen::JsCast;
-use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
+use web_sys::{ScrollBehavior, ScrollIntoViewOptions, UrlSearchParams};
+
 #[derive(Serialize, Deserialize)]
 struct Exercice {
     ex_number: String,
@@ -23,6 +24,10 @@ fn LabelsView(
 ) -> impl IntoView {
     let (_vec, set_vec) = create_signal(cx, vec);
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
+    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
+
+    let navigate = use_navigate(cx);
+    let navigate_ = use_navigate(cx);
 
     view! { cx,
       <svg
@@ -35,7 +40,15 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
             if selected_tab() != 0 {
-                set_selected_tab(selected_tab() - 1);
+                let _ = navigate(
+                  &format!(
+                      "{}?tab={}&opened={}",
+                      window().location().pathname().unwrap(),
+                      selected_tab() - 1,
+                      solution_open()
+                  ),
+                  Default::default(),
+                );
             }
         }
       >
@@ -61,7 +74,15 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == _vec().len() - 1)
         on:click=move |_| {
             if selected_tab() != _vec().len() - 1 {
-                set_selected_tab(selected_tab() + 1);
+                let _ = navigate_(
+                  &format!(
+                      "{}?tab={}&opened={}",
+                      window().location().pathname().unwrap(),
+                      selected_tab() + 1,
+                      solution_open()
+                  ),
+                  Default::default(),
+                );
             }
         }
       >
@@ -96,7 +117,7 @@ fn EndLabelsView(
 ) -> impl IntoView {
     let (_vec, set_vec) = create_signal(cx, vec);
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
-    let navigate = leptos_router::use_navigate(cx);
+    let navigate = use_navigate(cx);
 
     view! { cx,
       <svg
@@ -148,77 +169,29 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
 
     let location = use_location(cx);
-    let (chapter, _) = create_signal(cx, get_chapter(location));
+    let (_chapter, _) = create_signal(cx, get_chapter(location.clone()));
+    let url_params = location.clone().query;
 
     create_effect(cx, move |_| {
-        let mut stored_selected_tab = None;
-        match window().local_storage() {
-            Ok(Some(storage)) => {
-                let stored_selected_tab_key = format!("{}_exercice", chapter());
-
-                stored_selected_tab = Some(storage.get_item(&stored_selected_tab_key));
-            }
-            _ => {}
-        }
+        let _url_params = url_params();
+        let stored_selected_tab = _url_params.get("tab");
         if let Some(sst) = stored_selected_tab {
-            match sst {
-                Ok(Some(value)) => {
-                    set_selected_tab(value.parse::<usize>().unwrap());
-                }
-                _ => {}
+            if let Ok(tab) = sst.parse::<usize>() {
+                set_selected_tab(tab);
             }
         }
     });
 
     create_effect(cx, move |_| {
-        let mut stored_solution_opened = None;
+        let _url_params = url_params();
 
-        match window().local_storage() {
-            Ok(Some(storage)) => {
-                let stored_solution_opened_key =
-                    format!("{}_exo_{}_opened", chapter(), selected_tab());
-                stored_solution_opened = Some(storage.get_item(&stored_solution_opened_key))
-            }
-            _ => {}
-        }
-
+        let stored_solution_opened = _url_params.get("opened");
         if let Some(sso) = stored_solution_opened {
-            match sso {
-                Ok(Some(value)) => {
-                    log!(
-                        "vvvvvvvv{}, {}",
-                        value,
-                        format!("{}_exo_{}_opened", chapter(), selected_tab())
-                    );
-                    set_solution_open(value == "true");
-                }
-                _ => {}
-            }
+            set_solution_open(sso == "true");
         }
     });
 
-    create_effect(cx, move |_| {
-        solution_open();
-        selected_tab();
-        set_timeout(
-            move || match window().local_storage() {
-                Ok(Some(storage)) => {
-                    let exo = Exercice {
-                        ex_number: selected_tab().to_string(),
-                        ex_chapter: chapter(),
-                        ex_opened: solution_open().to_string(),
-                    };
-                    let selected_exo = format!("{}_exercice", exo.ex_chapter);
-                    let ex_opened = format!("{}_exo_{}_opened", exo.ex_chapter, exo.ex_number);
-
-                    let _ = storage.set_item(&selected_exo, &exo.ex_number);
-                    let _ = storage.set_item(&ex_opened, &exo.ex_opened);
-                }
-                _ => (),
-            },
-            Duration::from_millis(100),
-        );
-    });
+    let navigate = use_navigate(cx);
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {
