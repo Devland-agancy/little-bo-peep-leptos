@@ -209,3 +209,31 @@ span .MathJax_SVG{
     grid-template-columns: 1fr 488px 1fr;
   }
 }
+
+.lines tr td {
+  text-align: center;
+  border-left: thin solid black;
+}
+.lines tr td > * {
+  margin: auto;
+}
+
+.lines tr {
+  border-bottom: thin solid black;
+}
+
+.lines tr td:first-child{
+  border-left: none;
+}
+
+.lines tr td:last-child{
+  border-right: none;
+}
+
+.lines tr:first-child{
+  border-top: none;
+}
+
+.lines tr:last-child{
+  border-bottom: none;
+}
