@@ -1,12 +1,10 @@
 use std::time::Duration;
 
 use crate::utils::get_chapter::get_chapter;
-use leptos::{html::nav, *};
-use leptos_router::{use_location, use_navigate, LocationChange, NavigateOptions, State};
+use leptos::*;
+use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use serde::{Deserialize, Serialize};
-use serde_json;
-use wasm_bindgen::JsCast;
-use web_sys::{ScrollBehavior, ScrollIntoViewOptions, UrlSearchParams};
+use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 
 #[derive(Serialize, Deserialize)]
 struct Exercice {
@@ -40,15 +38,18 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
             if selected_tab() != 0 {
-                let _ = navigate(
-                  &format!(
-                      "{}?tab={}&opened={}",
-                      window().location().pathname().unwrap(),
-                      selected_tab() - 1,
-                      solution_open()
-                  ),
-                  Default::default(),
-                );
+                let options = NavigateOptions {
+                    resolve: true,
+                    replace: false,
+                    scroll: false,
+                    state: State(None)
+                };
+                let _ = navigate(&format!(
+                    "{}?tab={}&opened={}",
+                    window().location().pathname().unwrap(),
+                    selected_tab() - 1,
+                    solution_open()
+                ), options);
             }
         }
       >
@@ -74,15 +75,18 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == _vec().len() - 1)
         on:click=move |_| {
             if selected_tab() != _vec().len() - 1 {
-                let _ = navigate_(
-                  &format!(
-                      "{}?tab={}&opened={}",
-                      window().location().pathname().unwrap(),
-                      selected_tab() + 1,
-                      solution_open()
-                  ),
-                  Default::default(),
-                );
+              let options = NavigateOptions {
+                resolve: true,
+                replace: false,
+                scroll: false,
+                state: State(None)
+              };
+              let _ = navigate_(&format!(
+                  "{}?tab={}&opened={}",
+                  window().location().pathname().unwrap(),
+                  selected_tab() + 1,
+                  solution_open()
+              ), options);
             }
         }
       >
@@ -115,9 +119,7 @@ fn EndLabelsView(
     selected_tab: ReadSignal<usize>,
     set_selected_tab: WriteSignal<usize>,
 ) -> impl IntoView {
-    let (_vec, set_vec) = create_signal(cx, vec);
-    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
-    let navigate = use_navigate(cx);
+    let (_vec, _) = create_signal(cx, vec);
 
     view! { cx,
       <svg
@@ -190,8 +192,6 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
             set_solution_open(sso == "true");
         }
     });
-
-    let navigate = use_navigate(cx);
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {

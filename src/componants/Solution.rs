@@ -1,10 +1,11 @@
-use std::time::Duration;
+use std::{rc::Rc, sync::Arc, time::Duration};
 
 use leptos::{
     ev::{click, resize},
     html::Div,
     *,
 };
+use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
 use web_sys::MouseEvent;
 
@@ -67,12 +68,34 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
     let (transition, set_transition) = create_signal(cx, false);
 
+    let navigate = use_navigate(cx);
+    let params = use_location(cx).query;
+
     view! { cx,
       <div class="px-4 my-5 relative col-start-2">
-        <SolutionSVG on_click=move |_| {
+        <SolutionSVG  on_click=move |_| {
             set_transition(true);
             set_timeout(move || set_transition(false), Duration::from_millis(1100));
-            set_solution_open(!solution_open())
+            let options = NavigateOptions {
+              resolve: true,
+              replace: false,
+              scroll: false,
+              state: State(None)
+            };
+            if let Ok(search_params) = window().location().search() {
+              let mut new_url = String::new();
+              if search_params.contains("&opened=true") {
+                new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=true", "&opened=false")
+              }else if search_params.contains("&opened=false"){
+                new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=false", "&opened=true")
+              }else{
+                new_url = window().location().pathname().unwrap() + &search_params + &format!("&opened={}", !solution_open())
+
+              }
+              navigate(&new_url, options);
+            }
+            /* set_solution_open(!solution_open()) */
+
         }/>
       </div>
       <div
@@ -104,15 +127,17 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView
 where
-    F: Fn(MouseEvent) + 'static + Clone,
+    F: Fn(MouseEvent) + 'static,
 {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let button = create_node_ref(cx);
 
+    let on_click_arc: Arc<F> = Arc::new(on_click);
     create_effect(cx, move |_| {
-        let on_click_clone = on_click.clone();
+        //let on_click_clone = on_click.clone();
+        let cloned_on_click = Arc::clone(&on_click_arc);
         let _ = use_event_listener(cx, button, click, move |e| {
-            on_click_clone(e);
+            cloned_on_click(e);
         });
     });
 
