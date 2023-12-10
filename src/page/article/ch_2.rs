@@ -190,6 +190,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         
         |>  Table
             cols=vec![120, 120, 120, 120]
+            sm_cols=vec![80, 80, 80, 80]
             lines=true
             margin_top = 15
 
