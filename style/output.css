@@ -1415,10 +1415,6 @@ span .MathJax_SVG{
     overflow: visible;
   }
 
-  .sm\:border-b {
-    border-bottom-width: 1px;
-  }
-
   .sm\:border-l-0 {
     border-left-width: 0px;
   }

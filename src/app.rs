@@ -11,7 +11,7 @@ pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context(cx);
 
-    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
+    let (page_state, set_page_state) = create_signal(cx, PageState::ShowRight);
     provide_context(cx, set_page_state);
     provide_context(cx, page_state);
 

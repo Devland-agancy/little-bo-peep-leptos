@@ -120,7 +120,7 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b bg-white"
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b bg-white"
 
       >
         <button
