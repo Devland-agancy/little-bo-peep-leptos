@@ -10,6 +10,7 @@ use crate::componants::MathBlock::*;
 
 use crate::componants::Paragraph::*;
 use crate::componants::Span::*;
+use crate::componants::Table::*;
 
 use elm_to_view::elm_to_view;
 use leptos::*;
@@ -187,6 +188,110 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             the following sign
             combinations arise (lines of slope zero not included):
         
+        |>  Table
+            cols=vec![120, 120, 120, 120]
+            lines=true
+            margin_top = 15
+
+            |> tr
+
+                |> td
+                
+                    $x_2 - x_1$
+
+                |> td
+                
+                    $y_2 - y_1$
+
+                |> td
+                
+                    |> img
+                        src="/images/33.svg" width="50"
+                        style="margin-top:7px; margin-bottom:7px;"
+
+                |> td
+                
+                    $${y_2-y_1 \over x_2-x_1}$$
+            
+            |> tr
+
+                |> td
+                
+                    $+$
+
+                |> td
+                
+                    $+$
+
+                |> td
+
+                    |> img
+                        src="/images/34.svg" width="105"
+                        style="margin-top:7px; margin-bottom:7px;"
+                
+                |> td
+                
+                    $${+ \over +} = \,+$$
+            
+            |> tr
+
+                |> td
+                
+                    $-$
+
+                |> td
+                
+                    $-$
+
+                |> td
+                
+                    |> img
+                        src="/images/35.svg" width="105"
+                        style="margin-top:10px; margin-bottom:4px;"
+
+                |> td
+                
+                    $${- \over -} = \,+$$
+            
+            |> tr
+
+                |> td
+                
+                    $+$
+
+                |> td
+                
+                    $-$
+
+                |> td
+                
+                    |> img
+                        src="/images/36.svg" width="105"
+                        style="margin-top:10px; margin-bottom:4px;"
+                |> td
+                
+                    $${- \over +} = \,-$$
+            
+            |> tr
+
+                |> td
+                
+                    $-$
+
+                |> td
+                
+                    $+$
+
+                |> td
+                
+                    |> img
+                        src="/images/37.svg" width="105"
+                        style="margin-top:10px; margin-bottom:4px;"
+
+                |> td
+                
+                    $$\frac{+}{-} = \,-$$
+            
       "#
     }
 }

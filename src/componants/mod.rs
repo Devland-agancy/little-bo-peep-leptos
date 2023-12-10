@@ -15,4 +15,5 @@ pub mod MathBlock;
 pub mod Paragraph;
 pub mod Solution;
 pub mod Span;
+pub mod Table;
 pub mod Tabs;

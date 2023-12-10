@@ -648,6 +648,10 @@ video {
   display: inline-flex;
 }
 
+.table {
+  display: table;
+}
+
 .grid {
   display: grid;
 }
@@ -1361,14 +1365,39 @@ span .MathJax_SVG{
   fill: black;
 }
 
-#test-bg{
-  background-image: linear-gradient(#fff, #fff 35%, #6ce6e6 50%, #fff 65%)
-}
-
 @media (min-width: 520px) {
   .gridColsWidth {
     grid-template-columns: 1fr 488px 1fr;
   }
+}
+
+.lines tr td {
+  text-align: center;
+  border-left: thin solid black;
+}
+
+.lines tr td > * {
+  margin: auto;
+}
+
+.lines tr {
+  border-bottom: thin solid black;
+}
+
+.lines tr td:first-child{
+  border-left: none;
+}
+
+.lines tr td:last-child{
+  border-right: none;
+}
+
+.lines tr:first-child{
+  border-top: none;
+}
+
+.lines tr:last-child{
+  border-bottom: none;
 }
 
 .hover\:border-b-0:hover {
