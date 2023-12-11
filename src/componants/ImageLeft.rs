@@ -66,13 +66,13 @@ pub fn ImageLeft(
         class=("pointer-events-none", show_left)
         class=("lg:pointer-events-none", move || !clickable_on_desktop)
       >
-        <div style=move || format!("top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
+        <div style=move || format!(" top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
         <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
 
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
-            class="block sm:hidden absolute"
-            style=move || format!("right: {}; top: {}", squiggle_right, squiggle_top)
+            class="block sm:hidden absolute pr-5"
+            style=move || format!("right: calc({} - 20px); top: {}", squiggle_right, squiggle_top)
           >
             <img src="/images/squiggle.png" class="h-11"/>
           </div>
