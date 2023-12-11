@@ -83,8 +83,8 @@ pub fn ImageRight(
 
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
-            class="block sm:hidden absolute"
-            style=move || format!("left: {}; top: {}", squiggle_left, squiggle_top)
+            class="block sm:hidden absolute pl-5"
+            style=move || format!("left: calc({} - 20px); top: {}", squiggle_left, squiggle_top)
           >
             <img src="/images/squiggle.png" class="h-11"/>
           </div>

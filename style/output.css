@@ -997,12 +997,20 @@ video {
   padding-left: 1rem;
 }
 
+.pl-5 {
+  padding-left: 1.25rem;
+}
+
 .pl-\[19\.5px\] {
   padding-left: 19.5px;
 }
 
 .pl-\[2px\] {
   padding-left: 2px;
+}
+
+.pr-5 {
+  padding-right: 1.25rem;
 }
 
 .pt-14 {
