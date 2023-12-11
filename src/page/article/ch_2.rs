@@ -17,12 +17,10 @@ use leptos::*;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
         <ArticleTitle on_mobile="Chapter 2: Slopes" label="Chapter 2: The Slope Formula" />
       <Columns>
         <ArticleBody/>
       </Columns>
-      </Article>
     }
 }
 

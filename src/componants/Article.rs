@@ -54,7 +54,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     view! { cx,
-      <div class="pt-14 xl:pt-20 overscroll-none ">
+      <div class="overscroll-none ">
         <div
           node_ref=article_node
           class="relative flex justify-center align-center w-full pb-14 min-h-screen"

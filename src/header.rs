@@ -10,11 +10,11 @@ use crate::page::state::PageState;
 pub fn Header(cx: Scope) -> impl IntoView {
     view! { cx,
       <div class="select-none w-full">
-        <div class="select-none flex justify-center items-center fixed bg-white z-50 h-14  w-full sm:w-[calc(100vw-3.5rem)]">
+        <div class="select-none flex justify-center items-center fixed bg-white z-40 h-14 w-full left-0">
           <Title/>
-          <MenuButton/>
-          <ChapterMenu/>
         </div>
+      </div>
+      <div class="h-0 border-b left-[-1500px] w-[3650px] top-[55px] fixed z-50">
       </div>
     }
 }
@@ -25,7 +25,7 @@ fn Title(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid gridColsWidth border-b h-full border-r-0"
+        class="select-none w-full pl-4 sm:grid gridColsWidth  h-full border-r-0"
         id="Header"
       >
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 sm:pb-2">
@@ -44,7 +44,7 @@ pub enum MenuState {
 }
 
 #[component]
-fn ChapterMenu(cx: Scope) -> impl IntoView {
+pub fn ChapterMenu(cx: Scope) -> impl IntoView {
     view! { cx, <MenuOpen/> }
 }
 
@@ -112,7 +112,7 @@ fn MenuItem(
 }
 
 #[component]
-fn MenuButton(cx: Scope) -> impl IntoView {
+pub fn MenuButton(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
@@ -120,13 +120,12 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b bg-white"
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b bg-white z-50"
 
       >
         <button
           class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
         >
-
           <HamburgerIcon/>
         </button>
       </div>
@@ -162,14 +161,14 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <svg
-        style=move || {
-          format!(
-              "opacity: {}",
-              if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
-          )
-      }
+          style=move || {
+              format!(
+                  "opacity: {}",
+                  if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
+              )
+          }
 
-      on:mouseover=move |_| set_button_opacity(1_f64)
+          on:mouseover=move |_| set_button_opacity(1_f64)
           on:pointerdown=move |_| {
               set_menu_state
                   .update(|value| {
