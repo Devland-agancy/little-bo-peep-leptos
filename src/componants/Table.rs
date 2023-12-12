@@ -21,7 +21,7 @@ pub fn Table(
     });
 
     view! { cx,
-      <table class=format!("col-start-2 px-4 min-h-fit {}", classes)
+      <table class=format!("col-start-2 px-4 min-h-fit my-4 {}", classes)
              class=("lines", move || lines) style=move || format!("margin-top: {}px ;{}", margin_top, style)>
            { _cols().into_iter()
                           .map(|w| view! {cx, <col width={w} />})
