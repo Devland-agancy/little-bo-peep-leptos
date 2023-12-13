@@ -44,7 +44,6 @@ pub fn MathBlock(
                     if math_box_width + margin_left as f64 - 2_f64 > window_width {
                         request_animation_frame(move || {
                             set_margin_left_active(false);
-                            log!("falseeee");
                             if math_box_width - 2_f64 > window_width {
                                 set_is_wide(true);
                                 set_margin_left_active(true);
@@ -107,7 +106,7 @@ pub fn MathBlock(
               e.stop_propagation();
               if page_state() == PageState::ShowArticle {
                   set_page_state.update(|value| *value = PageState::ShowRight);
-                  set_right_image_x_pos(80_f64);
+                  set_right_image_x_pos(95_f64);
               }
           }
 
