@@ -118,30 +118,10 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
-    view! { cx,
-      <div
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
-
-      >
-        <button
-          class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
-        >
-          <HamburgerIcon/>
-        </button>
-      </div>
-    }
-}
-
-#[component]
-fn HamburgerIcon(cx: Scope) -> impl IntoView {
-    let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
-    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-    let menu_closed =
-        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
-    let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
+    let (_, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
+    let (scrolled_header, set_scrolled_header) = create_signal::<bool>(cx, true);
 
     create_effect(cx, move |_| {
         set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
@@ -154,57 +134,90 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
 
     create_effect(cx, move |_| {
         set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+        set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
+
         window_event_listener(resize, move |_| {
             set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+        });
+
+        window_event_listener(scroll, move |_| {
+            set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
         })
     });
 
     view! { cx,
+      <div
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
+        style=move || {
+          format!(
+              "opacity: {}",
+              if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 }
+            )
+        }
+
+        on:mouseover=move |_| set_button_opacity(1_f64)
+        on:pointerdown=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::Closed => MenuState::OpenPressed,
+                        MenuState::ClosedPressed => MenuState::OpenPressed,
+                        MenuState::Open => MenuState::ClosedPressed,
+                        MenuState::OpenPressed => MenuState::ClosedPressed,
+                    };
+                })
+        }
+
+        on:pointerleave=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::ClosedPressed => MenuState::Open,
+                        MenuState::OpenPressed => MenuState::Closed,
+                        _ => *value,
+                    }
+                });
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
+        }
+
+        on:pointerup=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::Closed => MenuState::Closed,
+                        MenuState::ClosedPressed => MenuState::Closed,
+                        MenuState::Open => MenuState::Open,
+                        MenuState::OpenPressed => MenuState::Open,
+                    };
+                })
+        }
+      >
+        <button
+          class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
+        >
+          <HamburgerIcon/>
+        </button>
+      </div>
+      <div
+        class="h-14 w-14 fixed right-0 z-40"
+        style=move || {
+        format!(
+            " background-color: {}",
+            if scrolled_header() { "transparent" } else { "#fff" },
+          )
+      } >
+    </div>
+
+    }
+}
+
+#[component]
+fn HamburgerIcon(cx: Scope) -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
+    let menu_closed =
+        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+    view! { cx,
       <svg
-          style=move || {
-              format!(
-                  "opacity: {}",
-                  if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
-              )
-          }
-
-          on:mouseover=move |_| set_button_opacity(1_f64)
-          on:pointerdown=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::Closed => MenuState::OpenPressed,
-                          MenuState::ClosedPressed => MenuState::OpenPressed,
-                          MenuState::Open => MenuState::ClosedPressed,
-                          MenuState::OpenPressed => MenuState::ClosedPressed,
-                      };
-                  })
-          }
-
-          on:pointerleave=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::ClosedPressed => MenuState::Open,
-                          MenuState::OpenPressed => MenuState::Closed,
-                          _ => *value,
-                      }
-                  });
-              set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
-          }
-
-          on:pointerup=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::Closed => MenuState::Closed,
-                          MenuState::ClosedPressed => MenuState::Closed,
-                          MenuState::Open => MenuState::Open,
-                          MenuState::OpenPressed => MenuState::Open,
-                      };
-                  })
-          }
-
        width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
         <g>
           <rect
