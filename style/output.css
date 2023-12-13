@@ -763,8 +763,8 @@ video {
   width: 2rem;
 }
 
-.w-\[3650px\] {
-  width: 3650px;
+.w-\[4400px\] {
+  width: 4400px;
 }
 
 .w-fit {
@@ -1439,10 +1439,6 @@ span .MathJax_SVG{
 
 .lines tr:last-child{
   border-bottom: none;
-}
-
-.hover\:border-b-0:hover {
-  border-bottom-width: 0px;
 }
 
 .hover\:fill-stone-600:hover {

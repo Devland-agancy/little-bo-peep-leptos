@@ -14,7 +14,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
           <Title/>
         </div>
       </div>
-      <div class="h-0 border-b left-[-1500px] w-[3650px] top-[55px] fixed z-50">
+      <div class="h-0 border-b left-[-1500px] w-[4400px] top-[55px] fixed z-50">
       </div>
     }
 }
