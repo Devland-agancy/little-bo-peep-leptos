@@ -67,10 +67,11 @@ pub fn App(cx: Scope) -> impl IntoView {
       <Title text="Little Bo Peep"/>
       <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
       <Script
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
         type_="text/javascript"
+        defer="true"
       />
-      <script type_="text/x-mathjax-config" src="/mathjax_setup.js" />
+      <script type_="text/x-mathjax-config" src="/mathjax_setup.js" defer="true"/>
 
       // content for this welcome page
       <Router fallback=|cx| {
