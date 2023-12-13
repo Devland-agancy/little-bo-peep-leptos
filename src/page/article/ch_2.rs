@@ -319,8 +319,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 |> ImageLeft
                     src="/images/39.svg"
                     width=500
-                    pos_y="-16rem"
-                    pos_x="2rem"
+                    pos_y="-13.5rem"
+                    pos_x="0.5rem"
            
             which verifies this hypothesis. In particular,
             $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
