@@ -11,6 +11,7 @@ use crate::componants::MathBlock::*;
 use crate::componants::Paragraph::*;
 use crate::componants::Span::*;
 use crate::componants::Table::*;
+use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm_to_view;
 use leptos::*;
@@ -19,7 +20,7 @@ use leptos::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle on_mobile="Chapter 2: Slopes" label="Chapter 2: The Slope Formula" />
+        <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0 />
       <Columns>
         <ArticleBody/>
       </Columns>
