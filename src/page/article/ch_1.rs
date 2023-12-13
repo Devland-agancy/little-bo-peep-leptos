@@ -510,8 +510,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock height=Height::Fit>
           r#"$$
               \begin{align}
-              (-1)(a - b) \,&=\, (-1)(a + (-b)) \\
-              \,&=\, (-1)a + (-1)(-b) \\
+              (-1)(a - b) \,&=\, (-1)(a + (-b))\up{1} \\
+              \,&=\, (-1)a + (-1)(-b)\up{1} \\
               \,&=\, -a + b
               \end{align}
           $$"#
