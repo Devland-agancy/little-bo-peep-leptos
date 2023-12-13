@@ -110,7 +110,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             Indeed, dividing the vertical change by the horizontal change
             gives the per-horizontal-unit vertical change.
 
-        |> Paragraph   
+        |> Paragraph 
+            indent=Indent::Line
 
             More precisely, if
             $$ A = (x_1, y_1) $$
