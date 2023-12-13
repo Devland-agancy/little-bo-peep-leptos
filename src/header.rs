@@ -1,10 +1,10 @@
+use crate::constants::MENU_ITEMS;
+use crate::page::state::PageState;
 use leptos::{
     ev::{resize, scroll},
     *,
 };
 use leptos_use::use_event_listener;
-
-use crate::page::state::PageState;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -48,11 +48,6 @@ pub enum MenuState {
 fn ChapterMenu(cx: Scope) -> impl IntoView {
     view! { cx, <MenuOpen/> }
 }
-
-const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
-    ("Chapter 1: A Few Refreshers", "", "ch_1"),
-    ("Chapter 2: The Slope Formula", "Chapter 2: Slopes", "ch_2"),
-];
 
 #[component]
 fn MenuOpen(cx: Scope) -> impl IntoView {
