@@ -713,6 +713,10 @@ video {
   height: 2rem;
 }
 
+.h-\[14rem\] {
+  height: 14rem;
+}
+
 .h-\[150px\] {
   height: 150px;
 }
