@@ -445,8 +445,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span italic=true>"a difference of squares"</Span>
         </Paragraph>
         <Paragraph margin_top=15>
-          "whence" <Span italic=true>a "a difference of squares can always be factored"</Span> ". "
-          "(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
+          "whence " <Span italic=true>"a difference of squares can always be factored"</Span> ". "
+          "(Factored as " <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
           " (PS: “Factored” means “written as a product”.)"
         </Paragraph>
         <Paragraph margin_top=15>

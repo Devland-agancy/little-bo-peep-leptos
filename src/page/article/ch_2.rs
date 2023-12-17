@@ -36,7 +36,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         |> Paragraph 
 
             *Slopes.*
-            the %slope% of a line is a mathematical measure of how
+            The %slope% of a line is a mathematical measure of how
             “steep” a line is.
             Here are a few examples (for an explanation of the values,
             see below):
