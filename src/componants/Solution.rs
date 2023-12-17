@@ -6,7 +6,7 @@ use leptos::{
     *,
 };
 use leptos_use::use_event_listener;
-use web_sys::MouseEvent;
+use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
 #[component]
 pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
@@ -70,6 +70,11 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     view! { cx,
       <div class="px-4 my-5 relative col-start-2">
         <SolutionSVG on_click=move |_| {
+            if solution_open() {
+              let mut options = ScrollIntoViewOptions::new();
+              options.behavior(ScrollBehavior::Smooth);
+              document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
+            }
             set_transition(true);
             set_timeout(move || set_transition(false), Duration::from_millis(1100));
             set_solution_open(!solution_open())
