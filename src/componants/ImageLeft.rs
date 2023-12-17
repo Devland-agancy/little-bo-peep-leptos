@@ -1,5 +1,4 @@
-use std::time::Duration;
-
+use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{
     html::{Button, Img},
@@ -64,7 +63,8 @@ pub fn ImageLeft(
 
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute"
         class=("pointer-events-none", show_left)
-        class=("lg:pointer-events-none", move || !clickable_on_desktop)
+        class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
       >
         <div style=move || format!(" top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
         <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
@@ -72,6 +72,8 @@ pub fn ImageLeft(
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
             class="block sm:hidden absolute pr-5"
+            class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
             style=move || format!("right: calc({} - 20px); top: {}", squiggle_right, squiggle_top)
           >
             <img src="/images/squiggle.png" class="h-11"/>

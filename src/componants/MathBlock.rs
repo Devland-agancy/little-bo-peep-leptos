@@ -1,7 +1,7 @@
+use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
-use rand::Rng;
 
 #[derive(PartialEq)]
 pub enum Height {
@@ -110,8 +110,11 @@ pub fn MathBlock(
               }
           }
 
-          class="block cursor-pointer absolute h-full w-16 pt-4"
+          class="block cursor-pointer absolute h-fit w-16 py-5"
           class=("hidden", move || !is_wide() | arrow_hidden)
+          class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+          class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+
           style=move || format!("inset: {}", arrow_position)
         >
           <img src="/images/cream.svg" class="m-auto h-3"/>

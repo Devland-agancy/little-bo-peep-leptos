@@ -5,3 +5,5 @@ pub const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
 
 //first value is for top second for bottom
 pub const TITLE_MARGIN: &'static (&'static str, &'static str) = &("15px", "5px");
+
+pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
