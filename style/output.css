@@ -637,10 +637,6 @@ video {
   margin-bottom: 40px;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -932,6 +928,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -942,6 +942,11 @@ video {
 
 .border-r-0 {
   border-right-width: 0px;
+}
+
+.border-blue-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(147 197 253 / var(--tw-border-opacity));
 }
 
 .bg-stone-100 {
@@ -1436,100 +1441,100 @@ span .MathJax_SVG{
 }
 
 .grid-cols-1	{
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .grid-cols-2	{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-cols-3	{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .grid-cols-4	{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-cols-5	{
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .grid-cols-6	{
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .grid-cols-7	{
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .grid-cols-8	{
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .grid-cols-9	{
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(9, 1fr);
 }
 
 .grid-cols-10	{
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-columns: repeat(10, 1fr);
 }
 
 .grid-cols-11	{
-  grid-template-columns: repeat(11, minmax(0, 1fr));
+  grid-template-columns: repeat(11, 1fr);
 }
 
 .grid-cols-12	{
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(12, 1fr);
 }
 
 @media (min-width: 520px) {
   .sm\:grid-cols-1	{
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(1, 1fr);
   }
 
   .sm\:grid-cols-2	{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .sm\:grid-cols-3	{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .sm\:grid-cols-4	{
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .sm\:grid-cols-5	{
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(5, 1fr);
   }
 
   .sm\:grid-cols-6	{
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .sm\:grid-cols-7	{
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(7, 1fr);
   }
 
   .sm\:grid-cols-8	{
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(8, 1fr);
   }
 
   .sm\:grid-cols-9	{
-    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-template-columns: repeat(9, 1fr);
   }
 
   .sm\:grid-cols-10	{
-    grid-template-columns: repeat(10, minmax(0, 1fr));
+    grid-template-columns: repeat(10, 1fr);
   }
 
   .sm\:grid-cols-11	{
-    grid-template-columns: repeat(11, minmax(0, 1fr));
+    grid-template-columns: repeat(11, 1fr);
   }
 
   .sm\:grid-cols-12	{
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(12, 1fr);
   }
 }
 
@@ -1557,10 +1562,6 @@ span .MathJax_SVG{
 
   .sm\:col-start-2 {
     grid-column-start: 2;
-  }
-
-  .sm\:mt-4 {
-    margin-top: 1rem;
   }
 
   .sm\:block {

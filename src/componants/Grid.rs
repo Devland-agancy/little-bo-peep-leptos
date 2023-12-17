@@ -17,7 +17,7 @@ pub fn Grid(
     view! { cx,
       <span
         id=id
-        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} sm:grid-cols-{} {} {}", sm_cols, cols , if inner_borders { "grid-inner-borders"} else { "" } , classes)
+        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} sm:grid-cols-{} {} {}", if sm_cols == -1 { cols } else { sm_cols } , cols , if inner_borders { "grid-inner-borders"} else { "" } , classes)
         style=move || {
             format!(
                 "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
