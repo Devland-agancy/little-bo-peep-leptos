@@ -4,6 +4,7 @@ use leptos::{
     ev::{resize, scroll},
     *,
 };
+use leptos_router::A;
 use leptos_use::use_event_listener;
 
 #[component]

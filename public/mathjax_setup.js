@@ -64,19 +64,19 @@ if (delay_typeset) {
   }, 2000);
 }
 
-if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
+/* if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
   window.scroll({
     top: localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`),
   });
-}
-
+} */
+document.getElementsByTagName("body").item(0).style.opacity = 0;
 MathJax.Hub.Register.StartupHook("End", function () {
-  console.log("math", MathJax);
   document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
     elem.classList.remove("hidden-on-startup");
     elem.classList.add("animate-appear");
 
     setTimeout((e) => {
+      document.getElementsByTagName("body").item(0).style.opacity = 1;
       if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
         window.scroll({
           top: localStorage.getItem(
@@ -86,8 +86,10 @@ MathJax.Hub.Register.StartupHook("End", function () {
       }
       setTimeout((e) => {
         window.addEventListener("scroll", () => {
-          console.log(window.scrollY);
-          if (window.scrollY > 0)
+          if (
+            window.scrollY > 0 &&
+            localStorage.getItem("activate_scroll") == "true"
+          )
             localStorage.setItem(
               `${location.pathname.split("/")[2]}_scroll`,
               window.scrollY

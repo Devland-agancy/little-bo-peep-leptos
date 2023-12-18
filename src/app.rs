@@ -34,6 +34,8 @@ pub fn App(cx: Scope) -> impl IntoView {
     create_effect(cx, move |_| {
         // execute on every route change
         route();
+
+        /*  */
         let script = document().create_element("script");
         match script {
             Ok(elem) => {
