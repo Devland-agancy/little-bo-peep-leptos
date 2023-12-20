@@ -21,6 +21,7 @@ pub fn ImageRight(
     #[prop(default = "")] children_y: &'static str,
     #[prop(default = 0)] width: i32,
     #[prop(default = false)] clickable_on_desktop: bool,
+    #[prop(default = "")] padding: &'static str,
 
     children: Children,
 ) -> impl IntoView {
@@ -55,7 +56,7 @@ pub fn ImageRight(
 
         style=move || {
             format!(
-                "transform: translateX(calc(0px + 100%)); right: {}; top: {}",
+                "transform: translateX(calc(0px + 100%)); right: {}; top: {}; padding: {}",
                 pos_x,
                 if pos_y != "" {
                     pos_y
@@ -66,6 +67,7 @@ pub fn ImageRight(
                         _ => "auto",
                     }
                 },
+                padding
             )
         }
 
