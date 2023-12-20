@@ -1543,6 +1543,10 @@ span .MathJax_SVG{
   }
 }
 
+.nowrap, .nobreak, .nolinebreak {
+  white-space: nowrap;
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }

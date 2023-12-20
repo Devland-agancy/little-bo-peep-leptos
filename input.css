@@ -274,3 +274,7 @@ span .MathJax_SVG{
 .sm\:grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
 
 }
+
+.nowrap, .nobreak, .nolinebreak {
+  white-space: nowrap;
+}
