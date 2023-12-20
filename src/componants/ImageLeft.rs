@@ -73,10 +73,10 @@ pub fn ImageLeft(
 
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
-            class="block sm:hidden absolute pr-5"
+            class="block sm:hidden absolute p-8"
             class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
             class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            style=move || format!("right: calc({} - 20px); top: {}", squiggle_right, squiggle_top)
+            style=move || format!("right: calc({} - 30px); top: calc({} - 30px)", squiggle_right, squiggle_top)
           >
             <img src="/images/squiggle.png" class="h-11"/>
           </div>
