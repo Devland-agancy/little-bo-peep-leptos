@@ -16,7 +16,7 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
-    #[prop(default = "4rem -1rem auto auto")] arrow_position: &'static str,
+    #[prop(default = "3rem -1rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
@@ -110,7 +110,7 @@ pub fn MathBlock(
               }
           }
 
-          class="block cursor-pointer absolute h-fit w-16 py-5"
+          class="block cursor-pointer absolute h-fit w-24 py-8"
           class=("hidden", move || !is_wide() | arrow_hidden)
           class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
           class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
