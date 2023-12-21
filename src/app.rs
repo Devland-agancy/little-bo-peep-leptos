@@ -73,7 +73,7 @@ pub fn App(cx: Scope) -> impl IntoView {
         type_="text/javascript"
         defer="true"
       />
-      <script type_="text/x-mathjax-config" src="/mathjax_setup.js" defer="true"/>
+      <script type_="text/javascript" src="/mathjax_setup.js" defer="true"/>
 
       // content for this welcome page
       <Router fallback=|cx| {
