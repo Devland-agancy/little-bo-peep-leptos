@@ -71,12 +71,12 @@ if (delay_typeset) {
 } */
 document.getElementsByTagName("body").item(0).style.opacity = 0;
 MathJax.Hub.Register.StartupHook("End", function () {
+  console.log("asdsad");
   document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
     elem.classList.remove("hidden-on-startup");
     elem.classList.add("animate-appear");
 
     setTimeout((e) => {
-      document.getElementsByTagName("body").item(0).style.opacity = 1;
       if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
         window.scroll({
           top: localStorage.getItem(
@@ -98,4 +98,7 @@ MathJax.Hub.Register.StartupHook("End", function () {
       }, 100);
     }, 400);
   });
+  setTimeout((e) => {
+    document.getElementsByTagName("body").item(0).style.opacity = 1;
+  }, 400);
 });
