@@ -1,5 +1,6 @@
 use std::time::Duration;
 
+use crate::constants::GREEN_DIV_HEIGHT;
 use leptos::{
     ev::{click, resize},
     html::Div,
@@ -14,6 +15,8 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
+    let button = create_node_ref::<Div>(cx);
+
     create_effect(cx, move |_| {
         if node_ref().is_some() {
             if solution_open() {
@@ -68,9 +71,15 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let (transition, set_transition) = create_signal(cx, false);
 
     view! { cx,
-      <div class="px-4 my-5 relative col-start-2">
+      <div node_ref=button class="px-4 my-5 relative col-start-2">
         <SolutionSVG on_click=move |_| {
-            if solution_open() {
+
+            // Get the element's bottom position relative to the document
+            let element_pos = window().inner_height().unwrap().as_f64().unwrap() -  button().unwrap().get_bounding_client_rect().bottom();
+
+            let should_scroll_to_button_first = element_pos > GREEN_DIV_HEIGHT as f64 + 40_f64+ 56_f64 ; // empty div beneath + solution button margin bot + padding bottom of page
+
+            if solution_open() && should_scroll_to_button_first {
               let mut options = ScrollIntoViewOptions::new();
               options.behavior(ScrollBehavior::Smooth);
               document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
@@ -100,7 +109,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
       </div>
        <Show fallback=|_| () when=move || !solution_open() || bot_div()>
-        <div class="h-[150px]">
+        <div style=format!("height: {}px", GREEN_DIV_HEIGHT)>
         </div>
       </Show>
     }

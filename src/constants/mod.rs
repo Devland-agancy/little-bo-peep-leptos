@@ -7,3 +7,5 @@ pub const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
 pub const TITLE_MARGIN: &'static (&'static str, &'static str) = &("15px", "5px");
 
 pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
+
+pub const GREEN_DIV_HEIGHT: u8 = 150;
