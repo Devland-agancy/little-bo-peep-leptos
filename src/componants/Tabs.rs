@@ -27,6 +27,9 @@ fn LabelsView(
     let navigate = use_navigate(cx);
     let navigate_ = use_navigate(cx);
 
+    let location = use_location(cx);
+    let (chapter, _) = create_signal(cx, get_chapter(location));
+
     view! { cx,
       <svg
         width="43"
@@ -38,17 +41,28 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
             if selected_tab() != 0 {
+              let new_tab = selected_tab() - 1;
+              set_selected_tab(new_tab);
                 let options = NavigateOptions {
                     resolve: true,
                     replace: false,
                     scroll: false,
                     state: State(None)
                 };
+                let mut stored_opened_value = false;
+                match window().local_storage() {
+                  Ok(Some(storage)) => {
+                      let stored_solution_opened_key =
+                          format!("{}_exo_{}_opened", chapter(), new_tab);
+                          stored_opened_value = storage.get_item(&stored_solution_opened_key).unwrap_or(Some("false".to_string())).unwrap_or("false".to_string()) == "true" ;
+                  }
+                  _ => {}
+                }
                 let _ = navigate(&format!(
                     "{}?tab={}&opened={}",
                     window().location().pathname().unwrap(),
-                    selected_tab() - 1,
-                    solution_open()
+                    new_tab,
+                    stored_opened_value
                 ), options);
             }
         }
@@ -75,17 +89,30 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == _vec().len() - 1)
         on:click=move |_| {
             if selected_tab() != _vec().len() - 1 {
+              let new_tab = selected_tab() + 1;
+
+              set_selected_tab(new_tab);
+
               let options = NavigateOptions {
                 resolve: true,
                 replace: false,
                 scroll: false,
                 state: State(None)
               };
+              let mut stored_opened_value = false;
+              match window().local_storage() {
+                Ok(Some(storage)) => {
+                    let stored_solution_opened_key =
+                        format!("{}_exo_{}_opened", chapter(), new_tab);
+                        stored_opened_value = storage.get_item(&stored_solution_opened_key).unwrap_or(Some("false".to_string())).unwrap_or("false".to_string()) == "true" ;
+                }
+                _ => {}
+              }
               let _ = navigate_(&format!(
                   "{}?tab={}&opened={}",
                   window().location().pathname().unwrap(),
-                  selected_tab() + 1,
-                  solution_open()
+                  new_tab,
+                  stored_opened_value
               ), options);
             }
         }
@@ -171,26 +198,103 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
 
     let location = use_location(cx);
-    let (_chapter, _) = create_signal(cx, get_chapter(location.clone()));
     let url_params = location.clone().query;
+    let (chapter, _) = create_signal(cx, get_chapter(location));
 
     create_effect(cx, move |_| {
-        let _url_params = url_params();
-        let stored_selected_tab = _url_params.get("tab");
+        let mut stored_selected_tab = None;
+        match window().local_storage() {
+            Ok(Some(storage)) => {
+                let stored_selected_tab_key = format!("{}_exercice", chapter());
+
+                stored_selected_tab = Some(storage.get_item(&stored_selected_tab_key));
+            }
+            _ => {}
+        }
         if let Some(sst) = stored_selected_tab {
-            if let Ok(tab) = sst.parse::<usize>() {
-                set_selected_tab(tab);
+            match sst {
+                Ok(Some(value)) => {
+                    set_selected_tab(value.parse::<usize>().unwrap());
+                }
+                _ => {}
             }
         }
     });
 
     create_effect(cx, move |_| {
-        let _url_params = url_params();
+        log!("hi");
+        let mut stored_solution_opened = None;
 
-        let stored_solution_opened = _url_params.get("opened");
-        if let Some(sso) = stored_solution_opened {
-            set_solution_open(sso == "true");
+        match window().local_storage() {
+            Ok(Some(storage)) => {
+                let stored_solution_opened_key =
+                    format!("{}_exo_{}_opened", chapter(), selected_tab());
+                stored_solution_opened = Some(storage.get_item(&stored_solution_opened_key))
+            }
+            _ => {}
         }
+
+        if let Some(sso) = stored_solution_opened {
+            match sso {
+                Ok(Some(value)) => {
+                    set_solution_open(value == "true");
+                }
+                _ => {}
+            }
+        }
+    });
+
+    create_effect(cx, move |_| {
+        solution_open();
+        selected_tab();
+        set_timeout(
+            move || match window().local_storage() {
+                Ok(Some(storage)) => {
+                    let exo = Exercice {
+                        ex_number: selected_tab().to_string(),
+                        ex_chapter: chapter(),
+                        ex_opened: solution_open().to_string(),
+                    };
+                    let selected_exo = format!("{}_exercice", exo.ex_chapter);
+                    let ex_opened = format!("{}_exo_{}_opened", exo.ex_chapter, exo.ex_number);
+
+                    let _ = storage.set_item(&selected_exo, &exo.ex_number);
+                    let _ = storage.set_item(&ex_opened, &exo.ex_opened);
+                }
+                _ => (),
+            },
+            Duration::from_millis(100),
+        );
+    });
+
+    create_effect(cx, move |_| {
+        // this shoould run only of first website load
+        set_timeout(
+            move || {
+                let _url_params = url_params();
+                let stored_selected_tab = _url_params.get("tab");
+                if let Some(sst) = stored_selected_tab {
+                    if let Ok(tab) = sst.parse::<usize>() {
+                        set_selected_tab(tab);
+                    }
+                }
+            },
+            Duration::from_millis(50),
+        );
+    });
+
+    create_effect(cx, move |_| {
+        // this shoould run only of first website load
+        set_timeout(
+            move || {
+                let _url_params = url_params();
+                let stored_solution_opened = _url_params.get("opened");
+                if let Some(sso) = stored_solution_opened {
+                    set_solution_open(sso == "true");
+                }
+            },
+            Duration::from_millis(50),
+        );
     });
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());

@@ -102,13 +102,15 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
                 new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=true", "&opened=false")
               }else if search_params.contains("&opened=false"){
                 new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=false", "&opened=true")
+              }else if &search_params == ""{
+                new_url = window().location().pathname().unwrap() + "?tab=0" + &format!("&opened={}", !solution_open())
               }else{
                 new_url = window().location().pathname().unwrap() + &search_params + &format!("&opened={}", !solution_open())
 
               }
-              navigate(&new_url, options);
+              let _ = navigate(&new_url, options);
             }
-            /* set_solution_open(!solution_open()) */
+            set_solution_open(!solution_open())
 
         }/>
       </div>

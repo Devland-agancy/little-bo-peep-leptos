@@ -54,10 +54,6 @@ pub fn App(cx: Scope) -> impl IntoView {
             }
             _ => {}
         }
-
-        /*       script.type = "text/javascript";
-        script.src  = "https://example.com/MathJax.js?config=TeX-AMS-MML_CHTML";
-        document.getElementsByTagName("head")[0].appendChild(script); */
     });
     view! { cx,
       // injects a stylesheet into the document <head>
