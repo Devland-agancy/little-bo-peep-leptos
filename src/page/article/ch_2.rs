@@ -11,6 +11,7 @@ use crate::componants::MathBlock::*;
 use crate::componants::Paragraph::*;
 use crate::componants::Span::*;
 use crate::componants::Table::*;
+use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm_to_view;
 use leptos::*;
@@ -19,7 +20,7 @@ use leptos::*;
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle on_mobile="Chapter 2: Slopes" label="Chapter 2: The Slope Formula" />
+        <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0 />
       <Columns>
         <ArticleBody/>
       </Columns>
@@ -35,7 +36,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         |> Paragraph 
 
             *Slopes.*
-            the %slope% of a line is a mathematical measure of how
+            The %slope% of a line is a mathematical measure of how
             “steep” a line is.
             Here are a few examples (for an explanation of the values,
             see below):
@@ -103,6 +104,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
         |> Image
             src="/images/31.svg"
+            containerClasses="mt-6 mb-2"
 
         |> Paragraph   
 
@@ -110,7 +112,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             Indeed, dividing the vertical change by the horizontal change
             gives the per-horizontal-unit vertical change.
 
-        |> Paragraph   
+        |> Paragraph 
+            indent=Indent::Line
 
             More precisely, if
             $$ A = (x_1, y_1) $$
@@ -190,6 +193,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         
         |>  Table
             cols=vec![120, 120, 120, 120]
+            sm_cols=vec![80, 80, 80, 80]
             lines=true
             margin_top = 15
 
@@ -291,6 +295,101 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 |> td
                 
                     $$\frac{+}{-} = \,-$$
+
+        |> Paragraph   
+            margin_top = 15
+
+            In fact, we %should% be able to algebraically verify that
+            the slope formula gives the same answer if $(x_1, y_1)$ and 
+            $(x_2, y_2)$ swap places, or, namely, to show that the fractions
+            |> ImageRight
+                src="/images/38.svg"
+                pos_y="-5.5rem"
+                pos_x="1.8rem"
+                squiggle_left="-0.3rem"
+                squiggle_top="44%"
+                hidden_in_mobile=true
+                width=390
+               
+
+        |> Paragraph   
+                   
+            $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
+            are somehow equal. But, indeed,
+            |> MathBlock
+            
+                $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
+                |> ImageLeft
+                    src="/images/39.svg"
+                    width=500
+                    pos_y="-16rem"
+                    pos_x="2rem"
+           
+            which verifies this hypothesis. In particular,
+            $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
+            are, truth be said, equally valid versions of the slope formula!
+
+        |> Paragraph   
+            margin_top = 15
+
+            *Pathological Cases.*
+            If
+            $$ x_2 - x_1 = 0 $$
+            the slope formula
+            “breaks down”
+            in the sense that division
+            |> p 
+            
+                by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
+            |> Image
+                src="/images/40.svg"
+                height="330px"
+        
+        |> Paragraph   
+            margin_top = 15
+
+            Indeed, vertical lines have %undefined% slope. Moreover
+            the bad case
+            $$ x_2 - x_1 = 0 $$
+            can also occur another way, namely if the points $(x_1, y_1)$
+            and $(x_2, y_2)$ coincide.
+            In that case, more precisely, the slope formula evaluates to
+            $$ \frac{y_2 - y_1}{x_2 - x_1} = \frac{0}{0} $$
+            which could be anything. (Technically, “$0/0$” is undefined.)
+            Indeed, infinitely many different lines pass through any
+            given point!
+
+        |> Paragraph   
+            margin_top = 15
+
+            *“Rise over Run”.*
+            Some people remember the slope
+            formula as “slope equals rise over run”
+            (i.e., “$\te{slope} =$
+            following such a picture:
+            |> Image
+                src="/images/44.svg"
+                width="300px"
+                containerClasses="pt-4"
+
+        |> Paragraph   
+            margin_top = 15
+
+            In this context, note that, in physics, a one-dimensional
+            displacement is measured as
+            $$ \left({\text{coordinate} \atop \te{at arrival}}\right)\,\, - \,\,\left({\te{coordinate} \atop \te{at start}}\right) $$
+            in accordance, namely, with the coordinate differences
+            
+            |> p  
+
+                “$x_2 - x_1\!$”, “$y_2 - y_1\!$”
+                that appear in the slope formula.
+
+        |> Paragraph  
+            indent=Indent::Line
+
+            (In order not to discriminate, maybe we should also include this picture:
+
             
       "#
     }

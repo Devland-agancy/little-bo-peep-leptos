@@ -14,22 +14,13 @@ pub fn Grid(
     #[prop(default = "1rem")] gap: &'static str,
     #[prop(default = false)] inner_borders: bool,
 ) -> impl IntoView {
-    let (_cols, set_cols) = create_signal(cx, cols);
-
-    create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= 520_f64 && sm_cols > -1 {
-            set_cols(sm_cols)
-        }
-    });
-
     view! { cx,
       <span
         id=id
-        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit {} {}", if inner_borders { "grid-inner-borders"} else { "" } ,classes)
+        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} sm:grid-cols-{} {} {}", if sm_cols == -1 { cols } else { sm_cols } , cols , if inner_borders { "grid-inner-borders"} else { "" } , classes)
         style=move || {
             format!(
-                "grid-template-columns: repeat({}, 1fr) ;margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
-                _cols(),
+                "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
                 margin_top,
                 margin_bottom,
                 place_items,

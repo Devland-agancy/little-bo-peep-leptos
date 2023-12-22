@@ -63,3 +63,41 @@ if (delay_typeset) {
     MathJax.Hub.Typeset();
   }, 2000);
 }
+
+/* if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
+  window.scroll({
+    top: localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`),
+  });
+} */
+document.getElementsByTagName("body").item(0).style.opacity = 0;
+MathJax.Hub.Register.StartupHook("End", function () {
+  document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
+    elem.classList.remove("hidden-on-startup");
+    elem.classList.add("animate-appear");
+
+    setTimeout((e) => {
+      if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
+        window.scroll({
+          top: localStorage.getItem(
+            `${location.pathname.split("/")[2]}_scroll`
+          ),
+        });
+      }
+      setTimeout((e) => {
+        window.addEventListener("scroll", () => {
+          if (
+            window.scrollY > 0 &&
+            localStorage.getItem("activate_scroll") == "true"
+          )
+            localStorage.setItem(
+              `${location.pathname.split("/")[2]}_scroll`,
+              window.scrollY
+            );
+        });
+      }, 100);
+    }, 400);
+  });
+  setTimeout((e) => {
+    document.getElementsByTagName("body").item(0).style.opacity = 1;
+  }, 400);
+});

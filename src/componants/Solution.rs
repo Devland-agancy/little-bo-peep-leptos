@@ -1,5 +1,6 @@
 use std::{rc::Rc, sync::Arc, time::Duration};
 
+use crate::constants::GREEN_DIV_HEIGHT;
 use leptos::{
     ev::{click, resize},
     html::Div,
@@ -7,7 +8,7 @@ use leptos::{
 };
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
-use web_sys::MouseEvent;
+use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
 #[component]
 pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
@@ -15,6 +16,8 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
+    let button = create_node_ref::<Div>(cx);
+
     create_effect(cx, move |_| {
         if node_ref().is_some() {
             if solution_open() {
@@ -72,8 +75,19 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let params = use_location(cx).query;
 
     view! { cx,
-      <div class="px-4 my-5 relative col-start-2">
-        <SolutionSVG  on_click=move |_| {
+      <div node_ref=button class="px-4 my-5 relative col-start-2">
+        <SolutionSVG on_click=move |_| {
+
+            // Get the element's bottom position relative to the document
+            let element_pos = window().inner_height().unwrap().as_f64().unwrap() -  button().unwrap().get_bounding_client_rect().bottom();
+
+            let should_scroll_to_button_first = element_pos > GREEN_DIV_HEIGHT as f64 + 40_f64+ 56_f64 ; // empty div beneath + solution button margin bot + padding bottom of page
+
+            if solution_open() && should_scroll_to_button_first {
+              let mut options = ScrollIntoViewOptions::new();
+              options.behavior(ScrollBehavior::Smooth);
+              document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
+            }
             set_transition(true);
             set_timeout(move || set_transition(false), Duration::from_millis(1100));
             let options = NavigateOptions {
@@ -118,7 +132,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
       </div>
        <Show fallback=|_| () when=move || !solution_open() || bot_div()>
-        <div class="h-[150px]">
+        <div style=format!("height: {}px", GREEN_DIV_HEIGHT)>
         </div>
       </Show>
     }

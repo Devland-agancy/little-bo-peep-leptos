@@ -12,14 +12,14 @@ use crate::componants::Paragraph::*;
 use crate::componants::Solution::*;
 use crate::componants::Span::*;
 use crate::componants::Tabs::*;
-
+use crate::constants::MENU_ITEMS;
 use leptos::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
       <Article>
-        <ArticleTitle label="Chapter 1: A Few Refreshers" />
+        <ArticleTitle label={MENU_ITEMS[0].0} />
         <ArticleBody/>
       </Article>
     }
@@ -52,7 +52,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="1rem" pos_y="-2rem">
+          $$"# <ImageRight padding="20px" src="/images/svg_cloud_minus_two_squared.svg" pos_x="2rem" pos_y="-3rem">
             ""
           </ImageRight>
         </MathBlock>
@@ -337,7 +337,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 1. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position="2.8rem -0.5rem auto auto">
           r#"$$
               \begin{align}
               (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -351,7 +351,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 2. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position="2.8rem -0.5rem auto auto">
           r#"$$
               \begin{align}
               (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
@@ -445,8 +445,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span italic=true>"a difference of squares"</Span>
         </Paragraph>
         <Paragraph margin_top=15>
-          "whence" <Span italic=true>a "a difference of squares can always be factored"</Span> ". "
-          "(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
+          "whence " <Span italic=true>"a difference of squares can always be factored"</Span> ". "
+          "(Factored as " <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
           " (PS: “Factored” means “written as a product”.)"
         </Paragraph>
         <Paragraph margin_top=15>
@@ -510,8 +510,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock height=Height::Fit>
           r#"$$
               \begin{align}
-              (-1)(a - b) \,&=\, (-1)(a + (-b)) \\
-              \,&=\, (-1)a + (-1)(-b) \\
+              (-1)(a - b) \,&=\, (-1)(a + (-b))\up{1} \\
+              \,&=\, (-1)a + (-1)(-b)\up{1} \\
               \,&=\, -a + b
               \end{align}
           $$"#
@@ -652,7 +652,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to "
                 <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
               </Paragraph>
-              <MathBlock id="sqrt-1" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+              <MathBlock id="sqrt-1" height=Height::Fit arrow_position="7.4rem 0rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
@@ -687,7 +687,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </ImageLeft>
               </MathBlock>
               <Paragraph>"and"</Paragraph>
-              <MathBlock id="sqrt-2" height=Height::Fit arrow_position="9.3rem 0rem auto auto">
+              <MathBlock id="sqrt-2" height=Height::Fit arrow_position="7.4rem 0rem auto auto">
                 r#"$$
                     \begin{align}
                     &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
@@ -988,7 +988,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <Paragraph margin_top=15>
                 "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):"
               </Paragraph>
-              <MathBlock height=Height::Fit child_tag="span" arrow_position="13.3rem 0rem 0rem 90%">
+              <MathBlock height=Height::Fit child_tag="span" arrow_position="12.3rem 0rem 0rem 80%">
                 <div class="w-full">
                   <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
 
@@ -1337,7 +1337,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
               <Paragraph>
                 "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
-                <MathBlock height=Height::Fit arrow_position="7.5rem -2rem auto auto" show_arrow_at_width=640>
+                <MathBlock height=Height::Fit arrow_position="6.5rem -2rem auto auto" show_arrow_at_width=640>
                   r#"$$
                   \begin{align}
                   {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot

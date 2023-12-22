@@ -1,7 +1,7 @@
+use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
-use rand::Rng;
 
 #[derive(PartialEq)]
 pub enum Height {
@@ -16,7 +16,7 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
-    #[prop(default = "4rem 0.2rem auto auto")] arrow_position: &'static str,
+    #[prop(default = "3rem -1rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
@@ -44,7 +44,6 @@ pub fn MathBlock(
                     if math_box_width + margin_left as f64 - 2_f64 > window_width {
                         request_animation_frame(move || {
                             set_margin_left_active(false);
-                            log!("falseeee");
                             if math_box_width - 2_f64 > window_width {
                                 set_is_wide(true);
                                 set_margin_left_active(true);
@@ -107,12 +106,15 @@ pub fn MathBlock(
               e.stop_propagation();
               if page_state() == PageState::ShowArticle {
                   set_page_state.update(|value| *value = PageState::ShowRight);
-                  set_right_image_x_pos(80_f64);
+                  set_right_image_x_pos(95_f64);
               }
           }
 
-          class="block cursor-pointer absolute h-full w-10"
+          class="block cursor-pointer absolute h-fit w-24 py-8"
           class=("hidden", move || !is_wide() | arrow_hidden)
+          class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+          class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+
           style=move || format!("inset: {}", arrow_position)
         >
           <img src="/images/cream.svg" class="m-auto h-3"/>
