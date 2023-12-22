@@ -222,26 +222,35 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     });
 
     create_effect(cx, move |_| {
-        log!("hi");
-        let mut stored_solution_opened = None;
+        selected_tab();
+        set_timeout(
+            move || {
+                let mut stored_solution_opened = None;
 
-        match window().local_storage() {
-            Ok(Some(storage)) => {
-                let stored_solution_opened_key =
-                    format!("{}_exo_{}_opened", chapter(), selected_tab());
-                stored_solution_opened = Some(storage.get_item(&stored_solution_opened_key))
-            }
-            _ => {}
-        }
-
-        if let Some(sso) = stored_solution_opened {
-            match sso {
-                Ok(Some(value)) => {
-                    set_solution_open(value == "true");
+                match window().local_storage() {
+                    Ok(Some(storage)) => {
+                        let stored_solution_opened_key =
+                            format!("{}_exo_{}_opened", chapter(), selected_tab());
+                        stored_solution_opened = Some(storage.get_item(&stored_solution_opened_key))
+                    }
+                    _ => {}
                 }
-                _ => {}
-            }
-        }
+
+                if let Some(sso) = stored_solution_opened {
+                    match sso {
+                        Ok(Some(value)) => {
+                            set_solution_open(value == "true");
+                        }
+                        _ => {
+                            set_solution_open(false);
+                        }
+                    }
+                } else {
+                    set_solution_open(false);
+                }
+            },
+            Duration::from_millis(50),
+        );
     });
 
     create_effect(cx, move |_| {
