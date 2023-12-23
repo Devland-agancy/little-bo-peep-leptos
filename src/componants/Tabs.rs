@@ -282,6 +282,8 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
                         set_selected_tab(tab);
                     }
                 } else {
+                    // here we handle case where values are stored in localstorage and search params are not defined , so we define them and change the url .
+
                     let mut _solution_opened = None;
                     let mut _selected_tab = None;
 
