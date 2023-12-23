@@ -1,6 +1,7 @@
-use std::time::Duration;
+use std::{fmt::format, time::Duration};
 
 use crate::utils::get_chapter::get_chapter;
+use http::Error;
 use leptos::*;
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use serde::{Deserialize, Serialize};
@@ -12,6 +13,13 @@ struct Exercice {
     ex_chapter: String,
     ex_opened: String,
 }
+
+const NAVIGATE_OPTIONS: NavigateOptions = NavigateOptions {
+    resolve: true,
+    replace: false,
+    scroll: false,
+    state: State(None),
+};
 
 #[component]
 fn LabelsView(
@@ -43,12 +51,6 @@ fn LabelsView(
             if selected_tab() != 0 {
               let new_tab = selected_tab() - 1;
               set_selected_tab(new_tab);
-                let options = NavigateOptions {
-                    resolve: true,
-                    replace: false,
-                    scroll: false,
-                    state: State(None)
-                };
                 let mut stored_opened_value = false;
                 match window().local_storage() {
                   Ok(Some(storage)) => {
@@ -63,7 +65,7 @@ fn LabelsView(
                     window().location().pathname().unwrap(),
                     new_tab,
                     stored_opened_value
-                ), options);
+                ), NAVIGATE_OPTIONS);
             }
         }
       >
@@ -92,13 +94,6 @@ fn LabelsView(
               let new_tab = selected_tab() + 1;
 
               set_selected_tab(new_tab);
-
-              let options = NavigateOptions {
-                resolve: true,
-                replace: false,
-                scroll: false,
-                state: State(None)
-              };
               let mut stored_opened_value = false;
               match window().local_storage() {
                 Ok(Some(storage)) => {
@@ -113,7 +108,7 @@ fn LabelsView(
                   window().location().pathname().unwrap(),
                   new_tab,
                   stored_opened_value
-              ), options);
+              ), NAVIGATE_OPTIONS);
             }
         }
       >
@@ -226,7 +221,6 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
         set_timeout(
             move || {
                 let mut stored_solution_opened = None;
-
                 match window().local_storage() {
                     Ok(Some(storage)) => {
                         let stored_solution_opened_key =
@@ -282,10 +276,44 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
             move || {
                 let _url_params = url_params();
                 let stored_selected_tab = _url_params.get("tab");
+
                 if let Some(sst) = stored_selected_tab {
                     if let Ok(tab) = sst.parse::<usize>() {
                         set_selected_tab(tab);
                     }
+                } else {
+                    let mut _solution_opened = None;
+                    let mut _selected_tab = None;
+
+                    match window().local_storage() {
+                        Ok(Some(storage)) => {
+                            let _solution_opened_key =
+                                format!("{}_exo_{}_opened", chapter(), selected_tab());
+                            _solution_opened = Some(storage.get_item(&_solution_opened_key));
+
+                            let _selected_tab_key = format!("{}_exercice", chapter());
+                            _selected_tab = Some(storage.get_item(&_selected_tab_key));
+                        }
+                        _ => {}
+                    }
+
+                    let navigate = use_navigate(cx);
+
+                    let _ = navigate(
+                        &format!(
+                            "{}?tab={}&opened={}",
+                            window().location().pathname().unwrap(),
+                            _selected_tab
+                                .unwrap_or(Ok(None))
+                                .unwrap_or(None)
+                                .unwrap_or("0".to_string()),
+                            _solution_opened
+                                .unwrap_or(Ok(None))
+                                .unwrap_or(None)
+                                .unwrap_or("false".to_string()),
+                        ),
+                        NAVIGATE_OPTIONS,
+                    );
                 }
             },
             Duration::from_millis(50),
