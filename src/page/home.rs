@@ -11,10 +11,8 @@ use crate::constants::MENU_ITEMS;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
         <ArticleTitle label="Chapters"/>
         <ArticleBody/>
-      </Article>
     }
 }
 

@@ -82,7 +82,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
     // for right_images we autoscroll to their position
     view! { cx,
-      <div class="pt-14 overscroll-none ">
+      <div class="overscroll-none">
         <div
           node_ref=article_node
           class="relative flex justify-center align-center w-full pb-14 min-h-screen"

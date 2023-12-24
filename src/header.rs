@@ -1,21 +1,21 @@
 use crate::constants::MENU_ITEMS;
-use crate::page::state::PageState;
 use leptos::{
     ev::{resize, scroll},
     *,
 };
-use leptos_router::A;
 use leptos_use::use_event_listener;
+
+use crate::page::state::PageState;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
     view! { cx,
-      <div class="select-none w-full">
-        <div class="select-none flex justify-center items-center fixed sm:absolute bg-white z-50 h-14  w-full sm:w-[calc(100vw-3.5rem)]">
+      <div class="select-none w-full ">
+        <div class="select-none flex justify-center items-center fixed bg-white z-40 h-14 w-full left-0">
           <Title/>
-          <MenuButton/>
-          <ChapterMenu/>
         </div>
+      </div>
+      <div class="h-0 border-b left-[-1500px] w-[4400px] top-[55px] fixed z-50">
       </div>
     }
 }
@@ -26,8 +26,7 @@ fn Title(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:pl-[calc(1rem+3.5rem)] sm:grid gridColsWidth border-b h-full border-r-0 sm:border-r"
-        class=("sm:hidden", move || page_state() != PageState::ShowArticle)
+        class="select-none w-full pl-4 sm:grid gridColsWidth h-full border-r-0"
         id="Header"
       >
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 sm:pb-2">
@@ -46,7 +45,7 @@ pub enum MenuState {
 }
 
 #[component]
-fn ChapterMenu(cx: Scope) -> impl IntoView {
+pub fn ChapterMenu(cx: Scope) -> impl IntoView {
     view! { cx, <MenuOpen/> }
 }
 
@@ -109,15 +108,18 @@ fn MenuItem(
 }
 
 #[component]
-fn MenuButton(cx: Scope) -> impl IntoView {
+pub fn MenuButton(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
+    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
-    let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
+    let (_, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
+    let (scrolled_header, set_scrolled_header) = create_signal::<bool>(cx, true);
 
     create_effect(cx, move |_| {
         set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
@@ -130,68 +132,86 @@ fn MenuButton(cx: Scope) -> impl IntoView {
 
     create_effect(cx, move |_| {
         set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+        set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
+
         window_event_listener(resize, move |_| {
             set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+        });
+
+        window_event_listener(scroll, move |_| {
+            set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
         })
     });
 
     view! { cx,
       <div
+        class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
         style=move || {
-            format!(
-                "opacity: {}",
-                if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 },
+          format!(
+              "opacity: {}",
+              if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 }
             )
         }
 
-        class="h-14 w-14 fixed right-0 border-l sm:border-l-0  sm:border-b"
-        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
-        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
+        on:mouseover=move |_| set_button_opacity(1_f64)
+        on:pointerdown=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::Closed => MenuState::OpenPressed,
+                        MenuState::ClosedPressed => MenuState::OpenPressed,
+                        MenuState::Open => MenuState::ClosedPressed,
+                        MenuState::OpenPressed => MenuState::ClosedPressed,
+                    };
+                })
+        }
+
+        on:pointerleave=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::ClosedPressed => MenuState::Open,
+                        MenuState::OpenPressed => MenuState::Closed,
+                        _ => *value,
+                    }
+                });
+            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
+        }
+
+        on:pointerup=move |_| {
+            set_menu_state
+                .update(|value| {
+                    *value = match value {
+                        MenuState::Closed => MenuState::Closed,
+                        MenuState::ClosedPressed => MenuState::Closed,
+                        MenuState::Open => MenuState::Open,
+                        MenuState::OpenPressed => MenuState::Open,
+                    };
+                })
+        }
       >
         <button
-          on:mouseover=move |_| set_button_opacity(1_f64)
-          on:pointerdown=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::Closed => MenuState::OpenPressed,
-                          MenuState::ClosedPressed => MenuState::OpenPressed,
-                          MenuState::Open => MenuState::ClosedPressed,
-                          MenuState::OpenPressed => MenuState::ClosedPressed,
-                      };
-                  })
-          }
-
-          on:pointerleave=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::ClosedPressed => MenuState::Open,
-                          MenuState::OpenPressed => MenuState::Closed,
-                          _ => *value,
-                      }
-                  });
-              set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
-          }
-
-          on:pointerup=move |_| {
-              set_menu_state
-                  .update(|value| {
-                      *value = match value {
-                          MenuState::Closed => MenuState::Closed,
-                          MenuState::ClosedPressed => MenuState::Closed,
-                          MenuState::Open => MenuState::Open,
-                          MenuState::OpenPressed => MenuState::Open,
-                      };
-                  })
-          }
-
-          class="select-none flex items-center justify-center h-8 w-8 m-3 bg-transparent fill-[rgb(30,30,30)] hover:fill-stone-600"
+          class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
         >
-
           <HamburgerIcon/>
         </button>
       </div>
+
+      //vertical line between burger and rest of header
+      <div
+        class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
+        class=("opacity-100", move || page_state() == PageState::ShowArticle)
+
+        ></div>
+        <div
+        class="h-[14rem] w-14 fixed right-0 z-40"
+        style=move || {
+        format!(
+            " background-color: {}",
+            if scrolled_header() { "transparent" } else { "#fff" },
+          )
+      } >
+    </div>
     }
 }
 
@@ -200,9 +220,9 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-
     view! { cx,
-      <svg width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
+      <svg
+       width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
         <g>
           <rect
             x="5"

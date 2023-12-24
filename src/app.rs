@@ -1,5 +1,7 @@
+use crate::componants::Article::Article;
 use crate::error_template::{AppError, ErrorTemplate};
-use crate::header::{Header, MenuState};
+use crate::header::{ChapterMenu, Header, MenuButton, MenuState};
+
 use crate::page::state::PageState;
 
 use leptos::*;
@@ -77,13 +79,17 @@ pub fn App(cx: Scope) -> impl IntoView {
           view! { cx, <ErrorTemplate outside_errors/> }.into_view(cx)
       }>
         <main>
-          <Header/>
-          <Routes>
-            <Route path="" view=crate::page::home::View/>
-            <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
-            <Route path="/article/ch_2" view=crate::page::article::ch_2::View/>
-            <Route path="/article/ch_3" view=crate::page::article::ch_3::View/>
-          </Routes>
+          <MenuButton />
+          <ChapterMenu />
+          <Article>
+            <Header/>
+            <Routes>
+              <Route path="" view=crate::page::home::View/>
+              <Route path="/article/ch_1" view=crate::page::article::ch_1::View/>
+              <Route path="/article/ch_2" view=crate::page::article::ch_2::View/>
+              <Route path="/article/ch_3" view=crate::page::article::ch_3::View/>
+            </Routes>
+          </Article>
         </main>
       </Router>
     }

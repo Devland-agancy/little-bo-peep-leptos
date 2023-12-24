@@ -12,10 +12,8 @@ use leptos::*;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
         <ArticleTitle label="Chapter 2: Slopes"/>
         <ArticleBody/>
-      </Article>
     }
 }
 
