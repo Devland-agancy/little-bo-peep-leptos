@@ -7,10 +7,11 @@ pub fn Image(
     cx: Scope,
     src: &'static str,
     #[prop(default = "")] id: &'static str,
-    #[prop(default = "")] containerClasses: &'static str,
-    #[prop(default = "")] imageClasses: &'static str,
+    #[prop(default = "")] container_classes: &'static str,
+    #[prop(default = "")] image_classes: &'static str,
     #[prop(default = "")] height: &'static str,
     #[prop(default = "")] width: &'static str,
+    #[prop(default = "")] cloud_image: &'static str,
 ) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
 
@@ -19,7 +20,7 @@ pub fn Image(
         class=move || {
             format!(
                 "my-[15px] relative col-start-2 scrollbar-hidden md:overflow-x-visible {}",
-                containerClasses,
+                container_classes,
             )
         }
 
@@ -32,7 +33,7 @@ pub fn Image(
           class=move || {
               format!(
                   "max-w-none m-auto {}",
-                  imageClasses,
+                  image_classes,
               )
           }
         />
