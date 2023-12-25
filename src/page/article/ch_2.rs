@@ -320,7 +320,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 |> ImageLeft
                     src="/images/39.svg"
                     width=500
-                    pos_y="-16rem"
+                    pos_y="-13rem"
                     pos_x="2rem"
            
             which verifies this hypothesis. In particular,
@@ -367,7 +367,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             following such a picture:
             |> Image
                 src="/images/44.svg"
-                width="300px"
                 containerClasses="pt-4"
 
         |> Paragraph   
