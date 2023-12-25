@@ -16,7 +16,7 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
-    #[prop(default = "3rem -1rem auto auto")] arrow_position: &'static str,
+    #[prop(default = "2rem -1rem auto auto")] arrow_position: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
