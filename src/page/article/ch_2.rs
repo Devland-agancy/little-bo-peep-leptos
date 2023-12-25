@@ -342,7 +342,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
             |> Image
                 src="/images/40.svg"
-                height="330px"
         
         |> Paragraph   
             margin_top = 15
