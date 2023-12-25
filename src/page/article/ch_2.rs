@@ -103,6 +103,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         |> Image
             src="/images/31.svg"
             container_classes="mt-6 mb-2"
+            cloud_image=true
 
         |> Paragraph   
 
