@@ -21,7 +21,7 @@ pub fn Table(
     });
 
     view! { cx,
-        <div class=format!("col-start-2 px-4 min-h-fit my-4 w-full overflow-scroll {}", classes)>
+        <div class=format!("col-start-2 px-4 min-h-fit my-4 w-full overflow-scroll scrollbar-hidden {}", classes)>
       <table
              class=("lines", move || lines) style=move || format!("margin-top: {}px ;{}", margin_top, style)>
            { _cols().into_iter()
