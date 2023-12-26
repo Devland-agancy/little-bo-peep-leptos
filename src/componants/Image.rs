@@ -78,7 +78,9 @@ pub fn Image(
           }
           id=id
           src=src
-          style= move || format!("height: {}; width: {};", height, width)
+          style= move || format!("height: {}; width: {}; {}", height, width, if cloud_image && is_wide() {
+            "position:relative; left: 50%; transform: translateX(-50%)"
+          } else { "" })
           class=move || {
               format!(
                   "max-w-none m-auto {}",
