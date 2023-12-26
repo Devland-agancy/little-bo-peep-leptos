@@ -74,8 +74,8 @@ pub fn ImageRight(
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute"
         class=("pointer-events-none", show_right)
         class=("lg:pointer-events-none", move || !clickable_on_desktop)
-        class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-        class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
       >
         <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
           {children(cx)}
@@ -85,8 +85,8 @@ pub fn ImageRight(
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
             class="block sm:hidden absolute p-8"
-            class=("border", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("border-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
             style=move || format!("left: calc({} - 30px); top: calc({} - 30px)", squiggle_left, squiggle_top)
           >
             <img src="/images/squiggle.png" class="h-11"/>

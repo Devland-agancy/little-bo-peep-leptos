@@ -132,9 +132,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 |> ImageRight
                     src="/images/32.svg"
                     width=600
+                    pos_x="-1rem"
+                    pos_y="-11rem"
                     hidden_in_mobile=true
-                    squiggle_top="44%"
-                    squiggle_left="-0.5rem"
+                    squiggle_top="47%"
+                    squiggle_left="-1.5rem"
 
         |> Paragraph   
 
@@ -304,8 +306,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             |> ImageRight
                 src="/images/38.svg"
                 pos_y="-5.5rem"
-                pos_x="1.8rem"
-                squiggle_left="-0.3rem"
+                pos_x="0"
+                squiggle_left="-2rem"
                 squiggle_top="44%"
                 hidden_in_mobile=true
                 width=390
@@ -320,9 +322,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
                 |> ImageLeft
                     src="/images/39.svg"
-                    width=500
-                    pos_y="-13rem"
-                    pos_x="2rem"
+                    width=400
+                    pos_y="-10.5rem"
+                    pos_x="1rem"
+                    squiggle_right="0rem"
+                    squiggle_top="62%"
+                    hidden_in_mobile=true
            
             which verifies this hypothesis. In particular,
             $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$

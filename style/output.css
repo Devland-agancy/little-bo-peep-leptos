@@ -960,10 +960,6 @@ video {
   border-radius: 0.25rem;
 }
 
-.border {
-  border-width: 1px;
-}
-
 .border-b {
   border-bottom-width: 1px;
 }
@@ -978,11 +974,6 @@ video {
 
 .border-r-0 {
   border-right-width: 0px;
-}
-
-.border-blue-300 {
-  --tw-border-opacity: 1;
-  border-color: rgb(147 197 253 / var(--tw-border-opacity));
 }
 
 .bg-stone-100 {
@@ -1168,6 +1159,14 @@ video {
 
 .opacity-100 {
   opacity: 1;
+}
+
+.outline {
+  outline-style: solid;
+}
+
+.outline-blue-300 {
+  outline-color: #93c5fd;
 }
 
 .transition {
