@@ -338,13 +338,19 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {
+        log!("solsol {}", solution_open());
         if solution_open() {
             set_timeout(
                 move || set_solution_fully_opened(true),
                 Duration::from_secs(1),
             )
         } else {
-            set_solution_fully_opened(false)
+            set_solution_fully_opened(false);
+            set_timeout(
+                // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
+                move || set_solution_fully_opened(false),
+                Duration::from_secs(1),
+            )
         }
     });
 
