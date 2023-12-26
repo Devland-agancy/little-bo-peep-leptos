@@ -50,7 +50,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight padding="20px" src="/images/svg_cloud_minus_two_squared.svg" pos_x="2rem" pos_y="-3rem">
+          $$"# <ImageRight padding="40px" src="/images/svg_cloud_minus_two_squared.svg" pos_x="3rem" pos_y="-4rem" width=316>
             ""
           </ImageRight>
         </MathBlock>
