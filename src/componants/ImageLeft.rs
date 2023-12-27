@@ -65,8 +65,10 @@ pub fn ImageLeft(
 
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute"
         class=("pointer-events-none", show_left)
-        class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
         class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+
       >
         <div style=move || format!(" top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
         <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
@@ -74,8 +76,10 @@ pub fn ImageLeft(
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
             class="block sm:hidden absolute"
-            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
             class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+
             style=move || format!("right: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_right, squiggle_top, "2.6rem")
           >
             <img src="/images/squiggle.png" class="h-11"/>

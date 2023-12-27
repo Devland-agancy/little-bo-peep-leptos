@@ -1,3 +1,4 @@
+use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::{
     page::state::PageState, utils::cast_element_to_html_element::cast_element_to_html_element,
 };
@@ -87,6 +88,9 @@ pub fn Image(
                   image_classes,
               )
           }
+          class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
+          class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
+          class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
         />
 
       </div>

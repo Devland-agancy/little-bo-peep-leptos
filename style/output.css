@@ -1161,6 +1161,10 @@ video {
   outline-style: solid;
 }
 
+.outline-\[20px\] {
+  outline-width: 20px;
+}
+
 .outline-blue-300 {
   outline-color: #93c5fd;
 }

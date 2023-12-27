@@ -112,8 +112,9 @@ pub fn MathBlock(
 
           class="block cursor-pointer absolute h-fit w-24 py-8"
           class=("hidden", move || !is_wide() | arrow_hidden)
-          class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+          class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
           class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+          class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
 
           style=move || format!("inset: {}", arrow_position)
         >
