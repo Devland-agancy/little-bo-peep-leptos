@@ -304,7 +304,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             $(x_2, y_2)$ swap places, or, namely, to show that the fractions
             |> ImageRight
                 src="/images/38.svg"
-                pos_y="-5.5rem"
+                pos_y="-2.1rem"
                 pos_x="0"
                 squiggle_left="-2rem"
                 squiggle_top="44%"
