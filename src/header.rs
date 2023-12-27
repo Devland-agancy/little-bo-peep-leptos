@@ -1,4 +1,4 @@
-use crate::constants::MENU_ITEMS;
+use crate::constants::{MENU_ITEMS, MOBILE_BREAKPOINT};
 use leptos::{
     ev::{resize, scroll},
     *,
@@ -118,7 +118,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
-    let (_, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
+    let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
     let (scrolled_header, set_scrolled_header) = create_signal::<bool>(cx, true);
 
     create_effect(cx, move |_| {
@@ -131,11 +131,15 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+        set_screen_is_lg(
+            window().inner_width().unwrap().as_f64().unwrap() >= MOBILE_BREAKPOINT as f64,
+        );
         set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
 
         window_event_listener(resize, move |_| {
-            set_screen_is_lg(window().inner_width().unwrap().as_f64().unwrap() >= 640_f64);
+            set_screen_is_lg(
+                window().inner_width().unwrap().as_f64().unwrap() >= MOBILE_BREAKPOINT as f64,
+            );
         });
 
         window_event_listener(scroll, move |_| {
@@ -146,6 +150,8 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     view! { cx,
       <div
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
+        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
+        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
         style=move || {
           format!(
               "opacity: {}",
@@ -153,45 +159,46 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
             )
         }
 
-        on:mouseover=move |_| set_button_opacity(1_f64)
-        on:pointerdown=move |_| {
-            set_menu_state
-                .update(|value| {
-                    *value = match value {
-                        MenuState::Closed => MenuState::OpenPressed,
-                        MenuState::ClosedPressed => MenuState::OpenPressed,
-                        MenuState::Open => MenuState::ClosedPressed,
-                        MenuState::OpenPressed => MenuState::ClosedPressed,
-                    };
-                })
-        }
-
-        on:pointerleave=move |_| {
-            set_menu_state
-                .update(|value| {
-                    *value = match value {
-                        MenuState::ClosedPressed => MenuState::Open,
-                        MenuState::OpenPressed => MenuState::Closed,
-                        _ => *value,
-                    }
-                });
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
-        }
-
-        on:pointerup=move |_| {
-            set_menu_state
-                .update(|value| {
-                    *value = match value {
-                        MenuState::Closed => MenuState::Closed,
-                        MenuState::ClosedPressed => MenuState::Closed,
-                        MenuState::Open => MenuState::Open,
-                        MenuState::OpenPressed => MenuState::Open,
-                    };
-                })
-        }
       >
         <button
           class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
+
+          on:mouseover=move |_| set_button_opacity(1_f64)
+          on:pointerdown=move |_| {
+              set_menu_state
+                  .update(|value| {
+                      *value = match value {
+                          MenuState::Closed => MenuState::OpenPressed,
+                          MenuState::ClosedPressed => MenuState::OpenPressed,
+                          MenuState::Open => MenuState::ClosedPressed,
+                          MenuState::OpenPressed => MenuState::ClosedPressed,
+                      };
+                  })
+          }
+
+          on:pointerleave=move |_| {
+              set_menu_state
+                  .update(|value| {
+                      *value = match value {
+                          MenuState::ClosedPressed => MenuState::Open,
+                          MenuState::OpenPressed => MenuState::Closed,
+                          _ => *value,
+                      }
+                  });
+              set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
+          }
+
+          on:pointerup=move |_| {
+              set_menu_state
+                  .update(|value| {
+                      *value = match value {
+                          MenuState::Closed => MenuState::Closed,
+                          MenuState::ClosedPressed => MenuState::Closed,
+                          MenuState::Open => MenuState::Open,
+                          MenuState::OpenPressed => MenuState::Open,
+                      };
+                  })
+          }
         >
           <HamburgerIcon/>
         </button>

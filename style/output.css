@@ -999,10 +999,6 @@ video {
   padding: 1rem;
 }
 
-.p-8 {
-  padding: 2rem;
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1574,6 +1570,10 @@ span .MathJax_SVG{
   white-space: nowrap;
 }
 
+.hover\:border-b-0:hover {
+  border-bottom-width: 0px;
+}
+
 .hover\:fill-stone-600:hover {
   fill: #57534e;
 }
@@ -1620,6 +1620,10 @@ span .MathJax_SVG{
 
   .sm\:overflow-visible {
     overflow: visible;
+  }
+
+  .sm\:border-b-0 {
+    border-bottom-width: 0px;
   }
 
   .sm\:border-l-0 {
