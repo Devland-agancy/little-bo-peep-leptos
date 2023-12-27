@@ -28,7 +28,7 @@ pub fn Image(
             if let Some(img) = image {
                 let image_width = cast_element_to_html_element(img).unwrap().offset_width() as f64;
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                if image_width - 10_f64 > window_width {
+                if image_width + 10_f64 > window_width {
                     set_is_wide(true);
                 }
             }
@@ -42,7 +42,7 @@ pub fn Image(
                     let image_width =
                         cast_element_to_html_element(img).unwrap().offset_width() as f64;
                     let window_width = window().inner_width().unwrap().as_f64().unwrap();
-                    if image_width - 10_f64 > window_width {
+                    if image_width + 10_f64 > window_width {
                         set_is_wide(true);
                     } else {
                         set_is_wide(false);
