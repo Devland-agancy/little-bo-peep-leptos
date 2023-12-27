@@ -16,7 +16,8 @@ pub fn MathBlock(
     #[prop(default = Height::Small)] height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
-    #[prop(default = "2rem -1rem auto auto")] arrow_position: &'static str,
+    #[prop(default = "2rem")] arrow_position_y: &'static str,
+    #[prop(default = "-1rem")] arrow_position_x: &'static str,
     #[prop(default = false)] arrow_hidden: bool,
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
@@ -116,7 +117,7 @@ pub fn MathBlock(
           class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
           class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
 
-          style=move || format!("inset: {}", arrow_position)
+          style=move || format!("top: {}; right: {}", arrow_position_y, "0.5rem")
         >
           <img src="/images/cream.svg" class="m-auto h-3"/>
         </div>
