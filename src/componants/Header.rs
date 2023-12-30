@@ -226,11 +226,11 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         ></div>
         <div
-        class="h-[10rem] w-14 fixed right-0 z-40"
+        class="w-14 fixed right-0 z-40 h-14 menu-button-bg:h-[10rem] "
         style=move || {
         format!(
             " background-color: {}",
-            if scrolled_header() || !screen_is_lg() { "transparent" } else { "#fff" },
+            if scrolled_header() { "transparent" } else { "#fff" },
           )
       } >
     </div>

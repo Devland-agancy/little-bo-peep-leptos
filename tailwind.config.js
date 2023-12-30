@@ -51,6 +51,7 @@ module.exports = {
       },
       screens: {
         sm: "520px",
+        "menu-button-bg": "570px",
       },
     },
   },

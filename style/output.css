@@ -729,10 +729,6 @@ video {
   height: 2rem;
 }
 
-.h-\[10rem\] {
-  height: 10rem;
-}
-
 .h-\[37px\] {
   height: 37px;
 }
@@ -1670,6 +1666,12 @@ span .MathJax_SVG{
 
   .sm\:leading-relaxed {
     line-height: 1.625;
+  }
+}
+
+@media (min-width: 570px) {
+  .menu-button-bg\:h-\[10rem\] {
+    height: 10rem;
   }
 }
 
