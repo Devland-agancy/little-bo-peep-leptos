@@ -28,7 +28,7 @@ pub fn Paragraph(
     view! { cx,
       <span
         id=id
-        class=format!("col-start-2 px-4 block relative {}", classes)
+        class=format!("test-bg col-start-2 px-4 block relative {}", classes)
         class=("indent-10", indent == Indent::Line)
         class=("pl-10", indent == Indent::Block)
         class=("text-center", align == Align::Center)
