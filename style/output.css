@@ -729,8 +729,8 @@ video {
   height: 2rem;
 }
 
-.h-\[14rem\] {
-  height: 14rem;
+.h-\[10rem\] {
+  height: 10rem;
 }
 
 .h-\[37px\] {
@@ -1173,8 +1173,8 @@ video {
   outline-width: 20px;
 }
 
-.outline-blue-300 {
-  outline-color: #93c5fd;
+.outline-\[\#3f9aff7d\] {
+  outline-color: #3f9aff7d;
 }
 
 .transition {

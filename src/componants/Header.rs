@@ -226,7 +226,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         ></div>
         <div
-        class="h-[14rem] w-14 fixed right-0 z-40"
+        class="h-[10rem] w-14 fixed right-0 z-40"
         style=move || {
         format!(
             " background-color: {}",
