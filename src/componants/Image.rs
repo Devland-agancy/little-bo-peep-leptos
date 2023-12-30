@@ -89,7 +89,7 @@ pub fn Image(
               )
           }
           class=("outline-[20px]", move || show_areas() && cloud_image && is_wide())
-          class=("outline-blue-300", move || show_areas() && cloud_image && is_wide())
+          class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wide())
           class=("outline", move || show_areas() && cloud_image && is_wide())
         />
 

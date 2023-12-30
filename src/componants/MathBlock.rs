@@ -114,7 +114,7 @@ pub fn MathBlock(
           class="block cursor-pointer absolute h-fit w-24 py-8"
           class=("hidden", move || !is_wide() | arrow_hidden)
           class=("outline-[20px]", move || show_areas())
-          class=("outline-blue-300", move || show_areas())
+          class=("outline-[#3f9aff7d]", move || show_areas())
           class=("outline", move || show_areas())
 
           style=move || format!("top: {}; right: {}", arrow_position_y, "-2.5rem")

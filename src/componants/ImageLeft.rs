@@ -65,7 +65,7 @@ pub fn ImageLeft(
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute"
         class=("pointer-events-none", show_left)
         class=("outline-[20px]", move || show_areas())
-        class=("outline-blue-300", move || show_areas())
+        class=("outline-[#3f9aff7d]", move || show_areas())
             class=("outline", move || show_areas())
 
       >
@@ -76,7 +76,7 @@ pub fn ImageLeft(
           <div
             class="block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas())
-            class=("outline-blue-300", move || show_areas())
+            class=("outline-[#3f9aff7d]", move || show_areas())
             class=("outline", move || show_areas())
 
             style=move || format!("right: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_right, squiggle_top, "2.6rem")

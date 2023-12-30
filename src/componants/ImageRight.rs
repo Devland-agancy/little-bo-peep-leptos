@@ -75,7 +75,7 @@ pub fn ImageRight(
         class=("pointer-events-none", show_right)
         class=("lg:pointer-events-none", move || !clickable_on_desktop)
         class=("outline-[20px]", move || show_areas())
-        class=("outline-blue-300", move || show_areas())
+        class=("outline-[#3f9aff7d]", move || show_areas())
         class=("outline", move || show_areas())
 
       >
@@ -88,7 +88,7 @@ pub fn ImageRight(
           <div
             class="block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas())
-            class=("outline-blue-300", move || show_areas())
+            class=("outline-[#3f9aff7d]", move || show_areas())
             class=("outline", move || show_areas())
 
             style=move || format!("left: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_left, squiggle_top, "2.6rem")
