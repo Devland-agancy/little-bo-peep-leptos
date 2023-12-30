@@ -5,6 +5,7 @@ pub mod Article;
 pub mod ArticleTitle;
 pub mod Columns;
 pub mod Grid;
+pub mod Header;
 pub mod Image;
 pub mod ImageLeft;
 pub mod ImageRight;

@@ -1,4 +1,3 @@
-use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
@@ -27,6 +26,7 @@ pub fn MathBlock(
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
+    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 
@@ -113,9 +113,9 @@ pub fn MathBlock(
 
           class="block cursor-pointer absolute h-fit w-24 py-8"
           class=("hidden", move || !is_wide() | arrow_hidden)
-          class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-          class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-          class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+          class=("outline-[20px]", move || show_areas())
+          class=("outline-blue-300", move || show_areas())
+          class=("outline", move || show_areas())
 
           style=move || format!("top: {}; right: {}", arrow_position_y, "-2.5rem")
         >

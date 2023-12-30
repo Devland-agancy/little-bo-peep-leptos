@@ -1,6 +1,6 @@
 use crate::componants::Article::Article;
+use crate::componants::Header::{ChapterMenu, Header, MenuButton, MenuState};
 use crate::error_template::{AppError, ErrorTemplate};
-use crate::header::{ChapterMenu, Header, MenuButton, MenuState};
 
 use crate::page::state::PageState;
 
@@ -32,6 +32,11 @@ pub fn App(cx: Scope) -> impl IntoView {
     let (route, set_route) = create_signal(cx, "");
     provide_context(cx, set_route);
     provide_context(cx, route);
+
+    // for development tests
+    let (show_areas, set_show_areas) = create_signal(cx, false);
+    provide_context(cx, show_areas);
+    provide_context(cx, set_show_areas);
 
     create_effect(cx, move |_| {
         // execute on every route change

@@ -1,4 +1,3 @@
-use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{
     html::{Button, Img},
@@ -29,8 +28,8 @@ pub fn ImageLeft(
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
-
     let image_ref = create_node_ref::<Img>(cx);
+    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     view! { cx,
       <button
@@ -65,9 +64,9 @@ pub fn ImageLeft(
 
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute"
         class=("pointer-events-none", show_left)
-        class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-        class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("outline-[20px]", move || show_areas())
+        class=("outline-blue-300", move || show_areas())
+            class=("outline", move || show_areas())
 
       >
         <div style=move || format!(" top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
@@ -76,9 +75,9 @@ pub fn ImageLeft(
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
             class="block sm:hidden absolute"
-            class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline-[20px]", move || show_areas())
+            class=("outline-blue-300", move || show_areas())
+            class=("outline", move || show_areas())
 
             style=move || format!("right: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_right, squiggle_top, "2.6rem")
           >

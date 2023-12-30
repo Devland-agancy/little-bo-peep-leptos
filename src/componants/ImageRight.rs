@@ -1,4 +1,3 @@
-use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::page::state::PageState;
 use leptos::{
     html::{Button, Img},
@@ -29,6 +28,7 @@ pub fn ImageRight(
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
+    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
 
@@ -74,9 +74,9 @@ pub fn ImageRight(
         class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute"
         class=("pointer-events-none", show_right)
         class=("lg:pointer-events-none", move || !clickable_on_desktop)
-        class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-        class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-        class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+        class=("outline-[20px]", move || show_areas())
+        class=("outline-blue-300", move || show_areas())
+        class=("outline", move || show_areas())
 
       >
         <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
@@ -87,9 +87,9 @@ pub fn ImageRight(
         <Show fallback=|_| () when=move || hidden_in_mobile>
           <div
             class="block sm:hidden absolute"
-            class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS)
-            class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS)
+            class=("outline-[20px]", move || show_areas())
+            class=("outline-blue-300", move || show_areas())
+            class=("outline", move || show_areas())
 
             style=move || format!("left: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_left, squiggle_top, "2.6rem")
           >

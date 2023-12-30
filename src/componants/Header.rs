@@ -54,6 +54,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+    let set_show_areas = use_context::<WriteSignal<bool>>(cx).unwrap();
+    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     view! { cx,
       <div
@@ -64,6 +66,19 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
           <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
             <MenuItems/>
+            <h2 class="font-baskerville-italic text-2xl pb-2 text-right">"Options"</h2>
+            <div class="flex items-center justify-end gap-2 mt-4">
+              <p>"Show Areas"</p>
+              <input
+                prop:type="checkbox"
+                prop:checked=move || show_areas()
+                style="accent-color: #c1ebff;box-shadow: 0 0px 0px 1px rgb(0, 0, 0)"
+                on:input=move |e|{
+                  set_show_areas.update(|prev| *prev = event_target_checked(&e))
+                }
+
+              />
+            </div>
           </div>
         </div>
       </div>

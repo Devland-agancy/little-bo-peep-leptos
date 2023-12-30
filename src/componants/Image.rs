@@ -1,4 +1,3 @@
-use crate::constants::SHOW_CLICKABLE_ITEMS_BORDERS;
 use crate::{
     page::state::PageState, utils::cast_element_to_html_element::cast_element_to_html_element,
 };
@@ -21,6 +20,7 @@ pub fn Image(
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
+    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
 
     create_effect(cx, move |_| {
         if image_ref().is_some() {
@@ -88,9 +88,9 @@ pub fn Image(
                   image_classes,
               )
           }
-          class=("outline-[20px]", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
-          class=("outline-blue-300", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
-          class=("outline", move || SHOW_CLICKABLE_ITEMS_BORDERS && cloud_image && is_wide())
+          class=("outline-[20px]", move || show_areas() && cloud_image && is_wide())
+          class=("outline-blue-300", move || show_areas() && cloud_image && is_wide())
+          class=("outline", move || show_areas() && cloud_image && is_wide())
         />
 
       </div>
