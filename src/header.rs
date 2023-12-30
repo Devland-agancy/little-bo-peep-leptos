@@ -26,10 +26,10 @@ fn Title(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
-        class="select-none w-full pl-4 sm:grid gridColsWidth h-full border-r-0"
+        class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0"
         id="Header"
       >
-        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 sm:pb-2">
+        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
           <a href="/">"Little Bo Peep"</a>
         </div>
       </div>
