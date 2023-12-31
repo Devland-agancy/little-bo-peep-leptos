@@ -335,7 +335,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 1. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position_y="2.8rem" >
+        <MathBlock height=Height::Fit arrow_position_y="2.7rem" >
           r#"$$
               \begin{align}
               (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -349,7 +349,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 2. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position_y="2.8rem">
+        <MathBlock height=Height::Fit arrow_position_y="2.7rem">
           r#"$$
               \begin{align}
               (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
