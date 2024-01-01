@@ -13,10 +13,14 @@ pub fn Image(
     #[prop(default = "")] image_classes: &'static str,
     #[prop(default = "")] height: &'static str,
     #[prop(default = "")] width: &'static str,
+    #[prop(default = 0_f64)] padding_left: f64,
+    #[prop(default = 0_f64)] padding_right: f64,
     #[prop(default = false)] cloud_image: bool,
 ) -> impl IntoView {
     let image_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
+    let (show_padding, set_show_padding) = create_signal(cx, true);
+
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
@@ -30,6 +34,9 @@ pub fn Image(
                 let window_width = window().inner_width().unwrap().as_f64().unwrap();
                 if image_width + 10_f64 > window_width {
                     set_is_wide(true);
+                }
+                if image_width + padding_left + padding_right > window_width {
+                    set_show_padding(false)
                 }
             }
         }
@@ -47,6 +54,11 @@ pub fn Image(
                     } else {
                         set_is_wide(false);
                     }
+                    if image_width + padding_left + padding_right > window_width {
+                        set_show_padding(false)
+                    } else {
+                        set_show_padding(true)
+                    }
                 }
             }
         });
@@ -54,6 +66,7 @@ pub fn Image(
     view! { cx,
       <div
         node_ref=image_ref
+        style=move || format!("padding-left: {}px; padding-right: {}px;", if show_padding() {padding_left} else {0_f64}, if show_padding() {padding_right} else {0_f64} )
         class=move || {
             format!(
                 "my-[15px] relative col-start-2 scrollbar-hidden md:overflow-x-visible {}",
