@@ -1,5 +1,6 @@
 use crate::{
-    page::state::PageState, utils::cast_element_to_html_element::cast_element_to_html_element,
+    constants::MOBILE_BREAKPOINT, page::state::PageState,
+    utils::cast_element_to_html_element::cast_element_to_html_element,
 };
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
@@ -25,6 +26,13 @@ pub fn Image(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
     let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let (mobile, set_mobile) = create_signal(cx, false);
+
+    create_effect(cx, move |_| {
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+            set_mobile(true)
+        }
+    });
 
     create_effect(cx, move |_| {
         if image_ref().is_some() {
@@ -61,6 +69,12 @@ pub fn Image(
                     }
                 }
             }
+
+            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+                set_mobile(true)
+            } else {
+                set_mobile(false)
+            }
         });
     });
     view! { cx,
@@ -92,12 +106,10 @@ pub fn Image(
           }
           id=id
           src=src
-          style= move || format!("height: {}; width: {}; {}", height, width, if cloud_image && is_wide() {
-            "position:relative; left: 50%; transform: translateX(-50%)"
-          } else { "" })
+          style= move || format!("height: {}; width: {};", height, width)
           class=move || {
               format!(
-                  "max-w-none m-auto {}",
+                  "max-w-none relative left-1/2 -translate-x-1/2 {}",
                   image_classes,
               )
           }

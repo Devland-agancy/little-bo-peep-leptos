@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.0 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.1 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -568,6 +568,10 @@ video {
   left: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
 .left-\[-1500px\] {
   left: -1500px;
 }
@@ -802,6 +806,11 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .-translate-x-3\/4 {
@@ -1045,14 +1054,6 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
-}
-
-.pl-\[19\.5px\] {
-  padding-left: 19.5px;
-}
-
-.pl-\[2px\] {
-  padding-left: 2px;
 }
 
 .pt-14 {
@@ -1669,7 +1670,7 @@ span .MathJax_SVG{
   }
 }
 
-@media (min-width: 570px) {
+@media (min-width: 580px) {
   .menu-button-bg\:h-\[10rem\] {
     height: 10rem;
   }

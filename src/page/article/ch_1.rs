@@ -14,12 +14,11 @@ use crate::componants::Span::*;
 use crate::componants::Tabs::*;
 use crate::constants::MENU_ITEMS;
 use leptos::*;
-
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-        <ArticleTitle label={MENU_ITEMS[0].0} />
-        <ArticleBody/>
+      <ArticleTitle label=MENU_ITEMS[0].0/>
+      <ArticleBody/>
     }
 }
 

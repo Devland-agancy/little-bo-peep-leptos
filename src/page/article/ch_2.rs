@@ -31,367 +31,491 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     elm_to_view! {
       cx,
       r#"
-        |> Paragraph 
+|> Paragraph 
 
-            *Slopes.*
-            The %slope% of a line is a mathematical measure of how
-            “steep” a line is.
-            Here are a few examples (for an explanation of the values,
-            see below):
+    *Slopes.*
+    The _slope_ of a line is a mathematical measure of how
+    “steep” a line is.
+    Here are a few examples (for an explanation of the values,
+    see below):
 
-        |> Image
-            src="/images/chapter_2_1.svg"
+|> Image
+    src="/images/chapter_2_1.svg"
 
-        |> Paragraph    
-            
-            To explain now, the slope of a line is...
-
-        |> Paragraph   
-            margin_top = 15
-            align = Align::Center
-
-            %the number of units the line goes up with each unit to the right%
-            
-        |> Paragraph
-            margin_top = 15
-
-            ...assuming that numbers on the $y$-axis increase going up and that 
-            numbers on the $x$-axis increase going right, as is usually the case.
-            One can also describe slope as...
-
-        |> Paragraph   
-            margin_top = 15
-            align = Align::Center
-            
-            %the amount of vertical change per unit of horizontal change%
-
-        |> Paragraph   
-            margin_top = 15
-            
-            ...more elegantly.
-
-        |> Paragraph   
-            indent = Indent::Line
-
-            Thus, for example, the line below has slope 1 because it goes up by $1$ unit for each unit to the right:
-
-        |> Image
-            src="/images/slope_1_example.svg"
-            padding_left=2_f64
-
-        |> Paragraph   
-
-            On the other hand, the line below has slope $-0.5$, because it goes up 
-            by %minus% $0.5$ units with each unit to the right:
+|> Paragraph    
     
-        |> Image
-            src="/images/slope_0.5_example.svg"
-            padding_left=19.5_f64
+    To explain now, the slope of a line is...
+    __the number of units the line goes up with each unit to the right__
+    
+|> Paragraph
+    margin_top = 15
 
-        |> Paragraph   
+    ...assuming that numbers on the $y$-axis increase going up and that 
+    numbers on the $x$-axis increase going right, as is usually the case.
+    One can also describe slope as...
+    __the amount of vertical change per unit of horizontal change__
 
-            (Etc.)
+|> Paragraph   
+    margin_top = 15
+    
+    ...more elegantly.
 
-        |> Paragraph   
-            margin_top = 15
+|> Paragraph   
+    indent = Indent::Line
 
-            *Measuring Slope.*
-            The slope of a line is also the ratio of vertical change
-            to horizontal change between any two distinct points $A$, $B$
-            on the line:
+    Thus, for example, the line below has slope 1 because it goes up by $1$ unit for each unit to the right:
 
-        |> Image
-            src="/images/31.svg"
-            container_classes="mt-6 mb-2"
-            cloud_image=true
+|> Image
+    src="/images/slope_1_example.svg"
+    padding_left=2_f64
 
-        |> Paragraph   
+|> Paragraph   
 
-            $$ \te{slope} = {\te{vertical change from \$A\$ to \$B\$} \over \te{horizontal change from \$A\$ to \$B\$}} $$
-            Indeed, dividing the vertical change by the horizontal change
-            gives the per-horizontal-unit vertical change.
+    On the other hand, the line below has slope $-0.5$, because it goes up 
+    by _minus_ $0.5$ units with each unit to the right:
 
-        |> Paragraph 
-            indent=Indent::Line
+|> Image
+    src="/images/slope_0.5_example.svg"
+    padding_left=19.5_f64
 
-            More precisely, if
-            $$ A = (x_1, y_1) $$
-            and
-            $$ B = (x_2, y_2) $$
-            then
-            $$ x_2 - x_1 $$
-            and
-            $$ y_2 - y_1 $$
-            are the horizontal %&% the vertical change, respectively,
-            from $A$ to $B$, so
+|> Paragraph   
 
-            |> MathBlock
+    (Etc.)
 
-                $$\te{slope} = {y_2 - y_1 \over x_2 - x_1}$$
+|> Paragraph   
+    margin_top = 15
 
-                |> ImageRight
-                    src="/images/32.svg"
-                    width=600
-                    pos_x="-1rem"
-                    pos_y="-11rem"
-                    hidden_in_mobile=true
-                    squiggle_top="47%"
-                    squiggle_left="-1.5rem"
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points $A$, $B$
+    on the line:
 
-        |> Paragraph   
+|> Image
+    src="/images/31.svg"
+    container_classes="mt-6 mb-2"
+    cloud_image=true
 
-            more succinctly. We call this the %slope formula%.
+|> Paragraph   
 
-        |> Paragraph   
-            margin_top = 15
+    $$ 
+    \te{slope} = {\te{vertical change from A to B} \over \te{horizontal change from A to B}}
+    $$
+    Indeed, dividing the vertical change by the horizontal change
+    gives the per-horizontal-unit vertical change.
 
-            *Example 1.*
-            A line that passes through the points $$A = (-2, 5)$$ and $$B = (4, 1)$$
-            has slope
-            $$ \frac{1 - 5}{4 - (-2)} = \frac{-4}{6} = - \frac{2}{3}. $$
+|> Paragraph 
+    indent=Indent::Line
 
-        |> Paragraph   
-            align = Align::Center
+    More precisely, if
+    $$ A = (x_1, y_1) $$
+    and
+    $$ B = (x_2, y_2) $$
+    then
+    $$ x_2 - x_1 $$
+    and
+    $$ y_2 - y_1 $$
+    are the horizontal _&_ the vertical change, respectively,
+    from $A$ to $B$, so
 
-            \* \* \* \*
+    |> MathBlock
 
-        |> Paragraph   
-            margin_top = 15
+        $$\te{slope} = {y_2 - y_1 \over x_2 - x_1}$$
 
-            (The main thing to understand about Example 1 is that
-            $$ 1 - 5 $$
-            is the vertical change from $A$ to $B$, while
-            $$ 4 - (-2) $$
-            is the horizontal change from $A$ to $B$.)
+        |> ImageRight
+            src="/images/32.svg"
+            width=600
+            pos_x="-1rem"
+            pos_y="-11rem"
+            hidden_in_mobile=true
+            squiggle_top="47%"
+            squiggle_left="-1.5rem"
 
-        |> Paragraph   
-            margin_top = 15
+|> Paragraph   
 
-            *Sign Combinations.*
-            Technically, quantities such as
-            $$ x_2 - x_1$$
-            and
-            $$ y_2 - y_1 $$
+    more succinctly. We call this the _slope formula_.
 
-        |> Paragraph   
+|> Paragraph   
+    margin_top = 15
 
-            are not distances but %differences% (or, equivalently, %changes%).
-            A distance, by definition, is a nonnegative number, while a
-            difference carries no such restriction.
-        |> Paragraph   
-            indent = Indent::Line
+    *Example 1.*
+    A line that passes through the points $$A = (-2, 5)$$ and $$B = (4, 1)$$
+    has slope
+    $$ \frac{1 - 5}{4 - (-2)} = \frac{-4}{6} = - \frac{2}{3}. $$
 
-            In particular, since
-            $$ x_2 - x_1 $$
-            can be positive or negative, while
-            $$ y_2 - y_1 $$
+|> Paragraph   
+    align = Align::Center
 
-        |> Paragraph   
+    \* \* \* \*
 
-            can be positive or negative or zero (more on zero below),
-            the following sign
-            combinations arise (lines of slope zero not included):
+|> Paragraph   
+    margin_top = 15
+
+    (The main thing to understand about Example 1 is that
+    $$ 1 - 5 $$
+    is the vertical change from $A$ to $B$, while
+    $$ 4 - (-2) $$
+    is the horizontal change from $A$ to $B$.)
+
+|> Paragraph   
+    margin_top = 15
+
+    *Sign Combinations.*
+    Technically, quantities such as
+    $$ x_2 - x_1$$
+    and
+    $$ y_2 - y_1 $$
+
+|> Paragraph   
+
+    are not distances but _differences_ (or, equivalently, _changes_).
+    A distance, by definition, is a nonnegative number, while a
+    difference carries no such restriction.
+|> Paragraph   
+    indent = Indent::Line
+
+    In particular, since
+    $$ x_2 - x_1 $$
+    can be positive or negative, while
+    $$ y_2 - y_1 $$
+
+|> Paragraph   
+
+    can be positive or negative or zero (more on zero below),
+    the following sign
+    combinations arise (lines of slope zero not included):
+
+|>  Table
+    cols=vec![120, 120, 120, 120]
+    lines=true
+    margin_top = 15
+
+    |> tr
+
+        |> td
         
-        |>  Table
-            cols=vec![120, 120, 120, 120]
-            lines=true
-            margin_top = 15
+            $x_2 - x_1$
 
-            |> tr
-
-                |> td
-                
-                    $x_2 - x_1$
-
-                |> td
-                
-                    $y_2 - y_1$
-
-                |> td
-                
-                    |> img
-                        src="/images/33.svg" width="50"
-                        style="margin-top:7px; margin-bottom:7px;"
-
-                |> td
-                
-                    $${y_2-y_1 \over x_2-x_1}$$
-            
-            |> tr
-
-                |> td
-                
-                    $+$
-
-                |> td
-                
-                    $+$
-
-                |> td
-
-                    |> img
-                        src="/images/34.svg" width="105"
-                        style="margin-top:7px; margin-bottom:7px;"
-                
-                |> td
-                
-                    $${+ \over +} = \,+$$
-            
-            |> tr
-
-                |> td
-                
-                    $-$
-
-                |> td
-                
-                    $-$
-
-                |> td
-                
-                    |> img
-                        src="/images/35.svg" width="105"
-                        style="margin-top:10px; margin-bottom:4px;"
-
-                |> td
-                
-                    $${- \over -} = \,+$$
-            
-            |> tr
-
-                |> td
-                
-                    $+$
-
-                |> td
-                
-                    $-$
-
-                |> td
-                
-                    |> img
-                        src="/images/36.svg" width="105"
-                        style="margin-top:10px; margin-bottom:4px;"
-                |> td
-                
-                    $${- \over +} = \,-$$
-            
-            |> tr
-
-                |> td
-                
-                    $-$
-
-                |> td
-                
-                    $+$
-
-                |> td
-                
-                    |> img
-                        src="/images/37.svg" width="105"
-                        style="margin-top:10px; margin-bottom:4px;"
-
-                |> td
-                
-                    $$\frac{+}{-} = \,-$$
-
-        |> Paragraph   
-            margin_top = 15
-
-            In fact, we %should% be able to algebraically verify that
-            the slope formula gives the same answer if $(x_1, y_1)$ and 
-            $(x_2, y_2)$ swap places, or, namely, to show that the fractions
-            |> ImageRight
-                src="/images/38.svg"
-                pos_y="-2.1rem"
-                pos_x="0"
-                squiggle_left="-2rem"
-                squiggle_top="44%"
-                hidden_in_mobile=true
-                width=390
-               
-
-        |> Paragraph   
-                   
-            $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
-            are somehow equal. But, indeed,
-            |> MathBlock
-            
-                $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
-                |> ImageLeft
-                    src="/images/39.svg"
-                    width=400
-                    pos_y="-10.5rem"
-                    pos_x="1rem"
-                    squiggle_right="0rem"
-                    squiggle_top="62%"
-                    hidden_in_mobile=true
-           
-            which verifies this hypothesis. In particular,
-            $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
-            are, truth be said, equally valid versions of the slope formula!
-
-        |> Paragraph   
-            margin_top = 15
-
-            *Pathological Cases.*
-            If
-            $$ x_2 - x_1 = 0 $$
-            the slope formula
-            “breaks down”
-            in the sense that division
-            |> p 
-            
-                by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
-            |> Image
-                src="/images/40.svg"
+        |> td
         
-        |> Paragraph   
-            margin_top = 15
+            $y_2 - y_1$
 
-            Indeed, vertical lines have %undefined% slope. Moreover
-            the bad case
-            $$ x_2 - x_1 = 0 $$
-            can also occur another way, namely if the points $(x_1, y_1)$
-            and $(x_2, y_2)$ coincide.
-            In that case, more precisely, the slope formula evaluates to
-            $$ \frac{y_2 - y_1}{x_2 - x_1} = \frac{0}{0} $$
-            which could be anything. (Technically, “$0/0$” is undefined.)
-            Indeed, infinitely many different lines pass through any
-            given point!
+        |> td
+        
+            |> img
+                src="/images/33.svg" width="50"
+                style="margin-top:7px; margin-bottom:7px;"
 
-        |> Paragraph   
-            margin_top = 15
+        |> td
+        
+            $${y_2-y_1 \over x_2-x_1}$$
+    
+    |> tr
 
-            *“Rise over Run”.*
-            Some people remember the slope
-            formula as “slope equals rise over run”
-            (i.e., “$\te{slope} =$
-            following such a picture:
-            |> Image
-                src="/images/44.svg"
-                container_classes="pt-4"
+        |> td
+        
+            $+$
 
-        |> Paragraph   
-            margin_top = 15
+        |> td
+        
+            $+$
 
-            In this context, note that, in physics, a one-dimensional
-            displacement is measured as
-            $$ \left({\text{coordinate} \atop \te{at arrival}}\right)\,\, - \,\,\left({\te{coordinate} \atop \te{at start}}\right) $$
-            in accordance, namely, with the coordinate differences
+        |> td
+
+            |> img
+                src="/images/34.svg" width="105"
+                style="margin-top:7px; margin-bottom:7px;"
+        
+        |> td
+        
+            $${+ \over +} = \,+$$
+    
+    |> tr
+
+        |> td
+        
+            $-$
+
+        |> td
+        
+            $-$
+
+        |> td
+        
+            |> img
+                src="/images/35.svg" width="105"
+                style="margin-top:10px; margin-bottom:4px;"
+
+        |> td
+        
+            $${- \over -} = \,+$$
+    
+    |> tr
+
+        |> td
+        
+            $+$
+
+        |> td
+        
+            $-$
+
+        |> td
+        
+            |> img
+                src="/images/36.svg" width="105"
+                style="margin-top:10px; margin-bottom:4px;"
+        |> td
+        
+            $${- \over +} = \,-$$
+    
+    |> tr
+
+        |> td
+        
+            $-$
+
+        |> td
+        
+            $+$
+
+        |> td
+        
+            |> img
+                src="/images/37.svg" width="105"
+                style="margin-top:10px; margin-bottom:4px;"
+
+        |> td
+        
+            $$\frac{+}{-} = \,-$$
+
+|> Paragraph   
+    margin_top = 15
+
+    In fact, we _should_ be able to algebraically verify that
+    the slope formula gives the same answer if $(x_1, y_1)$ and 
+    $(x_2, y_2)$ swap places, or, namely, to show that the fractions
+
+    |> ImageRight
+        src="/images/38.svg"
+        pos_y="-1.5rem"
+        pos_x="0"
+        squiggle_left="-2rem"
+        squiggle_top="44%"
+        hidden_in_mobile=true
+        width=390
+        
+
+|> Paragraph   
             
-            |> p  
+    $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
+    are somehow equal. But, indeed,
 
-                “$x_2 - x_1\!$”, “$y_2 - y_1\!$”
-                that appear in the slope formula.
+    |> MathBlock
+    
+        $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
 
-        |> Paragraph  
-            indent=Indent::Line
+        |> ImageLeft
+            src="/images/39.svg"
+            width=400
+            pos_y="-10.5rem"
+            pos_x="1rem"
+            squiggle_right="0rem"
+            squiggle_top="62%"
+            hidden_in_mobile=true
+    
+    which verifies this hypothesis. In particular,
+    $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
+    are, truth be said, equally valid versions of the slope formula!
 
-            (In order not to discriminate, maybe we should also include this picture:
+|> Paragraph   
+    margin_top = 15
 
-            
-      "#
+    *Pathological Cases.*
+    If
+    $$ x_2 - x_1 = 0 $$
+    the slope formula
+    “breaks down”
+    in the sense that division
+    |> p 
+    
+        by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
+
+    |> Image
+        src="/images/40.svg"
+
+|> Paragraph   
+    margin_top = 15
+
+    Indeed, vertical lines have _undefined_ slope. Moreover
+    the bad case
+    $$ x_2 - x_1 = 0 $$
+    can also occur another way, namely if the points $(x_1, y_1)$
+    and $(x_2, y_2)$ coincide.
+    In that case, more precisely, the slope formula evaluates to
+    $$ \frac{y_2 - y_1}{x_2 - x_1} = \frac{0}{0} $$
+    which could be anything. (Technically, “$0/0$” is undefined.)
+    Indeed, infinitely many different lines pass through any
+    given point!
+
+|> Paragraph   
+    margin_top = 15
+
+    *“Rise over Run”.*
+    Some people remember the slope
+    formula as “slope equals rise over run”
+    (i.e., “$\te{slope} = {\te{rise} \over \te{run}}$
+    following such a picture:
+
+    |> Image
+        src="/images/44.svg"
+        container_classes="pt-4"
+
+|> Paragraph   
+    margin_top = 15
+
+    In this context, note that, in physics, a one-dimensional
+    displacement is measured as
+    $$ \left({\text{coordinate} \atop \te{at arrival}}\right)\,\, - \,\,\left({\te{coordinate} \atop \te{at start}}\right) $$
+    in accordance, namely, with the coordinate differences
+    
+    |> p  
+
+        “$x_2 - x_1\!$”, “$y_2 - y_1\!$”
+        that appear in the slope formula.
+
+|> Paragraph  
+    indent=Indent::Line
+
+    (In order not to discriminate, maybe we should also include this picture:
+
+    |> Image
+        src="/images/47.svg"
+        container_classes="pt-4"
+
+
+|> Paragraph   
+    margin_top = 15
+
+    Then “rise” and “run” have their signs flipped,
+    but the ratio rise-over-run is the same, as already mentioned.)
+
+|> Paragraph   
+    margin_top = 15   
+
+    _An Additional Miscellaneous Notation._
+    The slope formula is occasionally written
+    $$ \te{slope} = \frac{\Delta y}{\Delta x} $$
+
+|> Paragraph   
+
+    where the foreign-looking symbols $\Delta x$, $\Delta y$ can be thought
+    of as shorthands for “$x_2 - x_1\!$”, “$y_2 - y_1\!$” respectively.
+    (Or, a little more exactly, as shorthands for the phrases “change in
+    $x$”, “change in $y$”.)
+        
+|> Paragraph   
+    margin_top = 15  
+
+    *Solving for “rise” and “run”.*
+    Multiplying
+    $$
+    \te{slope} = \frac{\te{rise}}{\te{run}}
+    $$
+    on each side by “run” gives
+    $$
+    \te{slope} \times \te{run} = \te{rise}
+    $$
+    or “rise equals slope times run”.
+    After which, dividing each side by “slope”, we find
+    $$
+    \te{run} = \frac{\te{rise}}{\te{slope}}
+    $$
+    or “run equals rise over slope”. These last two
+    formulas can also be useful. In any case, just remember...
+
+|> Image
+    src="/images/48.svg"
+    width="410px"
+
+|> Paragraph   
+    margin_top = 15  
+
+        ...that the slope formula has three different “permutations”
+        altogether, or one per variable.
+
+|> Paragraph   
+    margin_top = 15  
+
+    *Slopes and Line Equations.*
+    An equation of the form
+    $$
+    y = ax + b
+    $$
+    where $a$ and $b$ are constants defines a line in the Cartesian plane.
+    E.g.:
+
+|> Image
+    src="/images/49.svg"
+    width="640px"
+
+|> Paragraph   
+    margin_top = 15 
+
+    Note that, assuming said $y = ax + b$, one has
+    $$
+    y = a\cdot 0 + b = b
+    $$
+    at $x = 0$, so $b$ is the height of the line at $x = 0$.
+    (FYI, this height is called the
+
+|> Paragraph   
+    margin_top = 15 
+    align=Align::Center
+
+    $y$-_intercept_
+
+|> Paragraph   
+
+    of the line,
+    because
+    $x = 0$ is where
+    the line crosses the $y$ axis.
+    But the point
+    $$
+    (0, b)
+    $$
+    is also sometimes called the
+
+|> Paragraph   
+    margin_top = 15 
+    align=Align::Center
+
+    $y$-_intercept_
+
+|> Paragraph   
+
+    of the line, so the term “$y$-intercept” might either refer to
+    the value $b$ or to the point $(0,b)$, depending.)
+    On the other hand, at $\,x = 1$, we have
+    $$
+    y = a\cdot 1 + b = a + b
+    $$
+    so $y$ increases by $a$ between $x = 0$ and $x = 1\!$.
+    In fact, $y$ increases by $a$ each time $x$ increases
+    by 1,
+    so, 
+    by our own definition of slope—the increase in $y$ per unit increase in $x$—$a$ 
+    is the slope of $y = ax + b$.
+
+|> Paragraph   
+
+    *Example 2.*
+    The equation
+    $$
+    y = 100x - 3
+    $$
+    describes a line of slope 100. (To hammer it in: Think of what happens when $x$
+    increases by $1$.)
+"#
     }
 }
