@@ -475,6 +475,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $y$-_intercept_
 
 |> Paragraph   
+    margin_top = 15 
 
     of the line,
     because
@@ -493,6 +494,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $y$-_intercept_
 
 |> Paragraph   
+    margin_top = 15 
 
     of the line, so the term “$y$-intercept” might either refer to
     the value $b$ or to the point $(0,b)$, depending.)
@@ -508,6 +510,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     is the slope of $y = ax + b$.
 
 |> Paragraph   
+    margin_top = 15 
 
     *Example 2.*
     The equation
