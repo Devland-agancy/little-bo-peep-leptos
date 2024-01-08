@@ -1,5 +1,7 @@
 use leptos::*;
 
+use crate::constants::MOBILE_BREAKPOINT;
+
 #[component]
 pub fn Table(
     cx: Scope,
@@ -15,7 +17,9 @@ pub fn Table(
     let (_cols, set_cols) = create_signal(cx, cols);
 
     create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= 520_f64 && sm_cols.len() > 0 {
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64
+            && sm_cols.len() > 0
+        {
             set_cols(sm_cols.clone())
         }
     });
@@ -25,7 +29,7 @@ pub fn Table(
       <table
              class=("lines", move || lines) style=move || format!("margin-top: {}px ;{}", margin_top, style)>
            { _cols().into_iter()
-                          .map(|w| view! {cx, <col style=format!("min-width:{}px", w) width={w} />})
+                          .map(|w| view! {cx, <col style=move || format!("min-width:{}px;width:{}px", w, w) width={w} />})
                           .collect_view(cx)}
             {children(cx)}
       </table>
