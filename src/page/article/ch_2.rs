@@ -457,6 +457,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 |> Image
     src="/images/49.svg"
     width="640px"
+    image_classes="pl-4"
 
 |> Paragraph   
     margin_top = 15 
