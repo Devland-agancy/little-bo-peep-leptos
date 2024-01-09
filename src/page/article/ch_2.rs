@@ -297,10 +297,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
     |> ImageRight
         src="/images/38.svg"
-        pos_y="-1.5rem"
+        pos_y="-1.65rem"
         pos_x="0"
         squiggle_left="-2rem"
-        squiggle_top="44%"
+        squiggle_top="38%"
         hidden_in_mobile=true
         width=390
         
