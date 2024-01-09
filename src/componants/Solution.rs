@@ -1,6 +1,6 @@
 use std::{rc::Rc, sync::Arc, time::Duration};
 
-use crate::constants::GREEN_DIV_HEIGHT;
+use crate::{constants::GREEN_DIV_HEIGHT, global_state::GlobalState};
 use leptos::{
     ev::{click, resize},
     html::Div,
@@ -72,7 +72,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let (transition, set_transition) = create_signal(cx, false);
 
     let navigate = use_navigate(cx);
-    let params = use_location(cx).query;
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     view! { cx,
       <div node_ref=button class="px-4 my-5 relative col-start-2">
@@ -134,7 +134,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
       </div>
        <Show fallback=|_| () when=move || !solution_open() || bot_div()>
-        <div style=format!("height: {}px", GREEN_DIV_HEIGHT)>
+        <div style=format!("height: {}px; background-color: {}", GREEN_DIV_HEIGHT, if show_areas() { "#00440050" } else { "" })>
         </div>
       </Show>
     }
