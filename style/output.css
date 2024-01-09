@@ -729,6 +729,10 @@ video {
   height: 2rem;
 }
 
+.h-\[10rem\] {
+  height: 10rem;
+}
+
 .h-\[37px\] {
   height: 37px;
 }

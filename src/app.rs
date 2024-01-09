@@ -2,6 +2,7 @@ use crate::componants::Article::Article;
 use crate::componants::Header::{ChapterMenu, Header, MenuButton, MenuState};
 use crate::error_template::{AppError, ErrorTemplate};
 
+use crate::global_state::GlobalState;
 use crate::page::state::PageState;
 
 use leptos::*;
@@ -33,10 +34,7 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, set_route);
     provide_context(cx, route);
 
-    // for development tests
-    let (show_areas, set_show_areas) = create_signal(cx, false);
-    provide_context(cx, show_areas);
-    provide_context(cx, set_show_areas);
+    provide_context(cx, GlobalState::new(cx));
 
     create_effect(cx, move |_| {
         // execute on every route change

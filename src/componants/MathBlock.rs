@@ -1,4 +1,4 @@
-use crate::page::state::PageState;
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 
@@ -26,7 +26,7 @@ pub fn MathBlock(
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
-    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     let (margin_left_active, set_margin_left_active) = create_signal(cx, true);
 

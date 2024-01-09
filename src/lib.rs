@@ -4,6 +4,7 @@ pub mod componants;
 pub mod constants;
 pub mod error_template;
 pub mod fileserv;
+pub mod global_state;
 pub mod page;
 pub mod utils;
 

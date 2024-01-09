@@ -1,6 +1,10 @@
-use crate::constants::{MENU_ITEMS, MOBILE_BREAKPOINT};
+use crate::{
+    constants::{MENU_ITEMS, MOBILE_BREAKPOINT},
+    global_state::GlobalState,
+};
 use leptos::{
     ev::{resize, scroll},
+    html::Div,
     *,
 };
 use leptos_use::use_event_listener;
@@ -54,9 +58,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-    let set_show_areas = use_context::<WriteSignal<bool>>(cx).unwrap();
-    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
-
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
     view! { cx,
       <div
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
@@ -74,7 +76,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
                 prop:checked=move || show_areas()
                 style="accent-color: #c1ebff;box-shadow: 0 0px 0px 1px rgb(0, 0, 0)"
                 on:input=move |e|{
-                  set_show_areas.update(|prev| *prev = event_target_checked(&e))
+                  show_areas.update(|prev| *prev = event_target_checked(&e))
                 }
 
               />
@@ -130,6 +132,9 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+    let GlobalState {
+        burger_background, ..
+    } = use_context::<GlobalState>(cx).unwrap();
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
     let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
@@ -226,7 +231,10 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         ></div>
         <div
-        class="w-14 fixed right-0 z-40 h-14 menu-button-bg:h-[10rem] "
+
+        class="w-14 fixed right-0 z-40 h-14 "
+        class=("h-[10rem]", move || burger_background.get())
+
         style=move || {
         format!(
             " background-color: {}",

@@ -1,4 +1,4 @@
-use crate::page::state::PageState;
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{
     html::{Button, Img},
     *,
@@ -29,7 +29,7 @@ pub fn ImageLeft(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
     let image_ref = create_node_ref::<Img>(cx);
-    let show_areas = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     view! { cx,
       <button
