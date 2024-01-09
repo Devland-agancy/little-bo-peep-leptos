@@ -1216,12 +1216,6 @@ video {
 }
 
 @font-face {
-  font-family: "Audiowide";
-
-  src: url("/fonts/Audiowide-Regular.ttf")
-}
-
-@font-face {
   font-family: "Baskerville Regular";
 
   src: url("/fonts/Baskerville-Regular.ttf")
@@ -1243,42 +1237,6 @@ video {
   font-family: "Clicker Script";
 
   src: url("/fonts/ClickerScript-Regular.ttf")
-}
-
-@font-face {
-  font-family: "IndieFlower";
-
-  src: url("/fonts/IndieFlower-Regular.ttf")
-}
-
-@font-face {
-  font-family: "Menlo";
-
-  src: url("/fonts/Menlo.ttc")
-}
-
-@font-face {
-  font-family: "PollerOne";
-
-  src: url("/fonts/PollerOne-Regular.ttf")
-}
-
-@font-face {
-  font-family: "PrincessJohn";
-
-  src: url("/fonts/PrincessJohn.ttf")
-}
-
-@font-face {
-  font-family: "SongMyung";
-
-  src: url("/fonts/SongMyung-Regular.ttf")
-}
-
-@font-face {
-  font-family: "Tomorrow";
-
-  src: url("/fonts/Tomorrow-Regular.ttf")
 }
 
 * {
@@ -1662,12 +1620,6 @@ span .MathJax_SVG{
 
   .sm\:leading-relaxed {
     line-height: 1.625;
-  }
-}
-
-@media (min-width: 580px) {
-  .menu-button-bg\:h-\[10rem\] {
-    height: 10rem;
   }
 }
 
