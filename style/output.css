@@ -1043,6 +1043,10 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pb-\[\.6rem\] {
+  padding-bottom: .6rem;
+}
+
 .pl-10 {
   padding-left: 2.5rem;
 }

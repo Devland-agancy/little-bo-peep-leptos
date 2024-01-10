@@ -68,7 +68,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
           <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
             <MenuItems/>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-2 text-right">"Options"</h2>
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-[.6rem] text-right">"Options"</h2>
             <div class="flex items-center justify-end gap-2">
               <p>"Show Areas"</p>
               <input
