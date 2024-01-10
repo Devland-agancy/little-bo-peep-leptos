@@ -39,14 +39,8 @@ pub fn ImageRight(
 
         on:click=move |e| {
             e.stop_propagation();
-            set_page_state
-                .update(|value| {
-                    *value = match value {
-                        PageState::ShowArticle => PageState::ShowRight,
-                        _ => PageState::ShowArticle,
-                    };
-                });
-            if page_state() == PageState::ShowRight {
+            if page_state() == PageState::ShowArticle {
+                set_page_state(PageState::ShowRight);
                 set_right_image_x_pos
                     .update(|val| {
                         *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left());

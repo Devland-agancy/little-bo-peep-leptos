@@ -1,8 +1,12 @@
 use crate::page::state::PageState;
-use leptos::{ev::click, html::Div, *};
+use leptos::{
+    ev::{click, mousedown, touchstart, EventDescriptor},
+    html::Div,
+    *,
+};
 use leptos_use::use_event_listener;
 use std::time::Duration;
-use web_sys::{ScrollBehavior, ScrollToOptions};
+use web_sys::{Event, ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
@@ -54,13 +58,23 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
+        let _ = use_event_listener(cx, document(), touchstart, move |e| {
+            if !can_click() {
+                e.prevent_default()
+            }
+        });
+        let _ = use_event_listener(cx, document(), mousedown, move |e| {
+            if !can_click() {
+                e.prevent_default()
+            }
+        });
         let _ = use_event_listener(cx, document(), click, move |_| {
             if (show_right() || show_left()) && can_click() {
+                set_can_click(false);
                 let mut options = ScrollToOptions::new();
                 options.behavior(ScrollBehavior::Smooth);
                 options.left(1500_f64);
                 window().scroll_with_scroll_to_options(&options);
-                set_can_click(false);
                 set_timeout(
                     move || {
                         let _ = article_node().unwrap().style("left", "0");
