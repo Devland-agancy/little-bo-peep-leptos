@@ -335,10 +335,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$ x_2 - x_1 = 0 $$
     the slope formula
     “breaks down”
-    in the sense that division
-    |> p 
-    
-        by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
+    in the sense that division by 0 is undefined. This occurs, e.g., if we attempt to measure the slope of a vertical line:
 
     |> Image
         src="/images/40.svg"
