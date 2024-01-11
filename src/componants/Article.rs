@@ -24,28 +24,25 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
         options.behavior(ScrollBehavior::Smooth);
+        if article_node().is_some() {
+            let _ = article_node().unwrap().style("left", "1500px");
+        }
+        options.left(1500_f64);
+        options.behavior(ScrollBehavior::Instant);
+        window().scroll_with_scroll_to_options(&options);
+
         if show_right() {
             set_can_click(false);
-            options.left(right_image_x_pos());
-            window().scroll_with_scroll_to_options(&options);
             set_timeout(
                 move || {
-                    let _ = article_node().unwrap().style("left", "1500px");
                     options.left(right_image_x_pos() + 1500_f64);
-                    options.behavior(ScrollBehavior::Instant);
+                    options.behavior(ScrollBehavior::Smooth);
                     window().scroll_with_scroll_to_options(&options);
-                    set_can_click(true);
+                    set_timeout(move || set_can_click(true), Duration::from_millis(800));
                 },
-                Duration::from_millis(800),
+                Duration::from_millis(100),
             );
         } else if show_left() {
-            if article_node().is_some() {
-                let _ = article_node().unwrap().style("left", "1500px");
-            }
-            options.left(1500_f64);
-            options.behavior(ScrollBehavior::Instant);
-            window().scroll_with_scroll_to_options(&options);
-
             set_timeout(
                 move || {
                     options.left(1000_f64);
