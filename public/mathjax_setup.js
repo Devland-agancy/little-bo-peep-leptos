@@ -1,11 +1,12 @@
-let delay_typeset = false;
-
+const script = document.createElement("script");
+script.type = "text/x-mathjax-config";
+script.textContent = String.raw`
 MathJax.Hub.Config({
   ShowMathMenu: false,
   extensions: ["tex2jax.js"],
-  skipStartupTypeset: delay_typeset,
+  skipStartupTypeset: false,
   // "SVG": {font: "STIX-Web", mtextFontInherit: true, useGlobalCache: true},
-  SVG: { mtextFontInherit: true, useGlobalCache: true },
+  SVG: { mtextFontInherit: true, useGlobalCache: false },
   "HTML-CSS": { mtextFontInherit: true, font: "STIX-Web" },
   tex2jax: { inlineMath: [["$", "$"]], processEscapes: true },
   TeX: {
@@ -58,17 +59,6 @@ MathJax.Hub.Config({
   },
 });
 
-if (delay_typeset) {
-  setTimeout(() => {
-    MathJax.Hub.Typeset();
-  }, 2000);
-}
-
-/* if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
-  window.scroll({
-    top: localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`),
-  });
-} */
 document.getElementsByTagName("body").item(0).style.opacity = 0;
 MathJax.Hub.Register.StartupHook("End", function () {
   document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
@@ -79,15 +69,15 @@ MathJax.Hub.Register.StartupHook("End", function () {
   setTimeout((e) => {
     document.getElementsByTagName("body").item(0).style.opacity = 1;
 
-    if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
+    if (localStorage.getItem(${location.pathname.split("/")[2]}_scroll)) {
       window.scroll({
-        top: localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`),
+        top: localStorage.getItem(${location.pathname.split("/")[2]}_scroll),
       });
     }
     setTimeout((e) => {
       window.addEventListener("scroll", () => {
         if (
-          !localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)
+          !localStorage.getItem(${location.pathname.split("/")[2]}_scroll)
         ) {
           localStorage.setItem("activate_scroll", "true");
         }
@@ -96,10 +86,12 @@ MathJax.Hub.Register.StartupHook("End", function () {
           localStorage.getItem("activate_scroll") == "true"
         )
           localStorage.setItem(
-            `${location.pathname.split("/")[2]}_scroll`,
+            ${location.pathname.split("/")[2]}_scroll,
             window.scrollY
           );
       });
     }, 100);
   }, 400);
 });
+`;
+document.head.appendChild(script);
