@@ -23,13 +23,16 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
-        options.behavior(ScrollBehavior::Smooth);
-        if article_node().is_some() {
-            let _ = article_node().unwrap().style("left", "1500px");
+
+        if show_right() || show_left() {
+            options.behavior(ScrollBehavior::Smooth);
+            if article_node().is_some() {
+                let _ = article_node().unwrap().style("left", "1500px");
+            }
+            options.left(1500_f64);
+            options.behavior(ScrollBehavior::Instant);
+            window().scroll_with_scroll_to_options(&options);
         }
-        options.left(1500_f64);
-        options.behavior(ScrollBehavior::Instant);
-        window().scroll_with_scroll_to_options(&options);
 
         if show_right() {
             set_can_click(false);
@@ -55,16 +58,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, document(), touchstart, move |e| {
-            if !can_click() {
-                e.prevent_default()
-            }
-        });
-        let _ = use_event_listener(cx, document(), mousedown, move |e| {
-            if !can_click() {
-                e.prevent_default()
-            }
-        });
         let _ = use_event_listener(cx, document(), click, move |_| {
             if (show_right() || show_left()) && can_click() {
                 set_can_click(false);
