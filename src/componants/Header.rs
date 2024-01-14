@@ -1,3 +1,5 @@
+use crate::componants::Checkbox::Checkbox;
+use crate::page::state::PageState;
 use crate::{
     constants::{MENU_ITEMS, MOBILE_BREAKPOINT},
     global_state::GlobalState,
@@ -8,8 +10,6 @@ use leptos::{
     *,
 };
 use leptos_use::use_event_listener;
-
-use crate::page::state::PageState;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -71,15 +71,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             <h2 class="font-baskerville-italic text-2xl mt-4 pb-[.7rem] text-right">"Options"</h2>
             <div class="flex items-center justify-end gap-2">
               <p>"Show Areas"</p>
-              <input
-                prop:type="checkbox"
-                prop:checked=move || show_areas()
-                style="accent-color: #c1ebff;box-shadow: 0 0px 0px 1px rgb(0, 0, 0)"
-                on:input=move |e|{
-                  show_areas.update(|prev| *prev = event_target_checked(&e))
-                }
-
-              />
+              <Checkbox value=show_areas />
             </div>
           </div>
         </div>

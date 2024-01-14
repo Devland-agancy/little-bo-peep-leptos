@@ -725,6 +725,10 @@ video {
   height: 5rem;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -773,6 +777,10 @@ video {
 
 .w-24 {
   width: 6rem;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .w-8 {
@@ -968,6 +976,14 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -982,6 +998,16 @@ video {
 
 .border-r-0 {
   border-right-width: 0px;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.bg-\[\#c1ebff\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(193 235 255 / var(--tw-bg-opacity));
 }
 
 .bg-stone-100 {
@@ -1542,6 +1568,16 @@ span .MathJax_SVG{
 
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
+}
+
+.hover\:bg-\[\#9ac1d3\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(154 193 211 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[\#f3f3f3\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 243 243 / var(--tw-bg-opacity));
 }
 
 .hover\:fill-stone-600:hover {

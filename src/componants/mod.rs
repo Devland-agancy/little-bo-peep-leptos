@@ -3,6 +3,7 @@ use utils;
 
 pub mod Article;
 pub mod ArticleTitle;
+pub mod Checkbox;
 pub mod Columns;
 pub mod Grid;
 pub mod Header;
