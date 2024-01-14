@@ -237,8 +237,8 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         style=move || {
         format!(
-            " background-color: {}",
-            if scrolled_header() { "transparent" } else { "#fff" },
+            " background-color: {}; ",
+            if scrolled_header() && burger_background.get() { "transparent" } else { "#fff" },
           )
       } >
     </div>
