@@ -27,7 +27,8 @@ pub fn Table(
     view! { cx,
         <div class=format!("col-start-2 px-4 min-h-fit my-4 w-full overflow-scroll scrollbar-hidden {}", classes)>
       <table
-             class=("lines", move || lines) style=move || format!("margin-top: {}px ;{}", margin_top, style)>
+        class="table-fixed"
+        class=("lines", move || lines) style=move || format!("margin-top: {}px ;{}", margin_top, style)>
            { _cols().into_iter()
                           .map(|w| view! {cx, <col style=move || format!("min-width:{}px;width:{}px", w, w) width={w} />})
                           .collect_view(cx)}
