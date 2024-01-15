@@ -432,13 +432,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
 |> Image
     src="/images/48.svg"
-    width="410px"
 
 |> Paragraph   
     margin_top = 15  
 
-        ...that the slope formula has three different “permutations”
-        altogether, or one per variable.
+    ...that the slope formula has three different “permutations”
+    altogether, or one per variable.
 
 |> Paragraph   
     margin_top = 15  
@@ -454,7 +453,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 |> Image
     src="/images/49.svg"
     width="640px"
-    image_classes="pl-4"
 
 |> Paragraph   
     margin_top = 15 
