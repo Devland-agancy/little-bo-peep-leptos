@@ -29,7 +29,7 @@ gloo-timers = { version = "0.2", features = ["futures"] }
 rand = "0.8"
 serde_json = "1.0.108"
 serde = "1.0.192"
-elm_to_view = "0.7.77"
+elm_to_view = "0.7.93"
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
@@ -70,7 +70,7 @@ style-file = "style/output.css"
 assets-dir = "public"
 
 # The IP and port (ex: 127.0.0.1:3000) where the server serves the content. Use it in your server setup.
-site-addr = "127.0.0.1:4040"
+site-addr = "127.0.0.1:9000"
 
 # The port to use for automatic reload monitoring
 reload-port = 3001

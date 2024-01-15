@@ -11,6 +11,7 @@ use crate::componants::MathBlock::*;
 use crate::componants::Paragraph::*;
 use crate::componants::Solution::*;
 use crate::componants::Span::*;
+use crate::componants::Table::Table;
 use crate::componants::Tabs::*;
 use crate::constants::MENU_ITEMS;
 use leptos::*;

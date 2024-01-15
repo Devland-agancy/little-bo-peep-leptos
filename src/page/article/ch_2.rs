@@ -517,6 +517,74 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$
     describes a line of slope 100. (To hammer it in: Think of what happens when $x$
     increases by $1$.)
+
+|> Paragraph   
+    margin_top = 15 
+    
+    On the other hand, an equation of the form
+    $$
+    y = ax + b
+    $$
+    cannot describe a vertical line, because $a$ is the slope, while
+
+    |> p 
+    
+        a vertical line has no slope, so what would $a$ be equal to?
+        Instead, a vertical line is described by an equation of the form
+
+        |> ImageLeft
+            src="/images/50.svg"
+            width=200
+            pos_y="0.5rem"
+            pos_x="-5rem"
+            squiggle_right="-7rem"
+            squiggle_top="48%"
+            hidden_in_mobile=true
+
+    $$
+    x = c
+    $$
+    (see Fig. 1) where $c \in \rr$ is a constant,
+    similarly to the more familiar equation
+    $$
+    y = b
+    $$
+
+    for a horizontal line, where $b \in \rr$ is a constant.
+
+
+|> Paragraph   
+    indent=Indent::Line
+
+    One should also keep in mind that an equation can define a
+    line without having either of the forms “$y = ax + b$”
+    or “$x = c$”. For example,
+    $$
+    x + y = 3
+    $$
+
+|> Paragraph   
+    margin_top = 15
+
+    is equivalent to
+    $$
+    y = 3 - x
+    $$
+
+|> Paragraph   
+    margin_top = 15
+
+    and thus describes a line of $y$-intercept $3$ and slope $-1$.
+
+    |> ImageRight
+        src="/images/51.svg"
+        width=300
+        pos_y="-3.5rem"
+        pos_x="-3rem"
+        squiggle_left="-5.2rem"
+        squiggle_top="31%"
+        hidden_in_mobile=true
+
 "#
     }
 }
