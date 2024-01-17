@@ -1,11 +1,11 @@
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
-use crate::componants::MathBlock::*;
-use crate::componants::Paragraph::*;
-use crate::componants::Span::*;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::ImageLeft::*;
+use crate::components::ImageRight::*;
+use crate::components::MathBlock::*;
+use crate::components::Paragraph::*;
+use crate::components::Span::*;
 
 use leptos::*;
 

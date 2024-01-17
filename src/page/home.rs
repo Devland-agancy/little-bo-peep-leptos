@@ -1,11 +1,11 @@
 use super::*;
 use leptos::*;
 
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::Link::*;
-use crate::componants::Paragraph::*;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::Link::*;
+use crate::components::Paragraph::*;
 use crate::constants::MENU_ITEMS;
 
 #[component]

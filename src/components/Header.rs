@@ -1,4 +1,4 @@
-use crate::componants::Checkbox::Checkbox;
+use crate::components::Checkbox::Checkbox;
 use crate::page::state::PageState;
 use crate::{
     constants::{MENU_ITEMS, MOBILE_BREAKPOINT},

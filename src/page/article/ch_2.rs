@@ -1,16 +1,16 @@
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::Image::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::Image::*;
+use crate::components::ImageLeft::*;
+use crate::components::ImageRight::*;
 
-use crate::componants::Math::*;
-use crate::componants::MathBlock::*;
+use crate::components::Math::*;
+use crate::components::MathBlock::*;
 
-use crate::componants::Paragraph::*;
-use crate::componants::Span::*;
-use crate::componants::Table::*;
+use crate::components::Paragraph::*;
+use crate::components::Span::*;
+use crate::components::Table::*;
 use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm_to_view;

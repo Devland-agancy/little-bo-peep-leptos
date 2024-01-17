@@ -1,5 +1,5 @@
-use crate::componants::Article::Article;
-use crate::componants::Header::{ChapterMenu, Header, MenuButton, MenuState};
+use crate::components::Article::Article;
+use crate::components::Header::{ChapterMenu, Header, MenuButton, MenuState};
 use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;

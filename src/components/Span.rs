@@ -1,4 +1,4 @@
-use crate::componants::Paragraph::Align;
+use crate::components::Paragraph::Align;
 use leptos::*;
 
 #[component]
