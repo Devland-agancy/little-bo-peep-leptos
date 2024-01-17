@@ -125,7 +125,9 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
     let GlobalState {
-        burger_background, ..
+        show_areas,
+        burger_background,
+        ..
     } = use_context::<GlobalState>(cx).unwrap();
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
@@ -226,11 +228,12 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())
+        class=("h-[5.25rem]", move || !scrolled_header() && !burger_background.get())
 
         style=move || {
         format!(
             " background-color: {}; ",
-            if scrolled_header() && burger_background.get() { "transparent" } else { "#fff" },
+            if scrolled_header() && burger_background.get() { "transparent" } else if show_areas() { "#fff000" } else { "#fff" },
           )
       } >
     </div>
