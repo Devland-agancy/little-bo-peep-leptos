@@ -9,8 +9,11 @@ use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
 use crate::components::Paragraph::*;
+use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::Table::*;
+use crate::components::Tabs::*;
+
 use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm_to_view;
@@ -746,7 +749,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             children_y="34%"
             children_x="29%"
             clickable_on_desktop=true
-            
+
             $$
             {4 \over 0.75} = 5.3333...\qquad\qquad\,\,\,
             % {\te{m} \over \te{m}/\te{s}}
@@ -768,6 +771,120 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
     *Postscript: Units vs Dimensions.*
     Comparing
+
+|> Paragraph   
+    margin_top = 15
+    align=Align::Center
+
+    “the $x$-axis has dimensions of time”
+
+|> Paragraph   
+    margin_top = 15
+
+    with
+
+|> Paragraph   
+    margin_top = 15
+    align=Align::Center
+
+    “the $x$-axis has units of seconds”
+
+|> Paragraph   
+    margin_top = 15
+
+    one could easily be tricked into thinking that a “dimension”
+
+    |> p
+
+        is the same thing as a “unit”.
+        In fact, dimensions are broader categories, such as, namely,
+
+    __time__
+    __length__
+    __mass__
+
+|> Paragraph   
+    margin_top = 15
+
+    each of which covers _several different_ units.
+    For example, in the “time” dimension, one finds
+    individual units of the type
+    __years, seconds, minutes, hours, days__
+
+|> Paragraph   
+    margin_top = 15
+
+    (etc), while in the “length” dimension one finds
+    __meters, kilometers, millimeters, yards, feet__
+    
+|> Paragraph   
+    margin_top = 15
+
+    (etc), and so on.
+    (You can imagine some of the units found in the “mass”
+    dimension, e.g..) On the other hand, dimensions can be multiplied
+    and divided just like units.
+    For example,
+    __length over time__
+
+|> Paragraph   
+    margin_top = 15
+    
+    is another dimension, commonly known as... velocity!
+
+|> Image
+    id="exo"
+    src="/images/seperator.png"
+    height="50px"
+    width="160px"
+    container_classes="flex items-center mt-[45px] mb-[40px]"
+
+|> Tabs
+    labels=vec!["0", "1", "2", "3"]
+
+    |> TabElement
+
+        |> Paragraph 
+            classes="animate-appear-slow"
+
+            *Exercise 1. *
+            True or false: Lines of slope $ -1 |over 2 $ are perpendicular to lines of slope $2$.
+
+        |> Solution
+
+    |> TabElement
+
+        |> Paragraph 
+            classes="animate-appear-slow"
+
+            *Exercise 2. *
+            Find the general equation of a line of slope $ |te{p} $ passing through a point $ (x_1, y_1) $ . (Hint: Start from the slope formula.) 
+    
+        |> Solution
+
+    |> TabElement
+    
+        |> Paragraph 
+            classes="animate-appear-slow"
+
+            *Exercise 3. *
+            Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):
+
+        |> Image
+            src="/images/1.svg"
+
+        |> Solution
+
+    |> TabElement
+
+        |> Paragraph 
+            classes="animate-appear-slow"
+
+            *Exercise 4. *
+            True or false: Lines of slope $ -1 |over 2 $ are perpendicular to lines of slope $2$.
+    
+        |> Solution
+
 
 "#
     }
