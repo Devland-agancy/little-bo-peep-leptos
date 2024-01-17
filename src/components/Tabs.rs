@@ -351,7 +351,12 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
       </div>
       <For
-        each=move || children(cx).nodes.into_iter().enumerate()
+        each=move || children(cx).nodes.into_iter().filter(move |node| {
+            if let Some(text) = node.as_text() {
+                return text.content != r#""#.into_view(cx).as_text().unwrap().content
+            }
+            return true
+        } ).enumerate()
         key=|label| label.0
         view=move |cx, label| {
             view! { cx,
