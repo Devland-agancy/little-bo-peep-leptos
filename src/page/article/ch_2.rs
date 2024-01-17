@@ -583,6 +583,192 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         squiggle_top="31%"
         hidden_in_mobile=true
 
+|> Paragraph   
+    margin_top = 15
+
+    *Slopes and Units.*
+    If the $x$- and $y$-axes have units then a line's slope has units
+    $$
+    {\te{$y$ axis units} \over \te{$x$ axis units}}
+    %\left[\frac{\te{$y$ axis units}}{\te{$x$ axis units}}\right]
+    $$
+    as should make sense, given that the slope is
+    a change in $y$ divided by a change in $x$.
+    
+|> Paragraph   
+    indent=Indent::Line
+
+    For example, if the units on the $y$ axis are meters (“m”) and
+    the units on the $x$ axis are seconds (“s”) then the slope has
+    units
+    $$
+    %\left[\frac{\te{$y$ axis units}}{\te{$x$ axis units}}\right] = \left[\frac{\te{m}}{\te{s}}\right]
+        \frac{\te{$y$ axis units}}{\te{$x$ axis units}} = \frac{\te{m}}{\te{s}}
+    $$
+    also known as _meters per second_. This is precisely the
+    case, for example, in the following graph, that purports to
+    plot the height of a balloon, in meters, as a function of time
+    elapsed, in seconds:
+    
+    |> Image
+        src="/images/52.svg"
+        width="430px"
+
+|> Paragraph   
+    margin_top = 15
+
+    The slope of the graph is
+
+|> Paragraph   
+    align=Align::Center
+    margin_top = 15
+    
+    $0.75$ _meters per second_
+
+|> Paragraph   
+    margin_top = 15
+
+    because the balloon's height
+    increases by three _meters_ over the first four _seconds_ (if you had noticed):
+    $$
+    \te{slope} \left(\!= \frac{\te{rise}}{\te{run}}\right) = \frac{3\te{m}}{4\te{s}} = 0.75\te{m}/\te{s}
+    $$
+    In fact, the slope is the balloon's upward
+    __velocity__
+
+|> Paragraph   
+    margin_top = 15
+
+    since velocity is defined as
+    __displacement over time__
+
+|> Paragraph   
+    margin_top = 15
+
+    and this is precisely the form of the ratio “rise over
+    run” for the current graph. (More generally, we have
+
+|> Paragraph   
+    align=Align::Center
+    margin_top = 15
+
+    “slope = velocity”
+
+|> Paragraph   
+    margin_top = 15
+
+    whenever the $y$ axis has dimensions of length and the $x$ axis has
+    dimensions of time&mdash;whether the slope turns out to
+
+    |> p
+
+        be $\te{m}/\te{s}$ or $\te{km}/\te{s}$ or km/hour, etc,
+        depends on the exact units involved.)
+
+|> Paragraph   
+    indent=Indent::Line
+    margin_top = 15
+
+    Terminology-wise, slopes are often known as
+    __rates of change__
+
+|> Paragraph   
+    margin_top = 15
+
+    in the presence of units. More particularly, in the common case
+    when the $x$-axis denotes time, the formula
+    $$
+    \,\,\te{slope} = \frac{\te{rise}}{\te{run}}\,\,
+    $$
+    can be rephrased as
+    $$
+    “\rt{0.1}\te{rate of change} \,\,=\,\, \frac{\!\rt{0.15}\te{amount of change}\!\rt{0.1}}{\te{amount of
+    time}}\rt{0.1}”
+    $$
+    where “amount of change”
+    is short for “amount of change on the $y$-axis”.
+    By extension, taking all three permutations of the slope
+    formula into account gives us...
+
+|> Image
+    src="/images/53.svg"
+    width="490px"
+
+|> Paragraph   
+    margin_top = 15
+
+    ...these formulas, commonly useful in “applied”
+    problems.
+
+|> Paragraph   
+    margin_top = 15
+
+    *Example 3.*
+    The increase in height of
+    the above balloon over a period of 5 seconds is
+    $$
+    %0.75\te{[m}/\te{s]} \times 5\te{[s]} = 3.75\te{[m]}
+    0.75\te{m}/\te{s} \times 5\te{s} = 3.75\te{m}
+    $$
+    following the template
+    $$
+    \begin{array}{c}
+    \rt{0.08}
+    (\te{rate of change}) \times \te{(amount of time)}\\
+    = \te{(amount of change)}\rt{0.05}
+    \end{array}
+    $$
+    found in the second line of the table. (Indeed,
+    $0.75$m$/$s is the “rate of change” of
+    the balloon's height.)
+
+|> Paragraph   
+    margin_top = 15
+
+    *Example 4.*
+    The amount of time required
+    for the balloon to go up by (say) $4$m is
+    
+    |> MathBlock
+
+        $$
+        \frac{4\te{m}}{0.75\te{m}/\te{s}}\! = 5.3333...\te{s}
+        $$
+
+        |> ImageRight
+            src="/images/54.svg"
+            width=930
+            pos_x="5rem"
+            pos_y="-5.5rem"
+            hidden_in_mobile=true
+            squiggle_top="40%"
+            squiggle_left="3.5rem"
+            children_y="34%"
+            children_x="29%"
+            clickable_on_desktop=true
+            
+            $$
+            {4 \over 0.75} = 5.3333...\qquad\qquad\,\,\,
+            % {\te{m} \over \te{m}/\te{s}}
+            %= \te{m} \times {1 \over \left({\te{m} \over \te{s}}\right)}
+            %= \te{m} \times {\te{s} \over \te{m}}
+            %= \te{s}
+            $$
+
+    following the template
+    $$
+    \te{“}\rt{0.1}
+    \te{amount of time} \,\,=\,\, \frac{\!\rt{0.15}\te{amount of change}\!\rt{0.1}}{\te{rate of change}}
+    \rt{0.1}\te{”}
+    $$
+    found in the third line of the table.
+
+|> Paragraph   
+    margin_top = 15
+
+    *Postscript: Units vs Dimensions.*
+    Comparing
+
 "#
     }
 }
