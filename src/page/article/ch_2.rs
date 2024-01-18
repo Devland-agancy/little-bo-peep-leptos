@@ -533,21 +533,17 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$
     y = ax + b
     $$
-    cannot describe a vertical line, because $a$ is the slope, while
+    cannot describe a vertical line, because $a$ is the slope, while a vertical line has no slope, so what would $a$ be equal to?
+    Instead, a vertical line is described by an equation of the form
 
-    |> p 
-    
-        a vertical line has no slope, so what would $a$ be equal to?
-        Instead, a vertical line is described by an equation of the form
-
-        |> ImageLeft
-            src="/images/50.svg"
-            width=200
-            pos_y="0.5rem"
-            pos_x="-5rem"
-            squiggle_right="-7rem"
-            squiggle_top="48%"
-            hidden_in_mobile=true
+    |> ImageLeft
+        src="/images/50.svg"
+        width=200
+        pos_y="0.5rem"
+        pos_x="-5rem"
+        squiggle_right="-7rem"
+        squiggle_top="48%"
+        hidden_in_mobile=true
 
     $$
     x = c
