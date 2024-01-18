@@ -9,10 +9,12 @@ use crate::components::List::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 use crate::components::Paragraph::*;
+use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::Table::Table;
 use crate::components::Tabs::*;
+
 use crate::constants::MENU_ITEMS;
 use leptos::*;
 #[component]
@@ -166,6 +168,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$\hspace{0.03em}X > 50$"#</Math> "—that much seems logical—and, with
           a little thought, the same phenomenon explains why " <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
+        <SectionDivider />
         <Paragraph margin_top=15>
           <Span bold=(true)>"Fractions and Division."</Span>
           " An elementary fraction, or division, such as "
@@ -248,6 +251,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$77.5\%$"#</Math> " greater than " <Math>r#"$40$"# "."</Math>
           " (Interesting, no?)"
         </Paragraph>
+        <SectionDivider />
         <Paragraph margin_top=15>
           <Span bold=(true)>"Distributivity."</Span>
           " As you might already know, a number that multiplies a sum can be brought “inside” the sum. For example, "
@@ -524,6 +528,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$ -7 = -7 $"#</Math>
           ", as it would be, haha.)"
         </Paragraph>
+        <SectionDivider />
         <Paragraph margin_top=15>
           <Span bold=true>"Epilogue. "</Span>
           "Do you remember the near miss between"

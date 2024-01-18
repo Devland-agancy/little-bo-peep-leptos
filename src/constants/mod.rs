@@ -14,3 +14,5 @@ pub const GREEN_DIV_HEIGHT: u8 = 150;
 // the max width of the main column of text when trying to fit a small screen, in other words the breakpoint of screen width that activates small screen mode , this can be edited in tailwind.config.js in here screens: { sm: "520px" }, after than run npx tailwindcss -i input.css -o style/output.css
 pub const MOBILE_BREAKPOINT: u16 = 520;
 // DESKTOP_TEXT_WIDTH found in input.css file in .gridColWidth class , 1fr {width} 1fr
+
+pub const SECTION_DIVIDER_ACTIVATION_HEIGHT: u16 = 520;

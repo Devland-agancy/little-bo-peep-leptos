@@ -9,6 +9,7 @@ use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
 use crate::components::Paragraph::*;
+use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::Table::*;
@@ -85,6 +86,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
     (Etc.)
 
+|> SectionDivider
+
 |> Paragraph   
     margin_top = 15
 
@@ -158,6 +161,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     is the vertical change from $A$ to $B$, while
     $$ 4 - (-2) $$
     is the horizontal change from $A$ to $B$.)
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
@@ -356,6 +361,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     which could be anything. (Technically, “$0/0$” is undefined.)
     Indeed, infinitely many different lines pass through any
     given point!
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15

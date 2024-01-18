@@ -247,3 +247,12 @@ span .MathJax_SVG{
 .test-bg {
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
+
+/* .section-divider {
+  display: none;   
+}
+@media (min-height = 400px) {
+  .section-divider {
+    display: block;
+  }
+} */
