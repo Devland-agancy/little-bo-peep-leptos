@@ -9,6 +9,7 @@ pub mod Grid;
 pub mod Header;
 pub mod Image;
 pub mod ImageLeft;
+pub mod ImageLink;
 pub mod ImageRight;
 pub mod Link;
 pub mod List;

@@ -8,6 +8,7 @@ use crate::components::ImageRight::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
+use crate::components::ImageLink::*;
 use crate::components::Paragraph::*;
 use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
@@ -541,14 +542,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         width=200
         pos_y="0.5rem"
         pos_x="-5rem"
-        squiggle_right="-7rem"
-        squiggle_top="48%"
-        hidden_in_mobile=true
 
     $$
     x = c
     $$
-    (see Fig. 1) where $c \in \rr$ is a constant,
+    (see @Fig. 1@) where $c \in \rr$ is a constant,
     similarly to the more familiar equation
     $$
     y = b
