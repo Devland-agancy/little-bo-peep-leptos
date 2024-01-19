@@ -594,7 +594,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     If the $x$- and $y$-axes have units then a line's slope has units
     $$
     {\te{$y$ axis units} \over \te{$x$ axis units}}
-    %\left[\frac{\te{$y$ axis units}}{\te{$x$ axis units}}\right]
     $$
     as should make sense, given that the slope is
     a change in $y$ divided by a change in $x$.
@@ -606,8 +605,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     the units on the $x$ axis are seconds (“s”) then the slope has
     units
     $$
-    %\left[\frac{\te{$y$ axis units}}{\te{$x$ axis units}}\right] = \left[\frac{\te{m}}{\te{s}}\right]
-        \frac{\te{$y$ axis units}}{\te{$x$ axis units}} = \frac{\te{m}}{\te{s}}
+    \frac{\te{$y$ axis units}}{\te{$x$ axis units}} = \frac{\te{m}}{\te{s}}
     $$
     also known as _meters per second_. This is precisely the
     case, for example, in the following graph, that purports to
@@ -711,7 +709,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     The increase in height of
     the above balloon over a period of 5 seconds is
     $$
-    %0.75\te{[m}/\te{s]} \times 5\te{[s]} = 3.75\te{[m]}
     0.75\te{m}/\te{s} \times 5\te{s} = 3.75\te{m}
     $$
     following the template
