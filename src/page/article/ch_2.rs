@@ -90,7 +90,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15
 
     *Measuring Slope.*
     The slope of a line is also the ratio of vertical change
@@ -166,7 +165,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15
 
     *Sign Combinations.*
     Technically, quantities such as
@@ -366,7 +364,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15
 
     *“Rise over Run”.*
     Some people remember the slope

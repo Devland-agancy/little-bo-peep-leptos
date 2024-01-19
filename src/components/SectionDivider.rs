@@ -32,7 +32,9 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
       cx,
       <Show fallback=|_| () when=move || !hidden() >
           <Image
-            src="/images/section_divider.svg"
+            src="/images/seperator_.png"
+            width="100%"
+            image_classes="my-4"
           />
       </Show>
     }

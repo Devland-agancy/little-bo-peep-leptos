@@ -169,7 +169,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           a little thought, the same phenomenon explains why " <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
         <SectionDivider />
-        <Paragraph margin_top=15>
+        <Paragraph>
           <Span bold=(true)>"Fractions and Division."</Span>
           " An elementary fraction, or division, such as "
         </Paragraph>
@@ -252,7 +252,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           " (Interesting, no?)"
         </Paragraph>
         <SectionDivider />
-        <Paragraph margin_top=15>
+        <Paragraph>
           <Span bold=(true)>"Distributivity."</Span>
           " As you might already know, a number that multiplies a sum can be brought “inside” the sum. For example, "
         </Paragraph>
@@ -529,7 +529,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           ", as it would be, haha.)"
         </Paragraph>
         <SectionDivider />
-        <Paragraph margin_top=15>
+        <Paragraph>
           <Span bold=true>"Epilogue. "</Span>
           "Do you remember the near miss between"
         </Paragraph>
