@@ -32,12 +32,12 @@ pub fn ImageLink(cx: Scope, direction: Direction, children: Children) -> impl In
             }
           }
         }
-        class="relative cursor-pointer"
+        class="relative cursor-pointer lg:pointer-events-none"
       >
         {children(cx)}
           <img
             src="/images/squiggle.png"
-            class="absolute left-[2%] top-[35%] h-[40px] rotate-[91deg]"
+            class="absolute left-[2%] top-[35%] h-[40px] rotate-[91deg] lg:hidden"
           />
       </span>
     }
