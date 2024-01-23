@@ -435,17 +435,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$
     \te{run} = \frac{\te{rise}}{\te{slope}}
     $$
-    or “run equals rise over slope”. These last two
-    formulas can also be useful. In any case, just remember...
+    or “run equals rise over slope”. Thus:
 
 |> Image
     src="/images/48.svg"
 
 |> Paragraph   
-    margin_top = 15  
-
-    ...that the slope formula has three different “permutations”
-    altogether, or one per variable.
+    
+    ...as can sometimes be useful to know.  
 
 |> Paragraph   
     margin_top = 15  
@@ -611,10 +608,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     
     |> Image
         src="/images/52.svg"
-        width="430px"
+        container_classes="mt-[1.4em] mb-[1.2em]"
 
 |> Paragraph   
-    margin_top = 15
 
     The slope of the graph is
 
@@ -691,7 +687,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
 |> Image
     src="/images/53.svg"
-    width="490px"
 
 |> Paragraph   
     margin_top = 15

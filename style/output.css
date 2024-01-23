@@ -661,6 +661,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-\[1\.2em\] {
+  margin-bottom: 1.2em;
+}
+
 .mb-\[31px\] {
   margin-bottom: 31px;
 }
@@ -675,6 +679,10 @@ video {
 
 .mt-6 {
   margin-top: 1.5rem;
+}
+
+.mt-\[1\.4em\] {
+  margin-top: 1.4em;
 }
 
 .mt-\[2px\] {
