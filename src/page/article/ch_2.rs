@@ -689,7 +689,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     src="/images/53.svg"
 
 |> Paragraph   
-    margin_top = 15
 
     ...these formulas, commonly useful in “applied”
     problems.
