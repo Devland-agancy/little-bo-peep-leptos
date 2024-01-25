@@ -989,7 +989,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$
                 with $y$ isolated on the left-hand side. From there one
                 can also distribute $p(x-x_0)$, obtaining (after putting
-                &ldquo;$-px_0$&rdquo; last)
+                “$-px_0$” last)
                 $$
                 y = px + y_0 - px_0
                 $$
@@ -1072,7 +1072,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
             *Exercise 4. *
             Digressing on the second-to-last equation
-            <!-- note  -->
             in the solution to Exercise 2, explain why
             $$
             y_0 - px_0
@@ -1094,19 +1093,20 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             |> Paragraph
 
                 The rise from the $y$-intercept to $(x_0, y_0)$ is $px_0$, as found
-                by &ldquo;rise equals slope times run&rdquo;, implying that
+                by “rise equals slope times run”, implying that
                 $$
                 y_0 - px_0
                 $$
                 is the $y$-intercept.
-                <i>Note 1.</i> Our drawing makes some implicit
+                
+                _Note 1._ Our drawing makes some implicit
                 assumptions, such as $p > 0$ and $x_0 > 0$.
                 But
                 $$
                 px_0
                 $$
                 is the rise from the $y$-intercept to $(x_0, y_0)$
-                regardless of the sign of $p$ or $x_0$ (because &ldquo;$x_0$&rdquo; is
+                regardless of the sign of $p$ or $x_0$ (because “$x_0$” is
                 the run in all cases), making
                 $$
                 y_0 - px_0
