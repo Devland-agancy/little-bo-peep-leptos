@@ -905,9 +905,99 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             classes="animate-appear-slow"
 
             *Exercise 2. *
-            Find the general equation of a line of slope $ |te{p} $ passing through a point $ (x_1, y_1) $ . (Hint: Start from the slope formula.) 
-    
+            Find the general equation of a line of slope 
+            $p$ passing through a point $(x_0, y_0)$.
+            (Hint: Start from the slope formula.) 
+
         |> Solution
+
+            |> Paragraph
+
+                A point $(x,y) \ne (x_0,y_0)$ is on the line of
+                slope $p$ if and only if
+                $$
+                p = {y - y_0 \over x - x_0}
+                $$
+                because
+                $$
+                \,\,{y - y_0 \over x - x_0}
+                $$
+                is the slope of the line segment from $(x_0,y_0)$ 
+                to $(x,y)$, and it is necessary and
+                sufficient for this segment to have slope $p$ in order
+                for the point $(x,y)$ to be on the line!
+
+                |> Paragraph
+                    indent=Indent::Line
+
+                    Unfortunately, the equation
+
+                $$
+                p = {y - y_0 \over x - x_0}
+                $$
+                is not an entirely satisfactory answer, because the
+                point $(x,y) = (x_0,y_0)$ itself does not satisfy the
+                equation. (We find
+                $$
+                p = {0 \over 0}
+                $$
+                if we plug in $x = x_0$, $y = y_0$, which is not a valid
+                equality because the right-hand side is an undefined quantity.)
+
+                |> Paragraph
+                    indent=Indent::Line
+
+                    Instead, multiplying
+
+                $$
+                p = {y - y_0 \over x - x_0}
+                $$
+                on both sides by $x-x_0$, we find the fraction-less equation
+                $$
+                p(x-x_0) = y-y_0
+                $$
+                which is satisfied by the point $(x,y) = (x_0,y_0)$ as well as
+                by every other point on the line.
+                This can be a final answer, and, pleasingly, has the form
+
+                |> MathBlock
+
+                    \$\$\te{“}\te{slope} \times \te{run} = \te{rise}\te{”}\$\$
+
+                    |> ImageRight
+                        src="/images/63.svg"
+                        width=400
+                        pos_x="-1.3rem"
+                        pos_y="-1.6rem"
+                        hidden_in_mobile=true
+                        squiggle_top="36%"
+                        squiggle_left="-2.5rem"
+
+                which can also make it easy to remember!
+
+            |> Paragraph
+                margin_top=15
+
+                _Note 1._
+                The answer we gave is more often written
+                $$
+                y - y_0 = p(x - x_0)
+                $$
+                with the two sides of the equation swapped, or
+                $$
+                y = p(x - x_0) + y_0
+                $$
+                with $y$ isolated on the left-hand side. From there one
+                can also distribute $p(x-x_0)$, obtaining (after putting
+                &ldquo;$-px_0$&rdquo; last)
+                $$
+                y = px + y_0 - px_0
+                $$
+                which has the form
+                $$
+                y = ax + b
+                $$
+                with $a = p$, $b = y_0 - px_0$.
 
     |> TabElement
     
@@ -921,6 +1011,59 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             src="/images/1.svg"
 
         |> Solution
+
+            |> Paragraph
+
+                Here is the “official” graph of the (vertical) velocity:
+
+            |> Image
+                src="/images/64.svg"
+
+            |> Paragraph
+                indent=Indent::Line
+
+                On each interval, the velocity is rate of change
+                of the height, i.e., the _slope_ of the height.
+                For example, the rate of change of the height is
+                $$
+                {1\te{m} \over 1\te{s}} = 1\te{m}/\te{s}
+                $$
+                between $-4$s and $-3$s, where the mosquito goes up by one meter
+                during a one second period, so the vertical velocity is
+                1m$/$s for that time interval, etc.
+
+            |> Paragraph
+                margin_top=15
+
+                _Note 1._
+                As explained in Chapter 3, an empty circle of this type
+
+            |> Image
+                src="/images/65.svg"
+                width="30px"
+
+            |> Paragraph
+
+                indicates a “missing” value. 
+                Specifically, in our case, the vertical velocity is _undefined_
+                wherever the graph of the height has a sharp corner.
+                (Because the slope of the graph is not well-defined at such corners.)
+
+            |> Paragraph
+                margin_top=15
+
+                _Note 2._ 
+                For the time interval from $2$s to $2.5$s, the slope is
+                $$
+                {-2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = -\rt{0.07}4\rt{0.1}\te{m}/\te{s}
+                $$
+                and similarly for the time interval 
+                from $2.5$s to $3$s the slope is
+                $$
+                {2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = 4\rt{0.1}\te{m}/\te{s}
+                $$
+                because $2/0.5 = 4$.
+                (Think: _how many times_ does $0.5$ go into $2$?)
 
     |> TabElement
 
