@@ -1,0 +1,762 @@
+<html>
+<head>
+    <!-- <script src="MathJax-master/MathJax.js?config=TeX-AMS_SVG"></script> -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG'></script>
+    <script src="js/mathjaxconfig_without_cache.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/css_cant_edit.css" />
+    <link type="text/css" rel="stylesheet" href="css/css_can_edit.css" />
+    <link type="text/css" rel="stylesheet" href="css/css_unparseable.css" />
+    <style>
+        .mock_up_bottom_buffer { height: 100px; }
+    </style>
+</head>
+<body>
+    <p class="chapter_title">
+        Chapter 3: Functions
+    </p>
+
+    <p class="nb">
+        <b>Syntax.</b>
+        A
+    </p><p class="cq">
+        function
+    </p><p class="acq">
+        is a “rule” for transforming inputs (usually numbers)
+        into outputs (usually numbers as well). One can think of a function
+        as a box with an “input tube” and an “output tube”:
+    </p>
+    <center>
+        <img src="ch3figs/svg_f_box.svg" width="380" style="padding-right:3px; padding-top:13px; padding-bottom:20px"/>
+    </center>
+    <p class="nb">
+        An input that comes in via the input tube is processed
+        by the box according the function's rule, and the
+        result comes out the other side. 
+        (Metaphorically speaking.)
+    </p><p>
+        In the above picture, the name of the function is 
+        <span class="nowrap">“$\hspace{0.1ex}f\hspace{0.2ex}$”</span>.
+    </p><p>
+        Notation-wise, one writes
+        $$
+        {f(x)}
+        $$
+        (which is read “$f$ of $x$”, and that's important) 
+        for the result of passing an input $x$ to a function $f$.
+        For example, if the rule according to which $f$ processes inputs is
+    </p><p class="cq">
+        the output is the square of the input
+    </p><p class="acq">
+        then
+        $$
+        {f(2) = 4}
+        $$
+        [“$f$ of $2$ equals $4$”] because 
+        $2^2 = 4$, and
+        $$
+        {f(3) = 9}
+        $$
+        [“$f$ of $3$ equals $9$”] because 
+        $3^2 = 9$, and
+        $$
+        { f(0.1) = 0.01}
+        $$
+        [...] because 
+        $0.1^2 = 0.01$,
+        and so on. Also,
+        $$
+        {f(x) = x^2}
+        $$
+        [“$f$ of $x$ equals $x^2$”] more generally, which is actually the
+    </p><p class="cq">
+        definition
+    </p><p class="acq">
+        of $f$!! 
+        (Stated algebraically.)
+    </p>
+
+    <p class="nb">
+        <b>Lambda functions.</b> A
+    </p><p class="cq">
+        lambda function
+    </p><p class="acq">
+        is not a type of function, but a type of notation that enables one to 
+        define a function without giving it a name, such as “$f$”.
+    </p>
+    <p>
+        In fact there are two different mainstream notations,
+        in this instance.
+        One notation writes
+        $$
+        \lambda{x}.x^2
+        $$
+        to mean 
+        “the function that maps $x$ to $x^2$” 
+        (and by the way,
+        $$
+        \lambda{z}.z^2
+        $$
+        is <i>the same</i> function, because 
+        it specifies the same in-out mapping—a thing goes to its square—also by the way, the symbol
+        $$
+        {\Huge \lambda}
+        $$
+        is the Greek letter “lambda”, giving its name to the topic)
+        while the other notation writes 
+        $$
+        x \rightarrow x^2
+        $$
+        to mean the same thing.
+    </p>
+    <p>
+        Note that
+        $$
+        (x \ra x^2)(0.1)
+        $$
+        means 
+        “the function that maps each number to its square, of $0.1$”.
+        So...
+        $$
+        (x \ra x^2)(0.1) = 0.01
+        $$
+        ...is the same as an equation of the form “$f(\dots) = \dots$”.
+    </p>
+    <p>
+        For more practice:
+        $$
+        (\lambda x.x^3)(10) = 1000
+        $$
+        $$
+        (\lambda u.u^5)(10) = 100000
+        $$
+        $$
+        (v \ra v^2)(10) = 100
+        $$
+        $$
+        (z \ra z^3)(10) + (t \ra t^2)(5) = 1025.
+        $$
+        (Etc.) (Indeed, to emphasize again, the variable denoting the 
+        input does not matter: it is just a placeholder, and you obtain 
+        the same output, and the same <i>function</i>, no matter what symbol 
+        you choose.*) (*As long as you don't collide with other 
+        existing variable names.)
+    </p>
+
+    <p class="nb">
+        <b>Definition by cases.</b>
+        Sometimes a function is defined by an expression of the form
+        $$
+        {
+            x \ra \begin{cases}
+            \ldots &amp; \te{if $\ldots$}\\
+            \ldots &amp; \te{if $\ldots$}\\
+            \vdots &amp; \vdots\\
+            \ldots &amp; \te{$\ldots$}
+            \end{cases}
+        }
+        $$
+        where the right-hand side is a list of mutually exclusive
+        cases to consider according to the value of $x$. Equivalently,
+        $$
+        {
+            g(x) = \begin{cases}
+            \ldots &amp; \te{if $\ldots$}\\
+            \ldots &amp; \te{if $\ldots$}\\
+            \vdots &amp; \vdots\\
+            \ldots &amp; \te{$\ldots$}
+            \end{cases}
+        }
+        $$
+        in the case where the function has a name, such as “$g$”.
+    </p>
+
+    <p class="nb">
+        <b>Example 1.</b>
+        If VX-11/78A (don't mind the weird name, chosen at random) is the function defined by
+        $$
+        {
+            \te{VX-11/78A}(x) = \begin{cases} 
+            3.5 &amp; \te{if $x = 0$},\\
+            2.5\up{1.1} &amp; \te{if $x = 1$},\\
+            \te{undefined}\up{1.1} &amp; \te{if $x \ne 0, 1$}
+            \end{cases}
+        }
+        $$
+        then
+        $$
+        {\te{VX-11/78A}(0) = 3.5,}
+        $$
+        and
+        $$
+        {\te{VX-11/78A}(1) = 2.5,}
+        $$
+        aaand... and these are the only two values of $x$ for which
+        VX-11/78A$(x)$ is defined, as specified.
+    </p>
+
+    <p class="nb">
+        <b>On arbitrariness.</b>
+        While a function such as VX-11/78A might seem completely
+        arbitrary, one lesson from the former example is that functions <i>can</i> be completely arbitrary!
+    </p><p>
+        In fact, 
+        there are only two “ground rules” to respect
+        in order for something to qualify as a function: 
+        <b>(i)</b> to output
+    </p><p class="cq">
+        one
+    </p><p class="acq">
+        output per (accepted) input, and 
+        <b>(ii)</b>
+        to return the
+    </p><p class="cq">
+        same
+    </p>
+    <p class="acq">
+        output each time on the same input. 
+        (Sometimes, functions are said to be
+    </p><p class="cq">
+        deterministic
+    </p><p class="acq">
+        because of <b>(ii)</b>.)
+    </p>
+
+    <p class="nb">
+        <b>Graphs.</b> 
+        The
+    </p><p class="cq">
+        graph
+    </p><p class="acq">
+        of a function is a visualization device. A point on the graph corresponds to an
+        input for which the function is defined. The $x$-coordinate of the point
+        is the value of the input, while the $y$-coordinate is the value of the
+        corresponding output.
+    </p>
+
+    <p>
+        For example, here is a graph of VX-11/78A:
+    </p>
+    <center style="padding-top:1.3em;padding-bottom:1.2em;">
+        <img src="ch3figs/svg_vx1178A.svg">
+    </center>
+    <p class="noi">
+        The graph has only two points, because VX-78/11A is defined
+        at only two values. One point is...
+    </p>
+    <center style="padding-top:1.3em;padding-bottom:0.9em;">
+        <img src="ch3figs/svg_vx1178A_@0_with_cors.svg"/>
+    </center>
+    <p class="noi">
+        ...$(0, 3.5)$, because VX-78/11A maps $0$ to $3.5$,
+        while the other point is...
+    </p>
+    <center style="padding-top:1.3em;padding-bottom:0.9em;">
+        <img src="ch3figs/svg_vx1178A_@1_with_cors.svg"/>
+    </center>    
+    <p class="noi">
+        ...$(1, 2.5)$, because VX-78/11A maps $1$ to $2.5$.
+    </p>
+
+    <p class="nb">
+        <b>Example 2.</b> Here is a graph of $x \ra x^2$ on the
+        interval $[-1, 1]$ (meaning: going from $x = -1$ to $x = 1$):
+    </p>
+    <center>
+        <img src="ch3figs/svg_x_squared_1_worked.svg" style="padding-left:0px;padding-top:25px;padding-bottom:28px;padding-right:0px" dont_compress="true"/>
+    </center>
+    <p class="noi">
+        Among
+        all the points on this 
+        graph that we could discuss, let us name, say, the point $(0.75, 0.5625)$...
+    </p>
+    <center>
+        <img src="ch3figs/svg_x_squared_2_worked.svg" style="padding-left:0px;padding-top:25px;padding-bottom:28px;padding-right:0px" dont_compress="true"/>
+    </center>
+    <p class="noi">
+        ...which finds itself on the graph, namely, because 
+        the square of $0.75$ is $0.5625 = 9/16$. 
+    </p>
+    <div class="column">
+        <img src="ch3figs/svg_0.5625_cloud.svg" style="position:absolute;left:-500px;top:-80px;"/>
+    </div>
+
+    <p class="nb">
+        <b>Domains.</b>
+        The <i>domain</i> of a
+        function $f$—written
+        $$
+        \dom\, f
+        $$
+        —is the set of inputs $x$ for which
+        $f(x)$ is defined.
+    </p>
+
+    <p class="nb">
+        <b>Example 1.</b>
+        We have
+        $$
+        \dom\,\rt{0.1} \te{VX-11/78A} = \left\{ 0\rt{0.1}, 1 \right\}
+        $$
+        because VX-11/78A$(x)$ is only defined at $x = 0$, $1$.
+    </p>
+
+    <p class="nb">
+        <b>Example 2.</b>
+        If DM-1700 (another weirdly named function) is defined by
+        $$
+        \te{DM-1700}(x) = \begin{cases} 
+        0 &amp; \te{if $x \leq 0$ or $x \geq 1$},\\
+        1 - x\up{1.1} &amp; \te{if $0 &lt; x &lt; 1$}
+        %0 &amp; \te{if $x > 1$}
+        \end{cases}
+        $$
+        then
+        $$
+        \dom\,\rt{0.1} \te{DM-1700} = \rr
+        $$
+        because 
+        $\te{DM-1700}(x)$ is defined for all
+        $x \in \rr$.
+    </p>
+
+    <p class="nb">
+        <b>Example 3.</b>
+        If $g : \rr \ra \rr$ (we are going to explain this
+        notation imminently) is the function given by
+        $$
+        g(x) = \sqrt{x - 1^{\color{white}*\!\!}}
+        $$
+        then
+        $$
+        \begin{align}
+        \dom\, g &amp;\,=\, [1, \infty)
+        \end{align}
+        $$
+        because the square root of a number is defined if and only
+        if that number is <i>nonnegative</i> (i.e., we need
+        $x - 1 \geq 0$ in order for $g(x)$ to be defined, i.e., we
+        need $x \geq 1$).
+    </p>
+
+    <p class="nb">
+        <b>Example 4.</b>
+        If $h : \rr \ra \rr$ is defined by
+        $$
+        h(x) = \frac{1}{x+1}
+        $$
+        then
+        $$
+        \begin{align}
+        \dom\,h \,=\, \rr\back\{-1\} =\, (-\infty,-1) \cup (-1,\infty)
+        \end{align}
+        $$
+        because $1/(x+1)$ is well-defined if and only if
+        division by 0 is avoided, i.e., if and only if $x \ne -1$.
+    </p>
+
+    <p class="nb">
+        <b>“From/To” Notation.</b>
+        The notation
+        $$
+        f : \rr \ra \rr
+        $$
+        means that $f$ is a function
+    </p><p class="mathjax_cq">
+        from $\rr$ to $\rr$
+    </p><p class="a_mathjax_cq">
+        or, which is to say, that
+        $$
+        \dom f \subseteq \rr
+        $$
+    </p><p class="noi">
+        [translation: <i>the domain of $f$ is a subset of the
+            set of real numbers</i>] and that
+        $$
+        \{f(x) : x \in \dom f\} \subseteq \rr
+        $$
+    </p><p class="noi">
+        [translation: <i>the set of values output by $f$ is a subset 
+            of the set of real numbers</i>].
+    </p>
+    <p>
+        Generalizing,
+        $$
+        f : A \ra B
+        $$
+        means that
+        <!-- means that $f$ takes values from $A$, and outputs values from 
+        $B$. (There is also a “hollow dot colon” notation that appears 
+        in Exercise 7, but the difference is minute.) -->
+    </p>
+    <p class="noi">
+        $$
+        \dom f \subseteq A
+        $$
+        (i.e., that $f$ only accepts values from $A$) and that
+        $$
+        \{f(x) : x \in \dom f\} \subseteq B
+        $$
+    </p><p class="noi">
+        (i.e., that $f$ only outputs values from $B$), following the pattern above. 
+        <!-- Then there is also a “hollow dot colon” notation that appears 
+        in Exercise 7, but the difference is minute! (The “hollow dot colon” means 
+        that $\dom f = A$, instead of $\dom f \subseteq A$.) -->
+    </p>
+    <!-- [<i>the domain of $f$ is a subset of $A$</i>]  -->
+    <!-- [<i>the set of values output by $f$ is a subset of $B$</i>]. -->
+
+    <p class="nb">
+        <b>The Vertical Line Test.</b>
+        As it turns out, the term “graph” 
+        just means “set of points in the plane”.
+        So a 
+    </p><p class="cq">function graph</p><p class="acq">
+        (as described above) is just one particular kind of “graph” among other
+        things that are also called “graphs”, 
+        but that 
+        are not function graphs.
+    </p>
+    <p>
+        The so-called
+    </p><p class="cq">
+        vertical line test
+    </p><p class="acq">
+        observes that a graph
+        [$=$ <i>set of points in the plane</i>]
+        is a function graph 
+        if and only if every $x$-value
+        (a.k.a., input) 
+        corresponds to at most one $y$-value
+        (a.k.a., output). 
+        In other words, every vertical line should
+        intersect the 
+        graph 
+        at most once.
+    </p>
+    
+    <p>
+        For example, this particular graph...
+    </p>
+    <center>
+        <img src="ch3figs/wiggle_graph.svg" width="365" style="padding-left:0px; padding-top:25px; padding-bottom:30px; padding-right: 0px" />
+    </center>
+    <p class="noi">
+        is a function graph (or locally at least, from what we can see), 
+        because every vertical line intersects the graph at most once, but this graph...
+    </p>
+    <center>
+        <img src="ch3figs/circle.svg" width="330" style="padding-left:0px; padding-top:35px; padding-bottom:25px; padding-right: 21px" />
+    </center>
+    
+    <p class="nb">
+        <img src="ch3figs/crossing_cloud_circle.svg" width="400" style="position:absolute;left:520px;top:-160px;" />
+        ...is not the graph of any function, because some vertical lines intersect the graph more than once.
+    </p>
+    <p>
+        (Oops. To backtrack and quickly clarify a small matter, an empty 
+        circle at the end of a segment, in the vein of the previous figure...
+    </p>
+    <center>
+         <img src="ch3figs/empty_circle.svg" width="330" style="padding-left:0px; padding-top:35px;padding-bottom:20px;padding-right:21px" />
+    </center>
+    <p class="nb">
+        ...means that the point in question is
+        <i>excluded</i> from the graph. 
+        A filled circle, by opposition,
+        means that the point is included!)
+    </p>
+
+    <p class="nb">
+        <b>Example 6.</b>
+        This <i>upper semicircle</i> of unit radius...
+    </p>
+
+    <center>
+        <img src="ch3figs/semicircle_B.svg" width="400" style="padding-left:5px; padding-top:30px; padding-bottom:0px; padding-right: 21px" />
+    </center>
+    <p class="nb">
+        ...passes the vertical line test, and, hence, defines a function.
+    </p>
+
+    <p class="nb">
+        <b>Example 7.</b>
+        This graph defines a function...
+    </p>
+    <center style="padding-top:1.1em;padding-bottom:1em;padding-right:16px" >
+        <img src="ch3figs/factory_function.svg" height="240"/>
+    </center>
+    <p class="noi">
+        ...because it passes the vertical line test, while this graph does not define a function...
+    </p>
+    <center style="padding-top:1.1em;padding-bottom:1em;padding-right:16px" >
+        <img src="ch3figs/factory_nonfunction.svg" height="240"/>
+    </center>
+    <p class="noi">
+        ...because it does <i>not</i> pass the vertical line test!
+    </p>
+
+    <p class="nb">
+        <b>A Famous Discontinuity.</b>
+        As already seen, functions can have
+        <i>discontinuities</i>: a place where
+        the function experiences a sudden “jump” in value.
+    </p>
+
+    <p>
+        For a famous example of a
+        “naturally” occurring discontinuity 
+        (that we feel compelled to mention, for some reason) 
+        we need look no further
+        than the function
+        $$
+        %\qquad\! 0^x
+        {\Large x \ra 0^x}
+        $$
+        as it so happens that
+        $$
+        {0^x = \begin{cases} 0 &amp; \te{if } x > 0\\
+        1 &amp; \te{if } x = 0\\
+        \te{undefined} &amp; \te{if }x &lt; 0 \end{cases}}
+        $$
+    </p><p class="noi">
+        which implies a discontinuity in the graph of $y = 0^x$ at $x = 0$, 
+        as pictured here:
+    </p>
+
+    <center>
+        <img src="ch3figs/zero_to_the_x.svg" width="500" style="padding-left:5px; padding-top:16px; padding-bottom:14px; padding-right: 21px" />
+    </center>
+
+    <p class="nb">
+        (Pretty cool, no?)
+    </p>
+
+    <p class="nb">
+        <b>Distinguishing “$f$” and “$f(x)$”.</b> The difference
+        between
+        $$
+        {\te{VX-11/78A}}
+        $$
+        <!-- (cf$.$ Example 1)  -->
+        and
+        $$
+        {\te{VX-11/78A}(x)}
+        $$
+        is that the former is a
+    </p><p class="cq">
+        function
+    </p><p class="acq">
+        while the latter is a
+    </p><p class="cq">
+        value.
+    </p><p class="acq">
+        (Well, provided $x \in \{0, 1\}$, to make it well-defined 
+        at all.) Likewise, if $f : \rr \ra \rr$, the difference 
+        between 
+        $$
+        f
+        $$
+        and 
+        $$
+        f(x)
+        $$
+        is that the former is a
+    </p><p class="cq">
+        function
+    </p><p class="acq">
+        while the latter is a
+    </p><p class="cq">
+        value.
+    </p><p class="acq">
+        Amusingly, though, if we add “$x \ra$” in front of “$f(x)$”
+        then we are back to considering a 
+    </p><p class="cq">
+        function
+    </p><p class="acq">
+        and which is namely the function whose rule is: apply $f$. In 
+        fact,
+        $$
+        f = (x \ra f(x))
+        $$
+        where the above is <i>an equality between functions</i>. (You cannot 
+        use this equality to
+    </p><p class="cq">
+        define
+    </p><p class="acq">
+        $f$ because that would lead to a circular definition. But that doesn't 
+        make the equality any less true. And btw, you can go “one layer deeper”:
+        $$
+        f = (x \ra f(x)) = (x \ra (t \ra f(t))(x))
+        $$
+        ...where we use the fact that $f = (t \ra f(t))$ in the second equality.
+        You could keep going, replacing each time “$f$” by a 
+        self-referential expression,
+        but the process is not intrinsically useful.)
+    </p>
+
+    <p class="nb">
+        <b>Distinguishing “$x^3$” and “$x \ra x^3$”.</b>
+        Technically,
+        $$
+        x^3
+        $$
+        is a <i>value</i> (not a function) and the way logicians think of it, 
+        philosophically speaking, is like so: at inception, every symbol has 
+        some default value attached, absent any other context.
+    </p>
+    <p>
+        By contrast,
+        $$
+        x \ra x^3
+        $$
+        is clearly a <i>function</i>, not a <i>value</i>. 
+        So “$x^3$” and “$x \ra x^3$” are very (VERY) different, qualitatively speaking.
+    </p>
+    <p>
+        But including the arrow everywhere is 
+        impractical and even pedantic, so, in the end,
+        you might see us refer to an expression such as, e.g.,
+        $$
+        x^3 + x^2
+        $$
+        as a “function”, arrow or no arrow. 
+    </p>
+
+    <p class="nb">
+        <b>Polynomials.</b>
+        A function $f$ of the form
+        $$
+        f(x) = a_kx^k + a_{k-1}x^{k-1} + \dots + a_2x^2 + a_1x + a_0
+        $$
+        is called a <i>polynomial</i>. 
+        Here
+        $$
+        a_0,\,a_1,\, \ldots,\, a_k \in \rr
+        $$
+        are arbitrary constants, also known as the
+        <i>coefficients</i> of the polynomial. 
+        <!-- The <i>degree</i> of the polynomial is the highest power of $x$ that appears with a nonzero coefficient. -->
+        The <i>degree</i> of the polynomial is $k$, if $a_k \ne 0$. (Otherwise, work your way 
+        down until you find a nonzero coefficient—if there are none, because the polynomial is 
+        just the constant $0$, then the degree is <i>minus infinity</i>.) (We're not kidding.)
+        <!-- The highest power of $x$ that appears in the polynomial is the <i>degree</i> of the polynomial. -->
+        <!-- If $a_k \ne 0$, moreover, then $k$ is the <i>degree</i> of the polynomial. -->
+        <!-- If $a_k \ne 0$, moreover, then $k$ in “$x^k$” is the <i>degree</i> of the polynomial. -->
+    </p>
+
+    <p>
+        For example,
+        $$
+        2x + \sqrt{2^{\color{white}*\!\!\!}}
+        $$
+        is a polynomial of degree 1, and
+        $$
+        x^2 - 10
+        $$
+        is a polynomial of degree 2, and
+        $$
+        x^{100} + x^{99} + x^{98} + \dots + x^4 + x^3 + x^2 + x + 1
+        $$
+        is a polynomial of degree 100.
+    </p>
+
+    <p style="margin-bottom:0.4cm">
+        Polynomials of low degree have their own special names, as 
+        inventoried in the following table:
+        $$
+        \begin{array}{c|c|c}
+        \,\,\,\,\te{degree}\,\,\,\, &amp; \te{name} &amp; \,\,\,\,\te{example}\,\,\,\,\Rule{0pt}{0.8em}{0.5em} \\ \hline
+        -\infty &amp; \te{zero} &amp; 0\Rule{0pt}{1.1em}{0.0em}\\
+        \te{0} &amp; \te{constant} &amp; 1 + \sqrt{5^{\color{white}*\!\!\!}}\\
+        \te{1} &amp; \te{affine} &amp; 10x - 1\\
+        \te{2} &amp; \,\,\,\,\te{quadratic}\,\,\,\, &amp; x^2 - 1\\
+        \te{3} &amp; \te{cubic} &amp; x^3 - 1\\
+        \te{4} &amp; \te{quartic} &amp; 1 - x^4\\
+        \te{5} &amp; \te{quintic} &amp; x^5
+        \end{array}
+        $$
+    </p>
+
+    <p class="noi" style="margin-top:10px;">
+        <!-- (You can also refer to the “zero” polynomial as 
+        a <i>constant</i>—nothing will explode.) -->
+        There is some confusion about the term
+    </p><p class="cq">
+        affine
+    </p><p class="acq">
+        for which the term
+    </p><p class="cq">
+        linear
+    </p><p class="acq">
+        is sometimes substituted. But if we say “linear” we mean a function of 
+        the form 
+        $$
+        x \ra a_1x
+        $$
+        for a constant $a_1 \in \rr$. This is more restricted than an affine 
+        function, 
+        because there is no constant $a_0$!
+    </p>
+    <center>
+        <img src="ch3figs/svg_affine_linear.svg" style="position:relative;padding-top:15px;width:770px;padding-bottom:25px;"/>
+    </center>
+    <p class="nb">
+        <b>Quadratic, linear, and constant terms.</b>
+        To finish up on polynomials: the terms of degree $2$, $1$ and $0$
+        are called the <i>quadratic</i>, <i>linear</i>,
+        and <i>constant</i> terms of the polynomial, respectively.
+        If you see
+    </p>
+    <div style="position:relative;">
+        <div class="abs_middle_anchor">
+            <img src="ch3figs/svg_quadratic_linear_constant_cloud.svg" style="position:absolute;width:700px;left:10.5em;top:-4.8em;"/>
+        </div>
+        $$
+        a_7x^7 + a_6x^6 + a_5x^5 + a_4x^4 + a_3x^3 - a_2x^2 + a_1x + a_0
+        $$
+    </div>
+    <p class="noi">
+        then the quadratic term is $-a_2x^2$, not $a_2x^2$, fyi.
+    </p>
+    <p>
+        Note that the linear term can also be viewed as the “$x^1$ term”
+        while the constant term can also be viewed as the 
+        <span class="nobreak">“$x^0$</span>  term”; 
+        because
+        <!-- indeed, since -->
+        <!-- in more detail, since -->
+    </p>
+    <div style="position:relative;">
+        <div class="abs_middle_anchor">
+            <img src="ch3figs/svg_a1_x1_cloud.svg" style="position:absolute;width:700px;left:10em;top:-4.64em;"/>
+        </div>
+        $$
+        x^1 = x
+        $$
+    </div>
+    <p class="noi">
+        for all $x$, and 
+    </p>
+    <div style="position:relative;">
+        <div class="abs_middle_anchor">
+            <img src="ch3figs/svg_a0_x0_cloud.svg" style="position:absolute;width:700px;left:10em;top:-4.64em;"/>
+        </div>
+        $$
+        x^0 = 1
+        $$
+    </div>
+    <p class="noi">
+        for all $x$ (even $x = 0$), 
+        namely.
+        <!-- we have $a_1x = a_1x^1$, $a_0 = a_0x^0$. -->
+    </p>
+
+    <div class="mock_up_bottom_buffer"></div>
+
+    <script src="js/1.js"></script>
+    <script src="js/2.js"></script>
+    <script src="js/4.js"></script>
+</body>
+</html>
+
+<!-- 7390232162974 -->
