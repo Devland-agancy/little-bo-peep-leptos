@@ -837,9 +837,67 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
             classes="animate-appear-slow"
 
             *Exercise 1. *
-            True or false: Lines of slope $ -1 |over 2 $ are perpendicular to lines of slope $2$.
+            True or false: Lines of slope $ -1 \over 2 $ are perpendicular to lines of slope $2$.
 
         |> Solution
+
+            |> Paragraph
+
+                This is true, as illustrated by the following pair of lines:
+
+                |> Image
+                    src="/images/55.svg"
+
+                |> ImageRight
+                    src="/images/56.svg"
+                    width=340
+                    pos_x="3rem"
+                    pos_y="15rem"
+
+                |> ImageLeft
+                    src="/images/57.svg"
+                    width=340
+                    pos_x="13rem"
+                    pos_y="19rem"
+
+            |> Paragraph
+
+                In more detail, the two triangles are related by
+                a $90^\circ$ rotation and so, likewise, are the lines defined
+                by their hypotenuses!
+    
+            |> Paragraph
+                margin_top=15
+
+                _Note 1._ 
+                More generally, a line of slope $p$ is perpendicular to a line
+                of slope $-1/p$, for all $p \ne 0$. By a similar drawing, for $p > 0$:
+    
+                |> Image
+                    src="/images/58.svg"
+
+                |> ImageRight
+                    src="/images/59.svg"
+                    width=340
+                    pos_x="3rem"
+                    pos_y="20rem"
+
+                |> ImageLeft
+                    src="/images/60.svg"
+                    width=340
+                    pos_x="11rem"
+                    pos_y="23rem"
+
+            |> Paragraph
+
+                If you're curious, a drawing for the case $p < 0$...
+
+                |> Image
+                    src="/images/61.svg"
+
+            |> Paragraph
+
+                ...is like so, but it doesn't really add anything new. 
 
     |> TabElement
 
