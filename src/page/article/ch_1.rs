@@ -29,6 +29,273 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     view! { cx,
       <Columns>
+        <Tabs labels=vec![
+            "0",
+            "1",
+            "2",
+            "3",
+        ]>
+          ""
+          <TabElement>
+            ""
+            <Paragraph classes="animate-appear-slow">
+              "" r#""# <Span bold=true>r#"Exercise 1. "#</Span> r#" True or false: Lines of slope "#
+              <Math>r#"$ -1 \over 2 $"#</Math> r#" are perpendicular to lines of slope "#
+              <span class="nobreak">
+                <Math>r#"$2$"#</Math>
+                r#"."#
+              </span> r#""#
+            </Paragraph>
+            <Solution>
+              ""
+              <Paragraph>
+                "" r#"This is true, as illustrated by the following pair of lines:"#
+                <Image src="/images/55.svg"/>
+                <ImageRight src="/images/56.svg" width=340 pos_x="3rem" pos_y="15rem">
+                  ""
+                </ImageRight> <ImageLeft src="/images/57.svg" width=340 pos_x="13rem" pos_y="19rem">
+                  ""
+                </ImageLeft>
+              </Paragraph>
+              <Paragraph>
+                "" r#"In more detail, the two triangles are related by a "#
+                <Math>r#"$90^\circ$"#</Math>
+                r#" rotation and so, likewise, are the lines defined by their hypotenuses!"#
+              </Paragraph>
+              <Paragraph margin_top=15>
+                "" r#""# <Span italic=true>r#"Note 1."#</Span>
+                r#"  More generally, a line of slope "# <Math>r#"$p$"#</Math>
+                r#" is perpendicular to a line of slope "# <span class="nobreak">
+                  <Math>r#"$-1/p$"#</Math>
+                  r#","#
+                </span> r#" for all "# <span class="nobreak">
+                  <Math>r#"$p \ne 0$"#</Math>
+                  r#"."#
+                </span> r#" By a similar drawing, for "# <span class="nobreak">
+                  <Math>r#"$p > 0$"#</Math>
+                  r#":"#
+                </span> r#""# <Image src="/images/58.svg"/>
+                <ImageRight src="/images/59.svg" width=340 pos_x="3rem" pos_y="20rem">
+                  ""
+                </ImageRight> <ImageLeft src="/images/60.svg" width=340 pos_x="11rem" pos_y="23rem">
+                  ""
+                </ImageLeft>
+              </Paragraph>
+              <Paragraph>
+                "" r#"If you're curious, a drawing for the case "# <span class="nobreak">
+                  <Math>r#"$p < 0$"#</Math>
+                  r#"..."#
+                </span> r#""# <Image src="/images/61.svg"/>
+              </Paragraph>
+              <Paragraph>"" r#"...is like so, but it doesn't really add anything new. "#</Paragraph>
+            </Solution>
+          </TabElement>
+          <TabElement>
+            ""
+            <Paragraph classes="animate-appear-slow">
+              "" r#""# <Span bold=true>r#"Exercise 2. "#</Span>
+              r#" Find the general equation of a line of slope  "# <Math>r#"$p$"#</Math>
+              r#" passing through a point "# <span class="nobreak">
+                <Math>r#"$(x_0, y_0)$"#</Math>
+                r#"."#
+              </span> r#" (Hint: Start from the slope formula.) "#
+            </Paragraph>
+            <Solution>
+              ""
+              <Paragraph>
+                "" r#"A point "# <Math>r#"$(x,y) \ne (x_0,y_0)$"#</Math>
+                r#" is on the line of slope "# <Math>r#"$p$"#</Math> r#" if and only if "#
+                <MathBlock>r#"$$ p = {y - y_0 \over x - x_0} $$"#</MathBlock> r#" because "#
+                <MathBlock>r#"$$ \,\,{y - y_0 \over x - x_0} $$"#</MathBlock>
+                r#" is the slope of the line segment from "# <Math>r#"$(x_0,y_0)$"#</Math>
+                r#"  to "# <span class="nobreak">
+                  <Math>r#"$(x,y)$"#</Math>
+                  r#","#
+                </span> r#" and it is necessary and sufficient for this segment to have slope "#
+                <Math>r#"$p$"#</Math> r#" in order for the point "# <Math>r#"$(x,y)$"#</Math>
+                r#" to be on the line!"#
+                <Paragraph indent=Indent::Line>"" r#"Unfortunately, the equation"#</Paragraph> r#""#
+                <MathBlock>r#"$$ p = {y - y_0 \over x - x_0} $$"#</MathBlock>
+                r#" is not an entirely satisfactory answer, because the point "#
+                <Math>r#"$(x,y) = (x_0,y_0)$"#</Math>
+                r#" itself does not satisfy the equation. (We find "#
+                <MathBlock>r#"$$ p = {0 \over 0} $$"#</MathBlock> r#" if we plug in "#
+                <span class="nobreak">
+                  <Math>r#"$x = x_0$"#</Math>
+                  r#","#
+                </span> r#" "# <span class="nobreak">
+                  <Math>r#"$y = y_0$"#</Math>
+                  r#","#
+                </span>
+                r#" which is not a valid equality because the right-hand side is an undefined quantity.)"#
+                <Paragraph indent=Indent::Line>"" r#"Instead, multiplying"#</Paragraph> r#""#
+                <MathBlock>r#"$$ p = {y - y_0 \over x - x_0} $$"#</MathBlock>
+                r#" on both sides by "# <span class="nobreak">
+                  <Math>r#"$x-x_0$"#</Math>
+                  r#","#
+                </span> r#" we find the fraction-less equation "#
+                <MathBlock>r#"$$ p(x-x_0) = y-y_0 $$"#</MathBlock>
+                r#" which is satisfied by the point "# <Math>r#"$(x,y) = (x_0,y_0)$"#</Math>
+                r#" as well as by every other point on the line. This can be a final answer, and, pleasingly, has the form"#
+                <MathBlock>
+                  "" r#"$$\te{“}\te{slope} \times \te{run} = \te{rise}\te{”}$$    "#
+                  <ImageRight
+                    src="/images/63.svg"
+                    width=400
+                    pos_x="-1.3rem"
+                    pos_y="-1.6rem"
+                    hidden_in_mobile=true
+                    squiggle_top="36%"
+                    squiggle_left="-2.5rem"
+                  >
+                    ""
+                  </ImageRight>
+                </MathBlock> r#"which can also make it easy to remember!"#
+              </Paragraph>
+              <Paragraph margin_top=15>
+                "" r#""# <Span italic=true>r#"Note 1."#</Span>
+                r#" The answer we gave is more often written "#
+                <MathBlock>r#"$$ y - y_0 = p(x - x_0) $$"#</MathBlock>
+                r#" with the two sides of the equation swapped, or "#
+                <MathBlock>r#"$$ y = p(x - x_0) + y_0 $$"#</MathBlock> r#" with "#
+                <Math>r#"$y$"#</Math>
+                r#" isolated on the left-hand side. From there one can also distribute "#
+                <span class="nobreak">
+                  <Math>r#"$p(x-x_0)$"#</Math>
+                  r#","#
+                </span> r#" obtaining (after putting “"# <span class="nobreak">
+                  <Math>r#"$-px_0$"#</Math>
+                  r#"”  "#
+                </span> r#" last) "# <MathBlock>r#"$$ y = px + y_0 - px_0 $$"#</MathBlock>
+                r#" which has the form "# <MathBlock>r#"$$ y = ax + b $$"#</MathBlock> r#" with "#
+                <span class="nobreak">
+                  <Math>r#"$a = p$"#</Math>
+                  r#","#
+                </span> r#" "# <span class="nobreak">
+                  <Math>r#"$b = y_0 - px_0$"#</Math>
+                  r#"."#
+                </span> r#"    "#
+              </Paragraph>
+            </Solution>
+          </TabElement>
+          <TabElement>
+            ""
+            <Paragraph classes="animate-appear-slow">
+              "" r#""# <Span bold=true>r#"Exercise 3. "#</Span>
+              r#" Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):"#
+            </Paragraph> <Image src="/images/1.svg"/>
+            <Solution>
+              ""
+              <Paragraph>
+                "" r#"Here is the “official” graph of the (vertical) velocity:    "#
+              </Paragraph> <Image src="/images/64.svg"/>
+              <Paragraph indent=Indent::Line>
+                "" r#"On each interval, the velocity is rate of change of the height, i.e., the "#
+                <Span italic=true>r#"slope"#</Span>
+                r#" of the height. For example, the rate of change of the height is "#
+                <MathBlock>r#"$$ {1\te{m} \over 1\te{s}} = 1\te{m}/\te{s} $$"#</MathBlock>
+                r#" between "# <span class="nobreak">
+                  <Math>r#"$-4$"#</Math>
+                  r#"s"#
+                </span> r#" and "# <span class="nobreak">
+                  <Math>r#"$-3$"#</Math>
+                  r#"s,"#
+                </span>
+                r#" where the mosquito goes up by one meter during a one second period, so the vertical velocity is 1m"#
+                <span class="nobreak">
+                  <Math>r#"$/$"#</Math>
+                  r#"s"#
+                </span> r#" for that time interval, etc."#
+              </Paragraph>
+              <Paragraph margin_top=15>
+                "" r#""# <Span italic=true>r#"Note 1."#</Span>
+                r#" As explained in Chapter 3, an empty circle of this type"#
+              </Paragraph> <Image src="/images/65.svg" width="30px"/>
+              <Paragraph>
+                ""
+                r#"indicates a “missing” value.  Specifically, in our case, the vertical velocity is "#
+                <Span italic=true>r#"undefined"#</Span>
+                r#" wherever the graph of the height has a sharp corner. (Because the slope of the graph is not well-defined at such corners.)    "#
+              </Paragraph>
+              <Paragraph margin_top=15>
+                "" r#""# <Span italic=true>r#"Note 2."#</Span> r#"  For the time interval from "#
+                <span class="nobreak">
+                  <Math>r#"$2$"#</Math>
+                  r#"s"#
+                </span> r#" to "# <span class="nobreak">
+                  <Math>r#"$2.5$"#</Math>
+                  r#"s,"#
+                </span> r#" the slope is "#
+                <MathBlock>
+                  r#"$$ {-2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = -\rt{0.07}4\rt{0.1}\te{m}/\te{s} $$"#
+                </MathBlock> r#" and similarly for the time interval  from "# <span class="nobreak">
+                  <Math>r#"$2.5$"#</Math>
+                  r#"s"#
+                </span> r#" to "# <span class="nobreak">
+                  <Math>r#"$3$"#</Math>
+                  r#"s"#
+                </span> r#" the slope is "#
+                <MathBlock>
+                  r#"$$ {2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = 4\rt{0.1}\te{m}/\te{s} $$"#
+                </MathBlock> r#" because "# <span class="nobreak">
+                  <Math>r#"$2/0.5 = 4$"#</Math>
+                  r#"."#
+                </span> r#" (Think: "# <Span italic=true>r#"how many times"#</Span> r#" does "#
+                <Math>r#"$0.5$"#</Math> r#" go into "# <span class="nobreak">
+                  <Math>r#"$2$"#</Math>
+                  r#"?)"#
+                </span> r#""#
+              </Paragraph>
+            </Solution>
+          </TabElement>
+          <TabElement>
+            ""
+            <Paragraph classes="animate-appear-slow">
+              "" r#""# <Span bold=true>r#"Exercise 4. "#</Span>
+              r#" Digressing on the second-to-last equation in the solution to Exercise 2, explain why "#
+              <MathBlock>r#"$$ y_0 - px_0 $$"#</MathBlock> r#" is the "# <span class="nobreak">
+                <Math>r#"$y$"#</Math>
+                r#"-intercept"#
+              </span> r#" of the line of slope "# <Math>r#"$p$"#</Math> r#" through the point "#
+              <Math>r#"$(x_0,y_0)$"#</Math>
+              r#" by using a drawing and “rise equals slope times run”.    "#
+            </Paragraph>
+            <Solution>
+              "" <Paragraph>"" r#"E.g.:"#</Paragraph> <Image src="/images/66.svg" width="640px"/>
+              <Paragraph>
+                "" r#"The rise from the "# <span class="nobreak">
+                  <Math>r#"$y$"#</Math>
+                  r#"-intercept"#
+                </span> r#" to "# <Math>r#"$(x_0, y_0)$"#</Math> r#" is "# <span class="nobreak">
+                  <Math>r#"$px_0$"#</Math>
+                  r#","#
+                </span> r#" as found by “rise equals slope times run”, implying that "#
+                <MathBlock>r#"$$ y_0 - px_0 $$"#</MathBlock> r#" is the "# <span class="nobreak">
+                  <Math>r#"$y$"#</Math>
+                  r#"-intercept."#
+                </span> r#"    "# r#""# <Span italic=true>r#"Note 1."#</Span>
+                r#" Our drawing makes some implicit assumptions, such as "#
+                <Math>r#"$p > 0$"#</Math> r#" and "# <span class="nobreak">
+                  <Math>r#"$x_0 > 0$"#</Math>
+                  r#"."#
+                </span> r#" But "# <MathBlock>r#"$$ px_0 $$"#</MathBlock>
+                r#" is the rise from the "# <span class="nobreak">
+                  <Math>r#"$y$"#</Math>
+                  r#"-intercept"#
+                </span> r#" to "# <Math>r#"$(x_0, y_0)$"#</Math> r#" regardless of the sign of "#
+                <Math>r#"$p$"#</Math> r#" or "# <Math>r#"$x_0$"#</Math> r#" (because “"#
+                <span class="nobreak">
+                  <Math>r#"$x_0$"#</Math>
+                  r#"”  "#
+                </span> r#" is the run in all cases), making "#
+                <MathBlock>r#"$$ y_0 - px_0 $$"#</MathBlock> r#" the "# <span class="nobreak">
+                  <Math>r#"$y$"#</Math>
+                  r#"-intercept"#
+                </span> r#" in all cases.    "#
+              </Paragraph>
+            </Solution>
+          </TabElement>
+        </Tabs>
         <Paragraph>
           <Span bold=true>"Square Roots. "</Span>
           "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
@@ -52,7 +319,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight padding="40px" src="/images/svg_cloud_minus_two_squared.svg" pos_x="3rem" pos_y="-4rem" width=316>
+          $$"#
+          <ImageRight
+            padding="40px"
+            src="/images/svg_cloud_minus_two_squared.svg"
+            pos_x="3rem"
+            pos_y="-4rem"
+            width=316
+          >
             ""
           </ImageRight>
         </MathBlock>
@@ -168,7 +442,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$\hspace{0.03em}X > 50$"#</Math> "—that much seems logical—and, with
           a little thought, the same phenomenon explains why " <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
-        <SectionDivider />
+        <SectionDivider/>
         <Paragraph>
           <Span bold=(true)>"Fractions and Division."</Span>
           " An elementary fraction, or division, such as "
@@ -251,7 +525,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$77.5\%$"#</Math> " greater than " <Math>r#"$40$"# "."</Math>
           " (Interesting, no?)"
         </Paragraph>
-        <SectionDivider />
+        <SectionDivider/>
         <Paragraph>
           <Span bold=(true)>"Distributivity."</Span>
           " As you might already know, a number that multiplies a sum can be brought “inside” the sum. For example, "
@@ -339,7 +613,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 1. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position_y="2.7rem" >
+        <MathBlock height=Height::Fit arrow_position_y="2.7rem">
           r#"$$
               \begin{align}
               (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -462,7 +736,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
           "is a difference of squares, " <Math>r#"$19$"#</Math> " can be factored. (On the other
-              hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
+          hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
         </Paragraph>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 5. "</Span>
@@ -528,7 +802,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$ -7 = -7 $"#</Math>
           ", as it would be, haha.)"
         </Paragraph>
-        <SectionDivider />
+        <SectionDivider/>
         <Paragraph>
           <Span bold=true>"Epilogue. "</Span>
           "Do you remember the near miss between"
@@ -598,7 +872,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               \sqrt{3} + \sqrt{2},\,\, \sqrt{3} - \sqrt{2}
           $$"#
         </MathBlock>
-        <Paragraph >
+        <Paragraph>
           "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
         <Image
@@ -656,28 +930,28 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to "
                 <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
               </Paragraph>
-              <MathBlock id="sqrt-1" height=Height::Fit arrow_position_y="7.6rem" >
-                 r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
-                    =&\,\, \up{1.3}
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
-                    =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
-                    (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
-                    =& \,\, \up{1.4} 2
-                    \end{align}
+              <MathBlock id="sqrt-1" height=Height::Fit arrow_position_y="7.6rem">
+                r#"$$
+                   \begin{align}
+                   &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
+                   =&\,\, \up{1.3}
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
+                   =&\,\, \up{1.3}
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
+                   =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
+                   (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
+                   =& \,\, \up{1.4} 2
+                   \end{align}
                 $$"#
                 <ImageLeft
                   src="/images/17.svg"
@@ -691,28 +965,28 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </ImageLeft>
               </MathBlock>
               <Paragraph>"and"</Paragraph>
-              <MathBlock id="sqrt-2" height=Height::Fit arrow_position_y="7.6rem"  >
-                 r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
-                    =& \,\, \up{1.3}
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
-                    =&\,\, \up{1.4} 2
-                    \end{align}
+              <MathBlock id="sqrt-2" height=Height::Fit arrow_position_y="7.6rem">
+                r#"$$
+                   \begin{align}
+                   &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
+                   =&\,\, \up{1.3}
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
+                   =& \,\, \up{1.3}
+                   (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
+                   =&\,\, \up{1.3}
+                   \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
+                   =&\,\, \up{1.4} 2
+                   \end{align}
                 $$"#
                 <ImageLeft
                   src="/images/18.svg"
@@ -992,7 +1266,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <Paragraph margin_top=15>
                 "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):"
               </Paragraph>
-              <MathBlock height=Height::Fit child_tag="span" arrow_position_y="12.3rem"  >
+              <MathBlock height=Height::Fit child_tag="span" arrow_position_y="12.3rem">
                 <div class="w-full">
                   <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
 
@@ -1409,7 +1683,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>"$0.001$"</Math> ".)
                 (In fact," <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock> "is"
                 <Span italic=true>" less "</Span> "than " <Math>"$1/10^3$"</Math>
-                ", so the error is "<Span italic=true>"less"</Span>" than " <Math>"$0.001$"</Math> ".)"
+                ", so the error is " <Span italic=true>"less"</Span> " than " <Math>"$0.001$"</Math>
+                ".)"
               </Paragraph>
             </Solution>
           </TabElement>
