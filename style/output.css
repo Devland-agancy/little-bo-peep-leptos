@@ -1106,6 +1106,10 @@ video {
   padding-bottom: .7rem;
 }
 
+.pb-\[20px\] {
+  padding-bottom: 20px;
+}
+
 .pl-10 {
   padding-left: 2.5rem;
 }
@@ -1124,6 +1128,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-\[21px\] {
+  padding-top: 21px;
 }
 
 .text-left {

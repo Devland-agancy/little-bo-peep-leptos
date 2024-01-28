@@ -1014,6 +1014,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
         |> Image
             src="/images/1.svg"
+            container_classes="pt-[22px] pb-[15px]"
+            padding_left=90_f64
 
         |> Solution
 
@@ -1023,9 +1025,10 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
             |> Image
                 src="/images/64.svg"
+                container_classes="pt-[21px] pb-[20px]"
+                padding_left=46_f64
 
             |> Paragraph
-                indent=Indent::Line
 
                 On each interval, the velocity is rate of change
                 of the height, i.e., the _slope_ of the height.
@@ -1045,7 +1048,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
             |> Image
                 src="/images/65.svg"
-                width="30px"
 
             |> Paragraph
 
