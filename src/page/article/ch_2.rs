@@ -177,6 +177,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     are not distances but _differences_ (or, equivalently, _changes_).
     A distance, by definition, is a nonnegative number, while a
     difference carries no such restriction.
+
 |> Paragraph   
     indent = Indent::Line
 
@@ -540,14 +541,18 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$
     x = c
     $$
-    (see @Fig. 1@) where $c \in \rr$ is a constant,
+    (see 
+    |> ImageLink
+        direction=Direction::Right
+
+        Fig. 1
+    ) where $c \in \rr$ is a constant,
     similarly to the more familiar equation
     $$
     y = b
     $$
 
     for a horizontal line, where $b \in \rr$ is a constant.
-
 
 |> Paragraph   
     indent=Indent::Line
@@ -720,7 +725,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     *Example 4.*
     The amount of time required
     for the balloon to go up by (say) $4$m is
-    
+
     |> MathBlock
 
         $$
@@ -1112,7 +1117,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 y_0 - px_0
                 $$
                 the $y$-intercept in all cases.
-
-"#
+        
+    "#
     }
 }

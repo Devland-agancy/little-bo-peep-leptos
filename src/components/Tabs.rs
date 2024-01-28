@@ -1,6 +1,6 @@
 use std::{fmt::format, time::Duration};
 
-use crate::utils::get_chapter::get_chapter;
+use crate::{global_state::GlobalState, utils::get_chapter::get_chapter};
 use http::Error;
 use leptos::*;
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
@@ -135,11 +135,7 @@ fn LabelsView(
 }
 
 #[component]
-fn EndLabelsView(
-    cx: Scope,
-    vec: Vec<&'static str>,
-    selected_tab: ReadSignal<usize>,
-) -> impl IntoView {
+fn EndLabelsView(cx: Scope, vec: Vec<&'static str>, selected_tab: usize) -> impl IntoView {
     let (_vec, _) = create_signal(cx, vec);
 
     view! { cx,
@@ -176,7 +172,7 @@ fn EndLabelsView(
                 <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
               }
           }
-          when=move || selected_tab() == _vec().len() - 1
+          when=move || selected_tab == _vec().len() - 1
         >
         <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
         </Show>
@@ -194,13 +190,19 @@ struct LabelsVec {
     labels: ReadSignal<Vec<&'static str>>,
 }
 #[component]
-pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
+pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);
     let (_labels, _) = create_signal(cx, labels.clone());
-    provide_context(cx, SelectedTab { tab: selected_tab });
-    provide_context(cx, LabelsVec { labels: _labels });
+    let GlobalState {
+        labels: global_labels,
+        tab,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+    global_labels.set(labels.clone());
+    tab.set(selected_tab());
+
     let location = use_location(cx);
     let url_params = location.clone().query;
     let (chapter, _) = create_signal(cx, get_chapter(location));
@@ -379,8 +381,7 @@ pub fn tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
 #[component]
 pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
-    let SelectedTab { tab } = use_context::<SelectedTab>(cx).unwrap();
-    let LabelsVec { labels } = use_context::<LabelsVec>(cx).unwrap();
+    let GlobalState { labels, tab, .. } = use_context::<GlobalState>(cx).unwrap();
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {
@@ -403,8 +404,8 @@ pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
             <Show fallback=|_| () when=move || solution_fully_opened() >
                 <div class="text-xl flex items-center justify-center gap-2 col-start-2">
                 <EndLabelsView
-                    vec=labels()
-                    selected_tab=tab
+                    vec=labels.get()
+                    selected_tab=tab.get()
                 />
                 </div>
             </Show>
