@@ -920,9 +920,19 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
                 A point $(x,y) \ne (x_0,y_0)$ is on the line of
                 slope $p$ if and only if
-                $$
-                p = {y - y_0 \over x - x_0}
-                $$
+
+                |> MathBlock
+
+                    $$
+                    p = {y - y_0 \over x - x_0}
+                    $$
+
+                    |> ImageLeft
+                        src="/images/62.svg"
+                        width=800
+                        pos_x="5.5rem"
+                        pos_y="2.2rem"
+
                 because
                 $$
                 \,\,{y - y_0 \over x - x_0}
@@ -1108,7 +1118,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 
             |> Paragraph
                 margin_top=15
-                
+
                 _Note 1._ Our drawing makes some implicit
                 assumptions, such as $p > 0$ and $x_0 > 0$.
                 But
