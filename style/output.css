@@ -1106,6 +1106,10 @@ video {
   padding-bottom: .7rem;
 }
 
+.pb-\[15px\] {
+  padding-bottom: 15px;
+}
+
 .pb-\[20px\] {
   padding-bottom: 20px;
 }
@@ -1132,6 +1136,10 @@ video {
 
 .pt-\[21px\] {
   padding-top: 21px;
+}
+
+.pt-\[22px\] {
+  padding-top: 22px;
 }
 
 .text-left {
@@ -1379,7 +1387,7 @@ span .MathJax_SVG{
 }
 
 .tab:hover:not(.disabled) > path:first-child {
-  fill: #aff160 !important;
+  fill: #bbbbbb !important;
   font-weight: bold;
   border-radius: 4px;
 }

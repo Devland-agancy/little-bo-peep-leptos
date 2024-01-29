@@ -83,7 +83,7 @@ span .MathJax_SVG{
 }
 
 .tab:hover:not(.disabled) > path:first-child {
-  fill: #aff160 !important;
+  fill: #bbbbbb !important;
   font-weight: bold;
   border-radius: 4px;
 }
