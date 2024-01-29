@@ -543,7 +543,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     $$
     (see 
     |> ImageLink
-        direction=Direction::Right
+        direction=Direction::Left
 
         Fig. 1
     ) where $c \in \rr$ is a constant,
