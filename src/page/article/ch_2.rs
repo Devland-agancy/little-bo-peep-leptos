@@ -658,7 +658,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
     margin_top = 15
 
     whenever the $y$ axis has dimensions of length and the $x$ axis has
-    dimensions of time&mdash;whether the slope turns out to
+    dimensions of time—whether the slope turns out to
 
     |> p
 
