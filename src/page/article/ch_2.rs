@@ -1106,6 +1106,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$
                 is the $y$-intercept.
                 
+            |> Paragraph
+                margin_top=15
+                
                 _Note 1._ Our drawing makes some implicit
                 assumptions, such as $p > 0$ and $x_0 > 0$.
                 But
