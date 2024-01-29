@@ -654,7 +654,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
     “slope = velocity”
 
-|> Paragraph   
+|> Paragraph
     margin_top = 15
 
     whenever the $y$ axis has dimensions of length and the $x$ axis has
@@ -1105,7 +1105,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
 
             |> Image
                 src="/images/66.svg"
-                width="640px"
 
             |> Paragraph
 
