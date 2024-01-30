@@ -1387,7 +1387,7 @@ span .MathJax_SVG{
 }
 
 .tab:hover:not(.disabled) > path:first-child {
-  fill: #bbbbbb !important;
+  fill: #91ed23 !important;
   font-weight: bold;
   border-radius: 4px;
 }

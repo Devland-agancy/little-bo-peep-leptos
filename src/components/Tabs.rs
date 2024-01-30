@@ -73,8 +73,8 @@ fn LabelsView(
         <path
           class="overflow-visible"
           d="M35.4941 1H6.65545C3.53203 1 1 3.53203 1 6.65545V35.4941C1 38.6175 3.53203 41.1495 6.65545 41.1495H35.4941C38.6175 41.1495 41.1495 38.6175 41.1495 35.4941V6.65545C41.1495 3.53203 38.6175 1 35.4941 1Z"
-          fill=move || format!("{}", if selected_tab() != 0 { "#EEFFAA" } else { "#bbbbbb" })
-          fill-opacity="0.4"
+          fill=move || format!("{}", if selected_tab() != 0 { "#EEFFAA" } else { "#EBEBEB" })
+          fill-opacity=move || format!("{}", if selected_tab() != 0 { "0.4" } else { "1" })
           stroke="black"
           stroke-width="1.5"
           stroke-miterlimit="2"
@@ -117,9 +117,11 @@ fn LabelsView(
           class="overflow-visible"
           d="M35.4941 1H6.65545C3.53203 1 1 3.53203 1 6.65545V35.4941C1 38.6175 3.53203 41.1495 6.65545 41.1495H35.4941C38.6175 41.1495 41.1495 38.6175 41.1495 35.4941V6.65545C41.1495 3.53203 38.6175 1 35.4941 1Z"
           fill=move || {
-              format!("{}", if selected_tab() != _vec().len() - 1 { "#EEFFAA" } else { "#bbbbbb" })
+              format!("{}", if selected_tab() != _vec().len() - 1 { "#EEFFAA" } else { "#EBEBEB" })
           }
-
+          fill-opacity=move || {
+            format!("{}", if selected_tab() != _vec().len() - 1 { "0.4" } else { "1" })
+        }
           fill-opacity="0.4"
           stroke="black"
           stroke-width="1.5"
