@@ -28,9 +28,11 @@ pub fn ImageRight(
         use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
-
-    let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
+    let GlobalState {
+        show_areas,
+        margin_scroll_value,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
 
     let image_ref = create_node_ref::<Img>(cx);
 
@@ -41,7 +43,7 @@ pub fn ImageRight(
             e.stop_propagation();
             if page_state() == PageState::ShowArticle {
                 set_page_state(PageState::ShowRight);
-                set_right_image_x_pos
+                margin_scroll_value
                     .update(|val| {
                         *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left());
                     })

@@ -1,8 +1,5 @@
 use crate::{global_state::GlobalState, page::state::PageState};
-use leptos::{
-    html::{Button, Img},
-    *,
-};
+use leptos::{html::Img, *};
 
 #[component]
 pub fn ImageLeft(
@@ -29,7 +26,18 @@ pub fn ImageLeft(
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
     let image_ref = create_node_ref::<Img>(cx);
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState {
+        show_areas,
+        margin_scroll_value,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+    let (image_width, set_image_width) = create_signal(cx, 0_f64);
+
+    create_effect(cx, move |_| {
+        if let Some(img) = image_ref() {
+            set_image_width(img.offset_width() as f64)
+        }
+    });
 
     view! { cx,
       <button
@@ -43,6 +51,7 @@ pub fn ImageLeft(
                         _ => PageState::ShowArticle,
                     };
                 });
+            margin_scroll_value.set(image_width())
         }
 
         style=move || {
@@ -66,8 +75,7 @@ pub fn ImageLeft(
         class=("pointer-events-none", show_left)
         class=("outline-[20px]", move || show_areas())
         class=("outline-[#3f9aff7d]", move || show_areas())
-            class=("outline", move || show_areas())
-
+        class=("outline", move || show_areas())
       >
         <div style=move || format!(" top: {}; left: {}", children_y, children_x)>{children(cx)}</div>
         <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>

@@ -1,10 +1,11 @@
-use crate::page::state::PageState;
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{
     ev::{click, mousedown, touchstart, EventDescriptor},
     html::Div,
     *,
 };
 use leptos_use::use_event_listener;
+use std::cmp;
 use std::time::Duration;
 use web_sys::{Event, ScrollBehavior, ScrollToOptions};
 
@@ -15,9 +16,11 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let show_right = move || page_state() == PageState::ShowRight;
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
-    let right_image_x_pos = use_context::<ReadSignal<f64>>(cx).unwrap();
     let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
-
+    let GlobalState {
+        margin_scroll_value,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
     // can_click is for disabling click on page transition
     let (can_click, set_can_click) = create_signal(cx, true);
 
@@ -29,7 +32,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             if article_node().is_some() {
                 let _ = article_node().unwrap().style("left", "1500px");
             }
-            options.left(1500_f64);
+            options.left(1500.0);
             options.behavior(ScrollBehavior::Instant);
             window().scroll_with_scroll_to_options(&options);
         }
@@ -38,7 +41,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             set_can_click(false);
             set_timeout(
                 move || {
-                    options.left(right_image_x_pos() + 1500_f64);
+                    options.left(margin_scroll_value.get() + 1500.0);
                     options.behavior(ScrollBehavior::Smooth);
                     window().scroll_with_scroll_to_options(&options);
                     set_timeout(move || set_can_click(true), Duration::from_millis(800));
@@ -48,7 +51,11 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         } else if show_left() {
             set_timeout(
                 move || {
-                    options.left(1000_f64);
+                    options.left(if margin_scroll_value.get() == 0.0 {
+                        1000.0
+                    } else {
+                        1500.0 - margin_scroll_value.get()
+                    });
                     options.behavior(ScrollBehavior::Smooth);
                     window().scroll_with_scroll_to_options(&options);
                 },
@@ -63,13 +70,13 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                 set_can_click(false);
                 let mut options = ScrollToOptions::new();
                 options.behavior(ScrollBehavior::Smooth);
-                options.left(1500_f64);
+                options.left(1500.0);
                 window().scroll_with_scroll_to_options(&options);
                 set_timeout(
                     move || {
                         let _ = article_node().unwrap().style("left", "0");
                         options.behavior(ScrollBehavior::Instant);
-                        options.left(0_f64);
+                        options.left(0.0);
                         window().scroll_with_scroll_to_options(&options);
                         set_timeout(
                             move || {

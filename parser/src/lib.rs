@@ -38,7 +38,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
 
         match fs::read_to_string(file) {
             Ok(contents) => transform(contents.to_string()),
-            Err(err) => "File not found".to_string(),
+            Err(_) => "File not found".to_string(),
         }
     } else {
         transform(elm.value())

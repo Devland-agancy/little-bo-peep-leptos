@@ -24,8 +24,11 @@ pub fn Image(
 
     let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let set_right_image_x_pos = use_context::<WriteSignal<f64>>(cx).unwrap();
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState {
+        show_areas,
+        margin_scroll_value,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
     let (mobile, set_mobile) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
@@ -98,7 +101,7 @@ pub fn Image(
                   .update(|value| {
                       *value = PageState::ShowRight;
                   });
-              set_right_image_x_pos
+                  margin_scroll_value
                   .update(|val| {
                       *val = 100_f64;
                   })
