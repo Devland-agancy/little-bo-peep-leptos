@@ -33,8 +33,15 @@ pub fn ImageRight(
         margin_scroll_value,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-
     let image_ref = create_node_ref::<Img>(cx);
+
+    let (image_width, set_image_width) = create_signal(cx, 0_f64);
+
+    create_effect(cx, move |_| {
+        if let Some(img) = image_ref() {
+            set_image_width(img.offset_width() as f64)
+        }
+    });
 
     view! { cx,
       <button
@@ -43,10 +50,7 @@ pub fn ImageRight(
             e.stop_propagation();
             if page_state() == PageState::ShowArticle {
                 set_page_state(PageState::ShowRight);
-                margin_scroll_value
-                    .update(|val| {
-                        *val = f64::from(image_ref().unwrap().get_bounding_client_rect().left());
-                    })
+                margin_scroll_value.set(image_width())
             }
         }
 
