@@ -497,7 +497,7 @@
     |> ImageLeft
         src="/images/50.svg"
         width=200
-        pos_y="0.5rem"
+        pos_y="4.5rem"
         pos_x="-5rem"
 
     $$
