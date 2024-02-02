@@ -343,6 +343,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>"by distributivity again."</Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 1. "</Span>
           "One has"
@@ -357,6 +358,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>"so " <Math>r#"$12 \space \times \space 14 = 168$"#</Math> "."</Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 2. "</Span>
           "One has"
@@ -400,6 +402,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           "but such terminology
           is not very important at this stage.)"
         </Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 3. "</Span>
           "By the last formula (or “binomial expansion of degree two”),"
@@ -459,6 +462,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           "(Factored as " <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
           " (PS: “Factored” means “written as a product”.)"
         </Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 4. "</Span>
           "Since"
@@ -472,6 +476,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           "is a difference of squares, " <Math>r#"$19$"#</Math> " can be factored. (On the other
           hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
         </Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 5. "</Span>
           "The algebraic expression "
@@ -527,6 +532,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>"by distributivity (used in the second step)."</Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 6. "</Span>
           "We have "
@@ -583,6 +589,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>"for a difference of squares!"</Paragraph>
+        <SectionDivider/>
         <Paragraph margin_top=15>
           <Span bold=true>"Vocabulary. "</Span>
           "A pair of algebraic expressions of the form"

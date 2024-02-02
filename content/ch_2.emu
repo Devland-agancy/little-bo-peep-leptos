@@ -102,6 +102,8 @@
 
     more succinctly. We call this the _slope formula_.
 
+|> SectionDivider
+
 |> Paragraph   
     margin_top = 15
 
@@ -297,6 +299,8 @@
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
     are, truth be said, equally valid versions of the slope formula!
 
+|> SectionDivider
+
 |> Paragraph   
     margin_top = 15
 
@@ -381,6 +385,8 @@
     (Or, a little more exactly, as shorthands for the phrases “change in
     $x$”, “change in $y$”.)
         
+|> SectionDivider
+
 |> Paragraph   
     margin_top = 15  
 
@@ -406,6 +412,8 @@
 |> Paragraph   
     
     ...as can sometimes be useful to know.  
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15  
@@ -472,6 +480,8 @@
     so, 
     by our own definition of slope—the increase in $y$ per unit increase in $x$—$a$ 
     is the slope of $y = ax + b$.
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15 
@@ -548,6 +558,8 @@
         squiggle_left="-5.2rem"
         squiggle_top="31%"
         hidden_in_mobile=true
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
@@ -656,6 +668,8 @@
     ...these formulas, commonly useful in “applied”
     problems.
 
+|> SectionDivider
+
 |> Paragraph   
     margin_top = 15
 
@@ -673,6 +687,8 @@
     found in the second line of the table. (Indeed,
     $0.75$m$/$s is the “rate of change” of
     the balloon's height.)
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
@@ -714,6 +730,8 @@
     \rt{0.1}\te{”}
     $$
     found in the third line of the table.
+
+|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
