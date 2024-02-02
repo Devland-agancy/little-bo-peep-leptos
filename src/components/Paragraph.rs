@@ -31,6 +31,7 @@ pub fn Paragraph(
     #[prop(default = 0)] margin_top: i16,
     #[prop(optional)] id: &'static str,
     #[prop(optional)] classes: &'static str,
+    #[prop(default = false)] no_padding: bool,
 ) -> impl IntoView {
     let GlobalState {
         burger_background,
@@ -59,8 +60,9 @@ pub fn Paragraph(
       <span
         id=id
         node_ref=node_ref
-        class=format!("col-start-2 px-4 block relative {}", classes)
+        class=format!("col-start-2 block relative {}", classes)
         class=("indent-10", indent == Indent::Line)
+        class=("px-4", !no_padding)
         class=("pl-10", indent == Indent::Block)
         class=("text-center", align == Align::Center)
         class=("text-right", align == Align::Right)

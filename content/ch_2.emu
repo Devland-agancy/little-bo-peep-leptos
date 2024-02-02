@@ -895,6 +895,7 @@
 
                 |> Paragraph
                     indent=Indent::Line
+                    no_padding=true
 
                     Unfortunately, the equation
 
@@ -912,6 +913,7 @@
 
                 |> Paragraph
                     indent=Indent::Line
+                    no_padding=true
 
                     Instead, multiplying
 
