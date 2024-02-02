@@ -667,11 +667,8 @@
     $$
     following the template
     $$
-    \begin{array}{c}
-    \rt{0.08}
     (\te{rate of change}) \times \te{(amount of time)}\\
-    = \te{(amount of change)}\rt{0.05}
-    \end{array}
+    = \te{(amount of change)}
     $$
     found in the second line of the table. (Indeed,
     $0.75$m$/$s is the “rate of change” of
