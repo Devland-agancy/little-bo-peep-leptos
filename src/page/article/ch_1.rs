@@ -1064,7 +1064,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 " is odd, " <Math>r#"$ (-1)^{101} $"#</Math> " is
                 " <Math>r#"$ -1 $"#</Math> "."
               </Paragraph>
-              <Paragraph margin_top=15>"(False) We have"</Paragraph>
+              <Paragraph margin_top=15>"i. (False) We have"</Paragraph>
               <MathBlock height=Height::Fit>
                 r#"$${100 \over 99} = {99 + 1 \over 99} = 1 + {1 \over 99}$$"#
               </MathBlock>
