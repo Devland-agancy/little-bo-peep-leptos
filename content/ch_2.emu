@@ -506,7 +506,7 @@
     (see 
     |> ImageLink
         direction=Direction::Left
-        scroll_by=200.0
+        scroll_by=300.0
 
         Fig. 1
     ) where $c \in \rr$ is a constant,
