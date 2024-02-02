@@ -657,14 +657,6 @@ video {
   margin-bottom: 3rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.mb-\[1\.2em\] {
-  margin-bottom: 1.2em;
-}
-
 .mb-\[31px\] {
   margin-bottom: 31px;
 }
@@ -675,14 +667,6 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
-.mt-\[1\.4em\] {
-  margin-top: 1.4em;
 }
 
 .mt-\[2px\] {
@@ -1106,14 +1090,6 @@ video {
   padding-bottom: .7rem;
 }
 
-.pb-\[15px\] {
-  padding-bottom: 15px;
-}
-
-.pb-\[20px\] {
-  padding-bottom: 20px;
-}
-
 .pl-10 {
   padding-left: 2.5rem;
 }
@@ -1128,18 +1104,6 @@ video {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
-}
-
-.pt-\[21px\] {
-  padding-top: 21px;
-}
-
-.pt-\[22px\] {
-  padding-top: 22px;
 }
 
 .text-left {
@@ -1386,7 +1350,15 @@ span .MathJax_SVG{
   grid-template-rows: 1fr;
 }
 
-.tab:hover:not(.disabled) > path:first-child {
+@media (hover: hover) {
+  .tab:hover:not(.disabled) > path:first-child {
+    fill: #91ed23 !important;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+}
+
+.tab:active:not(.disabled) > path:first-child {
   fill: #91ed23 !important;
   font-weight: bold;
   border-radius: 4px;
