@@ -621,12 +621,8 @@
     margin_top = 15
 
     whenever the $y$ axis has dimensions of length and the $x$ axis has
-    dimensions of time—whether the slope turns out to
-
-    |> p
-
-        be $\te{m}/\te{s}$ or $\te{km}/\te{s}$ or km/hour, etc,
-        depends on the exact units involved.)
+    dimensions of time—whether the slope turns out to be $\te{m}/\te{s}$ or $\te{km}/\te{s}$ or km/hour, etc,
+    depends on the exact units involved.)
 
 |> Paragraph   
     indent=Indent::Line
