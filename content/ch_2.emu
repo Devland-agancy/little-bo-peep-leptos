@@ -694,7 +694,7 @@
             pos_y="-5.5rem"
             hidden_in_mobile=true
             squiggle_top="40%"
-            squiggle_left="3.5rem"
+            squiggle_left="4.5rem"
             children_y="34%"
             children_x="29%"
             clickable_on_desktop=true
@@ -939,7 +939,7 @@
                         pos_y="-1.6rem"
                         hidden_in_mobile=true
                         squiggle_top="36%"
-                        squiggle_left="-2.5rem"
+                        squiggle_left="-1.8rem"
 
                 which can also make it easy to remember!
 
