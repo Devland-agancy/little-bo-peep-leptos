@@ -625,7 +625,6 @@
     depends on the exact units involved.)
 
 |> Paragraph   
-    indent=Indent::Line
     margin_top = 15
 
     Terminology-wise, slopes are often known as
