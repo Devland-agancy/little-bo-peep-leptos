@@ -749,12 +749,8 @@
 |> Paragraph   
     margin_top = 15
 
-    one could easily be tricked into thinking that a “dimension”
-
-    |> p
-
-        is the same thing as a “unit”.
-        In fact, dimensions are broader categories, such as, namely,
+    one could easily be tricked into thinking that a “dimension” is the same thing as a “unit”.
+    In fact, dimensions are broader categories, such as, namely,
 
     __time__
     __length__
