@@ -96,7 +96,7 @@
             pos_y="-11rem"
             hidden_in_mobile=true
             squiggle_top="47%"
-            squiggle_left="-1.5rem"
+            squiggle_left="-1rem"
 
 |> Paragraph   
 
@@ -292,7 +292,7 @@
             pos_y="-10.5rem"
             pos_x="1rem"
             squiggle_right="0rem"
-            squiggle_top="62%"
+            squiggle_top="-1.1rem"
             hidden_in_mobile=true
     
     which verifies this hypothesis. In particular,
@@ -555,7 +555,7 @@
         width=300
         pos_y="-3.5rem"
         pos_x="-3rem"
-        squiggle_left="-5.2rem"
+        squiggle_left="-5.1rem"
         squiggle_top="31%"
         hidden_in_mobile=true
 
@@ -710,7 +710,7 @@
             pos_y="-5.5rem"
             hidden_in_mobile=true
             squiggle_top="40%"
-            squiggle_left="4.5rem"
+            squiggle_left="4.9rem"
             children_y="34%"
             children_x="29%"
             clickable_on_desktop=true
@@ -957,7 +957,7 @@
                         pos_y="-1.6rem"
                         hidden_in_mobile=true
                         squiggle_top="36%"
-                        squiggle_left="-1.8rem"
+                        squiggle_left="-1.3rem"
 
                 which can also make it easy to remember!
 
