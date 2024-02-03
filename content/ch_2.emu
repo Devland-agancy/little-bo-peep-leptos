@@ -102,8 +102,6 @@
 
     more succinctly. We call this the _slope formula_.
 
-|> SectionDivider
-
 |> Paragraph   
     margin_top = 15
 
@@ -481,8 +479,6 @@
     by our own definition of slope—the increase in $y$ per unit increase in $x$—$a$ 
     is the slope of $y = ax + b$.
 
-|> SectionDivider
-
 |> Paragraph   
     margin_top = 15 
 
@@ -558,8 +554,6 @@
         squiggle_left="-5.1rem"
         squiggle_top="31%"
         hidden_in_mobile=true
-
-|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
@@ -668,8 +662,6 @@
     ...these formulas, commonly useful in “applied”
     problems.
 
-|> SectionDivider
-
 |> Paragraph   
     margin_top = 15
 
@@ -687,8 +679,6 @@
     found in the second line of the table. (Indeed,
     $0.75$m$/$s is the “rate of change” of
     the balloon's height.)
-
-|> SectionDivider
 
 |> Paragraph   
     margin_top = 15
