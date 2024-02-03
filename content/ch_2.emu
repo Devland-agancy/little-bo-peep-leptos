@@ -815,13 +815,13 @@
                 |> ImageRight
                     src="/images/56.svg"
                     width=340
-                    pos_x="3rem"
-                    pos_y="15rem"
+                    pos_x="4rem"
+                    pos_y="16rem"
 
                 |> ImageLeft
                     src="/images/57.svg"
                     width=340
-                    pos_x="13rem"
+                    pos_x="10rem"
                     pos_y="19rem"
 
             |> Paragraph
@@ -843,13 +843,13 @@
                 |> ImageRight
                     src="/images/59.svg"
                     width=340
-                    pos_x="3rem"
-                    pos_y="20rem"
+                    pos_x="4rem"
+                    pos_y="22rem"
 
                 |> ImageLeft
                     src="/images/60.svg"
                     width=340
-                    pos_x="11rem"
+                    pos_x="8rem"
                     pos_y="23rem"
 
             |> Paragraph
