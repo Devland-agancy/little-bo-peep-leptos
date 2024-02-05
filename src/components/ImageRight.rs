@@ -38,9 +38,11 @@ pub fn ImageRight(
     let (image_width, set_image_width) = create_signal(cx, 0_f64);
 
     create_effect(cx, move |_| {
-        if let Some(img) = image_ref() {
-            set_image_width(img.offset_width() as f64)
-        }
+        request_animation_frame(move || {
+            if let Some(img) = image_ref() {
+                set_image_width(img.offset_width() as f64)
+            }
+        });
     });
 
     view! { cx,
