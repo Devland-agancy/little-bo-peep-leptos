@@ -584,7 +584,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>"for a difference of squares!"</Paragraph>
         <SectionDivider/>
-        <Paragraph margin_top=15>
+        <Paragraph>
           <Span bold=true>"Vocabulary. "</Span>
           "A pair of algebraic expressions of the form"
         </Paragraph>

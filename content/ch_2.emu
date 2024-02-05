@@ -300,7 +300,6 @@
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15
 
     *Pathological Cases.*
     If
@@ -386,7 +385,6 @@
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15  
 
     *Solving for “rise” and “run”.*
     Multiplying
@@ -414,7 +412,6 @@
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15  
 
     *Slopes and Line Equations.*
     An equation of the form
@@ -555,8 +552,9 @@
         squiggle_top="31%"
         hidden_in_mobile=true
 
+|> SectionDivider
+
 |> Paragraph   
-    margin_top = 15
 
     *Slopes and Units.*
     If the $x$- and $y$-axes have units then a line's slope has units
@@ -724,7 +722,6 @@
 |> SectionDivider
 
 |> Paragraph   
-    margin_top = 15
 
     *Postscript: Units vs Dimensions.*
     Comparing
