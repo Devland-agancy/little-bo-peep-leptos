@@ -17,6 +17,7 @@ pub fn Image(
     #[prop(default = 0_f64)] padding_left: f64,
     #[prop(default = 0_f64)] padding_right: f64,
     #[prop(default = false)] cloud_image: bool,
+    children: Children,
 ) -> impl IntoView {
     let image_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
@@ -122,7 +123,7 @@ pub fn Image(
           class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wide())
           class=("outline", move || show_areas() && cloud_image && is_wide())
         />
-
+          {children(cx)}
       </div>
     }
 }

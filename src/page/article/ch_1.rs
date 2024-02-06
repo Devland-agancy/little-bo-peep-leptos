@@ -616,7 +616,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           height="50px"
           width="160px"
           container_classes="flex items-center mt-[45px] mb-[40px]"
-        />
+        >""</Image>
         <Tabs labels=vec!["1", "2"]>
           <TabElement>
             <Paragraph classes="animate-appear-slow">
