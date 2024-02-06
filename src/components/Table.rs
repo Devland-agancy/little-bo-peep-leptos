@@ -30,7 +30,7 @@ pub fn Table(
           classes,
       )>
         <table
-          class="table-fixed"
+          class="table-fixed max-w-full"
           class=("lines", move || lines)
           style=move || format!("margin-top: {}px ;{}", margin_top, style)
         >
