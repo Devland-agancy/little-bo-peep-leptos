@@ -403,7 +403,7 @@ pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
     });
     view! { cx,
             {children(cx)}
-            <Show fallback=|_| () when=move || solution_fully_opened() >
+            <Show fallback=|_| () when=move || solution_open() && solution_fully_opened() >
                 <div class="text-xl flex items-center justify-center gap-2 col-start-2">
                 <EndLabelsView
                     vec=labels.get()

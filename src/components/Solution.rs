@@ -44,7 +44,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
                     }
                 }
             },
-            Duration::from_secs(1),
+            Duration::from_secs(3),
         )
     });
 
