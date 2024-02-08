@@ -37,8 +37,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                     let mut options = ScrollToOptions::new();
                     set_can_click(true);
 
-                    if window().scroll_x().unwrap() > 1000.0
-                        && window().scroll_x().unwrap() < 2000.0
+                    if window().scroll_x().unwrap() > 1300.0
+                        && window().scroll_x().unwrap() < 1700.0
                     {
                         options.left(1500.0);
                         options.behavior(ScrollBehavior::Smooth);
