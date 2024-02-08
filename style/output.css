@@ -572,6 +572,10 @@ video {
   left: -1500px;
 }
 
+.left-\[1500px\] {
+  left: 1500px;
+}
+
 .left-\[2\%\] {
   left: 2%;
 }
