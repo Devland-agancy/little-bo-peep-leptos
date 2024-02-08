@@ -807,20 +807,19 @@
                 This is true, as illustrated by the following pair of lines:
 
                 |> Image
-                    id="exo-1-fig-1"
                     src="/images/55.svg"
+                    container_classes="relative w-fit"
 
                     |> ImageRight
                         src="/images/56.svg"
                         width=340
-                        pos_x="3rem"
+                        pos_x="8%"
                         pos_y="13rem"
-                        relative_to="exo-1-fig-1"
 
                     |> ImageLeft
                         src="/images/57.svg"
                         width=340
-                        pos_x="10rem"
+                        pos_x="30%"
                         pos_y="16rem"
 
             |> Paragraph
@@ -838,18 +837,19 @@
     
                 |> Image
                     src="/images/58.svg"
+                    container_classes="relative w-fit"
 
                     |> ImageRight
                         src="/images/59.svg"
                         width=340
-                        pos_x="4rem"
-                        pos_y="22rem"
+                        pos_x="8%"
+                        pos_y="15rem"
 
                     |> ImageLeft
                         src="/images/60.svg"
                         width=340
-                        pos_x="8rem"
-                        pos_y="23rem"
+                        pos_x="25%"
+                        pos_y="16rem"
 
             |> Paragraph
 

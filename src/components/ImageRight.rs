@@ -1,8 +1,5 @@
 use crate::{global_state::GlobalState, page::state::PageState};
-use leptos::{
-    html::{Button, Img},
-    *,
-};
+use leptos::{html::Img, *};
 
 #[component]
 pub fn ImageRight(
@@ -21,7 +18,6 @@ pub fn ImageRight(
     #[prop(default = 0)] width: i32,
     #[prop(default = false)] clickable_on_desktop: bool,
     #[prop(default = "")] padding: &'static str,
-    #[prop(default = "")] relative_to: &'static str,
 
     children: Children,
 ) -> impl IntoView {
