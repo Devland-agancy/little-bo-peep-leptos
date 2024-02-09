@@ -36,6 +36,9 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
+.MathJax_SVG_Display{
+  margin: 0 !important;
+}
 .hidden-on-startup {
   max-height: 0;
   height: 0;

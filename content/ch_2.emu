@@ -92,8 +92,8 @@
         |> ImageRight
             src="/images/32.svg"
             width=600
-            pos_x="-1rem"
-            pos_y="-11rem"
+            x_anchor="-1rem"
+            y_anchor="-11rem"
             hidden_in_mobile=true
             squiggle_top="47%"
             squiggle_left="-1rem"
@@ -267,8 +267,8 @@
 
     |> ImageRight
         src="/images/38.svg"
-        pos_y="-1.65rem"
-        pos_x="0"
+        y_anchor="-1.65rem"
+        x_anchor="0"
         squiggle_left="-2rem"
         squiggle_top="38%"
         hidden_in_mobile=true
@@ -287,8 +287,8 @@
         |> ImageLeft
             src="/images/39.svg"
             width=400
-            pos_y="-10.5rem"
-            pos_x="1rem"
+            y_anchor="-10.5rem"
+            x_anchor="1rem"
             squiggle_top="4.8rem"
             squiggle_right="1.1rem"
             hidden_in_mobile=true
@@ -500,8 +500,8 @@
     |> ImageLeft
         src="/images/50.svg"
         width=200
-        pos_y="4.5rem"
-        pos_x="-5rem"
+        y_anchor="4.5rem"
+        x_anchor="-5rem"
 
     $$
     x = c
@@ -546,8 +546,8 @@
     |> ImageRight
         src="/images/51.svg"
         width=300
-        pos_y="-3.5rem"
-        pos_x="-3rem"
+        y_anchor="-3.5rem"
+        x_anchor="-3rem"
         squiggle_left="-5.1rem"
         squiggle_top="31%"
         hidden_in_mobile=true
@@ -694,8 +694,8 @@
         |> ImageRight
             src="/images/54.svg"
             width=930
-            pos_x="5rem"
-            pos_y="-5.5rem"
+            x_anchor="5rem"
+            y_anchor="-5.5rem"
             hidden_in_mobile=true
             squiggle_top="40%"
             squiggle_left="4.9rem"
@@ -813,14 +813,14 @@
                     |> ImageRight
                         src="/images/56.svg"
                         width=340
-                        pos_x="8%"
-                        pos_y="13rem"
+                        x_anchor="8%"
+                        y_anchor="13rem"
 
                     |> ImageLeft
                         src="/images/57.svg"
                         width=340
-                        pos_x="30%"
-                        pos_y="16rem"
+                        x_anchor="30%"
+                        y_anchor="16rem"
 
             |> Paragraph
 
@@ -842,14 +842,14 @@
                     |> ImageRight
                         src="/images/59.svg"
                         width=340
-                        pos_x="8%"
-                        pos_y="15rem"
+                        x_anchor="8%"
+                        y_anchor="15rem"
 
                     |> ImageLeft
                         src="/images/60.svg"
                         width=340
-                        pos_x="25%"
-                        pos_y="16rem"
+                        x_anchor="25%"
+                        y_anchor="16rem"
 
             |> Paragraph
 
@@ -888,8 +888,8 @@
                     |> ImageLeft
                         src="/images/62.svg"
                         width=800
-                        pos_x="5.5rem"
-                        pos_y="-4.5rem"
+                        x_anchor="5.5rem"
+                        y_anchor="-4.5rem"
 
                 because
                 $$
@@ -942,8 +942,8 @@
                     |> ImageRight
                         src="/images/63.svg"
                         width=400
-                        pos_x="-1.3rem"
-                        pos_y="-1.6rem"
+                        x_anchor="-1.3rem"
+                        y_anchor="-1.6rem"
                         hidden_in_mobile=true
                         squiggle_top="36%"
                         squiggle_left="-1.3rem"

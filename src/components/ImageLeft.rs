@@ -7,8 +7,8 @@ pub fn ImageLeft(
     src: &'static str,
     #[prop(default = false)] hidden_in_mobile: bool,
     #[prop(default = "center")] position: &'static str,
-    #[prop(default = "")] pos_y: &'static str,
-    #[prop(default = "0px")] pos_x: &'static str,
+    #[prop(default = "")] y_anchor: &'static str,
+    #[prop(default = "0px")] x_anchor: &'static str,
 
     #[prop(default = "-1.5rem")] squiggle_right: &'static str,
     #[prop(default = "30%")] squiggle_top: &'static str,
@@ -57,9 +57,9 @@ pub fn ImageLeft(
         style=move || {
             format!(
                 "transform: translateX(calc(0px - 100%)); left: {}; top: {}; padding: {}",
-                pos_x,
-                if pos_y != "" {
-                    pos_y
+                x_anchor,
+                if y_anchor != "" {
+                    y_anchor
                 } else {
                     match position {
                         "bottom" => "50%",

@@ -87,7 +87,7 @@ pub fn Image(
         style=move || format!("padding-left: {}px; padding-right: {}px;", if show_padding() {padding_left} else {0_f64}, if show_padding() {padding_right} else {0_f64} )
         class=move || {
             format!(
-                "my-[15px] relative col-start-2 scrollbar-hidden sm:overflow-x-visible {}",
+                "relative col-start-2 scrollbar-hidden sm:overflow-x-visible {}",
                 container_classes,
             )
         }

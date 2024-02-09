@@ -16,6 +16,7 @@ pub mod List;
 pub mod Math;
 pub mod MathBlock;
 pub mod Paragraph;
+pub mod Section;
 pub mod SectionDivider;
 pub mod Solution;
 pub mod Span;

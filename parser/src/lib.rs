@@ -2,7 +2,7 @@
 extern crate proc_macro;
 extern crate nom;
 
-use elm_parser::transform::transform;
+use elm_parser::transform::Transformer;
 use proc_macro::TokenStream;
 use proc_macro2::Ident;
 use quote::quote;
@@ -29,6 +29,9 @@ pub fn elm(input: TokenStream) -> TokenStream {
     // Extract the HTML string
     let cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
+
+    let transformer: Transformer = Transformer::new(vec!["img", "SectionDivider"], "Paragraph");
+
     let leptos_code = if elm.value().starts_with("file:") {
         let file = format!(
             "{}{}",
@@ -37,11 +40,11 @@ pub fn elm(input: TokenStream) -> TokenStream {
         );
 
         match fs::read_to_string(file) {
-            Ok(contents) => transform(contents.to_string()),
+            Ok(contents) => transformer.transform(contents.to_string()),
             Err(_) => "File not found".to_string(),
         }
     } else {
-        transform(elm.value())
+        transformer.transform(elm.value())
     };
 
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
