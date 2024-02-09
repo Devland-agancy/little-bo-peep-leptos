@@ -7,6 +7,7 @@ use crate::components::Columns::*;
 use crate::components::Link::*;
 use crate::components::Paragraph::*;
 use crate::constants::MENU_ITEMS;
+use crate::global_state::GlobalState;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
@@ -39,10 +40,10 @@ fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    let set_route = use_context::<WriteSignal<&str>>(cx).unwrap();
+    let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <a href={["/article/", href].concat()} class="block" on:click=move |_| set_route(href)>
+      <a href={["/article/", href].concat()} class="block" on:click=move |_| route.set(href)>
         <span class="sm:hidden">{if on_mobile == "" {label} else {on_mobile}}</span>
         <span class="hidden sm:block">{label}</span>
       </a>

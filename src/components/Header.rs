@@ -27,6 +27,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
       <div
@@ -34,7 +35,7 @@ fn Title(cx: Scope) -> impl IntoView {
         id="Header"
       >
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
-          <a href="/">"Little Bo Peep"</a>
+          <a on:click=move |_| route.set("/") href="/">"Little Bo Peep"</a>
         </div>
       </div>
     }
@@ -99,12 +100,13 @@ fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    let set_route = use_context::<WriteSignal<&str>>(cx).unwrap();
+    let GlobalState { route, .. } = use_context(cx).unwrap();
+
     view! { cx,
       <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
           on:click=move |_|{
-            set_route(href);
+            route.set(href);
           }
           href=["/article/", href].concat()
           class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"

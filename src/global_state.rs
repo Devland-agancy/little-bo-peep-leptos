@@ -7,6 +7,7 @@ pub struct GlobalState {
     pub tab: RwSignal<usize>,
     pub labels: RwSignal<Vec<&'static str>>,
     pub margin_scroll_value: RwSignal<f64>,
+    pub route: RwSignal<&'static str>,
 }
 
 impl GlobalState {
@@ -17,6 +18,7 @@ impl GlobalState {
             tab: create_rw_signal(cx, 0),
             labels: create_rw_signal(cx, vec![]),
             margin_scroll_value: create_rw_signal(cx, 0_f64),
+            route: create_rw_signal(cx, ""),
         }
     }
 }

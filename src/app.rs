@@ -8,6 +8,7 @@ use crate::page::state::PageState;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
+use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -32,9 +33,11 @@ pub fn App(cx: Scope) -> impl IntoView {
 
     provide_context(cx, GlobalState::new(cx));
 
+    let GlobalState { route, .. } = use_context(cx).unwrap();
+
     create_effect(cx, move |_| {
         // execute on every route change
-        route();
+        route.get();
 
         /*  */
         let script = document().create_element("script");
@@ -55,6 +58,11 @@ pub fn App(cx: Scope) -> impl IntoView {
             }
             _ => {}
         }
+
+        let mut options = ScrollToOptions::new();
+        options.left(1500.0);
+        options.behavior(ScrollBehavior::Instant);
+        window().scroll_with_scroll_to_options(&options);
     });
     view! { cx,
       // injects a stylesheet into the document <head>
