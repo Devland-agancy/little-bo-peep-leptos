@@ -20,4 +20,4 @@ leptos = { version = "0.4", features = ["csr"] }
 proc-macro2 = "1.0.69"
 regex = "1.10.0"
 nom = "7.1.3"
-elm-parser = { path = "../../elm-parser" }
+elm-parser = "0.1.3"
