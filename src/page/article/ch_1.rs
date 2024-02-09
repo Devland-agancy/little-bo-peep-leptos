@@ -1,27 +1,27 @@
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::Grid::*;
-use crate::componants::Image::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
-use crate::componants::List::*;
-use crate::componants::Math::*;
-use crate::componants::MathBlock::*;
-use crate::componants::Paragraph::*;
-use crate::componants::Solution::*;
-use crate::componants::Span::*;
-use crate::componants::Tabs::*;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::Grid::*;
+use crate::components::Image::*;
+use crate::components::ImageLeft::*;
+use crate::components::ImageRight::*;
+use crate::components::List::*;
+use crate::components::Math::*;
+use crate::components::MathBlock::*;
+use crate::components::Paragraph::*;
+use crate::components::SectionDivider::*;
+use crate::components::Solution::*;
+use crate::components::Span::*;
+use crate::components::Table::Table;
+use crate::components::Tabs::*;
 
+use crate::constants::MENU_ITEMS;
 use leptos::*;
-
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
-        <ArticleTitle>"Chapter 1: A Few Refreshers"</ArticleTitle>
-        <ArticleBody/>
-      </Article>
+      <ArticleTitle label=MENU_ITEMS[0].0/>
+      <ArticleBody/>
     }
 }
 
@@ -29,6 +29,7 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     view! { cx,
       <Columns>
+
         <Paragraph>
           <Span bold=true>"Square Roots. "</Span>
           "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
@@ -52,7 +53,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock>
           r#"$$
               \sqrt{(-2)^2} = 2 
-          $$"# <ImageRight src="/images/svg_cloud_minus_two_squared.svg" pos_x="1rem" pos_y="-2rem">
+          $$"#
+          <ImageRight
+            padding="40px"
+            src="/images/svg_cloud_minus_two_squared.svg"
+            x_anchor="3rem"
+            y_anchor="-4rem"
+            width=316
+          >
             ""
           </ImageRight>
         </MathBlock>
@@ -168,7 +176,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$\hspace{0.03em}X > 50$"#</Math> "—that much seems logical—and, with
           a little thought, the same phenomenon explains why " <Math>r#"$\sqrt{0.5} > 0.5$."#</Math>
         </Paragraph>
-        <Paragraph margin_top=15>
+        <SectionDivider/>
+        <Paragraph>
           <Span bold=(true)>"Fractions and Division."</Span>
           " An elementary fraction, or division, such as "
         </Paragraph>
@@ -250,7 +259,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$77.5\%$"#</Math> " greater than " <Math>r#"$40$"# "."</Math>
           " (Interesting, no?)"
         </Paragraph>
-        <Paragraph margin_top=15>
+        <SectionDivider/>
+        <Paragraph>
           <Span bold=(true)>"Distributivity."</Span>
           " As you might already know, a number that multiplies a sum can be brought “inside” the sum. For example, "
         </Paragraph>
@@ -310,10 +320,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <ImageLeft
             src="/images/325.svg"
             hidden_in_mobile=true
-            pos_y="-8rem"
-            pos_x="1rem"
-            squiggle_right="-0.8rem"
+            y_anchor="-8rem"
+            x_anchor="1.6rem"
+            squiggle_right="-0.4rem"
             squiggle_top="45%"
+            width=400
           >
             ""
           </ImageLeft>
@@ -336,7 +347,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 1. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position_y="2.7rem">
           r#"$$
               \begin{align}
               (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
@@ -350,7 +361,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span bold=true>"Example 2. "</Span>
           "One has"
         </Paragraph>
-        <MathBlock height=Height::Fit arrow_position="4.4rem 0rem auto auto">
+        <MathBlock height=Height::Fit arrow_position_y="2.7rem">
           r#"$$
               \begin{align}
               (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
@@ -444,8 +455,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Span italic=true>"a difference of squares"</Span>
         </Paragraph>
         <Paragraph margin_top=15>
-          "whence" <Span italic=true>a "a difference of squares can always be factored"</Span> ". "
-          "(Factored as" <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
+          "whence " <Span italic=true>"a difference of squares can always be factored"</Span> ". "
+          "(Factored as " <Math>r#"$(a + b)(a - b)$"#</Math> ", that is.)"
           " (PS: “Factored” means “written as a product”.)"
         </Paragraph>
         <Paragraph margin_top=15>
@@ -459,7 +470,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         </MathBlock>
         <Paragraph>
           "is a difference of squares, " <Math>r#"$19$"#</Math> " can be factored. (On the other
-              hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
+          hand " <Math>r#"$19$"#</Math> " is a prime number, but nevermind.)"
         </Paragraph>
         <Paragraph margin_top=15>
           <Span bold=true>"Example 5. "</Span>
@@ -509,8 +520,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <MathBlock height=Height::Fit>
           r#"$$
               \begin{align}
-              (-1)(a - b) \,&=\, (-1)(a + (-b)) \\
-              \,&=\, (-1)a + (-1)(-b) \\
+              (-1)(a - b) \,&=\, (-1)(a + (-b))\up{1} \\
+              \,&=\, (-1)a + (-1)(-b)\up{1} \\
               \,&=\, -a + b
               \end{align}
           $$"#
@@ -525,7 +536,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           <Math>r#"$ -7 = -7 $"#</Math>
           ", as it would be, haha.)"
         </Paragraph>
-        <Paragraph margin_top=15>
+        <SectionDivider/>
+        <Paragraph>
           <Span bold=true>"Epilogue. "</Span>
           "Do you remember the near miss between"
         </Paragraph>
@@ -571,7 +583,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           $$"#
         </MathBlock>
         <Paragraph>"for a difference of squares!"</Paragraph>
-        <Paragraph margin_top=15>
+        <SectionDivider/>
+        <Paragraph>
           <Span bold=true>"Vocabulary. "</Span>
           "A pair of algebraic expressions of the form"
         </Paragraph>
@@ -598,11 +611,12 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
           "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
         <Image
+          id="exo"
           src="/images/seperator.png"
-          height=50
-          imageClasses="w-[160px]"
-          containerClasses="flex items-center"
-        />
+          height="50px"
+          width="160px"
+          container_classes="flex items-center mt-[45px] mb-[40px]"
+        >""</Image>
         <Tabs labels=vec!["1", "2"]>
           <TabElement>
             <Paragraph classes="animate-appear-slow">
@@ -651,33 +665,33 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <Math>r#"$ \sqrt[3]{\up{0.75}\sqrt[2]{2}} $"#</Math> " are both equal to "
                 <Math>r#"$ \sqrt[6]{\up{0.6}2} $"#</Math> ". To convince yourself, note that"
               </Paragraph>
-              <MathBlock id="sqrt-1" height=Height::Fit arrow_position="8.5rem 0rem auto auto">
+              <MathBlock id="sqrt-1" height=Height::Fit arrow_position_y="7.6rem">
                 r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
-                    =&\,\, \up{1.3}
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-                    \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
-                    =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
-                    (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
-                    =& \,\, \up{1.4} 2
-                    \end{align}
+                   \begin{align}
+                   &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
+                   =&\,\, \up{1.3}
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
+                   =&\,\, \up{1.3}
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
+                   \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
+                   =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
+                   (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
+                   =& \,\, \up{1.4} 2
+                   \end{align}
                 $$"#
                 <ImageLeft
                   src="/images/17.svg"
-                  pos_y="3.5rem"
-                  pos_x="-3.2rem"
+                  y_anchor="3.6rem"
+                  x_anchor="-3rem"
                   hidden_in_mobile=true
                   squiggle_right="-4rem"
                   squiggle_top="30%"
@@ -686,36 +700,36 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </ImageLeft>
               </MathBlock>
               <Paragraph>"and"</Paragraph>
-              <MathBlock id="sqrt-2" height=Height::Fit arrow_position="8.5rem 0rem auto auto">
+              <MathBlock id="sqrt-2" height=Height::Fit arrow_position_y="7.6rem">
                 r#"$$
-                    \begin{align}
-                    &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
-                    =&\,\, \up{1.3}
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
-                    =& \,\, \up{1.3}
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
-                    (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-                    \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
-                    =&\,\, \up{1.3}
-                    \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
-                    =&\,\, \up{1.4} 2
-                    \end{align}
+                   \begin{align}
+                   &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
+                   =&\,\, \up{1.3}
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
+                   =& \,\, \up{1.3}
+                   (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
+                   (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
+                   \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
+                   =&\,\, \up{1.3}
+                   \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
+                   =&\,\, \up{1.4} 2
+                   \end{align}
                 $$"#
                 <ImageLeft
                   src="/images/18.svg"
                   hidden_in_mobile=true
                   squiggle_right="-4rem"
                   squiggle_top="37%"
-                  pos_y="3.2rem"
-                  pos_x="-3.2rem"
+                  y_anchor="3.65rem"
+                  x_anchor="-3rem"
                 >
                   ""
                 </ImageLeft>
@@ -873,8 +887,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 <ImageRight
                   src="/images/104.svg"
                   width=600
-                  pos_y="-8.2rem"
-                  pos_x="4rem"
+                  y_anchor="-7.8rem"
+                  x_anchor="4rem"
                   children_y="47%"
                   children_x="34%"
                 >
@@ -987,7 +1001,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               <Paragraph margin_top=15>
                 "h. (True) Here are the first few powers of $-1$ (note how each additional multiplication by $-1$ simply changes the sign of the previous result):"
               </Paragraph>
-              <MathBlock height=Height::Fit child_tag="span" arrow_position="13.3rem 0rem 0rem 90%">
+              <MathBlock height=Height::Fit child_tag="span" arrow_position_y="12.3rem">
                 <div class="w-full">
                   <Grid margin_top=15 margin_bottom=15 cols=3 place_items="end" classes="w-fit">
 
@@ -1051,7 +1065,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 " is odd, " <Math>r#"$ (-1)^{101} $"#</Math> " is
                 " <Math>r#"$ -1 $"#</Math> "."
               </Paragraph>
-              <Paragraph margin_top=15>"(False) We have"</Paragraph>
+              <Paragraph margin_top=15>"i. (False) We have"</Paragraph>
               <MathBlock height=Height::Fit>
                 r#"$${100 \over 99} = {99 + 1 \over 99} = 1 + {1 \over 99}$$"#
               </MathBlock>
@@ -1163,7 +1177,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
                 <ImageRight
                   src="/images/24.svg"
-                  pos_y="-4.8rem"
+                  y_anchor="-4.8rem"
                   children_x="30%"
                   children_y="25.5%"
                   squiggle_left="-1.2rem"
@@ -1287,8 +1301,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     src="/images/25.svg"
                     children_y="10%"
                     children_x="37%"
-                    pos_x="4.5rem"
-                    pos_y="-1.2rem"
+                    x_anchor="4.5rem"
+                    y_anchor="-1.2rem"
                     width=362
                   >
                     <MathBlock>
@@ -1299,7 +1313,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   </ImageRight>
                 </MathBlock> "(as previously computed) is smaller than"
               </Paragraph>
-              <Paragraph margin_top=15>
+              <Paragraph>
                 <MathBlock>
                   r#"$$
                   {1 \over n^2}
@@ -1307,14 +1321,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   <ImageRight
                     src="/images/26.svg"
                     children_y="15%"
-                    children_x="33%"
-                    pos_x="5rem"
-                    pos_y="-1.9rem"
+                    children_x="37%"
+                    x_anchor="5rem"
+                    y_anchor="-1.9rem"
                     width=362
                   >
                     <MathBlock>
                       r#"$$
-                      {1 \over 99\cdot 100}
+                      {1 \over 99^2}
                       $$"#
                     </MathBlock>
                   </ImageRight>
@@ -1334,9 +1348,9 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 </MathBlock>
               </Paragraph>
 
-              <Paragraph margin_top=15>
+              <Paragraph>
                 "to avoid a minus sign in the result. (Computing the second difference and having a minus sign does not constitute a mistake, however.) Having said this, the difference is:"
-                <MathBlock height=Height::Fit>
+                <MathBlock height=Height::Fit arrow_position_y="6.5rem" show_arrow_at_width=640>
                   r#"$$
                   \begin{align}
                   {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot
@@ -1347,14 +1361,14 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   $$"#
                   <ImageRight
                     src="/images/27.svg"
-                    children_y="40%"
-                    children_x="20%"
-                    pos_x="-1.6rem"
-                    pos_y="-5.2rem"
-                    hidden_in_mobile={true}
+                    children_y="42%"
+                    children_x="23%"
+                    x_anchor="-1.6rem"
+                    y_anchor="-5.2rem"
                     width=607
-
+                    clickable_on_desktop=true
                   >
+
                     <MathBlock>
                       r#"$$
                       \begin{align}
@@ -1367,46 +1381,45 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                       $$"#
                     </MathBlock>
                   </ImageRight>
-                </MathBlock>
-                "which, for large "<Math>"$n$"</Math>", is roughly"
-                <MathBlock>
-                  r#"$$ {1 \over n^3} $$"#
-                </MathBlock>
+                </MathBlock> "which, for large " <Math>"$n$"</Math> ", is roughly"
+                <MathBlock>r#"$$ {1 \over n^3} $$"#</MathBlock>
               </Paragraph>
-              <Paragraph margin_top=15>
-                "since "<Math>r#"$ n^2(n+1) \approx n^3 $"#</Math>" for large "<Math>"$n$"</Math>"."
+              <Paragraph>
+                "since " <Math>r#"$ n^2(n+1) \approx n^3 $"#</Math> " for large " <Math>"$n$"</Math>
+                "."
               </Paragraph>
 
               <Paragraph margin_top=15>
-                <Span italic={true}>"Example 1. "</Span>
+                <Span italic=true>"Example 1. "</Span>
                 "Above, we estimated"
                 <MathBlock height=Height::Fit>
                   r#"$$
                   {1 \over 10} - {1 \over 11}
                   $$"#
                 </MathBlock>
-                "to be roughly "<Math>"$1/100 = 0.01$"</Math>", but "<Math>"$1/100$"</Math>" is bigger than the actual value of
-                "<Math>r#"${1 \over 10\cdot 11} = {1 \over 110}$"#</Math>" by"
-                <MathBlock>
-                  r#"$$ {1 \over 10^2\cdot 11}$$"#
-                </MathBlock>
+                "to be roughly "
+                <Math>"$1/100 = 0.01$"</Math>
+                ", but "
+                <Math>"$1/100$"</Math>
+                " is bigger than the actual value of
+                "
+                <Math>r#"${1 \over 10\cdot 11} = {1 \over 110}$"#</Math>
+                " by"
+                <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock>
               </Paragraph>
 
               <Paragraph margin_top=15>
-                "or close to "<Math>"$1/10^3 = 0.001$"</Math>". (So"
+                "or close to " <Math>"$1/10^3 = 0.001$"</Math> ". (So"
                 <MathBlock height=Height::Fit>
                   r#"$$
                   {1 \over 10} - {1 \over 11}
                   $$"#
-                </MathBlock>
-                "is about "<Math>"$0.01$"</Math>", while making an error of about "<Math>"$0.001$"</Math>".)
-                (In fact,"
-                <MathBlock>
-                  r#"$$ {1 \over 10^2\cdot 11}$$"#
-                </MathBlock>
-                "is"
-                <Span>"less"</Span>
-                "than "<Math>"$1/10^3$"</Math>", so the error is <i>less</i> than "<Math>"$0.001$"</Math>".)"
+                </MathBlock> "is about " <Math>"$0.01$"</Math> ", while making an error of about "
+                <Math>"$0.001$"</Math> ".)
+                (In fact," <MathBlock>r#"$$ {1 \over 10^2\cdot 11}$$"#</MathBlock> "is"
+                <Span italic=true>" less "</Span> "than " <Math>"$1/10^3$"</Math>
+                ", so the error is " <Span italic=true>"less"</Span> " than " <Math>"$0.001$"</Math>
+                ".)"
               </Paragraph>
             </Solution>
           </TabElement>

@@ -1,0 +1,404 @@
+<html>
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_SVG'></script>
+    <script src="js/mathjaxconfig_without_cache.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/css_cant_edit.css" />
+    <link type="text/css" rel="stylesheet" href="css/css_can_edit.css" />
+    <link type="text/css" rel="stylesheet" href="css/css_unparseable.css" />
+    <style>
+        .mock_up_bottom_buffer { height: 100px; }
+    </style>
+</head>
+<body>
+    <p class="chapter_title">Chapter 2: Slopes</p>
+
+    <p class="nb" angle-2-group-path="0">
+        <b>Exercise 1.</b> 
+        True or false: Lines of
+        slope $-1/2$ are perpendicular to lines of slope $2$.
+    </p>
+
+    <p class="nb solution_start">
+        This is true, as illustrated by the following pair of lines:
+    </p>
+
+    <div class="centered">
+        <img src="ch2figs/perpendiculars2.svg" style="width:400px;margin-top:15px;margin-bottom:20px;margin-right:10px;">
+    </div>
+
+    <div class="column">
+        <img 
+            src="ch2figs/perp_cloud_1.svg" 
+            style="width:340px;position:absolute;left:420px;top:-210px;">
+        <img
+            src="ch2figs/perp_cloud_2.svg"
+            style="width:340px;position:absolute;left:-160px;top:-165px;">
+    </div>
+
+    <p class="noi">
+        In more detail, the two triangles are related by
+        a $90^\circ$ rotation and so, likewise, are the lines defined
+        by their hypotenuses!
+    </p>
+
+    <p class="nb">
+        <i>Note 1.</i> 
+        More generally, a line of slope $p$ is perpendicular to a line
+        of slope $-1/p$, for all $p \ne 0$. By a similar drawing, for $p > 0$:
+    </p>
+
+    <div class="centered">
+        <img src="ch2figs/perpendicularsp.svg"
+                style="width:400px;margin-top:15px;margin-bottom:20px;margin-right:10px;">
+    </div>
+
+    <div class="column">
+        <img src="ch2figs/perp_cloud_p1.svg" 
+                style="width:340px;
+                    position:absolute;
+                    left:420px;
+                    top:-185px;">
+        <img src="ch2figs/perp_cloud_p2.svg"
+                style="width:340px;
+                    position:absolute;
+                    left:-185px;
+                    top:-165px;">
+    </div>
+
+    <p class="noi">
+        If you're curious, a drawing for the case $p < 0$...
+    </p>
+    <div class="centered">
+        <img src="ch2figs/perpendicularsp_neg_2.svg" style="width:400px;margin-top:15px;margin-bottom:20px;margin-right:10px;">
+    </div>
+    <p class="noi">...is like so, but it doesn't really add anything new.</p>
+
+    <p class="nb" angle-2-group-path="-10" _dont_include="true">
+        <b>Exercise 2.</b> 
+        Compute the difference in height between $A$ and
+        $B$ in the following figure (or if you will, the total 
+        rise of a small creature traveling the line segments 
+        from $A$ to $B$):
+    </p>
+
+    <div class="centered">
+        <img src="ch2figs/total_rise.svg" style='padding:10px 0px 0px 5px' width='630' popup-width='530' popup-margin='0px 0px 0px -8px'/>
+    </div>
+
+    <p class="nb solution_start">
+        The rise of the first segment is
+        $$
+        -0.6 \times 3 = -1.8
+        $$
+        computed by &ldquo;rise = slope $\times$ run&rdquo;, because
+        the run of the first segment is $-2 - (-5) = 3$ and because
+        its slope is $-0.6$. Likewise,
+        the rise of the second segment is
+        $$
+        \,-0.2 \times 4 = -0.8
+        $$
+        because the run of the second segment is $2 - (-2) = 4$
+        and because its slope is $-0.2$.
+        Similarly, the third, fourth and fifth segments
+        have rises of, respectively,
+        $$
+        0.1 \times 4 = 0.4
+        $$
+        $$
+        0.4 \times 4 = 1.6
+        $$
+        $$
+        1 \times 4 = 4
+        $$
+        by the same reasoning, so the total rise is
+        $$
+        -1.8 - 0.8 + 0.4 + 1.6 + 4
+        $$
+        being the sum of the five individual segment
+        rises, and since
+        $$
+        -1.8 - 0.8 + 0.4 + 1.6 + 4
+        $$
+        becomes
+        $$
+        -2.6 + 2 + 4
+        $$
+    </p><p class="noi cheatingten">
+        by some judicious grouping (haha),
+        $$
+        -0.6 + 4 = 3.4
+        $$
+        is the final answer.
+    </p>
+
+    <p class="nb" angle-2-group-path="-12" _dont_include="true">
+        <b>Exercise 3.</b>
+        Compute the same quantity in this diagram, in which numbers
+        are replaced by variables (the answer will now be an algebraic
+        expression):
+    </p>
+
+    <div class="centered">
+        <img style='padding:10px 0px 0px 5px' src="ch2figs/total_rise_variables.svg" width='630' popup-width='530' popup-margin='0px 0px 0px -8px'/>
+        <!-- <img src="ch2figs/total_rise_variables.svg" width="630" style="padding-top:0px; padding-bottom:0px; padding-left:5px;"/> -->
+    </div>
+
+    <p class="nb solution_start">
+        The total rise from $A$ to $B$ is
+        $$
+        \begin{align}
+                    & s_1 \cdot (x_1 - x_0)\\
+            +\,\,\, & s_2 \cdot (x_2 - x_1)\\
+            +\,\,\, & s_3 \cdot (x_3 - x_2)\\
+            +\,\,\, & s_4 \cdot (x_4 - x_3)\\
+            +\,\,\, & s_5 \cdot (x_5 - x_4)
+        \end{align}
+        $$
+        because the $i$-th term of this sum is
+        the rise of the $i$-th segment (computed in the form
+        $$
+        \te{slope} \times \te{run}
+        $$
+        as per &ldquo;rise = slope $\times$ run&rdquo;) and because the
+        total rise from $A$ to $B$ is the sum of the five individual
+        segment rises.
+    </p>
+
+    <p class="nb" name="line-equation" angle-2-group-path="10">
+        <b>Exercise 4.</b>
+        Find the general equation of a line of slope 
+        $p$ passing through a point $(x_0, y_0)$.
+        (Hint: Start from the slope formula.)
+    </p>
+
+    <div class="column belongs_to_next_section"></div>
+
+    <p class="nb solution_start">
+        <img
+            src="ch2figs/svg_cloud_x0_y0_line.svg" 
+            style="
+                width:800px;
+                position:absolute;
+                left:-720px;
+                top:-19px;
+                transition:0.9s;">
+        A point $(x,y) \ne (x_0,y_0)$ is on the line of
+        slope $p$ if and only if
+        $$
+        p = {y - y_0 \over x - x_0}
+        $$
+        because
+        $$
+        \,\,{y - y_0 \over x - x_0}
+        $$
+        is the slope of the line segment from $(x_0,y_0)$ 
+        to $(x,y)$, and it is necessary and
+        sufficient for this segment to have slope $p$ in order
+        for the point $(x,y)$ to be on the line!
+    </p>
+
+    <p>
+        Unfortunately, the equation
+        $$
+        p = {y - y_0 \over x - x_0}
+        $$
+        is not an entirely satisfactory answer, because the
+        point $(x,y) = (x_0,y_0)$ itself does not satisfy the
+        equation. (We find
+        $$
+        p = {0 \over 0}
+        $$
+        if we plug in $x = x_0$, $y = y_0$, which is not a valid
+        equality because the right-hand side is an undefined quantity.)
+    </p>
+
+    <p>
+        Instead, multiplying
+        $$
+        p = {y - y_0 \over x - x_0}
+        $$
+    </p><p class="noi">
+        on both sides by $x-x_0$, we find the fraction-less equation
+        $$
+        p(x-x_0) = y-y_0
+        $$
+        which is satisfied by the point $(x,y) = (x_0,y_0)$ as well as
+        by every other point on the line.
+        This can be a final answer, and, pleasingly, has the form
+        $$
+        \te{&ldquo;}\te{slope} \times \te{run} = \te{rise}\te{&rdquo;}
+        $$
+        which can also make it easy to remember!
+    </p>
+
+    <div class="column">
+        <img src="ch2figs/slope_times_run_equals_rise.svg" 
+                style="width:400px;position:absolute;left:510px;top:-133px;">
+    </div>
+
+    <p class="nb">
+        <i>Note 1.</i>
+        The answer we gave is more often written
+        $$
+        y - y_0 = p(x - x_0)
+        $$
+        with the two sides of the equation swapped, or
+        $$
+        y = p(x - x_0) + y_0
+        $$
+        with $y$ isolated on the left-hand side. From there one
+        can also distribute $p(x-x_0)$, obtaining (after putting
+        &ldquo;$-px_0$&rdquo; last)
+        $$
+        y = px + y_0 - px_0
+        $$
+        which has the form
+        $$
+        y = ax + b
+        $$
+        with $a = p$, $b = y_0 - px_0$. 
+    </p>
+    
+    <!--<p class="nb">
+        <i>Note 2.</i> From the latter equation, in particular, one
+        sees that
+        $$
+        y_0 - px_0
+        $$
+        is the $y$-intercept of the line, since a line of the form
+        $$
+        y = ax + b
+        $$
+        has $y$-intercept $b$.
+    </p> -->
+
+    <p class="nb" angle-2-group-path="-8">
+        <b>Exercise 5.</b>
+        Plot the vertical velocity of <del>an object</del> a mosquito
+        whose height over time is given by this graph (use the same time
+        interval as the graph):
+    </p>
+
+    <div class="centered">
+        <img 
+            src="ch2figs/mosquito_height_worked.svg"
+            style='padding-left:90px;
+                    padding-top:22px;
+                    padding-bottom:15px;' 
+            dont_compress='true'
+            popup-padding='15px 0px 0px 0px'
+            popup-width='540'
+            popup-margin='0px 0px 0px -35px'/>
+        </div>
+        
+        <p class="nb solution_start">
+            Here is the &ldquo;official&rdquo; graph of the (vertical) velocity:
+        </p>
+        
+        <div class="centered">
+            <img
+            src="ch2figs/mosquito_velocity_worked.svg" 
+            dont_compress='true'
+            style="padding-left:90px;
+                    padding-top:21px;
+                    padding-bottom:20px;"/>
+    </div>
+
+    <p class="noi">
+        On each interval, the velocity is rate of change
+        of the height, i.e., the <i>slope</i> of the height.
+        For example, the rate of change of the height is
+        $$
+        {1\te{m} \over 1\te{s}} = 1\te{m}/\te{s}
+        $$
+        between $-4$s and $-3$s, where the mosquito goes up by one meter
+        during a one second period, so the vertical velocity is
+        1m$/$s for that time interval, etc.
+    </p>
+
+    <p class="nb"><i>Note 1.</i>
+        As explained in Chapter 3, an empty circle of this type
+    </p>
+    <div class="centered">
+        <img src="ch2figs/empty_circle_alone.svg" style="width:30px; margin-bottom:20px; margin-top:20px;">
+    </div>
+    <p class="noi">
+        indicates a &ldquo;missing&rdquo; value. 
+        Specifically, in our case, the vertical velocity is <i>undefined</i>
+        wherever the graph of the height has a sharp corner.
+        (Because the slope of the graph is not well-defined at such corners.)
+    </p>
+
+    <p class="nb">
+        <i>Note 2.</i> 
+        For the time interval from $2$s to $2.5$s, the slope is
+        $$
+        %{-2\, [\te{m}] \over 0.5\,[\te{s}]} = -\rt{0.07}4 \left[{\te{m} \over \te{s}}\right]
+        {-2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = -\rt{0.07}4\rt{0.1}\te{m}/\te{s}
+        $$
+        and similarly for the time interval 
+        from $2.5$s to $3$s the slope is
+        $$
+        %{2\, [\te{m}] \over 0.5\,[\te{s}]} = 4 \left[{\te{m} \over \te{s}}\right]
+        {2\rt{0.05}\te{m} \over 0.5\rt{0.05}\te{s}} = 4\rt{0.1}\te{m}/\te{s}
+        $$
+        because $2/0.5 = 4$.
+        (Think: <i>how many times</i> does $0.5$ go into $2$?)
+    </p>
+
+    <p class="nb" dep-on="line-equation" incoming-path="south-north mirror-circle">
+        <b>Exercise 6.</b>
+        <!-- Digressing on the second note in the solution to Exercise 4, explain why -->
+        Digressing on the second-to-last equation
+        <!-- note  -->
+        in the solution to Exercise 2, explain why
+        $$
+        y_0 - px_0
+        $$
+    </p><p class="noi">
+        is the $y$-intercept of the line of slope $p$ through
+        the point $(x_0,y_0)$ by using a drawing and &ldquo;rise equals
+        slope times run&rdquo;.
+    </p>
+
+    <p class="nb solution_start">
+        E.g.:
+    </p>
+
+    <div class="centered">
+        <img src="ch2figs/y_intercept_explanation.svg" style="width:640px;padding-right:20px;">
+    </div>
+
+    <p class="noi">
+        The rise from the $y$-intercept to $(x_0, y_0)$ is $px_0$, as found
+        by &ldquo;rise equals slope times run&rdquo;, implying that
+        $$
+        y_0 - px_0
+        $$
+        is
+        the $y$-intercept.
+    </p>
+
+    <p class="nb cheatingfive">
+        <i>Note 1.</i> Our drawing makes some implicit
+        assumptions, such as $p > 0$ and $x_0 > 0$.
+        But
+        $$
+        px_0
+        $$
+        is the rise from the $y$-intercept to $(x_0, y_0)$
+        regardless of the sign of $p$ or $x_0$ (because &ldquo;$x_0$&rdquo; is
+        the run in all cases), making
+        $$
+        y_0 - px_0
+        $$
+        the $y$-intercept in all cases.
+    </p>
+
+	<div class="mock_up_bottom_buffer"></div>
+
+	<script src="js/1.js"></script>
+	<script src="js/2.js"></script>
+	<script src="js/4.js"></script>
+</body>
+</html>

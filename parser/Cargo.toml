@@ -1,0 +1,23 @@
+[package]
+name = "elm_to_view"
+version = "0.8.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "A macro for parsing elm_markup to leptos view"
+documentation = "https://docs.rs/"
+readme = "README.md"
+homepage = "https://littel-bo-peep-leptos-v2.fly.io/"
+repository = "https://github.com/Devland-agancy/little-bo-peep-leptos"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0"
+syn = "2.0"
+leptos = { version = "0.4", features = ["csr"] }
+proc-macro2 = "1.0.69"
+regex = "1.10.0"
+nom = "7.1.3"
+elm-parser = { path = "../../elm-parser" }

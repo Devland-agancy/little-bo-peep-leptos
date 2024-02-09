@@ -1,61 +1,40 @@
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::Image::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::Image::*;
+use crate::components::ImageLeft::*;
+use crate::components::ImageRight::*;
 
-use crate::componants::Math::*;
-use crate::componants::Paragraph::*;
-use crate::componants::Span::*;
+use crate::components::Math::*;
+use crate::components::MathBlock::*;
 
-use elm_to_view::elm_to_view;
+use crate::components::ImageLink::*;
+use crate::components::Paragraph::*;
+use crate::components::SectionDivider::*;
+use crate::components::Solution::*;
+use crate::components::Span::*;
+use crate::components::Table::*;
+use crate::components::Tabs::*;
+
+use crate::constants::MENU_ITEMS;
+
+use elm_to_view::elm;
 use leptos::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
-        <ArticleTitle>"Chapter 2: Slopes"</ArticleTitle>
+      <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0 />
       <Columns>
         <ArticleBody/>
       </Columns>
-      </Article>
     }
 }
 
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
-    elm_to_view! {
+    elm! {
       cx,
-      r#"
-      |> Paragraph 
-
-          *The Definition.*
-          The %slope% of a line is a mathematical measure of how
-          “steep” a line is.
-          Here are a few examples (for an explanation of the values,
-          see below):
-
-      |> Image
-          src="/images/chapter_2_1.svg"
-          height=890
-
-      |> Paragraph    
-          
-          The slope of a line is...
-
-      |> Paragraph   
-          margin_top = 15
-
-          the number of units the line goes up with each unit to the right
-          
-      |> Paragraph
-          margin_top = 15
-
-          ...assuming that numbers on the $y$-axis increase going up and that 
-          numbers on the $x$-axis increase going right, as is usually the case.
-          One can also describe slope as...
-      "#
+      "file:/content/ch_2.emu"
     }
 }

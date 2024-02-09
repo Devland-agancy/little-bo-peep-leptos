@@ -1,36 +1,33 @@
-use crate::componants::Article::*;
-use crate::componants::ArticleTitle::*;
-use crate::componants::Columns::*;
-use crate::componants::ImageLeft::*;
-use crate::componants::ImageRight::*;
-use crate::componants::Math::*;
-use crate::componants::MathBlock::*;
-use crate::componants::Paragraph::*;
-use crate::componants::Span::*;
-use elm_to_view::elm_to_view;
+use crate::components::Article::*;
+use crate::components::ArticleTitle::*;
+use crate::components::Columns::*;
+use crate::components::Image::*;
+use crate::components::ImageLeft::*;
+use crate::components::ImageRight::*;
+use crate::components::Math::*;
+use crate::components::MathBlock::*;
+use crate::components::Paragraph::*;
+use crate::components::Section::*;
+use crate::components::SectionDivider::*;
+use crate::components::Span::*;
+
+use elm_to_view::elm;
+
 use leptos::*;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-      <Article>
-        <ArticleTitle>"Chapter 2: Slopes"</ArticleTitle>
+        <ArticleTitle label="Chapter 2: Slopes"/>
         <Columns>
-          <ArticleBody/>
+            <ArticleBody/>
         </Columns>
-      </Article>
     }
 }
 
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
-    elm_to_view! {
-      cx,
-      r#"
-      |> Paragraph 
-
-          hihihi asdljalskdj  wow $n$
-          so this i $$n+1$$
-      "#
+    elm! {cx,
+      "file:/content/ch_3.emu"
     }
 }

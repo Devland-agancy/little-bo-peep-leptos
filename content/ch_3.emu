@@ -1,0 +1,134 @@
+|> Section
+    label="definition"
+
+    |> Paragraphs
+
+        The _slope_ of a line is a mathematical measure 
+        of how “steep” a line is. Here are a few examples
+        (for an explanation of the values, see below):
+
+        |> Image
+            src="/images/chapter_2_1.svg"
+
+        To explain, the slope of a line is...
+
+        __the number of units the line goes up with each
+        unit to the right__
+
+        ...assuming that numbers on the $y$-axis increase
+        going up and that numbers on the $x$-axis increase
+        going right, as is usually the case. One can also
+        describe slope as...
+        
+        __the amount of vertical change per unit of 
+        horizontal change__
+        
+        ...more elegant!
+
+        Thus, for example, the line below has slope 1, because
+        it goes up by $1$ unit for each unit to the right:
+
+        |> Image
+            src="/images/slope_1_example.svg"
+            container_classes="pl-[2px]"
+
+        On the other hand, the line below has slope $-0.5$,
+        because it goes up by _minus_ $0.5$ units with each 
+        unit to the right:
+
+        |> Image
+            src="/images/slope_0.5_example.svg"
+            container_classes="pl-[19.5px]"
+
+        (Etc.)
+
+|> SectionDivider
+
+|> Section
+    label="measuring"
+
+    |> Paragraphs
+        
+        *Measuring Slope.*
+        The slope of a line is also the ratio of vertical change
+        to horizontal change between any two distinct points
+        $A$, $B$ on the line:
+
+        |> Image
+            src="/images/31.svg"
+            container_classes="mt-6 mb-2"
+            cloud_image=true
+
+        $$ \te{slope} = {\te{vertical change from A to B} \over \te{horizontal change from A to B}} $$
+
+        Indeed, dividing the vertical change by the horizontal 
+        change gives the per-horizontal-unit vertical change.
+        More precisely, if
+        
+        $$ A = (x_1, y_1) $$
+        
+        and
+        
+        $$ B = (x_2, y_2) $$
+        
+        then
+        
+        $$ x_2 - x_1 $$
+
+        and
+
+        $$ y_2 - y_1 $$
+        
+        are the horizontal _&_ the vertical change, respectively,
+        from $A$ to $B$, so
+
+    |> Paragraphs
+    
+        |> MathBlock
+
+            $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
+
+            |> ImageRight
+                src="/images/32.svg"
+                width=600
+                x_anchor="-1rem"
+                y_anchor="-11rem"
+                hidden_in_mobile=true
+                squiggle_top="47%"
+                squiggle_left="-1rem"
+
+
+    |> Paragraphs
+
+        more succinctly. We call this the _slope formula_.
+
+    |> Example
+
+        *Example 1.*
+        A line that passes through the points
+
+        $$A = (-2, 5)$$
+        
+        and
+        
+        $$B = (4, 1)$$
+        
+        has slope
+        
+        $${1 - 5 \over 4 - (-2)} = {-4 \over 6} = - {2 \over 3}.$$
+
+    |> Paragraphs
+
+        * * * *
+
+    |> Paragraphs
+
+        (The main thing to understand about Example 1 is that
+
+        $$ 1 - 5 $$
+
+        is the vertical change from $A$ to $B$, while
+
+        $$ 4 - (-2) $$
+
+        is the horizontal change from $A$ to $B$.)

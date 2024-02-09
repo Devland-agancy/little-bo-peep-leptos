@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Audiowide";
-  src: url("/fonts/Audiowide-Regular.ttf")
-}
-
-@font-face {
   font-family: "Baskerville Regular";
   src: url("/fonts/Baskerville-Regular.ttf")
 }
@@ -27,52 +22,28 @@
   src: url("/fonts/ClickerScript-Regular.ttf")
 }
 
-@font-face {
-  font-family: "IndieFlower";
-  src: url("/fonts/IndieFlower-Regular.ttf")
-}
-
-@font-face {
-  font-family: "Menlo";
-  src: url("/fonts/Menlo.ttc")
-}
-
-@font-face {
-  font-family: "PollerOne";
-  src: url("/fonts/PollerOne-Regular.ttf")
-}
-
-@font-face {
-  font-family: "PrincessJohn";
-  src: url("/fonts/PrincessJohn.ttf")
-}
-
-@font-face {
-  font-family: "SongMyung";
-  src: url("/fonts/SongMyung-Regular.ttf")
-}
-
-@font-face {
-  font-family: "Tomorrow";
-  src: url("/fonts/Tomorrow-Regular.ttf")
-}
-
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
- .hidden-on-startup {
-  opacity: 0;
-  width: 0;
-} 
-
 .MathJax_SVG{
   font-size: 100%;
   position: relative;
-  display: ruby !important;
+  width: -moz-fit-content !important;
   width: fit-content !important;
   margin: auto !important;
 }
+.MathJax_SVG svg{
+  display: inline-block;
+}
+.MathJax_SVG_Display{
+  margin: 0 !important;
+}
+.hidden-on-startup {
+  max-height: 0;
+  height: 0;
+  opacity: 0;
+} 
 
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
@@ -114,8 +85,16 @@ span .MathJax_SVG{
   grid-template-rows: 1fr;
 }
 
-.tab:hover:not(.disabled) > path:first-child {
-  fill: #aff160 !important;
+@media (hover: hover) {
+  .tab:hover:not(.disabled) > path:first-child {
+    fill: #91ed23 !important;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+}
+
+.tab:active:not(.disabled) > path:first-child {
+  fill: #91ed23 !important;
   font-weight: bold;
   border-radius: 4px;
 }
@@ -204,3 +183,87 @@ span .MathJax_SVG{
 .active_solution_button_hands {
   fill: black;
 }
+
+
+@media (min-width: 520px) {
+  .gridColsWidth {
+    grid-template-columns: 1fr 488px 1fr;
+  }
+}
+
+.lines tr td {
+  text-align: center;
+  border-left: thin solid black;
+}
+.lines tr td > * {
+  margin: auto;
+}
+
+.lines tr {
+  border-bottom: thin solid black;
+}
+
+.lines tr td:first-child{
+  border-left: none;
+}
+
+.lines tr td:last-child{
+  border-right: none;
+}
+
+.lines tr:first-child{
+  border-top: none;
+}
+
+.lines tr:last-child{
+  border-bottom: none;
+}
+
+
+.grid-cols-1	{grid-template-columns: repeat(1, 1fr);}
+.grid-cols-2	{grid-template-columns: repeat(2, 1fr);}
+.grid-cols-3	{grid-template-columns: repeat(3, 1fr);}
+.grid-cols-4	{grid-template-columns: repeat(4, 1fr);}
+.grid-cols-5	{grid-template-columns: repeat(5, 1fr);}
+.grid-cols-6	{grid-template-columns: repeat(6, 1fr);}
+.grid-cols-7	{grid-template-columns: repeat(7, 1fr);}
+.grid-cols-8	{grid-template-columns: repeat(8, 1fr);}
+.grid-cols-9	{grid-template-columns: repeat(9, 1fr);}
+.grid-cols-10	{grid-template-columns: repeat(10, 1fr);}
+.grid-cols-11	{grid-template-columns: repeat(11, 1fr);}
+.grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
+
+
+@media (min-width: 520px) {
+
+.sm\:grid-cols-1	{grid-template-columns: repeat(1, 1fr);}
+.sm\:grid-cols-2	{grid-template-columns: repeat(2, 1fr);}
+.sm\:grid-cols-3	{grid-template-columns: repeat(3, 1fr);}
+.sm\:grid-cols-4	{grid-template-columns: repeat(4, 1fr);}
+.sm\:grid-cols-5	{grid-template-columns: repeat(5, 1fr);}
+.sm\:grid-cols-6	{grid-template-columns: repeat(6, 1fr);}
+.sm\:grid-cols-7	{grid-template-columns: repeat(7, 1fr);}
+.sm\:grid-cols-8	{grid-template-columns: repeat(8, 1fr);}
+.sm\:grid-cols-9	{grid-template-columns: repeat(9, 1fr);}
+.sm\:grid-cols-10	{grid-template-columns: repeat(10, 1fr);}
+.sm\:grid-cols-11	{grid-template-columns: repeat(11, 1fr);}
+.sm\:grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
+
+}
+
+.nowrap, .nobreak, .nolinebreak {
+  white-space: nowrap;
+}
+
+.test-bg {
+  background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
+}
+
+/* .section-divider {
+  display: none;   
+}
+@media (min-height = 400px) {
+  .section-divider {
+    display: block;
+  }
+} */

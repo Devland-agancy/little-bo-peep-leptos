@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: {
-    files: ["*.html", "./src/**/*.rs"],
+    files: ["*.html", "./src/**/*.rs", "**/*.emu"],
   },
   theme: {
     extend: {
@@ -48,6 +48,10 @@ module.exports = {
           "0%": { height: "0" },
           "100%": { height: "100%" },
         }, */
+      },
+      screens: {
+        sm: "520px",
+        "menu-button-bg": "580px",
       },
     },
   },
