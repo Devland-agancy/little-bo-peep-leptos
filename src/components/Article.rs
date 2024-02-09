@@ -25,7 +25,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let (state_changed_by_scroll, set_state_changed_by_scroll) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
-        log!("state {:#?} {}", page_state(), show_article());
         if show_article() {
             let mut options = ScrollToOptions::new();
             options.left(1500.0);
@@ -33,20 +32,16 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             window().scroll_with_scroll_to_options(&options);
 
             let scroll_back = move || {
-                if show_article() {
-                    let mut options = ScrollToOptions::new();
-                    set_can_click(true);
+                let mut options = ScrollToOptions::new();
+                set_can_click(true);
 
-                    if window().scroll_x().unwrap() > 1000.0
-                        && window().scroll_x().unwrap() < 2000.0
-                    {
-                        options.left(1500.0);
-                        options.behavior(ScrollBehavior::Smooth);
-                        window().scroll_with_scroll_to_options(&options);
-                        return ();
-                    } else {
-                        set_state_changed_by_scroll(true);
-                    }
+                if window().scroll_x().unwrap() > 1000.0 && window().scroll_x().unwrap() < 2000.0 {
+                    options.left(1500.0);
+                    options.behavior(ScrollBehavior::Smooth);
+                    window().scroll_with_scroll_to_options(&options);
+                    return ();
+                } else {
+                    set_state_changed_by_scroll(true);
                 }
             };
 
