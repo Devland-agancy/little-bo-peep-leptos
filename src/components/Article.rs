@@ -26,87 +26,36 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 
     create_effect(cx, move |_| {
         log!("state {:#?} {}", page_state(), show_article());
-        if show_article() {
-            let mut options = ScrollToOptions::new();
-            options.left(1500.0);
-            options.behavior(ScrollBehavior::Instant);
-            window().scroll_with_scroll_to_options(&options);
-
-            let scroll_back = move || {
-                if show_article() {
-                    let mut options = ScrollToOptions::new();
-                    set_can_click(true);
-
-                    if window().scroll_x().unwrap() > 1300.0
-                        && window().scroll_x().unwrap() < 1700.0
-                    {
-                        options.left(1500.0);
-                        options.behavior(ScrollBehavior::Smooth);
-                        window().scroll_with_scroll_to_options(&options);
-                        return ();
-                    } else {
-                        set_state_changed_by_scroll(true);
-                    }
-                }
-            };
-
-            let _ = use_event_listener(cx, document(), scrollend, move |_| scroll_back());
-            let _ = use_event_listener(cx, document(), touchend, move |_| scroll_back());
-        }
-    });
-    create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
+        options.left(1500.0);
+        options.behavior(ScrollBehavior::Instant);
+        window().scroll_with_scroll_to_options(&options);
 
-        if show_right() {
-            set_can_click(false);
-            set_timeout(
-                move || {
-                    options.left(margin_scroll_value.get() + 1500.0);
+        let scroll_back = move || {
+            if show_article() {
+                let mut options = ScrollToOptions::new();
+                set_can_click(true);
+
+                if !state_changed_by_scroll()
+                    && window().scroll_x().unwrap() > 1300.0
+                    && window().scroll_x().unwrap() < 1700.0
+                {
+                    options.left(1500.0);
                     options.behavior(ScrollBehavior::Smooth);
                     window().scroll_with_scroll_to_options(&options);
-                    set_timeout(move || set_can_click(true), Duration::from_millis(800));
-                },
-                Duration::from_millis(100),
-            );
-            return;
-        }
-        if show_left() {
-            set_timeout(
-                move || {
-                    options.left(if margin_scroll_value.get() == 0.0 {
-                        1000.0
-                    } else {
-                        1500.0 - margin_scroll_value.get()
-                    });
-                    options.behavior(ScrollBehavior::Smooth);
-                    window().scroll_with_scroll_to_options(&options);
-                },
-                Duration::from_millis(100),
-            );
+                    return ();
+                } else {
+                    set_state_changed_by_scroll(true);
+                }
+            }
         };
+
+        let _ = use_event_listener(cx, document(), scrollend, move |_| scroll_back());
+        let _ = use_event_listener(cx, document(), touchend, move |_| scroll_back());
     });
 
     create_effect(cx, move |_| {
         let _ = use_event_listener(cx, document(), click, move |_| {
-            if (show_right() || show_left()) && can_click() {
-                set_can_click(false);
-                let mut options = ScrollToOptions::new();
-                options.behavior(ScrollBehavior::Smooth);
-                options.left(1500.0);
-                window().scroll_with_scroll_to_options(&options);
-                set_timeout(
-                    move || {
-                        set_timeout(
-                            move || {
-                                set_page_state(PageState::ShowArticle);
-                                set_can_click(true);
-                            },
-                            Duration::from_millis(700),
-                        )
-                    },
-                    Duration::from_millis(800),
-                );
-            }
             if state_changed_by_scroll() {
                 let mut options = ScrollToOptions::new();
                 options.behavior(ScrollBehavior::Smooth);
