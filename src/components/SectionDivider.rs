@@ -1,4 +1,7 @@
-use crate::{components::Image::Image, constants::SECTION_DIVIDER_ACTIVATION_HEIGHT};
+use crate::{
+    components::Image::Image, constants::SECTION_DIVIDER_ACTIVATION_HEIGHT,
+    global_state::GlobalState,
+};
 use leptos::{ev::resize, *};
 use leptos_use::use_event_listener;
 
@@ -27,14 +30,18 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
             });
         });
     });
+    let GlobalState {
+        show_section_divider,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
 
     view! {
       cx,
-      <Show fallback=|_| () when=move || !hidden() >
+      <Show fallback=|_| () when=move || !hidden() && show_section_divider() >
           <Image
             src="/images/section_divider.svg"
             width="100%"
-            image_classes="my-4 col-start-2"
+            image_classes="col-start-2"
           >""</Image>
       </Show>
     }

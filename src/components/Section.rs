@@ -7,7 +7,7 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col gap-4 col-start-2">
+      cx, <div class="flex flex-col gap-4 col-start-2 my-2">
         {children(cx)}
       </div>
     };
