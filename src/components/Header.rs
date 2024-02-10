@@ -6,7 +6,6 @@ use crate::{
 };
 use leptos::{
     ev::{resize, scroll},
-    html::Div,
     *,
 };
 use leptos_use::use_event_listener;
@@ -58,7 +57,11 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState {
+        show_areas,
+        show_section_divider,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
     view! { cx,
       <div
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
@@ -69,9 +72,13 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
             <MenuItems/>
             <h2 class="font-baskerville-italic text-2xl mt-4 pb-[.7rem] text-right">"Options"</h2>
-            <div class="flex items-center justify-end gap-2">
+            <div class="flex items-center justify-end gap-2 mb-2">
               <p>"Show Areas"</p>
               <Checkbox value=show_areas />
+            </div>
+            <div class="flex items-center justify-end gap-2 mb-2">
+              <p>"Show section dividers"</p>
+              <Checkbox value=show_section_divider />
             </div>
           </div>
         </div>
