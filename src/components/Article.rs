@@ -25,7 +25,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let (state_changed_by_scroll, set_state_changed_by_scroll) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
-        log!("state {:#?} {}", page_state(), show_article());
         let mut options = ScrollToOptions::new();
         options.left(1500.0);
         options.behavior(ScrollBehavior::Instant);
@@ -56,13 +55,10 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 
     create_effect(cx, move |_| {
         let _ = use_event_listener(cx, document(), click, move |_| {
-            if state_changed_by_scroll() {
-                let mut options = ScrollToOptions::new();
-                options.behavior(ScrollBehavior::Smooth);
-                options.left(1500.0);
-                window().scroll_with_scroll_to_options(&options);
-                set_state_changed_by_scroll(false)
-            }
+            let mut options = ScrollToOptions::new();
+            options.behavior(ScrollBehavior::Smooth);
+            options.left(1500.0);
+            window().scroll_with_scroll_to_options(&options);
         });
     });
     // for right_images we autoscroll to their position
