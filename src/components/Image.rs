@@ -92,7 +92,7 @@ pub fn Image(
             )
         }
 
-        class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle && !cloud_image)
+        /* class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle && !cloud_image) */
       >
         <img
           on:click=move |e| {
