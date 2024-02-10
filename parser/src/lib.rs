@@ -30,7 +30,11 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
 
-    let transformer: Transformer = Transformer::new(vec!["img", "SectionDivider"], "Paragraph");
+    let transformer: Transformer = Transformer::new(
+        vec!["img", "SectionDivider"],
+        vec!["Paragraphs", "Example"],
+        "Paragraph",
+    );
 
     let leptos_code = if elm.value().starts_with("file:") {
         let file = format!(
