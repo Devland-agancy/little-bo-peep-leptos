@@ -9,10 +9,13 @@ use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
 use crate::components::ImageLink::*;
+use crate::components::InlineImage::*;
 use crate::components::Paragraph::*;
+use crate::components::Section::*;
 use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
+use crate::components::StarDivider::*;
 use crate::components::Table::*;
 use crate::components::Tabs::*;
 

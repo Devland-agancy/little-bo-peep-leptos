@@ -642,6 +642,11 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -702,6 +707,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
 }
 
 .table {
@@ -788,6 +797,10 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-14 {
@@ -1113,14 +1126,6 @@ video {
   padding-bottom: .7rem;
 }
 
-.pb-\[15px\] {
-  padding-bottom: 15px;
-}
-
-.pb-\[20px\] {
-  padding-bottom: 20px;
-}
-
 .pl-10 {
   padding-left: 2.5rem;
 }
@@ -1147,14 +1152,6 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pt-\[21px\] {
-  padding-top: 21px;
-}
-
-.pt-\[22px\] {
-  padding-top: 22px;
 }
 
 .text-left {

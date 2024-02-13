@@ -4,6 +4,8 @@ use leptos::*;
 pub fn Section(
     cx: Scope,
     #[prop(default = "")] label: &'static str,
+    #[prop(default = false)] include_section_icon: bool,
+
     children: Children,
 ) -> impl IntoView {
     return view! {
