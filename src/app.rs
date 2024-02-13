@@ -72,7 +72,7 @@ pub fn App(cx: Scope) -> impl IntoView {
       <meta name="format-detection" content="telephone=no"/>
       // sets the document title
       <Title text="Little Bo Peep"/>
-      <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
+      <Link href="/images/book_favicon_sized_v2_dev.svg" rel="icon"/>
       <Script  src="/mathjax_setup.js" defer="true"/>
       <Script
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
