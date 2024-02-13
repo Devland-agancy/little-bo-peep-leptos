@@ -59,6 +59,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             options.behavior(ScrollBehavior::Smooth);
             options.left(1500.0);
             window().scroll_with_scroll_to_options(&options);
+            set_state_changed_by_scroll(false);
         });
     });
     // for right_images we autoscroll to their position
