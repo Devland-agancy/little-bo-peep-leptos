@@ -73,11 +73,11 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
             <MenuItems/>
             <h2 class="font-baskerville-italic text-2xl mt-4 pb-[.7rem] text-right">"Options"</h2>
-            <div class="flex items-center justify-end gap-2 mb-2">
+            <div class="flex items-center justify-end gap-2 pb-[.7rem]">
               <p>"Show Areas"</p>
               <Checkbox value=show_areas />
             </div>
-            <div class="flex items-center justify-end gap-2 mb-2">
+            <div class="flex items-center justify-end gap-2 pb-[.7rem]">
               <p>"Show section dividers"</p>
               <Checkbox value=show_section_divider />
             </div>
