@@ -110,9 +110,7 @@ pub fn Image(
           }
           id=id
           src=src
-          style= move || format!("height: {}; width: {}; {}", height, width, if (cloud_image && is_wide()) || !mobile() {
-            "position:relative; left: 50%; transform: translateX(-50%)"
-          } else { "margin: auto;" })
+          style= move || format!("height: {}; width: {}; position:relative; left: 50%; transform: translateX(-50%);", height, width)
           class=move || {
               format!(
                   "max-w-none {}",

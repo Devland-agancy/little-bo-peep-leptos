@@ -165,7 +165,6 @@
 
         |>  Table
             cols=vec![120, 120, 120, 120]
-            sm_cols=vec![80, 80, 80, 80]
             lines=true
 
             |> tr

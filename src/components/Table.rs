@@ -26,7 +26,7 @@ pub fn Table(
 
     view! { cx,
       <div class=format!(
-          "col-start-2 px-4 min-h-fit my-4 w-full overflow-scroll scrollbar-hidden {}",
+          "col-start-2 px-4 min-h-fit my-4 w-fit relative left-1/2 -translate-x-1/2 {}",
           classes,
       )>
         <table
