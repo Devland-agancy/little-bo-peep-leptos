@@ -890,11 +890,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                   pos_y="-4.8rem"
                   pos_x="4rem"
                   children_y="47%"
-                  children_x="42%"
+                  children_x="39%"
                 >
                   <Math>
                     r#"$
-                        10^{15} \space \te{mm} = 10^{15}(10^{-6} \space \te{km})
+                      10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
                     $"#
                   </Math>
                 </ImageRight>
