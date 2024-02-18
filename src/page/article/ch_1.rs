@@ -880,9 +880,15 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 $$"#
               </MathBlock>
               <Paragraph>"As"</Paragraph>
-              <MathBlock id="104" height=Height::Fit>
+              <MathBlock height=Height::Fit>
                 r#"$$
                 1\fw\te{mm} = 10^{-6}\fw\te{km}
+                $$"#
+              </MathBlock>
+              <Paragraph>"this is"</Paragraph>
+              <MathBlock height=Height::Fit>
+                r#"$$
+                    10^{9}\fw\te{km}
                 $$"#
                 <ImageRight
                   src="/images/104.svg"
@@ -898,12 +904,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                     $"#
                   </Math>
                 </ImageRight>
-              </MathBlock>
-              <Paragraph>"this is"</Paragraph>
-              <MathBlock height=Height::Fit>
-                r#"$$
-                    10^{9}\fw\te{km}
-                $$"#
               </MathBlock>
 
               <Paragraph>
