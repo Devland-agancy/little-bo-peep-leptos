@@ -37,7 +37,9 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
 
     view! {
       cx,
-      <Show fallback=|_| () when=move || !hidden() && show_section_divider() >
+      <Show
+        fallback=move |_| view! {cx, <div></div>}
+        when=move || !hidden() && show_section_divider() >
           <Image
             src="/images/section_divider.svg"
             width="100%"
