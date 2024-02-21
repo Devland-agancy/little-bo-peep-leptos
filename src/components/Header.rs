@@ -78,7 +78,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
               <Checkbox value=show_areas />
             </div>
             <div class="flex items-center justify-end gap-2 pb-[.7rem]">
-              <p>"Show section dividers"</p>
+              <p>"Show Section Dividers"</p>
               <Checkbox value=show_section_divider />
             </div>
           </div>
