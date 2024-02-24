@@ -576,6 +576,10 @@ video {
   left: -1500px;
 }
 
+.left-\[1500px\] {
+  left: 1500px;
+}
+
 .left-\[2\%\] {
   left: 2%;
 }
@@ -1131,8 +1135,12 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.pb-\[\.7rem\] {
-  padding-bottom: .7rem;
+.pb-\[15px\] {
+  padding-bottom: 15px;
+}
+
+.pb-\[20px\] {
+  padding-bottom: 20px;
 }
 
 .pl-10 {
@@ -1161,6 +1169,14 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-\[21px\] {
+  padding-top: 21px;
+}
+
+.pt-\[22px\] {
+  padding-top: 22px;
 }
 
 .text-left {
