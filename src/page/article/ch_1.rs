@@ -5,10 +5,12 @@ use crate::components::Grid::*;
 use crate::components::Image::*;
 use crate::components::ImageLeft::*;
 use crate::components::ImageRight::*;
+use crate::components::InlineImage::*;
 use crate::components::List::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 use crate::components::Paragraph::*;
+use crate::components::Section::*;
 use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
@@ -29,7 +31,6 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     view! { cx,
       <Columns>
-
         <Paragraph>
           <Span bold=true>"Square Roots. "</Span>
           "You might remember that “minus times minus is plus” and that “plus times plus is plus”. (Why? The enemy of my enemy is my friend.) So any nonzero number multiplied by itself is positive. For example,"
@@ -610,13 +611,6 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
           "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Image
-          id="exo"
-          src="/images/seperator.png"
-          height="50px"
-          width="160px"
-          container_classes="flex items-center mt-[45px] mb-[40px]"
-        >""</Image>
         <Tabs labels=vec!["1", "2"]>
           <TabElement>
             <Paragraph classes="animate-appear-slow">

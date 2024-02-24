@@ -44,11 +44,11 @@ pub fn elm(input: TokenStream) -> TokenStream {
         );
 
         match fs::read_to_string(file) {
-            Ok(contents) => transformer.transform(contents.to_string()),
+            Ok(contents) => transformer.transform(contents.to_string(), 0),
             Err(_) => "File not found".to_string(),
         }
     } else {
-        transformer.transform(elm.value())
+        transformer.transform(elm.value(), 0)
     };
 
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();

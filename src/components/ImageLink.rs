@@ -25,6 +25,7 @@ pub fn ImageLink(
       <span
         on:click=move |e| {
           e.stop_propagation();
+          return;
           if page_state() == PageState::ShowArticle {
             match direction {
               Direction::Left => {

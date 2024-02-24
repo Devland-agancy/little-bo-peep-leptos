@@ -127,7 +127,9 @@
     _changes_). A distance, by definition, is a nonnegative
     number, while a difference carries no such restriction.
 
-    In particular, since
+    |> Indent
+    
+        In particular, since
     
     $$ x_2 - x_1 $$
     

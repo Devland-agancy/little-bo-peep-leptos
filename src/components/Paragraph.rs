@@ -64,7 +64,7 @@ pub fn Paragraph(
         class=("indent-10", indent == Indent::Line)
         class=("px-4", !no_padding)
         class=("pl-10", indent == Indent::Block)
-        class=("text-center", align == Align::Center)
+        class=("text-center my-2", align == Align::Center)
         class=("text-right", align == Align::Right)
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas())

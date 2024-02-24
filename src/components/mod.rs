@@ -11,6 +11,7 @@ pub mod Image;
 pub mod ImageLeft;
 pub mod ImageLink;
 pub mod ImageRight;
+pub mod Indent;
 pub mod InlineImage;
 pub mod Link;
 pub mod List;

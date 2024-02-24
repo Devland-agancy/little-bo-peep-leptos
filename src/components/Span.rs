@@ -17,7 +17,7 @@ pub fn Span(
                 _class,
                 if italic { "font-baskerville-italic" } else { "" },
                 if bold { "font-baskerville-bold" } else { "" },
-                if align == Align::Center { "text-center block" } else { "" }
+                if align == Align::Center { "text-center my-2 block" } else { "" }
             )}
 
 
