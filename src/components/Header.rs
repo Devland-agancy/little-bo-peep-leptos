@@ -70,15 +70,15 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
       >
         <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)] translate-y-0 sm:translate-y-[-1px]">
           <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] sm:h-full px-4 py-3 overflow-y-hidden">
-            <h2 class="font-baskerville-italic text-2xl pb-2">"Chapters"</h2>
+            <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
             <MenuItems/>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-[.7rem] text-right">"Options"</h2>
-            <div class="flex items-center justify-end gap-2 pb-[.7rem]">
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">"Options"</h2>
+            <div class="flex items-center justify-end gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2">
               <p>"Show Areas"</p>
               <Checkbox value=show_areas />
             </div>
-            <div class="flex items-center justify-end gap-2 pb-[.7rem]">
-              <p>"Show section dividers"</p>
+            <div class="flex items-center justify-end gap-2 text-lg sm:text-xl">
+              <p>"Show Section Dividers"</p>
               <Checkbox value=show_section_divider />
             </div>
           </div>
