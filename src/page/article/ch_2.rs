@@ -8,6 +8,7 @@ use crate::components::ImageRight::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
+use crate::components::Exercises::*;
 use crate::components::ImageLink::*;
 use crate::components::Indent::*;
 use crate::components::InlineImage::*;
@@ -18,7 +19,6 @@ use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::StarDivider::*;
 use crate::components::Table::*;
-use crate::components::Tabs::*;
 
 use crate::constants::MENU_ITEMS;
 

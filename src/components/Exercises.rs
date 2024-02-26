@@ -218,7 +218,7 @@ struct LabelsVec {
     labels: ReadSignal<Vec<&'static str>>,
 }
 #[component]
-pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
+pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);
@@ -420,7 +420,7 @@ pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
 }
 
 #[component]
-pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
+pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let GlobalState { labels, tab, .. } = use_context::<GlobalState>(cx).unwrap();
 

@@ -1,6 +1,7 @@
 use crate::components::Article::*;
 use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
+use crate::components::Exercises::*;
 use crate::components::Grid::*;
 use crate::components::Image::*;
 use crate::components::ImageLeft::*;
@@ -15,7 +16,6 @@ use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::Table::Table;
-use crate::components::Tabs::*;
 
 use crate::constants::MENU_ITEMS;
 use leptos::*;
@@ -611,8 +611,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
           "and so on. (Generally speaking, conjugate pairs are good things to multiply together.)"
         </Paragraph>
-        <Tabs labels=vec!["1", "2"]>
-          <TabElement>
+        <Exercises labels=vec!["1", "2"]>
+          <Exercise>
             <Paragraph classes="animate-appear-slow">
               <Span bold=true>"Exercise 1. "</Span>
               "True or false (and, if possible, explain):"
@@ -1264,8 +1264,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
               </Paragraph>
 
             </Solution>
-          </TabElement>
-          <TabElement>
+          </Exercise>
+          <Exercise>
             <Paragraph classes="animate-appear-slow">
               <Span bold=true>"Exercise 2."</Span>
               " In the solution to Exercise 1, we observed how the difference"
@@ -1416,8 +1416,8 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
                 ".)"
               </Paragraph>
             </Solution>
-          </TabElement>
-        </Tabs>
+          </Exercise>
+        </Exercises>
 
       </Columns>
     }

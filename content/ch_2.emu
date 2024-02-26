@@ -587,9 +587,11 @@
         to be $\te{m}/\te{s}$ or $\te{km}/\te{s}$ or km/hour, etc,
         depends on the exact units involved.)
 
-        Terminology-wise, slopes are often known as __rates of change__
-        in the presence of units. More particularly, in the common
-        case when the $x$-axis denotes time, the formula
+        |> Indent
+
+            Terminology-wise, slopes are often known as __rates of change__
+            in the presence of units. More particularly, in the common
+            case when the $x$-axis denotes time, the formula
 
         $$\te{slope} = {\te{rise} \over \te{run}}$$
 
@@ -697,10 +699,10 @@
         __length over time__
         is another dimension, commonly known as... velocity!
 
-|> Tabs
+|> Exercises
     labels=vec!["0", "1", "2", "3"]
 
-    |> TabElement
+    |> Exercise
 
         |> Paragraph 
             classes="animate-appear-slow"
@@ -763,7 +765,7 @@
 
                 ...is like so, but it doesn't really add anything new. 
 
-    |> TabElement
+    |> Exercise
 
         |> Paragraph 
             classes="animate-appear-slow"
@@ -876,7 +878,7 @@
 
                 with $a = p$, $b = y_0 - px_0$.
 
-    |> TabElement
+    |> Exercise
     
         |> Paragraph 
             classes="animate-appear-slow"
@@ -934,7 +936,7 @@
                 because $2/0.5 = 4$.
                 (Think: _how many times_ does $0.5$ go into $2$?)
 
-    |> TabElement
+    |> Exercise
 
         |> Paragraph 
             classes="animate-appear-slow"
