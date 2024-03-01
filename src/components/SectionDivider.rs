@@ -38,12 +38,12 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
     view! {
       cx,
       <Show
-        fallback=move |_| view! {cx, <div class="col-start-2"></div>}
+        fallback=move |_| view! {cx, <div class="col-start-2 my-1"></div>}
         when=move || !hidden() && show_section_divider() >
           <Image
             src="/images/section_divider.svg"
             width="100%"
-            image_classes="col-start-2"
+            image_classes="col-start-2 my-4"
           >""</Image>
       </Show>
     }
