@@ -836,7 +836,7 @@
 
                 |> MathBlock
 
-                    \$\$\te{“}\te{slope} \times \te{run} = \te{rise}\te{”}\$\$
+                    $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
 
                     |> ImageRight
                         src="/images/63.svg"
