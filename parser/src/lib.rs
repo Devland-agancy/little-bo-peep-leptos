@@ -32,7 +32,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
 
     let transformer: Transformer = Transformer::new(
         vec!["img", "SectionDivider"],
-        vec!["Paragraphs", "Example"],
+        vec!["Section", "Example", "Solution"],
         "Paragraph",
     );
 
