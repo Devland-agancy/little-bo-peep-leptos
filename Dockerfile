@@ -22,4 +22,9 @@ ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
 ENV LEPTOS_SITE_ROOT="site"
 EXPOSE 3000
 # Run the server
+
+RUN mv site/pkg/little-bo-peep.*.css site/pkg/little-bo-peep.css
+RUN mv site/pkg/little-bo-peep.*.js site/pkg/little-bo-peep.js
+RUN mv site/pkg/little-bo-peep.*.wasm site/pkg/little-bo-peep.wasm
+
 CMD ["/app/little-bo-peep"]
