@@ -21,7 +21,7 @@ pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
         <ArticleTitle label="Chapter 2: Slopes"/>
         <Columns>
-           /*  <ArticleBody/> */""
+           ""
         </Columns>
     }
 }

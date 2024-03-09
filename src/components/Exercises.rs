@@ -449,3 +449,12 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       </Show>
     }
 }
+
+#[component]
+pub fn ExerciseQuestion(cx: Scope, children: ChildrenFn) -> impl IntoView {
+    view! { cx,
+    <div class="animate-appear-slow col-start-2 block relative flex flex-col gap-4">
+      {children(cx)}
+    </div>
+    }
+}

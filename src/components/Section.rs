@@ -32,3 +32,12 @@ pub fn Example(cx: Scope, children: Children) -> impl IntoView {
       </div>
     };
 }
+
+#[component]
+pub fn Pause(cx: Scope, amount: &'static str, children: Children) -> impl IntoView {
+    return view! {
+      cx, <div style=move ||format!("marginInsetBlock : {}", amount)>
+        {children(cx)}
+      </div>
+    };
+}

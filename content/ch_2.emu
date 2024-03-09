@@ -22,9 +22,8 @@
     horizontal change__
     
     ...More elegant!
-    |> Indent
 
-        for example, the line below has slope 1, because it goes up by $1$ unit for each unit to the right:
+    for example, the line below has slope 1, because it goes up by $1$ unit for each unit to the right:
 
     |> Image
         src="/images/slope_1_example.svg"
@@ -59,9 +58,8 @@
 
     Indeed, dividing the vertical change by the horizontal 
     change gives the per-horizontal-unit vertical change.
-    |> Indent
 
-        More precisely, if
+    More precisely, if
     
     $$ A = (x_1, y_1) $$
     
@@ -139,9 +137,8 @@
     are not distances but _differences_ (or, equivalently, 
     _changes_). A distance, by definition, is a nonnegative
     number, while a difference carries no such restriction.
-    |> Indent
     
-        In particular, since
+    In particular, since
     
     $$ x_2 - x_1 $$
     
@@ -153,7 +150,7 @@
     below), the following sign combinations arise (lines
     of slope zero not included):
 
-    |>  Table
+    |> Table
         cols=vec![120, 120, 120, 120]
         lines=true
 
@@ -274,8 +271,6 @@
 
     are somehow equal. But, indeed,
 
-    $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
-
     |> ImageLeft
         src="/images/39.svg"
         width=400
@@ -284,6 +279,8 @@
         squiggle_top="4.8rem"
         squiggle_right="1.1rem"
         hidden_in_mobile=true
+
+    $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
 
     which verifies this hypothesis. In particular,
     
@@ -354,12 +351,7 @@
     “$x_2 - x_1\!$”, “$y_2 - y_1\!$” that appear in the slope
     formula.
 
-    |> Indent
-
-        (In order not to discriminate, maybe we should also include 
-        this picture:
-
-    maybe we should also include this picture:
+    (In order not to discriminate, maybe we should also include this picture:
 
     |> Image
         src="/images/47.svg"
@@ -367,6 +359,9 @@
 
     Then “rise” and “run” have their signs flipped,
     but the ratio rise-over-run is the same, as already mentioned.)
+
+    |> Pause
+        amount="15px"
 
     _An Additional Miscellaneous Notation._
     The slope formula is occasionally written
@@ -501,6 +496,7 @@
     $$y = 3 - x$$
     
     |> Paragraph
+        no_padding = true
 
         and thus describes a line of $y$-intercept $3$ and slope
         $-1$.
@@ -558,11 +554,9 @@
     to be $\te{m}/\te{s}$ or $\te{km}/\te{s}$ or km/hour, etc,
     depends on the exact units involved.)
 
-    |> Indent
-
-        Terminology-wise, slopes are often known as __rates of change__
-        in the presence of units. More particularly, in the common
-        case when the $x$-axis denotes time, the formula
+    Terminology-wise, slopes are often known as __rates of change__
+    in the presence of units. More particularly, in the common
+    case when the $x$-axis denotes time, the formula
 
     $$\te{slope} = {\te{rise} \over \te{run}}$$
 
@@ -673,8 +667,7 @@
 
     |> Exercise
 
-        |> Paragraph 
-            classes="animate-appear-slow"
+        |> ExerciseQuestion
 
             *Exercise 1. *
             True or false: Lines of slope $ -1 \over 2 $ are perpendicular to lines of slope $2$.
@@ -734,8 +727,7 @@
 
     |> Exercise
 
-        |> Paragraph 
-            classes="animate-appear-slow"
+        |> ExerciseQuestion
 
             *Exercise 2. *
             Find the general equation of a line of slope 
@@ -766,9 +758,7 @@
             sufficient for this segment to have slope $p$ in order
             for the point $(x,y)$ to be on the line!
 
-            |> Indent
-
-                Unfortunately, the equation
+            Unfortunately, the equation
 
             $$ p = {y - y_0 \over x - x_0} $$
 
@@ -781,9 +771,7 @@
             if we plug in $x = x_0$, $y = y_0$, which is not a valid
             equality because the right-hand side is an undefined quantity.)
 
-            |> Indent
-
-                Instead, multiplying
+            Instead, multiplying
 
             $$
             p = {y - y_0 \over x - x_0}
@@ -845,8 +833,7 @@
 
     |> Exercise
     
-        |> Paragraph 
-            classes="animate-appear-slow"
+        |> ExerciseQuestion
 
             *Exercise 3. *
             Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):
@@ -868,9 +855,11 @@
             On each interval, the velocity is rate of change
             of the height, i.e., the _slope_ of the height.
             For example, the rate of change of the height is
+
             $$
             {1\te{m} \over 1\te{s}} = 1\te{m}/\te{s}
             $$
+
             between $-4$s and $-3$s, where the mosquito goes up by one meter
             during a one second period, so the vertical velocity is
             1m$/$s for that time interval, etc.
@@ -901,8 +890,7 @@
 
     |> Exercise
 
-        |> Paragraph 
-            classes="animate-appear-slow"
+        |> ExerciseQuestion
 
             *Exercise 4. *
             Digressing on the second-to-last equation
@@ -923,9 +911,11 @@
 
             The rise from the $y$-intercept to $(x_0, y_0)$ is $px_0$, as found
             by “rise equals slope times run”, implying that
+
             $$
             y_0 - px_0
             $$
+
             is the $y$-intercept.
             
             _Note 1._ Our drawing makes some implicit
@@ -939,4 +929,5 @@
             the run in all cases), making
 
             $$ y_0 - px_0 $$
+
             the $y$-intercept in all cases.

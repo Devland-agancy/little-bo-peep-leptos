@@ -30,10 +30,32 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
 
-    let transformer: Transformer = Transformer::new(
+    let mut transformer: Transformer = Transformer::new(
         vec!["img", "SectionDivider"],
-        vec!["Section", "Example", "Solution"],
+        vec!["Section", "Example", "Solution", "ExerciseQuestion"],
+        vec!["Example"],
         "Paragraph",
+        vec![
+            "Image",
+            "DisplayImage",
+            "Pause",
+            "StarDivider",
+            "MathBlock",
+            "Table",
+            "SectionDivider",
+            "Example",
+            "InlineImage",
+        ],
+        vec![
+            "Section",
+            "Example",
+            "Solution",
+            "Table",
+            "td",
+            "ImageLink",
+            "Paragraph",
+            "ExerciseQuestion",
+        ],
     );
 
     let leptos_code = if elm.value().starts_with("file:") {
