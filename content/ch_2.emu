@@ -78,18 +78,15 @@
     are the horizontal _&_ the vertical change, respectively,
     from $A$ to $B$, so
 
-    |> MathBlock
-
-        $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
-
-        |> ImageRight
-            src="/images/32.svg"
-            width=600
-            x_anchor="-1rem"
-            y_anchor="-11rem"
-            hidden_in_mobile=true
-            squiggle_top="47%"
-            squiggle_left="-1rem"
+    $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
+    |> ImageRight
+        src="/images/32.svg"
+        width=600
+        x_anchor="1rem"
+        y_anchor="-12rem"
+        hidden_in_mobile=true
+        squiggle_top="47%"
+        squiggle_left="-1rem"
 
     more succinctly. We call this the _slope formula_.
 
@@ -257,30 +254,29 @@
     that the slope formula gives the same answer if $(x_1, y_1)$ 
     and $(x_2, y_2)$ swap places, or, namely, to show that the 
     fractions
-
     |> ImageRight
         src="/images/38.svg"
-        y_anchor="-1.65rem"
+        y_anchor="-1.5rem"
         x_anchor="0"
         squiggle_left="-2rem"
         squiggle_top="38%"
         hidden_in_mobile=true
         width=390
+    
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
 
     are somehow equal. But, indeed,
 
+    $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
     |> ImageLeft
         src="/images/39.svg"
         width=400
-        y_anchor="-10.5rem"
-        x_anchor="1rem"
-        squiggle_top="4.8rem"
+        y_anchor="-11.5rem"
+        x_anchor="3rem"
+        squiggle_top="11.5rem"
         squiggle_right="1.1rem"
         hidden_in_mobile=true
-
-    $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
 
     which verifies this hypothesis. In particular,
     
@@ -463,12 +459,11 @@
     while a vertical line has no slope, so what would $a$ be
     equal to? Instead, a vertical line is described by an equation
     of the form
-
     |> ImageLeft
         src="/images/50.svg"
         width=200
-        y_anchor="4.5rem"
-        x_anchor="-5rem"
+        y_anchor="-2.5rem"
+        x_anchor="-4.5rem"
 
     $$x = c$$
 
@@ -495,20 +490,16 @@
 
     $$y = 3 - x$$
     
-    |> Paragraph
-        no_padding = true
-
-        and thus describes a line of $y$-intercept $3$ and slope
-        $-1$.
-
-        |> ImageRight
-            src="/images/51.svg"
-            width=300
-            y_anchor="-3.5rem"
-            x_anchor="-3rem"
-            squiggle_left="-5.1rem"
-            squiggle_top="31%"
-            hidden_in_mobile=true
+    and thus describes a line of $y$-intercept $3$ and slope
+    $-1$.
+    |> ImageRight
+        src="/images/51.svg"
+        width=300
+        y_anchor="-3.5rem"
+        x_anchor="-3rem"
+        squiggle_left="-5.1rem"
+        squiggle_top="31%"
+        hidden_in_mobile=true
 
 |> Section
 
@@ -542,8 +533,14 @@
     
     $$\te{slope} \left(\!= {\te{rise} \over \te{run}}\right) = {3\te{m} \over 4\te{s}} = 0.75\te{m}/\te{s}$$
 
-    In fact, the slope is the balloon's upward __velocity__
-    since velocity is defined as __displacement over time__
+    In fact, the slope is the balloon's upward 
+    
+    __velocity__
+
+    since velocity is defined as 
+    
+    __displacement over time__
+
     and this is precisely the form of the ratio “rise over run”
     for the current graph. (More generally, we have
 
@@ -601,26 +598,22 @@
         The amount of time required
         for the balloon to go up by (say) $4$m is
 
-        |> MathBlock
-
-            $$
-            \frac{4\te{m}}{0.75\te{m}/\te{s}}\! = 5.3333...\te{s}
-            $$
-        
-            |> ImageRight
-                src="/images/54.svg"
-                width=930
-                x_anchor="5rem"
-                y_anchor="-5.5rem"
-                hidden_in_mobile=true
-                squiggle_top="40%"
-                squiggle_left="3.5rem"
-                children_y="34%"
-                children_x="29%"
-                clickable_on_desktop=true
-                
-                $$ {4 \over 0.75} = 5.3333...\qquad\qquad\,\,\, $$
-
+        $$
+        \frac{4\te{m}}{0.75\te{m}/\te{s}}\! = 5.3333...\te{s}
+        $$
+        |> ImageRight
+            src="/images/54.svg"
+            width=930
+            x_anchor="4.8rem"
+            y_anchor="-6rem"
+            hidden_in_mobile=true
+            squiggle_top="40%"
+            squiggle_left="3.5rem"
+            children_y="34%"
+            children_x="29%"
+            clickable_on_desktop=true
+            
+            $$ {4 \over 0.75} = 5.3333...\qquad\qquad\,\,\, $$
 
         following the template
 
@@ -674,25 +667,22 @@
 
         |> Solution
 
-            |> Paragraph
+            This is true, as illustrated by the following pair of lines:
+            |> Image
+                src="/images/55.svg"
+                container_classes="relative w-fit"
 
-                This is true, as illustrated by the following pair of lines:
+                |> ImageRight
+                    src="/images/56.svg"
+                    width=340
+                    x_anchor="8%"
+                    y_anchor="13rem"
 
-                |> Image
-                    src="/images/55.svg"
-                    container_classes="relative w-fit"
-
-                    |> ImageRight
-                        src="/images/56.svg"
-                        width=340
-                        x_anchor="8%"
-                        y_anchor="13rem"
-
-                    |> ImageLeft
-                        src="/images/57.svg"
-                        width=340
-                        x_anchor="30%"
-                        y_anchor="16rem"
+                |> ImageLeft
+                    src="/images/57.svg"
+                    width=340
+                    x_anchor="30%"
+                    y_anchor="16rem"
 
             In more detail, the two triangles are related by
             a $90^\circ$ rotation and so, likewise, are the lines defined
@@ -739,15 +729,13 @@
             A point $(x,y) \ne (x_0,y_0)$ is on the line of
             slope $p$ if and only if
 
-            |> MathBlock
 
-                $$ p = {y - y_0 \over x - x_0} $$
-
-                |> ImageLeft
-                    src="/images/62.svg"
-                    width=800
-                    x_anchor="5.5rem"
-                    y_anchor="-4.5rem"
+            $$ p = {y - y_0 \over x - x_0} $$
+            |> ImageLeft
+                src="/images/62.svg"
+                width=800
+                x_anchor="6.5rem"
+                y_anchor="-5.7rem"
 
             because
 
@@ -787,18 +775,15 @@
             by every other point on the line.
             This can be a final answer, and, pleasingly, has the form
 
-            |> MathBlock
-
-                $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
-
-                |> ImageRight
-                    src="/images/63.svg"
-                    width=400
-                    x_anchor="-1.3rem"
-                    y_anchor="-1.6rem"
-                    hidden_in_mobile=true
-                    squiggle_top="36%"
-                    squiggle_left="-1.3rem"
+            $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
+            |> ImageRight
+                src="/images/63.svg"
+                width=400
+                x_anchor="-1.5rem"
+                y_anchor="-3.5rem"
+                hidden_in_mobile=true
+                squiggle_top="36%"
+                squiggle_left="-3.8rem"
 
             which can also make it easy to remember!
 
