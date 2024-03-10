@@ -39,7 +39,6 @@
 
     (Etc.)
 
-|> SectionDivider
 
 |> Section
     label="measuring"
@@ -117,7 +116,6 @@
 
     is the horizontal change from $A$ to $B$.)
 
-|> SectionDivider
 
 |> Section
     label="signcombo"
@@ -284,11 +282,8 @@
         
     are equally valid incarnations of the slope formula.
 
-|> SectionDivider
-
 |> Section
     label="pathological"
-    include_section_icon=false
 
     *Pathological Cases.*
     If
@@ -316,8 +311,6 @@
     which could be anything. (Technically, “$0/0$” is undefined.)
     Indeed, infinitely many different lines pass through any
     given point!
-
-|> SectionDivider
 
 |> Section
     label="rise_over_run"
@@ -370,8 +363,6 @@
     can be thought of as shorthands for “$x_2 - x_1$”, 
     “$y_2 - y_1$” respectively. (Or, a little more exactly, as
     shorthands for the phrases “change in $x$”, “change in $y$”.)
-        
-|> SectionDivider
 
 |> Section
     label="rise_run_formulas"
@@ -396,8 +387,6 @@
         src="/images/48.svg"
 
     ...as can sometimes be useful to know.  
-
-|> SectionDivider
 
 |> Section
     label="line_equations"
@@ -627,6 +616,7 @@
 
 |> Section
     label="units_vs_dimensions_postscript"
+    divider=false
 
     *Postscript: Units vs Dimensions.* Comparing
 

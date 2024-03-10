@@ -1,17 +1,21 @@
+use crate::components::SectionDivider::SectionDivider;
 use leptos::*;
 
 #[component]
 pub fn Section(
     cx: Scope,
     #[prop(default = "")] label: &'static str,
-    #[prop(default = false)] include_section_icon: bool,
+    #[prop(default = true)] divider: bool,
 
     children: Children,
 ) -> impl IntoView {
     return view! {
       cx, <div class="flex flex-col gap-4 col-start-2 my-2">
-        {children(cx)}
-      </div>
+            {children(cx)}
+          </div>
+            <Show fallback=|_| () when=move || divider>
+            <SectionDivider />
+          </Show>
     };
 }
 
