@@ -4,7 +4,7 @@ use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;
 use crate::page::state::PageState;
-
+use crate::svg_defs::SVGDefinitions;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
@@ -98,6 +98,7 @@ pub fn App(cx: Scope) -> impl IntoView {
             </Routes>
           </Article>
         </main>
+        <SVGDefinitions />
       </Router>
     }
 }
