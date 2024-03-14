@@ -707,7 +707,6 @@
         A point $(x,y) \ne (x_0,y_0)$ is on the line of
         slope $p$ if and only if
 
-
         $$ p = {y - y_0 \over x - x_0} $$
         |> ImageLeft
             src="/images/62.svg"
