@@ -57,7 +57,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "ExerciseQuestion",
         ],
     );
-    let leptos_code = if elm.value().starts_with("file:") {
+    let mut leptos_code;
+    if elm.value().starts_with("file:") {
         let file = format!(
             "{}{}",
             env::current_dir().unwrap().display(),
@@ -66,16 +67,17 @@ pub fn elm(input: TokenStream) -> TokenStream {
 
         match fs::read_to_string(file) {
             Ok(contents) => {
-                let pre_proccessed_string = transformer.pre_process_exercises(contents.to_string());
-                transformer.transform(pre_proccessed_string, 0)
+                leptos_code = transformer.pre_process_exercises(contents.to_string());
+                leptos_code = transformer.pre_process_examples(leptos_code);
             }
-            Err(_) => "File not found".to_string(),
+            Err(_) => leptos_code = "File not found".to_string(),
         }
     } else {
-        let pre_proccessed_string = transformer.pre_process_exercises(elm.value());
-        transformer.transform(pre_proccessed_string, 0)
+        leptos_code = transformer.pre_process_exercises(elm.value());
+        leptos_code = transformer.pre_process_examples(leptos_code);
     };
 
+    leptos_code = transformer.transform(leptos_code, 0);
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
 
     let output = quote! {

@@ -92,7 +92,6 @@
 
     |> Example
 
-        *Example 1.*
         A line that passes through the points
 
         $$A = (-2, 5)$$
@@ -434,7 +433,6 @@
 
     |> Example
 
-        *Example 2. *
         The equation
         
         $$y = 100x - 3$$
@@ -563,7 +561,6 @@
 
     |> Example
 
-        *Example 3.*
         The increase in height of the above balloon over a
         period of 5 seconds is
 
@@ -584,7 +581,6 @@
 
     |> Example
 
-        *Example 4.*
         The amount of time required
         for the balloon to go up by (say) $4$m is
 
