@@ -644,10 +644,7 @@
 
 |> Exercise
 
-    |> ExerciseQuestion
-
-        *Exercise 1. *
-        True or false: Lines of slope $ -1 \over 2 $ are perpendicular to lines of slope $2$.
+    True or false: Lines of slope $ -1 \over 2 $ are perpendicular to lines of slope $2$.
 
     |> Solution
 
@@ -701,12 +698,9 @@
 
 |> Exercise
 
-    |> ExerciseQuestion
-
-        *Exercise 2. *
-        Find the general equation of a line of slope 
-        $p$ passing through a point $(x_0, y_0)$.
-        (Hint: Start from the slope formula.) 
+    Find the general equation of a line of slope 
+    $p$ passing through a point $(x_0, y_0)$.
+    (Hint: Start from the slope formula.) 
 
     |> Solution
 
@@ -802,10 +796,7 @@
 
 |> Exercise
 
-    |> ExerciseQuestion
-
-        *Exercise 3. *
-        Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):
+    Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):
 
     |> Image
         src="/images/1.svg"
@@ -859,17 +850,14 @@
 
 |> Exercise
 
-    |> ExerciseQuestion
+    Digressing on the second-to-last equation
+    in the solution to Exercise 2, explain why
 
-        *Exercise 4. *
-        Digressing on the second-to-last equation
-        in the solution to Exercise 2, explain why
+    $$ y_0 - px_0 $$
 
-        $$ y_0 - px_0 $$
-
-        is the $y$-intercept of the line of slope $p$ through
-        the point $(x_0,y_0)$ by using a drawing and “rise equals
-        slope times run”.
+    is the $y$-intercept of the line of slope $p$ through
+    the point $(x_0,y_0)$ by using a drawing and “rise equals
+    slope times run”.
 
     |> Solution
         

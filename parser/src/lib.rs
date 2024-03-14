@@ -13,6 +13,9 @@ struct Input {
     cx: Ident,
     elm: LitStr,
 }
+use std::fs::File;
+use std::io::prelude::*;
+use std::process::Command;
 
 impl syn::parse::Parse for Input {
     fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
@@ -57,8 +60,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "ExerciseQuestion",
         ],
     );
-    let mut leptos_code;
-    if elm.value().starts_with("file:") {
+
+    let mut elm_string = if elm.value().starts_with("file:") {
         let file = format!(
             "{}{}",
             env::current_dir().unwrap().display(),
@@ -66,18 +69,24 @@ pub fn elm(input: TokenStream) -> TokenStream {
         );
 
         match fs::read_to_string(file) {
-            Ok(contents) => {
-                leptos_code = transformer.pre_process_exercises(contents.to_string());
-                leptos_code = transformer.pre_process_examples(leptos_code);
-            }
-            Err(_) => leptos_code = "File not found".to_string(),
+            Ok(contents) => contents.to_string(),
+            Err(_) => "File not found".to_string(),
         }
     } else {
-        leptos_code = transformer.pre_process_exercises(elm.value());
-        leptos_code = transformer.pre_process_examples(leptos_code);
+        elm.value()
     };
 
-    leptos_code = transformer.transform(leptos_code, 0);
+    let mut pre = transformer.pre_process_exercises(elm_string);
+    pre = transformer.auto_increamental_title(pre, "Example", "Example", None, None);
+    pre = transformer.auto_increamental_title(
+        pre,
+        "Exercise",
+        "Exercise",
+        Some("ExerciseQuestion"),
+        Some("Solution"),
+    );
+
+    let leptos_code = transformer.transform(pre, 0);
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
 
     let output = quote! {
