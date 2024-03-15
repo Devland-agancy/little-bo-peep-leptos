@@ -98,7 +98,7 @@ pub fn App(cx: Scope) -> impl IntoView {
             </Routes>
           </Article>
         </main>
-        <SVGDefinitions />
       </Router>
+      <SVGDefinitions />
     }
 }
