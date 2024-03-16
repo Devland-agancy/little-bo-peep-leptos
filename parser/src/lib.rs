@@ -2,7 +2,7 @@
 extern crate proc_macro;
 extern crate nom;
 
-use elm_parser::transform::Transformer;
+use elm_parser::transform::{AutoWrapper, Transformer};
 use proc_macro::TokenStream;
 use proc_macro2::Ident;
 use quote::quote;
@@ -35,9 +35,24 @@ pub fn elm(input: TokenStream) -> TokenStream {
 
     let mut transformer: Transformer = Transformer::new(
         vec!["img", "SectionDivider"],
-        vec!["Section", "Example", "Solution", "ExerciseQuestion"],
+        vec![
+            AutoWrapper {
+                tags: vec!["ExerciseQuestion", "Example", "Section", "Solution"],
+                wrap_children_with: "Paragraph",
+                enable_manual_wrap: true,
+            },
+            AutoWrapper {
+                tags: vec!["Grid"],
+                wrap_children_with: "Span",
+                enable_manual_wrap: true,
+            },
+            AutoWrapper {
+                tags: vec!["List"],
+                wrap_children_with: "Item",
+                enable_manual_wrap: true,
+            },
+        ],
         vec!["Example"],
-        "Paragraph",
         vec![
             "Image",
             "DisplayImage",
@@ -48,6 +63,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "SectionDivider",
             "Example",
             "InlineImage",
+            "List",
         ],
         vec![
             "Section",
@@ -58,7 +74,9 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "ImageLink",
             "Paragraph",
             "ExerciseQuestion",
+            "Item",
         ],
+        vec!["Grid", "List"],
     );
 
     let mut elm_string = if elm.value().starts_with("file:") {

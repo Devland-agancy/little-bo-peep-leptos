@@ -1,11 +1,12 @@
-use crate::components::Paragraph::*;
+use crate::components::Paragraph::Align;
+use crate::components::Span::*;
 use leptos::*;
 
 #[component]
 pub fn StarDivider(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <Paragraph align=Align::Center>
+      cx, <Span align=Align::Center>
         "* * * *"
-      </Paragraph>
+      </Span>
     };
 }
