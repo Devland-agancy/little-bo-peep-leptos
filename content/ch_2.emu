@@ -350,7 +350,6 @@
     but the ratio rise-over-run is the same, as already mentioned.)
 
     |> Pause
-        amount="15px"
 
     _An Additional Miscellaneous Notation._
     The slope formula is occasionally written
@@ -671,6 +670,8 @@
             a $90^\circ$ rotation and so, likewise, are the lines defined
             by their hypotenuses!
 
+            |> Pause
+
             _Note 1._ 
             More generally, a line of slope $p$ is perpendicular to a line
             of slope $-1/p$, for all $p \ne 0$. By a similar drawing, for $p > 0$:
@@ -766,6 +767,8 @@
 
             which can also make it easy to remember!
 
+            |> Pause
+
             _Note 1._
             The answer we gave is more often written
 
@@ -825,6 +828,8 @@
             during a one second period, so the vertical velocity is
             1m$/$s for that time interval, etc.
 
+            |> Pause
+
             _Note 1._
             As explained in Chapter 3, an empty circle of this type
 
@@ -835,6 +840,8 @@
             Specifically, in our case, the vertical velocity is _undefined_
             wherever the graph of the height has a sharp corner.
             (Because the slope of the graph is not well-defined at such corners.)
+
+            |> Pause
 
             _Note 2._ 
             For the time interval from $2$s to $2.5$s, the slope is
@@ -876,6 +883,8 @@
 
             is the $y$-intercept.
             
+            |> Pause
+
             _Note 1._ Our drawing makes some implicit
             assumptions, such as $p > 0$ and $x_0 > 0$.
             But
