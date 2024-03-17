@@ -131,7 +131,7 @@
 
     |> List
         indent=true
-        
+
         Fifty halves (i.e., $50 \times \frac{1}{2}$).
 
         The size obtained when something of size fifty is divided into two equal parts (answer: $25$).
@@ -508,7 +508,6 @@
         True or false (and, if possible, explain):
 
         |> Grid
-            classes="animate-appear-slow"
             cols=3 
             sm_cols=2
 
@@ -529,7 +528,7 @@
             h. $ (-1)^{101} = -1 $
 
             |> Span
-                _class="col-span-full sm:col-span-1"
+                classes="center-on-mobile"
 
                 i. $ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $
 
@@ -836,7 +835,6 @@
             |> Grid
                 cols=3 
                 place_items="end"
-                classes="w-fit"
 
                 $ (-1)^1 = $
 

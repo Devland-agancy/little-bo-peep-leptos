@@ -64,6 +64,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "Example",
             "InlineImage",
             "List",
+            "Grid",
         ],
         vec![
             "Section",

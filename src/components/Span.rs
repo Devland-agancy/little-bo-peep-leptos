@@ -4,7 +4,7 @@ use leptos::*;
 #[component]
 pub fn Span(
     cx: Scope,
-    #[prop(default = "")] _class: &'static str,
+    #[prop(default = "")] classes: &'static str,
     #[prop(default = false)] bold: bool,
     #[prop(default = false)] italic: bool,
     #[prop(default = Align::None)] align: Align,
@@ -14,7 +14,7 @@ pub fn Span(
         <span class=move || {
             format!(
                 "{} {} {} {}",
-                _class,
+                classes,
                 if italic { "font-baskerville-italic" } else { "" },
                 if bold { "font-baskerville-bold" } else { "" },
                 if align == Align::Center { "text-center my-2 block" } else { "" }
