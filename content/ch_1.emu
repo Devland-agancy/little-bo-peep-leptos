@@ -25,8 +25,8 @@
     |> ImageRight
         src="/images/svg_cloud_minus_two_squared.svg"
         padding="40px"
-        x_anchor="3rem"
-        y_anchor="-4rem"
+        x_anchor="4.2rem"
+        y_anchor="-5.5rem"
         width=316
 
     and, in particular, it is _not_ true that
@@ -580,8 +580,8 @@
             $$
             |> ImageLeft
                 src="/images/17.svg"
-                y_anchor="3.6rem"
-                x_anchor="-3rem"
+                y_anchor="2.4rem"
+                x_anchor="-2rem"
                 hidden_in_mobile=true
                 squiggle_right="-4rem"
                 squiggle_top="30%"
@@ -615,8 +615,8 @@
                 hidden_in_mobile=true
                 squiggle_right="-4rem"
                 squiggle_top="37%"
-                y_anchor="3.65rem"
-                x_anchor="-3rem"
+                y_anchor="2.2rem"
+                x_anchor="-2rem"
 
             so
             $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
@@ -643,14 +643,14 @@
             {\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}
             $$
 
-            for all $x \geq 0$, $y > 0$ (you each root to be defined),
+            for all $x \geq 0$, $y > 0$ (you need each root to be defined),
             so
 
             $$
             {\sqrt{2} \over 2} = {\sqrt{2} \over \sqrt{4}} = \sqrt{\up{0.8}2 \over 4} = \sqrt{0.5}
             $$
 
-            ...ta-daa!-
+            ...ta-daa!
 
             _Note 1._
             One can also proceed by “direct verification”:
@@ -745,10 +745,10 @@
             |> ImageRight
                 src="/images/104.svg"
                 width=480
-                y_anchor="-4.6rem"
-                x_anchor="4rem"
-                children_y="47%"
-                children_x="39%"
+                y_anchor="-6rem"
+                x_anchor="5rem"
+                children_y="55%"
+                children_x="31%"
 
                 $
                 10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
@@ -855,7 +855,6 @@
                 $ -1 $
 
                 $ (-1)^4 = $
-
 
                 $ (-1)\times(-1)\times(-1)\times(-1) = $
 
@@ -978,9 +977,10 @@
             $$
             |> ImageRight
                 src="/images/24.svg"
-                y_anchor="-4.8rem"
+                y_anchor="-5.8rem"
+                x_anchor="1rem"
                 children_x="30%"
-                children_y="25.5%"
+                children_y="30%"
                 squiggle_left="-1.2rem"
                 squiggle_top="30%"
                 hidden_in_mobile=true
@@ -1083,10 +1083,10 @@
             $$
             |> ImageRight
                 src="/images/25.svg"
-                children_y="10%"
+                children_y="25%"
                 children_x="37%"
-                x_anchor="4.5rem"
-                y_anchor="-1.2rem"
+                x_anchor="6.5rem"
+                y_anchor="-2.8rem"
                 width=362
                 
                 $$
@@ -1100,10 +1100,10 @@
             $$
             |> ImageRight
                 src="/images/26.svg"
-                children_y="15%"
+                children_y="26%"
                 children_x="37%"
-                x_anchor="5rem"
-                y_anchor="-1.9rem"
+                x_anchor="6.5rem"
+                y_anchor="-3rem"
                 width=362
 
                 $$
