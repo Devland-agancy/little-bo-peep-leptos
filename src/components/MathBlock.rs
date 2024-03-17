@@ -17,7 +17,7 @@ pub fn MathBlock(
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "2rem")] arrow_position_y: &'static str,
     #[prop(default = "-2.5rem")] arrow_position_x: &'static str,
-    #[prop(default = false)] arrow_hidden: bool,
+    #[prop(default = true)] arrow_hidden: bool, // hide it on develop
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
 ) -> impl IntoView {
