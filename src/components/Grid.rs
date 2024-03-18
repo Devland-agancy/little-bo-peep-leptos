@@ -1,9 +1,10 @@
+use crate::components::Span::Span;
 use leptos::*;
 
 #[component]
 pub fn Grid(
     cx: Scope,
-    children: Children,
+    children: ChildrenFn,
     #[prop(default = 0)] margin_top: i16,
     #[prop(default = 0)] margin_bottom: i16,
     #[prop(optional)] id: &'static str,
@@ -12,7 +13,19 @@ pub fn Grid(
     #[prop(optional)] classes: &'static str,
     #[prop(default = "center")] place_items: &'static str,
     #[prop(default = "1rem")] gap: &'static str,
+    #[prop(default = false)] center_on_overflow: bool,
 ) -> impl IntoView {
+    let children_count = children(cx)
+        .nodes
+        .into_iter()
+        .filter(move |node| {
+            if let Some(text) = node.as_text() {
+                return text.content != r#""#.into_view(cx).as_text().unwrap().content;
+            }
+            return true;
+        })
+        .count();
+
     view! { cx,
       <span
         id=id
@@ -28,7 +41,37 @@ pub fn Grid(
         }
       >
 
-        {children(cx)}
+      <For
+        each=move || {
+          children(cx).nodes
+                .clone()
+                .into_iter()
+                .filter(move |node| {
+                  if let Some(text) = node.as_text() {
+                      return text.content != r#""#.into_view(cx).as_text().unwrap().content;
+                  }
+                  return true;
+                 })
+                .enumerate()
+        }
+        key=|label| label.0
+        view=move |cx, label| {
+          match label.1 {
+            View::Component(com) =>  {
+              if center_on_overflow && (children_count as i16 % sm_cols) == 1 && label.0 == (children_count -1) {
+                  return view! {
+                  cx,
+                  <Span classes="col-span-full sm:col-span-1">
+                    {com.children}
+                  </Span>
+                };
+              }
+              return com.into_view(cx);
+            },
+          _ => view!{cx, <Span>""</Span>}
+          }
+        }
+      />
       </span>
     }
 }
