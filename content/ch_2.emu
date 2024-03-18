@@ -594,7 +594,7 @@
             hidden_in_mobile=true
             squiggle_top="40%"
             squiggle_left="3.5rem"
-            children_y="40%"
+            children_y="42%"
             children_x="29%"
             clickable_on_desktop=true
             
