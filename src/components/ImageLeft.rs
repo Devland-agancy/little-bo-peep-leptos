@@ -46,16 +46,15 @@ pub fn ImageLeft(
       <div
         style=move || {
             let mut line_str = "".to_string();
-            match pivot_position {
-                "bottom" => line_str = "100%".to_string(),
-                "top" => line_str = "0%".to_string(),
-                _ => if paragraph_line == -1.0 {
-                    line_str = "50%".to_string()
-                } else {
-                    line_str = (paragraph_line * 32.0).to_string() + "px";
-                }
-            };
-
+            if paragraph_line == -1.0 {
+                line_str = match pivot_position {
+                    "bottom" => "100%".to_string(),
+                    "top" => "0%".to_string(),
+                    _ => "50%".to_string(),
+                };
+            } else {
+                line_str = (paragraph_line * 32.0).to_string() + "px";
+            }
             format!(
                 "top: {}",
                 line_str
