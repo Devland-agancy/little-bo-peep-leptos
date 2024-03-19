@@ -585,8 +585,9 @@
             $$
             |> ImageLeft
                 src="/images/17.svg"
+                offset_y="0.8rem"
                 hidden_in_mobile=true
-                squiggle_x="-4rem"
+                squiggle_x="-1rem"
                 squiggle_y="30%"
 
             and
@@ -616,7 +617,7 @@
             |> ImageLeft
                 src="/images/18.svg"
                 hidden_in_mobile=true
-                squiggle_x="-4rem"
+                squiggle_x="-1rem"
                 squiggle_y="37%"
 
             so
@@ -755,6 +756,8 @@
             $$
             |> ImageRight
                 src="/images/104.svg"
+                offset_x="-4rem"
+                offset_y="-1rem"
                 width=480
                 children_y="55%"
                 children_x="31%"
@@ -992,6 +995,7 @@
             $$
             |> ImageRight
                 src="/images/24.svg"
+                offset_y="-0.7rem"
                 children_x="30%"
                 children_y="30%"
                 squiggle_x="-1.2rem"
@@ -1097,6 +1101,8 @@
             {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
             $$
             |> ImageRight
+                offset_x="-6rem"
+                offset_y="1.2rem"
                 src="/images/25.svg"
                 children_y="25%"
                 children_x="37%"
@@ -1112,6 +1118,8 @@
             {1 \over n^2}
             $$
             |> ImageRight
+                offset_x="-6rem"
+                offset_y="1.2rem"
                 src="/images/26.svg"
                 children_y="26%"
                 children_x="37%"
@@ -1147,7 +1155,9 @@
             $$
             |> ImageRight
                 src="/images/27.svg"
-                children_y="42%"
+                offset_x="-4.3rem"
+                offset_y="-1rem"
+                children_y="31%"
                 children_x="23%"
                 width=607
                 clickable_on_desktop=true
