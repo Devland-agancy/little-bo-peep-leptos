@@ -81,6 +81,7 @@
     $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
     |> ImageRight
         src="/images/32.svg"
+        offset_y="-1rem"
         width=600
         hidden_in_mobile=true
         squiggle_y="47%"
@@ -252,7 +253,8 @@
     fractions
     |> ImageRight
         src="/images/38.svg"
-        squiggle_x="-2rem"
+        paragraph_line=2.5
+        squiggle_x="-1rem"
         squiggle_y="38%"
         hidden_in_mobile=true
         width=390
@@ -265,9 +267,10 @@
     $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
     |> ImageLeft
         src="/images/39.svg"
+        offset_y="-3.5rem"
         width=400
         squiggle_y="11.5rem"
-        squiggle_x="1.1rem"
+        squiggle_x="1rem"
         hidden_in_mobile=true
 
     which verifies this hypothesis. In particular,
@@ -439,11 +442,13 @@
     while a vertical line has no slope, so what would $a$ be
     equal to? Instead, a vertical line is described by an equation
     of the form
-    |> ImageLeft
-        src="/images/50.svg"
-        width=200
 
     $$x = c$$
+    |> ImageLeft
+        src="/images/50.svg"
+        offset_y="1rem"
+        offset_x="4rem"
+        width=200
 
     (see 
     |> ImageLink
@@ -472,8 +477,9 @@
     $-1$.
     |> ImageRight
         src="/images/51.svg"
+        offset_x="2rem"
         width=300
-        squiggle_x="-5.1rem"
+        squiggle_x="-3rem"
         squiggle_y="31%"
         hidden_in_mobile=true
 
@@ -643,10 +649,15 @@
 
                 |> ImageRight
                     src="/images/56.svg"
+                    offset_y="5rem"
                     width=340
 
                 |> ImageLeft
                     src="/images/57.svg"
+                    offset_x="-5rem"
+                    offset_y="1rem"
+                    pivot_position="bottom"
+                    img_position="bottom"
                     width=340
 
             In more detail, the two triangles are related by
@@ -665,10 +676,15 @@
 
                 |> ImageRight
                     src="/images/59.svg"
+                    offset_y="7rem"
                     width=340
 
                 |> ImageLeft
                     src="/images/60.svg"
+                    offset_x="-3rem"
+                    offset_y="1rem"
+                    pivot_position="bottom"
+                    img_position="bottom"
                     width=340
 
             If you're curious, a drawing for the case $p < 0$...
@@ -692,6 +708,9 @@
             $$ p = {y - y_0 \over x - x_0} $$
             |> ImageLeft
                 src="/images/62.svg"
+                img_position="top"
+                offset_x="-6rem"
+                offset_y="-7rem"
                 width=800
 
             because
@@ -735,6 +754,8 @@
             $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
             |> ImageRight
                 src="/images/63.svg"
+                offset_x="2.5rem"
+                offset_y="-0.5rem"
                 width=400
                 hidden_in_mobile=true
                 squiggle_y="36%"

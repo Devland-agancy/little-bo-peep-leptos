@@ -57,7 +57,7 @@ pub fn ImageRight(
                   _ => "50%".to_string(),
               };
             } else {
-                line_str = (paragraph_line * 32.0).to_string() + "px";
+                line_str = (paragraph_line * 28.0).to_string() + "px";
             }
             format!(
                 "top: {}",
@@ -83,8 +83,8 @@ pub fn ImageRight(
                   offset_x,
                   offset_y,
                   match img_position {
-                      "bottom" => "50%",
-                      "top" => "-50%",
+                      "bottom" => "-50%",
+                      "top" => "50%",
                       _ => "0%",
                   },
                   padding
