@@ -6,12 +6,16 @@ pub fn ImageRight(
     cx: Scope,
     src: &'static str,
     #[prop(default = false)] hidden_in_mobile: bool,
-    #[prop(default = "center")] position: &'static str,
-    #[prop(default = "")] y_anchor: &'static str,
-    #[prop(default = "0px")] x_anchor: &'static str,
+    #[prop(default = "center")] img_position: &'static str,
+    #[prop(default = "center")] pivot_position: &'static str,
 
-    #[prop(default = "-1.5rem")] squiggle_left: &'static str,
-    #[prop(default = "30%")] squiggle_top: &'static str,
+    #[prop(default = "0px")] offset_y: &'static str,
+    #[prop(default = "0px")] offset_x: &'static str,
+
+    #[prop(default = -1.0)] paragraph_line: f32,
+
+    #[prop(default = "-1.5rem")] squiggle_x: &'static str,
+    #[prop(default = "30%")] squiggle_y: &'static str,
 
     #[prop(default = "")] children_x: &'static str,
     #[prop(default = "")] children_y: &'static str,
@@ -43,58 +47,84 @@ pub fn ImageRight(
     });
 
     view! { cx,
-      <button
-
-        on:click=move |e| {
-            e.stop_propagation();
-            if page_state() == PageState::ShowArticle {
-                set_page_state(PageState::ShowRight);
-                margin_scroll_value.set(image_width())
-            }
-        }
-
-        style=move || {
-            format!(
-                "transform: translateX(calc(0px + 100%)); right: {}; top: {}; padding: {}",
-                x_anchor,
-                if y_anchor != "" {
-                    y_anchor
+      <div
+          style=move || {
+            let mut line_str = "".to_string();
+            match pivot_position {
+                "bottom" => line_str = "100%".to_string(),
+                "top" => line_str = "0%".to_string(),
+                _ => if paragraph_line == -1.0 {
+                    line_str = "50%".to_string()
                 } else {
-                    match position {
-                        "bottom" => "50%",
-                        "top" => "0",
-                        _ => "auto",
-                    }
-                },
-                padding
+                    line_str = (paragraph_line * 32.0).to_string() + "px";
+                }
+            };
+
+            format!(
+                "top: {}",
+                line_str
             )
         }
 
-        class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute"
-        class=("pointer-events-none", show_right)
-        class=("lg:pointer-events-none", move || !clickable_on_desktop)
-        class=("outline-[20px]", move || show_areas())
-        class=("outline-[#3f9aff7d]", move || show_areas())
-        class=("outline", move || show_areas())
-
+        class="absolute -translate-x-1/2 left-[calc(100%-1rem)] w-1 h-1 bg-red-400"
       >
-        <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
-          {children(cx)}
-        </div>
-        <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
 
-        <Show fallback=|_| () when=move || hidden_in_mobile>
-          <div
-            class="block sm:hidden absolute"
-            class=("outline-[20px]", move || show_areas())
-            class=("outline-[#3f9aff7d]", move || show_areas())
-            class=("outline", move || show_areas())
+        <button
+          on:click=move |e| {
+              e.stop_propagation();
+              if page_state() == PageState::ShowArticle {
+                  set_page_state(PageState::ShowRight);
+                  margin_scroll_value.set(image_width())
+              }
+          }
 
-            style=move || format!("left: calc({} - 40px); top: calc({} - 40px); padding: {}", squiggle_left, squiggle_top, "2.6rem")
-          >
-            <img src="/images/squiggle.png" class="h-11"/>
+          style=move || {
+              format!(
+                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {})); padding: {}",
+                  offset_x,
+                  offset_y,
+                  match img_position {
+                      "bottom" => "50%",
+                      "top" => "-50%",
+                      _ => "0%",
+                  },
+                  padding
+              )
+          }
+
+          class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute"
+          class=("pointer-events-none", show_right)
+          class=("lg:pointer-events-none", move || !clickable_on_desktop)
+          class=("outline-[20px]", move || show_areas())
+          class=("outline-[#3f9aff7d]", move || show_areas())
+          class=("outline", move || show_areas())
+        >
+
+          <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
+            {children(cx)}
           </div>
-        </Show>
-      </button>
+          <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
+
+          <Show fallback=|_| () when=move || hidden_in_mobile>
+            <div
+              class="block sm:hidden absolute"
+              class=("outline-[20px]", move || show_areas())
+              class=("outline-[#3f9aff7d]", move || show_areas())
+              class=("outline", move || show_areas())
+
+              style=move || {
+                  format!(
+                      "left: calc({} - 40px); top: calc({} - 40px); padding: {}",
+                      squiggle_x,
+                      squiggle_y,
+                      "2.6rem",
+                  )
+              }
+            >
+              <img src="/images/squiggle.png" class="h-11"/>
+            </div>
+          </Show>
+        </button>
+      </div>
     }
 }

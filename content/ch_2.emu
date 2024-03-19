@@ -82,11 +82,9 @@
     |> ImageRight
         src="/images/32.svg"
         width=600
-        x_anchor="1rem"
-        y_anchor="-12rem"
         hidden_in_mobile=true
-        squiggle_top="47%"
-        squiggle_left="-1rem"
+        squiggle_y="47%"
+        squiggle_x="-1rem"
 
     more succinctly. We call this the _slope formula_.
 
@@ -254,10 +252,8 @@
     fractions
     |> ImageRight
         src="/images/38.svg"
-        y_anchor="-1.5rem"
-        x_anchor="0"
-        squiggle_left="-2rem"
-        squiggle_top="38%"
+        squiggle_x="-2rem"
+        squiggle_y="38%"
         hidden_in_mobile=true
         width=390
     
@@ -270,10 +266,8 @@
     |> ImageLeft
         src="/images/39.svg"
         width=400
-        y_anchor="-11.5rem"
-        x_anchor="3rem"
-        squiggle_top="11.5rem"
-        squiggle_right="1.1rem"
+        squiggle_y="11.5rem"
+        squiggle_x="1.1rem"
         hidden_in_mobile=true
 
     which verifies this hypothesis. In particular,
@@ -322,7 +316,6 @@
         src="/images/rise-run.svg"
         width="2rem"
         height="2.1rem"
-        y_anchor="10px"
         margin_right="4px"
     ”), following such a picture:
 
@@ -449,8 +442,6 @@
     |> ImageLeft
         src="/images/50.svg"
         width=200
-        y_anchor="-2.5rem"
-        x_anchor="-4.5rem"
 
     $$x = c$$
 
@@ -482,10 +473,8 @@
     |> ImageRight
         src="/images/51.svg"
         width=300
-        y_anchor="-3.5rem"
-        x_anchor="-3rem"
-        squiggle_left="-5.1rem"
-        squiggle_top="31%"
+        squiggle_x="-5.1rem"
+        squiggle_y="31%"
         hidden_in_mobile=true
 
 |> Section
@@ -589,11 +578,9 @@
         |> ImageRight
             src="/images/54.svg"
             width=930
-            x_anchor="4.8rem"
-            y_anchor="-6rem"
             hidden_in_mobile=true
-            squiggle_top="40%"
-            squiggle_left="3.5rem"
+            squiggle_y="40%"
+            squiggle_x="3.5rem"
             children_y="42%"
             children_x="29%"
             clickable_on_desktop=true
@@ -657,14 +644,10 @@
                 |> ImageRight
                     src="/images/56.svg"
                     width=340
-                    x_anchor="8%"
-                    y_anchor="13rem"
 
                 |> ImageLeft
                     src="/images/57.svg"
                     width=340
-                    x_anchor="30%"
-                    y_anchor="16rem"
 
             In more detail, the two triangles are related by
             a $90^\circ$ rotation and so, likewise, are the lines defined
@@ -683,14 +666,10 @@
                 |> ImageRight
                     src="/images/59.svg"
                     width=340
-                    x_anchor="8%"
-                    y_anchor="15rem"
 
                 |> ImageLeft
                     src="/images/60.svg"
                     width=340
-                    x_anchor="25%"
-                    y_anchor="16rem"
 
             If you're curious, a drawing for the case $p < 0$...
 
@@ -714,8 +693,6 @@
             |> ImageLeft
                 src="/images/62.svg"
                 width=800
-                x_anchor="6.5rem"
-                y_anchor="-5.7rem"
 
             because
 
@@ -759,11 +736,9 @@
             |> ImageRight
                 src="/images/63.svg"
                 width=400
-                x_anchor="-1.5rem"
-                y_anchor="-3.5rem"
                 hidden_in_mobile=true
-                squiggle_top="36%"
-                squiggle_left="-3.8rem"
+                squiggle_y="36%"
+                squiggle_x="-3.8rem"
 
             which can also make it easy to remember!
 

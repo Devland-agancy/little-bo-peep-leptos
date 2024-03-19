@@ -24,9 +24,9 @@
     $$\sqrt{(-2)^2} = 2$$
     |> ImageRight
         src="/images/svg_cloud_minus_two_squared.svg"
+        offset_y="-1rem"
+        offset_x="-3rem"
         padding="40px"
-        x_anchor="4.2rem"
-        y_anchor="-5.5rem"
         width=316
 
     and, in particular, it is _not_ true that
@@ -240,11 +240,12 @@
     with every term of the second parenthesis. Indeed,
     |> ImageLeft
         src="/images/325.svg"
+        paragraph_line=1.0
+        pivot_position="top"
+        offset_y="-10px"
         hidden_in_mobile=true
-        y_anchor="-8rem"
-        x_anchor="1.6rem"
-        squiggle_right="-0.4rem"
-        squiggle_top="45%"
+        squiggle_x="-0.4rem"
+        squiggle_y="45%"
         width=400
         
     $$
@@ -584,11 +585,9 @@
             $$
             |> ImageLeft
                 src="/images/17.svg"
-                y_anchor="2.4rem"
-                x_anchor="-2rem"
                 hidden_in_mobile=true
-                squiggle_right="-4rem"
-                squiggle_top="30%"
+                squiggle_x="-4rem"
+                squiggle_y="30%"
 
             and
 
@@ -617,10 +616,8 @@
             |> ImageLeft
                 src="/images/18.svg"
                 hidden_in_mobile=true
-                squiggle_right="-4rem"
-                squiggle_top="37%"
-                y_anchor="2.2rem"
-                x_anchor="-2rem"
+                squiggle_x="-4rem"
+                squiggle_y="37%"
 
             so
             $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
@@ -759,8 +756,6 @@
             |> ImageRight
                 src="/images/104.svg"
                 width=480
-                y_anchor="-6rem"
-                x_anchor="5rem"
                 children_y="55%"
                 children_x="31%"
 
@@ -997,12 +992,10 @@
             $$
             |> ImageRight
                 src="/images/24.svg"
-                y_anchor="-5.8rem"
-                x_anchor="1rem"
                 children_x="30%"
                 children_y="30%"
-                squiggle_left="-1.2rem"
-                squiggle_top="30%"
+                squiggle_x="-1.2rem"
+                squiggle_y="30%"
                 hidden_in_mobile=true
                 width=497
 
@@ -1107,8 +1100,6 @@
                 src="/images/25.svg"
                 children_y="25%"
                 children_x="37%"
-                x_anchor="6.5rem"
-                y_anchor="-2.8rem"
                 width=362
                 
                 $$
@@ -1124,8 +1115,6 @@
                 src="/images/26.svg"
                 children_y="26%"
                 children_x="37%"
-                x_anchor="6.5rem"
-                y_anchor="-3rem"
                 width=362
 
                 $$
@@ -1160,8 +1149,6 @@
                 src="/images/27.svg"
                 children_y="42%"
                 children_x="23%"
-                x_anchor="-1.6rem"
-                y_anchor="-5.2rem"
                 width=607
                 clickable_on_desktop=true
 

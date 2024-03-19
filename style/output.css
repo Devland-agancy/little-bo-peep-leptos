@@ -580,8 +580,16 @@ video {
   left: 1500px;
 }
 
+.left-\[1rem\] {
+  left: 1rem;
+}
+
 .left-\[2\%\] {
   left: 2%;
+}
+
+.left-\[calc\(100\%-1rem\)\] {
+  left: calc(100% - 1rem);
 }
 
 .right-0 {
@@ -754,6 +762,10 @@ video {
   height: 0px;
 }
 
+.h-1 {
+  height: 0.25rem;
+}
+
 .h-11 {
   height: 2.75rem;
 }
@@ -818,6 +830,10 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-1 {
+  width: 0.25rem;
 }
 
 .w-14 {
@@ -1079,6 +1095,11 @@ video {
 .bg-\[\#c1ebff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(193 235 255 / var(--tw-bg-opacity));
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .bg-stone-100 {
@@ -1667,6 +1688,10 @@ span .MathJax_SVG{
   .sm\:grid-cols-12	{
     grid-template-columns: repeat(12, 1fr);
   }
+
+  .center-on-mobile {
+    grid-column: 1/-1;
+  }
 }
 
 .nowrap, .nobreak, .nolinebreak {
@@ -1676,15 +1701,6 @@ span .MathJax_SVG{
 .test-bg {
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
-
-/* .section-divider {
-  display: none;   
-}
-@media (min-height = 400px) {
-  .section-divider {
-    display: block;
-  }
-} */
 
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
@@ -1823,3 +1839,5 @@ span .MathJax_SVG{
     transition-property: none;
   }
 }
+
+
