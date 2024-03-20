@@ -91,12 +91,13 @@ pub fn ImageRight(
               )
           }
 
-          class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute w-max"
+          class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute"
           class=("pointer-events-none", show_right)
           class=("lg:pointer-events-none", move || !clickable_on_desktop)
           class=("outline-[20px]", move || show_areas())
           class=("outline-[#3f9aff7d]", move || show_areas())
           class=("outline", move || show_areas())
+          class=("w-max", move || width == 0)
         >
 
           <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
