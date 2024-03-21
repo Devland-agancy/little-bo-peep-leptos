@@ -746,6 +746,10 @@ video {
   display: table;
 }
 
+.inline-table {
+  display: inline-table;
+}
+
 .grid {
   display: grid;
 }
@@ -1295,6 +1299,10 @@ video {
   line-height: 2.25rem;
 }
 
+.leading-\[28px\] {
+  line-height: 28px;
+}
+
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
@@ -1803,8 +1811,8 @@ span .MathJax_SVG{
     line-height: 1.25rem;
   }
 
-  .sm\:leading-relaxed {
-    line-height: 1.625;
+  .sm\:leading-\[32\.5px\] {
+    line-height: 32.5px;
   }
 }
 

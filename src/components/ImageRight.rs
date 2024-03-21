@@ -32,11 +32,12 @@ pub fn ImageRight(
     let GlobalState {
         show_areas,
         margin_scroll_value,
+        on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let image_ref = create_node_ref::<Img>(cx);
-
     let (image_width, set_image_width) = create_signal(cx, 0_f64);
+    let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
 
     create_effect(cx, move |_| {
         request_animation_frame(move || {
@@ -57,7 +58,7 @@ pub fn ImageRight(
                   _ => "50%".to_string(),
               };
             } else {
-                line_str = (paragraph_line * 28.0).to_string() + "px";
+                line_str = (paragraph_line * line_height()).to_string() + "px";
             }
             format!(
                 "top: {}",
