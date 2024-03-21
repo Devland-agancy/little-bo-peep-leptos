@@ -218,14 +218,14 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
         </button>
       </div>
 
-      //vertical line between burger and rest of header
-      <div
-        class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
-        class=("opacity-100", move || page_state() == PageState::ShowArticle)
-
-        ></div>
+        /* //vertical line between burger and rest of header
         <div
+          class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
+          class=("opacity-100", move || page_state() == PageState::ShowArticle)
 
+          ></div> */
+
+        <div
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())
         class=("h-[5.25rem]", move || !scrolled_header() && !burger_background.get())
