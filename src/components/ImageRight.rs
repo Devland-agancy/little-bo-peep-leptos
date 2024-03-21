@@ -65,7 +65,9 @@ pub fn ImageRight(
             )
         }
 
-        class="absolute -translate-x-1/2 left-[calc(100%-1rem)] w-1 h-1 bg-red-400"
+        class="absolute -translate-x-1/2 left-[calc(100%-1rem)] w-1 h-1 "
+        class=("bg-red-400", move || show_areas())
+
       >
 
         <button
