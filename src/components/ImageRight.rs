@@ -108,6 +108,23 @@ pub fn ImageRight(
           </div>
           <img node_ref=image_ref src=src style=move || format!("min-width: {}px", width)/>
 
+          /* test  */
+          <div
+              style=move || {
+                format!(
+                    "top: calc(50% - {}); transform: translateY(-50%)",
+                    match img_position {
+                        "bottom" => "-50%",
+                        "top" => "50%",
+                        _ => "0%",
+                    },
+                )
+            }
+            class="absolute left-0 w-1 h-1"
+            class=("bg-blue-400", move || show_areas())
+            >
+          </div>
+          /*  */
           <Show fallback=|_| () when=move || hidden_in_mobile>
             <div
               class="block sm:hidden absolute"
