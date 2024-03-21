@@ -9,6 +9,7 @@ pub struct GlobalState {
     pub margin_scroll_value: RwSignal<f64>,
     pub route: RwSignal<&'static str>,
     pub show_section_divider: RwSignal<bool>,
+    pub on_mobile: RwSignal<bool>,
 }
 
 impl GlobalState {
@@ -21,6 +22,7 @@ impl GlobalState {
             labels: create_rw_signal(cx, vec![]),
             margin_scroll_value: create_rw_signal(cx, 0_f64),
             route: create_rw_signal(cx, ""),
+            on_mobile: create_rw_signal(cx, true),
         }
     }
 }

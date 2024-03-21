@@ -1,10 +1,12 @@
 use crate::components::Article::Article;
 use crate::components::Header::{ChapterMenu, Header, MenuButton, MenuState};
+use crate::constants::MOBILE_BREAKPOINT;
 use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;
 use crate::page::state::PageState;
 use crate::svg_defs::SVGDefinitions;
+use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
@@ -33,7 +35,9 @@ pub fn App(cx: Scope) -> impl IntoView {
 
     provide_context(cx, GlobalState::new(cx));
 
-    let GlobalState { route, .. } = use_context(cx).unwrap();
+    let GlobalState {
+        route, on_mobile, ..
+    } = use_context(cx).unwrap();
 
     create_effect(cx, move |_| {
         // execute on every route change
@@ -64,6 +68,17 @@ pub fn App(cx: Scope) -> impl IntoView {
         options.behavior(ScrollBehavior::Instant);
         window().scroll_with_scroll_to_options(&options);
     });
+
+    create_effect(cx, move |_| {
+        on_mobile
+            .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64);
+
+        window_event_listener(resize, move |_| {
+            on_mobile
+                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64);
+        });
+    });
+
     view! { cx,
       // injects a stylesheet into the document <head>
       // id=leptos means cargo-leptos will hot-reload this stylesheet
