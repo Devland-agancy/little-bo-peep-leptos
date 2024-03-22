@@ -648,6 +648,11 @@ video {
   margin: auto;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1108,6 +1113,10 @@ video {
 .bg-\[\#c1ebff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(193 235 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#ebe3a0b0\] {
+  background-color: #ebe3a0b0;
 }
 
 .bg-blue-900 {

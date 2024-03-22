@@ -16,3 +16,5 @@ pub const MOBILE_BREAKPOINT: u16 = 520;
 // DESKTOP_TEXT_WIDTH found in input.css file in .gridColWidth class , 1fr {width} 1fr
 
 pub const SECTION_DIVIDER_ACTIVATION_HEIGHT: u16 = 520;
+
+pub const CENTERED_PARAGRAPH_X_MARGIN: &'static str = "1rem";
