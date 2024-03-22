@@ -67,9 +67,12 @@ pub fn ImageRight(
         }
 
         class="absolute -translate-x-1/2 left-[calc(100%-1rem)] w-1 h-1 "
-        class=("bg-red-400", move || show_areas())
-
       >
+        /* show pivot */
+        <div
+          class="w-1 h-1 relative z-20"
+          class=("bg-red-500", move || show_areas())
+        ></div>
 
         <button
           on:click=move |e| {
@@ -121,7 +124,7 @@ pub fn ImageRight(
                 )
             }
             class="absolute left-0 w-1 h-1"
-            class=("bg-blue-400", move || show_areas())
+            class=("bg-blue-900", move || show_areas())
             >
           </div>
           /*  */
