@@ -95,7 +95,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
         elm.value()
     };
 
-    let mut pre = transformer.pre_process_exercises(elm_string);
+    let mut pre = transformer.pre_process_exercises(&elm_string);
     pre = transformer.auto_increamental_title(pre, "Example", "Example", None, None);
     pre = transformer.auto_increamental_title(
         pre,

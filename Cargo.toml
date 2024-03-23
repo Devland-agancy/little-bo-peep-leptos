@@ -30,6 +30,7 @@ rand = "0.8"
 serde_json = "1.0.108"
 serde = "1.0.192"
 elm_to_view = { path = "parser" }
+js-sys = "0.3.69"
 
 [features]
 hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
@@ -70,7 +71,7 @@ style-file = "style/output.css"
 assets-dir = "public"
 
 # The IP and port (ex: 127.0.0.1:3000) where the server serves the content. Use it in your server setup.
-site-addr = "127.0.0.1:4900"
+site-addr = "127.0.0.1:4100"
 
 # The port to use for automatic reload monitoring
 reload-port = 3001
