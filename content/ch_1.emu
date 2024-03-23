@@ -759,8 +759,8 @@
                 offset_x="-4rem"
                 offset_y="-1rem"
                 width=480
-                children_y="55%"
-                children_x="31%"
+                children_y="48%"
+                children_x="39%"
 
                 $
                 10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
