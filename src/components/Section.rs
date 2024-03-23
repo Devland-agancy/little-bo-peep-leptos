@@ -44,7 +44,7 @@ pub fn Pause(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div style=move ||format!("margin-block : {}", amount)>
+      cx, <div class="pause" style=move ||format!("margin-block : {}", amount)>
         {children(cx)}
       </div>
     };
