@@ -588,7 +588,7 @@
             hidden_in_mobile=true
             squiggle_y="40%"
             squiggle_x="3.5rem"
-            children_y="42%"
+            children_y="41.5%"
             children_x="29%"
             clickable_on_desktop=true
             
