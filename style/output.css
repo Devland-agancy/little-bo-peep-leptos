@@ -683,10 +683,6 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.-mt-4 {
-  margin-top: -1rem;
-}
-
 .mb-12 {
   margin-bottom: 3rem;
 }
@@ -753,10 +749,6 @@ video {
 
 .table {
   display: table;
-}
-
-.inline-table {
-  display: inline-table;
 }
 
 .grid {
@@ -1733,6 +1725,10 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
+span:has(.indent) {
+  margin-top: -1rem !important;
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }
@@ -1870,5 +1866,3 @@ span .MathJax_SVG{
     transition-property: none;
   }
 }
-
-
