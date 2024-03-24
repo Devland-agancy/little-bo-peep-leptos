@@ -128,7 +128,6 @@
     can be thought of in a few different ways:
 
     |> List
-        indent=true
 
         Fifty halves (i.e., $50 \times \frac{1}{2}$).
 

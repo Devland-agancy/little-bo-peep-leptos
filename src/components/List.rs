@@ -1,7 +1,7 @@
 use leptos::*;
 
 #[component]
-pub fn List(cx: Scope, #[prop(default = false)] indent: bool, children: Children) -> impl IntoView {
+pub fn List(cx: Scope, #[prop(default = true)] indent: bool, children: Children) -> impl IntoView {
     view! { cx, <ol
     class=("ml-10", indent)
     class="p-4 list-decimal">{children(cx)}</ol> }
