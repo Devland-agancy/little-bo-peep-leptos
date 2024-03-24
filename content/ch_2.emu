@@ -1,5 +1,4 @@
 |> Section
-    label="definition"
 
     *Slopes.*
     The _slope_ of a line is a mathematical measure 
@@ -42,7 +41,6 @@
 
 
 |> Section
-    label="measuring"
 
     *Measuring Slope.*
     The slope of a line is also the ratio of vertical change
@@ -117,7 +115,6 @@
 
 
 |> Section
-    label="signcombo"
 
     *Sign Combinations.*
     Technically, quantities such as
@@ -240,7 +237,8 @@
             |> td
             
                 |> img
-                    src="/images/37.svg" width="105"
+                    src="/images/37.svg"
+                    width="105"
                     style="margin-top:10px; margin-bottom:4px;"
 
             |> td
@@ -280,7 +278,6 @@
     are equally valid incarnations of the slope formula.
 
 |> Section
-    label="pathological"
 
     *Pathological Cases.*
     If
@@ -310,7 +307,6 @@
     given point!
 
 |> Section
-    label="rise_over_run"
 
     *“Rise over Run”.*
     Some people remember the slope formula as “slope equals
@@ -360,7 +356,6 @@
     shorthands for the phrases “change in $x$”, “change in $y$”.)
 
 |> Section
-    label="rise_run_formulas"
 
     *Solving for “rise” and “run”.*
     Multiplying
@@ -384,7 +379,6 @@
     ...as can sometimes be useful to know.  
 
 |> Section
-    label="line_equations"
 
     *Slopes and Line Equations.* An equation of the form
 
@@ -605,7 +599,6 @@
         found in the third line of the table.
 
 |> Section
-    label="units_vs_dimensions_postscript"
     divider=false
 
     *Postscript: Units vs Dimensions.* Comparing
