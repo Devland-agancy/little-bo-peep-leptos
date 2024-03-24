@@ -1,5 +1,4 @@
 |> Section
-    label="definition"
 
     *Square Roots.*
     You might remember that “minus times minus is plus”
@@ -118,7 +117,6 @@
     $\sqrt{0.5} > 0.5$.
 
 |> Section
-    label="fractions"
 
     *Fractions and Division.*
     An elementary fraction, or division, such as
@@ -190,7 +188,6 @@
     than $40$. (Interesting, no?)
 
 |> Section
-    label="Distributivity"
 
     As you might already know, a number that multiplies a sum can be 
     brought “inside” the sum. For example,
@@ -439,7 +436,6 @@
         (Because $-7 = -7$, as it would be, haha.)
 
 |> Section
-    label="Epilogue"
     divider=false
 
     *Epilogue.* Do you remember the near miss between
@@ -480,7 +476,6 @@
     for a difference of squares!
 
 |> Section
-    label="Vocabulary"
 
     *Vocabulary.*
     A pair of algebraic expressions of the form
@@ -513,6 +508,7 @@
         |> Grid
             cols=3 
             sm_cols=2
+            sm_cutoff=520
             center_on_overflow=true
 
             a. $ 0.9^2 < 0.9 $

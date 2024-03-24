@@ -1,4 +1,5 @@
 use crate::components::Span::Span;
+use leptos::ev::resize;
 use leptos::*;
 
 #[component]
@@ -10,6 +11,7 @@ pub fn Grid(
     #[prop(optional)] id: &'static str,
     #[prop(default = 0)] cols: i16,
     #[prop(default = -1)] sm_cols: i16,
+    #[prop(default = 520)] sm_cutoff: u16,
     #[prop(optional)] classes: &'static str,
     #[prop(default = "center")] place_items: &'static str,
     #[prop(default = "1rem")] gap: &'static str,
@@ -26,10 +28,19 @@ pub fn Grid(
         })
         .count();
 
+    let (sm_activated, set_sm_activated) = create_signal(cx, false);
+    create_effect(cx, move |_| {
+        set_sm_activated(window().inner_width().unwrap().as_f64().unwrap() <= sm_cutoff as f64);
+
+        window_event_listener(resize, move |_| {
+            set_sm_activated(window().inner_width().unwrap().as_f64().unwrap() <= sm_cutoff as f64);
+        });
+    });
+
     view! { cx,
       <span
         id=id
-        class=format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} sm:grid-cols-{} {} ", if sm_cols == -1 { cols } else { sm_cols } , cols , classes)
+        class=move || format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} {} ", if sm_cols != -1 && sm_activated() { sm_cols } else { cols }, classes)
         style=move || {
             format!(
                 "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
