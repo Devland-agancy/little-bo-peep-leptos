@@ -251,7 +251,7 @@
     fractions
     |> ImageRight
         src="/images/38.svg"
-        paragraph_line=2.5
+        line=2.5
         squiggle_x="-1rem"
         squiggle_y="38%"
         hidden_in_mobile=true

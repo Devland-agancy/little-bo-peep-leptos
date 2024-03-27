@@ -1,5 +1,18 @@
-use crate::{global_state::GlobalState, page::state::PageState};
-use leptos::{html::Img, *};
+use std::time::Duration;
+
+use crate::{
+    global_state::GlobalState,
+    page::state::PageState,
+    utils::{
+        attach_img_to_math::{attach_img_to_math, choose_default_anchor},
+        element_contains_child::element_contains_child,
+    },
+};
+use leptos::{
+    html::{Div, Img},
+    *,
+};
+use web_sys::Node;
 
 #[component]
 pub fn ImageRight(
@@ -9,10 +22,11 @@ pub fn ImageRight(
     #[prop(default = "center")] img_position: &'static str,
     #[prop(default = "center")] pivot_position: &'static str,
 
+    #[prop(default = "")] anchor_x: &'static str,
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
 
-    #[prop(default = -1.0)] paragraph_line: f32,
+    #[prop(default = -1.0)] line: f32,
 
     #[prop(default = "-1.5rem")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
@@ -35,40 +49,61 @@ pub fn ImageRight(
         on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+    let node_ref = create_node_ref::<Div>(cx);
     let image_ref = create_node_ref::<Img>(cx);
     let (image_width, set_image_width) = create_signal(cx, 0_f64);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
+    let (anchor_x_signal, set_anchor_x_signal) = create_signal(cx, anchor_x);
 
     create_effect(cx, move |_| {
         request_animation_frame(move || {
             if let Some(img) = image_ref() {
                 set_image_width(img.offset_width() as f64)
             }
+
+            set_timeout(
+                move || {
+                    // choose max width betweem formula and screen as default value for anchor_x
+                    if anchor_x == "" {
+                        choose_default_anchor(&node_ref, set_anchor_x_signal);
+                    }
+                    if anchor_x_signal() == "formula_edge" {
+                        attach_img_to_math(&node_ref);
+                    }
+                },
+                Duration::from_secs(3),
+            );
         });
     });
 
     view! { cx,
       <div
+          node_ref=node_ref
           style=move || {
             let mut line_str = "".to_string();
-            if paragraph_line == -1.0 {
+            let mut left_pos = "calc(100% - 1rem)".to_string();
+
+            if line == -1.0 {
               line_str = match pivot_position {
                   "bottom" => "100%".to_string(),
                   "top" => "0%".to_string(),
                   _ => "50%".to_string(),
               };
             } else {
-                line_str = (paragraph_line * line_height()).to_string() + "px";
+                line_str = (line * line_height()).to_string() + "px";
+            }
+
+            if anchor_x_signal() == "formula_edge" {
+              left_pos = "100%".to_string();
             }
             format!(
-                "top: {}",
-                line_str
+                "top: {}; left: {}",
+                line_str,
+                left_pos
             )
         }
-
-        class="absolute -translate-x-1/2 left-[calc(100%-1rem)] w-1 h-1 "
+        class="side-img absolute -translate-x-1/2 w-1 h-1 "
       >
-        /* show pivot */
         <div
           class="w-1 h-1 relative z-20"
           class=("bg-red-500", move || show_areas())

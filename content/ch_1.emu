@@ -236,7 +236,7 @@
     with every term of the second parenthesis. Indeed,
     |> ImageLeft
         src="/images/325.svg"
-        paragraph_line=1.0
+        line=1.0
         pivot_position="top"
         offset_y="-10px"
         hidden_in_mobile=true

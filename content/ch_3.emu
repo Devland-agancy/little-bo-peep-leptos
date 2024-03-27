@@ -22,7 +22,7 @@
     $A$, $B$ on the line:
     |> ImageRight
         src="/images/32.svg"
-        paragraph_line=0.5
+        line=0.5
         offset_y="-1rem"
         width=600
         hidden_in_mobile=true
