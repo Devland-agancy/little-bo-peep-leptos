@@ -22,10 +22,10 @@
         
     $$\sqrt{(-2)^2} = 2$$
     |> ImageRight
-        src="/images/svg_cloud_minus_two_squared.svg"
-        offset_y="-1rem"
-        offset_x="-3rem"
-        padding="40px"
+        src=/images/svg_cloud_minus_two_squared.svg
+        offset_y=-1rem
+        offset_x=-3rem
+        padding=40px
         width=316
 
     and, in particular, it is _not_ true that
@@ -108,7 +108,7 @@
     605 \cdot 0.7071 = 427.7955
     $$
 
-    is $70.71\%$ of $605$, and so on—so if we multiply _twice_ by $0.7071$ we obtain “$70.71\%$ of $70.71\%$” and it just so happens that <span style="white-space:nowrap">“$70.71\%$</span> of $70.71\%$” is close to $50\%$.
+    is $70.71\%$ of $605$, and so on—so if we multiply _twice_ by $0.7071$ we obtain “$70.71\%$ of $70.71\%$” and it just so happens that “$70.71\%$ of $70.71\%$” is close to $50\%$.
 
     The point is: if
     “$X\%$ of $X\%$” equals $50\%$, 
@@ -235,13 +235,13 @@
     that come from multiplying every term of the first parenthesis
     with every term of the second parenthesis. Indeed,
     |> ImageLeft
-        src="/images/325.svg"
+        src=/images/325.svg
         line=1.0
-        pivot_position="top"
-        offset_y="-10px"
+        pivot_position=top
+        offset_y=-10px
         hidden_in_mobile=true
-        squiggle_x="-0.4rem"
-        squiggle_y="45%"
+        squiggle_x=-0.4rem
+        squiggle_y=45%
         width=400
         
     $$
@@ -579,11 +579,11 @@
             \end{align}
             $$
             |> ImageLeft
-                src="/images/17.svg"
-                offset_y="0.8rem"
+                src=/images/17.svg
+                offset_y=0.8rem
                 hidden_in_mobile=true
-                squiggle_x="-1rem"
-                squiggle_y="30%"
+                squiggle_x=-1rem
+                squiggle_y=30%
 
             and
 
@@ -610,10 +610,10 @@
             \end{align}
             $$
             |> ImageLeft
-                src="/images/18.svg"
+                src=/images/18.svg
                 hidden_in_mobile=true
-                squiggle_x="-1rem"
-                squiggle_y="37%"
+                squiggle_x=-1rem
+                squiggle_y=37%
 
             so
             $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
@@ -750,12 +750,12 @@
             10^{9}\fw\te{km}
             $$
             |> ImageRight
-                src="/images/104.svg"
-                offset_x="-4rem"
-                offset_y="-1rem"
+                src=/images/104.svg
+                offset_x=-4rem
+                offset_y=-1rem
                 width=480
-                children_y="48%"
-                children_x="39%"
+                children_y=48%
+                children_x=39%
 
                 $
                 10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
@@ -843,7 +843,7 @@
 
             |> Grid
                 cols=3 
-                place_items="end"
+                place_items=end
 
                 $ (-1)^1 = $
 
@@ -989,12 +989,12 @@
             \end{align}
             $$
             |> ImageRight
-                src="/images/24.svg"
-                offset_y="-0.7rem"
-                children_x="30%"
-                children_y="30%"
-                squiggle_x="-1.2rem"
-                squiggle_y="30%"
+                src=/images/24.svg
+                offset_y=-0.7rem
+                children_x=30%
+                children_y=30%
+                squiggle_x=-1.2rem
+                squiggle_y=30%
                 hidden_in_mobile=true
                 width=497
 
@@ -1096,11 +1096,11 @@
             {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
             $$
             |> ImageRight
-                offset_x="-6rem"
-                offset_y="1.2rem"
-                src="/images/25.svg"
-                children_y="25%"
-                children_x="37%"
+                offset_x=-6rem
+                offset_y=1.2rem
+                src=/images/25.svg
+                children_y=25%
+                children_x=37%
                 width=362
                 
                 $$
@@ -1113,11 +1113,11 @@
             {1 \over n^2}
             $$
             |> ImageRight
-                offset_x="-6rem"
-                offset_y="1.2rem"
-                src="/images/26.svg"
-                children_y="26%"
-                children_x="37%"
+                offset_x=-6rem
+                offset_y=1.2rem
+                src=/images/26.svg
+                children_y=26%
+                children_x=37%
                 width=362
 
                 $$
@@ -1149,11 +1149,11 @@
             \end{align}
             $$
             |> ImageRight
-                src="/images/27.svg"
-                offset_x="-4.3rem"
-                offset_y="-1rem"
-                children_y="31%"
-                children_x="23%"
+                src=/images/27.svg
+                offset_x=-4.3rem
+                offset_y=-1rem
+                children_y=31%
+                children_x=23%
                 width=607
                 clickable_on_desktop=true
 

@@ -1,5 +1,5 @@
 |> Section
-    label="measuring"
+    label=measuring
 
     *Measuring Slope.*
     The slope of a line is also the ratio of vertical change
@@ -21,13 +21,13 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageRight
-        src="/images/32.svg"
+        src=/images/32.svg
         line=0.5
-        offset_y="-1rem"
+        offset_y=-1rem
         width=600
         hidden_in_mobile=true
-        squiggle_y="47%"
-        squiggle_x="-1rem"
+        squiggle_y=47%
+        squiggle_x=-1rem
 
     The slope of a line is also the ratio of vertical change
     to horizontal change between any two distinct points
@@ -50,9 +50,9 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageRight
-        src="/images/32.svg"
-        pivot_position="top"
-        offset_x="-4rem"
+        src=/images/32.svg
+        pivot_position=top
+        offset_x=-4rem
         width=600
         hidden_in_mobile=true
 
@@ -77,9 +77,9 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageRight
-        src="/images/32.svg"
-        img_position="bottom"
-        offset_x="1rem"
+        src=/images/32.svg
+        img_position=bottom
+        offset_x=1rem
         width=600
         hidden_in_mobile=true
 

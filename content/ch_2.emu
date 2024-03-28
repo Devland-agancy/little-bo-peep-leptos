@@ -6,7 +6,7 @@
     (for an explanation of the values, see below):
 
     |> Image
-        src="/images/chapter_2_1.svg"
+        src=/images/chapter_2_1.svg
 
     To explain, the slope of a line is...
 
@@ -26,16 +26,16 @@
     for example, the line below has slope 1, because it goes up by $1$ unit for each unit to the right:
 
     |> Image
-        src="/images/slope_1_example.svg"
-        container_classes="pl-[2px]"
+        src=/images/slope_1_example.svg
+        container_classes=pl-[2px]
 
     On the other hand, the line below has slope $-0.5$,
     because it goes up by _minus_ $0.5$ units with each 
     unit to the right:
 
     |> Image
-        src="/images/slope_0.5_example.svg"
-        container_classes="pl-[19.5px]"
+        src=/images/slope_0.5_example.svg
+        container_classes=pl-[19.5px]
 
     (Etc.)
 
@@ -48,8 +48,8 @@
     $A$, $B$ on the line:
 
     |> Image
-        src="/images/31.svg"
-        container_classes="mt-6 mb-2"
+        src=/images/31.svg
+        container_classes=mt-6 mb-2
         cloud_image=true
 
     $$ \te{slope} = {\te{vertical change from A to B} \over \te{horizontal change from A to B}} $$
@@ -78,12 +78,12 @@
 
     $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
     |> ImageRight
-        src="/images/32.svg"
-        offset_y="-1rem"
+        src=/images/32.svg
+        offset_y=-1rem
         width=600
         hidden_in_mobile=true
-        squiggle_y="47%"
-        squiggle_x="-1rem"
+        squiggle_y=47%
+        squiggle_x=-1rem
 
     more succinctly. We call this the _slope formula_.
 
@@ -158,8 +158,8 @@
             |> td
             
                 |> img
-                    src="/images/33.svg" width="50"
-                    style="margin-top:7px; margin-bottom:7px;"
+                    src=/images/33.svg width=50
+                    style=margin-top:7px; margin-bottom:7px;
 
             |> td
             
@@ -178,8 +178,8 @@
             |> td
 
                 |> img
-                    src="/images/34.svg" width="105"
-                    style="margin-top:7px; margin-bottom:7px;"
+                    src=/images/34.svg width=105
+                    style=margin-top:7px; margin-bottom:7px;
             
             |> td
             
@@ -198,8 +198,8 @@
             |> td
             
                 |> img
-                    src="/images/35.svg" width="105"
-                    style="margin-top:10px; margin-bottom:4px;"
+                    src=/images/35.svg width=105
+                    style=margin-top:10px; margin-bottom:4px;
 
             |> td
             
@@ -218,8 +218,8 @@
             |> td
             
                 |> img
-                    src="/images/36.svg" width="105"
-                    style="margin-top:10px; margin-bottom:4px;"
+                    src=/images/36.svg width=105
+                    style=margin-top:10px; margin-bottom:4px;
             |> td
             
                 $${- \over +} = \,-$$
@@ -237,9 +237,9 @@
             |> td
             
                 |> img
-                    src="/images/37.svg"
-                    width="105"
-                    style="margin-top:10px; margin-bottom:4px;"
+                    src=/images/37.svg
+                    width=105
+                    style=margin-top:10px; margin-bottom:4px;
 
             |> td
             
@@ -250,10 +250,10 @@
     and $(x_2, y_2)$ swap places, or, namely, to show that the 
     fractions
     |> ImageRight
-        src="/images/38.svg"
+        src=/images/38.svg
         line=2.5
-        squiggle_x="-1rem"
-        squiggle_y="38%"
+        squiggle_x=-1rem
+        squiggle_y=38%
         hidden_in_mobile=true
         width=390
     
@@ -264,11 +264,11 @@
 
     $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
     |> ImageLeft
-        src="/images/39.svg"
-        offset_y="-3.5rem"
+        src=/images/39.svg
+        offset_y=-3.5rem
         width=400
-        squiggle_y="11.5rem"
-        squiggle_x="1rem"
+        squiggle_y=11.5rem
+        squiggle_x=1rem
         hidden_in_mobile=true
 
     which verifies this hypothesis. In particular,
@@ -289,7 +289,7 @@
     attempt to measure the slope of a vertical line:
 
     |> Image
-        src="/images/40.svg"
+        src=/images/40.svg
 
     Indeed, vertical lines have _undefined_ slope. Moreover
     the bad case 
@@ -312,16 +312,16 @@
     Some people remember the slope formula as “slope equals
     rise over run” (i.e., “$\te{slope} =$
     |> InlineImage
-        src="/images/rise-run.svg"
-        width="2rem"
-        height="2.1rem"
-        margin_right="4px"
+        src=/images/rise-run.svg
+        width=2rem
+        height=2.1rem
+        margin_right=4px
     ”), following such a picture:
 
     |> Image
-        src="/images/44.svg"
-        width="300px"
-        container_classes="pt-4 mb-4"
+        src=/images/44.svg
+        width=300px
+        container_classes=pt-4 mb-4
 
     In this context, note that, in physics, a one-dimensional
     displacement is measured as
@@ -335,8 +335,8 @@
     (In order not to discriminate, maybe we should also include this picture:
 
     |> Image
-        src="/images/47.svg"
-        container_classes="pt-4 mb-4"
+        src=/images/47.svg
+        container_classes=pt-4 mb-4
 
     Then “rise” and “run” have their signs flipped,
     but the ratio rise-over-run is the same, as already mentioned.)
@@ -374,7 +374,7 @@
     or “run equals rise over slope”. Thus:
 
     |> Image
-        src="/images/48.svg"
+        src=/images/48.svg
 
     ...as can sometimes be useful to know.  
 
@@ -388,8 +388,8 @@
     Cartesian plane. E.g.:
 
     |> Image
-        src="/images/49.svg"
-        width="640px"
+        src=/images/49.svg
+        width=640px
 
     Note that, assuming said $y = ax + b$, one has
     
@@ -439,14 +439,14 @@
 
     $$x = c$$
     |> ImageLeft
-        src="/images/50.svg"
-        offset_y="1rem"
-        offset_x="4rem"
+        src=/images/50.svg
+        offset_y=1rem
+        offset_x=4rem
         width=200
 
     (see 
     |> ImageLink
-        direction=Direction::Left
+        direction=left
         scroll_by=300.0
 
         Fig. 1
@@ -470,11 +470,11 @@
     and thus describes a line of $y$-intercept $3$ and slope
     $-1$.
     |> ImageRight
-        src="/images/51.svg"
-        offset_x="2rem"
+        src=/images/51.svg
+        offset_x=2rem
         width=300
-        squiggle_x="-3rem"
-        squiggle_y="31%"
+        squiggle_x=-3rem
+        squiggle_y=31%
         hidden_in_mobile=true
 
 |> Section
@@ -500,8 +500,8 @@
     of time elapsed, in seconds:
 
     |> Image
-        src="/images/52.svg"
-        container_classes="mt-[1.4em] mb-[1.2em]"
+        src=/images/52.svg
+        container_classes=mt-[1.4em] mb-[1.2em]
 
     The slope of the graph is $0.75$ _meters per second_
     because the balloon's height increases by three _meters_
@@ -543,7 +543,7 @@
     the slope formula into account gives us...
 
     |> Image
-        src="/images/53.svg"
+        src=/images/53.svg
 
     ...these formulas, commonly useful in “applied” problems.
 
@@ -576,14 +576,14 @@
         \frac{4\te{m}}{0.75\te{m}/\te{s}}\! = 5.3333...\te{s}
         $$
         |> ImageRight
-            src="/images/54.svg"
-            offset_x="-3.5rem"
+            src=/images/54.svg
+            offset_x=-3.5rem
             width=930
             hidden_in_mobile=true
-            squiggle_y="40%"
-            squiggle_x="3.5rem"
-            children_y="41.5%"
-            children_x="29%"
+            squiggle_y=40%
+            squiggle_x=3.5rem
+            children_y=41.5%
+            children_x=29%
             clickable_on_desktop=true
             
             $$ {4 \over 0.75} = 5.3333...\qquad\qquad\,\,\, $$
@@ -646,20 +646,20 @@
 
             This is true, as illustrated by the following pair of lines:
             |> Image
-                src="/images/55.svg"
-                container_classes="relative w-fit"
+                src=/images/55.svg
+                container_classes=relative w-fit
 
                 |> ImageRight
-                    src="/images/56.svg"
-                    offset_y="5rem"
+                    src=/images/56.svg
+                    offset_y=5rem
                     width=340
 
                 |> ImageLeft
-                    src="/images/57.svg"
-                    offset_x="-5rem"
-                    offset_y="1rem"
-                    pivot_position="bottom"
-                    img_position="bottom"
+                    src=/images/57.svg
+                    offset_x=-5rem
+                    offset_y=1rem
+                    pivot_position=bottom
+                    img_position=bottom
                     width=340
 
             In more detail, the two triangles are related by
@@ -673,26 +673,26 @@
             of slope $-1/p$, for all $p \ne 0$. By a similar drawing, for $p > 0$:
 
             |> Image
-                src="/images/58.svg"
-                container_classes="relative w-fit"
+                src=/images/58.svg
+                container_classes=relative w-fit
 
                 |> ImageRight
-                    src="/images/59.svg"
-                    offset_y="7rem"
+                    src=/images/59.svg
+                    offset_y=7rem
                     width=340
 
                 |> ImageLeft
-                    src="/images/60.svg"
-                    offset_x="-3rem"
-                    offset_y="1rem"
-                    pivot_position="bottom"
-                    img_position="bottom"
+                    src=/images/60.svg
+                    offset_x=-3rem
+                    offset_y=1rem
+                    pivot_position=bottom
+                    img_position=bottom
                     width=340
 
             If you're curious, a drawing for the case $p < 0$...
 
             |> Image
-                src="/images/61.svg"
+                src=/images/61.svg
 
             ...is like so, but it doesn't really add anything new. 
 
@@ -709,10 +709,10 @@
 
             $$ p = {y - y_0 \over x - x_0} $$
             |> ImageLeft
-                src="/images/62.svg"
-                img_position="top"
-                offset_x="-6rem"
-                offset_y="-7rem"
+                src=/images/62.svg
+                img_position=top
+                offset_x=-6rem
+                offset_y=-7rem
                 width=800
 
             because
@@ -755,13 +755,13 @@
 
             $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
             |> ImageRight
-                src="/images/63.svg"
-                offset_x="2.5rem"
-                offset_y="-0.5rem"
+                src=/images/63.svg
+                offset_x=2.5rem
+                offset_y=-0.5rem
                 width=400
                 hidden_in_mobile=true
-                squiggle_y="36%"
-                squiggle_x="-3.8rem"
+                squiggle_y=36%
+                squiggle_x=-3.8rem
 
             which can also make it easy to remember!
 
@@ -801,18 +801,18 @@
         Plot the vertical velocity of an object a mosquito whose height over time is given by this graph (use the same time interval as the graph):
 
         |> Image
-            src="/images/1.svg"
-            container_classes="pt-[22px] pb-[15px]"
-            padding_left=90_f64
+            src=/images/1.svg
+            container_classes=pt-[22px] pb-[15px]
+            padding_left=90.0
 
         |> Solution
 
             Here is the “official” graph of the (vertical) velocity:
 
             |> Image
-                src="/images/64.svg"
-                container_classes="pt-[21px] pb-[20px]"
-                padding_left=46_f64
+                src=/images/64.svg
+                container_classes=pt-[21px] pb-[20px]
+                padding_left=46.0
 
             On each interval, the velocity is rate of change
             of the height, i.e., the _slope_ of the height.
@@ -832,7 +832,7 @@
             As explained in Chapter 3, an empty circle of this type
 
             |> Image
-                src="/images/65.svg"
+                src=/images/65.svg
 
             indicates a “missing” value. 
             Specifically, in our case, the vertical velocity is _undefined_
@@ -870,7 +870,7 @@
             E.g.:
 
             |> Image
-                src="/images/66.svg"
+                src=/images/66.svg
 
             The rise from the $y$-intercept to $(x_0, y_0)$ is $px_0$, as found
             by “rise equals slope times run”, implying that
