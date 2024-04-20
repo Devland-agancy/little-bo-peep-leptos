@@ -80,6 +80,7 @@
         src=/images/32.svg
         img_position=bottom
         offset_x=1rem
+        offset_y=30%
         width=600
         hidden_in_mobile=true
 

@@ -120,14 +120,15 @@ pub fn ImageRight(
 
           style=move || {
               format!(
-                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {})); padding: {}",
+                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
                   offset_x,
-                  offset_y,
+                  if offset_y.contains("%") {"0px"} else {offset_y} ,
                   match img_position {
                       "bottom" => "-50%",
                       "top" => "50%",
                       _ => "0%",
                   },
+                  if offset_y.contains("%") {offset_y} else {"0px"} ,
                   padding
               )
           }
