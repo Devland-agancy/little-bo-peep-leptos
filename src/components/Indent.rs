@@ -1,11 +1,15 @@
 use js_sys::Array;
 use leptos::{html::Span, *};
 
+use crate::global_state::GlobalState;
+
 #[component]
 pub fn Indent(cx: Scope, children: Children) -> impl IntoView {
     let node_ref = create_node_ref::<Span>(cx);
+    let GlobalState { route, .. } = use_context::<GlobalState>(cx).unwrap();
 
     create_effect(cx, move |_| {
+        route();
         if let Some(node) = node_ref() {
             let class = Array::of1(&"!-mt-4".into());
             if let Some(parent) = node.parent_element() {

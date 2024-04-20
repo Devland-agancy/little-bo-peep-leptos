@@ -158,7 +158,8 @@
             |> td
             
                 |> img
-                    src=/images/33.svg width=50
+                    src=/images/33.svg 
+                    width=50
                     style=margin-top:7px; margin-bottom:7px;
 
             |> td
@@ -178,7 +179,8 @@
             |> td
 
                 |> img
-                    src=/images/34.svg width=105
+                    src=/images/34.svg 
+                    width=105
                     style=margin-top:7px; margin-bottom:7px;
             
             |> td
@@ -198,7 +200,8 @@
             |> td
             
                 |> img
-                    src=/images/35.svg width=105
+                    src=/images/35.svg 
+                    width=105
                     style=margin-top:10px; margin-bottom:4px;
 
             |> td
@@ -218,7 +221,8 @@
             |> td
             
                 |> img
-                    src=/images/36.svg width=105
+                    src=/images/36.svg 
+                    width=105
                     style=margin-top:10px; margin-bottom:4px;
             |> td
             
