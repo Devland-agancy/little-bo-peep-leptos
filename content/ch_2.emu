@@ -662,7 +662,7 @@
                     src=/images/57.svg
                     offset_x=-5rem
                     offset_y=1rem
-                    pivot_position=bottom
+                    y=bottom
                     img_position=bottom
                     width=340
 
@@ -689,7 +689,7 @@
                     src=/images/60.svg
                     offset_x=-3rem
                     offset_y=1rem
-                    pivot_position=bottom
+                    y=bottom
                     img_position=bottom
                     width=340
 

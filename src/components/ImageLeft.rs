@@ -17,14 +17,13 @@ pub fn ImageLeft(
     cx: Scope,
     src: &'static str,
     #[prop(default = false)] hidden_in_mobile: bool,
-    #[prop(default = "center")] img_position: &'static str,
-    #[prop(default = "center")] pivot_position: &'static str,
-    #[prop(default = "")] anchor_x: &'static str,
+    #[prop(default = "center")] img_position: &'static str, // bot, top, center
+    #[prop(default = "center")] y: &'static str,            // bot, top, center of pivot ( red dot )
+    #[prop(default = "")] edge: &'static str,               // formula_edge, paragraph_edge
+    #[prop(default = -1.0)] line: f32, // which paragraph line pivot is attached to
 
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
-
-    #[prop(default = -1.0)] line: f32,
 
     #[prop(default = "-1.5rem")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
@@ -51,7 +50,7 @@ pub fn ImageLeft(
     } = use_context::<GlobalState>(cx).unwrap();
     let (image_width, set_image_width) = create_signal(cx, 0_f64);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
-    let (anchor_x_signal, set_anchor_x_signal) = create_signal(cx, anchor_x);
+    let (edge_signal, set_edge_signal) = create_signal(cx, edge);
 
     create_effect(cx, move |_| {
         if let Some(img) = image_ref() {
@@ -60,11 +59,11 @@ pub fn ImageLeft(
 
         set_timeout(
             move || {
-                // choose max width betweem formula and screen as default value for anchor_x
-                if anchor_x == "" {
-                    choose_default_anchor(&node_ref, set_anchor_x_signal);
+                // choose max width betweem formula and screen as default value for edge
+                if edge == "" {
+                    choose_default_anchor(&node_ref, set_edge_signal);
                 }
-                if anchor_x_signal() == "formula_edge" {
+                if edge_signal() == "formula_edge" {
                     attach_img_to_math(&node_ref);
                 }
             },
@@ -79,7 +78,7 @@ pub fn ImageLeft(
             let mut line_str = "".to_string();
 
             if line == -1.0 {
-                line_str = match pivot_position {
+                line_str = match y {
                     "bottom" => "100%".to_string(),
                     "top" => "0%".to_string(),
                     _ => "50%".to_string(),
@@ -88,7 +87,7 @@ pub fn ImageLeft(
                 line_str = (line * line_height()).to_string() + "px";
             }
 
-            let left_pos = if anchor_x_signal() == "formula_edge" {
+            let left_pos = if edge_signal() == "formula_edge" {
               "0"
             } else { "-1rem" };
 

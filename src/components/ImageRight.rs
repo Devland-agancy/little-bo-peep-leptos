@@ -20,13 +20,12 @@ pub fn ImageRight(
     src: &'static str,
     #[prop(default = false)] hidden_in_mobile: bool,
     #[prop(default = "center")] img_position: &'static str,
-    #[prop(default = "center")] pivot_position: &'static str,
+    #[prop(default = "center")] y: &'static str,
+    #[prop(default = "")] edge: &'static str,
+    #[prop(default = -1.0)] line: f32,
 
-    #[prop(default = "")] anchor_x: &'static str,
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
-
-    #[prop(default = -1.0)] line: f32,
 
     #[prop(default = "-1.5rem")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
@@ -53,7 +52,7 @@ pub fn ImageRight(
     let image_ref = create_node_ref::<Img>(cx);
     let (image_width, set_image_width) = create_signal(cx, 0_f64);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
-    let (anchor_x_signal, set_anchor_x_signal) = create_signal(cx, anchor_x);
+    let (edge_signal, set_edge_signal) = create_signal(cx, edge);
 
     create_effect(cx, move |_| {
         request_animation_frame(move || {
@@ -63,11 +62,11 @@ pub fn ImageRight(
 
             set_timeout(
                 move || {
-                    // choose max width betweem formula and screen as default value for anchor_x
-                    if anchor_x == "" {
-                        choose_default_anchor(&node_ref, set_anchor_x_signal);
+                    // choose max width betweem formula and screen as default value for edge
+                    if edge == "" {
+                        choose_default_anchor(&node_ref, set_edge_signal);
                     }
-                    if anchor_x_signal() == "formula_edge" {
+                    if edge_signal() == "formula_edge" {
                         attach_img_to_math(&node_ref);
                     }
                 },
@@ -84,7 +83,7 @@ pub fn ImageRight(
             let mut left_pos = "calc(100% - 1rem)".to_string();
 
             if line == -1.0 {
-              line_str = match pivot_position {
+              line_str = match y {
                   "bottom" => "100%".to_string(),
                   "top" => "0%".to_string(),
                   _ => "50%".to_string(),
@@ -93,7 +92,7 @@ pub fn ImageRight(
                 line_str = (line * line_height()).to_string() + "px";
             }
 
-            if anchor_x_signal() == "formula_edge" {
+            if edge_signal() == "formula_edge" {
               left_pos = "100%".to_string();
             }
             format!(

@@ -51,7 +51,7 @@
     $A$, $B$ on the line:
     |> ImageRight
         src=/images/32.svg
-        pivot_position=top
+        y=top
         offset_x=-4rem
         width=600
         hidden_in_mobile=true
@@ -86,4 +86,22 @@
 
 |> Section
 
-    hi
+    this is edge example
+
+    this is edge example
+
+    this is edge example
+
+    this is edge example
+
+    this is edge example
+
+    this is edge example
+
+
+    $$ B = (x_2, y_2) $$
+    |> ImageRight
+        src=/images/32.svg
+        edge=formula_edge
+        width=600
+        hidden_in_mobile=true
