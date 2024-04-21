@@ -23,7 +23,7 @@
     
     ...more elegant!
 
-    for example, the line below has slope 1, because it goes up by $1$ unit for each unit to the right:
+    For example, the line below has slope 1, because it goes up by $1$ unit for each unit to the right:
 
     |> Image
         src=/images/slope_1_example.svg
