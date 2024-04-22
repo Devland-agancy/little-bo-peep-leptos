@@ -3,7 +3,7 @@ use leptos::*;
 #[component]
 pub fn SVGDefinitions(cx: Scope) -> impl IntoView {
     view! { cx,
-      <svg>
+      <svg class="h-0">
         <defs>
 
           <g id="finger_pointing_left" transform="scale(0.0386)">
