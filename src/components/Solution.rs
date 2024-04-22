@@ -1,6 +1,7 @@
-use std::{rc::Rc, sync::Arc, time::Duration};
-
-use crate::{constants::GREEN_DIV_HEIGHT, global_state::GlobalState};
+use crate::{
+    constants::{GREEN_DIV_HEIGHT, TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING},
+    global_state::GlobalState,
+};
 use leptos::{
     ev::{click, resize},
     html::Div,
@@ -8,6 +9,7 @@ use leptos::{
 };
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
+use std::{rc::Rc, sync::Arc, time::Duration};
 use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
 #[component]
@@ -75,7 +77,9 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     view! { cx,
-      <div node_ref=button class="px-4 my-5 relative col-start-2">
+      <div node_ref=button class="my-5 relative col-start-2"
+      style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
+      >
         <SolutionSVG on_click=move |_| {
 
             // Get the element's bottom position relative to the document

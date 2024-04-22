@@ -187,6 +187,7 @@ span .MathJax_SVG{
 
 @media (min-width: 520px) {
   .gridColsWidth {
+    /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
     grid-template-columns: 1fr 488px 1fr;
   }
 }

@@ -1,5 +1,5 @@
 use crate::{
-    constants::MOBILE_BREAKPOINT, global_state::GlobalState, page::state::PageState,
+    constants::MOBILE_MAX_WIDTH, global_state::GlobalState, page::state::PageState,
     utils::cast_element_to_html_element::cast_element_to_html_element,
 };
 use leptos::{ev::resize, html::Div, *};
@@ -33,7 +33,7 @@ pub fn Image(
     let (mobile, set_mobile) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
             set_mobile(true)
         }
     });
@@ -74,7 +74,7 @@ pub fn Image(
                 }
             }
 
-            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
                 set_mobile(true)
             } else {
                 set_mobile(false)

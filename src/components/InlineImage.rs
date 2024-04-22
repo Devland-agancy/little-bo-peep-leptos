@@ -1,5 +1,5 @@
 use crate::{
-    constants::MOBILE_BREAKPOINT, global_state::GlobalState, page::state::PageState,
+    constants::MOBILE_MAX_WIDTH, global_state::GlobalState, page::state::PageState,
     utils::cast_element_to_html_element::cast_element_to_html_element,
 };
 use leptos::{ev::resize, html::Div, *};

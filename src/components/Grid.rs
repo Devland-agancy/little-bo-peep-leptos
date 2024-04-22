@@ -1,4 +1,5 @@
 use crate::components::Span::Span;
+use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
 use leptos::ev::resize;
 use leptos::*;
 
@@ -40,14 +41,16 @@ pub fn Grid(
     view! { cx,
       <span
         id=id
-        class=move || format!("col-start-2 px-4 grid flex-wrap min-h-fit grid-cols-{} {} ", if sm_cols != -1 && sm_activated() { sm_cols } else { cols }, classes)
+        class=move || format!("col-start-2 grid flex-wrap min-h-fit grid-cols-{} {} ", if sm_cols != -1 && sm_activated() { sm_cols } else { cols }, classes)
         style=move || {
             format!(
-                "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}",
+                "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}; padding-left: {}; padding-right: {}",
                 margin_top,
                 margin_bottom,
                 place_items,
                 gap,
+                TEXT_LEFT_PADDING,
+                TEXT_RIGHT_PADDING,
             )
         }
       >

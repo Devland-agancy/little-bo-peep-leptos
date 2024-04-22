@@ -1,7 +1,7 @@
 use crate::components::Checkbox::Checkbox;
 use crate::page::state::PageState;
 use crate::{
-    constants::{MENU_ITEMS, MOBILE_BREAKPOINT},
+    constants::{MENU_ITEMS, MOBILE_MAX_WIDTH},
     global_state::GlobalState,
 };
 use leptos::{

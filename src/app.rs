@@ -1,6 +1,6 @@
 use crate::components::Article::Article;
 use crate::components::Header::{ChapterMenu, Header, MenuButton, MenuState};
-use crate::constants::MOBILE_BREAKPOINT;
+use crate::constants::MOBILE_MAX_WIDTH;
 use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;
@@ -70,12 +70,11 @@ pub fn App(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        on_mobile
-            .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64);
+        on_mobile.set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
 
         window_event_listener(resize, move |_| {
             on_mobile
-                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64);
+                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
         });
     });
 

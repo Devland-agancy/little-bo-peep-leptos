@@ -1,11 +1,11 @@
+use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
+use crate::global_state::GlobalState;
 use leptos::{
     ev::{resize, scroll},
     html::Span,
     *,
 };
 use leptos_use::use_event_listener;
-
-use crate::global_state::GlobalState;
 
 #[derive(PartialEq)]
 pub enum Indent {
@@ -62,19 +62,20 @@ pub fn Paragraph(
         node_ref=node_ref
         class=format!("col-start-2 block relative {}", classes)
         class=("indent-10", indent == Indent::Line)
-        class=("px-4", !no_padding)
         class=("pl-10", indent == Indent::Block)
         class=("text-center my-2", align == Align::Center)
         class=("text-right", align == Align::Right)
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas())
         style=format!(
-            "margin-top: {}px; text-indent: {}",
+            "margin-top: {}px; text-indent: {}; padding-left: {}; padding-right: {}",
             margin_top,
             match indent {
                 Indent::Custom(s) => s,
                 _ => "",
             },
+            if !no_padding {TEXT_LEFT_PADDING} else {"0"},
+            if !no_padding {TEXT_RIGHT_PADDING} else {"0"},
         )
       >
 
