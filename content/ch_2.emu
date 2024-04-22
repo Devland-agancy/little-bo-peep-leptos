@@ -466,7 +466,7 @@
     $-1$.
     |> ImageRight
         src=/images/51.svg
-        line=1.0
+        line=0.5
         offset_x=2rem
         width=300
 
