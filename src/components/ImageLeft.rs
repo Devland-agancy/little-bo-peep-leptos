@@ -25,7 +25,7 @@ pub fn ImageLeft(
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
 
-    #[prop(default = "-1.5rem")] squiggle_x: &'static str,
+    #[prop(default = "0px")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
 
     #[prop(default = "")] children_x: &'static str,
@@ -92,7 +92,7 @@ pub fn ImageLeft(
             } else { "-1rem" };
 
             format!(
-                "top: {}, left: {}",
+                "top: {}; left: {}",
                 line_str,
                 left_pos
             )
@@ -172,7 +172,8 @@ pub fn ImageLeft(
 
               style=move || {
                   format!(
-                      "right: calc({} - 40px); top: calc({} - 40px); padding: {}",
+                      "right: calc(-2.5rem - {} + {} - 40px); top: calc({} - 40px); padding: {}",
+                      offset_x,
                       squiggle_x,
                       squiggle_y,
                       "2.6rem",

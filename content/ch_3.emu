@@ -49,8 +49,8 @@
     The slope of a line is also the ratio of vertical change
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
-    |> ImageRight
-        src=/images/32.svg
+    |> ImageLeft
+        src=/images/35.svg
         y=top
         offset_x=-4rem
         width=600

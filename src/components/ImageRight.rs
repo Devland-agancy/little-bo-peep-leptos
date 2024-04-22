@@ -27,7 +27,7 @@ pub fn ImageRight(
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
 
-    #[prop(default = "-1.5rem")] squiggle_x: &'static str,
+    #[prop(default = "0px")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
 
     #[prop(default = "")] children_x: &'static str,
@@ -172,7 +172,8 @@ pub fn ImageRight(
 
               style=move || {
                   format!(
-                      "left: calc({} - 40px); top: calc({} - 40px); padding: {}",
+                      "left: calc(-1rem - {} + {} - 40px); top: calc({} - 40px); padding: {}",
+                      offset_x,
                       squiggle_x,
                       squiggle_y,
                       "2.6rem",
