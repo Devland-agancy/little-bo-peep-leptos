@@ -89,7 +89,7 @@ pub fn ImageLeft(
 
             let left_pos = if edge_signal() == "formula_edge" {
               "0"
-            } else { "-1rem" };
+            } else { "0.5rem" };
 
             format!(
                 "top: {}; left: {}",
@@ -162,8 +162,8 @@ pub fn ImageLeft(
          >
         </div>
         /*  */
-
-          <Show fallback=|_| () when=move || use_squiggle_on_mobile>
+        </button>
+        <Show fallback=|_| () when=move || use_squiggle_on_mobile>
             <div
               class="block sm:hidden absolute"
               class=("outline-[20px]", move || show_areas())
@@ -172,18 +172,15 @@ pub fn ImageLeft(
 
               style=move || {
                   format!(
-                      "right: calc(-2.5rem - {} + {} - 40px); top: calc({} - 40px); padding: {}",
-                      offset_x,
-                      squiggle_x,
+                      "right: 50%; top: {}; transform: translate(50%, -50%); padding: {}",
                       squiggle_y,
                       "2.6rem",
                   )
               }
             >
-              <img src="/images/squiggle.png" class="h-11"/>
+              <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
             </div>
           </Show>
-        </button>
       </div>
     }
 }

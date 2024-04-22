@@ -1150,13 +1150,13 @@
             $$
             |> ImageRight
                 src=/images/27.svg
-                offset_x=-4.3rem
-                offset_y=-1rem
+                offset_y=3rem
+                y=top
+                squiggle_y=1.3rem
                 children_y=31%
                 children_x=23%
                 width=607
                 clickable_on_desktop=true
-                use_squiggle_on_mobile=false
 
                 $$
                 \begin{align}

@@ -81,7 +81,6 @@
         src=/images/32.svg
         offset_y=-1rem
         width=600
-        squiggle_y=47%
 
     more succinctly. We call this the _slope formula_.
 
@@ -254,7 +253,6 @@
     |> ImageRight
         src=/images/38.svg
         line=2.5
-        squiggle_y=38%
         width=390
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
@@ -266,7 +264,6 @@
         src=/images/39.svg
         offset_y=-3.5rem
         width=400
-        squiggle_y=11.5rem
 
     which verifies this hypothesis. In particular,
     
@@ -469,9 +466,9 @@
     $-1$.
     |> ImageRight
         src=/images/51.svg
+        line=1.0
         offset_x=2rem
         width=300
-        squiggle_y=31%
 
 |> Section
 
@@ -575,7 +572,6 @@
             src=/images/54.svg
             offset_x=-6rem
             width=930
-            squiggle_y=40%
             children_y=41.5%
             children_x=29%
             clickable_on_desktop=true
@@ -758,7 +754,6 @@
                 offset_x=2.5rem
                 offset_y=-0.5rem
                 width=400
-                squiggle_y=36%
 
             which can also make it easy to remember!
 

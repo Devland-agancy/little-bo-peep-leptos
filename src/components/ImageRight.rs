@@ -80,7 +80,7 @@ pub fn ImageRight(
           node_ref=node_ref
           style=move || {
             let mut line_str = "".to_string();
-            let mut left_pos = "calc(100% - 1rem)".to_string();
+            let mut left_pos = "calc(100% - 0.5rem)".to_string();
 
             if line == -1.0 {
               line_str = match y {
@@ -162,28 +162,26 @@ pub fn ImageRight(
             class=("bg-blue-900", move || show_areas())
             >
           </div>
-          /*  */
-          <Show fallback=|_| () when=move || use_squiggle_on_mobile>
-            <div
-              class="block sm:hidden absolute"
-              class=("outline-[20px]", move || show_areas())
-              class=("outline-[#3f9aff7d]", move || show_areas())
-              class=("outline", move || show_areas())
-
-              style=move || {
-                  format!(
-                      "left: calc(-1rem - {} + {} - 40px); top: calc({} - 40px); padding: {}",
-                      offset_x,
-                      squiggle_x,
-                      squiggle_y,
-                      "2.6rem",
-                  )
-              }
-            >
-              <img src="/images/squiggle.png" class="h-11"/>
-            </div>
-          </Show>
         </button>
+        /*  */
+        <Show fallback=|_| () when=move || use_squiggle_on_mobile>
+          <div
+            class="block sm:hidden absolute"
+            class=("outline-[20px]", move || show_areas())
+            class=("outline-[#3f9aff7d]", move || show_areas())
+            class=("outline", move || show_areas())
+
+            style=move || {
+                format!(
+                    "left: 50%; top: {}; transform: translate(-50%, -50%); padding: {}",
+                    squiggle_y,
+                    "2.6rem",
+                )
+            }
+          >
+            <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
+          </div>
+        </Show>
       </div>
     }
 }
