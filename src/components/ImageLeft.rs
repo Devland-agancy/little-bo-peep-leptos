@@ -16,7 +16,7 @@ use web_sys::Node;
 pub fn ImageLeft(
     cx: Scope,
     src: &'static str,
-    #[prop(default = false)] hidden_in_mobile: bool,
+    #[prop(default = false)] use_squiggle_on_mobile: bool,
     #[prop(default = "center")] img_position: &'static str, // bot, top, center
     #[prop(default = "center")] y: &'static str,            // bot, top, center of pivot ( red dot )
     #[prop(default = "")] edge: &'static str,               // formula_edge, paragraph_edge
@@ -163,7 +163,7 @@ pub fn ImageLeft(
         </div>
         /*  */
 
-          <Show fallback=|_| () when=move || hidden_in_mobile>
+          <Show fallback=|_| () when=move || use_squiggle_on_mobile>
             <div
               class="block sm:hidden absolute"
               class=("outline-[20px]", move || show_areas())

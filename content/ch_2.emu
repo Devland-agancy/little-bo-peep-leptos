@@ -81,7 +81,6 @@
         src=/images/32.svg
         offset_y=-1rem
         width=600
-        hidden_in_mobile=true
         squiggle_y=47%
 
     more succinctly. We call this the _slope formula_.
@@ -256,7 +255,6 @@
         src=/images/38.svg
         line=2.5
         squiggle_y=38%
-        hidden_in_mobile=true
         width=390
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
@@ -269,7 +267,6 @@
         offset_y=-3.5rem
         width=400
         squiggle_y=11.5rem
-        hidden_in_mobile=true
 
     which verifies this hypothesis. In particular,
     
@@ -443,6 +440,7 @@
         offset_y=1rem
         offset_x=4rem
         width=200
+        use_squiggle_on_mobile=false
 
     (see 
     |> ImageLink
@@ -474,7 +472,6 @@
         offset_x=2rem
         width=300
         squiggle_y=31%
-        hidden_in_mobile=true
 
 |> Section
 
@@ -578,7 +575,6 @@
             src=/images/54.svg
             offset_x=-6rem
             width=930
-            hidden_in_mobile=true
             squiggle_y=40%
             children_y=41.5%
             children_x=29%
@@ -651,6 +647,7 @@
                     src=/images/56.svg
                     offset_y=5rem
                     width=340
+                    use_squiggle_on_mobile=false
 
                 |> ImageLeft
                     src=/images/57.svg
@@ -659,6 +656,7 @@
                     y=bottom
                     img_position=bottom
                     width=340
+                    use_squiggle_on_mobile=false
 
             In more detail, the two triangles are related by
             a $90^\circ$ rotation and so, likewise, are the lines defined
@@ -678,6 +676,7 @@
                     src=/images/59.svg
                     offset_y=7rem
                     width=340
+                    use_squiggle_on_mobile=false
 
                 |> ImageLeft
                     src=/images/60.svg
@@ -686,6 +685,7 @@
                     y=bottom
                     img_position=bottom
                     width=340
+                    use_squiggle_on_mobile=false
 
             If you're curious, a drawing for the case $p < 0$...
 
@@ -712,6 +712,7 @@
                 offset_x=-7rem
                 offset_y=-7rem
                 width=800
+                use_squiggle_on_mobile=false
 
             because
 
@@ -757,7 +758,6 @@
                 offset_x=2.5rem
                 offset_y=-0.5rem
                 width=400
-                hidden_in_mobile=true
                 squiggle_y=36%
 
             which can also make it easy to remember!

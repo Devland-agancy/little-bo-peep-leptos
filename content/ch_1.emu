@@ -27,6 +27,7 @@
         offset_x=-3rem
         padding=40px
         width=316
+        use_squiggle_on_mobile=false
 
     and, in particular, it is _not_ true that
 
@@ -239,7 +240,6 @@
         line=1.0
         y=top
         offset_y=-10px
-        hidden_in_mobile=true
         squiggle_y=45%
         width=400
         
@@ -580,7 +580,6 @@
             |> ImageLeft
                 src=/images/17.svg
                 offset_y=0.8rem
-                hidden_in_mobile=true
                 squiggle_x=-1rem
                 squiggle_y=30%
 
@@ -610,7 +609,6 @@
             $$
             |> ImageLeft
                 src=/images/18.svg
-                hidden_in_mobile=true
                 squiggle_x=-1rem
                 squiggle_y=37%
 
@@ -755,6 +753,7 @@
                 width=480
                 children_y=48%
                 children_x=39%
+                use_squiggle_on_mobile=false
 
                 $
                 10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
@@ -994,7 +993,7 @@
                 children_y=30%
                 squiggle_x=-1.2rem
                 squiggle_y=30%
-                hidden_in_mobile=true
+                use_squiggle_on_mobile=false
                 width=497
 
                 $$
@@ -1101,7 +1100,8 @@
                 children_y=25%
                 children_x=37%
                 width=362
-                
+                use_squiggle_on_mobile=false 
+
                 $$
                 {1 \over 99\cdot 100}
                 $$
@@ -1118,6 +1118,7 @@
                 children_y=26%
                 children_x=37%
                 width=362
+                use_squiggle_on_mobile=false
 
                 $$
                 {1 \over 99^2}
@@ -1155,6 +1156,7 @@
                 children_x=23%
                 width=607
                 clickable_on_desktop=true
+                use_squiggle_on_mobile=false
 
                 $$
                 \begin{align}
