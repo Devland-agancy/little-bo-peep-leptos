@@ -26,7 +26,6 @@
         offset_y=-1rem
         offset_x=-3rem
         padding=40px
-        width=316
         use_squiggle_on_mobile=false
 
     and, in particular, it is _not_ true that
@@ -242,7 +241,6 @@
         y=top
         offset_y=-10px
         squiggle_y=45%
-        width=400
         
     $$
     (a + b)(C + D) = (a + b)C + (a + b)D
@@ -751,7 +749,6 @@
                 src=/images/104.svg
                 offset_x=-4rem
                 offset_y=-1rem
-                width=480
                 children_y=48%
                 children_x=39%
                 use_squiggle_on_mobile=false
@@ -997,7 +994,6 @@
                 children_x=30%
                 children_y=30%
                 squiggle_y=-3rem
-                width=497
 
                 $$
                 \begin{align}
@@ -1102,7 +1098,6 @@
                 src=/images/25.svg
                 children_y=25%
                 children_x=37%
-                width=362
                 use_squiggle_on_mobile=false 
 
                 $$
@@ -1120,7 +1115,6 @@
                 src=/images/26.svg
                 children_y=26%
                 children_x=37%
-                width=362
                 use_squiggle_on_mobile=false
 
                 $$
@@ -1158,7 +1152,6 @@
                 squiggle_y=1.3rem
                 children_y=31%
                 children_x=23%
-                width=607
                 clickable_on_desktop=true
 
                 $$

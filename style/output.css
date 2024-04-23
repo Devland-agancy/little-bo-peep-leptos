@@ -650,11 +650,6 @@ video {
   margin: auto;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -894,6 +889,11 @@ video {
 
 .max-w-full {
   max-width: 100%;
+}
+
+.max-w-max {
+  max-width: -moz-max-content;
+  max-width: max-content;
 }
 
 .max-w-none {
@@ -1591,6 +1591,7 @@ span .MathJax_SVG{
 
 @media (min-width: 520px) {
   .gridColsWidth {
+    /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
     grid-template-columns: 1fr 488px 1fr;
   }
 }

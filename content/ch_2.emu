@@ -80,7 +80,6 @@
     |> ImageRight
         src=/images/32.svg
         offset_y=-1rem
-        width=600
 
     more succinctly. We call this the _slope formula_.
 
@@ -253,7 +252,6 @@
     |> ImageRight
         src=/images/38.svg
         line=2.5
-        width=390
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
 
@@ -263,7 +261,6 @@
     |> ImageLeft
         src=/images/39.svg
         offset_y=-3.5rem
-        width=400
 
     which verifies this hypothesis. In particular,
     
@@ -436,7 +433,6 @@
         src=/images/50.svg
         offset_y=1rem
         offset_x=4rem
-        width=200
         use_squiggle_on_mobile=false
 
     (see 
@@ -468,7 +464,6 @@
         src=/images/51.svg
         line=0.5
         offset_x=2rem
-        width=300
 
 |> Section
 
@@ -571,7 +566,6 @@
         |> ImageRight
             src=/images/54.svg
             offset_x=-6rem
-            width=930
             children_y=41.5%
             children_x=29%
             clickable_on_desktop=true
@@ -642,7 +636,6 @@
                 |> ImageRight
                     src=/images/56.svg
                     offset_y=5rem
-                    width=340
                     use_squiggle_on_mobile=false
 
                 |> ImageLeft
@@ -651,7 +644,6 @@
                     offset_y=1rem
                     y=bottom
                     img_position=bottom
-                    width=340
                     use_squiggle_on_mobile=false
 
             In more detail, the two triangles are related by
@@ -671,7 +663,6 @@
                 |> ImageRight
                     src=/images/59.svg
                     offset_y=7rem
-                    width=340
                     use_squiggle_on_mobile=false
 
                 |> ImageLeft
@@ -680,7 +671,6 @@
                     offset_y=1rem
                     y=bottom
                     img_position=bottom
-                    width=340
                     use_squiggle_on_mobile=false
 
             If you're curious, a drawing for the case $p < 0$...
@@ -707,7 +697,6 @@
                 img_position=top
                 offset_x=-7rem
                 offset_y=-7rem
-                width=800
                 use_squiggle_on_mobile=false
 
             because
@@ -753,7 +742,6 @@
                 src=/images/63.svg
                 offset_x=2.5rem
                 offset_y=-0.5rem
-                width=400
 
             which can also make it easy to remember!
 

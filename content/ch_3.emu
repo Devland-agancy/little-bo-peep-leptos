@@ -24,7 +24,6 @@
         src=/images/32.svg
         line=0.5
         offset_y=-1rem
-        width=600
         use_squiggle_on_mobile=false
         squiggle_y=47%
 
@@ -52,7 +51,6 @@
         src=/images/35.svg
         y=top
         offset_x=-4rem
-        width=600
         use_squiggle_on_mobile=false
 
     The slope of a line is also the ratio of vertical change
@@ -80,7 +78,6 @@
         img_position=bottom
         offset_x=1rem
         offset_y=30%
-        width=600
         use_squiggle_on_mobile=false
 
 |> Section
@@ -102,5 +99,4 @@
     |> ImageRight
         src=/images/32.svg
         edge=formula_edge
-        width=600
         use_squiggle_on_mobile=false
