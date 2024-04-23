@@ -189,6 +189,7 @@
 
 |> Section
 
+    *Distributivity.*
     As you might already know, a number that multiplies a sum can be 
     brought “inside” the sum. For example,
 
@@ -508,7 +509,7 @@
             sm_cols=2
             sm_cutoff=520
             center_on_overflow=true
-
+            
             a. $ 0.9^2 < 0.9 $
 
             b. $ \sqrt{0.01} = 0.1 $
@@ -530,6 +531,8 @@
         |> Solution
 
             Part by part:
+
+            |> Pause
 
             a. (True) We have
 
@@ -580,7 +583,6 @@
             |> ImageLeft
                 src=/images/17.svg
                 offset_y=0.8rem
-                squiggle_x=-1rem
                 squiggle_y=30%
 
             and
@@ -609,7 +611,6 @@
             $$
             |> ImageLeft
                 src=/images/18.svg
-                squiggle_x=-1rem
                 squiggle_y=37%
 
             so
@@ -776,6 +777,8 @@
             
             by the approximation $2^{10} \approx 10^3$.)
 
+            |> Pause
+
             g. (True) As an inequality can be multiplied on both sides
             by a positive number while preserving the inequality, one has
 
@@ -834,6 +837,8 @@
             $$
 
             etc.
+
+            |> Pause
 
             h. (True) Here are the first few powers of $-1$ (note
             how each additional multiplication by $-1$ simply changes the sign of the
@@ -991,9 +996,7 @@
                 offset_y=-0.7rem
                 children_x=30%
                 children_y=30%
-                squiggle_x=-1.2rem
-                squiggle_y=30%
-                use_squiggle_on_mobile=false
+                squiggle_y=-3rem
                 width=497
 
                 $$

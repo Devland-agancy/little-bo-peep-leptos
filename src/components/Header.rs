@@ -1,13 +1,10 @@
 use crate::components::Checkbox::Checkbox;
 use crate::page::state::PageState;
 use crate::{
-    constants::{MENU_ITEMS, MOBILE_MAX_WIDTH},
+    constants::{HEADER_TITLE_FONT_SIZE, MENU_ITEMS, MOBILE_MAX_WIDTH},
     global_state::GlobalState,
 };
-use leptos::{
-    ev::{resize, scroll},
-    *,
-};
+use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
 
 #[component]
@@ -33,7 +30,9 @@ fn Title(cx: Scope) -> impl IntoView {
         class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0"
         id="Header"
       >
-        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
+        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2"
+            style=format!("font-size: {}", HEADER_TITLE_FONT_SIZE)
+        >
           <a on:click=move |_| route.set("/") href="/">"Little Bo Peep"</a>
         </div>
       </div>

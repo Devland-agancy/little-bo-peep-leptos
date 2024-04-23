@@ -25,7 +25,6 @@ pub fn ImageLeft(
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
 
-    #[prop(default = "0px")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
 
     #[prop(default = "")] children_x: &'static str,
