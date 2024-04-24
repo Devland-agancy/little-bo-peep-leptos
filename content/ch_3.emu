@@ -1,5 +1,5 @@
 |> Section
-    label=measuring
+    label measuring
 
     *Measuring Slope.*
     The slope of a line is also the ratio of vertical change
@@ -21,11 +21,11 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageRight
-        src=/images/32.svg
-        line=0.5
-        offset_y=-1rem
-        use_squiggle_on_mobile=false
-        squiggle_y=47%
+        src /images/32.svg
+        line 0.5
+        offset_y -1rem
+        use_squiggle_on_mobile false
+        squiggle_y 47%
 
     The slope of a line is also the ratio of vertical change
     to horizontal change between any two distinct points
@@ -48,10 +48,10 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageLeft
-        src=/images/35.svg
-        y=top
-        offset_x=-4rem
-        use_squiggle_on_mobile=false
+        src /images/35.svg
+        y top
+        offset_x -4rem
+        use_squiggle_on_mobile false
 
     The slope of a line is also the ratio of vertical change
     to horizontal change between any two distinct points
@@ -74,11 +74,11 @@
     to horizontal change between any two distinct points
     $A$, $B$ on the line:
     |> ImageRight
-        src=/images/32.svg
-        img_position=bottom
-        offset_x=1rem
-        offset_y=30%
-        use_squiggle_on_mobile=false
+        src /images/32.svg
+        img_position bottom
+        offset_x 1rem
+        offset_y 30%
+        use_squiggle_on_mobile false
 
 |> Section
 
@@ -95,8 +95,8 @@
     this is edge example
 
 
-    $$ B = (x_2, y_2) $$
+    $$ B   (x_2, y_2) $$
     |> ImageRight
-        src=/images/32.svg
-        edge=formula_edge
-        use_squiggle_on_mobile=false
+        src /images/32.svg
+        edge formula_edge
+        use_squiggle_on_mobile false

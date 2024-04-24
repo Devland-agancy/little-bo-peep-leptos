@@ -22,11 +22,11 @@
         
     $$\sqrt{(-2)^2} = 2$$
     |> ImageRight
-        src=/images/svg_cloud_minus_two_squared.svg
-        offset_y=-1rem
-        offset_x=-3rem
-        padding=40px
-        use_squiggle_on_mobile=false
+        src /images/svg_cloud_minus_two_squared.svg
+        offset_y -1rem
+        offset_x -3rem
+        padding 40px
+        use_squiggle_on_mobile false
 
     and, in particular, it is _not_ true that
 
@@ -236,11 +236,11 @@
     that come from multiplying every term of the first parenthesis
     with every term of the second parenthesis. Indeed,
     |> ImageLeft
-        src=/images/325.svg
-        line=1.0
-        y=top
-        offset_y=-10px
-        squiggle_y=45%
+        src /images/325.svg
+        line 1.0
+        y top
+        offset_y -10px
+        squiggle_y 45%
         
     $$
     (a + b)(C + D) = (a + b)C + (a + b)D
@@ -433,7 +433,7 @@
         (Because $-7 = -7$, as it would be, haha.)
 
 |> Section
-    divider=false
+    divider false
 
     *Epilogue.* Do you remember the near miss between
 
@@ -503,10 +503,10 @@
         True or false (and, if possible, explain):
 
         |> Grid
-            cols=3 
-            sm_cols=2
-            sm_cutoff=520
-            center_on_overflow=true
+            cols 3 
+            sm_cols 2
+            sm_cutoff 520
+            center_on_overflow true
             
             a. $ 0.9^2 < 0.9 $
 
@@ -579,9 +579,9 @@
             \end{align}
             $$
             |> ImageLeft
-                src=/images/17.svg
-                offset_y=0.8rem
-                squiggle_y=30%
+                src /images/17.svg
+                offset_y 0.8rem
+                squiggle_y 30%
 
             and
 
@@ -608,8 +608,8 @@
             \end{align}
             $$
             |> ImageLeft
-                src=/images/18.svg
-                squiggle_y=37%
+                src /images/18.svg
+                squiggle_y 37%
 
             so
             $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
@@ -746,12 +746,12 @@
             10^{9}\fw\te{km}
             $$
             |> ImageRight
-                src=/images/104.svg
-                offset_x=-4rem
-                offset_y=-1rem
-                children_y=48%
-                children_x=39%
-                use_squiggle_on_mobile=false
+                src /images/104.svg
+                offset_x -4rem
+                offset_y -1rem
+                children_y 48%
+                children_x 39%
+                use_squiggle_on_mobile false
 
                 $
                 10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots
@@ -842,8 +842,8 @@
             previous result):
 
             |> Grid
-                cols=3 
-                place_items=end
+                cols 3 
+                place_items end
 
                 $ (-1)^1 = $
 
@@ -989,11 +989,11 @@
             \end{align}
             $$
             |> ImageRight
-                src=/images/24.svg
-                offset_y=-0.7rem
-                children_x=30%
-                children_y=30%
-                squiggle_y=-3rem
+                src /images/24.svg
+                offset_y -0.7rem
+                children_x 30%
+                children_y 30%
+                squiggle_y -3rem
 
                 $$
                 \begin{align}
@@ -1093,12 +1093,12 @@
             {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
             $$
             |> ImageRight
-                offset_x=-6rem
-                offset_y=1.2rem
-                src=/images/25.svg
-                children_y=25%
-                children_x=37%
-                use_squiggle_on_mobile=false 
+                offset_x -6rem
+                offset_y 1.2rem
+                src /images/25.svg
+                children_y 25%
+                children_x 37%
+                use_squiggle_on_mobile false 
 
                 $$
                 {1 \over 99\cdot 100}
@@ -1110,12 +1110,12 @@
             {1 \over n^2}
             $$
             |> ImageRight
-                offset_x=-6rem
-                offset_y=1.2rem
-                src=/images/26.svg
-                children_y=26%
-                children_x=37%
-                use_squiggle_on_mobile=false
+                offset_x -6rem
+                offset_y 1.2rem
+                src /images/26.svg
+                children_y 26%
+                children_x 37%
+                use_squiggle_on_mobile false
 
                 $$
                 {1 \over 99^2}
@@ -1146,13 +1146,13 @@
             \end{align}
             $$
             |> ImageRight
-                src=/images/27.svg
-                offset_y=3rem
-                y=top
-                squiggle_y=1.3rem
-                children_y=31%
-                children_x=23%
-                clickable_on_desktop=true
+                src /images/27.svg
+                offset_y 3rem
+                y top
+                squiggle_y 1.3rem
+                children_y 31%
+                children_x 23%
+                clickable_on_desktop true
 
                 $$
                 \begin{align}
