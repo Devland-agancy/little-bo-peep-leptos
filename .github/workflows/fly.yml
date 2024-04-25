@@ -2,7 +2,7 @@ name: Fly Deploy
 on:
   push:
     branches:
-      - main
+      - oldstyle-scroll
 jobs:
   deploy:
     name: Deploy app

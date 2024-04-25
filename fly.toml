@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for little-bo-peep-main on 2024-02-16T16:18:24+01:00
+# fly.toml app configuration file generated for little-bo-peep-oldstyle-scroll on 2024-04-25T23:11:05+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'little-bo-peep-main'
+app = 'little-bo-peep-oldstyle-scroll'
 primary_region = 'hkg'
 
 [build]
