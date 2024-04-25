@@ -1171,7 +1171,9 @@
             $$
 
             since $n^2(n+1) \approx n^3$ for large $n$.
-
+            
+            |> Pause
+          
             _Example 1._
             Above, we estimated
 
