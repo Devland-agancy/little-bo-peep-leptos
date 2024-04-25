@@ -21,6 +21,7 @@
     Hence, and whether you like it or not,
         
     $$\sqrt{(-2)^2} = 2$$
+
     |> ImageRight
         src /images/svg_cloud_minus_two_squared.svg
         offset_y -1rem
@@ -235,6 +236,7 @@
 
     that come from multiplying every term of the first parenthesis
     with every term of the second parenthesis. Indeed,
+
     |> ImageLeft
         src /images/325.svg
         line 1.0
@@ -578,6 +580,7 @@
             =& \,\, \up{1.4} 2
             \end{align}
             $$
+           
             |> ImageLeft
                 src /images/17.svg
                 offset_y 0.8rem
@@ -607,6 +610,7 @@
             =&\,\, \up{1.4} 2
             \end{align}
             $$
+
             |> ImageLeft
                 src /images/18.svg
                 squiggle_y 37%
@@ -745,6 +749,7 @@
             $$
             10^{9}\fw\te{km}
             $$
+
             |> ImageRight
                 src /images/104.svg
                 offset_x -4rem
@@ -988,6 +993,7 @@
             &= {1 \over n(n+1)}\up{1.5}
             \end{align}
             $$
+
             |> ImageRight
                 src /images/24.svg
                 offset_y -0.7rem
@@ -1092,6 +1098,7 @@
             $$
             {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
             $$
+
             |> ImageRight
                 offset_x -6rem
                 offset_y 1.2rem
@@ -1109,6 +1116,7 @@
             $$
             {1 \over n^2}
             $$
+
             |> ImageRight
                 offset_x -6rem
                 offset_y 1.2rem
@@ -1145,6 +1153,7 @@
             &= {1 \over n^2(n+1)}\up{1.5}
             \end{align}
             $$
+            
             |> ImageRight
                 src /images/27.svg
                 offset_y 3rem

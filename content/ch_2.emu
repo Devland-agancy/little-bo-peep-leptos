@@ -77,6 +77,7 @@
     from $A$ to $B$, so
 
     $$ \te{slope} = {y_2 - y_1 \over x_2 - x_1} $$
+    
     |> ImageRight
         src /images/32.svg
         offset_y -1rem
@@ -249,6 +250,7 @@
     that the slope formula gives the same answer if $(x_1, y_1)$ 
     and $(x_2, y_2)$ swap places, or, namely, to show that the 
     fractions
+    
     |> ImageRight
         src /images/38.svg
         line 2.5
@@ -258,6 +260,7 @@
     are somehow equal. But, indeed,
 
     $$ {y_2 - y_1 \over x_2 - x_1} = {-(y_2 - y_1) \over -(x_2 - x_1)} = {y_1 - y_2 \over x_1 - x_2} $$
+    
     |> ImageLeft
         src /images/39.svg
         offset_y -3.5rem
@@ -429,6 +432,7 @@
     of the form
 
     $$x = c$$
+    
     |> ImageLeft
         src /images/50.svg
         offset_y 1rem
@@ -460,6 +464,7 @@
     
     and thus describes a line of $y$-intercept $3$ and slope
     $-1$.
+    
     |> ImageRight
         src /images/51.svg
         line 0.5
@@ -563,6 +568,7 @@
         $$
         \frac{4\te{m}}{0.75\te{m}/\te{s}}\! = 5.3333...\te{s}
         $$
+        
         |> ImageRight
             src /images/54.svg
             offset_x -6rem
@@ -633,11 +639,13 @@
                 src /images/55.svg
                 container_classes relative w-fit
 
+                
                 |> ImageRight
                     src /images/56.svg
                     offset_y 5rem
                     use_squiggle_on_mobile false
 
+                
                 |> ImageLeft
                     src /images/57.svg
                     offset_x -5rem
@@ -660,11 +668,13 @@
                 src /images/58.svg
                 container_classes relative w-fit
 
+                
                 |> ImageRight
                     src /images/59.svg
                     offset_y 7rem
                     use_squiggle_on_mobile false
 
+                
                 |> ImageLeft
                     src /images/60.svg
                     offset_x -3rem
@@ -692,6 +702,7 @@
             slope $p$ if and only if
 
             $$ p = {y - y_0 \over x - x_0} $$
+            
             |> ImageLeft
                 src /images/62.svg
                 img_position top
@@ -738,6 +749,7 @@
             This can be a final answer, and, pleasingly, has the form
 
             $$ \te{“}\te{slope} \times \te{run} = \te{rise}\te{”} $$
+            
             |> ImageRight
                 src /images/63.svg
                 offset_x 2.5rem
