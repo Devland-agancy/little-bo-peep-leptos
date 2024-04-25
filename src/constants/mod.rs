@@ -22,3 +22,5 @@ pub const TEXT_LEFT_PADDING: &'static str = "1rem";
 pub const TEXT_RIGHT_PADDING: &'static str = "1rem";
 
 pub const HEADER_TITLE_FONT_SIZE: &'static str = "30px";
+
+pub const HUMBURGER_MENU_HEIGHT: f64 = 56.0;

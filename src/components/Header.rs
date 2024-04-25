@@ -1,7 +1,7 @@
 use crate::components::Checkbox::Checkbox;
 use crate::page::state::PageState;
 use crate::{
-    constants::{HEADER_TITLE_FONT_SIZE, MENU_ITEMS, MOBILE_MAX_WIDTH},
+    constants::{HEADER_TITLE_FONT_SIZE, HUMBURGER_MENU_HEIGHT, MENU_ITEMS},
     global_state::GlobalState,
 };
 use leptos::{ev::scroll, *};
@@ -15,7 +15,9 @@ pub fn Header(cx: Scope) -> impl IntoView {
           <Title/>
         </div>
       </div>
-      <div class="h-0 border-b left-[-1500px] w-[4400px] top-[55px] fixed z-50">
+      <div
+        style=format!("top: {}px", HUMBURGER_MENU_HEIGHT - 1.0)
+        class="h-0 border-b left-[-1500px] w-[4400px] fixed z-50">
       </div>
     }
 }
@@ -67,8 +69,10 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })
       >
-        <div class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll h-[calc(100vh_-_56px)] translate-y-0 sm:translate-y-[-1px]">
-          <div class="select-none scrollbar-hidden min-h-[calc(100vh_-_55px)] sm:h-full px-4 py-3 overflow-y-hidden">
+        <div
+        style=format!("min-height: calc(100vh - {}px); height: calc(100vh - {}px)", HUMBURGER_MENU_HEIGHT - 1.0, HUMBURGER_MENU_HEIGHT)
+        class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]">
+          <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
             <MenuItems/>
             <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">"Options"</h2>
@@ -153,10 +157,10 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
+        set_scrolled_header(window().scroll_y().unwrap() >= HUMBURGER_MENU_HEIGHT);
 
         window_event_listener(scroll, move |_| {
-            set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
+            set_scrolled_header(window().scroll_y().unwrap() >= HUMBURGER_MENU_HEIGHT);
         })
     });
 
@@ -164,7 +168,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
       <div
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
         class=("hover:border-b-0", move ||  menu_closed() && !on_mobile.get() && window_scroll() > 0_f64 )
-        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
+        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > HUMBURGER_MENU_HEIGHT)
         style=move || {
           format!(
               "opacity: {}",
