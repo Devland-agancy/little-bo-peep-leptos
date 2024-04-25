@@ -85,7 +85,8 @@ pub fn ImageRight(
               line_str = match y {
                   "bottom" => "100%".to_string(),
                   "top" => "0%".to_string(),
-                  _ => "50%".to_string(),
+                  "center" => "50%".to_string(),
+                  _ => y.to_string(),
               };
             } else {
                 line_str = (line * line_height()).to_string() + "px";

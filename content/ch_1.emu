@@ -242,7 +242,6 @@
         line 1.0
         y top
         offset_y -10px
-        squiggle_y 45%
         
     $$
     (a + b)(C + D) = (a + b)C + (a + b)D
@@ -584,7 +583,6 @@
             |> ImageLeft
                 src images/17.svg
                 offset_y 0.8rem
-                squiggle_y 30%
 
             and
 
@@ -613,7 +611,6 @@
 
             |> ImageLeft
                 src images/18.svg
-                squiggle_y 37%
 
             so
             $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
@@ -996,10 +993,10 @@
 
             |> ImageRight
                 src images/24.svg
-                offset_y -0.7rem
+                offset_y 2.5rem
+                y 12%
                 children_x 30%
                 children_y 30%
-                squiggle_y -3rem
 
                 $$
                 \begin{align}
@@ -1156,9 +1153,8 @@
 
             |> ImageRight
                 src images/27.svg
-                offset_y 3rem
-                y top
-                squiggle_y 1.3rem
+                offset_y 2rem
+                y 12%
                 children_y 31%
                 children_x 23%
                 clickable_on_desktop true
