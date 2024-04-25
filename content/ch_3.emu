@@ -22,7 +22,7 @@
     $A$, $B$ on the line:
     
     |> ImageRight
-        src /images/32.svg
+        src images/32.svg
         line 0.5
         offset_y -1rem
         use_squiggle_on_mobile false
@@ -50,7 +50,7 @@
     $A$, $B$ on the line:
     
     |> ImageLeft
-        src /images/35.svg
+        src images/35.svg
         y top
         offset_x -4rem
         use_squiggle_on_mobile false

@@ -23,7 +23,7 @@
     $$\sqrt{(-2)^2} = 2$$
 
     |> ImageRight
-        src /images/svg_cloud_minus_two_squared.svg
+        src images/svg_cloud_minus_two_squared.svg
         offset_y -1rem
         offset_x -3rem
         padding 40px
@@ -238,7 +238,7 @@
     with every term of the second parenthesis. Indeed,
 
     |> ImageLeft
-        src /images/325.svg
+        src images/325.svg
         line 1.0
         y top
         offset_y -10px
@@ -582,7 +582,7 @@
             $$
            
             |> ImageLeft
-                src /images/17.svg
+                src images/17.svg
                 offset_y 0.8rem
                 squiggle_y 30%
 
@@ -612,7 +612,7 @@
             $$
 
             |> ImageLeft
-                src /images/18.svg
+                src images/18.svg
                 squiggle_y 37%
 
             so
@@ -751,7 +751,7 @@
             $$
 
             |> ImageRight
-                src /images/104.svg
+                src images/104.svg
                 offset_x -4rem
                 offset_y -1rem
                 children_y 48%
@@ -995,7 +995,7 @@
             $$
 
             |> ImageRight
-                src /images/24.svg
+                src images/24.svg
                 offset_y -0.7rem
                 children_x 30%
                 children_y 30%
@@ -1102,7 +1102,7 @@
             |> ImageRight
                 offset_x -6rem
                 offset_y 1.2rem
-                src /images/25.svg
+                src images/25.svg
                 children_y 25%
                 children_x 37%
                 use_squiggle_on_mobile false 
@@ -1120,7 +1120,7 @@
             |> ImageRight
                 offset_x -6rem
                 offset_y 1.2rem
-                src /images/26.svg
+                src images/26.svg
                 children_y 26%
                 children_x 37%
                 use_squiggle_on_mobile false
@@ -1153,9 +1153,9 @@
             &= {1 \over n^2(n+1)}\up{1.5}
             \end{align}
             $$
-            
+
             |> ImageRight
-                src /images/27.svg
+                src images/27.svg
                 offset_y 3rem
                 y top
                 squiggle_y 1.3rem
