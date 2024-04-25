@@ -20,3 +20,5 @@ pub const CENTERED_PARAGRAPH_X_MARGIN: &'static str = "1rem";
 
 pub const TEXT_LEFT_PADDING: &'static str = "1rem";
 pub const TEXT_RIGHT_PADDING: &'static str = "1rem";
+
+pub const HEADER_TITLE_FONT_SIZE: &'static str = "30px";
