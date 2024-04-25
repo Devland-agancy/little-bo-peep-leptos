@@ -1,5 +1,6 @@
 use std::{fmt::format, time::Duration};
 
+use crate::components::Image::Image;
 use crate::{global_state::GlobalState, utils::get_chapter::get_chapter};
 use http::Error;
 use leptos::*;
@@ -49,23 +50,32 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == 0)
         on:click=move |_| {
             if selected_tab() != 0 {
-              let new_tab = selected_tab() - 1;
-              set_selected_tab(new_tab);
+                let new_tab = selected_tab() - 1;
+                set_selected_tab(new_tab);
                 let mut stored_opened_value = false;
                 match window().local_storage() {
-                  Ok(Some(storage)) => {
-                      let stored_solution_opened_key =
-                          format!("{}_exo_{}_opened", chapter(), new_tab);
-                          stored_opened_value = storage.get_item(&stored_solution_opened_key).unwrap_or(Some("false".to_string())).unwrap_or("false".to_string()) == "true" ;
-                  }
-                  _ => {}
+                    Ok(Some(storage)) => {
+                        let stored_solution_opened_key = format!(
+                            "{}_exo_{}_opened",
+                            chapter(),
+                            new_tab,
+                        );
+                        stored_opened_value = storage
+                            .get_item(&stored_solution_opened_key)
+                            .unwrap_or(Some("false".to_string()))
+                            .unwrap_or("false".to_string()) == "true";
+                    }
+                    _ => {}
                 }
-                let _ = navigate(&format!(
-                    "{}?tab={}&opened={}",
-                    window().location().pathname().unwrap(),
-                    new_tab,
-                    stored_opened_value
-                ), NAVIGATE_OPTIONS);
+                let _ = navigate(
+                    &format!(
+                        "{}?tab={}&opened={}",
+                        window().location().pathname().unwrap(),
+                        new_tab,
+                        stored_opened_value,
+                    ),
+                    NAVIGATE_OPTIONS,
+                );
             }
         }
       >
@@ -91,24 +101,32 @@ fn LabelsView(
         class=("disabled", move || selected_tab() == _vec().len() - 1)
         on:click=move |_| {
             if selected_tab() != _vec().len() - 1 {
-              let new_tab = selected_tab() + 1;
-
-              set_selected_tab(new_tab);
-              let mut stored_opened_value = false;
-              match window().local_storage() {
-                Ok(Some(storage)) => {
-                    let stored_solution_opened_key =
-                        format!("{}_exo_{}_opened", chapter(), new_tab);
-                        stored_opened_value = storage.get_item(&stored_solution_opened_key).unwrap_or(Some("false".to_string())).unwrap_or("false".to_string()) == "true" ;
+                let new_tab = selected_tab() + 1;
+                set_selected_tab(new_tab);
+                let mut stored_opened_value = false;
+                match window().local_storage() {
+                    Ok(Some(storage)) => {
+                        let stored_solution_opened_key = format!(
+                            "{}_exo_{}_opened",
+                            chapter(),
+                            new_tab,
+                        );
+                        stored_opened_value = storage
+                            .get_item(&stored_solution_opened_key)
+                            .unwrap_or(Some("false".to_string()))
+                            .unwrap_or("false".to_string()) == "true";
+                    }
+                    _ => {}
                 }
-                _ => {}
-              }
-              let _ = navigate_(&format!(
-                  "{}?tab={}&opened={}",
-                  window().location().pathname().unwrap(),
-                  new_tab,
-                  stored_opened_value
-              ), NAVIGATE_OPTIONS);
+                let _ = navigate_(
+                    &format!(
+                        "{}?tab={}&opened={}",
+                        window().location().pathname().unwrap(),
+                        new_tab,
+                        stored_opened_value,
+                    ),
+                    NAVIGATE_OPTIONS,
+                );
             }
         }
       >
@@ -119,9 +137,11 @@ fn LabelsView(
           fill=move || {
               format!("{}", if selected_tab() != _vec().len() - 1 { "#EEFFAA" } else { "#EBEBEB" })
           }
+
           fill-opacity=move || {
-            format!("{}", if selected_tab() != _vec().len() - 1 { "0.4" } else { "1" })
-        }
+              format!("{}", if selected_tab() != _vec().len() - 1 { "0.4" } else { "1" })
+          }
+
           fill-opacity="0.4"
           stroke="black"
           stroke-width="1.5"
@@ -149,13 +169,12 @@ fn EndLabelsView(cx: Scope, vec: Vec<&'static str>, selected_tab: usize) -> impl
         xmlns="http://www.w3.org/2000/svg"
         class="tab cursor-pointer overflow-visible z-10"
         on:click=move |_| {
-          let mut options = ScrollIntoViewOptions::new();
-          options.behavior(ScrollBehavior::Smooth);
-          document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
-
-          // this line closes the solution
-          /* document().get_element_by_id("solution-button").unwrap().dyn_into::<web_sys::HtmlElement>()
-           .unwrap().click(); */
+            let mut options = ScrollIntoViewOptions::new();
+            options.behavior(ScrollBehavior::Smooth);
+            document()
+                .get_element_by_id("exo")
+                .unwrap()
+                .scroll_into_view_with_scroll_into_view_options(&options);
         }
       >
 
@@ -171,12 +190,19 @@ fn EndLabelsView(cx: Scope, vec: Vec<&'static str>, selected_tab: usize) -> impl
         <Show
           fallback=move |_| {
               view! { cx,
-                <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
+                <path
+                  d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z"
+                  fill="black"
+                ></path>
               }
           }
+
           when=move || selected_tab == _vec().len() - 1
         >
-        <path d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z" fill="black"/>
+          <path
+            d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z"
+            fill="black"
+          ></path>
         </Show>
 
       </svg>
@@ -192,7 +218,7 @@ struct LabelsVec {
     labels: ReadSignal<Vec<&'static str>>,
 }
 #[component]
-pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
+pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);
@@ -350,17 +376,31 @@ pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
     });
 
     view! { cx,
-
+      <Image
+        id="exo"
+        src="/images/seperator.png"
+        height="50px"
+        width="160px"
+        container_classes="flex items-center mt-[45px] mb-[40px]"
+      >
+        ""
+      </Image>
       <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mb-[31px] mt-[2px]">
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
       </div>
       <For
-        each=move || children(cx).nodes.into_iter().filter(move |node| {
-            if let Some(text) = node.as_text() {
-                return text.content != r#""#.into_view(cx).as_text().unwrap().content
-            }
-            return true
-        } ).enumerate()
+        each=move || {
+            children(cx)
+                .nodes
+                .into_iter()
+                .filter(move |node| {
+                    if let Some(text) = node.as_text() {
+                        return text.content != r#""#.into_view(cx).as_text().unwrap().content;
+                    }
+                    return true;
+                })
+                .enumerate()
+        }
         key=|label| label.0
         view=move |cx, label| {
             view! { cx,
@@ -376,12 +416,11 @@ pub fn Tabs(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl 
             }
         }
       />
-
     }
 }
 
 #[component]
-pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
+pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
     let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
     let GlobalState { labels, tab, .. } = use_context::<GlobalState>(cx).unwrap();
 
@@ -402,14 +441,20 @@ pub fn TabElement(cx: Scope, children: ChildrenFn) -> impl IntoView {
         }
     });
     view! { cx,
-            {children(cx)}
-            <Show fallback=|_| () when=move || solution_open() && solution_fully_opened() >
-                <div class="text-xl flex items-center justify-center gap-2 col-start-2">
-                <EndLabelsView
-                    vec=labels.get()
-                    selected_tab=tab.get()
-                />
-                </div>
-            </Show>
+      {children(cx)}
+      <Show fallback=|_| () when=move || solution_open() && solution_fully_opened()>
+        <div class="text-xl flex items-center justify-center gap-2 col-start-2">
+          <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
+        </div>
+      </Show>
+    }
+}
+
+#[component]
+pub fn ExerciseQuestion(cx: Scope, children: ChildrenFn) -> impl IntoView {
+    view! { cx,
+    <div class="animate-appear-slow col-start-2 block relative flex flex-col gap-4">
+      {children(cx)}
+    </div>
     }
 }

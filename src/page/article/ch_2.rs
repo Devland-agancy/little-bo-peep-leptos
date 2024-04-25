@@ -8,13 +8,17 @@ use crate::components::ImageRight::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 
+use crate::components::Exercises::*;
 use crate::components::ImageLink::*;
+use crate::components::Indent::*;
+use crate::components::InlineImage::*;
 use crate::components::Paragraph::*;
+use crate::components::Section::*;
 use crate::components::SectionDivider::*;
 use crate::components::Solution::*;
 use crate::components::Span::*;
+use crate::components::StarDivider::*;
 use crate::components::Table::*;
-use crate::components::Tabs::*;
 
 use crate::constants::MENU_ITEMS;
 
@@ -24,7 +28,7 @@ use leptos::*;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-        <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0 />
+      <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0 />
       <Columns>
         <ArticleBody/>
       </Columns>

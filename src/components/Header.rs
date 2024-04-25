@@ -1,13 +1,10 @@
 use crate::components::Checkbox::Checkbox;
 use crate::page::state::PageState;
 use crate::{
-    constants::{MENU_ITEMS, MOBILE_BREAKPOINT},
+    constants::{HEADER_TITLE_FONT_SIZE, MENU_ITEMS, MOBILE_MAX_WIDTH},
     global_state::GlobalState,
 };
-use leptos::{
-    ev::{resize, scroll},
-    *,
-};
+use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
 
 #[component]
@@ -26,14 +23,17 @@ pub fn Header(cx: Scope) -> impl IntoView {
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
+    let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
       <div
         class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0"
         id="Header"
       >
-        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
-          <a href="/">"Little Bo Peep"</a>
+        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2"
+            style=format!("font-size: {}", HEADER_TITLE_FONT_SIZE)
+        >
+          <a on:click=move |_| route.set("/") href="/">"Little Bo Peep"</a>
         </div>
       </div>
     }
@@ -106,12 +106,13 @@ fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    let set_route = use_context::<WriteSignal<&str>>(cx).unwrap();
+    let GlobalState { route, .. } = use_context(cx).unwrap();
+
     view! { cx,
       <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
           on:click=move |_|{
-            set_route(href);
+            route.set(href);
           }
           href=["/article/", href].concat()
           class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"
@@ -134,11 +135,11 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     let GlobalState {
         show_areas,
         burger_background,
+        on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
 
     let (button_opacity, set_button_opacity) = create_signal::<f64>(cx, 1_f64);
-    let (screen_is_lg, set_screen_is_lg) = create_signal::<bool>(cx, true);
     let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
     let (scrolled_header, set_scrolled_header) = create_signal::<bool>(cx, true);
 
@@ -152,16 +153,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        set_screen_is_lg(
-            window().inner_width().unwrap().as_f64().unwrap() >= MOBILE_BREAKPOINT as f64,
-        );
         set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
-
-        window_event_listener(resize, move |_| {
-            set_screen_is_lg(
-                window().inner_width().unwrap().as_f64().unwrap() >= MOBILE_BREAKPOINT as f64,
-            );
-        });
 
         window_event_listener(scroll, move |_| {
             set_scrolled_header(window().scroll_y().unwrap() >= 56_f64);
@@ -171,12 +163,12 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     view! { cx,
       <div
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
-        class=("hover:border-b-0", move ||  menu_closed() && screen_is_lg() && window_scroll() > 0_f64 )
+        class=("hover:border-b-0", move ||  menu_closed() && !on_mobile.get() && window_scroll() > 0_f64 )
         class=("sm:border-b-0", move || !menu_closed() || window_scroll() > 56_f64)
         style=move || {
           format!(
               "opacity: {}",
-              if menu_closed() && screen_is_lg() { button_opacity() } else { 1_f64 }
+              if menu_closed() && !on_mobile.get() { button_opacity() } else { 1_f64 }
             )
         }
 
@@ -225,14 +217,14 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
         </button>
       </div>
 
-      //vertical line between burger and rest of header
-      <div
-        class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
-        class=("opacity-100", move || page_state() == PageState::ShowArticle)
-
-        ></div>
+        /* //vertical line between burger and rest of header
         <div
+          class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
+          class=("opacity-100", move || page_state() == PageState::ShowArticle)
 
+          ></div> */
+
+        <div
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())
         class=("h-[5.25rem]", move || !scrolled_header() && !burger_background.get())

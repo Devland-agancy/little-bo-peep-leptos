@@ -1,5 +1,5 @@
 use crate::{
-    constants::MOBILE_BREAKPOINT, global_state::GlobalState, page::state::PageState,
+    constants::MOBILE_MAX_WIDTH, global_state::GlobalState, page::state::PageState,
     utils::cast_element_to_html_element::cast_element_to_html_element,
 };
 use leptos::{ev::resize, html::Div, *};
@@ -33,7 +33,7 @@ pub fn Image(
     let (mobile, set_mobile) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
             set_mobile(true)
         }
     });
@@ -74,7 +74,7 @@ pub fn Image(
                 }
             }
 
-            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64 {
+            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
                 set_mobile(true)
             } else {
                 set_mobile(false)
@@ -87,12 +87,12 @@ pub fn Image(
         style=move || format!("padding-left: {}px; padding-right: {}px;", if show_padding() {padding_left} else {0_f64}, if show_padding() {padding_right} else {0_f64} )
         class=move || {
             format!(
-                "my-[15px] relative col-start-2 scrollbar-hidden sm:overflow-x-visible {}",
+                "relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {}",
                 container_classes,
             )
         }
 
-        class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle && !cloud_image)
+        /* class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle && !cloud_image) */
       >
         <img
           on:click=move |e| {
@@ -110,9 +110,7 @@ pub fn Image(
           }
           id=id
           src=src
-          style= move || format!("height: {}; width: {}; {}", height, width, if (cloud_image && is_wide()) || !mobile() {
-            "position:relative; left: 50%; transform: translateX(-50%)"
-          } else { "margin: auto;" })
+          style= move || format!("height: {}; width: {}; position:relative; left: 50%; transform: translateX(-50%);", height, width)
           class=move || {
               format!(
                   "max-w-none {}",

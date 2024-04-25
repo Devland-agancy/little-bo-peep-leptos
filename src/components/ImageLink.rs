@@ -1,15 +1,10 @@
 use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{html::Img, *};
 
-pub enum Direction {
-    Left,
-    Right,
-}
-
 #[component]
 pub fn ImageLink(
     cx: Scope,
-    direction: Direction,
+    direction: &'static str,
     scroll_by: f64,
     children: Children,
 ) -> impl IntoView {
@@ -25,18 +20,20 @@ pub fn ImageLink(
       <span
         on:click=move |e| {
           e.stop_propagation();
+          return;
           if page_state() == PageState::ShowArticle {
             match direction {
-              Direction::Left => {
+              "left" => {
                 set_page_state(PageState::ShowLeft);
                 margin_scroll_value
                     .set(scroll_by);
               },
-              Direction::Right => {
+              "right" => {
                 set_page_state(PageState::ShowRight);
                 margin_scroll_value
                     .set(200.0);
-              }
+              },
+              _ => {}
             }
           }
         }

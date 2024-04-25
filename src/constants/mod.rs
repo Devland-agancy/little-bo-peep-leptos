@@ -3,16 +3,22 @@ pub const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
     ("Chapter 2: The Slope Formula", "Chapter 2: Slopes", "ch_2"),
 ];
 
-//first 2 are for mobile ( top, bottom ) , other 2 are for desktop (top, bottom)
-pub const TITLE_MARGIN: &'static (&'static str, &'static str, &'static str, &'static str) =
-    &("0px", "5px", "15px", "5px");
+pub const CHAPTER_TITLE_TOP_MARGIN_DESKTOP: &'static str = "5px";
+pub const CHAPTER_TITLE_TOP_MARGIN_MOBILE: &'static str = "0px";
+pub const CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP: &'static str = "15px";
+pub const CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE: &'static str = "5px";
 
 pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
 
 pub const GREEN_DIV_HEIGHT: u8 = 150;
 
-// the max width of the main column of text when trying to fit a small screen, in other words the breakpoint of screen width that activates small screen mode , this can be edited in tailwind.config.js in here screens: { sm: "520px" }, after than run npx tailwindcss -i input.css -o style/output.css
-pub const MOBILE_BREAKPOINT: u16 = 520;
-// DESKTOP_TEXT_WIDTH found in input.css file in .gridColWidth class , 1fr {width} 1fr
+pub const MOBILE_MAX_WIDTH: u16 = 520;
 
 pub const SECTION_DIVIDER_ACTIVATION_HEIGHT: u16 = 520;
+
+pub const CENTERED_PARAGRAPH_X_MARGIN: &'static str = "1rem";
+
+pub const TEXT_LEFT_PADDING: &'static str = "1rem";
+pub const TEXT_RIGHT_PADDING: &'static str = "1rem";
+
+pub const HEADER_TITLE_FONT_SIZE: &'static str = "30px";

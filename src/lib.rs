@@ -6,6 +6,7 @@ pub mod error_template;
 pub mod fileserv;
 pub mod global_state;
 pub mod page;
+pub mod svg_defs;
 pub mod utils;
 
 cfg_if! { if #[cfg(feature = "hydrate")] {

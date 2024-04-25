@@ -17,7 +17,7 @@ pub fn MathBlock(
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "2rem")] arrow_position_y: &'static str,
     #[prop(default = "-2.5rem")] arrow_position_x: &'static str,
-    #[prop(default = false)] arrow_hidden: bool,
+    #[prop(default = true)] arrow_hidden: bool, // hide it on develop
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,
 ) -> impl IntoView {
@@ -90,9 +90,7 @@ pub fn MathBlock(
       <div
         node_ref=node_ref
         id=id
-        class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative"
-        class=("h-20", height == Height::Small)
-        class=("h-fit", height == Height::Fit)
+        class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative h-fit"
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {

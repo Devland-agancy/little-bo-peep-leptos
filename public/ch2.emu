@@ -90,12 +90,12 @@
 
     |> Example
 
-        A line that passes through the points
-        $$A = (-2, 5)$$
-        and
-        $$B = (4, 1)$$
-        has slope
-        $${1 - 5 \over 4 - (-2)} = {-4 \over 6} = - {2 \over 3}.$$
+    A line that passes through the points
+    $$A = (-2, 5)$$
+    and
+    $$B = (4, 1)$$
+    has slope
+    $${1 - 5 \over 4 - (-2)} = {-4 \over 6} = - {2 \over 3}.$$
 
     |> StarDivider
         xtra_margin_top = 10
@@ -127,7 +127,9 @@
     _changes_). A distance, by definition, is a nonnegative
     number, while a difference carries no such restriction.
 
-    In particular, since
+    |> Indent
+    
+        In particular, since
     
     $$ x_2 - x_1 $$
     

@@ -36,6 +36,9 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
+.MathJax_SVG_Display{
+  margin: 0 !important;
+}
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -184,6 +187,7 @@ span .MathJax_SVG{
 
 @media (min-width: 520px) {
   .gridColsWidth {
+    /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
     grid-template-columns: 1fr 488px 1fr;
   }
 }
@@ -246,6 +250,9 @@ span .MathJax_SVG{
 .sm\:grid-cols-11	{grid-template-columns: repeat(11, 1fr);}
 .sm\:grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
 
+.center-on-mobile {
+  grid-column: 1/-1;
+}
 }
 
 .nowrap, .nobreak, .nolinebreak {
@@ -256,11 +263,6 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
-/* .section-divider {
-  display: none;   
+span:has(+ .indent, + .pause)  {
+  margin-top: -1rem !important;
 }
-@media (min-height = 400px) {
-  .section-divider {
-    display: block;
-  }
-} */

@@ -1,24 +1,56 @@
-|>  Table
-    cols=vec![120, 120, 120, 120]
-    lines=true
-    margin_top = 15
+|> Section
+    label measuring
 
-    |> tr
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
 
-        |> td
-        
-            $x_2 - x_1$
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
 
-        |> td
-        
-            $y_2 - y_1$
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
 
-        |> td
-        
-            |> img
-                src="/images/33.svg" width="50"
-                style="margin-top:7px; margin-bottom:7px;"
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    
+    |> ImageRight
+        src images/32.svg
+        line 0.5
+        offset_y -1rem
+        use_squiggle_on_mobile false
+        squiggle_y 47%
 
-        |> td
-        
-            $${y_2-y_1 \over x_2-x_1}$$
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+
+    *Measuring Slope.*
+    The slope of a line is also the ratio of vertical change
+    to horizontal change between any two distinct points
+    $A$, $B$ on the line:
+    
+    |> ImageLeft
+        src images/35.svg
+        y top
+        offset_x -4rem
+        use_squiggle_on_mobile false

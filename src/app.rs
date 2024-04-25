@@ -1,13 +1,16 @@
 use crate::components::Article::Article;
 use crate::components::Header::{ChapterMenu, Header, MenuButton, MenuState};
+use crate::constants::MOBILE_MAX_WIDTH;
 use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;
 use crate::page::state::PageState;
-
+use crate::svg_defs::SVGDefinitions;
+use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
+use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
@@ -32,9 +35,13 @@ pub fn App(cx: Scope) -> impl IntoView {
 
     provide_context(cx, GlobalState::new(cx));
 
+    let GlobalState {
+        route, on_mobile, ..
+    } = use_context(cx).unwrap();
+
     create_effect(cx, move |_| {
         // execute on every route change
-        route();
+        route.get();
 
         /*  */
         let script = document().create_element("script");
@@ -55,7 +62,22 @@ pub fn App(cx: Scope) -> impl IntoView {
             }
             _ => {}
         }
+
+        let mut options = ScrollToOptions::new();
+        options.left(1500.0);
+        options.behavior(ScrollBehavior::Instant);
+        window().scroll_with_scroll_to_options(&options);
     });
+
+    create_effect(cx, move |_| {
+        on_mobile.set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+
+        window_event_listener(resize, move |_| {
+            on_mobile
+                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+        });
+    });
+
     view! { cx,
       // injects a stylesheet into the document <head>
       // id=leptos means cargo-leptos will hot-reload this stylesheet
@@ -64,7 +86,7 @@ pub fn App(cx: Scope) -> impl IntoView {
       <meta name="format-detection" content="telephone=no"/>
       // sets the document title
       <Title text="Little Bo Peep"/>
-      <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
+      <Link href="/images/book_favicon_sized_v2_dev.svg" rel="icon"/>
       <Script  src="/mathjax_setup.js" defer="true"/>
       <Script
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
@@ -91,5 +113,6 @@ pub fn App(cx: Scope) -> impl IntoView {
           </Article>
         </main>
       </Router>
+      <SVGDefinitions />
     }
 }

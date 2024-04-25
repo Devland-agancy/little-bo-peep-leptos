@@ -1,6 +1,5 @@
+use crate::constants::{MOBILE_MAX_WIDTH, TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
 use leptos::*;
-
-use crate::constants::MOBILE_BREAKPOINT;
 
 #[component]
 pub fn Table(
@@ -17,7 +16,7 @@ pub fn Table(
     let (_cols, set_cols) = create_signal(cx, cols);
 
     create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_BREAKPOINT as f64
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64
             && sm_cols.len() > 0
         {
             set_cols(sm_cols.clone())
@@ -25,12 +24,15 @@ pub fn Table(
     });
 
     view! { cx,
-      <div class=format!(
-          "col-start-2 px-4 min-h-fit my-4 w-full overflow-scroll scrollbar-hidden {}",
-          classes,
-      )>
+      <div
+        class=format!(
+            "col-start-2 min-h-fit my-4 w-fit relative left-1/2 -translate-x-1/2 {}",
+            classes,
+        )
+        style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
+      >
         <table
-          class="table-fixed min-w-max"
+          class="table-fixed max-w-full w-full"
           class=("lines", move || lines)
           style=move || format!("margin-top: {}px ;{}", margin_top, style)
         >

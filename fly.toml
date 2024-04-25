@@ -1,21 +1,22 @@
-# fly.toml app configuration file generated for little-bo-peep-main on 2024-02-16T16:18:24+01:00
+# fly.toml app configuration file generated for little-bo-peep-develop on 2024-02-10T23:05:08+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'little-bo-peep-main'
+app = 'little-bo-peep-develop'
 primary_region = 'hkg'
 
 [build]
 
 [http_service]
-  internal_port = 3000
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
+internal_port = 3000
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 0
+processes = ['app']
 
 [[vm]]
-  cpu_kind = 'shared'
-  cpus = 1
-  memory_mb = 1024
+cpu_kind = 'shared'
+cpus = 1
+memory_mb = 1024
