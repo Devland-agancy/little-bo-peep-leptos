@@ -20,7 +20,7 @@ pub fn ImageLeft(
     #[prop(default = "center")] img_position: &'static str, // bot, top, center
     #[prop(default = "center")] y: &'static str,            // bot, top, center of pivot ( red dot )
     #[prop(default = "")] edge: &'static str,               // formula_edge, paragraph_edge
-    #[prop(default = -1.0)] line: f32, // which paragraph line pivot is attached to
+    #[prop(optional)] line: f32, // which paragraph line pivot is attached to
 
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
@@ -68,22 +68,24 @@ pub fn ImageLeft(
             Duration::from_secs(3),
         );
     });
+    log!("line {}", line);
 
     view! { cx,
       <div
         node_ref=node_ref
         style=move || {
             let mut line_str = "".to_string();
-
-            if line == -1.0 {
+            if line > 0.0 {
+                line_str = ((line - 0.5) * line_height()).to_string() + "px";
+            } else if line < 0.0 {
+                line_str = format!("calc(100% + {}px)", (line - 0.5) * line_height())
+            } else {
                 line_str = match y {
                     "bottom" => "100%".to_string(),
                     "top" => "0%".to_string(),
                     "center" => "50%".to_string(),
                   _ => y.to_string(),
                 };
-            } else {
-                line_str = (line * line_height()).to_string() + "px";
             }
 
             let left_pos = if edge_signal() == "formula_edge" {

@@ -239,7 +239,7 @@
 
     |> ImageLeft
         src images/325.svg
-        line 1.0
+        line 1.5
         y top
         offset_y -10px
         

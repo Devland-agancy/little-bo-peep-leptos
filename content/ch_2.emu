@@ -253,7 +253,7 @@
     
     |> ImageRight
         src images/38.svg
-        line 2.5
+        line 3.0
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
 
@@ -467,7 +467,7 @@
     
     |> ImageRight
         src images/51.svg
-        line 0.5
+        line 1.0
         offset_x 2rem
 
 |> Section
