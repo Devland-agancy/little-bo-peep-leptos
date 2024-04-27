@@ -22,7 +22,7 @@ pub fn ImageRight(
     #[prop(default = "center")] img_position: &'static str,
     #[prop(default = "center")] y: &'static str,
     #[prop(default = "")] edge: &'static str,
-    #[prop(default = -1.0)] line: f32,
+    #[prop(optional)] line: f32,
 
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
@@ -81,15 +81,17 @@ pub fn ImageRight(
             let mut line_str = "".to_string();
             let mut left_pos = "calc(100% - 0.5rem)".to_string();
 
-            if line == -1.0 {
-              line_str = match y {
-                  "bottom" => "100%".to_string(),
-                  "top" => "0%".to_string(),
-                  "center" => "50%".to_string(),
-                  _ => y.to_string(),
-              };
+            if line > 0.0 {
+                line_str = ((line - 0.5) * line_height()).to_string() + "px";
+            } else if line < 0.0 {
+                line_str = format!("calc(100% + {}px)", (line - 0.5) * line_height())
             } else {
-                line_str = (line * line_height()).to_string() + "px";
+                line_str = match y {
+                    "bottom" => "100%".to_string(),
+                    "top" => "0%".to_string(),
+                    "center" => "50%".to_string(),
+                  _ => y.to_string(),
+                };
             }
 
             if edge_signal() == "formula_edge" {
