@@ -1,7 +1,8 @@
 use crate::components::Checkbox::Checkbox;
+use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_START_FADE};
 use crate::page::state::PageState;
 use crate::{
-    constants::{HEADER_TITLE_FONT_SIZE, HUMBURGER_MENU_HEIGHT, MENU_ITEMS},
+    constants::{HUMBURGER_MENU_HEIGHT, MENU_ITEMS},
     global_state::GlobalState,
 };
 use leptos::{ev::scroll, *};
@@ -33,7 +34,6 @@ fn Title(cx: Scope) -> impl IntoView {
         id="Header"
       >
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2"
-            style=format!("font-size: {}", HEADER_TITLE_FONT_SIZE)
         >
           <a on:click=move |_| route.set("/") href="/">"Little Bo Peep"</a>
         </div>
@@ -147,12 +147,20 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     let (window_scroll, set_window_scroll) = create_signal::<f64>(cx, 0_f64);
     let (scrolled_header, set_scrolled_header) = create_signal::<bool>(cx, true);
 
+    let calc_opacity = move || {
+        f64::min(
+            1.0,
+            1.0 - (window().scroll_y().unwrap() - HAMBURGER_MENU_SCROLLY_START_FADE)
+                / HAMBURGER_MENU_SCROLLY_END_FADE,
+        )
+    };
+
     create_effect(cx, move |_| {
-        set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
+        set_button_opacity(calc_opacity());
 
         let _ = use_event_listener(cx, window(), scroll, move |_| {
-            set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64);
-            set_window_scroll(window().scroll_y().unwrap())
+            set_window_scroll(window().scroll_y().unwrap());
+            set_button_opacity(calc_opacity());
         });
     });
 
@@ -202,7 +210,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
                           _ => *value,
                       }
                   });
-              set_button_opacity(1_f64 - window().scroll_y().unwrap() / 800_f64)
+              set_button_opacity(calc_opacity())
           }
 
           on:pointerup=move |_| {
