@@ -1,6 +1,6 @@
 use crate::{
-    components::Image::Image, constants::SECTION_DIVIDER_ACTIVATION_HEIGHT,
-    global_state::GlobalState,
+    components::Image::Image, components::Section::Pause,
+    constants::SECTION_DIVIDER_ACTIVATION_HEIGHT, global_state::GlobalState,
 };
 use leptos::{ev::resize, *};
 use leptos_use::use_event_listener;
@@ -38,7 +38,7 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
     view! {
       cx,
       <Show
-        fallback=move |_| view! {cx, ""}
+        fallback=move |_| view! {cx, <Pause>""</Pause>}
         when=move || !hidden() && show_section_divider() >
           <Image
             src="/images/section_divider.svg"

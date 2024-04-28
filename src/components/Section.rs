@@ -10,7 +10,7 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col gap-4 col-start-2 my-2">
+      cx, <div class="flex flex-col container col-start-2 my-2">
             {children(cx)}
           </div>
             <Show fallback=|_| () when=move || divider>
@@ -22,7 +22,7 @@ pub fn Section(
 #[component]
 pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col gap-4 col-start-2">
+      cx, <div class="flex flex-col container col-start-2">
         {children(cx)}
       </div>
     };
@@ -31,7 +31,7 @@ pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn Example(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col gap-4 col-start-2">
+      cx, <div class="flex flex-col container col-start-2">
         {children(cx)}
       </div>
     };

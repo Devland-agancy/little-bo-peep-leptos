@@ -554,6 +554,46 @@ video {
   --tw-contain-style:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 520px) {
+  .container {
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 580px) {
+  .container {
+    max-width: 580px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -614,10 +654,6 @@ video {
   top: 35%;
 }
 
-.top-\[55px\] {
-  top: 55px;
-}
-
 .z-10 {
   z-index: 10;
 }
@@ -673,10 +709,6 @@ video {
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-}
-
-.\!-mt-4 {
-  margin-top: -1rem !important;
 }
 
 .-mt-2 {
@@ -811,10 +843,6 @@ video {
   height: 5.25rem;
 }
 
-.h-\[calc\(100vh_-_56px\)\] {
-  height: calc(100vh - 56px);
-}
-
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -822,10 +850,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.min-h-\[calc\(100vh_-_55px\)\] {
-  min-height: calc(100vh - 55px);
 }
 
 .min-h-fit {
@@ -1735,7 +1759,11 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
-span:has(+ .indent, + .pause)  {
+.container > *:not(:has(> .pause)):not(:last-child)  {
+  margin-bottom: 1rem;
+}
+
+.indent-fix {
   margin-top: -1rem !important;
 }
 
