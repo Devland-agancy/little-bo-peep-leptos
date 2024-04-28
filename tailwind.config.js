@@ -6,17 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        audiowide: ["Audiowide"],
         baskerville: ["Baskerville Regular"],
         "baskerville-bold": ["Baskerville Bold"],
         "baskerville-italic": ["Baskerville Italic"],
         clickerscript: ["Clicker Script"],
-        indieflower: ["IndieFlower"],
-        menlo: ["Menlo"],
-        pollerone: ["PollerOne"],
-        princessjohn: ["PrincessJohn"],
-        songmyung: ["SongMyung"],
-        tomorrow: ["Tomorrow"],
       },
       width: {
         128: "32.5rem",
