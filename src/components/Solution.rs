@@ -129,7 +129,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 
         <div
           node_ref=node_ref
-          class="flex flex-col gap-4"
+          class="flex flex-col container"
           class=("-translate-y-full", move || !solution_open())
           class=("duration-1000", move || transition())
           class=("transition-all", move || transition())
