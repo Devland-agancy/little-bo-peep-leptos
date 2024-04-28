@@ -90,7 +90,7 @@ pub fn MathBlock(
       <div
         node_ref=node_ref
         id=id
-        class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative h-fit"
+        class="mathblock my-2 text-xl flex items-center justify-center col-start-2 hidden-on-startup relative h-fit"
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {
