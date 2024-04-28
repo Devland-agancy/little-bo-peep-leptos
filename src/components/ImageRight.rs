@@ -37,8 +37,6 @@ pub fn ImageRight(
 
     children: Children,
 ) -> impl IntoView {
-    let set_page_state =
-        use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_right = move || page_state() == PageState::ShowRight;
     let GlobalState {
@@ -110,15 +108,7 @@ pub fn ImageRight(
           class=("bg-red-500", move || show_areas())
         ></div>
 
-        <button
-          on:click=move |e| {
-              e.stop_propagation();
-              if page_state() == PageState::ShowArticle {
-                  set_page_state(PageState::ShowRight);
-                  margin_scroll_value.set(image_width())
-              }
-          }
-
+        <div
           style=move || {
               format!(
                   "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
@@ -163,7 +153,7 @@ pub fn ImageRight(
             class=("bg-blue-900", move || show_areas())
             >
           </div>
-        </button>
+        </div>
         /*  */
         <Show fallback=|_| () when=move || use_squiggle_on_mobile>
           <div

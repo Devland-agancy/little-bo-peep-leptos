@@ -1,16 +1,13 @@
-use std::time::Duration;
-
 use crate::{
     global_state::GlobalState,
     page::state::PageState,
     utils::attach_img_to_math::{attach_img_to_math, choose_default_anchor},
 };
-use js_sys::Array;
 use leptos::{
     html::{Div, Img},
     *,
 };
-use web_sys::Node;
+use std::time::Duration;
 
 #[component]
 pub fn ImageLeft(
@@ -34,15 +31,12 @@ pub fn ImageLeft(
 
     children: Children,
 ) -> impl IntoView {
-    let set_page_state =
-        use_context::<WriteSignal<PageState>>(cx).expect("set_page_state context to exist");
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let show_left = move || page_state() == PageState::ShowLeft;
     let image_ref = create_node_ref::<Img>(cx);
     let node_ref = create_node_ref::<Div>(cx);
     let GlobalState {
         show_areas,
-        margin_scroll_value,
         on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
@@ -106,19 +100,7 @@ pub fn ImageLeft(
         class="w-1 h-1 relative z-20"
         class=("bg-red-500", move || show_areas())
         ></div>
-        <button
-          on:click=move |e| {
-              e.stop_propagation();
-              set_page_state
-                  .update(|value| {
-                      *value = match value {
-                          PageState::ShowArticle => PageState::ShowLeft,
-                          _ => PageState::ShowArticle,
-                      };
-                  });
-              margin_scroll_value.set(image_width())
-          }
-
+        <div
           style=move || {
               format!(
                   "right: calc(-100% + {}); top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
@@ -162,7 +144,7 @@ pub fn ImageLeft(
          >
         </div>
         /*  */
-        </button>
+        </div>
         <Show fallback=|_| () when=move || use_squiggle_on_mobile>
             <div
               class="block sm:hidden absolute"
