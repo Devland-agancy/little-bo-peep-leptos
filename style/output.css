@@ -739,8 +739,8 @@ video {
   margin-bottom: 40px;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mt-4 {
@@ -1259,6 +1259,10 @@ video {
 
 .pt-\[22px\] {
   padding-top: 22px;
+}
+
+.pb-0 {
+  padding-bottom: 0px;
 }
 
 .text-left {

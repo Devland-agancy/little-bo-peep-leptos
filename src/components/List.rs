@@ -3,8 +3,8 @@ use leptos::*;
 #[component]
 pub fn List(cx: Scope, #[prop(default = true)] indent: bool, children: Children) -> impl IntoView {
     view! { cx, <ol
-    class=("ml-10", indent)
-    class="p-4 list-decimal">{children(cx)}</ol> }
+    class=("ml-6", indent)
+    class="p-4 pb-0 list-decimal">{children(cx)}</ol> }
 }
 
 #[component]
