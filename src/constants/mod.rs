@@ -3,9 +3,9 @@ pub const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
     ("Chapter 2: The Slope Formula", "Chapter 2: Slopes", "ch_2"),
 ];
 
-pub const CHAPTER_TITLE_TOP_MARGIN_DESKTOP: &'static str = "5px";
+pub const CHAPTER_TITLE_TOP_MARGIN_DESKTOP: &'static str = "15px";
 pub const CHAPTER_TITLE_TOP_MARGIN_MOBILE: &'static str = "0px";
-pub const CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP: &'static str = "15px";
+pub const CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP: &'static str = "5px";
 pub const CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE: &'static str = "5px";
 
 pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
