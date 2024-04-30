@@ -69,15 +69,18 @@ MathJax.Hub.Register.StartupHook("End", function () {
   setTimeout((e) => {
     document.getElementsByTagName("body").item(0).style.opacity = 1;
 
-    if (localStorage.getItem(${location.pathname.split("/")[2]}_scroll)) {
+    let chapterScrollKey = ${location.pathname.split("/")[2]}_scroll;
+    let scrollValue = localStorage.getItem(chapterScrollKey);
+
+    if (scrollValue) {
       window.scroll({
-        top: localStorage.getItem(${location.pathname.split("/")[2]}_scroll),
+        top:  scrollValue,
       });
     }
     setTimeout((e) => {
       window.addEventListener("scroll", () => {
         if (
-          !localStorage.getItem(${location.pathname.split("/")[2]}_scroll)
+          !scrollValue
         ) {
           localStorage.setItem("activate_scroll", "true");
         }
@@ -85,10 +88,12 @@ MathJax.Hub.Register.StartupHook("End", function () {
           window.scrollY > 0 &&
           localStorage.getItem("activate_scroll") == "true"
         )
-          localStorage.setItem(
-            ${location.pathname.split("/")[2]}_scroll,
-            window.scrollY
-          );
+          setTimeout((e) => {
+            localStorage.setItem(
+              chapterScrollKey,
+              window.scrollY
+            );
+          }, 500);
       });
     }, 100);
   }, 400);

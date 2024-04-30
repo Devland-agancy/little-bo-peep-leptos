@@ -16,9 +16,11 @@ MathJax.Hub.Register.StartupHook("End", function () {
   });
 
   setTimeout((e) => {
-    if (localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`)) {
+    let chapterScrollKey = `${location.pathname.split("/")[2]}_scroll`;
+    let scrollValue = localStorage.getItem(chapterScrollKey);
+    if (scrollValue) {
       window.scroll({
-        top: localStorage.getItem(`${location.pathname.split("/")[2]}_scroll`),
+        top: scrollValue,
       });
     }
     setTimeout((e) => {
@@ -28,10 +30,10 @@ MathJax.Hub.Register.StartupHook("End", function () {
           localStorage.getItem("activate_scroll") == "true" &&
           window.scrollY > 0
         )
-          localStorage.setItem(
-            `${location.pathname.split("/")[2]}_scroll`,
-            window.scrollY
-          );
+          setTimeout((e) => {
+            // trigger after delay to get exact position
+            localStorage.setItem(chapterScrollKey, window.scrollY);
+          }, 500);
       });
     }, 100);
   }, 700);
