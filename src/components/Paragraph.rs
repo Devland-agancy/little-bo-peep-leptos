@@ -28,7 +28,6 @@ pub fn Paragraph(
     children: Children,
     #[prop(default = Indent::None)] indent: Indent,
     #[prop(default = Align::None)] align: Align,
-    #[prop(default = 0)] margin_top: i16,
     #[prop(optional)] id: &'static str,
     #[prop(optional)] classes: &'static str,
     #[prop(default = false)] no_padding: bool,
@@ -68,8 +67,7 @@ pub fn Paragraph(
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas())
         style=format!(
-            "margin-top: {}px; text-indent: {}; padding-left: {}; padding-right: {}",
-            margin_top,
+            "text-indent: {}; padding-left: {}; padding-right: {}",
             match indent {
                 Indent::Custom(s) => s,
                 _ => "",

@@ -1760,7 +1760,7 @@ span .MathJax_SVG{
 }
 
 .indent-fix {
-  margin-top: -1rem !important;
+  margin-top: -0.5rem !important;
 }
 
 .hover\:border-b-0:hover {
