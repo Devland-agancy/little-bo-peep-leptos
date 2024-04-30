@@ -30,12 +30,8 @@ fn LabelsView(
     set_selected_tab: WriteSignal<usize>,
 ) -> impl IntoView {
     let (_vec, set_vec) = create_signal(cx, vec);
-    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
-    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
-
     let navigate = use_navigate(cx);
     let navigate_ = use_navigate(cx);
-
     let location = use_location(cx);
     let (chapter, _) = create_signal(cx, get_chapter(location));
 
@@ -219,21 +215,26 @@ struct LabelsVec {
 }
 #[component]
 pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
-    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
-    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);
     let (_labels, _) = create_signal(cx, labels.clone());
     let GlobalState {
         labels: global_labels,
         tab,
+        solutions_state,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+    let solution_open = move || solutions_state.get()[selected_tab()];
+
     global_labels.set(labels.clone());
     tab.set(selected_tab());
 
     let location = use_location(cx);
     let url_params = location.clone().query;
     let (chapter, _) = create_signal(cx, get_chapter(location));
+
+    create_effect(cx, move |_| {
+        GlobalState::init_solutions_state(solutions_state, global_labels.get().len());
+    });
 
     create_effect(cx, move |_| {
         let mut stored_selected_tab = None;
@@ -257,6 +258,7 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
 
     create_effect(cx, move |_| {
         selected_tab();
+        tab.set(selected_tab());
         set_timeout(
             move || {
                 let mut stored_solution_opened = None;
@@ -272,14 +274,22 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
                 if let Some(sso) = stored_solution_opened {
                     match sso {
                         Ok(Some(value)) => {
-                            set_solution_open(value == "true");
+                            GlobalState::update_solutions_state(
+                                solutions_state,
+                                selected_tab(),
+                                value == "true",
+                            );
                         }
                         _ => {
-                            set_solution_open(false);
+                            GlobalState::update_solutions_state(
+                                solutions_state,
+                                selected_tab(),
+                                false,
+                            );
                         }
                     }
                 } else {
-                    set_solution_open(false);
+                    GlobalState::update_solutions_state(solutions_state, selected_tab(), false);
                 }
             },
             Duration::from_millis(50),
@@ -368,7 +378,11 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
                 let _url_params = url_params();
                 let stored_solution_opened = _url_params.get("opened");
                 if let Some(sso) = stored_solution_opened {
-                    set_solution_open(sso == "true");
+                    GlobalState::update_solutions_state(
+                        solutions_state,
+                        selected_tab(),
+                        sso == "true",
+                    );
                 }
             },
             Duration::from_millis(50),
@@ -421,8 +435,19 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
 
 #[component]
 pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
-    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
-    let GlobalState { labels, tab, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState {
+        labels,
+        tab,
+        solutions_state,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+    let solution_open = move || {
+        if solutions_state.get().len() > 0 {
+            solutions_state.get()[tab.get()]
+        } else {
+            false
+        }
+    };
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {

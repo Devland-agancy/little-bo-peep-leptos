@@ -7,15 +7,26 @@ use leptos::{
     html::Div,
     *,
 };
-use leptos_router::{use_location, use_navigate, NavigateOptions, State};
+use leptos_router::{use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
-use std::{rc::Rc, sync::Arc, time::Duration};
+use std::{sync::Arc, time::Duration};
 use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
 #[component]
-pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
-    let set_solution_open = use_context::<WriteSignal<bool>>(cx).unwrap();
-    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
+pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl IntoView {
+    let GlobalState {
+        show_areas,
+        solutions_state,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+    let solution_open = move || {
+        if solutions_state.get().len() > 0 {
+            solutions_state.get()[solution_number]
+        } else {
+            false
+        }
+    };
+
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
     let button = create_node_ref::<Div>(cx);
@@ -74,13 +85,12 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
     let (transition, set_transition) = create_signal(cx, false);
 
     let navigate = use_navigate(cx);
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     view! { cx,
       <div node_ref=button class="my-5 relative col-start-2"
       style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
       >
-        <SolutionSVG on_click=move |_| {
+        <SolutionSVG solution_number=solution_number on_click=move |_| {
 
             // Get the element's bottom position relative to the document
             let element_pos = window().inner_height().unwrap().as_f64().unwrap() -  button().unwrap().get_bounding_client_rect().bottom();
@@ -114,8 +124,7 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
               }
               let _ = navigate(&new_url, options);
             }
-            set_solution_open(!solution_open())
-
+            GlobalState::update_solutions_state(solutions_state, solution_number -1, !solution_open());
         }/>
       </div>
       <div
@@ -146,11 +155,22 @@ pub fn Solution(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn SolutionSVG<F>(cx: Scope, on_click: F) -> impl IntoView
+pub fn SolutionSVG<F>(cx: Scope, solution_number: usize, on_click: F) -> impl IntoView
 where
     F: Fn(MouseEvent) + 'static,
 {
-    let solution_open = use_context::<ReadSignal<bool>>(cx).unwrap();
+    let GlobalState {
+        show_areas,
+        solutions_state,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+    let solution_open = move || {
+        if solutions_state.get().len() > 0 {
+            solutions_state.get()[solution_number]
+        } else {
+            false
+        }
+    };
     let button = create_node_ref(cx);
 
     let on_click_arc: Arc<F> = Arc::new(on_click);
