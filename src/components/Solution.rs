@@ -26,7 +26,6 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
             false
         }
     };
-
     let (content_height, set_content_height) = create_signal(cx, 0);
     let node_ref = create_node_ref::<Div>(cx);
     let button = create_node_ref::<Div>(cx);
@@ -91,7 +90,6 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
       style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
       >
         <SolutionSVG solution_number=solution_number on_click=move |_| {
-
             // Get the element's bottom position relative to the document
             let element_pos = window().inner_height().unwrap().as_f64().unwrap() -  button().unwrap().get_bounding_client_rect().bottom();
 
@@ -124,7 +122,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
               }
               let _ = navigate(&new_url, options);
             }
-            GlobalState::update_solutions_state(solutions_state, solution_number -1, !solution_open());
+            GlobalState::update_solutions_state(solutions_state, solution_number, !solution_open());
         }/>
       </div>
       <div
