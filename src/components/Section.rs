@@ -10,7 +10,7 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col container col-start-2 my-2">
+      cx, <div class="flex flex-col container col-start-2 mt-2">
             {children(cx)}
           </div>
             <Show fallback=|_| () when=move || divider>
