@@ -1,11 +1,9 @@
-use std::{fmt::format, time::Duration};
-
 use crate::components::Image::Image;
 use crate::{global_state::GlobalState, utils::get_chapter::get_chapter};
-use http::Error;
 use leptos::*;
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use serde::{Deserialize, Serialize};
+use std::time::Duration;
 use web_sys::{ScrollBehavior, ScrollIntoViewOptions};
 
 #[derive(Serialize, Deserialize)]
@@ -29,7 +27,7 @@ fn LabelsView(
     selected_tab: ReadSignal<usize>,
     set_selected_tab: WriteSignal<usize>,
 ) -> impl IntoView {
-    let (_vec, set_vec) = create_signal(cx, vec);
+    let (_vec, _) = create_signal(cx, vec);
     let navigate = use_navigate(cx);
     let navigate_ = use_navigate(cx);
     let location = use_location(cx);
@@ -209,10 +207,6 @@ pub struct SelectedTab {
     pub tab: ReadSignal<usize>,
 }
 
-#[derive(Clone)]
-struct LabelsVec {
-    labels: ReadSignal<Vec<&'static str>>,
-}
 #[component]
 pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoView {
     let (selected_tab, set_selected_tab) = create_signal(cx, 0);

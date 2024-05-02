@@ -40,15 +40,10 @@ pub fn ImageLeft(
         on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-    let (image_width, set_image_width) = create_signal(cx, 0_f64);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
     let (edge_signal, set_edge_signal) = create_signal(cx, edge);
 
     create_effect(cx, move |_| {
-        if let Some(img) = image_ref() {
-            set_image_width(img.offset_width() as f64)
-        };
-
         set_timeout(
             move || {
                 // choose max width betweem formula and screen as default value for edge
@@ -68,7 +63,7 @@ pub fn ImageLeft(
       <div
         node_ref=node_ref
         style=move || {
-            let mut line_str = "".to_string();
+            let line_str: String;
             if line > 0.0 {
                 line_str = ((line - 0.5) * line_height()).to_string() + "px";
             } else if line < 0.0 {
@@ -118,6 +113,7 @@ pub fn ImageLeft(
 
           class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute w-max"
           class=("pointer-events-none", show_left)
+          class=("lg:pointer-events-none", move || !clickable_on_desktop)
           class=("outline-[20px]", move || show_areas())
           class=("outline-[#3f9aff7d]", move || show_areas())
           class=("outline", move || show_areas())

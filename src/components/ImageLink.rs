@@ -1,5 +1,5 @@
 use crate::{global_state::GlobalState, page::state::PageState};
-use leptos::{html::Img, *};
+use leptos::*;
 
 #[component]
 pub fn ImageLink(
@@ -18,25 +18,6 @@ pub fn ImageLink(
 
     view! { cx,
       <span
-        on:click=move |e| {
-          e.stop_propagation();
-          return;
-          if page_state() == PageState::ShowArticle {
-            match direction {
-              "left" => {
-                set_page_state(PageState::ShowLeft);
-                margin_scroll_value
-                    .set(scroll_by);
-              },
-              "right" => {
-                set_page_state(PageState::ShowRight);
-                margin_scroll_value
-                    .set(200.0);
-              },
-              _ => {}
-            }
-          }
-        }
         class="relative cursor-pointer lg:pointer-events-none"
       >
         {children(cx)}

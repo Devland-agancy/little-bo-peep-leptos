@@ -3,16 +3,12 @@ use std::time::Duration;
 use crate::{
     global_state::GlobalState,
     page::state::PageState,
-    utils::{
-        attach_img_to_math::{attach_img_to_math, choose_default_anchor},
-        element_contains_child::element_contains_child,
-    },
+    utils::attach_img_to_math::{attach_img_to_math, choose_default_anchor},
 };
 use leptos::{
     html::{Div, Img},
     *,
 };
-use web_sys::Node;
 
 #[component]
 pub fn ImageRight(
@@ -27,7 +23,6 @@ pub fn ImageRight(
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
 
-    #[prop(default = "0px")] squiggle_x: &'static str,
     #[prop(default = "30%")] squiggle_y: &'static str,
 
     #[prop(default = "")] children_x: &'static str,
@@ -41,22 +36,16 @@ pub fn ImageRight(
     let show_right = move || page_state() == PageState::ShowRight;
     let GlobalState {
         show_areas,
-        margin_scroll_value,
         on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let node_ref = create_node_ref::<Div>(cx);
     let image_ref = create_node_ref::<Img>(cx);
-    let (image_width, set_image_width) = create_signal(cx, 0_f64);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
     let (edge_signal, set_edge_signal) = create_signal(cx, edge);
 
     create_effect(cx, move |_| {
         request_animation_frame(move || {
-            if let Some(img) = image_ref() {
-                set_image_width(img.offset_width() as f64)
-            }
-
             set_timeout(
                 move || {
                     // choose max width betweem formula and screen as default value for edge
@@ -76,7 +65,7 @@ pub fn ImageRight(
       <div
           node_ref=node_ref
           style=move || {
-            let mut line_str = "".to_string();
+            let line_str: String;
             let mut left_pos = "calc(100% - 0.5rem)".to_string();
 
             if line > 0.0 {

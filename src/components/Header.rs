@@ -1,6 +1,5 @@
 use crate::components::Checkbox::Checkbox;
 use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_START_FADE};
-use crate::page::state::PageState;
 use crate::{
     constants::{HUMBURGER_MENU_HEIGHT, MENU_ITEMS},
     global_state::GlobalState,
@@ -25,7 +24,6 @@ pub fn Header(cx: Scope) -> impl IntoView {
 
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
@@ -131,7 +129,6 @@ fn MenuItem(
 #[component]
 pub fn MenuButton(cx: Scope) -> impl IntoView {
     let set_menu_state = use_context::<WriteSignal<MenuState>>(cx).unwrap();
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
 
     let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
     let menu_closed =
@@ -228,14 +225,6 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
           <HamburgerIcon/>
         </button>
       </div>
-
-        /* //vertical line between burger and rest of header
-        <div
-          class="hidden sm:block h-14 w-[1px] absolute right-14 top-0 border-r transition-opacity z-50 opacity-0"
-          class=("opacity-100", move || page_state() == PageState::ShowArticle)
-
-          ></div> */
-
         <div
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())

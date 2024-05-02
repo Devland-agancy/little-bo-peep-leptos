@@ -1,5 +1,5 @@
 use crate::{
-    constants::MOBILE_MAX_WIDTH, global_state::GlobalState, page::state::PageState,
+    global_state::GlobalState, page::state::PageState,
     utils::cast_element_to_html_element::cast_element_to_html_element,
 };
 use leptos::{ev::resize, html::Div, *};
@@ -30,13 +30,6 @@ pub fn Image(
         margin_scroll_value,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-    let (mobile, set_mobile) = create_signal(cx, false);
-
-    create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
-            set_mobile(true)
-        }
-    });
 
     create_effect(cx, move |_| {
         if image_ref().is_some() {
@@ -73,12 +66,6 @@ pub fn Image(
                     }
                 }
             }
-
-            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64 {
-                set_mobile(true)
-            } else {
-                set_mobile(false)
-            }
         });
     });
     view! { cx,
@@ -91,8 +78,6 @@ pub fn Image(
                 container_classes,
             )
         }
-
-        /* class=("overflow-x-scroll", move || page_state() == PageState::ShowArticle && !cloud_image) */
       >
         <img
           on:click=move |e| {

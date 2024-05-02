@@ -1,27 +1,18 @@
-use crate::{global_state::GlobalState, page::state::PageState};
+use crate::page::state::PageState;
 use leptos::{
     ev::{click, scrollend, touchend},
     html::Div,
     *,
 };
 use leptos_use::use_event_listener;
-use std::time::Duration;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
-    let show_right = move || page_state() == PageState::ShowRight;
-    let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
     let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
-    let GlobalState {
-        margin_scroll_value,
-        ..
-    } = use_context::<GlobalState>(cx).unwrap();
     // can_click is for disabling click on page transition
-    let (can_click, set_can_click) = create_signal(cx, true);
     let (state_changed_by_scroll, set_state_changed_by_scroll) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
@@ -33,7 +24,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         let scroll_back = move || {
             if show_article() {
                 let mut options = ScrollToOptions::new();
-                set_can_click(true);
 
                 if !state_changed_by_scroll()
                     && window().scroll_x().unwrap() > 1300.0
@@ -103,7 +93,6 @@ pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
     let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
 
-    let show_right = move || page_state() == PageState::ShowRight;
     let show_left = move || page_state() == PageState::ShowLeft;
     let show_article = move || page_state() == PageState::ShowArticle;
 
