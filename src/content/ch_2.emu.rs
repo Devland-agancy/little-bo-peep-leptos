@@ -476,8 +476,6 @@
 
     (see 
     |> ImageLink
-        direction left
-        scroll_by 300.0
 
         Fig. 1
     ) where $c \in \rr$ is a constant, similarly to 
