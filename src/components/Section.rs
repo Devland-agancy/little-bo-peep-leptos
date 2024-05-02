@@ -4,7 +4,6 @@ use leptos::*;
 #[component]
 pub fn Section(
     cx: Scope,
-    #[prop(default = "")] label: &'static str,
     #[prop(default = true)] divider: bool,
 
     children: Children,

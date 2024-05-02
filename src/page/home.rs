@@ -1,10 +1,7 @@
-use super::*;
 use leptos::*;
 
-use crate::components::Article::*;
 use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
-use crate::components::Link::*;
 use crate::components::Paragraph::*;
 use crate::constants::MENU_ITEMS;
 use crate::global_state::GlobalState;

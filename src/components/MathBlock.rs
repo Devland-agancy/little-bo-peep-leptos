@@ -12,11 +12,11 @@ pub fn MathBlock(
     cx: Scope,
     children: Children,
     #[prop(default = "")] id: &'static str,
-    #[prop(default = Height::Small)] height: Height,
+    #[prop(default = Height::Small)] _height: Height,
     #[prop(default = 16)] margin_right: i16,
     #[prop(default = 16)] margin_left: i16,
     #[prop(default = "2rem")] arrow_position_y: &'static str,
-    #[prop(default = "-2.5rem")] arrow_position_x: &'static str,
+    #[prop(default = "-2.5rem")] _arrow_position_x: &'static str,
     #[prop(default = true)] arrow_hidden: bool, // hide it on develop
     #[prop(default = "svg")] child_tag: &'static str,
     #[prop(default = 0)] show_arrow_at_width: i32,

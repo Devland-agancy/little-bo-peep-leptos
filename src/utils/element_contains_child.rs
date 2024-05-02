@@ -1,4 +1,3 @@
-use leptos::log;
 use wasm_bindgen::JsCast;
 use web_sys::Element;
 

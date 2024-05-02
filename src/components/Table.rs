@@ -5,7 +5,6 @@ use leptos::*;
 pub fn Table(
     cx: Scope,
     children: Children,
-    #[prop(optional)] id: &'static str,
     #[prop(default = vec![])] cols: Vec<u16>,
     #[prop(default = vec![])] sm_cols: Vec<u16>,
     #[prop(default = 0)] margin_top: i32,

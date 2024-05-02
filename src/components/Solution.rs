@@ -109,7 +109,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
               state: State(None)
             };
             if let Ok(search_params) = window().location().search() {
-              let mut new_url = String::new();
+              let new_url: String;
               if search_params.contains("&opened=true") {
                 new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=true", "&opened=false")
               }else if search_params.contains("&opened=false"){
@@ -158,9 +158,7 @@ where
     F: Fn(MouseEvent) + 'static,
 {
     let GlobalState {
-        show_areas,
-        solutions_state,
-        ..
+        solutions_state, ..
     } = use_context::<GlobalState>(cx).unwrap();
     let solution_open = move || {
         if solutions_state.get().len() > 0 {

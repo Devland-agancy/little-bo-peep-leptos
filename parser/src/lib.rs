@@ -1,3 +1,4 @@
+#![allow(unused_imports)]
 #[macro_use]
 extern crate proc_macro;
 extern crate nom;
@@ -13,9 +14,6 @@ struct Input {
     cx: Ident,
     elm: LitStr,
 }
-use std::fs::File;
-use std::io::prelude::*;
-use std::process::Command;
 
 impl syn::parse::Parse for Input {
     fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
@@ -30,11 +28,11 @@ impl syn::parse::Parse for Input {
 pub fn elm(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
     // Extract the HTML string
-    let cx = input_tokens.cx;
+    let _cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
 
     let mut transformer: Transformer = Transformer::new(
-        vec!["img", "SectionDivider"],
+        vec!["img", "SectionDivider", "StarDivider", "InlineImage"],
         vec![
             AutoWrapper {
                 tags: vec!["ExerciseQuestion", "Example", "Section", "Solution"],
@@ -80,7 +78,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
         vec!["Grid", "List"],
     );
 
-    let mut elm_string = if elm.value().starts_with("file:") {
+    let elm_string = if elm.value().starts_with("file:") {
         let file = format!(
             "{}{}",
             env::current_dir().unwrap().display(),
