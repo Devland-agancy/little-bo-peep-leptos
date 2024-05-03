@@ -245,8 +245,8 @@
     |> Image
         src images/svg_vx1178A.svg
 
-    The graph has only two points, because VX-78/11A is defined
-    at only two values. One point is...
+    The graph has only two points, because VX-78/11A 
+    is defined at only two values. One point is...
         
     |> Image
         src images/svg_vx1178A_@0_with_cors.svg
