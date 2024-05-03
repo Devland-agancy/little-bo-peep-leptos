@@ -232,7 +232,7 @@
                     src images/36.svg 
                     width 105
                     style margin-top:10px; margin-bottom:4px;
-                    
+
             |> td
             
                 $$
@@ -477,8 +477,6 @@
 
     (see 
     |> ImageLink
-        direction left
-        scroll_by 300.0
 
         Fig. 1
     ) where $c \in \rr$ is a constant, similarly to 
