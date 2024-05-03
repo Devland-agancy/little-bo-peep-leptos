@@ -232,6 +232,7 @@
                     src images/36.svg 
                     width 105
                     style margin-top:10px; margin-bottom:4px;
+                    
             |> td
             
                 $$
@@ -476,6 +477,8 @@
 
     (see 
     |> ImageLink
+        direction left
+        scroll_by 300.0
 
         Fig. 1
     ) where $c \in \rr$ is a constant, similarly to 
@@ -697,10 +700,12 @@
                 src images/55.svg
                 container_classes relative w-fit
                 
+
                 |> ImageRight
                     src images/56.svg
                     offset_y 5rem
                     use_squiggle_on_mobile false
+
 
                 |> ImageLeft
                     src images/57.svg
@@ -726,10 +731,12 @@
                 src images/58.svg
                 container_classes relative w-fit
                 
+
                 |> ImageRight
                     src images/59.svg
                     offset_y 7rem
                     use_squiggle_on_mobile false
+
                 
                 |> ImageLeft
                     src images/60.svg
