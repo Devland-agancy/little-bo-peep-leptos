@@ -17,6 +17,7 @@ use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::StarDivider::*;
 use crate::components::Table::*;
+use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm;
 
@@ -25,7 +26,7 @@ use leptos::*;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-        <ArticleTitle on_mobile=MENU_ITEMS[1].1 label=MENU_ITEMS[1].0/>
+        <ArticleTitle on_mobile=MENU_ITEMS[2].1 label=MENU_ITEMS[2].0/>
         <Columns>
             <ArticleBody />
         </Columns>
