@@ -698,15 +698,15 @@
                 src images/55.svg
                 container_classes relative w-fit
                 
-
                 |> ImageRight
                     src images/56.svg
+                    _attached false
                     offset_y 5rem
                     use_squiggle_on_mobile false
 
-
                 |> ImageLeft
                     src images/57.svg
+                    _attached false
                     offset_x -5rem
                     offset_y 1rem
                     y bottom
@@ -728,16 +728,16 @@
             |> Image
                 src images/58.svg
                 container_classes relative w-fit
-                
 
                 |> ImageRight
                     src images/59.svg
+                    _attached false
                     offset_y 7rem
                     use_squiggle_on_mobile false
-
                 
                 |> ImageLeft
                     src images/60.svg
+                    _attached false
                     offset_x -3rem
                     offset_y 1rem
                     y bottom

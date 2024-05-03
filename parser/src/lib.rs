@@ -103,7 +103,11 @@ pub fn elm(input: TokenStream) -> TokenStream {
         Some("ExerciseQuestion"),
         Some("Solution"),
     );
-    pre = transformer.remove_empty_line_above(pre, vec!["ImageRight", "ImageLeft"]);
+    pre = transformer.remove_empty_line_above(
+        pre,
+        vec!["ImageRight", "ImageLeft"],
+        Some(("_attached", "false")),
+    );
 
     let leptos_code = transformer.transform(pre, 0);
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();

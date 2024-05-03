@@ -15,6 +15,7 @@ pub fn ImageRight(
     cx: Scope,
     src: &'static str,
     #[prop(default = true)] use_squiggle_on_mobile: bool,
+    #[prop(default = true)] _attached: bool,
     #[prop(default = "center")] img_position: &'static str,
     #[prop(default = "center")] y: &'static str,
     #[prop(default = "")] edge: &'static str,
