@@ -4,6 +4,7 @@ use cfg_if::cfg_if;
 pub mod app;
 pub mod components;
 pub mod constants;
+pub mod content;
 pub mod error_template;
 pub mod fileserv;
 pub mod global_state;
