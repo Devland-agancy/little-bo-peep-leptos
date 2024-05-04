@@ -73,31 +73,37 @@
     __lambda function__
 
     is not a type of function, but a type of
-    notation  that enables one to 
-    define a function without giving it a name, 
-    such as “$f$”. In fact there are two different 
-    mainstream notations, in this instance.
-    One notation writes
+    notation  that enables one to define a function 
+    without giving it a name, such as “$f$”. In fact 
+    there are two different mainstream notations, in 
+    this instance. One notation writes
+
     $$
     \lambda{x}.x^2
     $$
-    to mean 
-    “the function that maps $x$ to $x^2$” 
+
+    to mean “the function that maps $x$ to $x^2$” 
     (and by the way,
+
     $$
     \lambda{z}.z^2
     $$
-    is <i>the same</i> function, because 
+
+    is _the same_ function, because 
     it specifies the same in-out mapping—a thing 
     goes to its square—also by the way, the symbol
+
     $$
     {\Huge \lambda}
     $$
+
     is the Greek letter “lambda”, giving its name 
     to the topic) while the other notation writes 
+
     $$
     x \rightarrow x^2
     $$
+
     to mean the same thing.
 
     Note that
@@ -114,7 +120,7 @@
     $$
 
     ...the same as an equation of the form 
-    “$f(\dots) = \dots$
+    “$f(\dots) = \dots$.
 
     For more practice:
 
@@ -134,7 +140,7 @@
     (Etc.) (Indeed, to emphasize again, the variable 
     denoting the input does not matter: it is just a 
     placeholder, and you obtain the same output, and 
-    the same <i>function</i>, no matter what symbol 
+    the same _function_, no matter what symbol 
     you choose.*) (*As long as you don't collide 
     with other existing variable names.)
 
@@ -295,3 +301,363 @@
 
     —is the set of inputs $x$ for which $f(x)$ is
     defined.
+
+    |> Example
+
+        We have
+
+        $$
+        \dom\,\rt{0.1} \te{VX-11/78A} = \left\{ 0\rt{0.1}, 1 \right\}
+        $$
+
+        because VX-11/78A$(x)$ is only defined at $x = 0$, 
+        $1$.
+
+    |> Example
+
+        If DM-1700 (another weirdly named function) is 
+        defined by
+        
+        $$
+        \te{DM-1700}(x) = 
+        \begin{cases} 
+        0             & \te{if $x \leq 0$ or $x \geq 1$},\\
+        1 - x\up{1.1} & \te{if $0 < x < 1$}
+        \end{cases}
+        $$
+        
+        then
+        
+        $$
+        \dom\,\rt{0.1} \te{DM-1700} = \rr
+        $$
+        
+        because $\te{DM-1700}(x)$ is defined for all
+        $x \in \rr$.
+
+    |> Example
+
+        If $g : \rr \ra \rr$ (we are going to explain 
+        this notation imminently) is the function given 
+        by
+        
+        $$
+        g(x) = \sqrt{x - 1^{\color{white}*\!\!}}
+        $$
+        
+        then
+        
+        $$
+        \begin{align}
+        \dom\, g &\,=\, [1, \infty)
+        \end{align}
+        $$
+        
+        because the square root of a number is defined 
+        if and only if that number is _nonnegative_ 
+        (i.e., we need $x - 1 \geq 0$ in order for $g(x)$ 
+        to be defined, i.e., we need $x \geq 1$).
+
+    |> Example 
+
+        If $h : \rr \ra \rr$ is defined by
+
+        $$
+        h(x) = \frac{1}{x+1}
+        $$
+
+        then
+
+        $$
+        \begin{align}
+        \dom\,h \,=\, \rr\back\{-1\} =\, (-\infty,-1) \cup (-1,\infty)
+        \end{align}
+        $$
+
+        because $1/(x+1)$ is well-defined if and only if
+        division by 0 is avoided, i.e., if and only if 
+        $x \ne -1$.
+
+
+|> Section
+
+    *“From/To” Notation.*
+    The notation
+
+    $$
+    f : \rr \ra \rr
+    $$
+
+    means that $f$ is a function
+
+    __from $\rr$ to $\rr$__
+        
+    or, which is to say, that
+
+    $$
+    \dom f \subseteq \rr
+    $$
+
+    [translation: _the domain of $f$ is a subset of 
+    the set of real numbers_] and that
+
+    $$
+    \{f(x) : x \in \dom f\} \subseteq \rr
+    $$
+
+    [translation: _the set of values output by $f$ 
+    is a subset of the set of real numbers_].
+       
+    Generalizing,
+
+    $$
+    f : A \ra B
+    $$
+
+    means that
+
+    $$
+    \dom f \subseteq A
+    $$
+
+    (i.e., that $f$ only accepts values from $A$) and 
+    that
+
+    $$
+    \{f(x) : x \in \dom f\} \subseteq B
+    $$
+
+    (i.e., that $f$ only outputs values from $B$), 
+    following the pattern above. 
+
+
+|> Section
+
+    *The Vertical Line Test.*
+    As it turns out, the term “graph” just means 
+    “set of points in the plane”. So a 
+
+    __function graph__
+
+    (as described above) is just one particular 
+    kind of “graph” among other things that are 
+    also called “graphs”, but that are not 
+    function graphs.
+
+    The so-called
+
+    __vertical line test__
+
+    observes that a graph [$=$ _set of points 
+    in the plane_] is a function graph if and 
+    only if every $x$-value (a.k.a., input) 
+    corresponds to at most one $y$-value (a.k.a., 
+    output). In other words, every vertical line 
+    should intersect the graph at most once.
+
+    For example, this particular graph...
+
+    |> Image
+        src images/svg_wiggle_graph.svg
+
+    is a function graph (or locally at least, from
+    what we can see), because every vertical line 
+    intersects the graph at most once, but this 
+    graph...
+
+    |> Image
+        src images/svg_circle.svg
+
+    |> ImageRight
+        src images/svg_crossing_cloud_circle.svg
+
+    ...is not the graph of any function, because 
+    some vertical lines intersect the graph more 
+    than once.
+
+    (Oops. To backtrack and quickly clarify a small 
+    matter, an empty circle at the end of a segment, 
+    in the vein of the previous figure...
+
+    |> Image
+        src images/svg_empty_circle.svg
+
+    ...means that the point in question is _excluded_ 
+    from the graph. A filled circle, by opposition, 
+    means that the point is included!)
+
+
+    |> Example
+        
+        This _upper semicircle_ of unit radius...
+
+        |> Image
+            src images/svg_semicircle_B.svg
+
+        ...passes the vertical line test, and, hence, 
+        defines a function.
+
+
+    |> Example
+        
+        This graph defines a function...
+
+        |> Image
+            src images/svg_factory_function.svg
+
+        ...because it passes the vertical line test, 
+        while this graph does not define a function...
+
+        |> Image
+            src images/svg_factory_nonfunction.svg
+        
+        ...because it does _not_ pass the vertical 
+        line test!
+
+
+|> Section
+
+    *A Famous Discontinuity.*
+    As already seen, functions can have
+    _discontinuities_: a place where the function 
+    experiences a sudden “jump” in value.
+
+    For a famous example of a “naturally” occurring 
+    discontinuity (that we feel compelled to 
+    mention, for some reason) we need look no 
+    further than the function
+
+    $$
+    {\Large x \ra 0^x}
+    $$
+    
+    as it so happens that
+    
+    $$
+    {0^x = \begin{cases} 0 & \te{if } x > 0\\
+    1 & \te{if } x = 0\\
+    \te{undefined} & \te{if }x &lt; 0 \end{cases}}
+    $$
+    
+    which implies a discontinuity in the graph of
+    $y = 0^x$ at $x = 0$, as pictured here:
+
+    |> Image
+        src images/svg_zero_to_the_x.svg
+
+    (Pretty cool, no?)
+
+
+|> Section
+
+    *Distinguishing “$f$” and “$f(x)$”.* 
+    The difference between
+    
+    $$
+    {\te{VX-11/78A}}
+    $$
+    
+    and
+    
+    $$
+    {\te{VX-11/78A}(x)}
+    $$
+    
+    is that the former is a
+    
+    __function__
+    
+    while the latter is a
+    
+    __value.__
+    
+    (Well, provided $x \in \{0, 1\}$, to make it 
+    well-defined at all.) Likewise, if $f : \rr \ra \rr$, 
+    the difference between 
+    
+    $$
+    f
+    $$
+    
+    and 
+    
+    $$
+    f(x)
+    $$
+    
+    is that the former is a
+    
+    __function__
+    
+    while the latter is a
+    
+    __value.__
+    
+    Amusingly, though, if we add “$x \ra$” in front 
+    of “$f(x)$” then we are back to considering a 
+    
+    __function__
+    
+    and which is namely the function whose rule is: 
+    apply $f$. In fact,
+
+    $$
+    f = (x \ra f(x))
+    $$
+    
+    where the above is _an equality between functions_. 
+    (You cannot use this equality to
+    
+    __define__
+    
+    $f$ because that would lead to a circular 
+    definition. But that doesn't make the equality 
+    any less true. And btw, you can go “one layer 
+    deeper”:
+    
+    $$
+    f = (x \ra f(x)) = (x \ra (t \ra f(t))(x))
+    $$
+    
+    ...where we use the fact that $f = (t \ra f(t))$ 
+    in the second equality. You could keep going, 
+    replacing each time “$f$” by a self-referential 
+    expression, but the process is not intrinsically 
+    useful.)
+
+
+|> Section
+
+    *Distinguishing “$x^3$” and “$x \ra x^3$”.*
+    Technically,
+
+    $$
+    x^3
+    $$
+
+    is a _value_ (not a function) and the way 
+    logicians think of it, philosophically speaking, 
+    is like so: at inception, every symbol has 
+    some default value attached, absent any other 
+    context.
+    
+    By contrast,
+
+    $$
+    x \ra x^3
+    $$
+    
+    is clearly a _function_, not a _value_. 
+    So “$x^3$” and “$x \ra x^3$” are very (VERY) 
+    different, qualitatively speaking.
+    
+    But including the arrow everywhere is 
+    impractical and even pedantic, so, in the end,
+    you might see us refer to an expression such as, 
+    e.g.,
+    
+    $$
+    x^3 + x^2
+    $$
+    
+    as a “function”, arrow or no arrow. 
