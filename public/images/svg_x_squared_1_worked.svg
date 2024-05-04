@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   preserveAspectRatio="none"
+   viewBox="-75.2 -68.82931 580.6884 299.06931"
+   width="580.6884"
+   height="299.06931"
+   version="1.1"
+   id="svg1119"
+   sodipodi:docname="svg_x_squared_1_worked.svg"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
+  <metadata
+     id="metadata1121">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <style
+     type="text/css"
+     id="style996">
+        .grid {
+            stroke: #9e9ed1;
+            stroke-width: 0.4;
+            display: block;
+        }
+        .axes {
+            stroke: #000000;
+            stroke-width: 0.9;
+        }
+        .arrows {
+            stroke-width: 1.1;
+            stroke: #000000;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .axes-labels {
+            stroke-width: 0;
+            stroke: #000000;
+            fill: #000000;
+        }
+        .notch-labels-in-grid {
+            stroke-width: 0;
+            stroke: #b8b8de;
+            fill: #b1b1cc;
+        }
+        .dots-full {
+            stroke-width: 1.5;
+            stroke: #ff0000;
+            fill: #ff0000;
+        }
+        .graph {
+            stroke: #ff0000;
+            stroke-width: 1.7;
+            fill: none;
+        }
+        .viewbox {
+            fill: none;
+            stroke-width: 2;
+            stroke: #ff000088;
+            display: none;
+        }
+        .labelbox {
+            fill: none;
+            stroke-width: 2;
+            stroke: #00ff0088;
+            display: none;
+        }
+    </style>
+  <defs
+     id="defs1005">
+    <path
+       id="STIXWEBMAINI-78"
+       stroke-width="1"
+       d="M243 355l12 -57c70 107 107 143 151 143c24 0 41 -15 41 -37c0 -21 -14 -36 -34 -36c-19 0 -28 17 -52 17c-18 0 -54 -44 -98 -121c0 -7 2 -21 8 -45l32 -134c7 -28 16 -41 30 -41c13 0 24 10 47 40c9 12 13 18 21 28l15 -9c-58 -90 -84 -114 -122 -114 c-32 0 -47 18 -59 68l-29 119l-88 -119c-44 -59 -64 -68 -95 -68s-50 16 -50 42c0 20 14 36 34 36c9 0 19 -4 32 -11c10 -6 20 -9 26 -9c11 0 30 19 51 49l82 116l-28 124c-14 60 -21 68 -46 68c-8 0 -20 -2 -39 -7l-18 -5l-3 16l11 4c61 22 94 29 117 29 c25 0 37 -18 51 -86Z" />
+    <path
+       id="STIXWEBMAIN-32"
+       stroke-width="1"
+       d="M474 137l-54 -137h-391v12l178 189c94 99 130 175 130 260c0 91 -54 141 -139 141c-72 0 -107 -32 -147 -130l-21 5c21 117 85 199 208 199c113 0 185 -77 185 -176c0 -79 -39 -154 -128 -248l-165 -176h234c42 0 63 11 96 67Z" />
+    <path
+       id="STIXWEBMAIN-2212"
+       stroke-width="1"
+       d="M621 220h-557v66h557v-66Z" />
+    <path
+       id="STIXWEBMAIN-31"
+       stroke-width="1"
+       d="M394 0h-276v15c74 4 95 25 95 80v449c0 34 -9 49 -30 49c-10 0 -27 -5 -45 -12l-27 -10v14l179 91l9 -3v-597c0 -43 20 -61 95 -61v-15Z" />
+    <path
+       id="STIXWEBMAIN-30"
+       stroke-width="1"
+       d="M476 330c0 -172 -63 -344 -226 -344c-171 0 -226 186 -226 350c0 177 69 340 230 340c131 0 222 -141 222 -346zM380 325c0 208 -44 325 -132 325c-83 0 -128 -118 -128 -321s44 -317 130 -317c85 0 130 115 130 313Z" />
+    <path
+       id="STIXWEBMAIN-2E"
+       stroke-width="1"
+       d="M181 43c0 -29 -26 -54 -56 -54c-31 0 -55 24 -55 55s25 56 56 56c29 0 55 -27 55 -57Z" />
+    <path
+       id="STIXWEBMAIN-35"
+       stroke-width="1"
+       d="M438 681l-36 -85c-3 -7 -11 -13 -27 -13h-194l-40 -85c143 -27 193 -49 250 -128c26 -36 35 -74 35 -127c0 -96 -30 -158 -98 -208c-47 -34 -102 -49 -170 -49c-75 0 -127 24 -127 62c0 25 17 38 45 38c23 0 42 -5 74 -31c28 -23 51 -32 71 -32c70 0 135 83 135 169 c0 64 -22 114 -67 150c-47 38 -117 70 -213 70c-9 0 -12 2 -12 8c0 2 1 5 1 5l109 237h207c23 0 32 5 48 26Z" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-width="1415"
+     inkscape:window-height="855"
+     inkscape:zoom="0.92464161"
+     id="namedview1007"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:cx="82.155439"
+     inkscape:cy="149.53465"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="notch labels" />
+  <g
+     id="grid"
+     inkscape:groupmode="layer"
+     inkscape:label="grid">
+    <path
+       class="grid"
+       d="M 0.02,200.04 V 0"
+       id="path1009" />
+    <path
+       class="grid"
+       d="M 50.02,200.04 V 0"
+       id="path1011" />
+    <path
+       class="grid"
+       d="M 100.02,200.04 V 0"
+       id="path1013" />
+    <path
+       class="grid"
+       d="M 150.02,200.04 V 0"
+       id="path1015" />
+    <path
+       class="grid"
+       d="M 200.02,200.04 V 0"
+       id="path1017" />
+    <path
+       class="grid"
+       d="M 250.02,200.04 V 0"
+       id="path1019" />
+    <path
+       class="grid"
+       d="M 300.02,200.04 V 0"
+       id="path1021" />
+    <path
+       class="grid"
+       d="M 350.02,200.04 V 0"
+       id="path1023" />
+    <path
+       class="grid"
+       d="M 400.02,200.04 V 0"
+       id="path1025" />
+    <path
+       class="grid"
+       d="M 0,200.02 H 400.04"
+       id="path1027" />
+    <path
+       class="grid"
+       d="M 0,150.02 H 400.04"
+       id="path1029" />
+    <path
+       class="grid"
+       d="M 0,100.02 H 168.4657 M 194.98,100.02 H 400.04"
+       id="path1031" />
+    <path
+       class="grid"
+       d="M 0,50.02 H 400.04"
+       id="path1033" />
+    <path
+       class="grid"
+       d="M 0,0.02 H 181.66222 M 194.98,0.02 H 400.04"
+       id="path1035" />
+  </g>
+  <g
+     id="axes"
+     inkscape:groupmode="layer"
+     inkscape:label="axes">
+    <path
+       class="axes"
+       d="M -25.2,200.02 H 433.64"
+       id="path1038" />
+    <path
+       class="axes"
+       d="M 200.02,225.24 V -29.4"
+       id="path1040" />
+  </g>
+  <g
+     id="axes arrows"
+     inkscape:groupmode="layer"
+     inkscape:label="axes arrows">
+    <path
+       class="arrows"
+       d="M 430.46599,195.62548 C 430.67583,197.26904 433.0039,199.73875 433.64,200.02 C 433.0039,200.29248 430.67583,202.76219 430.46599,204.40575"
+       id="path1043" />
+    <path
+       class="arrows"
+       d="M 195.62548,-26.22599 C 197.26904,-26.43583 199.73875,-28.7639 200.02,-29.4 C 200.29248,-28.7639 202.76219,-26.43583 204.40575,-26.22599"
+       id="path1045" />
+  </g>
+  <g
+     id="axes labels"
+     inkscape:groupmode="layer"
+     inkscape:label="axes labels">
+    <g
+       class="axes-labels"
+       transform="translate(446.24 204.640116)scale(0.019511,-0.019511)"
+       id="g1050">
+      <use
+         xlink:href="#STIXWEBMAINI-78"
+         x="0"
+         y="0"
+         id="use1048" />
+    </g>
+    <path
+       class="labelbox"
+       d="M 446.24,206.68132 H 455.4884 V 194.60181 H 446.24 Z"
+       id="path1052" />
+    <g
+       class="axes-labels"
+       transform="translate(193.4806 -45.36)scale(0.019506,-0.019506)"
+       id="g1058">
+      <use
+         xlink:href="#STIXWEBMAINI-78"
+         x="0"
+         y="0"
+         id="use1054" />
+      <use
+         transform="scale(0.707)"
+         xlink:href="#STIXWEBMAIN-32"
+         x="634"
+         y="583"
+         id="use1056" />
+    </g>
+    <path
+       class="labelbox"
+       d="M 193.4806,-43.2684 H 211.5994 V -63.82931 H 193.4806 Z"
+       id="path1060" />
+  </g>
+  <g
+     id="graphs"
+     inkscape:groupmode="layer"
+     inkscape:label="graphs">
+    <path
+       class="graph"
+       d="M 0,-0.02 C 133.34667,266.7 266.69333,266.7 400.04,-0.02"
+       id="path1063" />
+  </g>
+  <g
+     id="top dots"
+     inkscape:groupmode="layer"
+     inkscape:label="top dots"
+     style="display:none">
+    <circle
+       class="dots-full"
+       cx="0.02"
+       cy="0.02"
+       r="3.2"
+       id="circle1066" />
+    <circle
+       class="dots-full"
+       cx="400.01999"
+       cy="0.02"
+       r="3.2"
+       id="circle1068" />
+  </g>
+  <g
+     id="notch labels"
+     inkscape:groupmode="layer"
+     inkscape:label="notch labels">
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(-10.3939 221.19296)scale(0.017561,-0.017561)"
+       id="g1075">
+      <use
+         xlink:href="#STIXWEBMAIN-2212"
+         x="0"
+         y="0"
+         id="use1071" />
+      <use
+         xlink:href="#STIXWEBMAIN-31"
+         x="685"
+         y="0"
+         id="use1073" />
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(78.81378 222.113627)scale(0.017559,-0.017559)"
+       id="g1087">
+      <use
+         xlink:href="#STIXWEBMAIN-2212"
+         x="0"
+         y="0"
+         id="use1077" />
+      <g
+         transform="translate(685,0)"
+         id="g1085">
+        <use
+           xlink:href="#STIXWEBMAIN-30"
+           id="use1079" />
+        <use
+           xlink:href="#STIXWEBMAIN-2E"
+           x="500"
+           y="0"
+           id="use1081" />
+        <use
+           xlink:href="#STIXWEBMAIN-35"
+           x="751"
+           y="0"
+           id="use1083" />
+      </g>
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(183.927952 221.779395)scale(0.017552,-0.017552)"
+       id="g1091">
+      <use
+         xlink:href="#STIXWEBMAIN-30"
+         x="0"
+         y="0"
+         id="use1089" />
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(289.03154 222.114732)scale(0.01756,-0.01756)"
+       id="g1099">
+      <use
+         xlink:href="#STIXWEBMAIN-30"
+         id="use1093" />
+      <use
+         xlink:href="#STIXWEBMAIN-2E"
+         x="500"
+         y="0"
+         id="use1095" />
+      <use
+         xlink:href="#STIXWEBMAIN-35"
+         x="751"
+         y="0"
+         id="use1097" />
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(395.62764 221.184129)scale(0.017552,-0.017552)"
+       id="g1103">
+      <use
+         xlink:href="#STIXWEBMAIN-31"
+         x="0"
+         y="0"
+         id="use1101" />
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(170.73439 105.6053)scale(0.01756,-0.01756)"
+       id="g1111">
+      <use
+         xlink:href="#STIXWEBMAIN-30"
+         id="use1105" />
+      <use
+         xlink:href="#STIXWEBMAIN-2E"
+         x="500"
+         y="0"
+         id="use1107" />
+      <use
+         xlink:href="#STIXWEBMAIN-35"
+         x="751"
+         y="0"
+         id="use1109" />
+    </g>
+    <g
+       class="notch-labels-in-grid"
+       transform="translate(183.92875 5.59998)scale(0.017552,-0.017552)"
+       id="g1115">
+      <use
+         xlink:href="#STIXWEBMAIN-31"
+         x="0"
+         y="0"
+         id="use1113" />
+    </g>
+  </g>
+  <rect
+     id="viewbox"
+     class="viewbox"
+     x="-75.20000000000002"
+     y="-68.82930761115298"
+     width="580.6884"
+     height="299.069307611153" />
+</svg>
