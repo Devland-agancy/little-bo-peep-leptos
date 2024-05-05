@@ -3,7 +3,9 @@
 extern crate proc_macro;
 extern crate nom;
 
-use elm_parser::transform::{AutoWrapper, Transformer};
+use elm_parser::emitter::Emitter;
+use elm_parser::parser::{AutoWrapper, Parser};
+
 use proc_macro::TokenStream;
 use proc_macro2::Ident;
 use quote::quote;
@@ -31,7 +33,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let _cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
 
-    let mut transformer: Transformer = Transformer::new(
+    let mut parser: Parser = Parser::new(
         vec!["img", "SectionDivider", "StarDivider", "InlineImage"],
         vec![
             AutoWrapper {
@@ -93,23 +95,23 @@ pub fn elm(input: TokenStream) -> TokenStream {
         elm.value()
     };
 
-    let mut pre = transformer.pre_process_exercises(&elm_string);
-    pre = transformer.pre_process_solutions(pre);
-    pre = transformer.auto_increamental_title(pre, "Example", "Example", None, None);
-    pre = transformer.auto_increamental_title(
-        pre,
-        "Exercise",
-        "Exercise",
-        Some("ExerciseQuestion"),
-        Some("Solution"),
-    );
-    pre = transformer.remove_empty_line_above(
-        pre,
-        vec!["ImageRight", "ImageLeft"],
-        Some(("_attached", "false")),
-    );
+    let emitter = Emitter::new(elm_string)
+        .pre_process_exercises()
+        .remove_empty_line_above(
+            vec!["ImageRight", "ImageLeft"],
+            Some(("_attached", "false")),
+            parser.track_line_delta,
+        )
+        .pre_process_solutions()
+        .auto_increamental_title("Example", "Example", None, None)
+        .auto_increamental_title(
+            "Exercise",
+            "Exercise",
+            Some("ExerciseQuestion"),
+            Some("Solution"),
+        );
 
-    let leptos_code = transformer.transform(pre, 0);
+    let leptos_code = parser.transform(emitter.elm, 0);
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
 
     let output = quote! {
