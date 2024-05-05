@@ -36,6 +36,6 @@ pub fn View(cx: Scope) -> impl IntoView {
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
     elm! {cx,
-      "file:/src/content/ch_3.emu.rs"
+      "file:/src/content/ch_3_emu.rs"
     }
 }

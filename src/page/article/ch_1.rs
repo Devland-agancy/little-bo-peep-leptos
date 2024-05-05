@@ -5,7 +5,9 @@ use crate::components::Exercises::*;
 use crate::components::Grid::*;
 use crate::components::Image::*;
 use crate::components::ImageLeft::*;
+use crate::components::ImageLink::*;
 use crate::components::ImageRight::*;
+
 use crate::components::Indent::Indent;
 use crate::components::InlineImage::*;
 use crate::components::List::*;
@@ -14,6 +16,8 @@ use crate::components::MathBlock::*;
 use crate::components::Paragraph::*;
 use crate::components::Section::*;
 use crate::components::SectionDivider::*;
+use crate::components::StarDivider::*;
+
 use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::Table::Table;
@@ -35,6 +39,6 @@ pub fn View(cx: Scope) -> impl IntoView {
 fn ArticleBody(cx: Scope) -> impl IntoView {
     elm! {
       cx,
-      "file:/src/content/ch_1.emu.rs"
+      "file:/src/content/ch_1_emu.rs"
     }
 }

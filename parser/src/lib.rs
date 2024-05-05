@@ -88,7 +88,23 @@ pub fn elm(input: TokenStream) -> TokenStream {
         );
 
         match fs::read_to_string(file) {
-            Ok(contents) => contents.to_string(),
+            Ok(contents) => {
+                let mut lines = contents.lines();
+
+                // Skip the first line
+                if let Some(_) = lines.next() {
+                    let mut output = String::new();
+
+                    // Iterate over the remaining lines, excluding the last line
+                    for line in lines.clone().take(lines.count() - 1) {
+                        output.push_str(line);
+                        output.push('\n');
+                    }
+                    output
+                } else {
+                    "File is empty".to_string()
+                }
+            }
             Err(_) => "File not found".to_string(),
         }
     } else {

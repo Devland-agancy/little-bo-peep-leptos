@@ -1,13 +1,14 @@
+/*
 |> Section
-    
+
     *Syntax.*
     A
 
     __function__
 
     is a “rule” for transforming inputs (usually
-    numbers) into outputs (usually numbers as well). 
-    One can think of a function as a box with an 
+    numbers) into outputs (usually numbers as well).
+    One can think of a function as a box with an
     “input tube” and an “output tube”:
 
     |> Image
@@ -20,7 +21,7 @@
 
     In the above picture, the name of the function
     is “$f$.
-    
+
     Notation-wise, one writes
 
     $$
@@ -57,11 +58,11 @@
     {f(x) = x^2}
     $$
 
-    [“$f$ of $x$ equals $x^2$”] more generally, which 
+    [“$f$ of $x$ equals $x^2$”] more generally, which
     is actually the
 
     __definition__
-    
+
     of $f$!! (Stated algebraically.)
 
 
@@ -112,7 +113,7 @@
     (x \ra x^2)(0.1)
     $$
 
-    means “the function that maps each number to its 
+    means “the function that maps each number to its
     square, of $0.1$”. So...
 
     $$
@@ -661,3 +662,4 @@
     $$
     
     as a “function”, arrow or no arrow. 
+*/
