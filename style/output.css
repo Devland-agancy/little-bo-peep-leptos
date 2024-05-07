@@ -638,14 +638,6 @@ video {
   right: 0px;
 }
 
-.right-14 {
-  right: 3.5rem;
-}
-
-.top-0 {
-  top: 0px;
-}
-
 .top-14 {
   top: 3.5rem;
 }
@@ -889,10 +881,6 @@ video {
   width: 2rem;
 }
 
-.w-\[1px\] {
-  width: 1px;
-}
-
 .w-\[4400px\] {
   width: 4400px;
 }
@@ -1102,10 +1090,6 @@ video {
   overflow-y: clip;
 }
 
-.overflow-x-scroll {
-  overflow-x: scroll;
-}
-
 .overscroll-none {
   overscroll-behavior: none;
 }
@@ -1124,10 +1108,6 @@ video {
 
 .border-l {
   border-left-width: 1px;
-}
-
-.border-r {
-  border-right-width: 1px;
 }
 
 .border-r-0 {
@@ -1760,6 +1740,10 @@ span .MathJax_SVG{
 }
 
 .container > *:not(:has(> .pause)):not(:last-child)  {
+  margin-block: 0.5rem;
+}
+
+.col-start-2 > .mathblock:not(:first-child) {
   margin-block: 0.5rem;
 }
 
