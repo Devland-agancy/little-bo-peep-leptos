@@ -30,7 +30,7 @@ pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn Example(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col container col-start-2">
+      cx, <div class="flex flex-col container col-start-2 !mt-0">
         {children(cx)}
       </div>
     };

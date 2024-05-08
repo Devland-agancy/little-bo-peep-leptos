@@ -264,7 +264,7 @@ span .MathJax_SVG{
 }
 
 .container > *:not(:has(> .pause)):not(:last-child)  {
-  margin-block: 0.5rem;
+  margin-block: 0.75rem;
 }
 
 .col-start-2 > .mathblock:not(:first-child) {
@@ -272,5 +272,5 @@ span .MathJax_SVG{
 }
 
 .indent-fix {
-  margin-top: -0.5rem !important;
+  margin-top: -0.75rem !important;
 }

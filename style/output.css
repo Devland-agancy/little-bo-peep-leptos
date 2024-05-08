@@ -703,8 +703,12 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.-mt-2 {
-  margin-top: -0.5rem;
+.\!mt-0 {
+  margin-top: 0px !important;
+}
+
+.-mt-4 {
+  margin-top: -1rem;
 }
 
 .mb-12 {
@@ -1740,15 +1744,15 @@ span .MathJax_SVG{
 }
 
 .container > *:not(:has(> .pause)):not(:last-child)  {
-  margin-block: 0.5rem;
+  margin-block: 0.75rem;
 }
 
 .col-start-2 > .mathblock:not(:first-child) {
-  margin-block: 0.5rem;
+  margin-block: 1.5rem;
 }
 
 .indent-fix {
-  margin-top: -0.5rem !important;
+  margin-top: -0.75rem !important;
 }
 
 .hover\:border-b-0:hover {
