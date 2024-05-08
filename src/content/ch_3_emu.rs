@@ -13,6 +13,7 @@
 
     |> Image
         src images/svg_f_box.svg
+        container_classes mb-4
 
     An input goes in via the input tube, is
     processed according to the function's rule,
@@ -205,6 +206,7 @@
         aaand... and these are the only two values of 
         $x$ for which VX-11/78A$(x)$ is defined, as 
         specified.
+
 
 |> Section
 
@@ -482,6 +484,7 @@
 
     |> Image
         src images/svg_empty_circle.svg
+        container_classes pt-4 mb-3
 
     ...means that the point in question is _excluded_ 
     from the graph. A filled circle, by opposition, 
@@ -493,7 +496,7 @@
         This _upper semicircle_ of unit radius...
 
         |> Image
-            src images/svg_semicircle_B.svg
+            src images/svg_semicircle.svg
 
         ...passes the vertical line test, and, hence, 
         defines a function.
@@ -545,6 +548,7 @@
 
     |> Image
         src images/svg_zero_to_the_x.svg
+        container_classes mb-4
 
     (Pretty cool, no?)
 
@@ -662,4 +666,444 @@
     $$
     
     as a “function”, arrow or no arrow. 
+
+
+|> Section
+
+    *Distinguishing “$f$” and “$f(x)$”.*
+    The difference between
+    
+    $$
+    \te{VX-11/78A}
+    $$
+    
+    and
+    
+    $$
+    \te{VX-11/78A}(x)
+    $$
+    
+    is that the former is a
+
+    __function__
+
+    while the latter is a
+
+    __value.__
+
+    (Well, provided $x \in \{0, 1\}$, to make it 
+    well-defined at all.) Likewise, if $f : \rr \ra \rr$, 
+    the difference between
+    
+    $$
+    f
+    $$
+    
+    and 
+    
+    $$
+    f(x)
+    $$
+    
+    is that the former is a
+
+    __function__
+
+    while the latter is a
+
+    __value.__
+
+    Amusingly, though, if we add “$x \ra$” in front 
+    of “$f(x)$” then we are back to considering a 
+
+    __function__
+
+    and which is namely the function whose rule is: 
+    apply $f$. In fact,
+    
+    $$
+    f = (x \ra f(x))
+    $$
+    
+    where the above is _an equality between 
+    functions_. (You cannot use this equality to
+
+    __define__
+
+    $f$ because that would lead to a circular 
+    definition. But that doesn't make the equality 
+    any less true. And btw, you can go “one layer 
+    deeper”:
+    
+    $$
+    f = (x \ra f(x)) = (x \ra (t \ra f(t))(x))
+    $$
+    
+    ...where we use the fact that $f = (t \ra f(t))$ 
+    in the second equality. You could keep going,
+    replacing each time “$f$” by a self-referential
+    expression, but the process is not intrinsically 
+    useful.)
+
+
+|> Section
+
+    *Distinguishing “$x^3$” and “$x \ra x^3$”.*
+    Technically,
+    
+    $$
+    x^3
+    $$
+    
+    is a _value_ (not a function) and the way
+    logicians think of it, philosophically speaking, 
+    is like so: at inception, every symbol has some 
+    default value attached, absent any other context.
+   
+    By contrast,
+   
+    $$
+    x \ra x^3
+    $$
+   
+    is clearly a _function_, not a _value_. 
+    So “$x^3$” and “$x \ra x^3$” are very (VERY) 
+    different, qualitatively speaking.
+   
+    But including the arrow everywhere is 
+    impractical and even pedantic, so, in the end,
+    you might see us refer to an expression such as,
+    e.g.,
+   
+    $$
+    x^3 + x^2
+    $$
+   
+    as a “function”, arrow or no arrow.
+
+
+|> Section
+
+    *Distinguishing “$x^3$” and “$x \ra x^3$”.*
+    Technically,
+    
+    $$
+    x^3
+    $$
+    
+    is a _value_ (not a function) and the way 
+    logicians think of it, philosophically speaking,
+    is like so: at inception, every symbol has some 
+    default value attached, absent any other context.
+   
+    By contrast,
+   
+    $$
+    x \ra x^3
+    $$
+   
+    is clearly a _function_, not a _value_. 
+    So “$x^3$” and “$x \ra x^3$” are very (VERY) 
+    different, qualitatively speaking.
+   
+    But including the arrow everywhere is 
+    impractical and even pedantic, so, in the end,
+    you might see us refer to an expression such as,
+    e.g.,
+   
+    $$
+    x^3 + x^2
+    $$
+   
+    as a “function”, arrow or no arrow. 
+
+|> Section
+
+    *Polynomials.*
+    A function $f$ of the form
+    
+    $$
+    f(x) = a_kx^k + a_{k-1}x^{k-1} + \dots + a_2x^2 + a_1x + a_0
+    $$
+    
+    is called a _polynomial_. Here
+    
+    $$
+    a_0,\,a_1,\, \ldots,\, a_k \in \rr
+    $$
+    
+    are arbitrary constants, also known as the 
+    _coefficients_ of the polynomial. The _degree_ 
+    of the polynomial is $k$, if $a_k \ne 0$. 
+    (Otherwise, work your way down until you find
+    a nonzero coefficient—if there are none, because 
+    the polynomial is just the constant $0$, then 
+    the degree is _minus infinity_.) (We're not 
+    kidding.)
+
+    For example,
+
+    $$
+    2x + \sqrt{2}
+    $$
+
+    is a polynomial of degree 1, and
+
+    $$
+    x^2 - 10
+    $$
+
+    is a polynomial of degree 2, and
+
+    $$
+    x^{100} + x^{99} + x^{98} + \dots + x^4 + x^3 + x^2 + x + 1
+    $$
+
+    is a polynomial of degree 100.
+
+    Polynomials of low degree have their own 
+    special names, as inventoried in the following 
+    table:
+
+    $$
+    \begin{array}{c|c|c}
+    \,\,\,\,\te{degree}\,\,\,\, & \te{name} & \,\,\,\,\te{example}\,\,\,\,\Rule{0pt}{0.8em}{0.5em} \\ \hline
+    -\infty & \te{zero} & 0\Rule{0pt}{1.1em}{0.0em}\\
+    \te{0} & \te{constant} & 1 + \sqrt{5^{\color{white}*\!\!\!}}\\
+    \te{1} & \te{affine} & 10x - 1\\
+    \te{2} & \,\,\,\,\te{quadratic}\,\,\,\, & x^2 - 1\\
+    \te{3} & \te{cubic} & x^3 - 1\\
+    \te{4} & \te{quartic} & 1 - x^4\\
+    \te{5} & \te{quintic} & x^5
+    \end{array}
+    $$
+
+    There is some confusion about the term
+        
+    __affine__
+        
+    for which the term
+    
+    __linear__
+
+    is sometimes substituted. But if we say 
+    “linear” we mean a function of the form 
+    
+    $$
+    x \ra a_1x
+    $$
+    
+    for a constant $a_1 \in \rr$. This is more 
+    restricted than an affine function, because
+    there is no constant $a_0$!
+
+    |> Image
+        src images/svg_affine_linear_cloud.svg
+
+
+|> Section
+
+    *Quadratic, linear, and constant terms.*
+    To finish up on polynomials: the terms of degree
+    $2$, $1$ and $0$ are called the _quadratic_, 
+    _linear_, and _constant_ terms of the 
+    polynomial, respectively. If you see
+
+    $$
+    a_7x^7 + a_6x^6 + a_5x^5 + a_4x^4 + a_3x^3 - a_2x^2 + a_1x + a_0
+    $$
+
+    |> ImageRight
+        src images/svg_quadratic_linear_constant_cloud.svg
+
+    then the quadratic term is $-a_2x^2$, not 
+    $a_2x^2$, fyi.
+
+    Note that the linear term can also be viewed as
+    the “$x^1$ term” while the constant term can 
+    also be viewed as the “$x^0$ term”; because
+
+    $$
+    x^1 = x
+    $$
+
+    |> ImageRight
+        src images/svg_a1_x1_cloud.svg
+
+    for all $x$, and 
+
+    $$
+    x^0 = 1
+    $$
+
+    |> ImageRight
+        src images/svg_a0_x0_cloud.svg
+
+    for all $x$ (even $x = 0$), namely.
+
+
+|> Exercises
+
+    |> Exercise
+        
+        How can you define the absolute value 
+        function using “definition by cases”?
+
+        |> Solution
+            
+            The absolute value function is 
+            
+            $$
+            x \ra \begin{cases} x & \te{if $x \geq 0$,}\\ -x\!\!\up{1.2} & \te{if $x < 0$}\end{cases}
+            $$
+            
+            because $-(-1) = 1$, $-(-5) = 5$, etc.
+
+
+    |> Exercise
+
+        How can you define the absolute value 
+        function using an “ordinary” algebraic formula?
+
+        |> Solution
+
+            We have
+
+            $$
+            |x| = \sqrt{x^2}
+            $$
+
+            because $\sqrt{(-1)^2} = 1$, $\sqrt{(-5)^2} = 5$,
+            etc. 
+
+            |> Pause
+
+            _Note 1._
+            This definition is less ad-hoc than might seem, 
+            being a 1-dimensional form of the Pythagorean 
+            theorem.
+
+    |> Exercise
+
+        Evaluate:
+
+        |> Table
+            cols vec![27, 170, 27, 230]
+
+            |> tr
+                
+                |> td
+                
+                    i.
+                
+                |> td
+                
+                    $(\lambda u.u^3)(0.5)$
+                
+                |> td
+                
+                    iii.
+
+                |> td
+                
+                    $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
+            
+            |> tr
+                margin-top 10pt
+
+                |> td
+                
+                    ii.
+
+                |> td
+                
+                    $(u \ra u^2)(x + 1)$
+
+                |> td
+                
+                    iv.
+
+                |> td
+                
+                    $(u \ra u^2)(a + b)$
+
+
+        |> Solution
+
+            The answers are:
+
+            |> Table
+                cols vec![27, 230, 27, 230]
+
+                |> tr
+                    
+                    |> td
+                    
+                        i.
+                    
+                    |> td
+                    
+                        $0.5^3 = 0.125$
+                    
+                    |> td
+                    
+                        iii.
+
+                    |> td
+                    
+                        $(100 - 1) \cdot (100 + 1) = 9999$
+                
+                |> tr
+
+                    |> td
+                    
+                        ii.
+
+                    |> td
+                    
+                        $(x + 1)^2 = x^2 + 2x + 1$
+
+                    |> td
+                    
+                        iv.
+
+                    |> td
+                    
+                        $(a + b)^2 = a^2 + 2ab + b^2$
+
+
+    |> Exercise
+        
+        The _floor_ of a real number $x$, written
+        
+        $$
+        \lfloor x \rfloor,
+        $$
+        
+        is the greatest integer less than or equal 
+        to $x$. (Start at $x$ and travel left on the 
+        number line until you meet an integer; but if
+        $x$ is already an integer, stay there; the 
+        place you land is $\lfloor x \rfloor$.)
+       
+        Sketch the graph $y = \floor{x}$.
+       
+        Secondly, find a formula for a function whose
+        graph looks like this, where you are allowed
+        to use “$\floor{x}$” in your formula:
+
+        |> Image
+            src images/svg_factory_roof_graph.svg
+
+        |> Solution
+        
+            As $x$ grows, so does $\floor{x}$, but
+            $\floor{x}$ only “levels up” each time $x$
+            reaches a new integer, and “flatlines”
+            otherwise; this gives rise to the following
+            staircase-shaped graph:
+
+            |> Image
+                src images/svg_floor_graph.svg
+
 */
