@@ -263,9 +263,22 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
-.container > *:not(:has(> .pause)):not(:last-child)  {
+.container > *:not(:has(> .pause))  {
   margin-block: 0.75rem;
 }
+
+
+
+.example > *:first-child  {
+  margin-bottom: 0.75rem !important;
+  margin-top: 0 !important;
+}
+
+.example > *:last-child  {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0 !important;
+}
+
 
 .col-start-2 > .mathblock:not(:first-child) {
   margin-block: 1.5rem;
