@@ -267,8 +267,6 @@ span .MathJax_SVG{
   margin-block: 0.75rem;
 }
 
-
-
 .example > *:first-child  {
   margin-bottom: 0.75rem !important;
   margin-top: 0 !important;
@@ -279,6 +277,10 @@ span .MathJax_SVG{
   margin-bottom: 0 !important;
 }
 
+.example > :only-child {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
 .col-start-2 > .mathblock:not(:first-child) {
   margin-block: 1.5rem;
