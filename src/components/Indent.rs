@@ -11,9 +11,13 @@ pub fn Indent(cx: Scope, children: Children) -> impl IntoView {
     create_effect(cx, move |_| {
         route();
         if let Some(node) = node_ref() {
-            let class = Array::of1(&"indent-fix".into());
             if let Some(parent) = node.parent_element() {
-                let _ = parent.class_list().add(&class);
+                if let Some(prev_sibling) = parent.previous_element_sibling() {
+                    if prev_sibling.class_list().contains("spacer") {
+                        let indent_fix = Array::of1(&"indent-fix".into());
+                        let _ = prev_sibling.class_list().add(&indent_fix);
+                    }
+                }
             }
         }
     });

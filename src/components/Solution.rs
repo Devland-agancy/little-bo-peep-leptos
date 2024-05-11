@@ -86,7 +86,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     let navigate = use_navigate(cx);
 
     view! { cx,
-      <div node_ref=button class="my-5 relative col-start-2"
+      <div node_ref=button class="relative col-start-2"
       style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
       >
         <SolutionSVG solution_number=solution_number on_click=move |_| {
@@ -136,7 +136,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
 
         <div
           node_ref=node_ref
-          class="flex flex-col container"
+          class="flex flex-col"
           class=("-translate-y-full", move || !solution_open())
           class=("duration-1000", move || transition())
           class=("transition-all", move || transition())

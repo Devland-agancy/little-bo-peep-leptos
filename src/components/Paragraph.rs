@@ -1,3 +1,4 @@
+use crate::components::Section::Spacer;
 use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
 use crate::global_state::GlobalState;
 use leptos::{
@@ -59,7 +60,7 @@ pub fn Paragraph(
       <span
         id=id
         node_ref=node_ref
-        class=format!("col-start-2 block relative {}", classes)
+        class=format!("pr col-start-2 block relative {}", classes)
         class=("indent-10", indent == Indent::Line)
         class=("pl-10", indent == Indent::Block)
         class=("text-center", align == Align::Center)
@@ -80,5 +81,6 @@ pub fn Paragraph(
 
         {children(cx)}
       </span>
+      <Spacer />
     }
 }

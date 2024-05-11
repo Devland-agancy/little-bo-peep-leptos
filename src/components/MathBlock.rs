@@ -1,4 +1,4 @@
-use crate::{global_state::GlobalState, page::state::PageState};
+use crate::{components::Section::Pause, global_state::GlobalState, page::state::PageState};
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 
@@ -90,7 +90,7 @@ pub fn MathBlock(
       <div
         node_ref=node_ref
         id=id
-        class="mathblock my-2 text-xl flex items-center justify-center col-start-2 hidden-on-startup relative h-fit"
+        class="mathblock text-xl flex items-center justify-center col-start-2 hidden-on-startup relative h-fit"
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {
@@ -101,7 +101,6 @@ pub fn MathBlock(
             )
         }
       >
-
         {children(cx)}
         <div
           on:click=move |e| {

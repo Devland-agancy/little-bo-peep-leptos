@@ -9,10 +9,10 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col container col-start-2 first:mt-2">
+      cx, <div class="sec col-start-2 first:mt-4">
             {children(cx)}
           </div>
-            <Show fallback=|_| () when=move || divider>
+          <Show fallback=|_| () when=move || divider>
             <SectionDivider />
           </Show>
     };
@@ -21,7 +21,7 @@ pub fn Section(
 #[component]
 pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="flex flex-col container col-start-2">
+      cx, <div class="col-start-2">
         {children(cx)}
       </div>
     };
@@ -30,21 +30,26 @@ pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn Example(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="example flex flex-col container col-start-2 !mt-0">
+      cx, <div class="example col-start-2 !mt-0">
         {children(cx)}
       </div>
     };
 }
 
 #[component]
-pub fn Pause(
-    cx: Scope,
-    #[prop(default = "0")] amount: &'static str,
-    children: Children,
-) -> impl IntoView {
+pub fn Pause(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="pause" style=move ||format!("margin-block : {}", amount)>
+      cx, <div class="pause">
         {children(cx)}
+      </div>
+    };
+}
+
+#[component]
+pub fn Spacer(cx: Scope) -> impl IntoView {
+    return view! {
+      cx, <div class="spacer">
+        ""
       </div>
     };
 }

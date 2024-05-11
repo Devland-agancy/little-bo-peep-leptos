@@ -554,46 +554,6 @@ video {
   --tw-contain-style:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 520px) {
-  .container {
-    max-width: 520px;
-  }
-}
-
-@media (min-width: 580px) {
-  .container {
-    max-width: 580px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .pointer-events-none {
   pointer-events: none;
 }
@@ -696,11 +656,6 @@ video {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.my-5 {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
 }
 
 .\!mt-0 {
@@ -1060,10 +1015,6 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
-}
-
-.gap-4 {
-  gap: 1rem;
 }
 
 .self-start {
@@ -1534,7 +1485,7 @@ span .MathJax_SVG{
 
 .solution_button_div {
   height: 51px;
-  padding-top: 28px;
+  padding-top: 20px;
 }
 
 .pointing_finger_backhand {
@@ -1743,35 +1694,37 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
+.spacer  {
+  height: 1.5rem;
+}
+
+.pause  {
+  margin-top: -1.5rem;
+}
+
+.pr:has(.pause) + .spacer {
+  display: none;
+}
+
+.example > .spacer:last-child,
+.sec:nth-last-child(6) > .spacer:last-child  {
+  height: 0;
+}
+
+.indent-fix {
+  height: 0.1rem;
+}
+
 .container > *:not(:has(> .pause))  {
   margin-block: 0.75rem;
-}
-
-.example > *:first-child  {
-  margin-bottom: 0.75rem !important;
-  margin-top: 0 !important;
-}
-
-.example > *:last-child  {
-  margin-top: 0.75rem !important;
-  margin-bottom: 0 !important;
-}
-
-.example > :only-child {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
 }
 
 .col-start-2 > .mathblock:not(:first-child) {
   margin-block: 1.5rem;
 }
 
-.indent-fix {
-  margin-top: -0.75rem !important;
-}
-
-.first\:mt-2:first-child {
-  margin-top: 0.5rem;
+.first\:mt-4:first-child {
+  margin-top: 1rem;
 }
 
 .hover\:border-b-0:hover {
@@ -1911,3 +1864,4 @@ span .MathJax_SVG{
     transition-property: none;
   }
 }
+
