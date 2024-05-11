@@ -1,4 +1,4 @@
-use crate::{components::Section::Pause, global_state::GlobalState, page::state::PageState};
+use crate::{components::Section::Spacer, global_state::GlobalState, page::state::PageState};
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 
@@ -121,6 +121,7 @@ pub fn MathBlock(
         >
           <img src="/images/cream.svg" class="m-auto h-2.5"/>
         </div>
-      </div>
+    </div>
+    <Spacer />
     }
 }

@@ -267,24 +267,23 @@ span .MathJax_SVG{
   height: 1.5rem;
 }
 
-.pr:has(.pause) + .spacer {
+
+.pr:has(.pause) + .spacer,
+.mathblock + .spacer {
   display: none;
 }
 
+.mathblock:nth-last-child(n+3) + .spacer {
+  display: block !important;
+}
+
 .example > .spacer:last-child,
-.sec:nth-last-child(6) > .spacer:last-child  {
+.sec:nth-last-child(6) > .spacer:last-child
+{
   height: 0;
 }
+
 
 .indent-fix {
   height: 0.1rem;
 }
-
-.container > *:not(:has(> .pause))  {
-  margin-block: 0.75rem;
-}
-
-.col-start-2 > .mathblock:not(:first-child) {
-  margin-block: 1.5rem;
-}
-
