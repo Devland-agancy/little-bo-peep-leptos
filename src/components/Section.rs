@@ -39,7 +39,7 @@ pub fn Example(cx: Scope, children: Children) -> impl IntoView {
 #[component]
 pub fn Pause(cx: Scope, children: Children) -> impl IntoView {
     return view! {
-      cx, <div class="pause">
+      cx, <div class="col-start-2 pause">
         {children(cx)}
       </div>
     };
