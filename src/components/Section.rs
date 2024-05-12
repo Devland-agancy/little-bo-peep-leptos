@@ -9,7 +9,7 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! {
-      cx, <div class="sec col-start-2 first:mt-4">
+      cx, <div class="sec col-start-2">
             {children(cx)}
           </div>
           <Show fallback=|_| () when=move || divider>

@@ -267,7 +267,6 @@ span .MathJax_SVG{
   height: 1.5rem;
 }
 
-
 .pr:has(.pause) + .spacer,
 .mathblock + .spacer {
   display: none;

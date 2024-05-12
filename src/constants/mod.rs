@@ -6,8 +6,8 @@ pub const MENU_ITEMS: &'static [(&'static str, &'static str, &'static str)] = &[
 
 pub const CHAPTER_TITLE_TOP_MARGIN_DESKTOP: &'static str = "15px";
 pub const CHAPTER_TITLE_TOP_MARGIN_MOBILE: &'static str = "0px";
-pub const CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP: &'static str = "5px";
-pub const CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE: &'static str = "5px";
+pub const CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP: &'static str = "20px";
+pub const CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE: &'static str = "20px";
 
 pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
 
