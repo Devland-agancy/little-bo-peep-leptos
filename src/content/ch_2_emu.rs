@@ -475,13 +475,15 @@
         offset_y 1rem
         offset_x 4rem
         use_squiggle_on_mobile false
+        handle vertical_line_equation
 
-    (see
-    |> ImageLink
-
-        Fig. 1
-    ) where $c \in \rr$ is a constant, similarly to
+    (see Fig. >>vertical_line_equation) where 
+    $c \in \rr$ is a constant, similarly to
     the more familiar equation
+
+    ...end of the paragraph. The next paragraph will
+    start with an image link right away:
+    is a beautiful figure that shows blablabla
 
     $$y = b$$
 
@@ -770,8 +772,8 @@
             |> ImageLeft
                 src images/62.svg
                 img_position top
-                offset_x -7rem
-                offset_y -7rem
+                offset_x -7.2rem
+                offset_y -7.1rem
                 use_squiggle_on_mobile false
 
             because
@@ -821,7 +823,7 @@
             $$
 
             |> ImageRight
-                src images/63.svg
+                src images/svg_slope_times_run_equals_rise_cloud.svg
                 offset_x 2.5rem
                 offset_y -0.5rem
 
