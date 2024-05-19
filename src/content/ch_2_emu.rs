@@ -480,10 +480,6 @@
     $c \in \rr$ is a constant, similarly to
     the more familiar equation
 
-    ...end of the paragraph. The next paragraph will
-    start with an image link right away:
-    is a beautiful figure that shows blablabla
-
     $$y = b$$
 
     for a horizontal line, where $b \in \rr$ is a
