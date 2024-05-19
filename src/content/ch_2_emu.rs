@@ -475,9 +475,8 @@
         offset_y 1rem
         offset_x 4rem
         use_squiggle_on_mobile false
-        handle vertical_line_equation
 
-    (see Fig. >>vertical_line_equation) where 
+    (see Fig. 1) where 
     $c \in \rr$ is a constant, similarly to
     the more familiar equation
 
