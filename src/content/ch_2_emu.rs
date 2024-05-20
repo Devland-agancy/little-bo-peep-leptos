@@ -476,11 +476,8 @@
         offset_x 4rem
         use_squiggle_on_mobile false
 
-    (see
-    |> ImageLink
-
-        Fig. 1
-    ) where $c \in \rr$ is a constant, similarly to
+    (see Fig. 1) where 
+    $c \in \rr$ is a constant, similarly to
     the more familiar equation
 
     $$y = b$$
@@ -770,8 +767,8 @@
             |> ImageLeft
                 src images/62.svg
                 img_position top
-                offset_x -7rem
-                offset_y -7rem
+                offset_x -7.2rem
+                offset_y -7.1rem
                 use_squiggle_on_mobile false
 
             because
@@ -821,7 +818,7 @@
             $$
 
             |> ImageRight
-                src images/63.svg
+                src images/svg_slope_times_run_equals_rise_cloud.svg
                 offset_x 2.5rem
                 offset_y -0.5rem
 
