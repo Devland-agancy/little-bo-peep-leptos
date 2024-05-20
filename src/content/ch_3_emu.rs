@@ -1107,4 +1107,625 @@
             |> Image
                 src images/svg_floor_graph.svg
 
+            (For example, $\floor{1} = 1$ because the 
+            greatest integer less than or equal to $1$ 
+            is $1$, $\floor{-0.5} = -1$ because the greatest
+            integer less than or equal to $-0.5$ is $-1$,
+            and so on.)
+
+            For the second part note that the following 
+            two displacements, excerpted from the “factory 
+            roof” graph in the statement, are equal:
+
+            |> Image
+                src images/svg_factory_roof_graph_with_displacement_arrows_worked.svg
+
+            The red dot to the left of $x$ has $x$-coordinate
+            $\floor{x}$, so the horizontal displacement is 
+            $$
+            x - \floor{x}
+            $$
+            so the equation of the graph is 
+            $$
+            y = x - \floor{x}
+            $$
+            because the $y$-coordinate _is_ the 
+            vertical displacement, given that the vertical 
+            displacement starts at $y = 0$, and because
+            the vertical and horizontal displacements are
+            equal.
+
+    |> Exercise
+        
+        Find the formula for a function whose graph 
+        looks like this, again using the floor function
+        ‘$\lfloor \cdot \rfloor$’ as a building block:
+
+        |> Image
+            src images/svg_factory_roof_stretched_x2_graph_worked.svg
+
+        |> Solution
+
+            We would like to argue the correctness of 
+            the following two-step process (divide the 
+            input by $2$, apply the function from Exercise 
+            4):
+
+            |> Image
+                src images/svg_factory_roof_stretched_and_compressed.svg
+
+            Indeed, the two graphs featured above differ
+            only by a horizontal dilation; dividing the 
+            input by $2$ “undoes” the dilation, at which 
+            point it suffices to apply the function pictured
+            in the second graph; having declared our method 
+            correct, the answer is thus...
+            $$
+            {x/2 - \lfloor x/2 \rfloor}
+            $$
+            ...as obtained by “sticking” $x/2$ (the halved 
+            input) in place of “$x$” in “$\,x - \lfloor x \rfloor$”,
+            the formula for the function from Exercise 4.
+
+            _Note 1._
+            One can check the answer by typing “x/2 - floor(x/2)”
+            in DESMOS. Viz:
+
+            |> Image
+                src images/png_desmos_composition_0_c.png
+                width 1400px
+
+            _Note 2._
+            Alternately, enter “f(x) = x - floor(x)” and
+            then “f(x/2)”, viz:
+
+            |> Image
+                src images/png_desmos_composition_1_c.png
+                width 1400px
+
+            Or we can be even fancier:
+
+            |> Image
+                src images/png_desmos_composition_2_b.png
+                width 1400px
+            
+            What you see above (the graph in orange) is 
+            the so-called __composition__ of the functions 
+            $\f$ and $g$; in more detail, if we switch the 
+            “input tube” and “output tube” sides of a function...
+
+            |> Image
+                src images/svg_f_box_inverted.svg
+
+            ...(compared to the drawing at the top of the
+            chapter), then the composition of $\f$ and $g$,
+            written
+            $$
+            {\f \circ g}
+            $$
+            and read
+            
+            __“$f$ of $\hlfbk{}g$”__
+            
+            (mathematicians have to invent a notation for 
+            everything—that little circle “$\circ$” is called 
+            the _composition operator_,
+            by the way) is the function that you get by
+            gluing $g$'s box to the right of $\f$'s box, 
+            like so:
+
+            |> Image
+                src images/svg_f_box_g_box.svg
+
+            In other words, $g$'s output is passed on to $\f$ 
+            for further processing. (A certain movie called
+            “The Human Centipede” comes to mind.)
+
+            (To be perfectly clear,
+
+            |> Image
+                src images/svg_f_circle_g_and_f_box_g_box.svg
+
+            $f \circ g$ is a _function_, defined as the
+            above assemblage of “$g$ first, $f$ second”.)
+    
+            _Note 3._
+            For a formal definition of “$f \circ g$”—something
+            not based on pictures—one need only specify what
+            $f \circ g$ does to inputs. Specifically:
+            $$
+            \,{(f \circ g)(x) = f(g(x))}.
+            $$
+            (So that equation is a formal definition.) One can
+            also clarify that
+            $$
+            {\dom f \circ g = \{x\, \in\, \dom g:\, g(x)\, \in\, \dom f\}}
+            $$
+            which is to say that the domain of $f \circ g$
+            consists of all $x$ such that: *(i)* $g(x)$
+            exists (a.k.a, “$x \in \dom g$”) and,
+            *(ii)* $f(g(x))$ exists (a.k.a., “$g(x) \in \dom f$”).
+
+            _Note 4._
+            Amusingly—or not—both sides of 
+            $$
+            {(f \circ g)(x) = f(g(x))}
+            $$
+            are read
+        
+            _|“$f$ of $\hlfbk{}g$ of $x\hspace{0.1em}$”|_
+            
+            since “$f \circ g$” is read “$f$ of $g\rt{0.1}$”,
+            and “$f(\dots)$” is read “$f$ of ...”.
+    
+    |> Exercise
+
+        Find formulas for functions whose graphs look 
+        like these:
+    
+        |> Image
+            src images/svg_factory_roof_x2_worked.svg
+
+        |> Solution
+
+            For the first graph, 
+            |> del
+            
+                the
+            an answer is 
+            $$
+            2 \cdot(x/2 - \fl{x/2})
+            $$
+            which simplifies to
+            $$
+            x - 2\fl{x/2}
+            $$
+            because all we have to do is to multiply 
+            Exercise 5's formula by $2$.
+
+            For the second graph, an answer is
+            $$
+            x/3 - \fl{x/3}
+            $$
+            because the problem is similar to Exercise 5 
+            except with a factor $3$ horizontal dilation.
+
+            For the third graph, we will first stop to 
+            find a formula  for the function depicted here:
+
+            |> Image
+                src images/svg_factory_roof_stretched_x3_translated_1_worked.svg
+        
+            And that formula is...
+        
+            |> Image
+                src images/svg_factory_roof_stretched_x3_translated_1_explanation.svg
+
+            ...iiiiiiiS...
+            $$
+            (x-1)/3 - \fl{(x-1)/3}
+            $$
+            as obtained by substituting “$x - 1$”  
+            (the input, minus $1$) in place of “$x$” in 
+            “$\,x/3 - \fl{x/3}$”, the formula for the 
+            second graph. Then we multiply that by $3$ 
+            (to go from 
+            
+            |> InlineImage
+                src images/svg_3_3_grid_1.svg
+                height 0.9em
+                width 0.9em
+
+            ” to “
+
+            |> InlineImage
+                src images/svg_3_3_grid_2.svg
+                height 0.9em
+                width 0.9em
+
+            ”, namely), meaning that the final answer is
+            $$
+            3 \cdot ((x-1)/3 - \fl{(x-1)/3})
+            $$
+            or
+            $$   
+            (x - 1) - 3\fl{(x-1)/3}
+            $$
+            after simplification. (Or just
+            $$
+            x - 1 - 3\fl{(x-1)/3}
+            $$
+            though we personally prefer the previous 
+            form, it being more “talkative”.)
+
+
+    |> Exercise
+
+        If
+        $$
+        \cos \dblcol \rr \ra \rr
+        $$
+        (the “hollow dot colon” means that $\dom \cos = \rr$)
+        is a function whose graph looks like so...
+
+        |> Image
+            src images/svg_cosine.svg
+
+        ...then does the function...
+        $$
+        {x \ra \cos(1000x)}
+        $$
+        ...have a graph that looks like a bunch of very tight 
+        bumps, or, instead, very flat _&_ spaced-out bumps??
+
+        |> Solution
+
+            Consider how to “read off” a value of $y = \cos(1000x)$
+            from the graph $y = \cos(x)$:
+
+            |> Image
+                src images/svg_cosine_1000x_worked.svg
+
+            By the first step, a
+
+            __horizontal dilation by a factor 1000__ 
+            
+            maps the first graph onto the second graph—i.e.,
+            a point
+            $$
+            (x, y)
+            $$
+            is on the first graph if and only the dilated
+            point
+            $$
+            (1000x, y)
+            $$
+            is on the second graph. The first graph is
+            therefore some very compressed thing, full of
+            scrunched bumps!
+
+            _Note 1._
+            One can also reason that a small change in $x$ 
+            results in a large change in $1000x$, so that 
+            $\cos(1000x)$ must “cycle” much faster through 
+            values than $\cos(x)$ does.
+
+    |> Exercise
+
+        Rewrite
+        
+        $$
+        \tag{A}
+        (f \circ (g \circ h))(x)
+        $$
+        
+        without using “$\circ$”, using only the 
+        “definitional equation of function 
+        composition”, which is namely
+        
+        $$
+        \tag{AA}
+        (r \circ s)(x) = r(s(x))
+        $$
+        
+        (where $r$ and $s$ are functions); plz
+        note that you will have to apply (AA) 
+        _twice_, as each application of (AA) 
+        makes _one_ copy of the symbol “$\circ$” 
+        disappear, and (A) contains _two_ copies of 
+        “$\circ$”!!
+
+        |> Solution
+
+            Setting “$r$” to “$f$” and “$s$” to “$(g \circ h)$” 
+            in (AA) yields
+
+            |> ImageLeft
+                src images/svg_r_s_substitution_1_1.1em_cloud.svg
+
+            $$
+            {(f \circ (g \circ h))(x) = \f((g \circ h)(x))}
+            $$
+            ...which already constitutes progress towards
+            our goal, since only one copy of “$\circ$” 
+            exists on the right-hand side! But
+            $$
+            {(g \circ h)(x) = g(h(x))}
+            $$
+            by the “definitional equation” again, so
+            $$
+            {f((g \circ h)(x)) = \f(g(h(x)))}
+            $$
+            ...and this completes the computation!
+        
+            _Note 1._
+            We can collect both steps of the computation 
+            into a single string of equalities:
+
+            |> Image
+                src images/svg_first_victim_second_victim_1_1em_v2.svg
+
+    |> Exercise
+
+        Same question as Exercise 17, but for 
+        “$f \circ (g \circ h)$” instead of 
+        “$(f \circ g) \circ h$”.
+
+        |> Solution
+
+            We will again evaluate the “outer”
+            composition operator first and the “inner”
+            composition operator second, where the “outer”
+            composition operator is the one that is fewer
+            pairs of parentheses away from the outside 
+            world:
+
+            |> Image
+                src images/svg_inner_outer_1_1em_v2.svg
+
+            So the first step is...
+            
+            $$
+            ((f \circ g) \circ h)(x) = (f \circ g)(h(x))
+            $$
+            
+            ...by setting $r = f \circ g$, $s = h$ in the 
+            definitional equation, and the second step is...
+            
+            $$
+            (f \circ g)(h(x)) = \f(g(h(x)))
+            $$
+            
+            ...by setting $r = f$, $s = g$, and while
+            replacing “$x$” by “$h(x)$”.
+        
+            _Note 1._
+            The fact that
+            $$
+            (f \circ (g \circ h))(x)
+            $$
+            and
+            $$
+            ((f \circ g) \circ h)(x)
+            $$
+            both evaluate to
+            $$
+            f(g(h(x)))
+            $$
+            actually implies that
+            $$
+            f \circ (g \circ h)
+            $$
+            and
+            $$
+            (f \circ g) \circ h
+            $$
+            are the same function; this function is namely
+            the function that maps $x$ to $f(g(h(x)))$ for all $x$
+            (or
+            $$
+            x \ra f(g(h(x)))
+            $$
+            in lambda notation).
+
+            _Note 2._
+            Because of this, we can write
+            $$
+            f \circ g \circ h
+            $$
+            without any parentheses. (The point is: either way you parenthesize it you obtain 
+            the same function, so why bother?)
+
+            _Note 3._
+            The fact that
+
+            $$
+            {(a + b) + c = a + (b + c)}
+            $$
+
+            for all numbers $a$, $b$, $c$ is known as the
+
+            __associativity__
+
+            of addition; likewise, the fact that
+
+            $$
+            (ab)c = a(bc)
+            $$
+
+            for all numbers $a$, $b$, $c$ is known as the
+
+            __associativity__
+
+            of multiplication; and again likewise,
+            the fact that
+
+            $$
+            {(f \circ g) \circ h  =  f \circ (g \circ h)}
+            $$
+
+            for all functions $f$, $g$, $h$ is known 
+            as the
+
+            __associativity__
+
+            |> ImageRight
+                src images/svg_associativity_cloud.svg
+
+            of function composition.
+        
+            _Note 4._
+            One of the best ways to explain _&_ understand
+            the associativity of function composition 
+            uses this picture:
+
+            |> Image
+                src images/svg_truth_be_said.svg
+
+            In the above $A$, $B$, $C$, $D$ are sets 
+            while the arrows encode functions $f$, $g$ and $h$ 
+            that, respectively in reverse order, go from $D$ 
+            to $C$, $C$ to $B$, and $B$ to $A$. For example,
+
+            |> Paragraph
+
+                ${\Large h(}$
+                
+                |> InlineImage
+                    src images/svg_composition_icon_clubs.svg
+                    height 0.85em
+                    width 0.729em
+
+
+                ${\Large{}) =}$
+                
+                |> InlineImage
+                    src images/svg_composition_die_3.svg
+                    height:0.9em
+                    width:1.024em
+            
+            because the arrow that originates at 
+            
+            |> InlineImage
+                src images/svg_composition_icon_clubs.svg
+                height 0.85em
+                width 0.729em
+
+            in set $D$ lands at 
+            
+            |> InlineImage
+                src images/svg_composition_die_3.svg
+                height:0.9em
+                width:1.024em
+            
+            in set $C$, and
+
+            |> Paragraph
+
+                ${\Large g(h(}$
+
+                |> InlineImage
+                    src images/svg_composition_icon_clubs.svg
+                    height 0.85em
+                    width 0.729em
+
+                ${\Large{})){}=}$
+
+                |> InlineImage
+                    src images/svg_composition_fence.svg
+                    height 0.84em
+                    width 1.824em
+                
+            because, pursuing that path onwards, the arrow 
+            that originates at
+            
+            |> InlineImage
+                src images/svg_composition_die_3.svg
+                height:0.9em
+                width:1.024em
+
+            in set $C$ lands at
+
+            |> InlineImage
+                src images/svg_composition_fence.svg
+                height 0.84em
+                width 1.824em
+
+            in set $B$, etc.
+
+            Under this representation one can “compute”
+            $f \circ g \circ h$ by gluing arrows end-to-end.
+            First, say, obliviate set $C$ in the middle 
+            right, then do the same with set $B$ in the
+            middle left:
+
+            |> Image
+                src images/svg_truth_be_said_right_first_v4.svg
+                width 2000px
+                
+            We can also get rid of $B$ first, $C$ second:
+
+            |> Image
+                src images/svg_truth_be_said_left_first_v4.svg
+                width 2000px
+
+            The first order of computation corresponds
+            to the parenthetization “$f \circ (g \circ h)$”
+            while the second corresponds to the 
+            parenthetization “$(f \circ g) \circ h$”.
+            Intuitively, the reason they come out the 
+            same (in “step 6”, bottom left) is because 
+            each final arrow in the last diagram comes 
+            from a path-of-arrows in the original 
+            diagram, and the order in which the 
+            waypoints along a path are “straightened” 
+            (or “collapsed”) does not affect the origin 
+            point or destination point of the final 
+            arrow.
+
+            _Note 5._
+            The last series of diagrams might leave one 
+            with the impression that the composition of 
+            two or more functions can be “precomputed”
+            by looking ahead along the path of yellow arrows. 
+            Just so you know, computers do not generically 
+            do this. For reason, computers are not given 
+            functions as tables of input-output values to 
+            know by heart but rather as “recipes” (synonyms: 
+            algorithms, code, programs) that allow them 
+            to compute an output for any given input. 
+            Moreover, there is no general way of flattening 
+            two recipes into a single, shorter one—when 
+            composing two functions the computer has, in 
+            general, no choice but to diligently apply 
+            each recipe in order—the first function first,
+            the second function second.
+
+            _Note 6._
+            We have taken for granted the fact that two 
+            functions $f$ and $g$ are “equal” if and only
+            if they produce the same outupt for every 
+            input but this is a actually subtle thing 
+            that has to do with how functions are defined 
+            “under the hood”. Specifically, mathematicians 
+            view functions as
+            |> del
+
+                long
+            |> del
+
+                list of
+            sets of ordered pairs; for example—conceptual
+            cold water shock ahead—
+
+            $$
+            {\textrm{VX-11/78A} = \{(0, 3.5), (1, 2.5)\}}
+            $$
+
+            because VX-11/78A maps $0$ to $3.5$ and maps 
+            $1$ to $2.5$. (The presence of an ordered pair
+            
+            $$
+            (a, b)
+            $$
+
+            means that input $a$ produces output $b$.) So 
+            two functions are equal if and only if they 
+            are equal
+            
+            __as sets of ordered pairs__
+            
+            because the set of ordered pairs is the 
+            underlying “thing” that the function is. In 
+            particular, there is no notion of a “formula” 
+            or of a “procedure” being attached to a 
+            function, that might cause two functions to 
+            be considered unequal even if they produce the 
+            same output on every input—producing the same
+            output on every input implies that the 
+            |> del
+
+                list of
+            set of ordered pairs is equal, and, perforce, 
+            that the two functions are equal!!
 */
