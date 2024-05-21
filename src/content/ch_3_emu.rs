@@ -1167,6 +1167,8 @@
             input) in place of “$x$” in “$\,x - \lfloor x \rfloor$”,
             the formula for the function from Exercise 4.
 
+            |> Pause
+
             _Note 1._
             One can check the answer by typing “x/2 - floor(x/2)”
             in DESMOS. Viz:
@@ -1174,6 +1176,8 @@
             |> Image
                 src images/png_desmos_composition_0_c.png
                 width 1400px
+
+            |> Pause
 
             _Note 2._
             Alternately, enter “f(x) = x - floor(x)” and
@@ -1229,6 +1233,8 @@
             $f \circ g$ is a _function_, defined as the
             above assemblage of “$g$ first, $f$ second”.)
     
+            |> Pause
+
             _Note 3._
             For a formal definition of “$f \circ g$”—something
             not based on pictures—one need only specify what
@@ -1245,6 +1251,8 @@
             consists of all $x$ such that: *(i)* $g(x)$
             exists (a.k.a, “$x \in \dom g$”) and,
             *(ii)* $f(g(x))$ exists (a.k.a., “$g(x) \in \dom f$”).
+
+            |> Pause
 
             _Note 4._
             Amusingly—or not—both sides of 
@@ -1384,6 +1392,8 @@
             therefore some very compressed thing, full of
             scrunched bumps!
 
+            |> Pause
+
             _Note 1._
             One can also reason that a small change in $x$ 
             results in a large change in $1000x$, so that 
@@ -1438,6 +1448,8 @@
             $$
             ...and this completes the computation!
         
+            |> Pause
+
             _Note 1._
             We can collect both steps of the computation 
             into a single string of equalities:
@@ -1469,8 +1481,9 @@
             ((f \circ g) \circ h)(x) = (f \circ g)(h(x))
             $$
             
-            ...by setting $r = f \circ g$, $s = h$ in the 
-            definitional equation, and the second step is...
+            ...by setting $r = f \circ g$, $s = h$ in
+            the definitional equation, and the second step
+            is...
             
             $$
             (f \circ g)(h(x)) = \f(g(h(x)))
@@ -1479,6 +1492,8 @@
             ...by setting $r = f$, $s = g$, and while
             replacing “$x$” by “$h(x)$”.
         
+            |> Pause
+
             _Note 1._
             The fact that
             $$
@@ -1501,20 +1516,25 @@
             (f \circ g) \circ h
             $$
             are the same function; this function is namely
-            the function that maps $x$ to $f(g(h(x)))$ for all $x$
-            (or
+            the function that maps $x$ to $f(g(h(x)))$ for 
+            all $x$ (or
             $$
             x \ra f(g(h(x)))
             $$
             in lambda notation).
+
+            |> Pause
 
             _Note 2._
             Because of this, we can write
             $$
             f \circ g \circ h
             $$
-            without any parentheses. (The point is: either way you parenthesize it you obtain 
-            the same function, so why bother?)
+            without any parentheses. (The point is: either
+            way you parenthesize it you obtain the same 
+            function, so why bother?)
+
+            |> Pause
 
             _Note 3._
             The fact that
@@ -1554,6 +1574,8 @@
 
             of function composition.
         
+            |> Pause
+
             _Note 4._
             One of the best ways to explain _&_ understand
             the associativity of function composition 
@@ -1563,9 +1585,10 @@
                 src images/svg_truth_be_said.svg
 
             In the above $A$, $B$, $C$, $D$ are sets 
-            while the arrows encode functions $f$, $g$ and $h$ 
-            that, respectively in reverse order, go from $D$ 
-            to $C$, $C$ to $B$, and $B$ to $A$. For example,
+            while the arrows encode functions $f$, $g$ 
+            and $h$ that, respectively in reverse order, 
+            go from $D$ to $C$, $C$ to $B$, and $B$ to $A$. 
+            For example,
 
             |> Paragraph
 
@@ -1580,12 +1603,12 @@
                 ${\Large{}) =}$
                 
                 |> InlineImage
-                    src images/svg_composition_die_3.svg
-                    height:0.9em
-                    width:1.024em
+                    src images/svg_composition_icon_die_3.svg
+                    height 0.9em
+                    width 1.024em
             
             because the arrow that originates at 
-            
+
             |> InlineImage
                 src images/svg_composition_icon_clubs.svg
                 height 0.85em
@@ -1594,11 +1617,11 @@
             in set $D$ lands at 
             
             |> InlineImage
-                src images/svg_composition_die_3.svg
-                height:0.9em
-                width:1.024em
+                src images/svg_composition_icon_die_3.svg
+                height 0.9em
+                width 1.024em
             
-            in set $C$, and
+            in set $C$,  and
 
             |> Paragraph
 
@@ -1612,7 +1635,7 @@
                 ${\Large{})){}=}$
 
                 |> InlineImage
-                    src images/svg_composition_fence.svg
+                    src images/svg_composition_icon_fence.svg
                     height 0.84em
                     width 1.824em
                 
@@ -1620,14 +1643,14 @@
             that originates at
             
             |> InlineImage
-                src images/svg_composition_die_3.svg
-                height:0.9em
-                width:1.024em
+                src images/svg_composition_icon_die_3.svg
+                height 0.9em
+                width 1.024em
 
             in set $C$ lands at
 
             |> InlineImage
-                src images/svg_composition_fence.svg
+                src images/svg_composition_icon_fence.svg
                 height 0.84em
                 width 1.824em
 
@@ -1640,13 +1663,13 @@
             middle left:
 
             |> Image
-                src images/svg_truth_be_said_right_first_v4.svg
+                src images/svg_truth_be_said_right_first.svg
                 width 2000px
                 
             We can also get rid of $B$ first, $C$ second:
 
             |> Image
-                src images/svg_truth_be_said_left_first_v4.svg
+                src images/svg_truth_be_said_left_first.svg
                 width 2000px
 
             The first order of computation corresponds
@@ -1662,6 +1685,8 @@
             (or “collapsed”) does not affect the origin 
             point or destination point of the final 
             arrow.
+
+            |> Pause
 
             _Note 5._
             The last series of diagrams might leave one 
@@ -1681,6 +1706,8 @@
             each recipe in order—the first function first,
             the second function second.
 
+            |> Pause
+
             _Note 6._
             We have taken for granted the fact that two 
             functions $f$ and $g$ are “equal” if and only
@@ -1694,7 +1721,7 @@
                 long
             |> del
 
-                list of
+                lists of
             sets of ordered pairs; for example—conceptual
             cold water shock ahead—
 
@@ -1728,4 +1755,484 @@
                 list of
             set of ordered pairs is equal, and, perforce, 
             that the two functions are equal!!
+
+    |> Exercise
+        
+        Show that
+        $$
+        x^2 + 10x + 30
+        $$
+        can be written in the form 
+        $$
+        (x + \dots)^2 + \,\dots
+        $$
+        for some numbers “$\dots$” and “$\dots$”.
+
+        |> Solution
+
+            The answer is
+            $$
+            (x + 5)^2 + 5
+            $$
+            because
+            $$
+            \begin{align}
+            \,\,\,\,(x + 5)^2
+                &= x^2 + (2\cdot 5)x + 5^2 \\
+                &= \up{1.4} x^2 + 10x + 25
+            \end{align}
+            $$
+            and adding $5$ gives $x^2 + 10x + 30$.
+
+    |> Exercise
+
+        Solve Exercise 10 using algebra _&_
+        variables.
+
+        |> Solution
+
+            Put an unknown “$U$” for the first set
+            of dots and an unknown “$V$” for the 
+            second set of dots. Then
+            $$
+            (x + U)^2 + V = x^2 + 10x + 30
+            $$
+            becomes the equation to satisfy.
+            Expanding the left-hand side, we get:
+            $$
+            x^2 + 2Ux + U^2 + V = x^2 + 10x + 30.
+            $$
+            In order for this equation to hold as an 
+            equality between polynomials (i.e., for all
+            $x$) the coefficients of $x^2$ on both 
+            sides of the equation must be equal, the 
+            coefficients of $x$ on both sides of the
+            equation must be equal, and the constant
+            terms on boths of the equation must be 
+            equal—this gives us
+            $$
+            1 = 1
+            $$
+            (equating the coefficients of $x^2$), and
+            $$
+            2U = 10
+            $$
+            (equating the coefficients of $x$), and 
+            $$
+            U^2 + V = 30
+            $$
+            (equating the constant terms). Only the
+            latter two equations contain information.
+            In particular,
+            $$
+            2U = 10
+            $$
+            implies $U = 5$, so $U^2 + V = 30$ becomes
+            $25 + V = 30$, and 
+            $V = 30 - 25 = 5$.
+            So $U = V = 5$, as previously found.
+            (But now we know that the solution is _unique_,
+            because the only number $U$ that satisfies
+            $$
+            2U = 10
+            $$
+            is $U = 5$, and the only number $V$ that
+            satisfies 
+            $$
+            25 + V = 30
+            $$
+            is $V = 5$.)
+
+    |> Exercise
+
+        Show that
+        $$
+        x^2 + 10x + 30 = 0
+        $$
+        (cf$.$ Exercise 21) has no solutions $x \in \rr$.
+
+        |> Solution
+
+            The equation is equivalent to
+            $$
+            (x + 5)^2 + 5 = 0
+            $$
+            by Exercise 21, but this implies
+            $$
+            (x + 5)^2 = -5
+            $$
+            which is an equation with no solution over
+            the reals because the square of a real number
+            is nonnegative.
+
+    |> Exercise
+
+        Show that 
+        $$
+        x^2 + 10x - 30 = 0
+        $$
+        has two solutions $x \in \rr$.
+
+        |> Solution
+
+            The equation can be written
+            $$
+            (x + 5)^2 - 55 = 0
+            $$
+            because $(x + 5)^2 = x^2 + 10x + 25$
+            and $25 - 55 = -30$. Passing $55$ to the
+            other side, we find
+            $$
+            (x + 5)^2 = 55
+            $$
+            which holds if and only if
+            $$
+            \,x + 5 = \pm\sqrt{55}
+            $$
+            or
+            $$
+            \,x = -5 \pm\sqrt{55}
+            $$
+            constituting two distinct solutions.
+
+    |> Exercise
+
+        What sequence of geometric transformations
+        (rotations, translations, scalings, etc) 
+        maps the curve
+        $$
+        {y = x^2}
+        $$
+        onto
+        $$
+        {y = Ax^2 + Bx}
+        $$
+        for constants $A$, $B$ such that $A \ne 0$? 
+
+        |> Solution
+
+            Write
+            $$
+            {Ax^2 + Bx}
+            $$
+            as
+            $$
+            {A\Big(x^2 + {B \over A}x\Big)}
+            $$
+            and then write
+            $$
+            {x^2 + {B \over A}x}
+            $$
+            as
+            $$
+            {\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}}
+            $$
+            so that, altogether,
+            $$
+            {Ax^2 + Bx}
+            $$
+            is rewritten
+            $$
+            {A\left[\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}\right]}
+            $$
+            that can be seen as descending from $y = x^2$ 
+            in three steps:
+            $$
+            {y = x^2}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = \,\Big(x + {B \over 2A}\Big)^2}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = \,\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = A\left[\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}\right]}.
+            $$
+            Three steps, three geometric transformations!
+            The third step effects a
+
+            __vertical scaling by $A$__
+
+            i.e., vertically stretches the graph by
+            a factor $A$, because we multiply the
+            value of $y$ by $A$. The second step 
+            effects a
+
+            __vertical translation by ${-{B^2 \over 4A^2}}$__
+
+            i.e., lowers the height of the entire
+            graph by ${B^2 \over 4A^2}$, because we add 
+            $-{B^2 \over 4A^2}$ to the value of $y$.
+            The first step, on the other hand, is
+            entirely different: it is a
+
+            __preprocessing__
+
+            step, in that we mess with the input (i.e., 
+            $x$), instead of adding on (or “multiplying 
+            on”) to the current value of $y$.     
+       
+            To understand how a preprocessing step 
+            affects the shape of a graph, note that, more
+            generally, a graph of the form
+            $$
+            {y = f(x + a)}
+            $$
+            (for some constant $a$) “fetches” values on
+            the graph
+            $$
+            {y = f(x)}
+            $$
+            by going $a$ units to the right. The larger $a$
+            is, thus, the further 
+            $$
+            {y = f(x + a)}
+            $$
+            drifts off to the left. For example,
+            $$
+            {y = f(x + 20)}
+            $$
+            has value $f(0)$ at $x = -20$, and if you replace
+            $20$ with something larger, that position (i.e., 
+            $x = -20$) drifts even further off to the left!
+            In any case, the graph $y = f(x + a)$ is the
+        
+            __leftward__
+
+            translate by $a$ units of $y = f(x)$
+            and, as a consequence, the first step effects a
+            
+            __leftward translation by ${B\over 2A}$__
+            
+            of the curve $y = x^2$, or
+        
+            __horizontal translation by $-{B\over 2A}$__
+
+            more elegantly put. (The second formulation
+            doesn't assume a particular orientation of the 
+            $x$-axis, that's why it's “more elegantly put”,
+            in our opinion.)
+       
+            To recapitulate, the three transformations
+            are,in order:
+
+            |> List
+
+                |> Item
+
+                    1. <span>horizontal</span> translation by $-{B \over 2A}$
+                
+                |> Item
+
+                    2. vertical translation by ${-{B^2 \over 4A^2}}$
+
+                |> Item
+
+                    3. vertical scaling by $A$
+
+            |> Pause
+
+            _Note 1._
+            You could do the vertical translation
+            before the horizontal translation,
+            geometrically it comes out the same.
+            That order of geometric transformations 
+            would correspond to the following sequence
+            of algebraic transformations:
+            $$
+            {y = x^2}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = x^2 - {B^2 \over 4A^2}}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = \,\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}}
+            $$
+            $$
+            {\downarrow}
+            $$
+            $$
+            {y = A\left[\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}\right]}
+            $$
+            ...in which the _second_ step is a 
+            preprocessing step. (I.e., a step that 
+            replaces “$x$” with something else.)
+
+    |> Exercise
+        
+        Let $x_0 \in \rr$, $y_0 \in \rr$ and 
+        $a \in \rr$ with $y_0 \geq 0$, $a \ne 0.$
+        If you apply these transformations...
+
+        |> List
+            |> Item
+
+                1. vertical translation by $-y_0$
+
+            |> Item
+
+                2. horizontal translation by $x_0$
+
+            |> Item
+                3. vertical scaling by $a$
+
+        ...to the curve $y = x^2$, what are the 
+        roots of the final curve that you obtain?
+        (Nb: _Roots_ are values of $x$ such 
+        that $y = 0$.)
+    
+        |> Solution
+
+            Start by noting that the point 
+            $(\sqrt{y_0}, y_0)$ is on the curve $y = x^2$,
+            as well as the point $(-\sqrt{y_0}, y_0)$, 
+            because
+            $(\sqrt{y_0})^2 = (-\sqrt{y_0})^2 =$ $y_0;$
+            here is a sketch of the situation before 
+            anything happens:
+        
+            |> Image
+                src images/svg_x0_y0_step0.svg
+                width 760px
+        
+            After vertically translating by $-y_0$ 
+            the roots will therefore be at $x = \pm\sqrt{y_0}$:
+        
+            |> Image
+                src images/svg_x0_y0_step1_alone.svg
+                width 760px
+        
+            Then after horizontally translating by $x_0$
+            the roots mosey over to $x = x_0\pm\sqrt{y_0}$:
+
+            |> Image
+                src images/svg_x0_y0_step2_alone.svg
+                width 760px
+
+            Lastly, vertical scaling does not affect 
+            the position of the roots, because it 
+            stretches the graph _about_ the $x$ 
+            axis (here $a \approx 1.7$):
+
+            |> Image
+                src images/svg_x0_y0_step3_alone.svg
+                width 760px
+
+            So the roots are at: $x = x_0 \pm \sqrt{y_0}$.
+            (Like we found them after the second step.)
+
+    |> Exercise
+
+        Use the results of the previous two exercises
+        to find the value(s) of $x$ such that 
+        $Ax^2 + Bx = 0$ for constants $A$, $B$ such 
+        that $A \ne 0$.
+    
+        |> Solution
+
+            Well,
+            $$
+            Ax^2 + Bx = 0
+            $$
+            obviously has solution $x = 0$ to start
+            with, so we _don't need_ the previous 
+            exercises for one of the roots at least—actually,
+            $$
+            Ax^2 + Bx = x(Ax + B)
+            $$
+            so the equation is equivalent to
+            $$
+            x(Ax + B) = 0
+            $$
+            and so one of the roots is 
+            $$
+            x = 0
+            $$
+            and the other root is the value of $x$
+            such that
+            $$
+            Ax + B = 0
+            $$
+            which is $x = -B/A$. (In order for the product
+            $$
+            x(Ax + B)
+            $$
+            to be $0$ you either need the first term to
+            be $0$, leading us to $x = 0$, or the second
+            term to be $0$, leading us to $Ax + B = 0$—the 
+            product of two things is $0$ if and only if
+            one of the two things is $0$.)
+        
+            So the roots are $x = 0$ and $x = -B/A$.
+        
+            To complete the problem _as we were asked_, 
+            however, we will use the fact that $y = Ax^2 + Bx$
+            is obtained from $y = x^2$ by the following
+            sequence of transformations (cf. Exercise 14):
+
+            |> List
+                |> Item
+
+                    1. vertical translation by ${-{B^2 \over 4A^2}}$
+
+                |> Item
+
+                    2. <span>horizontal</span> translation by $-{B \over 2A}$
+
+                |> Item
+
+                    3. vertical scaling by $A$
+
+            (We put the vertical translation first.)
+            By Exercise 15, the roots of $y = Ax^2 + Bx$ 
+            are thus at
+            $$
+            \tag{A}
+            x = -{B\over 2A} \pm \sqrt{B^2 \over 4A^2}
+            $$
+            which looks a little different than our 
+            previous result of $x = 0$ and $x = -B/A$
+            until you realize that
+            $$
+            \pm \sqrt{B^2 \over 4A^2} = \pm {B \over 2A}
+            $$
+            (because
+            $$
+            \left({B \over 2A}\right)^{\!2} = {B^2 \over 4A^2}
+            $$
+            and even though ${B\over 2A}$ could be 
+            negative, the “$\pm$” on either side of 
+            the equation means that the _set_ of values
+            on either side of the equation is the same),
+            so that (A) becomes
+            $$
+            x = -{B\over 2A} \pm {B \over 2A}
+            $$
+            and, on the one hand,
+            $$
+            -{B\over 2A} + {B \over 2A} = 0
+            $$
+            while, on the other hand,
+            $$
+            -{B\over 2A} - {B \over 2A} = -{2B\over 2A} = -{B\over A}
+            $$
+            so here too we find that the roots are $x = 0$
+            and $x = -B/A$. (It must be the right answer!)
+
 */
