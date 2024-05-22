@@ -65,6 +65,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "InlineImage",
             "List",
             "Grid",
+            "del",
         ],
         vec![
             "Section",
@@ -77,7 +78,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
             "ExerciseQuestion",
             "Item",
         ],
-        vec!["Grid", "List"],
+        vec!["Grid", "List", "del"],
     );
 
     let elm_string = if elm.value().starts_with("file:") {

@@ -1279,7 +1279,7 @@
             For the first graph, 
             |> del
             
-                the
+                the 
             an answer is 
             $$
             2 \cdot(x/2 - \fl{x/2})
@@ -1778,8 +1778,8 @@
             $$
             \begin{align}
             \,\,\,\,(x + 5)^2
-                &= x^2 + (2\cdot 5)x + 5^2 \\
-                &= \up{1.4} x^2 + 10x + 25
+            &= x^2 + (2\cdot 5)x + 5^2 \\
+            &= \up{1.4} x^2 + 10x + 25
             \end{align}
             $$
             and adding $5$ gives $x^2 + 10x + 30$.
@@ -2028,17 +2028,11 @@
 
             |> List
 
-                |> Item
+                1. <span>horizontal</span> translation by $-{B \over 2A}$
+            
+                2. vertical translation by ${-{B^2 \over 4A^2}}$
 
-                    1. <span>horizontal</span> translation by $-{B \over 2A}$
-                
-                |> Item
-
-                    2. vertical translation by ${-{B^2 \over 4A^2}}$
-
-                |> Item
-
-                    3. vertical scaling by $A$
+                3. vertical scaling by $A$
 
             |> Pause
 
@@ -2081,16 +2075,12 @@
         If you apply these transformations...
 
         |> List
-            |> Item
 
-                1. vertical translation by $-y_0$
+            1. vertical translation by $-y_0$
 
-            |> Item
+            2. horizontal translation by $x_0$
 
-                2. horizontal translation by $x_0$
-
-            |> Item
-                3. vertical scaling by $a$
+            3. vertical scaling by $a$
 
         ...to the curve $y = x^2$, what are the 
         roots of the final curve that you obtain?
@@ -2187,17 +2177,14 @@
             sequence of transformations (cf. Exercise 14):
 
             |> List
-                |> Item
 
-                    1. vertical translation by ${-{B^2 \over 4A^2}}$
+                1. vertical translation by ${-{B^2 \over 4A^2}}$
 
-                |> Item
 
-                    2. <span>horizontal</span> translation by $-{B \over 2A}$
+                2. <span>horizontal</span> translation by $-{B \over 2A}$
 
-                |> Item
 
-                    3. vertical scaling by $A$
+                3. vertical scaling by $A$
 
             (We put the vertical translation first.)
             By Exercise 15, the roots of $y = Ax^2 + Bx$ 
