@@ -1,0 +1,20 @@
+<svg viewBox='0 0 8.905 4.1'
+     xmlns='http://www.w3.org/2000/svg'
+     xmlns:xlink='http://www.w3.org/1999/xlink'
+     preserveAspectRatio='none'
+     xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'
+     xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'
+     style="overflow:visible;">
+    <style>
+        .post{ fill:#fdfdfd;stroke:#000;stroke-width:0.5; }
+    </style>
+    <g class='post'>
+        <path d='M 0.25,1.36 H 8.66 V 2.12 H 0.25 Z'/>
+        <path d='M 0.93,3.96 V 0.72 L 1.31,0.35 1.69,0.72 V 3.96'/>
+        <path d='M 2.5,3.96 V 0.72 L 2.87,0.35 3.25,0.72 V 3.96'/>
+        <path d='M 4.06,3.96 V 0.72 L 4.44,0.35 4.81,0.72 V 3.96'/>
+        <path d='M 5.62,3.96 V 0.72 L 6,0.35 6.38,0.72 V 3.96'/>
+        <path d='M 7.18,3.96 V 0.72 L 7.56,0.35 7.94,0.72 V 3.96'/>
+        <path d='M 0.06,4.08 H 8.79'/>
+    </g>
+</svg>

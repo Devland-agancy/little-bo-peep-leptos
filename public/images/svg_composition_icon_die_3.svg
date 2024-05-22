@@ -1,0 +1,16 @@
+<svg viewBox="-0.1 -0.1 7.4 6.5"
+     xmlns='http://www.w3.org/2000/svg'
+     xmlns:xlink='http://www.w3.org/1999/xlink'
+     preserveAspectRatio='none'
+     xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape'
+     xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd'
+     style="overflow:visible;">
+    <style>
+        .rectangle {fill:#fff;stroke:#000;stroke-width:0.493;}
+        .dot {fill:#000;stroke:#000;stroke-width:0.493;}
+    </style>
+    <rect class="rectangle" width='6.74113' height='6.74113' x='0.2465' y='0.2465' ry='1.4290587'/>
+    <circle class="dot" cx='3.52859' cy='3.63098' r='0.57932'/>
+    <circle class="dot" cx='5.15629' cy='2.0033' r='0.57932'/>
+    <circle class="dot" cx='1.97842' cy='5.37492' r='0.57932'/>
+</svg>
