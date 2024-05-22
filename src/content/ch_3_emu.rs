@@ -1,6 +1,6 @@
 /*
 |> Section
-
+    
     *Syntax.*
     A
 
@@ -10,7 +10,7 @@
     numbers) into outputs (usually numbers as well).
     One can think of a function as a box with an
     “input tube” and an “output tube”:
-
+    
     |> Image
         src images/svg_f_box.svg
         container_classes mb-4
@@ -1278,7 +1278,7 @@
 
             For the first graph, 
             |> del
-            
+
                 the 
             an answer is 
             $$
@@ -2178,11 +2178,9 @@
 
             |> List
 
-                1. vertical translation by ${-{B^2 \over 4A^2}}$
-
+                1. vertical translation by $-{B^2 \over 4A^2}$
 
                 2. <span>horizontal</span> translation by $-{B \over 2A}$
-
 
                 3. vertical scaling by $A$
 
@@ -2221,5 +2219,373 @@
             $$
             so here too we find that the roots are $x = 0$
             and $x = -B/A$. (It must be the right answer!)
+
+    |> Exercise
+
+        True or false ($f$ and $g$ are functions):
+
+        |> Table
+            cols vec![30, 250, 30, 170]
+            lines true
+
+            |> tr
+
+                |> td
+
+                    i. $f \circ g = (x \ra f(g(x)))$
+
+                |> td
+
+                    iii. $f \circ g = (x \ra g(f(x)))$
+            |> tr
+
+                |> td
+
+                    ii. $g \circ f = (x \ra f(g(x)))$
+
+                |> td
+
+                    iv. $g \circ f = (x \ra g(f(x)))$
+
+        |> Solution
+
+            The true statements are i, iv, because
+            $f \circ g$ is the function that maps an 
+            input $x$ to $f(g(x))$, and symmetrically 
+            for $g \circ f$. 
+
+    |> Exercise
+
+        If $f$ and $g$ are functions then we define 
+        (and not just us but people in general)
+        $$
+        f + g
+        $$
+        to be
+        $$
+        t \ra f(t) + g(t)
+        $$
+        (use ‘$x$’ if you like), 
+        i.e., to be the function that applies $f$ and
+        $g$ separately and then takes the sum,
+        and we define 
+        $$
+        fg
+        $$
+        to be
+        $$
+        z \ra f(z)g(z)
+        $$
+        (use ‘$t$’ if you like, hehe),
+        i.e., to be the function that applies $f$ and 
+        $g$ separately and then takes the product.
+        (These definitions are similar to how we define
+        $$
+        f \circ g
+        $$
+        to be
+        $$
+        u \ra f(g(u))
+        $$
+        for the symbol “$\circ$”, except that now we 
+        are defining the _sum_ and _product_ of functions,
+        instead of their _composition_, namely.)
+       
+        Given these definitions, which of the following
+        equalities hold, in general for all functions $f$,
+        $g$ and $h$?
+        $$f \circ (g + h) = (x \ra f(g(x)) + f(h(x)))$$
+        $$f \circ (g + h) = (x \ra f(g(x) + h(x)))$$
+        $$(g + h) \circ f = (x \ra h(f(x)) + g(f(x)))$$
+        $$(g + h) \circ f = (x \ra (g + h)(f(x)))$$
+
+        |> Solution
+
+            The first equality is false because the 
+            right-hand side is actually
+            $$
+            (f \circ g) + (f \circ h)
+            $$
+            not $f \circ (g + h)$; the second equality is
+            true; the third equality is true even though you
+            would expect the right-hand side to be written 
+            $$
+            (x \ra g(f(x)) + h(f(x)))
+            $$
+            with “$g$” and “$h$” switched (but addition is
+            commutative, so it doesn't matter); the fourth
+            equality is true: it is the definition of “$\circ$”.
+
+
+    |> Exercise
+        
+        What sequence of geometric transformations 
+        of length no more than 3 maps
+        $$
+        y = x^2
+        $$
+        onto
+        $$
+        y = Ax^2 + Bx + C
+        $$
+        for constants $A$, $B$, $C$ such that $A \ne 0$?
+
+        |> Solution
+
+            Write
+            $$
+            Ax^2 + Bx + C
+            $$
+            as
+            $$
+            A\Big(x^2 + {B \over A}x + {C\over A}\Big)
+            $$
+            and, similarly to Exercise 14, write
+            $$
+            x^2 + {B \over A}x
+            $$
+            as
+            $$
+            \Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2}
+            $$
+            so that, altogether, $Ax^2 + Bx + C$
+            becomes
+            $$
+            A\left[\Big(x + {B \over 2A}\Big)^2 - {B^2 \over 4A^2} + {C\over A}\right]
+            $$
+            or 
+            $$
+            A\left[\Big(x + {B \over 2A}\Big)^2 - {B^2 - 4AC\over 4A^2}\right]
+            $$
+            by putting things on a common denominator.
+            (We have endeavored to keep the minus sign 
+            out front of the common denominator fraction 
+            in order to maintain the most similarity with
+            the term “$-{B^2\over 4A}$” of Exercise 14,
+            that also has a minus sign out front.)
+           
+            By direct analogy with Exercise 14, the three
+            transformations are thus...
+
+            |> List
+
+                1. horizontal translation by $-{B \over 2A}$
+
+                2. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
+
+                3. vertical scaling by $A$
+
+            ...or...
+
+            |> List
+
+                1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
+
+                2. horizontal translation by $-{B \over 2A}$
+
+                3. vertical scaling by $A$
+            
+            ...if we put the vertical translation first.
+
+    |> Exercise
+            
+        What are the roots (i.e., solutions) $x$ of
+        $$
+        Ax^2 + Bx + C = 0
+        $$
+        for constants $A$, $B$, $C$ such that $A \ne 0$?
+
+        |> Solution
+
+            The curve
+            $$
+            y = Ax^2 + Bx + C
+            $$
+            is obtained from the curve $y = x^2$ by the following sequence of 
+            transformations (cf. Exercise 19):
+
+            |> List
+
+                1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
+                2. horizontal translation by $-{B \over 2A}$
+                3. vertical scaling by $A$
+
+            _|~|_
+
+            On the one hand, if
+            $$
+            {B^2 - 4AC \over 4A^2} < 0
+            $$
+            then
+            $$
+            -{B^2 - 4AC \over 4A^2} > 0
+            $$
+            and the vertical translation is _upward_, 
+            the curve detaches from the $x$ axis never
+            to see it again, and there are no roots!
+           
+            On the other hand, if
+            $$
+            {B^2 - 4AC \over 4A^2} \geq 0
+            $$
+            then the roots are given by
+            $$
+            x = -{B \over 2A} \pm \sqrt{B^2 - 4AC \over 4A^2}
+            $$
+            by Exercise 15. $\rightarrow$ ~The End~ $\leftarrow$
+
+            |> Pause
+
+            _Note 1._
+            In fact,
+            $$
+            \pm\sqrt{B^2 - 4AC \over 4A^2} = \pm {\sqrt{B^2 - 4AC} \over 2A}
+            $$
+            (square both sides of the equation—in general,
+            $$
+            \pm E = \pm F
+            $$
+            as one set of two values equalling another 
+            set of two values, if and only if
+            $$
+            |E| = |F|
+            $$
+            or 
+            $$
+            E^2 = F^2
+            $$
+            —so that's why we say “square both sides”),
+            so the formula for the roots can also be written
+            $$
+            x = -{B \over 2A} \pm {\sqrt{B^2 - 4AC} \over 2A}
+            $$
+            or
+            $$
+            x = {{-B \pm \sqrt{B^2 - 4AC}} \over 2A}
+            $$
+            as briefly flashed by, e.g., in Chapter 1.
+
+            |> Pause
+
+            _Note 2._
+            If
+            $$
+            {B^2 - 4AC \over 4A^2} < 0
+            $$
+            then
+            $$
+            \sqrt{B^2 - 4AC \over 4A^2}
+            $$
+            does not exist, alerting you to the absence 
+            of roots, if you try to use the first formula 
+            we gave. Also
+            $$
+            {B^2 - 4AC \over 4A^2} < 0\iff B^2 - 4AC < 0
+            $$
+            because $4A^2 > 0$ for all $A \ne 0$, 
+            so the second set of formulas would alert you
+            to the absence of roots in that case, as well.
+
+    |> Exercise
+
+        Summon your senses of extrapolation _&_ 
+        imagination to evaluate this expression:
+        $$
+        (f \ra x \ra h \ra {f(x+h) - f(x)\over h})(x \ra x^2)(5)(0.1)
+        $$
+        (Hint: The answer is a specific real number.)
+
+        |> Solution
+
+            ...in an expression such as...
+            $$
+            (x \ra x^3)(6)
+            $$
+            ...we pair the $x$ with $6$...
+
+            |> Image
+                src images/svg_connection_x_6.svg
+            
+            ...and $6$ becomes the value to use for $x$
+            in “$x^3$”:
+
+            |> Image
+                src images/svg_connection_x_6_in_computation.svg
+            
+            ...; in an expression such as...
+            $$
+            (x \ra y \ra x^3y)(6)
+            $$
+            ...we also pair the $x$ with $6$...
+
+            |> Image
+                src images/svg_connection_x_6_again.svg
+            
+            ...and $6$ becomes the value to use for $x$
+            in “$y \ra x^3y$”:
+        
+            |> Image
+                src images/svg_connection_x_6_again_in_computation.svg
+            
+            ...(in this case the result is not a number,
+            but a function—a function is a mathematical 
+            object like another, after all); in an 
+            expression such as...
+            
+            $$
+            (x \ra y \ra x^3y)(6)(8)
+            $$
+            
+            ...we pair the $x$ with $6$ and the $y$ with $8$...
+        
+            |> Image
+                src images/svg_connection_x_y_6_8.svg
+
+            ...and $6$ and $8$ become respectively the 
+            values to use for $x$ and $y$ in “$x^3y$”:
+        
+            |> Image
+                src images/svg_connection_x_y_6_8_in_computation.svg
+            
+            ...; now in an expression such as...
+            
+            $$
+            (f \ra x \ra h \ra {f(x+h) - f(x)\over h})(x \ra x^2)(5)(0.1)
+            $$
+            
+            ...we pair the $f$ with $x \ra x^2$, the 
+            $x$ with $5$, and the $h$ with $0.1$...
+        
+            |> Image
+                src images/svg_connection_f_x_h.svg
+            
+            ...and $x \ra x^2$, $5$ and $0.1$ become
+            respectively the values to use for $f$, $x$
+            and $h$ in “${f(x + h) - f(x)\over h}$”:
+        
+            |> Image
+                src images/svg_connection_f_x_h_in_computation.svg
+            
+            ...; evaluating...
+            $$
+            {(x \ra x^2)(5 + 0.1) - (x \ra x^2)(5) \over 0.1}
+            $$
+            ...we...
+            $$
+            {(x \ra x^2)(5.1) - (x \ra x^2)(5) \over 0.1}
+            $$
+            ...get...
+            $$
+            {5.1^2 - 5^2 \over 0.1}
+            $$
+            ...this...
+            $$
+            {26.01 - 25 \over 0.1}
+            $$
+            ..._thiiis_...
+            $$
+            {1.01 \over 0.1} = 1.01 \times 10 = 10.1
+            $$
+            ...result! (The answer is: ten point one.)
 
 */
