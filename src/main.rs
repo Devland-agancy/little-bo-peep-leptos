@@ -28,7 +28,7 @@ async fn main() {
 
     // run our app with hyper
     // `axum::Server` is a re-export of `hyper::Server`
-    log!("listening onww http://{}", &addr);
+    log!("listening on http://{}", &addr);
     axum::Server::bind(&addr)
         .serve(app.into_make_service())
         .await
