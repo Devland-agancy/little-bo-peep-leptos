@@ -3,12 +3,15 @@
 extern crate proc_macro;
 extern crate nom;
 
+use elm_parser::desugarer::{AttachToEnum, Desugarer, IgnoreOptions, ParagraphIndentOptions};
 use elm_parser::emitter::Emitter;
-use elm_parser::parser::{AutoWrapper, Parser};
+use elm_parser::parser::Parser;
+use elm_parser::parser_helpers::DataCell;
 
 use proc_macro::TokenStream;
 use proc_macro2::Ident;
 use quote::quote;
+use serde_json;
 use std::env;
 use std::fs;
 use syn::{parse_macro_input, LitStr};
@@ -32,54 +35,6 @@ pub fn elm(input: TokenStream) -> TokenStream {
     // Extract the HTML string
     let _cx = input_tokens.cx;
     let elm: LitStr = input_tokens.elm;
-
-    let mut parser: Parser = Parser::new(
-        vec!["img", "SectionDivider", "StarDivider", "InlineImage"],
-        vec![
-            AutoWrapper {
-                tags: vec!["ExerciseQuestion", "Example", "Section", "Solution"],
-                wrap_children_with: "Paragraph",
-                enable_manual_wrap: true,
-            },
-            AutoWrapper {
-                tags: vec!["Grid"],
-                wrap_children_with: "Span",
-                enable_manual_wrap: true,
-            },
-            AutoWrapper {
-                tags: vec!["List"],
-                wrap_children_with: "Item",
-                enable_manual_wrap: true,
-            },
-        ],
-        vec!["Example"],
-        vec![
-            "Image",
-            "DisplayImage",
-            "Pause",
-            "StarDivider",
-            "MathBlock",
-            "Table",
-            "SectionDivider",
-            "Example",
-            "InlineImage",
-            "List",
-            "Grid",
-            "del",
-        ],
-        vec![
-            "Section",
-            "Example",
-            "Solution",
-            "Table",
-            "td",
-            "ImageLink",
-            "Paragraph",
-            "ExerciseQuestion",
-            "Item",
-        ],
-        vec!["Grid", "List", "del"],
-    );
 
     let elm_string = if elm.value().starts_with("file:") {
         let file = format!(
@@ -112,23 +67,66 @@ pub fn elm(input: TokenStream) -> TokenStream {
         elm.value()
     };
 
-    let emitter = Emitter::new(elm_string)
-        .pre_process_exercises()
-        .remove_empty_line_above(
-            vec!["ImageRight", "ImageLeft"],
-            Some(("_attached", "false")),
-            parser.track_line_delta,
-        )
-        .pre_process_solutions()
-        .auto_increamental_title("Example", "Example", None, None)
-        .auto_increamental_title(
-            "Exercise",
-            "Exercise",
-            Some("ExerciseQuestion"),
-            Some("Solution"),
-        );
+    let mut json = Parser::new();
+    let json_tree = json.export_json(&elm_string, None, false);
 
-    let leptos_code = parser.transform(emitter.elm, 0);
+    let mut desugarer: Desugarer = Desugarer::new(json_tree.as_str(), json.id);
+    desugarer = desugarer
+        .pre_process_exercises()
+        .pre_process_solutions()
+        .wrap_children(
+            vec!["Section", "Solution", "Example"],
+            "Paragraph",
+            &Some(vec![
+                IgnoreOptions {
+                    element: "InlineImage",
+                    attach_to: AttachToEnum::BOTH,
+                },
+                IgnoreOptions {
+                    element: "ImageRight",
+                    attach_to: AttachToEnum::BEFORE,
+                },
+                IgnoreOptions {
+                    element: "ImageLeft",
+                    attach_to: AttachToEnum::BEFORE,
+                },
+            ]),
+        )
+        .wrap_children(vec!["Grid"], "Span", &None)
+        .wrap_children(vec!["List"], "Item", &None)
+        .add_indent(&ParagraphIndentOptions {
+            tags_before_non_indents: vec![
+                "Image",
+                "DisplayImage",
+                "Pause",
+                "StarDivider",
+                "MathBlock",
+                "Table",
+                "SectionDivider",
+                "Example",
+                "InlineImage",
+                "List",
+                "Grid",
+            ],
+            tags_with_non_indent_first_child: vec![
+                "Section",
+                "Example",
+                "Solution",
+                "Table",
+                "td",
+                "ImageLink",
+                "Paragraph",
+                "ExerciseQuestion",
+                "Item",
+            ],
+        });
+
+    let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
+
+    let emitter: Emitter =
+        Emitter::new(vec!["img", "SectionDivider", "InlineImage", "StarDivider"]);
+    let leptos_code = emitter.emit_json(&json_value);
+
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
 
     let output = quote! {
