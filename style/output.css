@@ -1699,7 +1699,8 @@ span .MathJax_SVG{
 }
 
 .pr:has(.pause) + .spacer,
-.mathblock + .spacer {
+.mathblock + .spacer,
+.pr:has(.solution) + .spacer  {
   display: none;
 }
 
@@ -1708,7 +1709,8 @@ span .MathJax_SVG{
 }
 
 .example > .spacer:last-child,
-.sec:nth-last-child(6) > .spacer:last-child
+.sec:nth-last-child(6) > .spacer:last-child,
+.solution .spacer:last-child
 {
   height: 0;
 }

@@ -461,11 +461,11 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
     });
     view! { cx,
       {children(cx)}
-      <Show fallback=|_| () when=move || solution_open() && solution_fully_opened()>
-        <div class="text-xl flex items-center justify-center gap-2 col-start-2">
+        <div class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity duration-500"
+            class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
+        >
           <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
         </div>
-      </Show>
     }
 }
 

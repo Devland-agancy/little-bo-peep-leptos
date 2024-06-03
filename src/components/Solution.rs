@@ -126,7 +126,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         }/>
       </div>
       <div
-        class="col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
+        class="solution col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
         class=("pointer-events-none", move || !solution_open())
         class=("animated-height-full", move || solution_open())
         style=move || {
