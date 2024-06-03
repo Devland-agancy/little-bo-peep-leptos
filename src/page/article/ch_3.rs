@@ -9,6 +9,7 @@ use crate::components::ImageLink::*;
 use crate::components::ImageRight::*;
 use crate::components::Indent::*;
 use crate::components::InlineImage::*;
+use crate::components::List::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
 use crate::components::Paragraph::*;
