@@ -2,6 +2,7 @@ use crate::components::Article::*;
 use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
 use crate::components::Exercises::*;
+use crate::components::Grid::*;
 use crate::components::Image::*;
 use crate::components::ImageLeft::*;
 use crate::components::ImageLink::*;

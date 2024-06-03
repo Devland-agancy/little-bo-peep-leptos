@@ -988,90 +988,40 @@
 
         Evaluate:
 
-        |> Table
-            cols vec![27, 170, 27, 230]
+        |> Grid
+            cols 2
+            sm_cols 1
+            sm_cutoff 520
+            center_on_overflow true
+            place_items start
 
-            |> tr
+            i. $(\lambda u.u^3)(0.5)$
                 
-                |> td
-                
-                    i.
-                
-                |> td
-                
-                    $(\lambda u.u^3)(0.5)$
-                
-                |> td
-                
-                    iii.
+            iii. $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
 
-                |> td
-                
-                    $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
-            
-            |> tr
-                margin-top 10pt
+            ii. $(u \ra u^2)(x + 1)$
 
-                |> td
-                
-                    ii.
-
-                |> td
-                
-                    $(u \ra u^2)(x + 1)$
-
-                |> td
-                
-                    iv.
-
-                |> td
-                
-                    $(u \ra u^2)(a + b)$
-
+            iv. $(u \ra u^2)(a + b)$
+                    
 
         |> Solution
 
             The answers are:
 
-            |> Table
-                cols vec![27, 230, 27, 230]
+            |> Grid
+                cols 2
+                sm_cols 1
+                sm_cutoff 520
+                center_on_overflow true
+                place_items start
 
-                |> tr
+                i. $0.5^3 = 0.125$
                     
-                    |> td
-                    
-                        i.
-                    
-                    |> td
-                    
-                        $0.5^3 = 0.125$
-                    
-                    |> td
-                    
-                        iii.
+                iii. $(100 - 1) \cdot (100 + 1) = 9999$
 
-                    |> td
-                    
-                        $(100 - 1) \cdot (100 + 1) = 9999$
-                
-                |> tr
+                ii. $(x + 1)^2 = x^2 + 2x + 1$
 
-                    |> td
-                    
-                        ii.
-
-                    |> td
-                    
-                        $(x + 1)^2 = x^2 + 2x + 1$
-
-                    |> td
-                    
-                        iv.
-
-                    |> td
-                    
-                        $(a + b)^2 = a^2 + 2ab + b^2$
-
+                iv. $(a + b)^2 = a^2 + 2ab + b^2$
 
     |> Exercise
         
