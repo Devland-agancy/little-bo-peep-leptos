@@ -75,7 +75,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
         .pre_process_exercises()
         .pre_process_solutions()
         .wrap_children(
-            vec!["Section", "Solution", "Example"],
+            vec!["Section", "Solution", "Example", "Exercise"],
             "Paragraph",
             &Some(vec![
                 IgnoreOptions {
@@ -117,6 +117,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "ImageLink",
                 "Paragraph",
                 "ExerciseQuestion",
+                "Exercise",
                 "Item",
             ],
         });

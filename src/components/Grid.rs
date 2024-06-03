@@ -75,14 +75,21 @@ pub fn Grid(
               if center_on_overflow && (children_count as i16 % sm_cols) == 1 && label.0 == (children_count -1) {
                   return view! {
                   cx,
-                  <Span classes="col-span-full sm:col-span-1">
+                  <Span classes="col-span-full sm:col-span-1 w-max">
                     {com.children}
                   </Span>
                 };
               }
-              return com.into_view(cx);
+              return view! {
+                cx,
+                <Span classes="w-max">
+                  {com.children}
+                </Span>
+              };
             },
-          _ => view!{cx, <Span>""</Span>}
+          _ => {
+            view!{cx, <Span>""</Span>}
+          }
           }
         }
       />
