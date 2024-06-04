@@ -15,17 +15,21 @@ pub fn Span(
     let centered = align == Align::Center;
 
     view! { cx,
-        <span
-            style=format!("margin-inline: {}", if centered { CENTERED_PARAGRAPH_X_MARGIN } else {"0"})
-            class=move || {
-                format!(
-                    "{} {} {} {} {}",
-                    classes,
-                    if italic { "font-baskerville-italic" } else { "" },
-                    if bold { "font-baskerville-bold" } else { "" },
-                    if centered { "text-center block" } else { "" },
-                    if centered && show_areas() { "bg-[#ebe3a0b0]" } else { "" }
-            )}
-        >{children(cx)}</span>
+      <span
+        style=format!("margin-inline: {}", if centered { CENTERED_PARAGRAPH_X_MARGIN } else { "0" })
+        class=move || {
+            format!(
+                "{} {} {} {} {}",
+                classes,
+                if italic { "font-baskerville-italic" } else { "" },
+                if bold { "font-baskerville-bold" } else { "" },
+                if centered { "text-center block" } else { "" },
+                if centered && show_areas() { "bg-[#ebe3a0b0]" } else { "" },
+            )
+        }
+      >
+
+        {children(cx)}
+      </span>
     }
 }

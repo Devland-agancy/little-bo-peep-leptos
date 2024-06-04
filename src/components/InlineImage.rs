@@ -11,8 +11,20 @@ pub fn InlineImage(
     #[prop(default = "")] margin_right: &'static str,
 ) -> impl IntoView {
     view! { cx,
-      <div class="bg-cover inline-block relative" style=move || format!("width: {}; height: {}; background-image: url({}); top: {}; margin-left: {}; margin-right: {};", width, height, src, y_anchor, margin_left, margin_right)>
-
+      <div
+        class="bg-cover inline-block relative"
+        style=move || {
+            format!(
+                "width: {}; height: {}; background-image: url({}); top: {}; margin-left: {}; margin-right: {};",
+                width,
+                height,
+                src,
+                y_anchor,
+                margin_left,
+                margin_right,
+            )
+        }
+      >
       </div>
     }
 }

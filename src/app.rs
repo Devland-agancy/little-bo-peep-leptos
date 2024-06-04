@@ -87,10 +87,10 @@ pub fn App(cx: Scope) -> impl IntoView {
       // sets the document title
       <Title text="Little Bo Peep"/>
       <Link href="/images/book_favicon_sized_v2_dev.svg" rel="icon"/>
-      <Script  src="/mathjax_setup.js" defer="true"/>
+      <Script src="/mathjax_setup.js" defer="true"/>
       <Script
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
-      defer="true"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
+        defer="true"
       />
 
       // content for this welcome page
@@ -100,8 +100,8 @@ pub fn App(cx: Scope) -> impl IntoView {
           view! { cx, <ErrorTemplate outside_errors/> }.into_view(cx)
       }>
         <main>
-          <MenuButton />
-          <ChapterMenu />
+          <MenuButton/>
+          <ChapterMenu/>
           <Article>
             <Header/>
             <Routes>
@@ -113,6 +113,6 @@ pub fn App(cx: Scope) -> impl IntoView {
           </Article>
         </main>
       </Router>
-      <SVGDefinitions />
+      <SVGDefinitions/>
     }
 }

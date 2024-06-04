@@ -64,11 +64,10 @@ pub fn ImageRight(
 
     view! { cx,
       <div
-          node_ref=node_ref
-          style=move || {
+        node_ref=node_ref
+        style=move || {
             let line_str: String;
             let mut left_pos = "calc(100% - 0.5rem)".to_string();
-
             if line > 0.0 {
                 line_str = ((line - 0.5) * line_height()).to_string() + "px";
             } else if line < 0.0 {
@@ -78,39 +77,32 @@ pub fn ImageRight(
                     "bottom" => "100%".to_string(),
                     "top" => "0%".to_string(),
                     "center" => "50%".to_string(),
-                  _ => y.to_string(),
+                    _ => y.to_string(),
                 };
             }
-
             if edge_signal() == "formula_edge" {
-              left_pos = "100%".to_string();
+                left_pos = "100%".to_string();
             }
-            format!(
-                "top: {}; left: {}",
-                line_str,
-                left_pos
-            )
+            format!("top: {}; left: {}", line_str, left_pos)
         }
+
         class="side-img absolute -translate-x-1/2 w-1 h-1 "
       >
-        <div
-          class="w-1 h-1 relative z-20"
-          class=("bg-red-500", move || show_areas())
-        ></div>
+        <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas())></div>
 
         <div
           style=move || {
               format!(
                   "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
                   offset_x,
-                  if offset_y.contains("%") {"0px"} else {offset_y} ,
+                  if offset_y.contains("%") { "0px" } else { offset_y },
                   match img_position {
                       "bottom" => "-50%",
                       "top" => "50%",
                       _ => "0%",
                   },
-                  if offset_y.contains("%") {offset_y} else {"0px"} ,
-                  padding
+                  if offset_y.contains("%") { offset_y } else { "0px" },
+                  padding,
               )
           }
 
@@ -127,9 +119,8 @@ pub fn ImageRight(
           </div>
           <img node_ref=image_ref src=src class="max-w-max"/>
 
-          /* test  */
           <div
-              style=move || {
+            style=move || {
                 format!(
                     "top: calc(50% - {}); transform: translateY(-50%)",
                     match img_position {
@@ -139,12 +130,12 @@ pub fn ImageRight(
                     },
                 )
             }
+
             class="absolute left-0 w-1 h-1"
             class=("bg-blue-900", move || show_areas())
-            >
-          </div>
+          ></div>
         </div>
-        /*  */
+
         <Show fallback=|_| () when=move || use_squiggle_on_mobile>
           <div
             class="block sm:hidden absolute"
@@ -160,6 +151,7 @@ pub fn ImageRight(
                 )
             }
           >
+
             <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
           </div>
         </Show>

@@ -27,9 +27,26 @@ pub fn ArticleTitle(
     });
 
     view! { cx,
-      <div class="sm:grid gridColsWidth pt-14" >
-        <h1 class="sm:col-start-2 text-3xl sm:text-4xl p-4" style=move || format!("margin-top: {};margin-bottom: {}", if mobile() {CHAPTER_TITLE_TOP_MARGIN_MOBILE} else {CHAPTER_TITLE_TOP_MARGIN_DESKTOP}, if mobile() {CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE} else {CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP})>
-          <span class="sm:hidden">{if on_mobile == "" {label} else {on_mobile}}</span>
+      <div class="sm:grid gridColsWidth pt-14">
+        <h1
+          class="sm:col-start-2 text-3xl sm:text-4xl p-4"
+          style=move || {
+              format!(
+                  "margin-top: {};margin-bottom: {}",
+                  if mobile() {
+                      CHAPTER_TITLE_TOP_MARGIN_MOBILE
+                  } else {
+                      CHAPTER_TITLE_TOP_MARGIN_DESKTOP
+                  },
+                  if mobile() {
+                      CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE
+                  } else {
+                      CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP
+                  },
+              )
+          }
+        >
+          <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
           <span class="hidden sm:block">{label}</span>
         </h1>
       </div>

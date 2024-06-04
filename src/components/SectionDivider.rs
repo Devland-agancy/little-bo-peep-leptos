@@ -35,16 +35,14 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
         ..
     } = use_context::<GlobalState>(cx).unwrap();
 
-    view! {
-      cx,
+    view! { cx,
       <Show
-        fallback=move |_| view! {cx, <Pause>""</Pause>}
-        when=move || !hidden() && show_section_divider() >
-          <Image
-            src="/images/section_divider.svg"
-            width="100%"
-            image_classes="col-start-2 mt-4"
-          >""</Image>
+        fallback=move |_| view! { cx, <Pause>""</Pause> }
+        when=move || !hidden() && show_section_divider()
+      >
+        <Image src="/images/section_divider.svg" width="100%" image_classes="col-start-2 mt-4">
+          ""
+        </Image>
       </Show>
     }
 }

@@ -17,8 +17,8 @@ pub fn Header(cx: Scope) -> impl IntoView {
       </div>
       <div
         style=format!("top: {}px", HUMBURGER_MENU_HEIGHT - 1.0)
-        class="h-0 border-b left-[-1500px] w-[4400px] fixed z-50">
-      </div>
+        class="h-0 border-b left-[-1500px] w-[4400px] fixed z-50"
+      ></div>
     }
 }
 
@@ -27,13 +27,11 @@ fn Title(cx: Scope) -> impl IntoView {
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <div
-        class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0"
-        id="Header"
-      >
-        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2"
-        >
-          <a on:click=move |_| route.set("/") href="/">"Little Bo Peep"</a>
+      <div class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0" id="Header">
+        <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
+          <a on:click=move |_| route.set("/") href="/">
+            "Little Bo Peep"
+          </a>
         </div>
       </div>
     }
@@ -68,19 +66,26 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })
       >
         <div
-        style=format!("min-height: calc(100vh - {}px); height: calc(100vh - {}px)", HUMBURGER_MENU_HEIGHT - 1.0, HUMBURGER_MENU_HEIGHT)
-        class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]">
+          style=format!(
+              "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
+              HUMBURGER_MENU_HEIGHT - 1.0,
+              HUMBURGER_MENU_HEIGHT,
+          )
+          class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
+        >
           <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
             <MenuItems/>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">"Options"</h2>
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">
+              "Options"
+            </h2>
             <div class="flex items-center justify-end gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2">
               <p>"Show Areas"</p>
-              <Checkbox value=show_areas />
+              <Checkbox value=show_areas/>
             </div>
             <div class="flex items-center justify-end gap-2 text-lg sm:text-xl">
               <p>"Show Section Dividers"</p>
-              <Checkbox value=show_section_divider />
+              <Checkbox value=show_section_divider/>
             </div>
           </div>
         </div>
@@ -94,7 +99,9 @@ fn MenuItems(cx: Scope) -> impl IntoView {
       <ul>
         {MENU_ITEMS
             .into_iter()
-            .map(|(title, on_mobile, url)| view! { cx, <MenuItem label=title on_mobile=on_mobile href=url /> })
+            .map(|(title, on_mobile, url)| {
+                view! { cx, <MenuItem label=title on_mobile=on_mobile href=url/> }
+            })
             .collect_view(cx)}
 
       </ul>
@@ -113,14 +120,15 @@ fn MenuItem(
     view! { cx,
       <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
         <a
-          on:click=move |_|{
-            route.set(href);
+          on:click=move |_| {
+              route.set(href);
           }
+
           href=["/article/", href].concat()
           class="text-stone-900 hover:text-sky-800 text-lg sm:text-xl"
         >
-        <span class="sm:hidden">{if on_mobile == "" {label} else {on_mobile}}</span>
-        <span class="hidden sm:block">{label}</span>
+          <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
+          <span class="hidden sm:block">{label}</span>
         </a>
       </li>
     }
@@ -172,16 +180,19 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     view! { cx,
       <div
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
-        class=("hover:border-b-0", move ||  menu_closed() && !on_mobile.get() && window_scroll() > 0_f64 )
+        class=(
+            "hover:border-b-0",
+            move || menu_closed() && !on_mobile.get() && window_scroll() > 0_f64,
+        )
         class=("sm:border-b-0", move || !menu_closed() || window_scroll() > HUMBURGER_MENU_HEIGHT)
         style=move || {
-          format!(
-              "opacity: {}",
-              if menu_closed() && !on_mobile.get() { button_opacity() } else { 1_f64 }
+            format!(
+                "opacity: {}",
+                if menu_closed() && !on_mobile.get() { button_opacity() } else { 1_f64 },
             )
         }
-
       >
+
         <button
           class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
 
@@ -222,21 +233,28 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
                   })
           }
         >
+
           <HamburgerIcon/>
         </button>
       </div>
-        <div
+      <div
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())
         class=("h-[5.25rem]", move || !scrolled_header() && !burger_background.get())
 
         style=move || {
-        format!(
-            " background-color: {}; ",
-            if scrolled_header() && burger_background.get() { "transparent" } else if show_areas() { "#fff000" } else { "#fff" },
-          )
-      } >
-    </div>
+            format!(
+                " background-color: {}; ",
+                if scrolled_header() && burger_background.get() {
+                    "transparent"
+                } else if show_areas() {
+                    "#fff000"
+                } else {
+                    "#fff"
+                },
+            )
+        }
+      ></div>
     }
 }
 
@@ -246,8 +264,7 @@ fn HamburgerIcon(cx: Scope) -> impl IntoView {
     let menu_closed =
         move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
     view! { cx,
-      <svg
-       width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
+      <svg width="30px" height="30px" version="1.1" viewBox="0 0 30 30">
         <g>
           <rect
             x="5"

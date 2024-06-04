@@ -28,6 +28,7 @@ pub fn Table(
             "col-start-2 min-h-fit my-4 w-fit relative left-1/2 -translate-x-1/2 {}",
             classes,
         )
+
         style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
       >
         <table

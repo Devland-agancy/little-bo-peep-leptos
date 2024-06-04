@@ -74,40 +74,29 @@ pub fn ImageLeft(
                     "bottom" => "100%".to_string(),
                     "top" => "0%".to_string(),
                     "center" => "50%".to_string(),
-                  _ => y.to_string(),
+                    _ => y.to_string(),
                 };
             }
-
-            let left_pos = if edge_signal() == "formula_edge" {
-              "0"
-            } else { "0.5rem" };
-
-            format!(
-                "top: {}; left: {}",
-                line_str,
-                left_pos
-            )
+            let left_pos = if edge_signal() == "formula_edge" { "0" } else { "0.5rem" };
+            format!("top: {}; left: {}", line_str, left_pos)
         }
 
         class="absolute -translate-x-1/2 w-1 h-1"
       >
-        /* show pivot */
-        <div
-        class="w-1 h-1 relative z-20"
-        class=("bg-red-500", move || show_areas())
-        ></div>
+
+        <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas())></div>
         <div
           style=move || {
               format!(
                   "right: calc(-100% + {}); top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
                   offset_x,
-                  if offset_y.contains("%") {"0px"} else {offset_y} ,
+                  if offset_y.contains("%") { "0px" } else { offset_y },
                   match img_position {
                       "bottom" => "-50%",
                       "top" => "50%",
                       _ => "0%",
                   },
-                  if offset_y.contains("%") {offset_y} else {"0px"} ,
+                  if offset_y.contains("%") { offset_y } else { "0px" },
                   padding,
               )
           }
@@ -124,42 +113,42 @@ pub fn ImageLeft(
           }>{children(cx)}</div>
           <img node_ref=image_ref src=src class="max-w-max"/>
 
-           /* test  */
-        <div
-           style=move || {
-             format!(
-                 "top: calc(50% - {}); transform: translateY(-50%)",
-                 match img_position {
-                     "bottom" => "-50%",
-                     "top" => "50%",
-                     _ => "0%",
-                 },
-             )
-         }
-         class="absolute right-0 w-1 h-1"
-         class=("bg-blue-900", move || show_areas())
-         >
-        </div>
-        /*  */
+          <div
+            style=move || {
+                format!(
+                    "top: calc(50% - {}); transform: translateY(-50%)",
+                    match img_position {
+                        "bottom" => "-50%",
+                        "top" => "50%",
+                        _ => "0%",
+                    },
+                )
+            }
+
+            class="absolute right-0 w-1 h-1"
+            class=("bg-blue-900", move || show_areas())
+          ></div>
+
         </div>
         <Show fallback=|_| () when=move || use_squiggle_on_mobile>
-            <div
-              class="block sm:hidden absolute"
-              class=("outline-[20px]", move || show_areas())
-              class=("outline-[#3f9aff7d]", move || show_areas())
-              class=("outline", move || show_areas())
+          <div
+            class="block sm:hidden absolute"
+            class=("outline-[20px]", move || show_areas())
+            class=("outline-[#3f9aff7d]", move || show_areas())
+            class=("outline", move || show_areas())
 
-              style=move || {
-                  format!(
-                      "right: 50%; top: {}; transform: translate(50%, -50%); padding: {}",
-                      squiggle_y,
-                      "2.6rem",
-                  )
-              }
-            >
-              <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
-            </div>
-          </Show>
+            style=move || {
+                format!(
+                    "right: 50%; top: {}; transform: translate(50%, -50%); padding: {}",
+                    squiggle_y,
+                    "2.6rem",
+                )
+            }
+          >
+
+            <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
+          </div>
+        </Show>
       </div>
     }
 }

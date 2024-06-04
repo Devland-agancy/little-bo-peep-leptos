@@ -56,7 +56,6 @@ pub fn Paragraph(
     });
 
     view! { cx,
-
       <span
         id=id
         node_ref=node_ref
@@ -74,13 +73,13 @@ pub fn Paragraph(
                 Indent::Custom(s) => s,
                 _ => "",
             },
-            if !no_padding {TEXT_LEFT_PADDING} else {"0"},
-            if !no_padding {TEXT_RIGHT_PADDING} else {"0"},
+            if !no_padding { TEXT_LEFT_PADDING } else { "0" },
+            if !no_padding { TEXT_RIGHT_PADDING } else { "0" },
         )
       >
 
         {children(cx)}
       </span>
-      <Spacer />
+      <Spacer/>
     }
 }
