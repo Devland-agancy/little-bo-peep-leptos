@@ -86,44 +86,58 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     let navigate = use_navigate(cx);
 
     view! { cx,
-      <div node_ref=button class="relative col-start-2"
-      style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
+      <div
+        node_ref=button
+        class="relative col-start-2"
+        style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
       >
-        <SolutionSVG solution_number=solution_number on_click=move |_| {
-            // Get the element's bottom position relative to the document
-            let element_pos = window().inner_height().unwrap().as_f64().unwrap() -  button().unwrap().get_bounding_client_rect().bottom();
-
-            let should_scroll_to_button_first = element_pos > GREEN_DIV_HEIGHT as f64 + 40_f64+ 56_f64 ; // empty div beneath + solution button margin bot + padding bottom of page
-
-            if solution_open() && should_scroll_to_button_first {
-              let mut options = ScrollIntoViewOptions::new();
-              options.behavior(ScrollBehavior::Smooth);
-              document().get_element_by_id("exo").unwrap().scroll_into_view_with_scroll_into_view_options(&options);
-            }
-            set_transition(true);
-            set_timeout(move || set_transition(false), Duration::from_millis(1100));
-            let options = NavigateOptions {
-              resolve: true,
-              replace: false,
-              scroll: false,
-              state: State(None)
-            };
-            if let Ok(search_params) = window().location().search() {
-              let new_url: String;
-              if search_params.contains("&opened=true") {
-                new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=true", "&opened=false")
-              }else if search_params.contains("&opened=false"){
-                new_url = window().location().pathname().unwrap() + &search_params.replace("&opened=false", "&opened=true")
-              }else if &search_params == ""{
-                new_url = window().location().pathname().unwrap() + "?tab=0" + &format!("&opened={}", !solution_open())
-              }else{
-                new_url = window().location().pathname().unwrap() + &search_params + &format!("&opened={}", !solution_open())
-
+        <SolutionSVG
+          solution_number=solution_number
+          on_click=move |_| {
+              let element_pos = window().inner_height().unwrap().as_f64().unwrap()
+                  - button().unwrap().get_bounding_client_rect().bottom();
+              let should_scroll_to_button_first = element_pos
+                  > GREEN_DIV_HEIGHT as f64 + 40_f64 + 56_f64;
+              if solution_open() && should_scroll_to_button_first {
+                  let mut options = ScrollIntoViewOptions::new();
+                  options.behavior(ScrollBehavior::Smooth);
+                  document()
+                      .get_element_by_id("exo")
+                      .unwrap()
+                      .scroll_into_view_with_scroll_into_view_options(&options);
               }
-              let _ = navigate(&new_url, options);
-            }
-            GlobalState::update_solutions_state(solutions_state, solution_number, !solution_open());
-        }/>
+              set_transition(true);
+              set_timeout(move || set_transition(false), Duration::from_millis(1100));
+              let options = NavigateOptions {
+                  resolve: true,
+                  replace: false,
+                  scroll: false,
+                  state: State(None),
+              };
+              if let Ok(search_params) = window().location().search() {
+                  let new_url: String;
+                  if search_params.contains("&opened=true") {
+                      new_url = window().location().pathname().unwrap()
+                          + &search_params.replace("&opened=true", "&opened=false")
+                  } else if search_params.contains("&opened=false") {
+                      new_url = window().location().pathname().unwrap()
+                          + &search_params.replace("&opened=false", "&opened=true")
+                  } else if &search_params == "" {
+                      new_url = window().location().pathname().unwrap() + "?tab=0"
+                          + &format!("&opened={}", !solution_open())
+                  } else {
+                      new_url = window().location().pathname().unwrap() + &search_params
+                          + &format!("&opened={}", !solution_open())
+                  }
+                  let _ = navigate(&new_url, options);
+              }
+              GlobalState::update_solutions_state(
+                  solutions_state,
+                  solution_number,
+                  !solution_open(),
+              );
+          }
+        />
       </div>
       <div
         class="solution col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
@@ -145,10 +159,15 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         </div>
 
       </div>
-       <Show fallback=|_| () when=move || !solution_open() || bot_div()>
-        <div style=format!("height: {}px; background-color: {}", GREEN_DIV_HEIGHT, if show_areas() { "#00440050" } else { "" })>
-        </div>
-      </Show>
+      <div
+        class="transition-all duration-500"
+        style=move || format!(
+            "height: {}px; background-color: {}",
+            if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
+            if show_areas() { "#00440050" } else { "" },
+        )
+      >
+      </div>
     }
 }
 
@@ -181,7 +200,7 @@ where
     view! { cx,
       <div
         id="solution-button"
-        node_ref = button
+        node_ref=button
         class="column solution_button_div cursor-pointer mb-12"
       >
         <svg class="mx-auto h-[37px] overflow-visible">
@@ -220,12 +239,12 @@ where
               class=("inactive_solution_button_hands", move || solution_open())
             >
               <g transform="translate(101.5, 18)">
-                <use_ href="#finger_pointing_left"/>
+                <use_ href="#finger_pointing_left"></use_>
               </g>
               <g transform="scale(-1, 1) translate(-8, 20)">
-                <use_ href="#finger_pointing_left"/>
+                <use_ href="#finger_pointing_left"></use_>
               </g>
-              <use_ href="#solution_button_text"/>
+              <use_ href="#solution_button_text"></use_>
             </g>
           </g>
         </svg>
