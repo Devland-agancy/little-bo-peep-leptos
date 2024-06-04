@@ -1704,10 +1704,6 @@ span .MathJax_SVG{
   display: none;
 }
 
-.mathblock:nth-last-child(n+3) + .spacer {
-  display: block !important;
-}
-
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
 .solution .spacer:last-child
