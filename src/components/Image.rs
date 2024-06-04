@@ -71,7 +71,13 @@ pub fn Image(
     view! { cx,
       <div
         node_ref=image_ref
-        style=move || format!("padding-left: {}px; padding-right: {}px;", if show_padding() {padding_left} else {0_f64}, if show_padding() {padding_right} else {0_f64} )
+        style=move || {
+            format!(
+                "padding-left: {}px; padding-right: {}px;",
+                if show_padding() { padding_left } else { 0_f64 },
+                if show_padding() { padding_right } else { 0_f64 },
+            )
+        }
         class=move || {
             format!(
                 "relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {}",
@@ -79,34 +85,38 @@ pub fn Image(
             )
         }
       >
+
         <img
           on:click=move |e| {
-            if cloud_image && is_wide() && page_state() == PageState::ShowArticle {
-              e.stop_propagation();
-              set_page_state
-                  .update(|value| {
-                      *value = PageState::ShowRight;
-                  });
+              if cloud_image && is_wide() && page_state() == PageState::ShowArticle {
+                  e.stop_propagation();
+                  set_page_state
+                      .update(|value| {
+                          *value = PageState::ShowRight;
+                      });
                   margin_scroll_value
-                  .update(|val| {
-                      *val = 100_f64;
-                  })
-            }
+                      .update(|val| {
+                          *val = 100_f64;
+                      })
+              }
           }
+
           id=id
           src=src
-          style= move || format!("height: {}; width: {}; position:relative; left: 50%; transform: translateX(-50%);", height, width)
-          class=move || {
+          style=move || {
               format!(
-                  "max-w-none {}",
-                  image_classes,
+                  "height: {}; width: {}; position:relative; left: 50%; transform: translateX(-50%);",
+                  height,
+                  width,
               )
           }
+          class=move || { format!("max-w-none {}", image_classes) }
+
           class=("outline-[20px]", move || show_areas() && cloud_image && is_wide())
           class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wide())
           class=("outline", move || show_areas() && cloud_image && is_wide())
         />
-          {children(cx)}
+        {children(cx)}
       </div>
     }
 }

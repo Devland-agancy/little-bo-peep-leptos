@@ -409,6 +409,7 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
                 })
                 .enumerate()
         }
+
         key=|label| label.0
         view=move |cx, label| {
             view! { cx,
@@ -461,19 +462,18 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
     });
     view! { cx,
       {children(cx)}
-        <div class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity duration-500"
-            class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
-        >
-          <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
-        </div>
+      <div
+        class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity duration-500"
+        class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
+      >
+        <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
+      </div>
     }
 }
 
 #[component]
 pub fn ExerciseQuestion(cx: Scope, children: ChildrenFn) -> impl IntoView {
     view! { cx,
-    <div class="animate-appear-slow col-start-2 block relative flex flex-col">
-      {children(cx)}
-    </div>
+      <div class="animate-appear-slow col-start-2 block relative flex flex-col">{children(cx)}</div>
     }
 }

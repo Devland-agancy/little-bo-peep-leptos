@@ -9,8 +9,8 @@ use crate::global_state::GlobalState;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-        <ArticleTitle label="Chapters"/>
-        <ArticleBody/>
+      <ArticleTitle label="Chapters"/>
+      <ArticleBody/>
     }
 }
 
@@ -21,9 +21,11 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
         <Paragraph>
           <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl">
             {MENU_ITEMS
-              .into_iter()
-              .map(|(title, on_mobile, url)| view! { cx, <MenuItem label=title on_mobile=on_mobile href=url /> })
-              .collect_view(cx)}
+                .into_iter()
+                .map(|(title, on_mobile, url)| {
+                    view! { cx, <MenuItem label=title on_mobile=on_mobile href=url/> }
+                })
+                .collect_view(cx)}
           </ul>
         </Paragraph>
       </Columns>
@@ -40,8 +42,8 @@ fn MenuItem(
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <a href={["/article/", href].concat()} class="block" on:click=move |_| route.set(href)>
-        <span class="sm:hidden">{if on_mobile == "" {label} else {on_mobile}}</span>
+      <a href=["/article/", href].concat() class="block" on:click=move |_| route.set(href)>
+        <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
         <span class="hidden sm:block">{label}</span>
       </a>
     }

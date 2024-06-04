@@ -101,6 +101,7 @@ pub fn MathBlock(
             )
         }
       >
+
         {children(cx)}
         <div
           on:click=move |e| {
@@ -121,7 +122,7 @@ pub fn MathBlock(
         >
           <img src="/images/cream.svg" class="m-auto h-2.5"/>
         </div>
-    </div>
-    <Spacer />
+      </div>
+      <Spacer/>
     }
 }

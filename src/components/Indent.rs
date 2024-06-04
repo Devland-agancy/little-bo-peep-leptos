@@ -23,10 +23,7 @@ pub fn Indent(cx: Scope, children: Children) -> impl IntoView {
     });
 
     view! { cx,
-      <span
-        node_ref=node_ref
-        class="indent-10 block"
-      >
+      <span node_ref=node_ref class="indent-10 block">
         {children(cx)}
       </span>
     }

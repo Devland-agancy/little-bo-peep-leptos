@@ -28,10 +28,10 @@ use leptos::*;
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,
-        <ArticleTitle on_mobile=MENU_ITEMS[2].1 label=MENU_ITEMS[2].0/>
-        <Columns>
-            <ArticleBody />
-        </Columns>
+      <ArticleTitle on_mobile=MENU_ITEMS[2].1 label=MENU_ITEMS[2].0/>
+      <Columns>
+        <ArticleBody/>
+      </Columns>
     }
 }
 

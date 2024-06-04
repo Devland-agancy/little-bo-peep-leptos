@@ -41,7 +41,13 @@ pub fn Grid(
     view! { cx,
       <span
         id=id
-        class=move || format!("col-start-2 grid flex-wrap min-h-fit grid-cols-{} {} ", if sm_cols != -1 && sm_activated() { sm_cols } else { cols }, classes)
+        class=move || {
+            format!(
+                "col-start-2 grid flex-wrap min-h-fit grid-cols-{} {} ",
+                if sm_cols != -1 && sm_activated() { sm_cols } else { cols },
+                classes,
+            )
+        }
         style=move || {
             format!(
                 "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}; padding-left: {}; padding-right: {}",
@@ -55,44 +61,43 @@ pub fn Grid(
         }
       >
 
-      <For
-        each=move || {
-          children(cx).nodes
-                .clone()
-                .into_iter()
-                .filter(move |node| {
-                  if let Some(text) = node.as_text() {
-                      return text.content != r#""#.into_view(cx).as_text().unwrap().content;
+        <For
+          each=move || {
+              children(cx)
+                  .nodes
+                  .clone()
+                  .into_iter()
+                  .filter(move |node| {
+                      if let Some(text) = node.as_text() {
+                          return text.content != r#""#.into_view(cx).as_text().unwrap().content;
+                      }
+                      return true;
+                  })
+                  .enumerate()
+          }
+
+          key=|label| label.0
+          view=move |cx, label| {
+              match label.1 {
+                  View::Component(com) => {
+                      if center_on_overflow && (children_count as i16 % sm_cols) == 1
+                          && label.0 == (children_count - 1)
+                      {
+                          return view! { cx,
+                            <Span classes="col-span-full sm:col-span-1 w-max">{com.children}</Span>
+                          };
+                      }
+                      return 
+                      view! { cx, <Span classes="w-max">{com.children}</Span> };
                   }
-                  return true;
-                 })
-                .enumerate()
-        }
-        key=|label| label.0
-        view=move |cx, label| {
-          match label.1 {
-            View::Component(com) =>  {
-              if center_on_overflow && (children_count as i16 % sm_cols) == 1 && label.0 == (children_count -1) {
-                  return view! {
-                  cx,
-                  <Span classes="col-span-full sm:col-span-1 w-max">
-                    {com.children}
-                  </Span>
-                };
+                  _ => {
+
+                      view! { cx, <Span>""</Span> }
+                  }
               }
-              return view! {
-                cx,
-                <Span classes="w-max">
-                  {com.children}
-                </Span>
-              };
-            },
-          _ => {
-            view!{cx, <Span>""</Span>}
           }
-          }
-        }
-      />
+        />
+
       </span>
     }
 }
