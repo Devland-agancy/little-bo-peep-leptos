@@ -263,15 +263,10 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
 }
 
-.spacer  {
+.spacer{
   height: 1.5rem;
 }
 
-.pr:has(.pause) + .spacer,
-.mathblock + .spacer,
-.pr:has(.solution) + .spacer  {
-  display: none;
-}
 
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
@@ -279,6 +274,19 @@ span .MathJax_SVG{
 {
   height: 0;
 }
+
+.spacer:has(+ .inner-pr){
+  height: 1.5rem;
+}
+
+.pr:has(.pause) + .spacer,
+.mathblock + .spacer,
+.pr:has(.solution) + .spacer,
+.inner-pr + .spacer
+{
+  display: none;
+}
+
 
 
 .indent-fix {

@@ -29,6 +29,10 @@ impl syn::parse::Parse for Input {
     }
 }
 
+fn get_root(json: &str) -> DataCell {
+    return serde_json::from_str(json).unwrap();
+}
+
 #[proc_macro]
 pub fn elm(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
@@ -74,6 +78,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
     desugarer = desugarer
         .pre_process_exercises()
         .pre_process_solutions()
+        .wrap_block_delimited("InnerParagraph")
         .wrap_children(
             vec!["Section", "Solution", "Example", "Exercise"],
             "Paragraph",
