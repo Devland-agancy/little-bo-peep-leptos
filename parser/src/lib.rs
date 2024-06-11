@@ -78,6 +78,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
     desugarer = desugarer
         .pre_process_exercises()
         .pre_process_solutions()
+        .auto_increamental_title("Exercise", "Exercise")
+        .auto_increamental_title("Example", "Example")
         .wrap_block_delimited("InnerParagraph")
         .wrap_children(
             vec!["Section", "Solution", "Example", "Exercise"],
@@ -129,7 +131,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "Exercise",
                 "Item",
             ],
-        });
+        })
+        .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"));
 
     let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
 
