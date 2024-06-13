@@ -11,6 +11,7 @@ pub struct GlobalState {
     pub show_section_divider: RwSignal<bool>,
     pub on_mobile: RwSignal<bool>,
     pub solutions_state: RwSignal<Vec<bool>>,
+    pub solution_transition_duration: RwSignal<i32>,
 }
 
 impl GlobalState {
@@ -25,6 +26,7 @@ impl GlobalState {
             route: create_rw_signal(cx, ""),
             on_mobile: create_rw_signal(cx, true),
             solutions_state: create_rw_signal(cx, vec![]),
+            solution_transition_duration: create_rw_signal(cx, 1000),
         }
     }
 

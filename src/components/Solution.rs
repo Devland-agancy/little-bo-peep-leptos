@@ -9,14 +9,15 @@ use leptos::{
 };
 use leptos_router::{use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
+use std::cmp::min;
 use std::{sync::Arc, time::Duration};
 use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
 #[component]
 pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl IntoView {
     let GlobalState {
-        show_areas,
         solutions_state,
+        solution_transition_duration,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let solution_open = move || {
@@ -27,6 +28,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         }
     };
     let (content_height, set_content_height) = create_signal(cx, 0);
+
     let node_ref = create_node_ref::<Div>(cx);
     let button = create_node_ref::<Div>(cx);
 
@@ -35,11 +37,16 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
             if solution_open() {
                 if node_ref().unwrap().offset_height() == 0 {
                     set_timeout(
-                        move || set_content_height(node_ref().unwrap().offset_height()),
+                        move || {
+                            set_content_height(node_ref().unwrap().offset_height());
+                            solution_transition_duration
+                                .set(min(1000, node_ref().unwrap().offset_height()))
+                        },
                         Duration::from_secs(1),
                     )
                 } else {
                     set_content_height(node_ref().unwrap().offset_height());
+                    solution_transition_duration.set(min(1000, node_ref().unwrap().offset_height()))
                 }
             } else {
                 set_content_height(0)
@@ -50,7 +57,9 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
             move || {
                 if node_ref().is_some() {
                     if solution_open() {
-                        set_content_height(node_ref().unwrap().offset_height())
+                        set_content_height(node_ref().unwrap().offset_height());
+                        solution_transition_duration
+                            .set(min(1000, node_ref().unwrap().offset_height()))
                     } else {
                         set_content_height(0)
                     }
@@ -64,21 +73,13 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         let _ = use_event_listener(cx, window(), resize, move |_| {
             if node_ref().is_some() {
                 if solution_open() {
-                    set_content_height(node_ref().unwrap().offset_height())
+                    set_content_height(node_ref().unwrap().offset_height());
+                    solution_transition_duration.set(min(1000, node_ref().unwrap().offset_height()))
                 } else {
                     set_content_height(0)
                 }
             }
         });
-    });
-
-    let (bot_div, set_bot_div) = create_signal(cx, true);
-    create_effect(cx, move |_| {
-        if solution_open() {
-            set_timeout(move || set_bot_div(false), Duration::from_secs(1))
-        } else {
-            set_timeout(move || set_bot_div(true), Duration::from_secs(1))
-        }
     });
 
     let (transition, set_transition) = create_signal(cx, false);
@@ -140,34 +141,29 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         />
       </div>
       <div
-        class="solution col-start-2 transition-[height] duration-1000 overflow-y-clip relative"
+        class="solution col-start-2 transition-[height] overflow-y-clip relative"
         class=("pointer-events-none", move || !solution_open())
         class=("animated-height-full", move || solution_open())
         style=move || {
-            format!("height: {}px", content_height() + if solution_open() { 40 } else { 0 })
+            format!("height: {}px; transition-duration: {}ms", content_height() + if solution_open() { 40 } else { 0 }, solution_transition_duration())
         }
       >
 
+
         <div
           node_ref=node_ref
-          class="flex flex-col"
+          class="flex flex-col transition-all"
           class=("-translate-y-full", move || !solution_open())
-          class=("duration-1000", move || transition())
+          style=move || {
+            format!("transition-duration: {}ms", solution_transition_duration())
+        }
           class=("transition-all", move || transition())
         >
           {children(cx)}
         </div>
 
       </div>
-      <div
-        class="transition-all duration-500"
-        style=move || format!(
-            "height: {}px; background-color: {}",
-            if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
-            if show_areas() { "#00440050" } else { "" },
-        )
-      >
-      </div>
+
     }
 }
 

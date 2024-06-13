@@ -1,5 +1,7 @@
 use crate::components::Image::Image;
-use crate::{global_state::GlobalState, utils::get_chapter::get_chapter};
+use crate::{
+    constants::GREEN_DIV_HEIGHT, global_state::GlobalState, utils::get_chapter::get_chapter,
+};
 use leptos::*;
 use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use serde::{Deserialize, Serialize};
@@ -434,6 +436,8 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
         labels,
         tab,
         solutions_state,
+        show_areas,
+        solution_transition_duration,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let solution_open = move || {
@@ -449,25 +453,55 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
         if solution_open() {
             set_timeout(
                 move || set_solution_fully_opened(true),
-                Duration::from_secs(1),
+                Duration::from_millis(solution_transition_duration() as u64),
             )
         } else {
             set_solution_fully_opened(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
                 move || set_solution_fully_opened(false),
-                Duration::from_secs(1),
+                Duration::from_millis(solution_transition_duration() as u64),
             )
         }
     });
+
+    let (bot_div, set_bot_div) = create_signal(cx, true);
+    create_effect(cx, move |_| {
+        if solution_open() {
+            set_timeout(
+                move || set_bot_div(false),
+                Duration::from_millis(solution_transition_duration() as u64),
+            )
+        } else {
+            set_timeout(
+                move || set_bot_div(true),
+                Duration::from_millis(solution_transition_duration() as u64),
+            )
+        }
+    });
+
     view! { cx,
       {children(cx)}
       <div
-        class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity duration-500"
+        class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
+        style=move || format!(
+            "transition-duration: 100ms"
+        )
         class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
       >
         <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
       </div>
+
+      <div
+      class="transition-all"
+      style=move || format!(
+          "height: {}px; background-color: {}; transition-duration: 1000ms",
+          if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
+          if show_areas() { "#00440050" } else { "" }
+      )
+    >
+    </div>
+
     }
 }
 
