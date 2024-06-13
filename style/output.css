@@ -1340,10 +1340,6 @@ video {
   transition-duration: 150ms;
 }
 
-.duration-1000 {
-  transition-duration: 1000ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1700,19 +1696,21 @@ span .MathJax_SVG{
 
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
-.solution .spacer:last-child
+.inner-pr + .spacer
+/* .solution .spacer:last-child */
 {
   height: 0;
 }
 
-.spacer:has(+ .inner-pr){
+.spacer:has(+ .inner-pr),
+.spacer:has(+ .text)
+{
   height: 1.5rem;
 }
 
 .pr:has(.pause) + .spacer,
 .mathblock + .spacer,
-.pr:has(.solution) + .spacer,
-.inner-pr + .spacer
+.pr:has(.solution) + .spacer
 {
   display: none;
 }

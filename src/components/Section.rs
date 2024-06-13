@@ -32,6 +32,10 @@ pub fn Pause(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn Spacer(cx: Scope) -> impl IntoView {
-    return view! { cx, <div class="spacer">""</div> };
+pub fn Spacer(
+    cx: Scope,
+    #[prop(default = false)] inner: bool,
+    #[prop(default = false)] before: bool,
+) -> impl IntoView {
+    return view! { cx, <div class="spacer" class=("inner-spacer", inner) class=("before-spacer", before)>""</div> };
 }

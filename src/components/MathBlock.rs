@@ -123,6 +123,6 @@ pub fn MathBlock(
           <img src="/images/cream.svg" class="m-auto h-2.5"/>
         </div>
       </div>
-      <Spacer/>
+      <span></span>
     }
 }

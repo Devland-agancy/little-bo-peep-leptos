@@ -21,7 +21,7 @@
     (Metaphorically speaking.)
 
     In the above picture, the name of the function
-    is “$f$.
+    is “$f.$”
 
     Notation-wise, one writes
 
@@ -889,7 +889,7 @@
 
     is sometimes substituted. But if we say 
     “linear” we mean a function of the form 
-    
+
     $$
     x \ra a_1x
     $$
@@ -1267,7 +1267,7 @@
             (the input, minus $1$) in place of “$x$” in 
             “$\,x/3 - \fl{x/3}$”, the formula for the 
             second graph. Then we multiply that by $3$ 
-            (to go from 
+            (to go from ”
             
             |> InlineImage
                 src images/svg_3_3_grid_1.svg
