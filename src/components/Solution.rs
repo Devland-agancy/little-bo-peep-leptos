@@ -20,6 +20,15 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         solution_transition_duration,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+
+    let transition_duration = move || {
+        if solution_transition_duration.get().len() > 0 {
+            solution_transition_duration.get()[solution_number]
+        } else {
+            1000
+        }
+    };
+
     let solution_open = move || {
         if solutions_state.get().len() > 0 {
             solutions_state.get()[solution_number]
@@ -39,14 +48,11 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
                     set_timeout(
                         move || {
                             set_content_height(node_ref().unwrap().offset_height());
-                            solution_transition_duration
-                                .set(min(1000, node_ref().unwrap().offset_height()))
                         },
                         Duration::from_secs(1),
                     )
                 } else {
                     set_content_height(node_ref().unwrap().offset_height());
-                    solution_transition_duration.set(min(1000, node_ref().unwrap().offset_height()))
                 }
             } else {
                 set_content_height(0)
@@ -58,8 +64,6 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
                 if node_ref().is_some() {
                     if solution_open() {
                         set_content_height(node_ref().unwrap().offset_height());
-                        solution_transition_duration
-                            .set(min(1000, node_ref().unwrap().offset_height()))
                     } else {
                         set_content_height(0)
                     }
@@ -71,15 +75,33 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
 
     create_effect(cx, move |_| {
         let _ = use_event_listener(cx, window(), resize, move |_| {
+            GlobalState::update_solutions_state(
+                solution_transition_duration,
+                solution_number,
+                min(1000, node_ref().unwrap().offset_height()),
+            );
+
             if node_ref().is_some() {
                 if solution_open() {
                     set_content_height(node_ref().unwrap().offset_height());
-                    solution_transition_duration.set(min(1000, node_ref().unwrap().offset_height()))
                 } else {
                     set_content_height(0)
                 }
             }
         });
+    });
+
+    create_effect(cx, move |_| {
+        set_timeout(
+            move || {
+                GlobalState::update_solutions_state(
+                    solution_transition_duration,
+                    solution_number,
+                    min(1000, node_ref().unwrap().offset_height()),
+                );
+            },
+            Duration::from_secs(3),
+        );
     });
 
     let (transition, set_transition) = create_signal(cx, false);
@@ -145,7 +167,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         class=("pointer-events-none", move || !solution_open())
         class=("animated-height-full", move || solution_open())
         style=move || {
-            format!("height: {}px; transition-duration: {}ms", content_height() + if solution_open() { 40 } else { 0 }, solution_transition_duration())
+            format!("height: {}px; transition-duration: {}ms", content_height() + if solution_open() { 40 } else { 0 }, transition_duration())
         }
       >
 
@@ -155,7 +177,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
           class="flex flex-col transition-all"
           class=("-translate-y-full", move || !solution_open())
           style=move || {
-            format!("transition-duration: {}ms", solution_transition_duration())
+            format!("transition-duration: {}ms", transition_duration())
         }
           class=("transition-all", move || transition())
         >

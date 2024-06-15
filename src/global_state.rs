@@ -11,7 +11,7 @@ pub struct GlobalState {
     pub show_section_divider: RwSignal<bool>,
     pub on_mobile: RwSignal<bool>,
     pub solutions_state: RwSignal<Vec<bool>>,
-    pub solution_transition_duration: RwSignal<i32>,
+    pub solution_transition_duration: RwSignal<Vec<i32>>,
 }
 
 impl GlobalState {
@@ -26,19 +26,24 @@ impl GlobalState {
             route: create_rw_signal(cx, ""),
             on_mobile: create_rw_signal(cx, true),
             solutions_state: create_rw_signal(cx, vec![]),
-            solution_transition_duration: create_rw_signal(cx, 1000),
+            solution_transition_duration: create_rw_signal(cx, vec![]),
         }
     }
 
-    pub fn init_solutions_state(current_ss: RwSignal<Vec<bool>>, count: usize) {
-        current_ss.set(vec![false; count]);
+    pub fn init_solutions_state<T>(current_ss: RwSignal<Vec<T>>, count: usize, init_value: T)
+    where
+        T: Copy,
+    {
+        current_ss.set(vec![init_value; count]);
     }
 
-    pub fn update_solutions_state(
-        current_ss: RwSignal<Vec<bool>>,
+    pub fn update_solutions_state<T>(
+        current_ss: RwSignal<Vec<T>>,
         update_index: usize,
-        update_value: bool,
-    ) {
+        update_value: T,
+    ) where
+        T: Copy,
+    {
         current_ss.set(
             current_ss
                 .get()
