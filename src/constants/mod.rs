@@ -11,7 +11,7 @@ pub const CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE: &'static str = "20px";
 
 pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
 
-pub const GREEN_DIV_HEIGHT: u8 = 150;
+pub const GREEN_DIV_HEIGHT: u16 = 600;
 
 pub const MOBILE_MAX_WIDTH: u16 = 520;
 
