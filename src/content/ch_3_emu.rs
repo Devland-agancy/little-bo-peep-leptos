@@ -21,7 +21,7 @@
     (Metaphorically speaking.)
 
     In the above picture, the name of the function
-    is “$f.$”
+    is “$f$”.
 
     Notation-wise, one writes
 
@@ -893,7 +893,7 @@
     $$
     x \ra a_1x
     $$
-    
+
     for a constant $a_1 \in \rr$. This is more 
     restricted than an affine function, because
     there is no constant $a_0$!
