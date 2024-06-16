@@ -80,7 +80,7 @@ pub fn Paragraph(
 
         {children(cx)}
       </span>
-      <Spacer />
+      <Spacer/>
     }
 }
 

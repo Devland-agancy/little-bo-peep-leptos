@@ -185,7 +185,6 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         </div>
 
       </div>
-
     }
 }
 
