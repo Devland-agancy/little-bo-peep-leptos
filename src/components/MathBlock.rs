@@ -1,4 +1,4 @@
-use crate::{components::Section::Spacer, global_state::GlobalState, page::state::PageState};
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{ev::resize, html::Div, *};
 use leptos_use::use_event_listener;
 

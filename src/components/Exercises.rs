@@ -501,9 +501,10 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       <div
       class="transition-all"
       style=move || format!(
-          "height: {}px; background-color: {}; transition-duration: 100ms",
-          if !solution_open() { GREEN_DIV_HEIGHT } else { 0 },
-          if show_areas() { "#00440050" } else { "" }
+          "height: {}px; background-color: {}; transition-duration: {}ms",
+          if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
+          if show_areas() { "#00440050" } else { "" },
+          if bot_div() { 100 } else { 0 },
       )
     >
     </div>
