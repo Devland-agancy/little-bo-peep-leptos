@@ -700,13 +700,14 @@
                     src images/56.svg
                     _attached false
                     offset_y 5rem
+                    offset_x -1.3rem
                     use_squiggle_on_mobile false
 
                 |> ImageLeft
                     src images/57.svg
                     _attached false
-                    offset_x -5rem
-                    offset_y 1rem
+                    offset_x -7rem
+                    offset_y 0.5rem
                     y bottom
                     img_position bottom
                     use_squiggle_on_mobile false
@@ -730,14 +731,15 @@
                 |> ImageRight
                     src images/59.svg
                     _attached false
-                    offset_y 7rem
+                    offset_y 7.2rem
+                    offset_x -1.2rem
                     use_squiggle_on_mobile false
 
                 |> ImageLeft
                     src images/60.svg
                     _attached false
-                    offset_x -3rem
-                    offset_y 1rem
+                    offset_x -5rem
+                    offset_y 0.5rem
                     y bottom
                     img_position bottom
                     use_squiggle_on_mobile false
