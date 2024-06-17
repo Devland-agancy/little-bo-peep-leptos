@@ -271,10 +271,15 @@ span .MathJax_SVG{
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
 .inner-pr + .spacer
-/* .solution .spacer:last-child */
 {
   height: 0;
 }
+
+.solution .spacer:last-child
+{
+  height: 0.5rem;
+}
+
 
 .spacer:has(+ .inner-pr),
 .spacer:has(+ .text)

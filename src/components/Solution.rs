@@ -167,7 +167,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         class=("pointer-events-none", move || !solution_open())
         class=("animated-height-full", move || solution_open())
         style=move || {
-            format!("height: {}px; transition-duration: {}ms", content_height() + if solution_open() { 40 } else { 0 }, transition_duration())
+            format!("height: {}px; transition-duration: {}ms", content_height(), transition_duration())
         }
       >
 
