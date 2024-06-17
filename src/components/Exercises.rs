@@ -504,7 +504,7 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
           "height: {}px; background-color: {}; transition-duration: {}ms",
           if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
           if show_areas() { "#00440050" } else { "" },
-          if bot_div() { 1000 } else { 0 },
+          if solution_open() { 1000 } else { 0 },
       )
     >
     </div>
