@@ -494,9 +494,10 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       <div
         class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
         style=move || format!(
-            "transition-duration: 100ms"
+            "transition-duration: 1000ms"
         )
         class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
+        class=("delay-[2s]", move || bot_div())
       >
         <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
       </div>
