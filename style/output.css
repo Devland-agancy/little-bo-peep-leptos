@@ -666,10 +666,6 @@ video {
   margin-top: -1rem;
 }
 
-.mb-12 {
-  margin-bottom: 3rem;
-}
-
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -684,10 +680,6 @@ video {
 
 .mb-\[1\.2em\] {
   margin-bottom: 1.2em;
-}
-
-.mb-\[31px\] {
-  margin-bottom: 31px;
 }
 
 .mb-\[40px\] {
@@ -784,6 +776,10 @@ video {
 
 .h-\[10rem\] {
   height: 10rem;
+}
+
+.h-\[31px\] {
+  height: 31px;
 }
 
 .h-\[37px\] {
@@ -1481,7 +1477,6 @@ span .MathJax_SVG{
 
 .solution_button_div {
   height: 51px;
-  padding-top: 20px;
 }
 
 .pointing_finger_backhand {
@@ -1696,14 +1691,10 @@ span .MathJax_SVG{
 
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
-.inner-pr + .spacer
-{
-  height: 0;
-}
-
+.inner-pr + .spacer,
 .solution .spacer:last-child
 {
-  height: 0.5rem;
+  height: 0;
 }
 
 .spacer:has(+ .inner-pr),

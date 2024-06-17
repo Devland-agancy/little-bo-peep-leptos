@@ -1,4 +1,5 @@
 use crate::{
+    components::Section::Spacer,
     constants::{GREEN_DIV_HEIGHT, TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING},
     global_state::GlobalState,
 };
@@ -215,10 +216,11 @@ where
     });
 
     view! { cx,
+      <Spacer />
       <div
         id="solution-button"
         node_ref=button
-        class="column solution_button_div cursor-pointer mb-12"
+        class="column cursor-pointer"
       >
         <svg class="mx-auto h-[37px] overflow-visible">
           <g class="solution_button_svg">
@@ -266,5 +268,7 @@ where
           </g>
         </svg>
       </div>
+      <Spacer />
+      <Spacer />
     }
 }
