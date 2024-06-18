@@ -994,6 +994,7 @@
             sm_cutoff 520
             center_on_overflow true
             place_items start
+            with_padding false
 
             i. $(\lambda u.u^3)(0.5)$
                 
@@ -1014,6 +1015,7 @@
                 sm_cutoff 520
                 center_on_overflow true
                 place_items start
+                with_padding false
 
                 i. $0.5^3 = 0.125$
                     

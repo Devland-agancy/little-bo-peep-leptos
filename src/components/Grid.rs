@@ -17,6 +17,7 @@ pub fn Grid(
     #[prop(default = "center")] place_items: &'static str,
     #[prop(default = "1rem")] gap: &'static str,
     #[prop(default = false)] center_on_overflow: bool,
+    #[prop(default = true)] with_padding: bool,
 ) -> impl IntoView {
     let children_count = children(cx)
         .nodes
@@ -55,8 +56,8 @@ pub fn Grid(
                 margin_bottom,
                 place_items,
                 gap,
-                TEXT_LEFT_PADDING,
-                TEXT_RIGHT_PADDING,
+                if with_padding {TEXT_LEFT_PADDING} else {"0px"},
+                if with_padding {TEXT_RIGHT_PADDING} else {"0px"},
             )
         }
       >
@@ -87,7 +88,7 @@ pub fn Grid(
                             <Span classes="col-span-full sm:col-span-1 w-max">{com.children}</Span>
                           };
                       }
-                      return 
+                      return
                       view! { cx, <Span classes="w-max">{com.children}</Span> };
                   }
                   _ => {
