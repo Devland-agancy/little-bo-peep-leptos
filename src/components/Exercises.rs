@@ -494,7 +494,8 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       <div
         class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
         style=move || format!(
-            "transition-duration: 1000ms"
+            "transition-duration: {}ms",
+            if solution_open() { 1000 } else { 100 },
         )
         class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
         class=("delay-[2s]", move || bot_div())
