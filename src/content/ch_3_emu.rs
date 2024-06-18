@@ -144,7 +144,7 @@
     denoting the input does not matter: it is just a 
     placeholder, and you obtain the same output, and 
     the same _function_, no matter what symbol 
-    you choose.*) (*As long as you don't collide 
+    you choose.\*) (\*As long as you don't collide 
     with other existing variable names.)
 
 
