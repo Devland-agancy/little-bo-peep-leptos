@@ -1,5 +1,4 @@
 use crate::components::Image::Image;
-use crate::components::Section::Spacer;
 use crate::{
     constants::GREEN_DIV_HEIGHT, global_state::GlobalState, utils::get_chapter::get_chapter,
 };

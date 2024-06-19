@@ -211,15 +211,14 @@
 
 |> Section
 
-    *On arbitrariness.*
+     *On arbitrariness.*
     While a function such as VX-11/78A might seem 
     completely arbitrary, one lesson from the former 
     example is that functions _can_ be 
-    completely arbitrary
-    
-    In fact, there are only two “ground rules” to 
-    respect in order for something to qualify as a 
-    function: *(i)* to output
+    completely arbitrary! In fact, there are only 
+    two “ground rules” to respect in order for 
+    something to qualify as a function: *(i)* to 
+    output
         
     __one__
         
