@@ -109,6 +109,23 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
 
     let navigate = use_navigate(cx);
 
+    let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
+    create_effect(cx, move |_| {
+        if solution_open() {
+            set_timeout(
+                move || set_solution_fully_opened(true),
+                Duration::from_millis(transition_duration() as u64),
+            )
+        } else {
+            set_solution_fully_opened(false);
+            set_timeout(
+                // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
+                move || set_solution_fully_opened(false),
+                Duration::from_millis(transition_duration() as u64),
+            )
+        }
+    });
+
     view! { cx,
       <div
         node_ref=button
@@ -164,9 +181,11 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         />
       </div>
       <div
-        class="solution col-start-2 transition-[height] overflow-y-clip relative"
+        class="solution col-start-2 transition-[height]  relative"
         class=("pointer-events-none", move || !solution_open())
         class=("animated-height-full", move || solution_open())
+        class=("overflow-y-clip", move || !solution_fully_opened())
+
         style=move || {
             format!("height: {}px; transition-duration: {}ms", content_height(), transition_duration())
         }
