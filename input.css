@@ -36,9 +36,9 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
-.MathJax_SVG_Display{
+/* .MathJax_SVG_Display{
   margin: 0 !important;
-}
+} */
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -269,15 +269,13 @@ span .MathJax_SVG{
 
 .example > .spacer:last-child,
 .sec:nth-last-child(6) > .spacer:last-child,
-.inner-pr + .spacer,
-.solution .spacer:last-child
+.solution .spacer:last-child,
+.spacer:has(+ .pr > :first-child.block-element),
+.pr:has( > :first-child.block-element) + .spacer
 {
   height: 0;
 }
 
-
-
-.spacer:has(+ .inner-pr),
 .spacer:has(+ .text)
 {
   height: 1.5rem;
