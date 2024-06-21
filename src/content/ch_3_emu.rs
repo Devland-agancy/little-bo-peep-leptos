@@ -1272,14 +1272,14 @@
             
             |> InlineImage
                 src images/svg_3_3_grid_1.svg
-                height 0.9em
+                height 1.34rem
                 width 0.9em
 
             ” to “
 
             |> InlineImage
                 src images/svg_3_3_grid_2.svg
-                height 0.9em
+                height 1.34rem
                 width 0.9em
 
             ”, namely), meaning that the final answer is
@@ -1541,69 +1541,87 @@
             go from $D$ to $C$, $C$ to $B$, and $B$ to $A$. 
             For example,
 
-            |> Paragraph
+            |> Centered 
 
                 ${\Large h(}$
                 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
-                    height 0.85em
-                    width 0.729em
-
+                    width 1rem
+                    height 1.1rem
+                    y_anchor 2px
 
                 ${\Large{}) =}$
                 
                 |> InlineImage
                     src images/svg_composition_icon_die_3.svg
-                    height 0.9em
-                    width 1.024em
+                    height 1.34rem
+                    width 1.4rem
+                    y_anchor 3px
+                    margin_left .5rem
+                    margin_right .5rem
             
             because the arrow that originates at 
 
             |> InlineImage
                 src images/svg_composition_icon_clubs.svg
-                height 0.85em
-                width 0.729em
+                width 1rem
+                height 1.1rem
+                y_anchor 2px
+                margin_left .5rem
+                margin_right .5rem
+
 
             in set $D$ lands at 
             
             |> InlineImage
                 src images/svg_composition_icon_die_3.svg
-                height 0.9em
-                width 1.024em
+                height 1.34rem
+                width 1.4rem
+                y_anchor 3px
+                margin_left .5rem
+                margin_right .5rem
             
             in set $C$,  and
 
-            |> Paragraph
+            |> Centered 
 
                 ${\Large g(h(}$
 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
-                    height 0.85em
-                    width 0.729em
+                    width 1rem
+                    height 1.1rem
+                    y_anchor 2px
 
                 ${\Large{})){}=}$
 
                 |> InlineImage
                     src images/svg_composition_icon_fence.svg
-                    height 0.84em
-                    width 1.824em
+                    height 1.05rem
+                    width 2.3rem
+                    margin_left .5rem
+                    margin_right .5rem
                 
             because, pursuing that path onwards, the arrow 
             that originates at
             
             |> InlineImage
                 src images/svg_composition_icon_die_3.svg
-                height 0.9em
-                width 1.024em
+                height 1.34rem
+                width 1.4rem
+                y_anchor 3px
+                margin_left .5rem
+                margin_right .5rem
 
             in set $C$ lands at
 
             |> InlineImage
                 src images/svg_composition_icon_fence.svg
-                height 0.84em
-                width 1.824em
+                height 1.05rem
+                width 2.3rem
+                margin_left .5rem
+                margin_right .5rem
 
             in set $B$, etc.
 

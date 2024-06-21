@@ -34,3 +34,16 @@ pub fn Span(
       </span>
     }
 }
+
+#[component]
+pub fn Centered(
+    cx: Scope,
+    #[prop(default = "")] classes: &'static str,
+    children: Children,
+) -> impl IntoView {
+    view! { cx,
+      <Span classes=classes align=Align::Center>
+        {children(cx)}
+      </Span>
+    }
+}
