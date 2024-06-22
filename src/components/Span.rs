@@ -36,7 +36,7 @@ pub fn Span(
 }
 
 #[component]
-pub fn Centered(
+pub fn DisplayCentered(
     cx: Scope,
     #[prop(default = "")] classes: &'static str,
     children: Children,

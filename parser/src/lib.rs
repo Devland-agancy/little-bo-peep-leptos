@@ -100,7 +100,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
             ]),
         )
         .wrap_children(vec!["Grid"], "Span", &None)
-        .wrap_children(vec!["List", "del"], "Item", &None)
+        .wrap_children(vec!["List"], "Item", &None)
         .add_indent(&ParagraphIndentOptions {
             tags_before_non_indents: vec![
                 "Image",
@@ -115,6 +115,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "List",
                 "Grid",
                 "del",
+                "DisplayCentered",
             ],
             tags_with_non_indent_first_child: vec![
                 "Section",

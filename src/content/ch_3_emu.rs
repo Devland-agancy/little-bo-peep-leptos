@@ -1541,7 +1541,7 @@
             go from $D$ to $C$, $C$ to $B$, and $B$ to $A$. 
             For example,
 
-            |> Centered 
+            |> DisplayCentered 
 
                 ${\Large h(}$
                 
@@ -1584,7 +1584,7 @@
             
             in set $C$,  and
 
-            |> Centered 
+            |> DisplayCentered 
 
                 ${\Large g(h(}$
 
