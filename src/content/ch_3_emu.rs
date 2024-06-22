@@ -2194,28 +2194,21 @@
 
         True or false ($f$ and $g$ are functions):
 
-        |> Table
-            cols vec![30, 250, 30, 170]
-            lines true
+        |> Grid
+            cols 2
+            sm_cols 1
+            sm_cutoff 520
+            center_on_overflow true
+            place_items start
+            with_padding false
 
-            |> tr
+            i. $f \circ g = (x \ra f(g(x)))$
+                
+            iii. $f \circ g = (x \ra g(f(x)))$
 
-                |> td
+            ii. $g \circ f = (x \ra f(g(x)))$
 
-                    i. $f \circ g = (x \ra f(g(x)))$
-
-                |> td
-
-                    iii. $f \circ g = (x \ra g(f(x)))$
-            |> tr
-
-                |> td
-
-                    ii. $g \circ f = (x \ra f(g(x)))$
-
-                |> td
-
-                    iv. $g \circ f = (x \ra g(f(x)))$
+            iv. $g \circ f = (x \ra g(f(x)))$
 
         |> Solution
 
