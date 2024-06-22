@@ -49,6 +49,7 @@ pub fn Grid(
                 classes,
             )
         }
+
         style=move || {
             format!(
                 "margin-top: {}px;margin-bottom: {}px; animation: appear 2s ease 0s 1 normal forwards;place-items: {}; gap: {}; padding-left: {}; padding-right: {}",
@@ -56,8 +57,8 @@ pub fn Grid(
                 margin_bottom,
                 place_items,
                 gap,
-                if with_padding {TEXT_LEFT_PADDING} else {"0px"},
-                if with_padding {TEXT_RIGHT_PADDING} else {"0px"},
+                if with_padding { TEXT_LEFT_PADDING } else { "0px" },
+                if with_padding { TEXT_RIGHT_PADDING } else { "0px" },
             )
         }
       >
@@ -84,11 +85,12 @@ pub fn Grid(
                       if center_on_overflow && (children_count as i16 % sm_cols) == 1
                           && label.0 == (children_count - 1)
                       {
-                          return view! { cx,
+                          return 
+                          view! { cx,
                             <Span classes="col-span-full sm:col-span-1 w-max">{com.children}</Span>
                           };
                       }
-                      return
+                      return 
                       view! { cx, <Span classes="w-max">{com.children}</Span> };
                   }
                   _ => {

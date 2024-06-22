@@ -44,7 +44,7 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
       >
         <Image src="/images/section_divider.svg" width="100%" image_classes="col-start-2">
           ""
-          <Spacer />
+          <Spacer/>
         </Image>
       </Show>
     }

@@ -46,6 +46,7 @@ pub fn ArticleTitle(
               )
           }
         >
+
           <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
           <span class="hidden sm:block">{label}</span>
         </h1>

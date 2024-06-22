@@ -78,6 +78,7 @@ pub fn Image(
                 if show_padding() { padding_right } else { 0_f64 },
             )
         }
+
         class=move || {
             format!(
                 "relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {}",
@@ -110,6 +111,7 @@ pub fn Image(
                   width,
               )
           }
+
           class=move || { format!("max-w-none {}", image_classes) }
 
           class=("outline-[20px]", move || show_areas() && cloud_image && is_wide())

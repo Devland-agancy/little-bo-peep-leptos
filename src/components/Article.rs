@@ -106,8 +106,7 @@ pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
         class=("-translate-x-3/4", || true)
         class=("lg:-translate-x-[85%]", || true)
         class=("opacity-100", || true)
-      >
-      </div>
+      ></div>
     }
 }
 

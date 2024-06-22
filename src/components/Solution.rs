@@ -179,6 +179,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
               );
           }
         />
+
       </div>
       <div
         class="solution col-start-2 transition-[height]  relative"
@@ -187,18 +188,20 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
         class=("overflow-y-clip", move || !solution_fully_opened())
 
         style=move || {
-            format!("height: {}px; transition-duration: {}ms", content_height(), transition_duration())
+            format!(
+                "height: {}px; transition-duration: {}ms",
+                content_height(),
+                transition_duration(),
+            )
         }
       >
-
 
         <div
           node_ref=node_ref
           class="flex flex-col transition-all"
           class=("-translate-y-full", move || !solution_open())
-          style=move || {
-            format!("transition-duration: {}ms", transition_duration())
-        }
+          style=move || { format!("transition-duration: {}ms", transition_duration()) }
+
           class=("transition-all", move || transition())
         >
           {children(cx)}
@@ -235,12 +238,8 @@ where
     });
 
     view! { cx,
-      <Spacer />
-      <div
-        id="solution-button"
-        node_ref=button
-        class="column cursor-pointer"
-      >
+      <Spacer/>
+      <div id="solution-button" node_ref=button class="column cursor-pointer">
         <svg class="mx-auto h-[37px] overflow-visible">
           <g class="solution_button_svg">
             <rect
@@ -287,7 +286,7 @@ where
           </g>
         </svg>
       </div>
-      <Spacer />
-      <Spacer />
+      <Spacer/>
+      <Spacer/>
     }
 }

@@ -71,6 +71,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
               HUMBURGER_MENU_HEIGHT - 1.0,
               HUMBURGER_MENU_HEIGHT,
           )
+
           class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
           <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
@@ -184,6 +185,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
             "hover:border-b-0",
             move || menu_closed() && !on_mobile.get() && window_scroll() > 0_f64,
         )
+
         class=("sm:border-b-0", move || !menu_closed() || window_scroll() > HUMBURGER_MENU_HEIGHT)
         style=move || {
             format!(
@@ -254,7 +256,8 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
                 },
             )
         }
-      ></div>
+      >
+      </div>
     }
 }
 

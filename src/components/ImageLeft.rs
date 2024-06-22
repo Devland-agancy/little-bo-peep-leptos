@@ -139,10 +139,19 @@ let solution_open = move || {
           <div style=move || {
               format!(" top: {}; left: {}", children_y, children_x)
           }>{children(cx)}</div>
-          <img node_ref=image_ref src=src class="max-w-max"
-               style=move || format!("transform: {};
+          <img
+            node_ref=image_ref
+            src=src
+            class="max-w-max"
+            style=move || {
+                format!(
+                    "transform: {};
                transform-origin: 100% 51% 0px;
-               transition: {}s;", if popup && solution_fully_opened() { "scale(1)" } else { "scale(1, 0)" }, if popup && solution_fully_opened() { "0.5" } else { "0" })
+               transition: {}s;",
+                    if popup && solution_fully_opened() { "scale(1)" } else { "scale(1, 0)" },
+                    if popup && solution_fully_opened() { "0.5" } else { "0" },
+                )
+            }
           />
 
           <div

@@ -25,7 +25,6 @@ pub fn Span(
                 if bold { "font-baskerville-bold" } else { "" },
                 if centered { "block-element text-center block my-4" } else { "" },
                 if centered && show_areas() { "bg-[#ebe3a0b0]" } else { "" },
-
             )
         }
       >

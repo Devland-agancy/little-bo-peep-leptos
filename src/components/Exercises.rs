@@ -404,7 +404,7 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
       <div class="text-xl flex items-center justify-center gap-2 col-start-2 hidden-on-startup mt-[2px]">
         <LabelsView vec=labels.clone() selected_tab=selected_tab set_selected_tab=set_selected_tab/>
       </div>
-      <div class="col-start-2 h-[31px]" />
+      <div class="col-start-2 h-[31px]"></div>
       <For
         each=move || {
             children(cx)
@@ -489,13 +489,11 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
 
     view! { cx,
       {children(cx)}
-      <div class="col-start-2 h-[31px]" />
+      <div class="col-start-2 h-[31px]"></div>
       <div
         class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
-        style=move || format!(
-            "transition-duration: {}ms",
-            if solution_open() { 1000 } else { 100 },
-        )
+        style=move || format!("transition-duration: {}ms", if solution_open() { 1000 } else { 100 })
+
         class=("opacity-0", move || !(solution_open() && solution_fully_opened()))
         class=("delay-[2s]", move || bot_div())
       >
@@ -503,16 +501,17 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       </div>
 
       <div
-      class="transition-all"
-      style=move || format!(
-          "height: {}px; background-color: {}; transition-duration: {}ms",
-          if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
-          if show_areas() { "#00440050" } else { "" },
-          if solution_open() { 1000 } else { 0 },
-      )
-    >
-    </div>
-
+        class="transition-all"
+        style=move || {
+            format!(
+                "height: {}px; background-color: {}; transition-duration: {}ms",
+                if !solution_open() || bot_div() { GREEN_DIV_HEIGHT } else { 0 },
+                if show_areas() { "#00440050" } else { "" },
+                if solution_open() { 1000 } else { 0 },
+            )
+        }
+      >
+      </div>
     }
 }
 
