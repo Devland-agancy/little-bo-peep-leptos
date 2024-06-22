@@ -1383,6 +1383,7 @@
 
             |> ImageLeft
                 src images/svg_r_s_substitution_1_1.1em_cloud.svg
+                popup true
 
             $$
             {(f \circ (g \circ h))(x) = \f((g \circ h)(x))}

@@ -30,6 +30,7 @@ pub fn ImageRight(
     #[prop(default = "")] children_y: &'static str,
     #[prop(default = false)] clickable_on_desktop: bool,
     #[prop(default = "")] padding: &'static str,
+    #[prop(default = false)] popup: bool,
 
     children: Children,
 ) -> impl IntoView {
@@ -38,8 +39,33 @@ pub fn ImageRight(
     let GlobalState {
         show_areas,
         on_mobile,
+        tab,
+        solutions_state,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+        
+let solution_open = move || {
+        if solutions_state.get().len() > 0 {
+            solutions_state.get()[tab.get()]
+        } else {
+            false
+        }
+    };
+    let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
+    create_effect(cx, move |_| {
+        if solution_open() {
+            set_timeout(
+                move || set_solution_fully_opened(true),
+                Duration::from_millis(1000))
+        } else {
+            set_solution_fully_opened(false);
+            set_timeout(
+                // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
+                move || set_solution_fully_opened(false),
+                Duration::from_millis(1000))
+        }
+    });
+
     let node_ref = create_node_ref::<Div>(cx);
     let image_ref = create_node_ref::<Img>(cx);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
@@ -117,7 +143,10 @@ pub fn ImageRight(
           <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
             {children(cx)}
           </div>
-          <img node_ref=image_ref src=src class="max-w-max"/>
+          <img node_ref=image_ref src=src class="max-w-max"
+          style=move || format!("transform: {};
+          transform-origin: 100% 51% 0px;
+          transition: {}s;", if popup && solution_fully_opened() { "scale(1)" } else { "scale(1, 0)" }, if popup && solution_fully_opened() { "0.5" } else { "0" })/>
 
           <div
             style=move || {
