@@ -1623,6 +1623,7 @@
                 width 2.3rem
                 margin_left .5rem
                 margin_right .5rem
+                y_anchor 1px
 
             in set $B$, etc.
 
