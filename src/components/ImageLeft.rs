@@ -44,8 +44,8 @@ pub fn ImageLeft(
         solutions_state,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-        
-let solution_open = move || {
+
+    let solution_open = move || {
         if solutions_state.get().len() > 0 {
             solutions_state.get()[tab.get()]
         } else {
@@ -54,19 +54,19 @@ let solution_open = move || {
     };
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
     create_effect(cx, move |_| {
-
         if solution_open() {
             set_timeout(
                 move || set_solution_fully_opened(true),
-                Duration::from_millis(1000))
+                Duration::from_millis(1000),
+            )
         } else {
             set_solution_fully_opened(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
                 move || set_solution_fully_opened(false),
-                Duration::from_millis(1000))
+                Duration::from_millis(1000),
+            )
         }
-
     });
 
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
@@ -86,7 +86,6 @@ let solution_open = move || {
             Duration::from_secs(3),
         );
     });
-    log!("line {}", line);
 
     view! { cx,
       <div

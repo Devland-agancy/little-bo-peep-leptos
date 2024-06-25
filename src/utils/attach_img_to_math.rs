@@ -5,8 +5,6 @@ use web_sys::Node;
 use super::element_contains_child::element_contains_child;
 
 pub fn attach_img_to_math(node_ref: &NodeRef<Div>) {
-    log!("1");
-
     if let Some(node) = node_ref() {
         let parent = node.parent_element().unwrap();
 

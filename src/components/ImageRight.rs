@@ -43,8 +43,8 @@ pub fn ImageRight(
         solutions_state,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-        
-let solution_open = move || {
+
+    let solution_open = move || {
         if solutions_state.get().len() > 0 {
             solutions_state.get()[tab.get()]
         } else {
@@ -56,13 +56,15 @@ let solution_open = move || {
         if solution_open() {
             set_timeout(
                 move || set_solution_fully_opened(true),
-                Duration::from_millis(1000))
+                Duration::from_millis(1000),
+            )
         } else {
             set_solution_fully_opened(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
                 move || set_solution_fully_opened(false),
-                Duration::from_millis(1000))
+                Duration::from_millis(1000),
+            )
         }
     });
 
@@ -140,7 +142,7 @@ let solution_open = move || {
           class=("outline", move || show_areas())
         >
 
-          <div class="absolute" style=move || format!("top: {}; left: {}", children_y, children_x)>
+          <div class="absolute" style=move || format!("top: {children_y}; left: {children_x}")>
             {children(cx)}
           </div>
           <img
@@ -184,9 +186,7 @@ let solution_open = move || {
 
             style=move || {
                 format!(
-                    "left: 50%; top: {}; transform: translate(-50%, -50%); padding: {}",
-                    squiggle_y,
-                    "2.6rem",
+                    "left: 50%; top: {squiggle_y}; transform: translate(-50%, -50%); padding: 2.6rem",
                 )
             }
           >
