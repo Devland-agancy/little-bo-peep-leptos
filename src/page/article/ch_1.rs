@@ -19,12 +19,14 @@ use crate::components::SectionDivider::*;
 use crate::components::StarDivider::*;
 
 use crate::components::Solution::*;
+use crate::components::Space::*;
 use crate::components::Span::*;
 use crate::components::Table::Table;
 
 use crate::constants::MENU_ITEMS;
 use elm_to_view::elm;
 use leptos::*;
+
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
     view! { cx,

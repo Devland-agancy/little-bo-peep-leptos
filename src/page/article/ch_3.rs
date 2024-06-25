@@ -19,6 +19,7 @@ use crate::components::Solution::*;
 use crate::components::Span::*;
 use crate::components::StarDivider::*;
 use crate::components::Table::*;
+use crate::components::Space::*;
 use crate::constants::MENU_ITEMS;
 
 use elm_to_view::elm;
@@ -37,7 +38,8 @@ pub fn View(cx: Scope) -> impl IntoView {
 
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
-    elm! {cx,
+    elm! {
+      cx,
       "file:/src/content/ch_3_emu.rs"
     }
 }

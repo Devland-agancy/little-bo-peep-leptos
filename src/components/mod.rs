@@ -22,3 +22,4 @@ pub mod Solution;
 pub mod Span;
 pub mod StarDivider;
 pub mod Table;
+pub mod Space;
