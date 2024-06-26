@@ -2192,7 +2192,6 @@
             center_on_overflow true
             place_items start
             with_padding false
-            column_first true
 
             i. $f \circ g = (x \ra f(g(x)))$
                 
