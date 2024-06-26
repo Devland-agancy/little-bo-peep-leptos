@@ -110,13 +110,18 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     let navigate = use_navigate(cx);
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
+    let (handle, set_handle) = create_signal(cx, None);
     create_effect(cx, move |_| {
         if solution_open() {
-            set_timeout(
+            let timeout_handle = set_timeout_with_handle(
                 move || set_solution_fully_opened(true),
                 Duration::from_millis(transition_duration() as u64),
-            )
+            );
+            set_handle(Some(timeout_handle))
         } else {
+            if let Some(handle) = handle() {
+                handle.unwrap().clear();
+            };
             set_solution_fully_opened(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
