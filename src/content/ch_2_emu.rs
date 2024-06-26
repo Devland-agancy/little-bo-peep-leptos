@@ -330,8 +330,7 @@
     |> InlineImage
         src images/rise-run.svg
         width 28px
-        height 28px
-        margin_right 4px
+        space_right true
     ”), following such a picture:
 
     |> Image

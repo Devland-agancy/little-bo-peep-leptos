@@ -1272,14 +1272,12 @@
             
             |> InlineImage
                 src images/svg_3_3_grid_1.svg
-                height 1.34rem
                 width 0.9em
 
             ” to “
 
             |> InlineImage
                 src images/svg_3_3_grid_2.svg
-                height 1.34rem
                 width 0.9em
 
             ”, namely), meaning that the final answer is
@@ -1549,16 +1547,14 @@
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
-                    height 1.1rem
-                    y_anchor 2px
+                    y_anchor -3px
 
                 ${\Large{}) =}$
                 
                 |> InlineImage
                     src images/svg_composition_icon_die_3.svg
-                    height 1.34rem
-                    width 1.4rem
-                    y_anchor 3px
+                    width 1.25rem
+                    y_anchor -3px
                     margin_left .5rem
                     margin_right .5rem
             
@@ -1567,21 +1563,18 @@
             |> InlineImage
                 src images/svg_composition_icon_clubs.svg
                 width 1rem
-                height 1.1rem
-                y_anchor 2px
-                margin_left .5rem
-                margin_right .5rem
-
+                y_anchor -4px
+                space_left true
+                space_right true
 
             in set $D$ lands at 
             
             |> InlineImage
                 src images/svg_composition_icon_die_3.svg
-                height 1.34rem
-                width 1.4rem
-                y_anchor 3px
-                margin_left .5rem
-                margin_right .5rem
+                width 1.25rem
+                y_anchor -4px
+                space_left true
+                space_right true
             
             in set $C$,  and
 
@@ -1592,38 +1585,35 @@
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
-                    height 1.1rem
-                    y_anchor 2px
+                    y_anchor -3px
 
                 ${\Large{})){}=}$
 
                 |> InlineImage
                     src images/svg_composition_icon_fence.svg
-                    height 1.05rem
                     width 2.3rem
-                    margin_left .5rem
-                    margin_right .5rem
+                    y_anchor -4px
+                    space_left true
+                    space_right true
                 
             because, pursuing that path onwards, the arrow 
             that originates at
             
             |> InlineImage
                 src images/svg_composition_icon_die_3.svg
-                height 1.34rem
-                width 1.4rem
-                y_anchor 3px
-                margin_left .5rem
-                margin_right .5rem
+                width 1.25rem
+                y_anchor -4px
+                space_left true
+                space_right true
 
             in set $C$ lands at
 
             |> InlineImage
                 src images/svg_composition_icon_fence.svg
-                height 1.05rem
                 width 2.3rem
-                margin_left .5rem
-                margin_right .5rem
-                y_anchor 1px
+                y_anchor -3px
+                space_left true
+                space_right true
 
             in set $B$, etc.
 
@@ -2202,6 +2192,7 @@
             center_on_overflow true
             place_items start
             with_padding false
+            column_first true
 
             i. $f \circ g = (x \ra f(g(x)))$
                 
