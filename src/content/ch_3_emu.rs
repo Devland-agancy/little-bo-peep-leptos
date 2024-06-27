@@ -994,6 +994,7 @@
             center_on_overflow true
             place_items start
             with_padding false
+            column_first true
 
             i. $(\lambda u.u^3)(0.5)$
                 
