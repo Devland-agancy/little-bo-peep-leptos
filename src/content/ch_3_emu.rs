@@ -1611,7 +1611,7 @@
             |> InlineImage
                 src images/svg_composition_icon_fence.svg
                 width 2.3rem
-                y_anchor -3px
+                y_anchor -4px
                 space_left true
                 space_right true
 
@@ -2192,6 +2192,7 @@
             center_on_overflow true
             place_items start
             with_padding false
+            column_first true
 
             i. $f \circ g = (x \ra f(g(x)))$
                 
