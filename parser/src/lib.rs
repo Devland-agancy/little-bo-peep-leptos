@@ -73,7 +73,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let mut desugarer: Desugarer = Desugarer::new(json_tree.as_str(), json.id);
     desugarer = desugarer
         .pre_process_exercises()
-        .add_increamental_attr(vec![("Solution", "solution_number"), ("Grid", "id")])
+        .add_increamental_attr(vec![("Solution", "solution_number")])
         .auto_increamental_title("Exercise", "Exercise")
         .auto_increamental_title("Example", "Example")
         .wrap_block_delimited("InnerParagraph")

@@ -43,30 +43,32 @@ pub fn Grid(
         });
     });
 
+    let parent_span = create_node_ref::<html::Span>(cx);
     create_effect(cx, move |_| {
-        let parent = document().get_element_by_id(&format!("{id}")).unwrap();
-        let children: HtmlCollection = parent.children();
-        for i in 0..children.length() {
-            let mut position = i as f64;
+        if let Some(parent_span) = parent_span() {
+            let children = parent_span.children();
+            for i in 0..children.length() {
+                let mut position = i as f64;
+                //   if mode is column first , element new position is calculated by how many elements exist before it . An element x is considered before y if x.j < y.j or x.j = y.j and x.i < y.i
+                if column_first && sm_activated() {
+                    let rows = (children_count as f64 / cols as f64).ceil();
+                    let element_row = ((i + 1) as f64 / cols as f64).ceil();
+                    let element_col = (i as i16 % cols) + 1;
+                    let preceding_elements_in_prev_cols = (element_col - 1) as f64 * rows;
+                    let preceding_elements_in_curr_col = (element_row - 1.0) as f64;
+                    position = preceding_elements_in_prev_cols + preceding_elements_in_curr_col;
+                }
 
-            //   if mode is column first , element new position is calculated by how many elements exist before it . An element x is considered before y if x.j < y.j or x.j = y.j and x.i < y.i
-            if column_first && sm_activated() {
-                let rows = (children_count as f64 / cols as f64).ceil();
-                let element_row = ((i + 1) as f64 / cols as f64).ceil();
-                let element_col = (i as i16 % cols) + 1;
-                let preceding_elements_in_prev_cols = (element_col - 1) as f64 * rows;
-                let preceding_elements_in_curr_col = (element_row - 1.0) as f64;
-                position = preceding_elements_in_prev_cols + preceding_elements_in_curr_col;
-            }
-
-            if let Some(child) = children.item(i) {
-                let _ = child.set_attribute("style", &format!("order: {}", position));
+                if let Some(child) = children.item(i) {
+                    let _ = child.set_attribute("style", &format!("order: {}", position));
+                }
             }
         }
     });
 
     view! { cx,
       <span
+        node_ref=parent_span
         id=id
         class=move || {
             format!(
@@ -104,7 +106,7 @@ pub fn Grid(
                   .enumerate()
           }
 
-          key=|label| label.0
+          key=move |label|  label.0
           view=move |cx, label| {
                 match label.1 {
                     View::Component(com) => {
@@ -120,7 +122,8 @@ pub fn Grid(
                         view! { cx, <Span classes="w-max">{com.children}</Span> };
                     }
                     _ => {
-                        view! { cx, <Span>""</Span> }
+                        return
+                        view! { cx, <Span>""</Span> };
                     }
                 }
           }
