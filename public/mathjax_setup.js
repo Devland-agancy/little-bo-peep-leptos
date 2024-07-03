@@ -69,9 +69,10 @@ MathJax.Hub.Register.StartupHook("End", function () {
   setTimeout((e) => {
     document.getElementsByTagName("body").item(0).style.opacity = 1;
 
-    let chapterScrollKey = ${location.pathname.split("/")[2]}_scroll;
-    let scrollValue = localStorage.getItem(chapterScrollKey);
-
+    let scrollValue = localStorage.getItem(${
+      location.pathname.split("/")[2]
+    }_scroll);
+    console.log()
     if (scrollValue) {
       window.scroll({
         top:  scrollValue,
@@ -90,7 +91,7 @@ MathJax.Hub.Register.StartupHook("End", function () {
         )
           setTimeout((e) => {
             localStorage.setItem(
-              chapterScrollKey,
+              ${location.pathname.split("/")[2]}_scroll,
               window.scrollY
             );
           }, 500);

@@ -16,8 +16,9 @@ MathJax.Hub.Register.StartupHook("End", function () {
   });
 
   setTimeout((e) => {
-    let chapterScrollKey = `${location.pathname.split("/")[2]}_scroll`;
-    let scrollValue = localStorage.getItem(chapterScrollKey);
+    let scrollValue = localStorage.getItem(
+      `${location.pathname.split("/")[2]}_scroll`
+    );
     if (scrollValue) {
       window.scroll({
         top: scrollValue,
@@ -32,7 +33,10 @@ MathJax.Hub.Register.StartupHook("End", function () {
         )
           setTimeout((e) => {
             // trigger after delay to get exact position
-            localStorage.setItem(chapterScrollKey, window.scrollY);
+            localStorage.setItem(
+              `${location.pathname.split("/")[2]}_scroll`,
+              window.scrollY
+            );
           }, 500);
       });
     }, 100);
