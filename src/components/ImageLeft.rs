@@ -147,8 +147,8 @@ pub fn ImageLeft(
                     "transform: {};
                transform-origin: 100% 51% 0px;
                transition: {}s;",
-                    if popup && solution_fully_opened() { "scale(1)" } else { "scale(1, 0)" },
-                    if popup && solution_fully_opened() { "0.5" } else { "0" },
+                    if !popup || (popup && solution_fully_opened())  { "scale(1)" } else { "scale(1, 0)" },
+                    if !popup || (popup && solution_fully_opened())  { "0.5" } else { "0" },
                 )
             }
           />
