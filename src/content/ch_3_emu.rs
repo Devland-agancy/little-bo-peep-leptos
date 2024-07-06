@@ -211,7 +211,7 @@
 
 |> Section
 
-     *On arbitrariness.*
+    *On arbitrariness.*
     While a function such as VX-11/78A might seem 
     completely arbitrary, one lesson from the former 
     example is that functions _can_ be 
@@ -667,155 +667,6 @@
     
     as a “function”, arrow or no arrow. 
 
-
-|> Section
-
-    *Distinguishing “$f$” and “$f(x)$”.*
-    The difference between
-    
-    $$
-    \te{VX-11/78A}
-    $$
-    
-    and
-    
-    $$
-    \te{VX-11/78A}(x)
-    $$
-    
-    is that the former is a
-
-    __function__
-
-    while the latter is a
-
-    __value.__
-
-    (Well, provided $x \in \{0, 1\}$, to make it 
-    well-defined at all.) Likewise, if $f : \rr \ra \rr$, 
-    the difference between
-    
-    $$
-    f
-    $$
-    
-    and 
-    
-    $$
-    f(x)
-    $$
-    
-    is that the former is a
-
-    __function__
-
-    while the latter is a
-
-    __value.__
-
-    Amusingly, though, if we add “$x \ra$” in front 
-    of “$f(x)$” then we are back to considering a 
-
-    __function__
-
-    and which is namely the function whose rule is: 
-    apply $f$. In fact,
-    
-    $$
-    f = (x \ra f(x))
-    $$
-    
-    where the above is _an equality between 
-    functions_. (You cannot use this equality to
-
-    __define__
-
-    $f$ because that would lead to a circular 
-    definition. But that doesn't make the equality 
-    any less true. And btw, you can go “one layer 
-    deeper”:
-    
-    $$
-    f = (x \ra f(x)) = (x \ra (t \ra f(t))(x))
-    $$
-    
-    ...where we use the fact that $f = (t \ra f(t))$ 
-    in the second equality. You could keep going,
-    replacing each time “$f$” by a self-referential
-    expression, but the process is not intrinsically 
-    useful.)
-
-
-|> Section
-
-    *Distinguishing “$x^3$” and “$x \ra x^3$”.*
-    Technically,
-    
-    $$
-    x^3
-    $$
-    
-    is a _value_ (not a function) and the way
-    logicians think of it, philosophically speaking, 
-    is like so: at inception, every symbol has some 
-    default value attached, absent any other context.
-   
-    By contrast,
-   
-    $$
-    x \ra x^3
-    $$
-   
-    is clearly a _function_, not a _value_. 
-    So “$x^3$” and “$x \ra x^3$” are very (VERY) 
-    different, qualitatively speaking.
-   
-    But including the arrow everywhere is 
-    impractical and even pedantic, so, in the end,
-    you might see us refer to an expression such as,
-    e.g.,
-   
-    $$
-    x^3 + x^2
-    $$
-   
-    as a “function”, arrow or no arrow.
-
-
-|> Section
-
-    *Distinguishing “$x^3$” and “$x \ra x^3$”.*
-    Technically,
-    
-    $$
-    x^3
-    $$
-    
-    is a _value_ (not a function) and the way 
-    logicians think of it, philosophically speaking,
-    is like so: at inception, every symbol has some 
-    default value attached, absent any other context.
-   
-    By contrast,
-   
-    $$
-    x \ra x^3
-    $$
-   
-    is clearly a _function_, not a _value_. 
-    So “$x^3$” and “$x \ra x^3$” are very (VERY) 
-    different, qualitatively speaking.
-   
-    But including the arrow everywhere is 
-    impractical and even pedantic, so, in the end,
-    you might see us refer to an expression such as,
-    e.g.,
-   
-    $$
-    x^3 + x^2
-    $$
-   
-    as a “function”, arrow or no arrow. 
 
 |> Section
 
@@ -1988,13 +1839,11 @@
             To recapitulate, the three transformations
             are,in order:
 
-            |> List
+            __1. horizontal translation by $-{B \over 2A}$__
+        
+            __2. vertical translation by ${-{B^2 \over 4A^2}}$__
 
-                1. <span>horizontal</span> translation by $-{B \over 2A}$
-            
-                2. vertical translation by ${-{B^2 \over 4A^2}}$
-
-                3. vertical scaling by $A$
+            __3. vertical scaling by $A$__
 
             |> Pause
 
@@ -2036,13 +1885,11 @@
         $a \in \rr$ with $y_0 \geq 0$, $a \ne 0.$
         If you apply these transformations...
 
-        |> List
+        __1. vertical translation by $-y_0$__
 
-            1. vertical translation by $-y_0$
+        __2. horizontal translation by $x_0$__
 
-            2. horizontal translation by $x_0$
-
-            3. vertical scaling by $a$
+        __3. vertical scaling by $a$__
 
         ...to the curve $y = x^2$, what are the 
         roots of the final curve that you obtain?
@@ -2138,13 +1985,11 @@
             is obtained from $y = x^2$ by the following
             sequence of transformations (cf. Exercise 14):
 
-            |> List
+            __1. vertical translation by $-{B^2 \over 4A^2}$__
 
-                1. vertical translation by $-{B^2 \over 4A^2}$
+            __2. horizontal translation by $-{B \over 2A}$__
 
-                2. <span>horizontal</span> translation by $-{B \over 2A}$
-
-                3. vertical scaling by $A$
+            __3. vertical scaling by $A$__
 
             (We put the vertical translation first.)
             By Exercise 15, the roots of $y = Ax^2 + Bx$ 
@@ -2323,23 +2168,19 @@
             By direct analogy with Exercise 14, the three
             transformations are thus...
 
-            |> List
+            __1. horizontal translation by $-{B \over 2A}$__
 
-                1. horizontal translation by $-{B \over 2A}$
+            __2. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$__
 
-                2. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
-
-                3. vertical scaling by $A$
+            __3. vertical scaling by $A$__
 
             ...or...
 
-            |> List
+            __1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$__
 
-                1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
+            __2. horizontal translation by $-{B \over 2A}$__
 
-                2. horizontal translation by $-{B \over 2A}$
-
-                3. vertical scaling by $A$
+            __3. vertical scaling by $A$__
             
             ...if we put the vertical translation first.
 
@@ -2360,11 +2201,11 @@
             is obtained from the curve $y = x^2$ by the following sequence of 
             transformations (cf. Exercise 19):
 
-            |> List
+            __1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$__
 
-                1. vertical translation by ${-{B^2 - 4AC \over 4A^2}}$
-                2. horizontal translation by $-{B \over 2A}$
-                3. vertical scaling by $A$
+            __2. horizontal translation by $-{B \over 2A}$__
+
+            __3. vertical scaling by $A$__
 
             _|~|_
 
