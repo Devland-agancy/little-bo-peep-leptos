@@ -850,9 +850,9 @@
 
             i. $(\lambda u.u^3)(0.5)$
                 
-            ii. $(u \ra u^2)(x + 1)$
-
             iii. $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
+
+            ii. $(u \ra u^2)(x + 1)$
 
             iv. $(u \ra u^2)(a + b)$
                     
