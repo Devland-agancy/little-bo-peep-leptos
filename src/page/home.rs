@@ -5,6 +5,7 @@ use crate::components::Columns::*;
 use crate::components::Paragraph::*;
 use crate::constants::MENU_ITEMS;
 use crate::global_state::GlobalState;
+use render_chapters::render_chapters_list;
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
@@ -20,12 +21,7 @@ fn ArticleBody(cx: Scope) -> impl IntoView {
       <Columns>
         <Paragraph>
           <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl">
-            {MENU_ITEMS
-                .into_iter()
-                .map(|(title, on_mobile, url)| {
-                    view! { cx, <MenuItem label=title on_mobile=on_mobile href=url/> }
-                })
-                .collect_view(cx)}
+            {render_chapters_list!(.)}
           </ul>
         </Paragraph>
       </Columns>

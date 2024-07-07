@@ -1,6 +1,6 @@
-#![allow(dead_code)]
-#![allow(unused_variables)]
+pub mod chapter1;
+pub mod chapter2;
+pub mod chapter3;
+pub mod chapter4;
 
-pub mod ch_1_emu;
-pub mod ch_2_emu;
-pub mod ch_3_emu;
+pub mod parent_emu;
