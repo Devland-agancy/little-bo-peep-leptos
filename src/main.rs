@@ -7,8 +7,6 @@ async fn main() {
     use little_bo_peep::app::*;
     use little_bo_peep::fileserv::file_and_error_handler;
 
-    simple_logger::init_with_level(log::Level::Debug).expect("couldn't initialize logging");
-
     // Setting get_configuration(None) means we'll be using cargo-leptos's env values
     // For deployment these variables are:
     // <https://github.com/leptos-rs/little-bo-peep#executing-a-server-on-a-remote-machine-without-the-toolchain>
