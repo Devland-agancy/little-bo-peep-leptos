@@ -368,31 +368,31 @@
     On the other hand, setting $C = a$, $D = -b$ in
 
     $$
-    \,\,\,(a + b)(C + D) = aC + aD + bC + bD
+    (a + b)(C + D) = aC + aD + bC + bD
     $$
 
     gives
 
     $$
-    \,\,\,(a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
+    (a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
     $$
 
     or, less pedantically,
 
     $$
-    \,\,\,(a + b)(a - b) = aa - ab + ba - bb
+    (a + b)(a - b) = aa - ab + ba - bb
     $$
 
     or
 
     $$
-    \,\,\,(a + b)(a - b) = a^2 - b^2
+    (a + b)(a - b) = a^2 - b^2
     $$
 
     since $- ab + ba = 0$, $aa = a^2$, $bb = b^2$. Note that
 
     $$
-    \,\,\,a^2 - b^2
+    a^2 - b^2
     $$
 
     is

@@ -82,14 +82,14 @@
     this instance. One notation writes
 
     $$
-    \lambda{x}.x^2
+    \lambda{}x.x^2
     $$
 
     to mean “the function that maps $x$ to $x^2$” 
     (and by the way,
 
     $$
-    \lambda{z}.z^2
+    \lambda{}z.z^2
     $$
 
     is _the same_ function, because 
@@ -97,7 +97,7 @@
     goes to its square—also by the way, the symbol
 
     $$
-    {\Huge \lambda}
+    \Huge \lambda
     $$
 
     is the Greek letter “lambda”, giving its name 
@@ -123,7 +123,7 @@
     $$
 
     ...the same as an equation of the form 
-    “$f(\dots) = \dots$.
+    “$f(\dots) = \dots$”.
 
     For more practice:
 
@@ -291,7 +291,7 @@
         |> ImageLeft
             src images/svg_0.5625_cloud.svg
             line -1.0
-            offset_y 1.7rem
+            offset_y 0em
 
 |> Section
 
@@ -473,6 +473,7 @@
 
     |> ImageRight
         src images/svg_crossing_cloud_circle.svg
+        use_squiggle_on_mobile false
 
     ...is not the graph of any function, because 
     some vertical lines intersect the graph more 
@@ -771,7 +772,7 @@
     $a_2x^2$, fyi.
 
     Note that the linear term can also be viewed as
-    the “$x^1$ term” while the constant term can 
+    the “$x^1$ term” while the constant term can
     also be viewed as the “$x^0$ term”; because
 
     $$
@@ -841,7 +842,7 @@
         |> Grid
             cols 2
             sm_cols 1
-            sm_cutoff 520
+            sm_cutoff 460
             center_on_overflow true
             place_items start
             with_padding false
@@ -863,10 +864,11 @@
             |> Grid
                 cols 2
                 sm_cols 1
-                sm_cutoff 520
+                sm_cutoff 460
                 center_on_overflow true
                 place_items start
                 with_padding false
+                column_first true
 
                 i. $0.5^3 = 0.125$
                     
