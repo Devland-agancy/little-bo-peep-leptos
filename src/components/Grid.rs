@@ -2,8 +2,6 @@ use crate::components::Span::Span;
 use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
 use leptos::ev::resize;
 use leptos::*;
-use wasm_bindgen::JsCast;
-use web_sys::{Element, HtmlCollection};
 
 #[component]
 pub fn Grid(

@@ -6,6 +6,7 @@ use crate::{
 };
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
+use render_chapters::render_chapters_list;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -98,13 +99,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
 fn MenuItems(cx: Scope) -> impl IntoView {
     view! { cx,
       <ul>
-        {MENU_ITEMS
-            .into_iter()
-            .map(|(title, on_mobile, url)| {
-                view! { cx, <MenuItem label=title on_mobile=on_mobile href=url/> }
-            })
-            .collect_view(cx)}
-
+        {render_chapters_list!(.)}
       </ul>
     }
 }
