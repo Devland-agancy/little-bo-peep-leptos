@@ -99,7 +99,7 @@ pub fn ImageRight(
             if line > 0.0 {
                 line_str = ((line - 0.5) * line_height()).to_string() + "px";
             } else if line < 0.0 {
-                line_str = format!("calc(100% + {}px)", (line - 0.5) * line_height())
+                line_str = format!("calc(100% + {}px)", (0.5 + line) * line_height())
             } else {
                 line_str = match y {
                     "bottom" => "100%".to_string(),
