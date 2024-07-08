@@ -42,26 +42,31 @@ pub fn Grid(
     });
 
     let parent_span = create_node_ref::<html::Span>(cx);
-    create_effect(cx, move |_| {
-        if let Some(parent_span) = parent_span() {
-            let children = parent_span.children();
-            for i in 0..children.length() {
-                let mut position = i as f64;
-                //   if mode is column first , element new position is calculated by how many elements exist before it . An element x is considered before y if x.j < y.j or x.j = y.j and x.i < y.i
-                if column_first && !sm_activated() {
-                    let rows = (children_count as f64 / cols as f64).ceil();
-                    let element_row = ((i + 1) as f64 / cols as f64).ceil();
-                    let element_col = (i as i16 % cols) + 1;
-                    let preceding_elements_in_prev_cols = (element_col - 1) as f64 * rows;
-                    let preceding_elements_in_curr_col = (element_row - 1.0) as f64;
-                    position = preceding_elements_in_prev_cols + preceding_elements_in_curr_col;
-                }
 
-                if let Some(child) = children.item(i) {
-                    let _ = child.set_attribute("style", &format!("order: {}", position));
+    create_effect(cx, move |_| {
+        sm_activated(); // re-render on change
+        request_animation_frame(move || {
+            if let Some(parent_span) = parent_span() {
+                let children = parent_span.children();
+                for i in 0..children.length() {
+                    let mut position = i as f64;
+                    //   if mode is column first , element new position is calculated by how many elements exist before it . An element x is considered before y if x.j < y.j or x.j = y.j and x.i < y.i
+
+                    if column_first && !sm_activated() {
+                        let rows = (children_count as f64 / cols as f64).ceil();
+                        let element_row = ((i + 1) as f64 / cols as f64).ceil();
+                        let element_col = (i as i16 % cols) + 1;
+                        let preceding_elements_in_prev_cols = (element_col - 1) as f64 * rows;
+                        let preceding_elements_in_curr_col = (element_row - 1.0) as f64;
+                        position = preceding_elements_in_prev_cols + preceding_elements_in_curr_col;
+                    }
+
+                    if let Some(child) = children.item(i) {
+                        let _ = child.set_attribute("style", &format!("order: {}", position));
+                    }
                 }
             }
-        }
+        });
     });
 
     view! { cx,
