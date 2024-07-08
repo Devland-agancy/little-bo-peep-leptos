@@ -288,8 +288,6 @@ span .MathJax_SVG{
   display: none;
 }
 
-
-
 .indent-fix {
-  height: 0.1rem;
+  height: 0;
 }

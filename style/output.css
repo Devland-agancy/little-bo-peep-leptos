@@ -758,14 +758,6 @@ video {
   height: 3.5rem;
 }
 
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-2\.5 {
-  height: 0.625rem;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -822,10 +814,6 @@ video {
 
 .w-2\/3 {
   width: 66.666667%;
-}
-
-.w-24 {
-  width: 6rem;
 }
 
 .w-4 {
@@ -1129,11 +1117,6 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.py-8 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 .pb-1 {
@@ -1715,7 +1698,7 @@ span .MathJax_SVG{
 }
 
 .indent-fix {
-  height: 0.1rem;
+  height: 0;
 }
 
 .hover\:border-b-0:hover {
