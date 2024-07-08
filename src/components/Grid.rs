@@ -48,7 +48,7 @@ pub fn Grid(
             for i in 0..children.length() {
                 let mut position = i as f64;
                 //   if mode is column first , element new position is calculated by how many elements exist before it . An element x is considered before y if x.j < y.j or x.j = y.j and x.i < y.i
-                if column_first && sm_activated() {
+                if column_first && !sm_activated() {
                     let rows = (children_count as f64 / cols as f64).ceil();
                     let element_row = ((i + 1) as f64 / cols as f64).ceil();
                     let element_col = (i as i16 % cols) + 1;

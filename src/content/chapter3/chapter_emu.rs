@@ -850,9 +850,9 @@
 
             i. $(\lambda u.u^3)(0.5)$
                 
-            iii. $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
-
             ii. $(u \ra u^2)(x + 1)$
+
+            iii. $(\lambda t.t - 1)(100) \cdot (\lambda t.t + 1)(100)$
 
             iv. $(u \ra u^2)(a + b)$
                     
@@ -872,9 +872,9 @@
 
                 i. $0.5^3 = 0.125$
                     
-                iii. $(100 - 1) \cdot (100 + 1) = 9999$
-
                 ii. $(x + 1)^2 = x^2 + 2x + 1$
+
+                iii. $(100 - 1) \cdot (100 + 1) = 9999$
 
                 iv. $(a + b)^2 = a^2 + 2ab + b^2$
 
@@ -2044,9 +2044,9 @@
 
             i. $f \circ g = (x \ra f(g(x)))$
                 
-            iii. $f \circ g = (x \ra g(f(x)))$
-
             ii. $g \circ f = (x \ra f(g(x)))$
+
+            iii. $f \circ g = (x \ra g(f(x)))$
 
             iv. $g \circ f = (x \ra g(f(x)))$
 
