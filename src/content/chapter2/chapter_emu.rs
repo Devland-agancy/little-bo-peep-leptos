@@ -270,7 +270,7 @@
 
     |> ImageRight
         src images/38.svg
-        line 3.0
+        line 3
 
     $$ {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} $$
 
@@ -499,7 +499,7 @@
 
     |> ImageRight
         src images/51.svg
-        line 1.0
+        line 1
         offset_x 2rem
 
 |> Section
@@ -866,7 +866,7 @@
         |> Image
             src images/1.svg
             container_classes pt-[22px] pb-[15px]
-            padding_left 90.0
+            padding_left 90
 
         |> Solution
 
@@ -876,7 +876,7 @@
             |> Image
                 src images/64.svg
                 container_classes pt-[21px] pb-[20px]
-                padding_left 46.0
+                padding_left 46
 
             On each interval, the velocity is rate of
             change of the height, i.e., the _slope_ of

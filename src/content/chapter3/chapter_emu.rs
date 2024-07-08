@@ -290,7 +290,7 @@
 
         |> ImageLeft
             src images/svg_0.5625_cloud.svg
-            line -1.0
+            line -1
             offset_y 0em
 
 |> Section

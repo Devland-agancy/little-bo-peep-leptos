@@ -146,7 +146,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "Item",
             ],
         })
-        .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"));
+        .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"))
+        .auto_convert_to_float(vec!["line", "padding_left"]);
 
     let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
 
