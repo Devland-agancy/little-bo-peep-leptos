@@ -121,7 +121,7 @@ pub fn render_chapter_modules(_: TokenStream) -> TokenStream {
             } else {
                 format!(r#"mobile_title="{mobile_title}""#)
             },
-            if elm_only_for.is_some_and(|e| e == i) {
+            if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
                 "elm"
             } else {
                 "view"
