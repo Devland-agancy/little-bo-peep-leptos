@@ -63,7 +63,7 @@ fn ends_with_chapter_number(path: &PathBuf) -> bool {
 }
 
 #[proc_macro]
-pub fn render_chapter_routes(input: TokenStream) -> TokenStream {
+pub fn render_chapter_routes(_: TokenStream) -> TokenStream {
     let mut routes = String::from(
         r#"
     <Routes>
@@ -110,7 +110,7 @@ pub fn render_chapter_modules(_: TokenStream) -> TokenStream {
 
                 #[component]
                 fn Chapter{i}Body(cx: Scope) -> impl IntoView {{
-                    {} elm! {{
+                    {}! {{
                     cx,
                     "file:/src/content/chapter{i}/chapter_emu.rs"
                     }}
@@ -122,9 +122,9 @@ pub fn render_chapter_modules(_: TokenStream) -> TokenStream {
                 format!(r#"mobile_title="{mobile_title}""#)
             },
             if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
-                ""
+                "elm"
             } else {
-                ""
+                "view"
             }
         ));
     }

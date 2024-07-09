@@ -1,9 +1,6 @@
 use crate::components::Checkbox::Checkbox;
 use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_START_FADE};
-use crate::{
-    constants::{HUMBURGER_MENU_HEIGHT, MENU_ITEMS},
-    global_state::GlobalState,
-};
+use crate::{constants::HUMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
 use render_chapters::render_chapters_list;

@@ -41,7 +41,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let elm_string = if elm.value().starts_with("file:") {
         let mut path = env::current_dir().unwrap();
         path.pop();
-        let path_string = format!("{}/src/content", path.display());
+        let _path_string = format!("{}/src/content", path.display());
         //let _res = get_content(path_string.as_str());
         // if let Ok(content) = res {
         //     content

@@ -3,7 +3,6 @@ use leptos::*;
 use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
 use crate::components::Paragraph::*;
-use crate::constants::MENU_ITEMS;
 use crate::global_state::GlobalState;
 use render_chapters::render_chapters_list;
 

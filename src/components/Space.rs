@@ -1,7 +1,6 @@
 use leptos::*;
 
 #[component]
-pub fn Space(cx: Scope, children: Children) -> impl IntoView {
-    view! {  cx, " "
-    }
+pub fn Space(_cx: Scope, children: Children) -> impl IntoView {
+    view! { cx, " " }
 }
