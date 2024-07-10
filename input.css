@@ -36,9 +36,9 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
-/* .MathJax_SVG_Display{
-  margin: 0 !important;
-} */
+ .MathJax_SVG_Display{
+  margin-bottom: 0 !important;
+} 
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -291,3 +291,14 @@ span .MathJax_SVG{
 .indent-fix {
   height: 0;
 }
+
+.mathblock-span {
+  display: block;
+  margin-bottom: 1em;
+  background-color: #fff
+}
+
+.mathblock-span:has(+ .mathblock) {
+  margin-bottom: 0;
+}
+

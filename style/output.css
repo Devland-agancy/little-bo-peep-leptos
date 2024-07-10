@@ -1375,9 +1375,9 @@ video {
   display: inline-block;
 }
 
-/* .MathJax_SVG_Display{
-  margin: 0 !important;
-} */
+.MathJax_SVG_Display{
+  margin-bottom: 0 !important;
+}
 
 .hidden-on-startup {
   max-height: 0;
@@ -1701,6 +1701,16 @@ span .MathJax_SVG{
   height: 0;
 }
 
+.mathblock-span {
+  display: block;
+  margin-bottom: 1em;
+  background-color: #fff
+}
+
+.mathblock-span:has(+ .mathblock) {
+  margin-bottom: 0;
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }
@@ -1838,3 +1848,4 @@ span .MathJax_SVG{
     transition-property: none;
   }
 }
+

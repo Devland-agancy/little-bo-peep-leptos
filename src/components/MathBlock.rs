@@ -31,6 +31,6 @@ pub fn MathBlock(
 
         {children(cx)}
       </div>
-      <span style="display: block; height: 5px; background-color: #fff"></span>
+      <span class="mathblock-span"></span>
     }
 }
