@@ -27,6 +27,7 @@ use crate::components::Table::Table;
 use crate::constants::MENU_ITEMS;
 use elm_to_view::elm;
 use leptos::*;
-use render_chapters::render_chapter_modules;
+use render_chapters::render_article_modules;
 
-render_chapter_modules!(.);
+render_article_modules! {,"chapters"}
+render_article_modules! {,"bootcamps"}

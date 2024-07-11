@@ -4,13 +4,14 @@ use crate::constants::MOBILE_MAX_WIDTH;
 use crate::error_template::{AppError, ErrorTemplate};
 
 use crate::global_state::GlobalState;
+use crate::page::article::*;
 use crate::page::state::PageState;
 use crate::svg_defs::SVGDefinitions;
 use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
-use render_chapters::render_chapter_routes;
+use render_chapters::render_article_routes;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
@@ -107,7 +108,11 @@ pub fn App(cx: Scope) -> impl IntoView {
           <ChapterMenu/>
           <Article>
             <Header/>
-            {render_chapter_routes!(.)}
+            <Routes>
+              <Route path="" view=crate::page::home::View/>
+              {render_article_routes!(,"chapters")}
+              {render_article_routes!(,"bootcamps")}
+            </Routes>
           </Article>
         </main>
       </Router>

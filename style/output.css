@@ -678,6 +678,10 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .mb-\[1\.2em\] {
   margin-bottom: 1.2em;
 }

@@ -3,7 +3,7 @@ use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_S
 use crate::{constants::HUMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
-use render_chapters::render_chapters_list;
+use render_chapters::render_articles_list;
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -74,8 +74,14 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         >
           <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
-            <MenuItems/>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">
+            <ul>
+              {render_articles_list!(,"chapters")}
+            </ul>
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">"Bootcamps"</h2>
+            <ul class="text-right">
+              {render_articles_list!(,"bootcamps")}
+            </ul>
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2">
               "Options"
             </h2>
             <div class="flex items-center justify-end gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2">
@@ -93,15 +99,6 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-fn MenuItems(cx: Scope) -> impl IntoView {
-    view! { cx,
-      <ul>
-        {render_chapters_list!(.)}
-      </ul>
-    }
-}
-
-#[component]
 fn MenuItem(
     cx: Scope,
     href: &'static str,
@@ -111,7 +108,7 @@ fn MenuItem(
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <li class="-indent-6 px-6 pb-1.5 sm:pb-2">
+      <li class="pb-1.5 sm:pb-2">
         <a
           on:click=move |_| {
               route.set(href);
