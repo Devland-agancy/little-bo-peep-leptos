@@ -110,8 +110,8 @@ pub fn App(cx: Scope) -> impl IntoView {
             <Header/>
             <Routes>
               <Route path="" view=crate::page::home::View/>
-              {render_article_routes!(,"chapters")}
-              {render_article_routes!(,"bootcamps")}
+              {render_article_routes!("chapters")}
+              {render_article_routes!("bootcamps")}
             </Routes>
           </Article>
         </main>

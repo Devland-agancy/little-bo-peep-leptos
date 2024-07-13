@@ -4,6 +4,7 @@ extern crate proc_macro;
 extern crate nom;
 
 use leptos::error::Error;
+use proc_macro::Ident;
 use proc_macro::TokenStream;
 use quote::quote;
 use serde_json;
@@ -69,10 +70,7 @@ fn get_sorted_articles(article_type: ArticleType) -> Vec<(u8, PathBuf)> {
         let metadata = fs::metadata(&path).unwrap();
         let path_str = path.to_str().unwrap();
 
-        if metadata.is_dir()
-            && path_str.contains(article_type.to_str().as_str())
-            && ends_with_article_number(&path, &article_type)
-        {
+        if metadata.is_dir() && ends_with_article_number(&path, &article_type) {
             let last_char = path_str.chars().last().unwrap();
             let article_number = last_char.to_digit(10).unwrap() as u8;
             articles.push((article_number, path));
@@ -93,6 +91,7 @@ fn ends_with_article_number(path: &PathBuf, article_type: &ArticleType) -> bool 
 
     if let Some(pos) = path_str.rfind(suffix.as_str()) {
         let remaining = &path_str[pos + suffix.len()..];
+
         return remaining.chars().all(|c| c.is_digit(10));
     }
     false
@@ -104,7 +103,6 @@ struct Input {
 
 impl syn::parse::Parse for Input {
     fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
-        input.parse::<syn::Token![,]>()?;
         let article_type: LitStr = input.parse()?;
         Ok(Input { article_type })
     }
@@ -147,7 +145,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_type_upper_str = article_type.to_upper_str();
 
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = None;
+    let elm_only_for: Option<u8> = Some(2);
     let articles = get_sorted_articles(article_type);
     for (i, path) in articles {
         let (title, mobile_title) = get_article_title(&path);
@@ -214,6 +212,48 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
     list = format!("view! {{ cx, {} }}", list);
 
     let parsed_code = list.parse::<proc_macro2::TokenStream>().unwrap();
+    let output = quote! {
+        #parsed_code
+    };
+    output.into()
+}
+
+struct InputMultiString {
+    article_type: LitStr,
+    content_to_render: LitStr,
+}
+
+impl syn::parse::Parse for InputMultiString {
+    fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
+        let article_type: LitStr = input.parse()?;
+        input.parse::<syn::Token![,]>()?;
+        let content_to_render: LitStr = input.parse()?;
+        Ok(InputMultiString {
+            article_type,
+            content_to_render,
+        })
+    }
+}
+
+#[proc_macro]
+pub fn render_content_for_article(input: TokenStream) -> TokenStream {
+    let input_tokens = parse_macro_input!(input as InputMultiString);
+    // Extract the HTML string
+    let article_type: LitStr = input_tokens.article_type;
+    let content_to_render: LitStr = input_tokens.content_to_render;
+
+    let article_type = ArticleType::from_str(article_type.value().as_str());
+
+    let mut res = String::new();
+    let articles = get_sorted_articles(article_type);
+
+    if articles.len() > 0 {
+        res.push_str(content_to_render.value().as_str());
+    }
+
+    res = format!("view! {{ cx, {} }}", res);
+
+    let parsed_code = res.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         #parsed_code
     };

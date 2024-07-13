@@ -3,7 +3,7 @@ use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_S
 use crate::{constants::HUMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
-use render_chapters::render_articles_list;
+use render_chapters::{render_articles_list, render_content_for_article};
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -56,8 +56,11 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
     let GlobalState {
         show_areas,
         show_section_divider,
+        btc_alignment_on_left,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+    let btc_panel_alignment_on_left = create_rw_signal(cx, true);
+
     view! { cx,
       <div
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
@@ -75,23 +78,54 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
           <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
             <ul>
-              {render_articles_list!(,"chapters")}
+              {render_articles_list!("chapters")}
             </ul>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2 text-right">"Bootcamps"</h2>
-            <ul class="text-right">
-              {render_articles_list!(,"bootcamps")}
+            {render_content_for_article!("bootcamps", r#"
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2"
+            class=("text-right", move || !btc_panel_alignment_on_left())
+            >"Bootcamps"</h2>
+            "#)}
+
+            <ul class=("text-right", move || !btc_panel_alignment_on_left())>
+              {render_articles_list!("bootcamps")}
             </ul>
-            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2">
+            <h2 class="font-baskerville-italic text-2xl mt-4 pb-1.5 sm:pb-2"
+                class=("text-right",move ||  btc_panel_alignment_on_left())
+            >
               "Options"
             </h2>
-            <div class="flex items-center justify-end gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2">
+            <div class="flex items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                  class=("justify-end",move ||  btc_panel_alignment_on_left())
+                  class=("row-reverse", move || !btc_panel_alignment_on_left())
+            >
               <p>"Show Areas"</p>
               <Checkbox value=show_areas/>
             </div>
-            <div class="flex items-center justify-end gap-2 text-lg sm:text-xl">
+            <div class="flex items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                  class=("justify-end",move ||  btc_panel_alignment_on_left())
+                  class=("row-reverse", move || !btc_panel_alignment_on_left())
+            >
               <p>"Show Section Dividers"</p>
               <Checkbox value=show_section_divider/>
             </div>
+
+            {render_content_for_article!("bootcamps", r#"
+              <div class="flex items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                    class=("justify-end",move ||  btc_panel_alignment_on_left())
+                    class=("row-reverse", move || !btc_panel_alignment_on_left())
+              >
+                <p>"C.P. Bootcamps Left"</p>
+                <Checkbox value=btc_panel_alignment_on_left />
+              </div>
+              <div class="flex items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                    class=("justify-end",move ||  btc_panel_alignment_on_left())
+                    class=("row-reverse", move || !btc_panel_alignment_on_left())
+              >
+                <p>"T.o.C. Bootcamps Left"</p>
+                <Checkbox value=btc_alignment_on_left />
+              </div>
+            "#)}
+
           </div>
         </div>
       </div>
