@@ -117,14 +117,32 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
     let mut routes = String::new();
     let articles = get_sorted_articles(article_type);
 
-    for (i, _) in articles {
+    routes.push_str(&format!(r#""#));
+    for (i, _) in &articles {
         routes.push_str(&format!(
             r#"<Route path="/article/{}_{i}" view=crate::page::article::{}{i}View />"#,
             article_type.to_abrv(),
             article_type.to_upper_str()
         ));
     }
-
+    if articles.len() > 0 {
+        if article_type.to_str() == "chapter" {
+            routes = format!(
+                r#"<Routes>
+            <Route path="" view=crate::page::home::View/> 
+            {routes}
+        </Routes>"#
+            );
+        } else {
+            routes = format!(
+                r#"<Routes>
+            {routes}
+        </Routes>"#
+            );
+        }
+    } else {
+        routes = "\"\"".to_string();
+    }
     let parsed_code = routes.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         view! {

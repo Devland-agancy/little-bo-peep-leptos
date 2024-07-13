@@ -31,6 +31,11 @@ pub fn attach_img_to_math(node_ref: &NodeRef<Div>) {
 
 pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<&str>) {
     if let Some(node) = node_ref() {
+        let parent = node.parent_element();
+        if parent.is_none() {
+            return;
+        }
+
         let parent = node.parent_element().unwrap();
 
         let parent_is_math = parent
