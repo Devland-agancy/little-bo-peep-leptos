@@ -2,9 +2,12 @@ use leptos::*;
 
 use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
+use crate::components::Image::*;
 use crate::components::Paragraph::*;
+use crate::components::Section::*;
+
 use crate::global_state::GlobalState;
-use render_chapters::render_chapters_list;
+use render_chapters::{render_articles_list, render_content_for_article};
 
 #[component]
 pub fn View(cx: Scope) -> impl IntoView {
@@ -16,12 +19,33 @@ pub fn View(cx: Scope) -> impl IntoView {
 
 #[component]
 fn ArticleBody(cx: Scope) -> impl IntoView {
+    let GlobalState {
+        btc_alignment_on_left,
+        ..
+    } = use_context(cx).unwrap();
+
     view! { cx,
       <Columns>
         <Paragraph>
           <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl">
-            {render_chapters_list!(.)}
+            {render_articles_list!("chapters")}
           </ul>
+          {render_content_for_article!("bootcamps" , r#"
+            <Spacer />
+            <Image src="/images/seperator.svg" width="375px">""</Image>
+            <Spacer />
+            <h1 class="sm:col-start-2 text-3xl sm:text-4xl mb-5"
+                class=("text-right", move || !btc_alignment_on_left())
+            >
+                "Bootcamps"
+            </h1>
+          "#)}
+          <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl"
+              class=("text-right", move || !btc_alignment_on_left())
+          >
+            {render_articles_list!("bootcamps")}
+          </ul>
+
         </Paragraph>
       </Columns>
     }
