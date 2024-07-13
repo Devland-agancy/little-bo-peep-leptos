@@ -145,7 +145,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_type_upper_str = article_type.to_upper_str();
 
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = Some(2);
+    let elm_only_for: Option<u8> = None;
     let articles = get_sorted_articles(article_type);
     for (i, path) in articles {
         let (title, mobile_title) = get_article_title(&path);
