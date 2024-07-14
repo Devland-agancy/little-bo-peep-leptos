@@ -111,38 +111,30 @@ impl syn::parse::Parse for Input {
 #[proc_macro]
 pub fn render_article_routes(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
-    // Extract the HTML string
-    let article_type: LitStr = input_tokens.article_type;
-    let article_type: ArticleType = ArticleType::from_str(article_type.value().as_str());
+    let article_types: LitStr = input_tokens.article_type;
+    let article_types = article_types.value();
+    let article_types = article_types.split(" ");
     let mut routes = String::new();
-    let articles = get_sorted_articles(article_type);
+    routes.push_str(
+        r#"
+    <Routes>
+        <Route path="" view=crate::page::home::View/>"#,
+    );
 
-    routes.push_str(&format!(r#""#));
-    for (i, _) in &articles {
-        routes.push_str(&format!(
-            r#"<Route path="/article/{}_{i}" view=crate::page::article::{}{i}View />"#,
-            article_type.to_abrv(),
-            article_type.to_upper_str()
-        ));
-    }
-    if articles.len() > 0 {
-        if article_type.to_str() == "chapter" {
-            routes = format!(
-                r#"<Routes>
-            <Route path="" view=crate::page::home::View/> 
-            {routes}
-        </Routes>"#
-            );
-        } else {
-            routes = format!(
-                r#"<Routes>
-            {routes}
-        </Routes>"#
-            );
+    for article_type_str in article_types {
+        let article_type: ArticleType = ArticleType::from_str(article_type_str);
+        let articles = get_sorted_articles(article_type);
+
+        for (i, _) in &articles {
+            routes.push_str(&format!(
+                r#"<Route path="/article/{}_{i}" view=crate::page::article::{}{i}View />"#,
+                article_type.to_abrv(),
+                article_type.to_upper_str()
+            ));
         }
-    } else {
-        routes = "\"\"".to_string();
     }
+    routes.push_str(r#"</Routes>"#);
+
     let parsed_code = routes.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         view! {
@@ -156,19 +148,22 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
 #[proc_macro]
 pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
-    // Extract the HTML string
-    let article_type: LitStr = input_tokens.article_type;
-    let article_type = ArticleType::from_str(article_type.value().as_str());
-    let article_type_str = article_type.to_str();
-    let article_type_upper_str = article_type.to_upper_str();
-
+    let article_types: LitStr = input_tokens.article_type;
+    let article_types = article_types.value();
+    let article_types = article_types.split(" ");
     let mut modules = String::new();
     let elm_only_for: Option<u8> = None;
-    let articles = get_sorted_articles(article_type);
-    for (i, path) in articles {
-        let (title, mobile_title) = get_article_title(&path);
-        modules.push_str(&format!(
-            r#"
+
+    for article_type_str in article_types {
+        let article_type: ArticleType = ArticleType::from_str(article_type_str);
+        let article_type_str = article_type.to_str();
+        let article_type_upper_str = article_type.to_upper_str();
+
+        let articles = get_sorted_articles(article_type);
+        for (i, path) in articles {
+            let (title, mobile_title) = get_article_title(&path);
+            modules.push_str(&format!(
+                r#"
                 #[component]
                 pub fn {article_type_upper_str}{i}View(cx: Scope) -> impl IntoView {{
                     view! {{ cx,
@@ -187,17 +182,18 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                     }}
                 }}
             "#,
-            if mobile_title.is_empty() {
-                "".to_string()
-            } else {
-                format!(r#"mobile_title="{mobile_title}""#)
-            },
-            if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
-                "elm"
-            } else {
-                "view"
-            }
-        ));
+                if mobile_title.is_empty() {
+                    "".to_string()
+                } else {
+                    format!(r#"mobile_title="{mobile_title}""#)
+                },
+                if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
+                    "elm"
+                } else {
+                    "view"
+                }
+            ));
+        }
     }
 
     let parsed_code = modules.parse::<proc_macro2::TokenStream>().unwrap();
