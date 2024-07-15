@@ -61,12 +61,23 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
     } = use_context::<GlobalState>(cx).unwrap();
     let btc_panel_alignment_on_left = create_rw_signal(cx, true);
 
+    let toggle_scroll = move |overflow: &str| {
+        let body = document().body().unwrap();
+        if menu_closed() {
+            body.style().set_property("overflow", overflow).unwrap();
+        } else {
+            body.style().set_property("overflow", overflow).unwrap();
+        }
+    };
+
     view! { cx,
       <div
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })
       >
         <div
+          on:mouseenter=move |_| toggle_scroll("hidden")
+          on:mouseleave=move |_| toggle_scroll("auto")
           style=format!(
               "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
               HUMBURGER_MENU_HEIGHT - 1.0,
@@ -203,6 +214,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
     view! { cx,
       <div
+        id="menu-button"
         class="h-14 w-14 fixed right-0 border-l sm:border-l-0 border-b z-50"
         class=(
             "hover:border-b-0",

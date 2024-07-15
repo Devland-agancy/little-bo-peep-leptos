@@ -1,10 +1,12 @@
 use crate::page::state::PageState;
+use ev::click;
 use leptos::{
-    ev::{click, scrollend, touchend},
+    ev::{scrollend, touchend},
     html::Div,
     *,
 };
 use leptos_use::use_event_listener;
+use wasm_bindgen::JsCast;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
@@ -44,14 +46,24 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, document(), click, move |_| {
-            let mut options = ScrollToOptions::new();
-            options.behavior(ScrollBehavior::Smooth);
-            options.left(1500.0);
-            window().scroll_with_scroll_to_options(&options);
-            set_state_changed_by_scroll(false);
+        let _ = use_event_listener(cx, document(), click, move |ev| {
+            if let Some(target) = ev.target() {
+                let sidebar = document().get_element_by_id("sidebar").unwrap();
+                let menu_btn = document().get_element_by_id("menu-button").unwrap();
+
+                if let Some(element) = target.dyn_ref::<web_sys::Element>() {
+                    if !sidebar.contains(Some(element)) && !menu_btn.contains(Some(element)) {
+                        let mut options = ScrollToOptions::new();
+                        options.behavior(ScrollBehavior::Smooth);
+                        options.left(1500.0);
+                        window().scroll_with_scroll_to_options(&options);
+                        set_state_changed_by_scroll(false);
+                    }
+                }
+            }
         });
     });
+
     // for right_images we autoscroll to their position
     view! { cx,
       <div class="">
