@@ -10,6 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Create .env file
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "ENV=production" > .env
+          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "ENV=development" > .env
+          else
+            echo "Unknown branch" > .env
+          fi
+
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only --no-cache
         env:
