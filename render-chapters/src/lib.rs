@@ -10,6 +10,7 @@ use quote::quote;
 use serde_json;
 use std::env;
 use std::fs;
+use std::fs::read_to_string;
 use std::fs::ReadDir;
 use std::path::PathBuf;
 use syn::{parse_macro_input, LitStr};
@@ -272,6 +273,86 @@ pub fn render_content_for_article(input: TokenStream) -> TokenStream {
         #parsed_code
     };
     output.into()
+}
+
+struct EnvMacro {
+    dev_content: LitStr,
+    prod_content: LitStr,
+}
+
+impl syn::parse::Parse for EnvMacro {
+    fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
+        let dev_content: LitStr = input.parse()?;
+        input.parse::<syn::Token![,]>()?;
+        let prod_content: LitStr = input.parse()?;
+        Ok(EnvMacro {
+            dev_content,
+            prod_content,
+        })
+    }
+}
+
+#[proc_macro]
+pub fn render_based_on_env(input: TokenStream) -> TokenStream {
+    let input_tokens = parse_macro_input!(input as EnvMacro);
+    // Extract the HTML string
+    let dev_content: LitStr = input_tokens.dev_content;
+    let prod_content: LitStr = input_tokens.prod_content;
+    if get_env_var("ENV") == "development" {
+        let parsed_code = dev_content
+            .value()
+            .parse::<proc_macro2::TokenStream>()
+            .unwrap();
+        let output = quote! {
+            view!{
+                cx,
+                #parsed_code
+            }
+        };
+        output.into()
+    } else {
+        let parsed_code = prod_content
+            .value()
+            .parse::<proc_macro2::TokenStream>()
+            .unwrap();
+        let output = quote! {
+            view!{
+                cx,
+                #parsed_code
+            }
+        };
+        output.into()
+    }
+}
+
+fn get_env_var(key: &str) -> String {
+    if let Ok(value) = env::var(key) {
+        return value;
+    }
+
+    let path = env::current_dir();
+
+    let path_string = format!("{}/.env", path.unwrap().display());
+    let env_file = read_to_string(path_string);
+    if env_file.is_err() {
+        panic!("env not found");
+    }
+    let env_str = env_file.unwrap();
+    let lines = env_str.lines();
+    let mut env_value = String::new();
+
+    for line in lines {
+        let l = line.split_once("=");
+        if l.is_none() {
+            continue;
+        }
+        let (_key, value) = l.unwrap();
+        if _key == key {
+            env_value = value.to_string();
+            break;
+        }
+    }
+    env_value
 }
 
 fn get_article_title(path: &PathBuf) -> (String, String) {

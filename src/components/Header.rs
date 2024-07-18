@@ -3,7 +3,7 @@ use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_S
 use crate::{constants::HUMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
-use render_chapters::{render_articles_list, render_content_for_article};
+use render_chapters::{render_articles_list, render_based_on_env, render_content_for_article};
 
 #[component]
 pub fn Header(cx: Scope) -> impl IntoView {
@@ -106,12 +106,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
             >
               "Options"
             </h2>
-            <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
-                  class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
-            >
-              <p>"Show Areas"</p>
-              <Checkbox value=show_areas/>
-            </div>
+
+            /* show_section_divider */
             <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
                   class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
             >
@@ -119,20 +115,34 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
               <Checkbox value=show_section_divider/>
             </div>
 
-            {render_content_for_article!("bootcamps", r#"
+            {render_based_on_env!(
+              r##"
               <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
-                    class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
+              class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
               >
-                <p>"C.P. Bootcamps Left"</p>
-                <Checkbox value=btc_panel_alignment_on_left />
+                <p>"Show Areas"</p>
+                <Checkbox value=show_areas/>
               </div>
-              <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
-                    class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
-              >
-                <p>"T.o.C. Bootcamps Left"</p>
-                <Checkbox value=btc_alignment_on_left />
-              </div>
-            "#)}
+              /* Alignment */
+              {render_content_for_article!("bootcamps", r#"
+                <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                      class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
+                >
+                  <p>"C.P. Bootcamps Left"</p>
+                  <Checkbox value=btc_panel_alignment_on_left />
+                </div>
+                <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
+                      class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
+                >
+                  <p>"T.o.C. Bootcamps Left"</p>
+                  <Checkbox value=btc_alignment_on_left />
+                </div>"#
+              )} 
+              "##,
+              ""
+            )}
+
+
 
           </div>
         </div>
