@@ -25,6 +25,13 @@ jobs:
         run: ls -a
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only --no-cache
+      - run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            flyctl deploy --remote-only --no-cache --app little-bo-peep
+          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            flyctl deploy --remote-only --no-cache --app little-bo-peep-develop
+          else
+            echo "Unknown branch, deployment skipped"
+          fi
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
