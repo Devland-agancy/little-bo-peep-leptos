@@ -23,9 +23,6 @@ jobs:
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: |
-          pwd
-          ls
-          cat .env
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
             flyctl deploy --remote-only --no-cache --app little-bo-peep
           elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
