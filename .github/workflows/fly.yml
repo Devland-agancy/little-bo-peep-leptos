@@ -22,7 +22,7 @@ jobs:
           fi
 
       - name: Create .env file
-        run: ls -a
+        run: cat .env
 
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: |
