@@ -123,8 +123,11 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
                 <p>"Show Areas"</p>
                 <Checkbox value=show_areas/>
               </div>
-              /* Alignment */
-              {render_content_for_article!("bootcamps", r#"
+              "##,
+              ""
+            )}
+            /* Alignment */
+            {render_content_for_article!("bootcamps", r#"
                 <div class="flex justify-end items-center gap-2 text-lg sm:text-xl pb-1.5 sm:pb-2"
                       class=("flex-row-reverse", move || !btc_panel_alignment_on_left())
                 >
@@ -137,11 +140,7 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
                   <p>"T.o.C. Bootcamps Left"</p>
                   <Checkbox value=btc_alignment_on_left />
                 </div>"#
-              )} 
-              "##,
-              ""
-            )}
-
+              )}
 
 
           </div>
