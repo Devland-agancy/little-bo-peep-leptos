@@ -333,6 +333,7 @@ fn get_env_var(key: &str) -> String {
     let path = env::current_dir();
 
     let path_string = format!("{}/.env", path.unwrap().display());
+    print!("path: {}", path_string);
     let env_file = read_to_string(path_string);
     if env_file.is_err() {
         panic!("env not found");
