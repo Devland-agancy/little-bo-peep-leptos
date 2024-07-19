@@ -767,6 +767,7 @@
 
     |> ImageRight
         src images/svg_quadratic_linear_constant_cloud.svg
+        edge paragraph_edge
 
     then the quadratic term is $-a_2x^2$, not 
     $a_2x^2$, fyi.

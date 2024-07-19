@@ -11,14 +11,13 @@ use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
-use render_chapters::render_article_routes;
+use render_chapters::{render_article_routes, render_based_on_env};
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context(cx);
-
     let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
     provide_context(cx, set_page_state);
     provide_context(cx, page_state);
@@ -36,11 +35,9 @@ pub fn App(cx: Scope) -> impl IntoView {
     provide_context(cx, route);
 
     provide_context(cx, GlobalState::new(cx));
-
     let GlobalState {
         route, on_mobile, ..
     } = use_context(cx).unwrap();
-
     create_effect(cx, move |_| {
         // execute on every route change
         route.get();
@@ -89,13 +86,17 @@ pub fn App(cx: Scope) -> impl IntoView {
       <meta name="format-detection" content="telephone=no"/>
       // sets the document title
       <Title text="Little Bo Peep"/>
-      <Link href="/images/book_favicon_sized_v2.png" rel="icon"/>
       <Script src="/mathjax_setup.js" defer="true"/>
       <Script src="/extras.js" defer="true"/>
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_SVG"
         defer="true"
       />
+
+      {render_based_on_env!(
+        r#"<Link href="/images/book_favicon_sized_v2_dev.svg" rel="icon"/>"#,
+        r#"<Link href="/images/book_favicon_sized_v2.png" rel="icon"/>"#
+      )}
 
       // content for this welcome page
       <Router fallback=|cx| {
