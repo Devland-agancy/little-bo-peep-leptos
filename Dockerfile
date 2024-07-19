@@ -12,6 +12,7 @@ FROM rustlang/rust:nightly-bullseye as runner
 COPY --from=builder /app/target/release/little-bo-peep /app/
 COPY --from=builder /app/target/site /app/site
 COPY --from=builder /app/Cargo.toml /app/
+COPY --from=builder /app/.env /app/
 WORKDIR /app
 
 # Set any required env variables and
