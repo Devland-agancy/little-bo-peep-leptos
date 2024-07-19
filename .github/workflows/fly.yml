@@ -21,6 +21,9 @@ jobs:
             echo "Unknown branch" > .env
           fi
 
+      - name: Create .env file
+        run: ls -a
+
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only --no-cache
         env:
