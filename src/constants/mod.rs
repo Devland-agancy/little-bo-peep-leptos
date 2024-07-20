@@ -22,7 +22,7 @@ pub const CENTERED_PARAGRAPH_X_MARGIN: &'static str = "1rem";
 pub const TEXT_LEFT_PADDING: &'static str = "1rem";
 pub const TEXT_RIGHT_PADDING: &'static str = "1rem";
 
-pub const HUMBURGER_MENU_HEIGHT: f64 = 56.0;
+pub const HAMBURGER_MENU_HEIGHT: f64 = 56.0;
 
 pub const HAMBURGER_MENU_SCROLLY_START_FADE: f64 = 800.0;
 pub const HAMBURGER_MENU_SCROLLY_END_FADE: f64 = 1600.0;
