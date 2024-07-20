@@ -79,6 +79,9 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         <div
           on:mouseenter=move |_| toggle_scroll("hidden")
           on:mouseleave=move |_| toggle_scroll("auto")
+          on:touchstart=move |_| toggle_scroll("hidden")
+          on:touchend=move |_| toggle_scroll("auto")
+
           style=format!(
               "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
               HUMBURGER_MENU_HEIGHT - 1.0,
