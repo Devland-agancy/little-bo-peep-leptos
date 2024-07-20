@@ -44,14 +44,20 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         let _ = use_event_listener(cx, document(), scrollend, move |_| scroll_back());
         let _ = use_event_listener(cx, document(), touchend, move |_| scroll_back());
     });
+    let (test_contains, set_tc) = create_signal(cx, "");
 
     create_effect(cx, move |_| {
         let _ = use_event_listener(cx, document(), click, move |ev| {
             if let Some(target) = ev.target() {
                 let sidebar = document().get_element_by_id("sidebar").unwrap();
                 let menu_btn = document().get_element_by_id("menu-button").unwrap();
+                set_tc("target is some");
 
                 if let Some(element) = target.dyn_ref::<web_sys::Element>() {
+                    if sidebar.contains(Some(element)) {
+                        set_tc("sidebar contains element");
+                    }
+
                     if !sidebar.contains(Some(element)) && !menu_btn.contains(Some(element)) {
                         let mut options = ScrollToOptions::new();
                         options.behavior(ScrollBehavior::Smooth);
@@ -67,6 +73,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     // for right_images we autoscroll to their position
     view! { cx,
       <div class="">
+
         <div
           node_ref=article_node
           class="relative flex justify-center align-center w-full pb-14 min-h-screen left-[1500px]"
@@ -76,7 +83,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <div class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0">
             // for left image we transle based on image width
 
-            <div class="font-baskerville w-full">{children(cx)}</div>
+            <div class="font-baskerville w-full">
+              <h1 class="text-6xl">{test_contains()}</h1>
+              {children(cx)}</div>
           </div>
           <ColumnButtonLeft/>
           <ColumnButtonRight/>
