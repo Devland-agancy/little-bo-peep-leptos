@@ -1,6 +1,6 @@
 use crate::components::Checkbox::Checkbox;
 use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_START_FADE};
-use crate::{constants::HUMBURGER_MENU_HEIGHT, global_state::GlobalState};
+use crate::{constants::HAMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
 use leptos_use::use_event_listener;
 use render_chapters::{render_articles_list, render_based_on_env, render_content_for_article};
@@ -14,7 +14,7 @@ pub fn Header(cx: Scope) -> impl IntoView {
         </div>
       </div>
       <div
-        style=format!("top: {}px", HUMBURGER_MENU_HEIGHT - 1.0)
+        style=format!("top: {}px", HAMBURGER_MENU_HEIGHT - 1.0)
         class="h-0 border-b left-[-1500px] w-[4400px] fixed z-50"
       ></div>
     }
@@ -84,8 +84,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
 
           style=format!(
               "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
-              HUMBURGER_MENU_HEIGHT - 1.0,
-              HUMBURGER_MENU_HEIGHT,
+              HAMBURGER_MENU_HEIGHT - 1.0,
+              HAMBURGER_MENU_HEIGHT,
           )
 
           class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
@@ -214,10 +214,10 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        set_scrolled_header(window().scroll_y().unwrap() >= HUMBURGER_MENU_HEIGHT);
+        set_scrolled_header(window().scroll_y().unwrap() >= HAMBURGER_MENU_HEIGHT);
 
         window_event_listener(scroll, move |_| {
-            set_scrolled_header(window().scroll_y().unwrap() >= HUMBURGER_MENU_HEIGHT);
+            set_scrolled_header(window().scroll_y().unwrap() >= HAMBURGER_MENU_HEIGHT);
         })
     });
 
@@ -230,7 +230,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
             move || menu_closed() && !on_mobile.get() && window_scroll() > 0_f64,
         )
 
-        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > HUMBURGER_MENU_HEIGHT)
+        class=("sm:border-b-0", move || !menu_closed() || window_scroll() > HAMBURGER_MENU_HEIGHT)
         style=move || {
             format!(
                 "opacity: {}",
@@ -241,6 +241,9 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
 
         <button
           class="select-none flex items-center justify-center h-8 w-8 m-3 fill-[rgb(30,30,30)] hover:fill-stone-600"
+          class=("outline-[10px]", move || show_areas())
+          class=("outline-black", move || show_areas())
+          class=("outline", move || show_areas())
 
           on:mouseover=move |_| set_button_opacity(1_f64)
           on:pointerdown=move |_| {

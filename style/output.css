@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.6 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1272,12 +1272,20 @@ video {
   outline-style: solid;
 }
 
+.outline-\[10px\] {
+  outline-width: 10px;
+}
+
 .outline-\[20px\] {
   outline-width: 20px;
 }
 
 .outline-\[\#3f9aff7d\] {
   outline-color: #3f9aff7d;
+}
+
+.outline-black {
+  outline-color: #000;
 }
 
 .filter {
