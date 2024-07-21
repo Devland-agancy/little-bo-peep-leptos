@@ -5,6 +5,8 @@ use html::Div;
 use leptos::*;
 use leptos_use::use_event_listener;
 
+use crate::global_state::GlobalState;
+
 #[derive(PartialEq)]
 pub enum Height {
     Fit,
@@ -22,8 +24,10 @@ pub fn MathBlock(
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
+    let GlobalState { math_rendered, .. } = use_context(cx).unwrap();
 
     create_effect(cx, move |_| {
+        math_rendered();
         set_timeout(
             move || {
                 if node_ref().is_some() {
@@ -40,7 +44,7 @@ pub fn MathBlock(
                     }
                 }
             },
-            Duration::from_secs(5),
+            Duration::from_secs(2),
         );
     });
     create_effect(cx, move |_| {

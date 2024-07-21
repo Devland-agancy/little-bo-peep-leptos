@@ -41,6 +41,7 @@ pub fn ImageRight(
         on_mobile,
         tab,
         solutions_state,
+        math_rendered,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
 
@@ -93,6 +94,7 @@ pub fn ImageRight(
     let (use_sq, set_use_sq) = create_signal(cx, true);
     // hide squiggle if math is wide
     create_effect(cx, move |_| {
+        math_rendered();
         set_timeout(
             move || {
                 if edge_signal() == "paragraph_edge" {
@@ -122,7 +124,7 @@ pub fn ImageRight(
                     }
                 }
             },
-            Duration::from_secs(6), // this must be more that duration to add wide class in mathblock component
+            Duration::from_secs(3), // this must be more that duration to add wide class in mathblock component
         );
     });
 
