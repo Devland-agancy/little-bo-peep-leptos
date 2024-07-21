@@ -84,8 +84,10 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             // for left image we transle based on image width
 
             <div class="font-baskerville w-full">
-              <h1 class="text-6xl">{test_contains()}</h1>
-              {children(cx)}</div>
+              <h1 class="text-6xl">{move || test_contains()}</h1>
+              {children(cx)}
+              <h1 class="text-6xl">{move || test_contains()}</h1>
+            </div>
           </div>
           <ColumnButtonLeft/>
           <ColumnButtonRight/>
