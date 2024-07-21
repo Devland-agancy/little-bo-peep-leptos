@@ -7,11 +7,14 @@ use crate::global_state::GlobalState;
 use crate::page::article::*;
 use crate::page::state::PageState;
 use crate::svg_defs::SVGDefinitions;
+use ev::Event;
 use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
 use leptos_router::*;
 use render_chapters::{render_article_routes, render_based_on_env};
+use wasm_bindgen::closure::Closure;
+use wasm_bindgen::JsCast;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
@@ -36,11 +39,15 @@ pub fn App(cx: Scope) -> impl IntoView {
 
     provide_context(cx, GlobalState::new(cx));
     let GlobalState {
-        route, on_mobile, ..
+        route,
+        on_mobile,
+        math_rendered,
+        ..
     } = use_context(cx).unwrap();
     create_effect(cx, move |_| {
         // execute on every route change
         route.get();
+        math_rendered.set(false);
 
         /*  */
         let script = document().create_element("script");
@@ -66,6 +73,17 @@ pub fn App(cx: Scope) -> impl IntoView {
         options.left(1500.0);
         options.behavior(ScrollBehavior::Instant);
         window().scroll_with_scroll_to_options(&options);
+    });
+
+    create_effect(cx, move |_| {
+        let cb = Closure::wrap(Box::new(move |e: Event| {
+            math_rendered.set(true);
+        }) as Box<dyn FnMut(_)>);
+
+        let _ = document()
+            .add_event_listener_with_callback("math-rendered", &cb.as_ref().unchecked_ref());
+
+        cb.forget();
     });
 
     create_effect(cx, move |_| {
