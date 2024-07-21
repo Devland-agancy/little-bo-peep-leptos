@@ -95,6 +95,7 @@ pub fn ImageRight(
     // hide squiggle if math is wide
     create_effect(cx, move |_| {
         math_rendered();
+        edge_signal();
         set_timeout(
             move || {
                 if edge_signal() == "paragraph_edge" {
@@ -124,7 +125,7 @@ pub fn ImageRight(
                     }
                 }
             },
-            Duration::from_secs(3), // this must be more that duration to add wide class in mathblock component
+            Duration::from_secs(4), // this must be more that duration to add wide class in mathblock component
         );
     });
 
