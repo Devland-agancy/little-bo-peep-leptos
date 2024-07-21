@@ -80,7 +80,7 @@
     respectively, from $A$ to $B$, so
 
     $$
-    \te{slope} = {y_2 - y_1 \over x_2 - x_1 - x_1 - x_1 - x_1 - x_1 - x_1}
+    \te{slope} = {y_2 - y_1 \over x_2 - x_1}
     $$
 
     |> ImageRight
