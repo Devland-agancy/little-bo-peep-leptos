@@ -70,17 +70,25 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
         }
     };
 
+    let (test_contains, set_tc) = create_signal(cx, "");
+
     view! { cx,
       <div
         id="sidebar"
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })
       >
+      <h1 class="text-6xl">{move || test_contains()}</h1>
+
         <div
           on:mouseenter=move |_| toggle_scroll("hidden")
           on:mouseleave=move |_| toggle_scroll("auto")
-          on:touchstart=move |_| toggle_scroll("hidden")
-          on:touchend=move |_| toggle_scroll("auto")
+          on:touchstart=move |_| {
+            set_tc("start");
+            toggle_scroll("hidden")}
+          on:touchend=move |_|{
+            set_tc("end");
+             toggle_scroll("auto")}
 
           style=format!(
               "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
