@@ -44,7 +44,7 @@ pub fn MathBlock(
                     }
                 }
             },
-            Duration::from_secs(2),
+            Duration::from_secs(4),
         );
     });
     create_effect(cx, move |_| {

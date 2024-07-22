@@ -125,7 +125,7 @@ pub fn ImageRight(
                     }
                 }
             },
-            Duration::from_secs(4), // this must be more that duration to add wide class in mathblock component
+            Duration::from_secs(5), // this must be more that duration to add wide class in mathblock component
         );
     });
 
