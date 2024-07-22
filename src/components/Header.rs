@@ -84,10 +84,8 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
           on:mouseenter=move |_| toggle_scroll("hidden")
           on:mouseleave=move |_| toggle_scroll("auto")
           on:touchstart=move |_| {
-            set_tc("start");
             toggle_scroll("hidden")}
           on:touchend=move |_|{
-            set_tc("end");
              toggle_scroll("auto")}
 
           style=format!(
@@ -98,7 +96,14 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
 
           class="select-none touch-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
-          <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
+          <div
+            on:touchstart=move |_| {
+            toggle_scroll("hidden")
+          }
+            on:touchend=move |_|{
+             toggle_scroll("auto")
+            }
+              class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
             <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
             <ul>
               {render_articles_list!("chapters")}
