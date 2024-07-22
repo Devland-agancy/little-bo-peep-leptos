@@ -81,12 +81,15 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
       <h1 class="text-6xl">{move || test_contains()}</h1>
 
         <div
-          on:mouseenter=move |_| toggle_scroll("hidden")
+          on:mouseenter=move |_|
+            toggle_scroll("hidden")
+          on:mouseover=move |_|
+            toggle_scroll("hidden")
           on:mouseleave=move |_| toggle_scroll("auto")
-          on:touchstart=move |_| {
-            toggle_scroll("hidden")}
-          on:touchend=move |_|{
-             toggle_scroll("auto")}
+          on:touchstart=move |_|
+            toggle_scroll("hidden")
+          on:touchend=move |_|
+             toggle_scroll("auto")
 
           style=format!(
               "min-height: calc(100vh - {}px); height: calc(100vh - {}px)",
