@@ -168,7 +168,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                 #[component]
                 pub fn {article_type_upper_str}{i}View(cx: Scope) -> impl IntoView {{
                     view! {{ cx,
-                    <ArticleTitle label="{title}" {}/>
+                    <ArticleTitle label="{article_type_upper_str} {i}: {title}" {}/>
                     <Columns>
                         <{article_type_upper_str}{i}Body />
                     </Columns>
@@ -212,6 +212,7 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
     let article_type: LitStr = input_tokens.article_type;
     let article_type = ArticleType::from_str(article_type.value().as_str());
     let article_type_abrv = article_type.to_abrv();
+    let article_type_upper = article_type.to_upper_str();
 
     let mut list = String::new();
     let articles = get_sorted_articles(article_type);
@@ -219,7 +220,7 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
         let (title, mobile_title) = get_article_title(&path);
         list.push_str(&format!(
             r#"
-            <MenuItem label="{title}" on_mobile="{mobile_title}" href="{article_type_abrv}_{i}"/>
+            <MenuItem article_type="{article_type_upper} {i}" label="{title}" on_mobile="{mobile_title}" href="{article_type_abrv}_{i}"/>
             "#
         ));
     }
