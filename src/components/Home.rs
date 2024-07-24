@@ -1,10 +1,7 @@
-use leptos::*;
-
-use crate::components::ArticleTitle::*;
 use crate::components::Columns::*;
-use crate::components::Image::*;
 use crate::components::Paragraph::*;
 use crate::components::Section::*;
+use leptos::*;
 
 use crate::global_state::GlobalState;
 use render_chapters::{render_articles_list, render_content_for_article};
@@ -19,18 +16,22 @@ pub fn Body(cx: Scope) -> impl IntoView {
     view! { cx,
       <Columns>
         <Paragraph>
-          {render_content_for_article!("chapters" , r#"
+          {render_content_for_article!(
+              "chapters", r#"
             <Title label="Chapters"/>
-        "#)}
+        "#
+          )}
           <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl">
             {render_articles_list!("chapters")}
-          </ul>
-          <Spacer />
-          {render_content_for_article!("bootcamps" , r#"
+          </ul> <Spacer/>
+          {render_content_for_article!(
+              "bootcamps", r#"
             <Title label="Bootcamps"/>
-          "#)}
-          <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl"
-              class=("text-right", move || !btc_alignment_on_left())
+          "#
+          )}
+          <ul
+            class="leading-9 lg:leading-10 text-2xl lg:text-3xl"
+            class=("text-right", move || !btc_alignment_on_left())
           >
             {render_articles_list!("bootcamps")}
           </ul>
@@ -61,7 +62,11 @@ pub fn MenuItem(
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <a href=["/article/", href].concat() class="flex items-center justify-between" on:click=move |_| route.set(href)>
+      <a
+        href=["/article/", href].concat()
+        class="flex items-center justify-between"
+        on:click=move |_| route.set(href)
+      >
         <span class="block">{article_type}</span>
 
         <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>

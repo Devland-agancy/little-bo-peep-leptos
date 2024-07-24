@@ -6,7 +6,7 @@ pub fn Checkbox(cx: Scope, value: RwSignal<bool>) -> impl IntoView {
       <div
         on:click=move |_| { value.set(!value.get()) }
 
-        class="w-4 h-4  border border-black rounded flex items-center justify-center cursor-pointer"
+        class="w-5 h-5  border border-black rounded flex items-center justify-center cursor-pointer"
         class=("bg-[#c1ebff]", move || value.get())
         class=("hover:bg-[#9ac1d3]", move || value.get())
         class=("bg-white", move || !value.get())
