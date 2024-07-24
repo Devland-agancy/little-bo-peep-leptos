@@ -95,9 +95,6 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
 
           class="select-none overscroll-none absolute right-0 w-2/3 max-w-xs z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
-         /*  <div
-            class="absolute top-0 opacity-0 w-full h-full"
-          > */
             <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
               <h2 class="font-baskerville-italic text-2xl pb-1.5 sm:pb-2">"Chapters"</h2>
               <ul>{render_articles_list!("chapters")}</ul>
@@ -158,8 +155,6 @@ fn MenuOpen(cx: Scope) -> impl IntoView {
               )}
 
             </div>
-          /* </div> */
-
         </div>
       </div>
     }
@@ -170,6 +165,8 @@ fn MenuItem(
     cx: Scope,
     href: &'static str,
     label: &'static str,
+    article_type: &'static str,
+
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
     let GlobalState { route, .. } = use_context(cx).unwrap();

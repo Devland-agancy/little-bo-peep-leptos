@@ -1,6 +1,6 @@
 /*
 
 |> Chapter
-    title Bootcamp 1: Sets
+    title Sets
 
 */
