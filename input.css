@@ -22,6 +22,11 @@
   src: url("/fonts/ClickerScript-Regular.ttf")
 }
 
+@font-face {
+  font-family: "GlassAntiqua";
+  src: url("/fonts/GlassAntiqua-Regular.ttf")
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -302,3 +307,12 @@ span .MathJax_SVG{
   margin-bottom: 0;
 }
 
+.dots {
+  flex-grow: 1;
+  height: 2px;
+  background: left / 100% 1px;
+  background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
+  background-size: 7px 1px;
+  margin: 0 10px;
+  position: relative;
+}

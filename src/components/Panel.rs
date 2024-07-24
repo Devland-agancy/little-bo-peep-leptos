@@ -52,7 +52,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
               HAMBURGER_MENU_HEIGHT,
           )
 
-          class="select-none overscroll-none absolute right-0 w-[22rem] z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
+          class="select-none overscroll-none absolute right-0 w-[16rem] sm:w-[22rem] z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
           <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
 
@@ -91,10 +91,10 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-2xl font-baskerville-italic mb-5 mt-1 flex justify-between items-center">
-        <img src="/images/title_line.svg" class="w-24"/>
+      <h1 class="text-xl sm:text-2xl font-baskerville-italic mb-5 mt-1 flex justify-between items-center">
+        <img src="/images/title_line.svg" class="w-[3.5rem] sm:w-24"/>
         {label}
-        <img src="/images/title_line.svg" class="rotate-180 w-24"/>
+        <img src="/images/title_line.svg" class="rotate-180 w-[3.5rem] sm:w-24"/>
       </h1>
     }
 }
@@ -112,10 +112,11 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-center justify-between mb-4"
+        class="flex items-center justify-between mb-4 text-lg sm:text-xl"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
+        <span class="dots"></span>
 
         <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
         <span class="hidden sm:block">{label}</span>

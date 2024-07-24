@@ -41,6 +41,12 @@ impl ArticleType {
             ArticleType::BOOTCAMP => "Bootcamp".to_string(),
         }
     }
+    fn to_upper_char(&self) -> String {
+        match self {
+            ArticleType::CHAPTER => "C".to_string(),
+            ArticleType::BOOTCAMP => "B".to_string(),
+        }
+    }
     fn to_abrv(&self) -> String {
         match self {
             ArticleType::CHAPTER => "ch".to_string(),
@@ -212,7 +218,7 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
     let article_type: LitStr = input_tokens.article_type;
     let article_type = ArticleType::from_str(article_type.value().as_str());
     let article_type_abrv = article_type.to_abrv();
-    let article_type_upper = article_type.to_upper_str();
+    let article_type_upper = article_type.to_upper_char();
 
     let mut list = String::new();
     let articles = get_sorted_articles(article_type);

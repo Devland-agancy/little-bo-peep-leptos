@@ -68,7 +68,7 @@ pub fn MenuItem(
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
-
+        <span class="dots"></span>
         <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
         <span class="hidden sm:block">{label}</span>
       </a>

@@ -816,10 +816,6 @@ video {
   width: 3.5rem;
 }
 
-.w-24 {
-  width: 6rem;
-}
-
 .w-5 {
   width: 1.25rem;
 }
@@ -828,8 +824,12 @@ video {
   width: 2rem;
 }
 
-.w-\[22rem\] {
-  width: 22rem;
+.w-\[16rem\] {
+  width: 16rem;
+}
+
+.w-\[3\.5rem\] {
+  width: 3.5rem;
 }
 
 .w-\[30\%\] {
@@ -1367,6 +1367,12 @@ video {
   src: url("/fonts/ClickerScript-Regular.ttf")
 }
 
+@font-face {
+  font-family: "GlassAntiqua";
+
+  src: url("/fonts/GlassAntiqua-Regular.ttf")
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -1719,6 +1725,16 @@ span .MathJax_SVG{
   margin-bottom: 0;
 }
 
+.dots {
+  flex-grow: 1;
+  height: 2px;
+  background: left / 100% 1px;
+  background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
+  background-size: 7px 1px;
+  margin: 0 10px;
+  position: relative;
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }
@@ -1767,8 +1783,16 @@ span .MathJax_SVG{
     height: 100%;
   }
 
+  .sm\:w-24 {
+    width: 6rem;
+  }
+
   .sm\:w-36 {
     width: 9rem;
+  }
+
+  .sm\:w-\[22rem\] {
+    width: 22rem;
   }
 
   .sm\:translate-x-0 {
@@ -1803,6 +1827,11 @@ span .MathJax_SVG{
 
   .sm\:pl-2 {
     padding-left: 0.5rem;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .sm\:text-4xl {
@@ -1860,4 +1889,3 @@ span .MathJax_SVG{
     transition-property: none;
   }
 }
-

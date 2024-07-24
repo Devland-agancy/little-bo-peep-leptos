@@ -10,6 +10,7 @@ pub fn ArticleTitle(
     cx: Scope,
     label: &'static str,
     #[prop(default = "")] on_mobile: &'static str,
+    #[prop(default = "")] class: &'static str,
 ) -> impl IntoView {
     let (mobile, set_mobile) = create_signal(cx, false);
 
@@ -29,7 +30,7 @@ pub fn ArticleTitle(
     view! { cx,
       <div class="sm:grid gridColsWidth pt-14">
         <h1
-          class="sm:col-start-2 text-3xl sm:text-4xl p-4"
+          class=format!("sm:col-start-2 text-3xl sm:text-4xl p-4 {class}")
           style=move || {
               format!(
                   "margin-top: {};margin-bottom: {}",
