@@ -1,8 +1,8 @@
 use crate::components::Article::Article;
-use crate::components::Header::{ChapterMenu, Header, MenuButton, MenuState};
+use crate::components::Header::{Header, MenuButton};
+use crate::components::Panel::{MenuState, Panel};
 use crate::constants::MOBILE_MAX_WIDTH;
 use crate::error_template::{AppError, ErrorTemplate};
-
 use crate::global_state::GlobalState;
 use crate::page::article::*;
 use crate::page::state::PageState;
@@ -125,7 +125,7 @@ pub fn App(cx: Scope) -> impl IntoView {
       }>
         <main>
           <MenuButton/>
-          <ChapterMenu/>
+          <Panel />
           <Article>
             <Header/>
               {render_article_routes!("chapters bootcamps")}
