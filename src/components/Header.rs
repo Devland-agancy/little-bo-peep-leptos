@@ -145,7 +145,7 @@ pub fn MenuButton(cx: Scope) -> impl IntoView {
       <div
         class="w-14 fixed right-0 z-40 h-14 "
         class=("h-[10rem]", move || burger_background.get())
-        class=("h-[5.25rem]", move || !scrolled_header() && !burger_background.get())
+        class=("h-14", move || !scrolled_header() && !burger_background.get())
 
         style=move || {
             format!(
