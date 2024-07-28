@@ -658,6 +658,11 @@ video {
   margin-bottom: 1rem;
 }
 
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
 .\!mt-0 {
   margin-top: 0px !important;
 }
@@ -692,10 +697,6 @@ video {
 
 .ml-6 {
   margin-left: 1.5rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .mt-6 {
@@ -784,10 +785,6 @@ video {
 
 .h-\[40px\] {
   height: 40px;
-}
-
-.h-\[5\.25rem\] {
-  height: 5.25rem;
 }
 
 .h-fit {
@@ -1732,7 +1729,6 @@ span .MathJax_SVG{
   background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
   background-size: 7px 1px;
   margin: 0 3px;
-  top: 6px;
   position: relative;
 }
 

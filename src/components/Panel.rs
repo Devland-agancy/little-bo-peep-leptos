@@ -91,7 +91,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-xl sm:text-2xl font-baskerville-italic mb-5 mt-1 flex justify-between items-center">
+      <h1 class="text-xl sm:text-2xl font-baskerville-italic my-5 flex justify-between items-center">
         <img src="/images/title_line.svg" class="w-[3.5rem] sm:w-24"/>
         {label}
         <img src="/images/title_line.svg" class="rotate-180 w-[3.5rem] sm:w-24"/>
@@ -112,7 +112,7 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-center justify-between mb-4 text-lg sm:text-xl"
+        class="flex items-baseline justify-between text-lg sm:text-xl"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
