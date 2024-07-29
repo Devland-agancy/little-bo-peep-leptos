@@ -313,6 +313,6 @@ span .MathJax_SVG{
   background: left / 100% 1px;
   background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
   background-size: 7px 1px;
-  margin: 0 3px;
+  margin: 0 5px;
   position: relative;
 }
