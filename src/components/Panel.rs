@@ -70,13 +70,13 @@ pub fn Panel(cx: Scope) -> impl IntoView {
                 "text-right",
                 move || !btc_alignment_on_left(),
             )>{render_articles_list!("bootcamps")}</ul> <Title label="Options"/>
-            <Option signal=show_areas label="Show Areas"/>
+            <Option signal=show_areas label="Areas"/>
             {render_based_on_env!(
                 r##"
                 /* show_section_divider */
                   <Option 
                     signal=show_section_divider
-                    label="Show Section Dividers"
+                    label="Section Dividers"
                   />
                 "##,
                 ""
@@ -91,7 +91,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-2xl sm:text-3xl font-baskerville-italic my-5 flex justify-between items-center">
+      <h1 class="text-3xl sm:text-4xl font-baskerville-italic my-5 flex justify-between items-center">
         <img src="/images/title_line.svg" class="w-[3.5rem] sm:w-24"/>
         {label}
         <img src="/images/title_line.svg" class="rotate-180 w-[3.5rem] sm:w-24"/>
@@ -112,7 +112,7 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-baseline justify-between text-xl sm:text-2xl mb-2 sm:mb-0"
+        class="flex items-baseline justify-between text-2xl sm:text-3xl mb-2 sm:mb-0"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
