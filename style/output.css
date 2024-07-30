@@ -825,12 +825,12 @@ video {
   width: 16rem;
 }
 
-.w-\[3\.5rem\] {
-  width: 3.5rem;
-}
-
 .w-\[30\%\] {
   width: 30%;
+}
+
+.w-\[3rem\] {
+  width: 3rem;
 }
 
 .w-\[4400px\] {
@@ -1823,16 +1823,6 @@ span .MathJax_SVG{
 
   .sm\:pl-2 {
     padding-left: 0.5rem;
-  }
-
-  .sm\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .sm\:text-4xl {

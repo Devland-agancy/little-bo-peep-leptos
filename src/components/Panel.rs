@@ -91,10 +91,10 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-3xl sm:text-4xl font-baskerville-italic my-5 flex justify-between items-center">
-        <img src="/images/title_line.svg" class="w-[3.5rem] sm:w-24"/>
+      <h1 class="text-3xl font-baskerville-italic my-5 flex justify-between items-center">
+        <img src="/images/title_line_panel.svg" class="w-[3rem] sm:w-24"/>
         {label}
-        <img src="/images/title_line.svg" class="rotate-180 w-[3.5rem] sm:w-24"/>
+        <img src="/images/title_line_panel.svg" class="rotate-180 w-[3rem] sm:w-24"/>
       </h1>
     }
 }
@@ -112,7 +112,7 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-baseline justify-between text-2xl sm:text-3xl mb-2 sm:mb-0"
+        class="flex items-baseline justify-between text-2xl mb-2 sm:mb-0"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
@@ -127,7 +127,7 @@ pub fn MenuItem(
 #[component]
 pub fn Option(cx: Scope, signal: RwSignal<bool>, label: &'static str) -> impl IntoView {
     view! { cx,
-      <div class="flex justify-between items-center text-xl sm:text-2xl pb-1.5 sm:pb-2">
+      <div class="flex justify-between items-center text-2xl pb-1.5 sm:pb-2">
         <p>{label}</p>
         <Checkbox value=signal/>
       </div>
