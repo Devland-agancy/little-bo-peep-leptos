@@ -90,11 +90,13 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
+    let GlobalState { on_mobile, .. } = use_context(cx).unwrap();
+
     view! { cx,
       <h1 class="text-3xl font-baskerville-italic my-5 flex justify-between items-center">
-        <img src="/images/title_line_panel.svg" class="w-[3rem] sm:w-24"/>
+        <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
         {label}
-        <img src="/images/title_line_panel.svg" class="rotate-180 w-[3rem] sm:w-24"/>
+        <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>
       </h1>
     }
 }
@@ -112,7 +114,7 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-baseline justify-between leading-9 sm:leading-4 text-2xl"
+        class="flex items-baseline justify-between leading-9 sm:leading-8 text-2xl"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
