@@ -1826,12 +1826,12 @@ span .MathJax_SVG{
     line-height: 2.5rem;
   }
 
-  .sm\:leading-4 {
-    line-height: 1rem;
-  }
-
   .sm\:leading-5 {
     line-height: 1.25rem;
+  }
+
+  .sm\:leading-8 {
+    line-height: 2rem;
   }
 
   .sm\:leading-\[32\.5px\] {
