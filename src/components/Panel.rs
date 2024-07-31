@@ -112,7 +112,7 @@ pub fn MenuItem(
     view! { cx,
       <a
         href=["/article/", href].concat()
-        class="flex items-baseline justify-between text-2xl mb-2 sm:mb-0"
+        class="flex items-baseline justify-between leading-9 sm:leading-4 text-2xl"
         on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
