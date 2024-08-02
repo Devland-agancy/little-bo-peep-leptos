@@ -10,6 +10,9 @@ module.exports = {
         "baskerville-bold": ["Baskerville Bold"],
         "baskerville-italic": ["Baskerville Italic"],
         clickerscript: ["Clicker Script"],
+        "glass-antiqua": ["GlassAntiqua"],
+        "lora-italic": ["Lora Italic"],
+        lora: ["Lora"],
       },
       width: {
         128: "32.5rem",

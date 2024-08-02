@@ -27,6 +27,16 @@
   src: url("/fonts/GlassAntiqua-Regular.ttf")
 }
 
+@font-face {
+  font-family: "Lora Italic";
+  src: url("/fonts/Lora-italic.ttf")
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora.ttf")
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -315,4 +325,8 @@ span .MathJax_SVG{
   background-size: 7px 1px;
   margin: 0 5px;
   position: relative;
+}
+
+.flip-y {
+  transform: rotateY(180deg);
 }

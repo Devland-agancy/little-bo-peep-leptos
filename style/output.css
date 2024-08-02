@@ -837,6 +837,10 @@ video {
   width: 4400px;
 }
 
+.w-\[60px\] {
+  width: 60px;
+}
+
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
@@ -1009,6 +1013,10 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .self-start {
@@ -1216,6 +1224,10 @@ video {
   font-family: Clicker Script;
 }
 
+.font-lora {
+  font-family: Lora;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1363,6 +1375,18 @@ video {
   font-family: "GlassAntiqua";
 
   src: url("/fonts/GlassAntiqua-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Lora Italic";
+
+  src: url("/fonts/Lora-italic.ttf")
+}
+
+@font-face {
+  font-family: "Lora";
+
+  src: url("/fonts/Lora.ttf")
 }
 
 * {
@@ -1725,6 +1749,10 @@ span .MathJax_SVG{
   background-size: 7px 1px;
   margin: 0 5px;
   position: relative;
+}
+
+.flip-y {
+  transform: rotateY(180deg);
 }
 
 .hover\:border-b-0:hover {
