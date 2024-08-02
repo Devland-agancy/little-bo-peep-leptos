@@ -833,12 +833,12 @@ video {
   width: 3rem;
 }
 
-.w-\[4400px\] {
-  width: 4400px;
+.w-\[40px\] {
+  width: 40px;
 }
 
-.w-\[60px\] {
-  width: 60px;
+.w-\[4400px\] {
+  width: 4400px;
 }
 
 .w-fit {
@@ -1813,6 +1813,10 @@ span .MathJax_SVG{
 
   .sm\:w-\[22rem\] {
     width: 22rem;
+  }
+
+  .sm\:w-\[60px\] {
+    width: 60px;
   }
 
   .sm\:translate-x-0 {
