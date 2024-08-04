@@ -17,7 +17,7 @@ pub fn Body(cx: Scope) -> impl IntoView {
       <Columns>
         <Paragraph>
 
-          <h1 class="text-2xl sm:text-3xl font-baskerville-italic mb-5 gap-4 flex justify-center items-center font-lora">
+          <h1 class="text-xl font-baskerville-italic mb-5 gap-4 flex justify-center items-center font-lora">
             <img src="/images/table_of_contents.svg" class="w-[40px] sm:w-[60px]"/>
             "Table of Contents"
             <img src="/images/table_of_contents.svg" class="flip-y w-[40px] sm:w-[60px]"/>
@@ -50,7 +50,7 @@ pub fn Body(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-3xl sm:text-4xl font-baskerville-italic mb-5 flex justify-between items-center">
+      <h1 class="text-[2.1rem] font-baskerville-italic mb-5 flex justify-between items-center">
         <img src="/images/title_line.svg" class="w-[30%] sm:w-36"/>
         {label}
         <img src="/images/title_line.svg" class="rotate-180 w-[30%] sm:w-36"/>

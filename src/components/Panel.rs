@@ -93,7 +93,7 @@ pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     let GlobalState { on_mobile, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <h1 class="text-3xl font-baskerville-italic my-5 flex justify-between items-center">
+      <h1 class="text-3xl sm:text-[2.1rem] font-baskerville-italic my-5 flex justify-between items-center">
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
         {label}
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>
