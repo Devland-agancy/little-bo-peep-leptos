@@ -26,6 +26,7 @@
     is an _empty_ set, a set with no elements! 
 
 |> Section
+
     *What it does.*
     The “API” (a computer science notion,
     roughly meaning
@@ -94,6 +95,7 @@
     an element of the set $\{1, 2\}$. 
 
 |> Section
+
     *Set Equality.*
     Two sets are deemed to be 
     equal if and only if they
@@ -157,6 +159,7 @@
     empty set—the one and only!
 
 |> Section
+
     *Second notation for the empty set.* 
     While the empty set can be written
     $$
@@ -171,6 +174,7 @@
     keep it safe.)
 
 |> Section
+
     *Sets within sets.*
     Sets can be nested much like Russian dolls.
     In fact, the result of doing this might even look like a little bit
@@ -215,6 +219,7 @@
     etc, etc: adding a new outer layer changes the whole set each time.
 
 |> Section
+
     *Set union and set intersection.*
     The so-called _union_
     of two sets $A$ and
@@ -275,6 +280,7 @@
     means “and”.)
 
 |> Section
+
     *Sets encountered in calculus.*
     In calculus, you will see sets such as _the real numbers_
     $$
@@ -324,6 +330,7 @@
     which is all of $\rr$.
 
 |> Section
+
     *Sets not encountered in calculus.*
     If you take a more advanced course, you might encounter 
     the so-called _set of extended real numbers_,
