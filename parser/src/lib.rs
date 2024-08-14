@@ -127,10 +127,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "Table",
                 "SectionDivider",
                 "Example",
-                "InlineImage",
                 "List",
                 "Grid",
-                "del",
                 "DisplayCentered",
             ],
             tags_with_non_indent_first_child: vec![
@@ -140,7 +138,6 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "Table",
                 "td",
                 "ImageLink",
-                "Paragraph",
                 "ExerciseQuestion",
                 "Exercise",
                 "Item",
