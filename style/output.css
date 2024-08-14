@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.7 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1228,6 +1228,10 @@ video {
   font-family: Lora;
 }
 
+.font-merriweather {
+  font-family: Merriweather;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1240,6 +1244,10 @@ video {
 
 .text-\[2\.1rem\] {
   font-size: 2.1rem;
+}
+
+.text-\[2\.5rem\] {
+  font-size: 2.5rem;
 }
 
 .text-sm {
@@ -1264,6 +1272,10 @@ video {
   line-height: 2.25rem;
 }
 
+.leading-\[1\] {
+  line-height: 1;
+}
+
 .leading-\[28px\] {
   line-height: 28px;
 }
@@ -1271,6 +1283,10 @@ video {
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
+}
+
+.overline {
+  text-decoration-line: overline;
 }
 
 .opacity-0 {
@@ -1376,9 +1392,21 @@ video {
 }
 
 @font-face {
-  font-family: "GlassAntiqua";
+  font-family: "Merriweather";
 
-  src: url("/fonts/GlassAntiqua-Regular.ttf")
+  src: url("/fonts/Merriweather-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Bold";
+
+  src: url("/fonts/Merriweather-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Black";
+
+  src: url("/fonts/Merriweather-Black.ttf")
 }
 
 @font-face {
@@ -1860,10 +1888,6 @@ span .MathJax_SVG{
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
-  }
-
-  .sm\:text-\[2\.1rem\] {
-    font-size: 2.1rem;
   }
 
   .sm\:leading-5 {

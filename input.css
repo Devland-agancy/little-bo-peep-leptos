@@ -23,8 +23,18 @@
 }
 
 @font-face {
-  font-family: "GlassAntiqua";
-  src: url("/fonts/GlassAntiqua-Regular.ttf")
+  font-family: "Merriweather";
+  src: url("/fonts/Merriweather-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Bold";
+  src: url("/fonts/Merriweather-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Black";
+  src: url("/fonts/Merriweather-Black.ttf")
 }
 
 @font-face {
