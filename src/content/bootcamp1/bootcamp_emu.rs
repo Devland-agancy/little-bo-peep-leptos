@@ -197,7 +197,7 @@
 
     |> ImageRight
         src images/svg_empty_set_cloud.svg
-        offset_x 10
+        offset_x 1em
 
     because a box containing an empty box is not the same
     thing as an empty box! Specifically,

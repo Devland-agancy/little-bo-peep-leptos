@@ -152,7 +152,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
     let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
 
     let emitter: Emitter =
-        Emitter::new(vec!["img", "SectionDivider", "InlineImage", "StarDivider"]);
+        Emitter::new(vec!["img", "col", "SectionDivider", "InlineImage", "StarDivider"]);
     let leptos_code = emitter.emit_json(&json_value);
 
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
