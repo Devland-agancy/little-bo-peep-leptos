@@ -42,13 +42,12 @@
     $$
     \Large 10^1 = 1 \times 10 = 10
     $$
-    $$
-    \Large 10^0 = 1 = 1
-    $$
+
+    $$\Large 10^0 = 1 = 1$$
 
     |> ImageLeft
         src images/svg_ten_to_the_0_cloud.svg
-        
+
     (where, in the last line, $1$ is multiplied by $10$ _zero times_,
     as per the exponent, which is zero) by the first definition, while
     $$
@@ -71,25 +70,25 @@
     \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{*}
     $$
     for every positive integer $n$, which gives an alternate means of computing $10^{-n}$.
-    Moreover, (*) actually holds for
+    Moreover, (A) actually holds for
     
     __every__
     
     integer $n$, which is mildly important. In more
-    detail, (*) holds for $n = 0$ by inspection, and (*) 
+    detail, (A) holds for $n = 0$ by inspection, and (A) 
     is equivalent to the identity
 
     |> ImageLeft
         src images/svg_zero_verification_cloud.svg
 
     $$
-    \Large 10^{-n}10^n = 1 \tag{**}
+    \Large 10^{-n}10^n = 1 \tag{AA}
     $$
 
     which holds for $n$ if and only if it holds for
     $-n$. (By which we mean: replacing “$n$” by “$-n$”
-    in (**) lands you right back on (**), due to the fact
-    that $-{(-n)} = n$.) (So, namely, if (**) holds for all
+    in (AA) lands you right back on (AA), due to the fact
+    that $-{(-n)} = n$.) (So, namely, if (AA) holds for all
     positive values of $\hspace{0.05em}n$, then it holds
     for all negative values of $n$, as well.)
 
@@ -107,7 +106,7 @@
     \Large ab = 1 \qquad a = {1 \over b} \qquad b = {1 \over a}
     $$
     ...and any one of these equations implies the other two.
-    Thus, either of (*) and (**) expresses the
+    Thus, either of (A) and (AA) expresses the
 
     __reciprocality__
     
@@ -253,120 +252,121 @@
     In English, e.g., 
     these are some of the “famous” powers of $10$:
 
-    |> table
-        margin-top 1em
-        margin-bottom 1em
-        |> col
-            width 60
-        |> col
-            width 200
-        |> col
-            width 140
-        |> tr
-            |> td
-                align center
+    |> center
+        |> table
+            margin-top 1em
+            margin-bottom 1em
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
 
-                $n$
-            |> td
-                align center
+                    $n$
+                |> td
+                    align center
 
-                $\,\,10^n$
-            |> td
-                align center
+                    $\,\,10^n$
+                |> td
+                    align center
 
-                name
-        |> tr
-            |> td
-                align center
+                    name
+            |> tr
+                |> td
+                    align center
 
-                $0$
-            |> td
-                align center
+                    $0$
+                |> td
+                    align center
 
-                $1$
-            |> td
-                align center
+                    $1$
+                |> td
+                    align center
 
-                _one_
+                    _one_
 
-        |> tr
-            |> td
-                align center
+            |> tr
+                |> td
+                    align center
 
-                $1$
-            |> td
-                align center
+                    $1$
+                |> td
+                    align center
 
-                $10$
-            |> td
-                align center
+                    $10$
+                |> td
+                    align center
 
-                _ten_
-        |> tr
-            |> td
-                align center
+                    _ten_
+            |> tr
+                |> td
+                    align center
 
-                $2$
-            |> td
-                align center
+                    $2$
+                |> td
+                    align center
 
-                $100$
-            |> td
-                align center
+                    $100$
+                |> td
+                    align center
 
-                _hundred_
-        |> tr
-            |> td
-                align center
+                    _hundred_
+            |> tr
+                |> td
+                    align center
 
-                $3$
-            |> td
-                align center
+                    $3$
+                |> td
+                    align center
 
-                $1000$
-            |> td
-                align center
+                    $1000$
+                |> td
+                    align center
 
-                _thousand_
-        |> tr
-            |> td
-                align center
+                    _thousand_
+            |> tr
+                |> td
+                    align center
 
-                $6$
-            |> td
-                align center
+                    $6$
+                |> td
+                    align center
 
-                $1\,000\,000$
-            |> td
-                align center
+                    $1\,000\,000$
+                |> td
+                    align center
 
-                _million_
-        |> tr
-            |> td
-                align center
+                    _million_
+            |> tr
+                |> td
+                    align center
 
-                $9$
-            |> td
-                align center
+                    $9$
+                |> td
+                    align center
 
-                $1\,000\,000\,000$
-            |> td
-                align center
+                    $1\,000\,000\,000$
+                |> td
+                    align center
 
-                _billion_
-        |> tr
-            |> td
-                align center
+                    _billion_
+            |> tr
+                |> td
+                    align center
 
-                $12$
-            |> td
-                align center
+                    $12$
+                |> td
+                    align center
 
-                $1\,000\,000\,000\,000$
-            |> td
-                align center
+                    $1\,000\,000\,000\,000$
+                |> td
+                    align center
 
-                _trillion_
+                    _trillion_
 
     One can note that
     __one million is a thousand thousand__
@@ -410,93 +410,94 @@
     instead of “ten”, etc. Specifically, the table looks
     like so:
     
-    |> table
-        margin-top 1em
-        margin-bottom 1em
-        |> col
-            width 60
-        |> col
-            width 200
-        |> col
-            width 140
-        |> tr
-            |> td
-                align center
+    |> center
+        |> table
+            margin-top 1em
+            margin-bottom 1em
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
 
-                $n$
-            |> td
-                align center
+                    $n$
+                |> td
+                    align center
 
-                $\,\,10^n$
-            |> td
-                align center
+                    $\,\,10^n$
+                |> td
+                    align center
 
-                name
-        |> tr
-            |> td
-                align center
+                    name
+            |> tr
+                |> td
+                    align center
 
-                $-1$
-            |> td
-                align center
+                    $-1$
+                |> td
+                    align center
 
-                $0.1$
-            |> td
-                align center
+                    $0.1$
+                |> td
+                    align center
 
-                _one tenth_
-        |> tr
-            |> td
-                align center
+                    _one tenth_
+            |> tr
+                |> td
+                    align center
 
-                $-2$
-            |> td
-                align center
+                    $-2$
+                |> td
+                    align center
 
-                $0.01$
-            |> td
-                align center
+                    $0.01$
+                |> td
+                    align center
 
-                _one hundredth_
-        |> tr
-            |> td
-                align center
+                    _one hundredth_
+            |> tr
+                |> td
+                    align center
 
-                $-3$
-            |> td
-                align center
+                    $-3$
+                |> td
+                    align center
 
-                $0.001$
-            |> td
-                align center
+                    $0.001$
+                |> td
+                    align center
 
-                _one thousandth_
-        |> tr
-            |> td
-                align center
+                    _one thousandth_
+            |> tr
+                |> td
+                    align center
 
-                $-6$
-            |> td
-                align center
+                    $-6$
+                |> td
+                    align center
 
-                $0.000001$
-            |> td
-                align center
+                    $0.000001$
+                |> td
+                    align center
 
-                _one millionth_
-        |> tr
-            |> td
-                align center
+                    _one millionth_
+            |> tr
+                |> td
+                    align center
 
-                $-6$
-            |> td
-                align center
+                    $-6$
+                |> td
+                    align center
 
-                $0.000001$
-            |> td
-                align center
+                    $0.000001$
+                |> td
+                    align center
 
-                _one trillionth_
+                    _one trillionth_
 
     In passing, note how the standard decimal expansion
     for $10^{-1}$ contains exactly one ${0}$:
@@ -527,87 +528,88 @@
     for $10^{-3}$. Here is a list of the most common
     such prefixes:
     
-    |> table
-        margin-top 1em
-        margin-bottom 1em
+    |> center
+        |> table
+            margin-top 1em
+            margin-bottom 1em
 
-        |> col
-            width 120
-        |> col
-            width 120
+            |> col
+                width 120px
+            |> col
+                width 120px
 
-        |> tr
-            |> td
-                align center
+            |> tr
+                |> td
+                    align center
 
-                power
-            |> td
-                align center
+                    power
+                |> td
+                    align center
 
-                prefix
-        |> tr
-            |> td
-                align center
+                    prefix
+            |> tr
+                |> td
+                    align center
 
-                $10^{-1}$
-            |> td
-                align center
+                    $10^{-1}$
+                |> td
+                    align center
 
-                _deci_
-        |> tr
-            |> td
-                align center
+                    _deci_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-2}$
-            |> td
-                align center
+                    $10^{-2}$
+                |> td
+                    align center
 
-                _centi_
-        |> tr
-            |> td
-                align center
+                    _centi_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-3}$
-            |> td
-                align center
+                    $10^{-3}$
+                |> td
+                    align center
 
-                _milli_
-        |> tr
-            |> td
-                align center
+                    _milli_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-6}$
-            |> td
-                align center
+                    $10^{-6}$
+                |> td
+                    align center
 
-                _micro_
-        |> tr
-            |> td
-                align center
+                    _micro_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-9}$
-            |> td
-                align center
+                    $10^{-9}$
+                |> td
+                    align center
 
-                _nano_
-        |> tr
-            |> td
-                align center
+                    _nano_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-12}$
-            |> td
-                align center
+                    $10^{-12}$
+                |> td
+                    align center
 
-                _pico_
-        |> tr
-            |> td
-                align center
+                    _pico_
+            |> tr
+                |> td
+                    align center
 
-                $10^{-15}$
-            |> td
-                align center
+                    $10^{-15}$
+                |> td
+                    align center
 
-                _femto_
+                    _femto_
 
     (Funny how the prefixes switch from 
     ending in ‘i’ to ending in ‘o’ after 
@@ -636,85 +638,86 @@
     for positve powers of $10$. Going up
     to $10^{15}$, these are:
     
-    |> table
-        margin-top 1em
-        margin-bottom 1em
-        |> col
-            width 120
-        |> col
-            width 120
-        |> tr
-            |> td
-                align center
+    |> center
+        |> table
+            margin-top 1em
+            margin-bottom 1em
+            |> col
+                width 120px
+            |> col
+                width 120px
+            |> tr
+                |> td
+                    align center
 
-                power
-            |> td
-                align center
+                    power
+                |> td
+                    align center
 
-                prefix
-        |> tr
-            |> td
-                align center
+                    prefix
+            |> tr
+                |> td
+                    align center
 
-                $10^1$
-            |> td
-                align center
+                    $10^1$
+                |> td
+                    align center
 
-                _deca_
-        |> tr
-            |> td
-                align center
+                    _deca_
+            |> tr
+                |> td
+                    align center
 
-                $10^{2}$
-            |> td
-                align center
+                    $10^{2}$
+                |> td
+                    align center
 
-                _hecto_
-        |> tr
-            |> td
-                align center
+                    _hecto_
+            |> tr
+                |> td
+                    align center
 
-                $10^{3}$
-            |> td
-                align center
+                    $10^{3}$
+                |> td
+                    align center
 
-                _kilo_
-        |> tr
-            |> td
-                align center
+                    _kilo_
+            |> tr
+                |> td
+                    align center
 
-                $10^{6}$
-            |> td
-                align center
+                    $10^{6}$
+                |> td
+                    align center
 
-                _mega_
-        |> tr
-            |> td
-                align center
+                    _mega_
+            |> tr
+                |> td
+                    align center
 
-                $10^{9}$
-            |> td
-                align center
+                    $10^{9}$
+                |> td
+                    align center
 
-                _giga_
-        |> tr
-            |> td
-                align center
+                    _giga_
+            |> tr
+                |> td
+                    align center
 
-                $10^{12}$
-            |> td
-                align center
+                    $10^{12}$
+                |> td
+                    align center
 
-                _tera_
-        |> tr
-            |> td
-                align center
+                    _tera_
+            |> tr
+                |> td
+                    align center
 
-                $10^{15}$
-            |> td
-                align center
+                    $10^{15}$
+                |> td
+                    align center
 
-                _peta_
+                    _peta_
 
     For example, a
     
