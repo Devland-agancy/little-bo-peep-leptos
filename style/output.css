@@ -687,12 +687,12 @@ video {
   margin-bottom: 1.25rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
 .mb-\[1\.2em\] {
   margin-bottom: 1.2em;
+}
+
+.mb-\[2\.6rem\] {
+  margin-bottom: 2.6rem;
 }
 
 .mb-\[40px\] {
@@ -863,8 +863,8 @@ video {
   min-width: 45px;
 }
 
-.max-w-\[85\%\] {
-  max-width: 85%;
+.max-w-\[83\%\] {
+  max-width: 83%;
 }
 
 .max-w-full {
