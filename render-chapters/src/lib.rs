@@ -159,7 +159,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_types = article_types.value();
     let article_types = article_types.split(" ");
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = None;
+    let elm_only_for: Option<u8> = Some(5);
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);

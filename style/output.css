@@ -687,6 +687,10 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mb-\[1\.2em\] {
   margin-bottom: 1.2em;
 }
@@ -857,6 +861,10 @@ video {
 
 .min-w-\[45px\] {
   min-width: 45px;
+}
+
+.max-w-\[85\%\] {
+  max-width: 85%;
 }
 
 .max-w-full {
@@ -1283,10 +1291,6 @@ video {
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
-}
-
-.overline {
-  text-decoration-line: overline;
 }
 
 .opacity-0 {
