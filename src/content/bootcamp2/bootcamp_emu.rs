@@ -246,16 +246,21 @@
 
     *Famous powers of 10.*
     Many human languages have special names for
-    various integer powers of $10$, due to the fact that many of
-    our ancestors chose to count in base $10$.
+    various integer powers of $10$, due to the fact
+    that many of our ancestors chose to count in base
+    $10$.
 
-    In English, e.g., 
-    these are some of the “famous” powers of $10$:
+    In English, e.g., these are some of the “famous”
+    powers of $10$:
 
-    |> center
+    |> div
+        align center
+
         |> table
+            class first-line
             margin-top 1em
             margin-bottom 1em
+
             |> col
                 width 60px
             |> col
@@ -368,6 +373,8 @@
 
                     _trillion_
 
+    |> Pause
+
     One can note that
     __one million is a thousand thousand__
     because
@@ -410,10 +417,14 @@
     instead of “ten”, etc. Specifically, the table looks
     like so:
     
-    |> center
+    |> div
+        align center
+
         |> table
+            class first-line
             margin-top 1em
             margin-bottom 1em
+
             |> col
                 width 60px
             |> col
@@ -489,15 +500,17 @@
                 |> td
                     align center
 
-                    $-6$
+                    $-9$
                 |> td
                     align center
 
-                    $0.000001$
+                    $0.000000001$
                 |> td
                     align center
 
                     _one trillionth_
+
+    |> Pause
 
     In passing, note how the standard decimal expansion
     for $10^{-1}$ contains exactly one ${0}$:
@@ -528,8 +541,11 @@
     for $10^{-3}$. Here is a list of the most common
     such prefixes:
     
-    |> center
+    |> div
+        align center
+
         |> table
+            class first-line
             margin-top 1em
             margin-bottom 1em
 
@@ -611,6 +627,8 @@
 
                     _femto_
 
+    |> Pause
+
     (Funny how the prefixes switch from 
     ending in ‘i’ to ending in ‘o’ after 
     $10^{-3}$.) (Well, anyway.)
@@ -638,10 +656,14 @@
     for positve powers of $10$. Going up
     to $10^{15}$, these are:
     
-    |> center
+    |> div
+        align center
+
         |> table
+            class first-line
             margin-top 1em
             margin-bottom 1em
+            
             |> col
                 width 120px
             |> col
@@ -718,6 +740,8 @@
                     align center
 
                     _peta_
+
+    |> Pause
 
     For example, a
     
