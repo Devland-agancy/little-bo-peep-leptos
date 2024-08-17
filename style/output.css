@@ -691,8 +691,8 @@ video {
   margin-bottom: 1.2em;
 }
 
-.mb-\[2\.6rem\] {
-  margin-bottom: 2.6rem;
+.mb-\[2\.3rem\] {
+  margin-bottom: 2.3rem;
 }
 
 .mb-\[40px\] {
@@ -833,6 +833,10 @@ video {
   width: 30%;
 }
 
+.w-\[350px\] {
+  width: 350px;
+}
+
 .w-\[3rem\] {
   width: 3rem;
 }
@@ -863,8 +867,8 @@ video {
   min-width: 45px;
 }
 
-.max-w-\[83\%\] {
-  max-width: 83%;
+.max-w-\[80\%\] {
+  max-width: 80%;
 }
 
 .max-w-full {
@@ -1248,10 +1252,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-\[2\.1rem\] {
-  font-size: 2.1rem;
 }
 
 .text-\[2\.5rem\] {
@@ -1823,6 +1823,10 @@ span .MathJax_SVG{
     grid-column-start: 2;
   }
 
+  .sm\:mb-\[2\.6rem\] {
+    margin-bottom: 2.6rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -1892,6 +1896,10 @@ span .MathJax_SVG{
   .sm\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .sm\:text-\[2\.1rem\] {
+    font-size: 2.1rem;
   }
 
   .sm\:leading-5 {
