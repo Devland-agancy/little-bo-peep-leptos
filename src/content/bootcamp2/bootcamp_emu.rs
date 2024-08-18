@@ -1,1280 +1,1324 @@
 /*
 |> Section
 
-    *Square Roots.*
-    You might remember that “minus times minus 
-    is plus” and that “plus times plus is plus”.
-    (Why? The enemy of my enemy is my friend.)
-    So any nonzero number multiplied by itself
-    is positive. For example,
+    *Terminology.*
+    The expression below is called a _power_; 
+    the number at the bottom of the power is called
+    the _base_ (of the power); the number at the top
+    is called the _exponent_:
 
-    $$
-    (-2) \times (-2) = 4
-    $$
+    |> Image
+        src images/svg_base_exponent.svg
 
-    _|and|_
-
-    $$
-    2 \times 2 = 4
-    $$
-
-    are both positive. But $\sqrt{4}$ is, by 
-    definition, the unique _nonnegative_ 
-    solution to $x^2 = 4$. Hence, and whether 
-    you like it or not,
-        
-    $$\sqrt{(-2)^2} = 2$$
-
-    |> ImageRight
-        src images/svg_cloud_minus_two_squared.svg
-        offset_y -1rem
-        offset_x -3rem
-        padding 40px
-        use_squiggle_on_mobile false
-
-    and, in particular, it is _not_ true that
-
-    $$
-    \sqrt{x^{2}} \rt{0.1} = \rt{0.1} x
-    $$
-
-    for every real number $x$. Instead we have
-
-    $$
-    \sqrt{x^{2}} \rt{0.1} = \rt{0.1} |x|
-    $$
-
-    for every real number $x$, where $|x|$ 
-    denotes the absolute value of $x$.
-
-    (Nb: If ever you want to indicate both 
-    solutions of the equation $x^2 = 4$ you
-    can always use the notation “$\pm \sqrt{4}$”. 
-    This is what happens, for example, in the 
-    maybe-well-known formula
-
-    $$
-    x = {-b \pm \sqrt{b^2 - 4ac} \over 2a}
-    $$
-
-    for the solutions to the quadratic equation
-    $ax^2 + bx + c = 0$.)
-
-    Now we can ponder, say,
-
-    $$
-    \sqrt{0.5}
-    $$
-
-    whose value is—by definition—the unique
-    nonnegative solution to
-
-    $$
-    x^2 = 0.5.
-    $$
-
-    As beginners, there's nothing wrong with 
-    trying to solve this equation by trial and
-    error. With $x = {1\over 4}$, for example,
-    we find
-
-    $$
-    x^2 = {1\over 4}\times{1\over 4} = {1\over 16}
-    $$
-
-    so $x = {1\over 4}$ is not a solution of 
-    the equation, being apparently too small. 
-    Increasing $x$ to $x = {1\over 2}$, say, we 
-    find
-
-    $$
-    x^2 = {1\over 2}\times{1\over 2} = {1\over 4}
-    $$
-
-    which is better, since $1/4$ is closer to $1/2$, 
-    but still too small. Increasing $x$ by $1/4$ 
-    again, say, to $x = {3\over 4}$, we find
-
-    $$
-    x^2 = {3\over 4}\times{3\over 4} = {9\over 16}
-    $$
-
-    which—surprise!—is actually pretty close to 
-    $1/2$, as $1/2 = 8/16$. And since $9/16 > 0.5$, 
-    $\sqrt{0.5}$ must be a little _less_ than 
-    ${3\over 4} = 0.75$.
-
-    In last resort, and in reasonably good 
-    agreement with our observations, a calculator 
-    reveals that
-
-    $$
-    \sqrt{0.5} = 0.7071067...
-    $$
-
-    where the decimals trail off with no pattern. 
-    (This number is irrational.) Even so, the fact 
-    that $\sqrt{0.5}$ is _greater_ than $0.5$ is 
-    often perceived as counterintuitive.
-
-    You can think of it this way: multiplying a 
-    value by $0.7071$, or approximately $\sqrt{0.5}$, 
-    is like taking $70.71\%$ of that value—for 
-    example, say,
-
-    $$
-    605 \cdot 0.7071 = 427.7955
-    $$
-
-    is $70.71\%$ of $605$, and so on—so if we 
-    multiply _twice_ by $0.7071$ we obtain 
-    “$70.71\%$ of $70.71\%$” and it just so happens 
-    that “$70.71\%$ of $70.71\%$” is close to 
-    $50\%$.
-
-    The point is: if “$X\%$ of $X\%$” equals $50\%$, 
-    then, of course, $\rt{0.03}X > 50$—that much 
-    seems logical—and, with a little thought, the
-    same phenomenon explains why $\sqrt{0.5} > 0.5$.
+    The whole expression is read $\mathit{10}$ _to the power_ $\mathit{3}$, and the
+    general process of taking a power is called _exponentiation_.
 
 
 |> Section
 
-    *Fractions and Division.*
-    An elementary fraction, or division, such as
-
+    *Integer powers of 10.*
+    We define
     $$
-    {50 \over 2}
+    \Large 10^{\hspace{0.2ex}n}
     $$
-
-    can be thought of in a few different ways:
-
-    |> List
-
-        Fifty halves (i.e., $50 \times {1\over 2}$).
-
-        The size obtained when something of size 
-        fifty is divided into two equal parts 
-        (answer: $25$).
-
-        The number of times that $2$ goes into $50$ 
-        (answer: $25$, because it takes twenty-five
-        $2$'s to make up $50$).
-
-    But $50/2$ is a ratio of integers, which makes 
-    things particularly nice! For a ratio of 
-    decimals, such as, say,
-
+    as follows, if $n$ is a nonnegative integer: start
+    from $1$ and multiply by $10$ $n$ times. We also define
     $$
-    {1 \over 0.01}
+    \Large 10^{-n}
+    $$
+    as follows, if $n$ is a positive integer: start from $1$ and divide
+    by $10$ $n$ times. 
+
+    For example,
+    $$
+    \Large 10^4 = 1 \times 10 \times 10 \times 10 \times 10 = 10000
+    $$
+    $$
+    \Large 10^3 = 1 \times 10 \times 10 \times 10 = 1000
+    $$
+    $$
+    \Large 10^2 = 1 \times 10 \times 10 = 100
+    $$
+    $$
+    \Large 10^1 = 1 \times 10 = 10
     $$
 
-    our possible points of view are going to be
-    more restricted. Thankfully, however, we can 
-    still characterize this fraction as the 
-    answer to the question “how many times does 
-    $0.01$ go into $1$?” as in the third option 
-    above. And, indeed,
+    $$\Large 10^0 = 1 = 1$$
+
+    |> ImageLeft
+        src images/svg_ten_to_the_0_cloud.svg
+
+    (where, in the last line, $1$ is multiplied by $10$ _zero times_,
+    as per the exponent, which is zero) by the first definition, while
+    $$
+    \Large 10^{-1} = 1\,/\,10 = 0.1
+    $$
+    $$
+    \Large 10^{-2} = (1\,/\, 10)\,/\,10 = 0.01
+    $$
+    $$
+    \Large 10^{-3} = ((1\,/\, 10)\,/\,10)\,/\,10 = 0.001
+    $$
+    $$
+    \Large 10^{-4} = (((1\,/\, 10)\,/\,10)\,/\, 10)\,/\, 10 = 0.0001
+    $$
+    by the second definition.
+            
+    As $n$ successive divisions
+    by $10$ is the same as one division by $10^n$, one also has
+    $$
+    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{*}
+    $$
+    for every positive integer $n$, which gives an alternate means of computing $10^{-n}$.
+    Moreover, (A) actually holds for
+    
+    __every__
+    
+    integer $n$, which is mildly important. In more
+    detail, (A) holds for $n = 0$ by inspection, and (A) 
+    is equivalent to the identity
+
+    |> ImageLeft
+        src images/svg_zero_verification_cloud.svg
 
     $$
-    {1 \over 0.01} \,=\,100
+    \Large 10^{-n}10^n = 1 \tag{AA}
     $$
 
-    because $0.01$ goes $100$ times into $1$. For 
-    that matter,
-
-    $$
-    { 1 \over 0.001} = 1000,\qquad{1 \over 0.0001} = 10000,\quad\,\,\,\,\textrm{(etc)}
-    $$
-
-    by the same reasoning, which explains why 
-    dividing by smaller and smaller numbers produces 
-    larger and larger results (and, by extension, 
-    why dividing by $0$ is undefined).
+    which holds for $n$ if and only if it holds for
+    $-n$. (By which we mean: replacing “$n$” by “$-n$”
+    in (AA) lands you right back on (AA), due to the fact
+    that $-{(-n)} = n$.) (So, namely, if (AA) holds for all
+    positive values of $\hspace{0.05em}n$, then it holds
+    for all negative values of $n$, as well.)
 
     |> Pause
 
-    *Note.* In general, the ratio of two decimal 
-    numbers can be turned into a ratio of integers 
-    by multiplying the ratio top and bottom by a 
-    suitable power of $10$. E.g.:
-
+    *Vocabulary.*
+    Numbers $a$ and $b$ such that
     $$
-    {1.42 \over 0.8} = {100 \cdot 1.42 \over 100 \cdot 0.8} = {142 \over 80} = {71 \over 40}.
+    \Large ab = 1
     $$
-
-    This example was chosen randomly, and, if you
-    allow, we would like to see how large $71/40$ 
-    really is (one second!):
-
+    are _reciprocal_.
+    If $a$ and $b$ are reciprocal, then 
+    these equations are satisfied...
     $$
-    \begin{align}
-    {71 \over 40} \,&=\, {40 + 30 + 1 \over 40} \,=\, {40 \over 40} + {30 \over 40} + {1 \over 40}\\
-    \,&=\, 1 + {3 \over 4} + {1 \over 4}\!\cdot \!{1 \over 10}\up{1.5}\\
-    \,&=\, 1 + 0.75 + 0.025 = 1.775\up{1.5}
-    \end{align}
+    \Large ab = 1 \qquad a = {1 \over b} \qquad b = {1 \over a}
     $$
+    ...and any one of these equations implies the other two.
+    Thus, either of (A) and (AA) expresses the
 
-    ...so we find, among others, that $71$ is exactly
-    $77.5\%$ greater than $40$. (Interesting, no?)
+    __reciprocality__
+    
+    of $10^n$ and $10^{-n}$.
 
 
 |> Section
 
-    *Distributivity.*
-    As you might already know, a number that 
-    multiplies a sum can be brought “inside” the 
-    sum. For example,
-
+    *Other bases.*
+    Integer powers of other nonzero bases are defined similarly, e.g.,
     $$
-    5(10 + 2) \,=\, 5\!\cdot\!10 \,+\, 5\!\cdot\!2
+    \Large 2^{-2}
     $$
+    is defined as $1$ divided by $2$ twice, etc.
 
-    (five times twelve equals fifty plus ten), or
-
+    However, a small quirk occurs for base $0$: as one cannot
+    divide by $0$, negative powers of $0$ remain undefined. E.g.,
     $$
-    a(b + c) = ab + ac
+    \Large 0^{-2}
     $$
+    would be “$1$ divided by $0$ twice”, but this
+    is undefined. 
+    Hence $0^{-1}$, $0^{-2}$, etc, remain undefined.
 
-    more generally. This property is known as the
-    _distributivity of multiplication over addition_,
-    or _distributivity_ for short.
-
-    (We might finally clarify that ‘$\cdot$’ means
-    “times”, i.e., the same as ‘$\times$’. Moreover,
-    when we write
-
+    Also (in case you're wondering) $0^0 = 1$.
+    You can see this by writing down the first few powers of $0$ in descending order:
     $$
-    5\!\cdot\!10 \,+\, 5\!\cdot\!2
+    \Large 0^3 = 1 \times 0 \times 0 \times 0 = 0
     $$
-
-    we really mean
-
     $$
-    (5\!\cdot\!10) + (5\!\cdot\!2)
+    \Large 0^2 = 1 \times 0 \times 0 = 0
     $$
-
-    as opposed to something else, such as
-
     $$
-    ((5\!\cdot\!10) + 5)\!\cdot\! 2,
+    \Large 0^1 = 1 \times 0 = 0
     $$
-
-    because multiplication takes precedence over 
-    addition, by default.)
-
-    A little more generally, one has such identities 
-    as
-
     $$
-    (a + b)(C + D) \,=\, aC + bC + aD + bD
+    \Large 0^0 = 1 = 1
     $$
+    In other words, every positive power of $0$ is zero, 
+    but when it comes to $0^0$,
+    the ‘$0\hspace{0.12ex}$’ in the
+    exponent “wins out” over the ‘$0\hspace{0.12ex}$’ in the base, 
+    making the result $1$.
 
-    that come from multiplying every term of the first 
-    parenthesis with every term of the second 
-    parenthesis. Indeed,
+    Note that mathematicians sometimes refer 
+    to a power with an exponent of $0$ as an
+
+    __empty product__
+
+    and they will repeatedly admonish that
+
+    __an empty product is $\mathit{1}$__
+    
+    in the sense that “all products start at 
+    $1$”, and that if you start at $1$ and don't
+    multiply anything in, you stay at $1$.
+
+
+|> Section
+
+    *Additivity of exponents.*
+    If you think about it,
+    $$
+    \Large 10^{13} \times 10^{14} = 10^{\hspace{0.1ex}27}
+    $$
+    because $13$ multiplications by $10$ followed
+    by $14$ multiplications by $10$ makes $13 + 14 = 27$
+    multiplications by $10$.
+
+    More generally,
+    $$
+    \Large 10^{\hspace{0.1ex}n} \times 10^{\hspace{0.1ex}m} = 10^{\hspace{0.1ex}n + m}
+    $$
+    for all $n$ and $m$ (and other bases than $10$),
+    which is known as
+
+    __additivity of exponents__
+    
+    and which is sometimes paraphrased by saying
+    that
+
+    __the product of the powers is the power of the sum__
+    
+    where _the product of the powers_ refers to
+    “$10^n \times 10^m$” and _the power of the sum_
+    refers to “$10^{n+m}$”. (Or for some other base.)
+
+
+|> Section
+
+    *The third law of exponents.*
+    Also, if you think about it,
+    $$
+    \Large (10^{13})^{14} = 10^{13\cdot 14}
+    $$
+    because multiplying $14$ times by $10^{13}$ is like
+    multiplying $13\cdot 14$ times by $10$. More
+    generally,
+    $$
+    \Large (10^n)^m = 10^{nm}
+    $$
+    for all $n$ and $m$. This is known as “the third law 
+    of exponents”. 
+
+    On this subject, note that if one writes
+    $$
+    \Large a^{b^{c}}
+    $$
+    [“$a$ to the power $b$ to the power $c$”]
+    there is a seeming ambiguity: does it mean
+    $$
+    \Large a^{\left(b^{c}\right)}
+    $$
+    [“$a$ to the power [$b$ to the power $c$]”]
+    or does it mean
+    $$
+    \Large (a^{b})^{c}
+    $$
+    [“[$a$ to the power $b$] to the power $c$”]...?
+    Well, because the second way can be written
+    $$
+    \Large a^{bc}
+    $$
+    by the third law of exponents, the second way already has  
+    “its own” notation, and therefore the convention is that... 
+    $$
+    \Large a^{b^c}
+    $$
+    ...absolutely always means... 
+    $$
+    \Large a^{\left(b^c\right)}
+    $$
+    ...!
+
+
+|> Section
+
+    *Famous powers of 10.*
+    Many human languages have special names for
+    various integer powers of $10$, due to the fact
+    that many of our ancestors chose to count in base
+    $10$.
+
+    In English, e.g., these are some of the “famous”
+    powers of $10$:
+
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
+
+                    $n$
+                |> td
+                    align center
+
+                    $\,\,10^n$
+                |> td
+                    align center
+
+                    name
+            |> tr
+                |> td
+                    align center
+
+                    $0$
+                |> td
+                    align center
+
+                    $1$
+                |> td
+                    align center
+
+                    _one_
+
+            |> tr
+                |> td
+                    align center
+
+                    $1$
+                |> td
+                    align center
+
+                    $10$
+                |> td
+                    align center
+
+                    _ten_
+            |> tr
+                |> td
+                    align center
+
+                    $2$
+                |> td
+                    align center
+
+                    $100$
+                |> td
+                    align center
+
+                    _hundred_
+            |> tr
+                |> td
+                    align center
+
+                    $3$
+                |> td
+                    align center
+
+                    $1000$
+                |> td
+                    align center
+
+                    _thousand_
+            |> tr
+                |> td
+                    align center
+
+                    $6$
+                |> td
+                    align center
+
+                    $1\,000\,000$
+                |> td
+                    align center
+
+                    _million_
+            |> tr
+                |> td
+                    align center
+
+                    $9$
+                |> td
+                    align center
+
+                    $1\,000\,000\,000$
+                |> td
+                    align center
+
+                    _billion_
+            |> tr
+                |> td
+                    align center
+
+                    $12$
+                |> td
+                    align center
+
+                    $1\,000\,000\,000\,000$
+                |> td
+                    align center
+
+                    _trillion_
+
+    |> Pause
+
+    One can note that
+    __one million is a thousand thousand__
+    because
+    $$
+    \Large 1000 \times 1000 = 1000\hspace{0.3ex}000
+    $$
+    by counting zeroes, or, equivalently, because
+    $$
+    \Large 10^3 \times 10^3 = 10^6
+    $$
+    by additivity of exponents. Similarly, note that
+    
+    __one billion is a thousand million__
 
     |> ImageLeft
-        src images/325.svg
-        line 1.5
-        offset_y -10px
-        
-    $$
-    (a + b)(C + D) = (a + b)C + (a + b)D
-    $$
+        src images/svg_ten_to_the_3_times_ten_to_the_6_cloud.svg
 
-    by one application of distributivity, while
+    and __one trillion is a thousand billion__
+    
+    |> ImageLeft
+        src images/svg_ten_to_the_3_times_ten_to_the_9_cloud.svg
+    
+    and also (while we're at it)
+    
+    __one trillion is a million million__
+    
+    |> ImageRight
+        src images/svg_ten_to_the_6_times_ten_to_the_6_cloud.svg
+    
+    as can be seen, for example, by replacing “billion”
+    with “thousand million” in the previous sentence and
+    then further replacing “thousand thousand” with “million”
+    in _that_ sentence.
 
-    $$
-    (a + b)C = aC + bC
-    $$
 
-    $$
-    (a + b)D = aD + bD
-    $$
+|> Section
 
-    by distributivity again.
+    *Negative exponent prefixes.*
+    For negative exponents we simply say “one tenth”
+    instead of “ten”, etc. Specifically, the table looks
+    like so:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
+
+                    $n$
+                |> td
+                    align center
+
+                    $\,\,10^n$
+                |> td
+                    align center
+
+                    name
+            |> tr
+                |> td
+                    align center
+
+                    $-1$
+                |> td
+                    align center
+
+                    $0.1$
+                |> td
+                    align center
+
+                    _one tenth_
+            |> tr
+                |> td
+                    align center
+
+                    $-2$
+                |> td
+                    align center
+
+                    $0.01$
+                |> td
+                    align center
+
+                    _one hundredth_
+            |> tr
+                |> td
+                    align center
+
+                    $-3$
+                |> td
+                    align center
+
+                    $0.001$
+                |> td
+                    align center
+
+                    _one thousandth_
+            |> tr
+                |> td
+                    align center
+
+                    $-6$
+                |> td
+                    align center
+
+                    $0.000001$
+                |> td
+                    align center
+
+                    _one millionth_
+            |> tr
+                |> td
+                    align center
+
+                    $-9$
+                |> td
+                    align center
+
+                    $0.000000001$
+                |> td
+                    align center
+
+                    _one trillionth_
+
+    |> Pause
+
+    In passing, note how the standard decimal expansion
+    for $10^{-1}$ contains exactly one ${0}$:
+
+    |> Image
+        src images/svg_one_blue_one_image_equation.svg
+    
+    Likewise, the standard decimal expansion for $10^{-2}$
+    contains exactly two $0$'s...
+    
+    |> Image
+        src images/svg_two_blue_one_image_equation.svg
+    
+    ...and so on, which is a possible trick to check 
+    one's work and avoid mistakes.
+
+    However, there also exist negative exponent
+    
+    __prefixes__
+    
+    that people use to qualify other measures. For
+    example, a
+    
+    __millimeter__
+    
+    is $10^{-3}$ meters, i.e., one thousandth of
+    a meter, because “milli” happens to be the prefix
+    for $10^{-3}$. Here is a list of the most common
+    such prefixes:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 120px
+            |> col
+                width 120px
+
+            |> tr
+                |> td
+                    align center
+
+                    power
+                |> td
+                    align center
+
+                    prefix
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-1}$
+                |> td
+                    align center
+
+                    _deci_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-2}$
+                |> td
+                    align center
+
+                    _centi_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-3}$
+                |> td
+                    align center
+
+                    _milli_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-6}$
+                |> td
+                    align center
+
+                    _micro_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-9}$
+                |> td
+                    align center
+
+                    _nano_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-12}$
+                |> td
+                    align center
+
+                    _pico_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-15}$
+                |> td
+                    align center
+
+                    _femto_
+
+    |> Pause
+
+    (Funny how the prefixes switch from 
+    ending in ‘i’ to ending in ‘o’ after 
+    $10^{-3}$.) (Well, anyway.)
+
+    To give an idea of scale,
+    
+    __micrometers__
+    
+    are smaller than the smallest animal
+    cells (human red blood cells, which 
+    are among the smallest animal cells,
+    have a diameter of
+    $7$~$9$ $\mu\textrm{m}$) (nb: “$\mu$”
+    stands for “micro” and “$\mu$m” stands
+    for “micrometer”). Next down,
+    
+    __nanometers__
+    
+    happen to be smaller than the diameter
+    of DNA, with DNA having a diameter of
+    about $2.5$nm (“nm” = “nanometer”).
+
+    *Positive exponent prefixes.*
+    There exists a similar set of prefixes
+    for positve powers of $10$. Going up
+    to $10^{15}$, these are:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+            
+            |> col
+                width 120px
+            |> col
+                width 120px
+            |> tr
+                |> td
+                    align center
+
+                    power
+                |> td
+                    align center
+
+                    prefix
+            |> tr
+                |> td
+                    align center
+
+                    $10^1$
+                |> td
+                    align center
+
+                    _deca_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{2}$
+                |> td
+                    align center
+
+                    _hecto_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{3}$
+                |> td
+                    align center
+
+                    _kilo_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{6}$
+                |> td
+                    align center
+
+                    _mega_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{9}$
+                |> td
+                    align center
+
+                    _giga_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{12}$
+                |> td
+                    align center
+
+                    _tera_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{15}$
+                |> td
+                    align center
+
+                    _peta_
+
+    |> Pause
+
+    For example, a
+    
+    __kilometer__
+    
+    is a thousand meters
+    [b/$\!\hspace{0.1ex}\rm{c}$ “kilo” = thousand], 
+    while a
+    
+    __terabyte__
+    
+    is a trillion bytes [b/$\!\hspace{0.1ex}\rm{c}$ “tera” = trillion].
+    (In case you don't know, by the way, 
+    a __byte__ is a unit of computer memory
+    that is equal to $8$ _bits_, with a _bit_
+    being a single 0/1 value.)
+
+    *Logarithms base 10.*
+    Every positive number can be uniquely 
+    written as “ten to the power something”.
+    This “something” will heretofore be called
+    the _logarithm base $\mathit{10}$_ of that 
+    (positive) number.
+
+    For example,
+    $$
+    \Large 100
+    $$
+    can be uniquely written as “ten to the power
+    something”. To wit, $100$ is, of course,
+    
+    __ten to the power $\mathit{2}$__
+
+    and this means that
+    $$
+    \Large 2
+    $$
+    is the logarithm base $10$ of $100$.
 
     |> Example
 
-        One has
-
+        It so happens that
         $$
-        \begin{align}
-        (10 + 2)(10 + 4) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!4 \,+\, 2\!\cdot\!10 \,+\, 2\!\cdot\!4\\
-        \,&=\, 100 \,+\, 40 \,+\, 20 \,+\, 8\\
-        \,&=\, 168
-        \end{align}
+        \Large 99 = 10^{1.99563519...}
         $$
-
-        so $12 \times 14 = 168$.
+        under an extended definition of exponentiation that allows us to 
+        compute $10^x$ for every $x \in \rr$. 
+        So 
+        $$
+        \Large 1.99563519...
+        $$
+        is the logarithm base $10$ of $99$.
 
     |> Example
 
-        One has
-
+        It so happens that
         $$
-        \begin{align}
-        (10 + 3)(10 + 3) \,&=\, 10\!\cdot\!10 \,+\, 10\!\cdot\!3 \,+\, 3\!\cdot\!10 \,+\, 3\!\cdot\!3\\
-        \,&=\, 100 \,+\, 30 \,+\, 30 \,+\, 9\\
-        \,&=\, 169
-        \end{align}
+        \Large 98 = 10^{1.99122607...}
         $$
-
-        so $13 \times 13 = 169$.
-
-    (The fact that $13 \times 13$ is exactly one 
-    greater than $12 \times 14$ is a bit curious 
-    indeed.)
-
-    If we start from the afore-mentioned identity
-
-    $$
-    (a + b)(C + D) \,=\, aC + bC + aD + bD
-    $$
-
-    and set $C = a$, $D = b$, we find
-
-    $$
-    (a + b)(a + b) \,=\, aa + ba + ab + bb
-    $$
-
-    or, equivalently,
-
-    $$
-    (a + b)^2 = a^2 + 2ab + b^2
-    $$
-
-    since $(a + b)(a + b) = (a + b)^2$, $aa = a^2$ 
-    and $bb = b^2$. (This is the _binomial expansion 
-    of degree two_, but such terminology is not very 
-    important at this stage.)
-
-    |> Example
-
-        By the last formula (or “binomial expansion
-        of degree two”),
-
+        under the same extended definition, so 
         $$
-        \begin{align}
-        \up{1} (10 + 3)^2 \,&=\, 10\!\cdot\!10 \,+\, 2\!\cdot\!3\!\cdot\!10 \,+\, 3\!\cdot\!3 \\
-        \up{1} \,&=\, 100 + 60 + 9 \\
-        \up{1} \,&=\, 169
-        \end{align}
+        \Large 1.99122607...
         $$
-
-        which agrees with Example 2.
-
-    On the other hand, setting $C = a$, $D = -b$ in
-
-    $$
-    (a + b)(C + D) = aC + aD + bC + bD
-    $$
-
-    gives
-
-    $$
-    (a + b)(a + (-b)) = aa + a(-b) + ba + b(-b)
-    $$
-
-    or, less pedantically,
-
-    $$
-    (a + b)(a - b) = aa - ab + ba - bb
-    $$
-
-    or
-
-    $$
-    (a + b)(a - b) = a^2 - b^2
-    $$
-
-    since $- ab + ba = 0$, $aa = a^2$, $bb = b^2$. Note that
-
-    $$
-    a^2 - b^2
-    $$
-
-    is
-
-    __a difference of squares__
-
-    whence _a difference of squares can always be 
-    factored_. (Factored as $(a + b)(a - b)$, that
-    is.) (PS: “Factored” means “written as a product”.)
+        is the logarithm base $10$ of $98$.
 
     |> Example
 
         Since
-
         $$
-        19 = 100 - 81 = 10^2 - 9^2
+        \Large 0.1 = 10^{-1}
         $$
-
-        is a difference of squares, $19$ can be 
-        factored. (On the other hand $19$ is a prime 
-        number, but nevermind.)
+        the logarithm base $10$ of $0.1$ is $-1$.
 
     |> Example
 
-        The algebraic expression
-
+        Since
         $$
-        1 - x^2
-        $$
-
-        can be factored, because
-
-        $$
-        1 = 1^2
+        \Large 0.00001 = 10^{-5}
         $$
 
-        implies that
-
-        $$
-        1 - x^2
-        $$
-
-        truly is “a difference of squares”. And, indeed,
-
-        $$
-        1 - x^2 = (1 - x)(1 + x)
-        $$
-
-        as per “$\rt{0.04}a^2 - b^2 = (a - b)(a + b)$”.
-
-    In relation to distributivity, we should also 
-    mention the simple but important fact that 
-    multiplying a difference by $-1$ _reverses_ the 
-    difference. That is,
-
-    $$
-    (-1)(a - b) \,=\, b - a
-    $$
-
-    or, for short,
-
-    $$
-    -(a - b) \,=\, b - a
-    $$
-
-    because, indeed,
-
-    $$
-    \begin{align}
-    (-1)(a - b) \,&=\, (-1)(a + (-b)) \\
-    \,&=\, (-1)a + (-1)(-b) \\
-    \,&=\, -a + b
-    \end{align}
-    $$
-
-    by distributivity (used in the second step).
-
-    |> Example
-
-        We have $-(10 - 3) = 3 - 10$. 
-        (Because $-7 = -7$, as it would be, haha.)
-
-|> Section
-    divider false
-
-    *Epilogue.* Do you remember the near miss between
-
-    $$
-    12\cdot 14 \,=\, 168
-    $$
-
-    and
-
-    $$
-    13 \cdot 13 \,=\, 13^2 \,=\, 169
-    $$
-
-    ...? Well if you observe, additionally, that
-
-    $$
-    \begin{align}
-    11\,\cdot\,13 &= 12^2 - 1\\
-    10\,\cdot\,12 &= 11^2 - 1\\
-    9\,\cdot\,11 &= 10^2 - 1
-    \end{align}
-    $$
-
-    (etc) you might become suspicious of a pattern! 
-    But the mystery is rather thin: we have
-
-    $$
-    (n - 1)(n + 1) \,=\, n^2 - 1
-    $$
-
-    for _every_ real number $n$ because of the 
-    formula
-
-    $$
-    (a - b)(a + b) \,=\, a^2 - b^2
-    $$
-
-    for a difference of squares!
-
-|> Section
-
-    *Vocabulary.*
-    A pair of algebraic expressions of the form
-
-    $$
-    a + b,\, a - b
-    $$
-
-    is called a _conjugate pair_. For example,
-
-    $$
-    n + 1,\, n - 1
-    $$
-
-    is a conjugate pair, as is
-
-    $$
-    \sqrt{3} + \sqrt{2},\,\, \sqrt{3} - \sqrt{2}
-    $$
-
-    and so on. (Generally speaking, conjugate pairs
-    are good things to multiply together.)
+        |> ImageRight
+            src images/svg_ten_to_the_-5_cloud.svg
+        
+        the logarithm base $10$ of $0.00001$ is $-5$.
 
 |> Exercises
-
     |> Exercise
-
-        True or false (and, if possible, explain):
-
-        |> Grid
-            cols 3 
-            sm_cols 2
-            sm_cutoff 520
-            center_on_overflow true
-            
-            a. $ 0.9^2 < 0.9 $
-
-            b. $ \sqrt{0.01} = 0.1 $
-
-            c. $ \sqrt[2]{\up{0.8}\sqrt[3]{2}} = \sqrt[3]{\up{0.8}\sqrt[2]{2}} $
-
-            d. ${\sqrt{2} \over \up{0.55}2} = \sqrt{0.5}$
-
-            e. $ {1 \over \sqrt{2}} = \sqrt{0.5} $
-
-            f. $ 2^{30} > 1000^3 $
-
-            g. $ {1 \over 0.95} > 1.05 $
-
-            h. $ (-1)^{101} = -1 $
-
-            i. $ {100 \over \up{0.5}99} < {101 \over \up{0.5}100} $
+        
+        Compute $2^{-2}$, $2^{-3}$ and $2^{-4}$ by hand.
 
         |> Solution
 
-            Part by part:
-
-            |> Pause
-
-            a. (True) We have
-
+            Since $2^{-1} = 1/2 = 0.5$, one has
             $$
-            0.9^2 = {9 \over 10}\cdot{9 \over 10} = {81 \over 100} = 0.81
+            \Large 2^{-2} = {2^{-1}\over 2} = {0.5 \over 2} = 0.25
             $$
-
-            and $0.81 < 0.9$.
-
-            |> Pause
-
-            b. (True) We have
-
             $$
-            0.1^2 = {1 \over 10} \cdot {1 \over 10} = {1 \over 100} = 0.01,
+            \Large 2^{-3} = {2^{-2}\over 2} = {0.25 \over 2} = 0.125
             $$
-
-            and $0.1$ is nonnegative, so $\sqrt{0.01} = 0.1$.
-
-            |> Pause
-
-            c. (True) In fact, 
-            $\sqrt[2]{\up{0.75}\sqrt[3]{2}}$
-            and $\sqrt[3]{\up{0.75}\sqrt[2]{2}}$ are 
-            both equal to $\sqrt[6]{\up{0.6}2}$. To 
-            convince yourself, note that
-
             $$
-            \begin{align}
-            &\,\, (\sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.1})^6 \\
-            =&\,\, \up{1.3}
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\qquad\\
-            =&\,\, \up{1.3}
-            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \times
-            (\gbk\sqrt[2]{\up{0.75}\sqrt[3]{2}} \times
-            \sqrt[2]{\up{0.75}\sqrt[3]{2}}\rt{0.11}) \\
-            =& \,\, \up{1.3} (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times (\sqrt[3]{\up{0.64}2}\rt{0.1}) \times
-            (\sqrt[3]{\up{0.64}2}\rt{0.1})\\
-            =& \,\, \up{1.4} 2
-            \end{align}
+            \Large 2^{-4} = {2^{-3}\over 2} = {0.125 \over 2} = 0.0625
             $$
-           
-            |> ImageLeft
-                src images/17.svg
-                offset_y 0.8rem
+            respectively.            
 
-            and
+            _Notes._ 
+            For the last computation, $0.125$ can be viewed 
+            as twelve hundredths plus $5$ thousandths:
 
-            $$
-            \begin{align}
-            &\,\, (\sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.1})^6 \\
-            =&\,\, \up{1.3}
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\\
-            =& \,\, \up{1.3}
-            (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11}) \times
-            (\gbk\sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}} \times
-            \sqrt[3]{\up{0.75}\sqrt[2]{2}}\rt{0.11})\\
-            =&\,\, \up{1.3}
-            \sqrt[2]{\up{0.65}2} \times \sqrt[2]{\up{0.65}2}\\
-            =&\,\, \up{1.4} 2
-            \end{align}
-            $$
-
-            |> ImageLeft
-                src images/18.svg
-
-            so $(\sqrt[2]{\up{0.76}\sqrt[3]{2}}\rt{0.1})^6 = 
-            (\sqrt[3]{\up{0.76}\sqrt[2]{2}}\rt{0.1})^6 = 2$.
-
-            Technically, however, a number $x$ such that
-
-            $$
-            x^6 = 2
-            $$
-
-            is not necessarily $\sqrt[6]{\up{0.6}2}$, 
-            because $x = -\sqrt[6]{\up{0.6}2}$ satisfies 
-            this equation as well!
-
-            The last step, therefore, is to note that
-            $\sqrt[2]{\up{0.76}\sqrt[3]{2}}$ and
-            $\sqrt[3]{\up{0.76}\sqrt[2]{2}}$ are both 
-            _nonnegative_ numbers (taken as obvious),
-            and which implies that they are the _unique
-            nonnegative_ solution to $x^6 = 2$.
-
-            |> Pause
-
-            d. (True) In general,
-
-            $$
-            {\sqrt{x} \over \sqrt{y}} = \sqrt{\up{0.7}x \over y}
-            $$
-
-            for all $x \geq 0$, $y > 0$ (you need each 
-            root to be defined), so
-
-            $$
-            {\sqrt{2} \over 2} = {\sqrt{2} \over \sqrt{4}} = \sqrt{\up{0.8}2 \over 4} = \sqrt{0.5}
-            $$
-
-            ...ta-daa!
-
-            |> Pause
-
-            _Note 1._ One can also proceed by “direct
-            verification”:
-
-            $$
-            \left({\sqrt{2} \over 2}\right)^{\!2} = {\sqrt{2} \over 2}\cdot{\sqrt{2} \over 2}
-            = {\sqrt{2}\cdot\sqrt{2} \over 4} = {2 \over 4} = 0.5.
-            $$
-
-            (This, together with the fact that 
-            ${\sqrt{2} \over 2}$ is not negative, 
-            establishes that ${\sqrt{2} \over 2} = 
-            \sqrt{0.5}$.)
-
-            |> Pause
-
-            e. (True) Using the 
-            “${\sqrt{x} \over \sqrt{y}} = 
-            \sqrt{\up{0.7}x \over y}$” identity:
-
-            $$
-            {1 \over \sqrt{2}} = {\sqrt{1} \over \sqrt{2}} = \sqrt{\up{0.8}1 \over 2} = \sqrt{0.5}.
-            $$
-
-            Or by direct verification:
-
-            $$
-            \left({1 \over \sqrt{2}}\right)^{\!2} = {1 \over \sqrt{2}}\cdot{1 \over \sqrt{2}}
-            = {1 \over \sqrt{2}\cdot\sqrt{2}} = {1 \over 2} = 0.5.
-            $$
-
-            (And $1 \over \sqrt{2}$ is nonnegative.)
-            Or by reducing to part d:
-
-            $$
-            {1 \over \sqrt{2}} = {\sqrt{2} \over \sqrt{2} \cdot \sqrt{2}} = {\sqrt{2} \over 2}.
-            $$
-
-            (The point being: we already know that 
-            ${\sqrt{2} \over 2} = \sqrt{0.5}$ by part d.)
-
-            |> Pause
-
-            f. (True) We have
-
-            $$
-            2^{30} = 2^{10} \times 2^{10} \times 2^{10} = (2^{10})^3
-            $$
-
-            and
-
-            $$
-            (2^{10})^3 = (1024)^3 > 1000^3.
-            $$
-
-            |> Pause
-
-            _Note 2._
-            The first ten or so powers of $2$ are worth
-            knowing by heart (here's _eleven_ powers, mind
-            you):
-
-            $$
-            \begin{array}{c|c}
-            \,\,\,\,n\,\,\,\, & 2^n\dn{0.3} \\ \hline
-            0 & 1 \up{1.1}\\
-            1 & 2 \\
-            2 & 4 \\
-            3 & 8 \\
-            4 & 16 \\
-            5 & 32 \\
-            6 & 64 \\
-            7 & 128 \\
-            8 & 256 \\
-            9 & 512 \\
-            10 & 1024
-            \end{array}
-            $$
+            |> Image
+                src images/svg_0.125_twelve_5.svg
             
-            Among which, the fact that
+            Half of twelve hundredths is six hundredths, and 
+            half of $5$ thousandths is $2.5$ thousandths:
             
-            $$
-            2^{10} \approx 10^3
-            $$
-
-            can be particularly useful to know! For 
-            example, if a 1-millimeter-thick napkin is 
-            folded $50$ times over, doubling the width 
-            each time, one obtains something of 
-            thickness
-
-            $$
-            2^{50}\fw\te{mm} = (2^{10})^5\fw\te{mm} \approx (10^3)^5\fw\te{mm} = 10^{15}\fw\te{mm}.
-            $$
-
-            As
-
-            $$
-            1\fw\te{mm} = 10^{-6}\fw\te{km}
-            $$
+            |> Image
+                src images/svg_06_and_0025.svg
             
-            this is
-
-            $$
-            10^{9}\fw\te{km}
-            $$
-
-            |> ImageRight
-                src images/104.svg
-                offset_x -4rem
-                offset_y -1rem
-                children_y 48%
-                children_x 39%
-                use_squiggle_on_mobile false
-
-                $10^{15}\fw\te{mm} = 10^{15}\fw(10^{-6}\fw\te{km}) = \dots$
-
-            or _one billion_ kilometers. By 
-            comparison, the distance from the Earth to
-            the Sun is a mere $150$ million kilometers.
-            (The point being: that we could go from the 
-            relatively mysterious
-
-            $$
-            \te{“}2^{50}\fw\te{mm}\te{”}
-            $$
-            
-            to the relatively less mysterious
-            
-            $$
-            \te{“}\fw10^{15}\te{mm}\te{”}
-            $$
-            
-            by the approximation $2^{10} \approx 10^3$.)
-
-            |> Pause
-
-            g. (True) As an inequality can be multiplied 
-            on both sides by a positive number while 
-            preserving the inequality, one has
-
-            $$
-            \begin{align}
-            & {1 \over 0.95} > 1.05\\
-            \iff & 1 > 1.05 \cdot 0.95\up{1.4}\\
-            \iff & 1 > (1 + 0.05)(1 - 0.05)\up{1.4}\\
-            \iff & 1 > 1 - 0.05^2\up{1.4}
-            \end{align}
-            $$
-
-            (using the fact that $(1+x)(1-x) = 1-x^2$, of
-
-            $$
-            \te{“}\,(a+b)(a-b) = a^2-b^2\,\te{”}
-            $$
-
-            fame), and since the _last_ inequality is true,
-            the _first_ inequality is true! (Recall that
-            “$\!\iff\!$” means “if and only if”.)
-
-            |> Pause
-
-            _Note 3._
-            More generally, even though
-
-            $$
-            {1 \over 1 - \epsilon} > 1 + \epsilon
-            $$
-
-            for any small $\epsilon > 0$, the number 
-            $1 + \epsilon$ remains a good approximation to 
-            ${1 \over 1 - \epsilon}$. For example,
-
-            $$
-            {1 \over 0.99}
-            $$
-
-            is a good approximation to
-
-            $$
-            {1 \over 0.99}
-            $$
-
-            while
-
-            $$
-            {1 \over 0.999}
-            $$
-
-            is a good approximation to
-
-            $$
-            {1 \over 0.999},
-            $$
-
-            etc.
-
-            |> Pause
-
-            h. (True) Here are the first few powers of $-1$
-            (note how each additional multiplication by $-1$
-            simply changes the sign of the previous result):
-
-            |> Grid
-                cols 3 
-                place_items end
-
-                $ (-1)^1 = $
-
-                $ (-1) = $
-
-                $ -1 $
-
-                $ (-1)^2 = $
-
-                $ (-1)\times (-1) = $
-
-                $ 1 $
-
-                $ (-1)^3 = $
-
-                $ (-1)\times(-1)\times (-1) = $
-
-                $ -1 $
-
-                $ (-1)^4 = $
-
-                $ (-1)\times(-1)\times(-1)\times(-1) = $
-
-                $ 1 $
-
-                $ (-1)^5 = $
-
-                $ \,\,\,(-1)\times(-1)\times(-1)\times(-1)\times(-1) = $
-
-                $ -1 $
-
-            (Etc.) Obviously, even powers of $(-1)$ are 
-            equal to $1$, while odd powers of $(-1)$ are
-            equal to $-1$. As $101$ is odd, $(-1)^{101}$ 
-            is $-1$.
-
-            |> Pause
-
-            i. (False) We have
-
-            $$
-            {100 \over 99} = {99 + 1 \over 99} = 1 + {1 \over 99}
-            $$
-            
-            and
-            
-            $$
-            {101 \over 100} = {100 + 1 \over 100} = 1 + {1 \over 100}
-            $$
-            
-            so the smaller of the two fractions is ${101 
-            \over 100}$, since ${1 \over 100} < {1 \over 
-            99}$.
-
-            |> Pause
-
-            _Note 4._
-            The difference
-
-            $$
-            {1 \over 99} - {1 \over 100}
-            $$
-
-            is interesting in its own right, being 
-            connected to a famous infinite sum. To 
-            visualize this sum, picture a hare poised at 
-            $x = 0$ on the number line. This hare runs
-            forward by one unit and backwards by half a
-            unit, stopping at the number
-
-            $$
-            1 - {1\over 2}
-            $$
-
-            by virtue of this back-and-forth movement. 
-            The hare then proceeds to run forward by 
-            _half_ a unit and back by a _third_ of a unit,
-            stopping at
-
-            $$
-            \begin{align}
-            &\, \left(1 - {1 \over 2}\right) \\
-            + \,&\, \left({1 \over 2} - {1 \over 3}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!} \\
-            \hline
-            = \,&\, \left(1 - {1 \over 3}\right)^{\color{white} a^{a^a}}
-            \end{align}
-            $$
-
-            for another break. Keeping with this pattern,
-            the hare then stops at
-
-            $$
-            \begin{align}
-            &\, \left(1 - {1 \over 2}\right)\\
-            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
-            + \,&\, \left({1 \over 3} - {1 \over 4}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!}\\
-            \hline
-            = \,&\, \left(1 - {1 \over 4}\right)^{\color{white} a^{a^a}}
-            \end{align}
-            $$
-
-            and then at
-
-            $$
-            \begin{align}
-            &\, \left(1 - {1 \over 2}\right)\\
-            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
-            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
-            + \,&\, \left({1 \over 4} - {1 \over 5}\right)_{\color{white} a_{a_a}\!\!\!\!\!\!\!\!\!\!}\\
-            \hline
-            = \,&\, \left(1 - {1 \over 5}\right)^{\color{white} a^{a^a}}
-            \end{align}
-            $$
-
-            and so on.
-            Clearly, the successive positions at which 
-            the hare stops are approaching the number $1$
-            from the left, pointing to the fact that the 
-            _infinite_ sum
-
-            $$
-            \begin{align}
-            &\, \left(1 - {1 \over 2}\right)\\
-            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
-            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
-            + \,&\, \left({1 \over 4} - {1 \over 5}\right)\\
-            + \,&\, \left({1 \over 5} - {1 \over 6}\right)\\
-            + \,&\, \left({1 \over 6} - {1 \over 7}\right)\\
-            + \,&\, \,\,\,\,\,\,\,\,\dots\up{1.3}
-            \end{align}
-            $$
-            
-            is “equal” (in some sense) to $1$. But how 
-            much, exactly, is the $n$-th term
-            
-            $$
-            {1 \over n} - {1 \over n+1}
-            $$
-            
-            of the sum? (By the way, this $n$-th term 
-            is the difference
-            ${1 \over 99} - {1 \over 100}$ for $n = 99$, 
-            which is how we came to be reminded of this 
-            infinite sum in the first place.) Well...
-            
-            $$
-            \begin{align}
-            {1 \over n} - {1 \over n+1} &= {1 \over n}\cdot{n+1 \over n+1}\, - \,
-            {1 \over n+1}\cdot{n \over n}\up{1.5}\\
-            &= {n+1 \over n(n+1)} - {n \over n(n+1)}\up{1.5}\\
-            &= {1 \over n(n+1)}\up{1.5}
-            \end{align}
-            $$
-
-            |> ImageRight
-                src images/24.svg
-                offset_y 2.5rem
-                y 12%
-                children_x 30%
-                children_y 30%
-
-                $$
-                \begin{align}
-                {1 \over 99} - {1 \over 100}
-                &= {1 \over 99}\cdot{100 \over 100}\, - \,{1 \over 100}\cdot{99 \over 99}\up{1.5}\\
-                &= {100 \over 99\cdot 100} - {99 \over 99\cdot 100}\up{1.5}\\
-                &= {1 \over 99\cdot 100}\up{1.5}
-                \end{align}
-                $$
-
-            ...it's that much. (For example,
-
-            $$
-            {1 \over 1} - {1 \over 2} = {1 \over 1 \cdot 2} = {1 \over 2}
-            $$
-
-            and
-
-            $$
-            {1 \over 2} - {1 \over 3} = {1 \over 2 \cdot 3} = {1 \over 6}
-            $$
-
-            and so on.) So the infinite sum
-
-            $$
-            \begin{align}
-            &\, \left(1 - {1 \over 2}\right)\\
-            + \,&\, \left({1 \over 2} - {1 \over 3}\right)\\
-            + \,&\, \left({1 \over 3} - {1 \over 4}\right)\\
-            + \,&\, \left({1 \over 4} - {1 \over 5}\right)\\
-            + \,&\, \left({1 \over 5} - {1 \over 6}\right)\\
-            + \,&\, \left({1 \over 6} - {1 \over 7}\right)\\
-            + \,&\, \,\,\,\,\,\,\,\,\dots\up{1.3}\dn{1}\\ \hline
-            = \,&\, 1\up{1.5}
-            \end{align}
-            $$
-
-            can also be written
-
-            $$
-            {1 \over 1 \cdot 2} + {1 \over 2 \cdot 3} + {1 \over 3 \cdot 4} + {1 \over 4 \cdot 5} + {1 \over
-            5 \cdot 6} + \dots \,=\, 1
-            $$
-
-            (or
-
-            $$
-            {1 \over 2} + {1 \over 6} + {1 \over 12} + {1 \over 20} + {1 \over 30} + \dots \,=\, 1
-            $$
-
-            equivalently) which is not obvious at first 
-            glance, and kind of interesting!
-
-            |> Pause
-
-            _Note 5._ The fact that
-            
-            $$
-            {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
-            $$
-            
-            means, in particular, that 
-            ${1 \over n} - {1 \over n+1}$ is roughly 
-            ${1 \over n^2}$ for large $n$, which is 
-            sometimes handy to know. For example,
-            
-            $$
-            {1 \over 10} - {1 \over 11}
-            $$
-            
-            is approximately $1/10^2 = 0.01$, while
-            
-            $$
-            {1 \over 100} - {1 \over 101}
-            $$
-            
-            is approximately $1/100^2 = 0.01^2 = 0.0001$, 
-            etc.
+            ...so $0.125/2$ is $0.06 + 0.0025 = 0.0625$.
 
     |> Exercise
 
-        In the solution to Exercise 1, we observed how 
-        the difference
-
-        $$
-        {1 \over n} - {1 \over n+1}
-        $$
-
-        is _roughly_ $1/n^2$ for large $n$. But how 
-        far off is this exactly? (I.e., what is the
-        difference between ${1 \over n} - {1 \over n+1}$ 
-        and ${1 \over n^2}$?) And _roughly_ how much is
-        this far-offness, for large $n$?
+        Compute $100/16$ by hand.
 
         |> Solution
 
-            Since
-
+            We have
             $$
-            {1 \over n} - {1 \over n+1} = {1 \over n(n+1)}
+            \Large {1 \over 16} = {1 \over 2\cdot 2\cdot 2\cdot 2} = 2^{-4} = 0.0625
             $$
-
-            |> ImageRight
-                offset_x -6rem
-                offset_y 1.2rem
-                src images/25.svg
-                children_y 25%
-                children_x 37%
-                use_squiggle_on_mobile false 
-
-                $$
-                {1 \over 99\cdot 100}
-                $$
-
-            (as previously computed) is smaller than
-
+            so
             $$
-            {1 \over n^2}
+            \Large {100 \over 16} = 100 \cdot {1 \over 16} = 100\cdot 0.0625 = 6.25
             $$
+            and that's all there is to it! (Or you could repeatedly divide $100$ by $2$,
+            until you reach $6.25$, after the fourth division.)
 
-            |> ImageRight
-                offset_x -6rem
-                offset_y 1.2rem
-                src images/26.svg
-                children_y 26%
-                children_x 37%
-                use_squiggle_on_mobile false
+    |> Exercise
 
-                $$
-                {1 \over 99^2}
-                $$
+        If “万” is Chinese for _ten thousand_, what is “万万” in English?
+        What about “万万万”?
 
-            we will compute the difference
+        |> Solution
 
+            “万万” is “ten thousand ten thousand”, or
             $$
-            {1 \over n^2} - {1 \over n(n+1)}
+            \Large 10^4 \times 10^4 = 10^8
             $$
-
-            as opposed to the “other difference
-
+            or _one hundred million_ since $10^8 = 10^2 \times 10^6$ is a hundred times a 
+            million. Similarly, “万万万” is 
             $$
-            {1 \over n(n+1)} - {1 \over n^2}
+            \Large 10^4 \times 10^4 \times 10^4 = 10^{12}
             $$
+            which is just one trillion.
 
-            to avoid a minus sign in the result. 
-            (Computing the second difference and having 
-            a minus sign does not constitute a mistake, 
-            however.) Having said this, the difference is:
-
-            $$
-            \begin{align}
-            {1 \over n^2} - {1 \over n(n+1)} &= {1 \over n^2} \cdot {n+1 \over n+1} - {1 \over n(n+1)} \cdot
-            {n \over n}\\
-            &= {n+1 \over n^2(n+1)} - {n \over n^2(n+1)}\up{1.5}\\
-            &= {1 \over n^2(n+1)}\up{1.5}
-            \end{align}
-            $$
-
-            |> ImageRight
-                src images/27.svg
-                offset_y 2rem
-                y 12%
-                children_y 31%
-                children_x 23%
-                clickable_on_desktop true
-
-                $$
-                \begin{align}
-                {1 \over 99^2} - {1 \over 99\cdot 100} &=
-                {1 \over 99^2}\cdot{100 \over 100}\, - \,
-                {1 \over 99\cdot 100}\cdot{99 \over 99}\\
-                &= {100 \over 99^2 \cdot 100} - {99 \over 99^2 \cdot 100}\up{1.5}\\
-                &= {1 \over 99^2\cdot 100}\up{1.5}
-                \end{align}
-                $$
-
-            which, for large $n$, is roughly
-
-            $$
-            {1 \over n^3}
-            $$
-
-            since $n^2(n+1) \approx n^3$ for large $n$.
-            
             |> Pause
-          
-            _Example 1._ Above, we estimated
 
+            _Notes._
+            Rearranging
+            
+            __ten thousand ten thousand__
+            
+            to
+            
+            __ten ten thousand thousand__
+            
+            directly leads us to “hundred million” 
+            without having to use exponents, since ten
+            times ten is a hundred and since a thousand 
+            times a thousand is a million.
+        
+            (Similarly,
+            
+            __ten thousand ten thousand ten thousand__
+            
+            becomes
+            
+            __ten ten ten thousand thousand thousand__
+            
+            after rearrangement, which can be seen to
+            equal one trillion because “ten ten ten” is
+            a thousand.)
+
+    |> Exercise
+
+        How many millimeters in a kilometer? 
+        How many kilometers in a millimeter?
+
+        |> Solution
+
+            There are $10^3$ millimeters in a meter 
+            (_milli_ = thousandth) and $10^3$ meters
+            in a kilometer, so there are 
+            $10^3 \times 10^3 = 10^6$ 
+            millimeters in a kilometer.
+
+            From there, it automatically follows that
+            there are $1/10^6 = 10^{-6}$ kilometers in
+            a millimeter.
+
+            (Or you can run the reverse reasoning: 
+            There are $10^{-3}$ kilometers in a meter, 
+            and $10^{-3}$ meters in a millimeter, 
+            so $10^{-3} \times 10^{-3} = 10^{-6}$ 
+            kilometers in a millimeter.)
+
+    |> Exercise
+
+        How many kilometers is $10^{24}$ millimeters?
+
+        |> Solution
+
+            We have
             $$
-            {1 \over 10} - {1 \over 11}
+            \Large 1\textrm{mm} = 10^{-6}\textrm{km}
+            $$
+            by the previous problem, so 
+            $$
+            \Large 10^{24} \textrm{mm} = 10^{24}\cdot 10^{-6}\textrm{km} = 10^{18}\textrm{km}
+            $$
+            by direct substitution. (You can do that with
+            units.) The answer is therefore: $10^{18}$.
+    
+    |> Exercise
+
+        If the US yearly budget is $4$ trillion
+        dollars, what percentage of the budget is
+        one hundred billion \$?
+
+        |> Solution
+
+            One hundred billion is $10\%$ of one trillion [cf.: 
+            $10^2 \times 10^9 = {1 \over 10}\times 10^{12}$]
+            and one trillion is a quarter of $4$ 
+            trillion, so the answer is ${1\over 4}\cdot 10\% = 2.5\%$.
+
+            |> Pause
+
+            _Postscript_:
+            There is no such thing as “the U.S. budget”. A
+            monetarily sovereign nation _spends_ its currency
+            into existence. (And taxes it out of existence.)
+
+
+    |> Exercise
+    
+        What is the logarithm base $10$ of one trillion?
+
+        |> Solution
+
+            $12$, because one trillion is $10^{12}$.
+
+    |> Exercise
+    
+        What is the logarithm base $10$ of $1$?
+
+        |> Solution
+            
+            $0$, because $1 = 10^0$.
+    
+    |> Exercise
+    
+        What is the logarithm base $10$ of: _a trillion times a billion times a million times a thousand_?
+
+        |> Solution
+
+            Since 
+            $$
+            %\Large 10^{12}\times 10^{9}\times 10^{6}\times 10^3 = 10^{12+9+6+3} = 10^{30}
+            \Large 10^{12}\times 10^{9}\times 10^{6}\times 10^3 = 10^{12+9+6+3}
+            $$
+            the answer is $12+9+6+3$, i.e., $30$. 
+
+
+    |> Exercise
+    
+        Evaluate:
+        $$
+        \Large {10^6 \cdot 10^{-12} \cdot 10^{10} \over 10^{-4}\cdot 10^{-4}} 
+        $$
+
+        |> Solution
+
+            We have
+            $$
+            \Large {10^6 \cdot 10^{-12} \cdot 10^{10} \over 10^{-4}\cdot 10^{-4}} = {10^{6-12+10} \over 10^{-4 -4}} = {10^4 \over 10^{-8}}
+            $$
+            and
+            $$
+            \Large {10^4 \over 10^{-8}} = 10^4 \cdot {1 \over 10^{-8}} = 10^4\cdot 10^{-(-8)}
+            $$
+            and
+            $$
+            \Large 10^4\cdot 10^{-(-8)} = 10^4\cdot 10^8 = 10^{4 + 8} = 10^{12}
+            $$
+            so the answer is $10^{12}$.
+
+    |> Exercise
+        
+        How many _millibits_ in a _gigabyte_?
+
+        |> Solution
+
+            Presumably, there are $1000$ “millibits”
+            (whatever those are, we can go along with
+            the joke here) in one bit. Since there are
+            eight bits in a byte, and a million bytes 
+            in a gigabyte, this means that there would
+            be
+            $$
+            \Large 1000 \times 8 \times 10^6 = 8 \times 10^9
+            $$
+            or $8$ billion “millibits” per gigabyte.
+            (But to reiterate, there is no such thing 
+            as a “millibit”; a bit is a _discrete_—i.e., 
+            indivisible—unit of computer memory.)
+
+
+    |> Exercise
+            
+        It so happens that 
+        $$
+        \Large 6.25
+        $$ 
+        (i.e., the value of $100/16$) is also
+        famous for being equal to $2.5^2$. (You can 
+        verify that
+        $$
+        \Large 25^2 = 625
+        $$
+        and, by shifting two decimal places, one
+        finds $2.5^2 = 6.25$.) Can you elucidate
+        why it would be that
+        $$
+        \Large {100 \over 16} = 2.5^2
+        $$
+        by using some kind of algebra?
+
+        |> Solution
+
+            One has
+            $$
+            \Large {100 \over 16} = {10^2 \over 4^2} = \left(\!{10\over 4}\!\right)^{\!\!2} = \left(\!{5\over 2}\!\right)^{\!\!2}
+            $$
+            and $5/2 = 2.5$. (Ta-daa!)
+        
+    |> Exercise
+
+        Prove that
+        $$
+        \Large {10^n \over \vphantom{10^{A^n}}10^m} = 10^{n-m}
+        $$
+        for all integers $n$ and $m$. (You can
+        take for granted any identity that is stated
+        in this 
+        |> del
+
+            chapter
+        bootcamp.)
+
+        |> Solution
+
+            Here is the “proof” that your professor is 
+            hoping for:
+
+            |> Image
+                src images/svg_start_end_proof.svg
+            
+            The point is that the second equality uses the identity
+            $$
+            \Large {1 \over 10^m} = 10^{-m}
+            $$
+            stated earlier in the chapter as (*), while the third equality uses
+            additivity of exponents, also stated earlier. (So: We are only using “known”
+            facts, alongside some ordinary arithmetic.)
+
+            |> Pause
+
+            _Notes._
+            The identity proved in this exercise, 
+            when generalized to any base, 
+            is one of the “laws of exponents”, whose complete list 
+            (even more-than-complete, other sources list fewer laws)
+            is as follows (minus fine print):
+
+            |> Image
+                src images/svg_laws_exp.svg
+
+            The first law can be recognized as “additivity of exponents”
+            while the second law 
+            is the above-mentioned generalization of this exercise's result.
+            (Nb: Concerning the next-to-last law, note that, <i>by definition</i>,
+            $$
+            \Large \left({a\over b}\right)^{\!-1} = {1 \over \left( {a \over b}\right)} 
+            $$
+            and it so happens that
+            $$
+            \Large {1 \over \left( {a \over b}\right)} = {b \over a}
+            $$
+            for all $a, b \ne 0$, by some principle of elementary arithmetic.)
+
+    |> Exercise
+
+        Rewrite each of these expressions... 
+        $$
+        \Large {L \over T}
+        $$
+        $$
+        \Large {M (L/T) \over T}
+        $$
+        $$
+        \Large \left.{ML \over T^2 } \right/ \left({L^2} {(L/T) \over L}\right) 
+        $$
+        ...in the form...
+        $$
+        \Large M^aL^bT^c
+        $$
+        ...for some integer exponents $a$, $b$, $c$.
+        
+        |> Solution
+
+            We have (#1)
+            $$
+            \Large {L \over T} = LT^{-1} = M^0L^1T^{-1}
+            $$
+            since
+            $$
+            \Large {L \over T} = L\cdot {1\over T} = LT^{-1}
+            $$
+            and (#2)
+            $$
+            \Large {M (L/T) \over T} = MLT^{-2} = M^1L^1T^{-2}
+            $$
+            since
+            $$
+            \Large {L/T \over T} = (L/T)\cdot{1 \over T} = {L\over T}\cdot{1 \over T} = {L \over T^2} = LT^{-2}
+            $$
+            (that being more than a little pedantic, yes), 
+            and (#3)
+            $$
+            \Large \left.{ML \over T^2 } \right/ \left({L^2} {(L/T) \over L}\right) = ML^{-1}T^{-1} = M^1L^{-1}T^{-1}
+            $$
+            since
+            $$
+            \Large L^2{L/T\over L} = L^2{1/T \over 1} = {L^2\over T}
+            $$
+            and
+            $$
+            \Large \left.{ML \over T^2 } \right/ {L^2\over T} = {ML\over T^2}\cdot {T\over L^2} = {M \over TL} = MT^{-1}L^{-1}
+            $$
+            given that ${1\over T} = T^{-1}$, ${1\over L}=L^{-1}$. (Phew!)
+
+    |> Exercise
+
+        Find integers $a$, $b$ and $c$ such that
+        $$
+        \Large v^aF^b\mu^c\rho = 1
+        $$
+        where $v$, $F$, $\mu$ and $\rho$ are defined as below.
+        $$
+        \Large v = {L \over T}
+        $$
+        $$
+        \Large F = {ML \over T^2}
+        $$
+        $$
+        \Large \mu = {M \over TL }
+        $$
+        $$
+        \Large \rho = {M \over L^3}
+        $$
+
+        |> Solution
+
+            Firstly we can rewrite $v$, $F$, $\mu$, $\rho$
+            in the canonical form $M^xL^yT^z$
+            for integers $x$, $y$, $z$ (as in the previous
+            exercise):
+            $$
+            \Large v = LT^{-1} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large F = MLT^{-2} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \mu = MT^{-1}L^{-1} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \rho = ML^{-3}
+            $$
+            (Ok.) Nextly, we compute $v^a$, $F^b$, $\mu^c$
+            by applying the fourth law of exponents (note e.g.
+            that $(T^{-1})^a = T^{(-1)a} = T^{-a}$, etc):
+            $$
+            \Large v^a = L^aT^{-a} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large F^b = M^{b}L^bT^{-2b} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \mu^c = M^cT^{-c}L^{-c} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \rho = ML^{-3}
+            $$
+            (In the last line we just restated $\rho$.)
+            Then $v^aF^b\mu^c\rho$ becomes
+            $$
+            \Large M^{b+c+1}L^{a+b-c-3}T^{-a-2b-c}
+            $$
+            by multiplying everything together and using
+            additivity of exponents. (E.g., $M^bM^cM = M^{b+c+1}$,
+            and so on.) This expression equals 
+            $$
+            \Large 1
+            $$ 
+            independently of the values of $M$, $L$, $T$
+            if and only if...
+            
+            __the three exponents are zero__
+            
+            ...(!!!) which means that we need to find values
+            $a$, $b$ and $c$ such that these three equations...
+            $$
+            \Large b + c + 1 = 0
+            $$
+            $$
+            \Large a + b - c - 3 = 0
+            $$
+            $$
+            \Large -a -2b - c = 0
             $$
 
-            to be roughly $1/100 = 0.01$, but $1/100$ is 
-            bigger than the actual value of
-            ${1 \over 10\cdot 11} = {1 \over 110}$ by
+            |> ImageRight
+                src images/svg_add_equations_cloud.svg
 
+            ...are satisfied! Adding the second and 
+            third equation together, we find 
             $$
-            {1 \over 10^2\cdot 11}
+            \Large -b -2c -3 = 0
             $$
+            and adding this last equation to the first
+            equation above, we find 
+            $$
+            \Large -c -2 = 0
+            $$
+            which implies that $-c = 2$, i.e., that $c = -2$. 
+            Plugging $c = -2$ into the first of our three
+            equations, we find
+            $$
+            \Large b + (-2) + 1 = 0
+            $$
+            or
+            $$
+            \Large b - 1 = 0
+            $$
+            which implies that $b = 1$. Lastly, plugging
+            $b = 1$, $c = -2$ in our second equation above
+            gives us 
+            $$
+            \Large a + 1 - (-2) - 3 = 0
+            $$
+            which implies that $a = 0$ since $1-(-2)-3 = 0$.
+            (One can finally check that 
+            setting $a=0$, $b = 1$, $c=-2$ satisfies that
+            third equation, $-a-2b-c=0$, which it does.)
 
-            or close to $1/10^3 = 0.001$. 
-            (So
-            
+            In summary, the solution is $a = 0$, $b = 1$,
+            $c = -2$; we have discovered that 
             $$
-            {1 \over 10} - {1 \over 11}
+            \Large v^0 F^1 \mu^{-2} \rho = 1
             $$
-            
-            is about $0.01$, while making an error of about
-            $0.001$.) (In fact,
-            
+            under the given definitions of $v$, $F$, $\mu$
+            and $\rho$, or which is to say, we have discovered
+            that
             $$
-            {1 \over 10^2\cdot 11}
+            \Large F\mu^{-2}\rho = 1
             $$
-            
-            is _less_ than $1/10^3$, so the error is _less_
-            than $0.001$.)
+            (since $v^0 = 1$, $F^1 = F$).
+
 */
