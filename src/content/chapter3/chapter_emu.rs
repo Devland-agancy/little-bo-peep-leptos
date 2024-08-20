@@ -533,15 +533,16 @@
     further than the function
 
     $$
-    {\Large x \ra 0^x}
+    \Large x \ra 0^x
     $$
     
     as it so happens that
     
     $$
-    {0^x = \begin{cases} 0 & \te{if } x > 0\\
-    1 & \te{if } x = 0\\
-    \te{undefined} & \te{if }x &lt; 0 \end{cases}}
+    0^x = 
+    \begin{cases} 0 & \te{if } x > 0\\
+                  1 & \te{if } x = 0\\
+    \te{undefined} & \te{if }x &lt; 0 \end{cases}
     $$
     
     which implies a discontinuity in the graph of
@@ -1467,14 +1468,14 @@
 
             |> DisplayCentered 
 
-                ${\Large h(}$
+                $\Large h($
                 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
-                ${\Large{}) =}$
+                $\Large{}) =$
                 
                 |> InlineImage
                     src images/svg_composition_icon_die_3.svg
@@ -1505,14 +1506,14 @@
 
             |> DisplayCentered 
 
-                ${\Large g(h(}$
+                $\Large g(h($
 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
-                ${\Large{})){}=}$
+                $\Large{})){}=$
 
                 |> InlineImage
                     src images/svg_composition_icon_fence.svg
