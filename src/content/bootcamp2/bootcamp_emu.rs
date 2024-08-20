@@ -67,7 +67,7 @@
     As $n$ successive divisions
     by $10$ is the same as one division by $10^n$, one also has
     $$
-    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{*}
+    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{A}
     $$
     for every positive integer $n$, which gives an alternate means of computing $10^{-n}$.
     Moreover, (A) actually holds for
@@ -1176,9 +1176,8 @@
             $$
             since
             $$
-            \Large {L/T \over T} = (L/T)\cdot{1 \over T} = {L\over T}\cdot{1 \over T} = {L \over T^2} = LT^{-2}
+            \Large {L/T \over T} = {L\over T}\cdot{1 \over T} = {L \over T^2} = LT^{-2}
             $$
-            (that being more than a little pedantic, yes), 
             and (#3)
             $$
             \Large \left.{ML \over T^2 } \right/ \left({L^2} {(L/T) \over L}\right) = ML^{-1}T^{-1} = M^1L^{-1}T^{-1}
@@ -1191,7 +1190,7 @@
             $$
             \Large \left.{ML \over T^2 } \right/ {L^2\over T} = {ML\over T^2}\cdot {T\over L^2} = {M \over TL} = MT^{-1}L^{-1}
             $$
-            given that ${1\over T} = T^{-1}$, ${1\over L}=L^{-1}$. (Phew!)
+            given that ${1\over T} = T^{-1}$, ${1\over L}=L^{-1}$.
 
     |> Exercise
 
@@ -1276,6 +1275,7 @@
 
             |> ImageRight
                 src images/svg_add_equations_cloud.svg
+                offset_y 1em
 
             ...are satisfied! Adding the second and 
             third equation together, we find 
