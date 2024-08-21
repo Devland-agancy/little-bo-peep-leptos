@@ -65,7 +65,7 @@
     the derivative:
 
 	|> Image
-		src public/images/svg_ch4_explanation_one_sided_tangent.svg
+		src images/svg_ch4_explanation_one_sided_tangent.svg
 
     (In other words, “half-tangents” do not actually 
     count as tangents.) 
@@ -96,17 +96,17 @@
     (the one with the closed endpoints):
 
     |> Image
-		src public/images/svg_ch4_curve_to_sketch.svg
+		src images/svg_ch4_curve_to_sketch.svg
 
     One method is simply to eyeball the slope at a 
     few points along the curve, plot these values and 
     interpolate:
 	
     |> Image
-    	src public/images/svg_ch4_first_derivative_sketch.svg
+    	src images/svg_ch4_first_derivative_sketch.svg
 
     |> ImageRight
-		src public/images/svg_ch4_polaroid_cloud.svg
+		src images/svg_ch4_polaroid_cloud.svg
     
     ...voilà!
 	
@@ -117,10 +117,10 @@
     the derivative in each interval:
 
 	|> Image
-		src public/images/svg_ch4_second_derivative_sketch_pt1.svg
+		src images/svg_ch4_second_derivative_sketch_pt1.svg
 
 	|> Image
-		src public/images/svg_ch4_second_derivative_sketch_pt2.svg
+		src images/svg_ch4_second_derivative_sketch_pt2.svg
 
     The result (at bottom right)
     is a charming “robosketch” of the true derivative!
@@ -266,7 +266,7 @@
             $y$ axis
 
     |> ImageRight
-		src public/images/svg_ch4_units1_cloud.svg
+		src images/svg_ch4_units1_cloud.svg
     
     ...then the “after” graph will have units of...
 	
@@ -285,7 +285,7 @@
             $y$ axis
 	
     |> Image
-		src public/images/svg_ch4_units2_cloud.svg
+		src images/svg_ch4_units2_cloud.svg
 
     ...then the “after” graph will have units of...
 
@@ -368,7 +368,7 @@
         $$
 
     |> ImageRight
-        src public/images/svg_ch4_3x_plus_one_and_second_cloud.svg
+        src images/svg_ch4_3x_plus_one_and_second_cloud.svg
 
     because, firstly,
 
@@ -405,7 +405,7 @@
         __~ the second derivative of an affine function is zero ~__
             
         |> ImageLeft
-            src public/images/svg_ch4_adding_statements_cloud.svg
+            src images/svg_ch4_adding_statements_cloud.svg
 
 |> Section
 
@@ -418,7 +418,7 @@
     have a negative second derivative:
 
     |> Image
-		src public/images/svg_ch4_bendiness.svg
+		src images/svg_ch4_bendiness.svg
 
     Reason like this: the second derivative is 
     |> del
@@ -471,7 +471,7 @@
     Viz:
 	
     |> Image
-        src public/images/svg_ch4_convex_concave.svg
+        src images/svg_ch4_convex_concave.svg
 
     *Vocabulary #2.*
     An _inflection point_ is a point at the
@@ -479,7 +479,7 @@
     of a graph:
 
 	|> Image
-		src public/images/svg_ch4_inflection_point.svg
+		src images/svg_ch4_inflection_point.svg
 
     |> Example
 
@@ -505,25 +505,25 @@
     A graph of the form...
 
     |> Image
-		src public/images/svg_ch4_position_by_time.svg
+		src images/svg_ch4_position_by_time.svg
 
     ...describes _position as a function of time_
     (look at the units); the derivative...
 
     |> Image
-		src public/images/svg_ch4_position_by_time_der.svg
+		src images/svg_ch4_position_by_time_der.svg
 
     |> ImageRight
-		src public/images/svg_ch4_position_by_time_cloud.svg
+		src images/svg_ch4_position_by_time_cloud.svg
 
     ...describes _velocity as a function of time_;
     finally, the second derivative...
 
     |> Image
-		src public/images/svg_ch4_position_by_time_der_der.svg
+		src images/svg_ch4_position_by_time_der_der.svg
 
     |> ImageLeft
-        src public/images/svg_ch4_position_by_time_der_cloud.svg
+        src images/svg_ch4_position_by_time_der_cloud.svg
 
     ...describes
 
@@ -550,7 +550,7 @@
     seconds:
 	
     |> Image
-		src public/images/svg_ch4_position_by_time_tangent.svg
+		src images/svg_ch4_position_by_time_tangent.svg
     
     The ratio “rise over run” has the form
 
@@ -620,7 +620,7 @@
 		$$
 
         |> ImageRight
-            src public/images/svg_ch4_unit_cancellation_cloud.svg
+            src images/svg_ch4_unit_cancellation_cloud.svg
 		
         according to the template
 		
