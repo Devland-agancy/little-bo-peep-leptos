@@ -6273,9 +6273,6 @@
 
             For the functions:
 
-            |> ImageLeft
-                src svg_ch4_express_the_f_g_h_A_B_C_D_cloud.svg
-
             |> ul
                 style margin:1em 0 0 2.5em
 
@@ -6306,6 +6303,9 @@
                 
                     _the commutativity of function addition is
                     the fact that $f + g = g + f$ for all $f, g : \rr \ra \rr$_
+
+            |> ImageLeft
+                src svg_ch4_express_the_f_g_h_A_B_C_D_cloud.svg
 
             For the real numbers:
 
