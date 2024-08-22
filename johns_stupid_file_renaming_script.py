@@ -25,9 +25,6 @@ for (key, value) in filenames_to_rename:
     orig = path + key
     dest = path + value
     
-    # print(orig)
-    # print(dest)
-    
     try:
         os.rename(orig, dest)
         

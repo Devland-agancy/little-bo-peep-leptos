@@ -105,7 +105,8 @@
 
     |> StarDivider
 
-    (The main thing to understand about Example 1 is that
+    (The main thing to understand about Example
+    1 is that
 
     $$ 1 - 5 $$
 
