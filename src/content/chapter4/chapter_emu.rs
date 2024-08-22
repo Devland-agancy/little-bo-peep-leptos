@@ -954,7 +954,7 @@
         below, based on those units that are given:
 
         |> Image
-            src images/svg_ch4_various_units.svg
+            src images/svg_ch4_missing_units.svg
 
         |> Solution
 
@@ -965,7 +965,7 @@
             axis. This gives the unique solutions:
 
             |> Image
-                src images/svg_various_units_solution.svg
+                src images/svg_ch4_missing_units_solution.svg
 
             |> Pause
             _Note 1._
