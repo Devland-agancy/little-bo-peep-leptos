@@ -1042,7 +1042,7 @@
             zigzag, by the way.)
 
             |> ImageRight
-                src images/svg_position_by_time_find_the_order_cloud.svg
+                src images/svg_ch4_position_by_time_find_the_order_cloud.svg
 
 
     |> Exercise
@@ -1068,7 +1068,7 @@
             at $x = -2$, $x = 0$ and $x = 2$ respectively:
 
             |> Image
-                src images/svg_ch4_sketch_the_middle_a_sol1.svg   
+                src images/svg_ch4_sketch_the_middle_a_sol1.svg
 
             This already gives us three points from which
             to interpolate a basic approximation to the graph 
@@ -1422,7 +1422,7 @@
             of the particles are as follows:
 
             |> Image
-                src images/svg_ch4_cosine_curves_unit_circle_position_vecotrs.svg
+                src images/svg_ch4_cosine_curves_unit_circle_position_vectors.svg
 
             (You can't really see it so well, but
             each arrow originates at $(0, 0)$.) While
@@ -1523,7 +1523,7 @@
             figure again:
 
             |> Image
-                src images/svg_ch4_cosine_curves_rolling_wheel.svg
+                src images/svg_ch4_cosine_curves_cresting.svg
 
             The derivative is
 
@@ -3046,6 +3046,7 @@
         and $y$-coordinates increase towards the top:
 
         |> Image
+            height 590px
             src images/svg_ch4_pacman1_maze.svg
 
         Where is Pacman at $t = 49$s? (Note: Pacman 
@@ -3184,6 +3185,7 @@
             4
             $$
             |> ImageLeft
+                width 700px
                 src images/svg_ch4_pacman1_disp_4_cloud.svg
 
             and
@@ -3192,6 +3194,7 @@
             6
             $$
             |> ImageLeft
+                width 1400px
                 src images/svg_ch4_pacman1_disp_6_cloud.svg
 
             and
@@ -3200,6 +3203,7 @@
             7
             $$
             |> ImageLeft
+                width 700px
                 src images/svg_ch4_pacman1_disp_7_cloud.svg
 
             cells, with $5$ not being a possibility.
@@ -3263,7 +3267,8 @@
             case):
 
             |> Image
-                src images/svg_ch4_pacman1_two_possibilities.svg
+                height 590px
+                src images/svg_ch4_pacman1_maze_two_possibilities.svg
 
             Looking into the future, 
             the next three displacements are 
@@ -3293,7 +3298,8 @@
             collide with a wall:
 
             |> Image
-                src images/svg_ch4_pacman1_would_collide.svg
+                height 590px
+                src images/svg_ch4_pacman1_maze_would_collide.svg
 
             Since
 
@@ -3308,7 +3314,8 @@
             the left edge of the ghost cage, like so...
 
             |> Image
-                src images/svg_ch4_pacman1_bring_around.svg
+                height 590px
+                src images/svg_ch4_pacman1_maze_bring_around.svg
 
             ...though it is hard to measure that distance;
             but this is confirmed by the fact that the next
@@ -3339,7 +3346,8 @@
             :
 
             |> Image
-                src images/svg_ch4_pacman1_there_is_only_one.svg
+                height 590px
+                src images/svg_ch4_pacman1_maze_final_solution.svg
 
             So at $t = 49$s, between displacements
             |> InlineImage
@@ -3355,6 +3363,7 @@
         Same question, but for the following maze...
 
         |> Image
+            height 551px
             src images/svg_ch4_pacman2_maze.svg
 
         ...and for the following velocity data, with the 
@@ -3424,7 +3433,7 @@
             cells per second:
 
             |> Image
-                src images/svg_ch4_pacman2_at_26.svg
+                src images/svg_ch4_pacman2_frankenstein_at_26.svg
 
             This gives a speed of
 
@@ -3528,6 +3537,7 @@
             curve of the maze:
 
             |> Image
+                height 551px
                 src images/svg_ch4_pacman2_upper_left_highlight.svg
 
             From there, Pacman goes right for a bit, then
@@ -3542,6 +3552,7 @@
             appropriate length, position, and orientation:
 
             |> Image
+                height 551px
                 src images/svg_ch4_pacman2_upper_right_highlight.svg
 
             What is extremely strange, however, is that
@@ -3589,6 +3600,7 @@
             easily seen to be ~$3\te{c}$ each):
 
             |> Image
+                height 551px
                 src images/svg_ch4_pacman2_corrected_highlights.svg
 
             Next, after some downward motion we are faced
@@ -3616,6 +3628,7 @@
             Pacman's trajectory so far is then:
 
             |> Image
+                height 551px
                 src images/svg_ch4_pacman2_continued_highlights.svg
 
             Next Pacman seems to reverse course, and briefly
@@ -3906,6 +3919,7 @@
             as a pictorial inequality:
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_1.svg
 
             But we can tighten the inequality by dividing the
@@ -3914,15 +3928,21 @@
             revisit the same topic in detail at some point):
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_2.svg
 
             Or even:
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_3.svg
 
             If we take this logic to its bitter conclusion, we
             find the _e_quality:
+
+            |> Image
+                width 800px
+                src images/svg_ch4_one_long_line_equality.svg
 
             And because the S-curve is centrally symmetric
             (the slopes at equal distance from the center are
