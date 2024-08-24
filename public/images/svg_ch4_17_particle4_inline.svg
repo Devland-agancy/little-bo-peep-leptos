@@ -1,0 +1,4 @@
+<svg viewBox='0 0 18.75 18.75' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' height='0.9em'>
+    <circle style='fill:#ccffff;stroke:black;stroke-width:0.9' cx='9.4' cy='9.4' r='8.9'/>
+    <path style='stroke:black;stroke-width:0.3' d='M 9.26,10.8 H 6.09 V 10.41 L 9.77,5.07 H 10.18 V 10.41 H 10.77 Q 11.31,10.41 11.42,10.35 Q 11.52,10.29 11.7,9.8 H 11.98 L 11.84,10.8 H 10.18 V 11.89 Q 10.18,12.83 10.21,13.02 Q 10.25,13.22 10.42,13.31 Q 10.59,13.4 11.06,13.4 V 13.7 H 8.25 V 13.4 H 8.48 Q 8.86,13.4 9.03,13.3 Q 9.19,13.19 9.22,13 Q 9.26,12.81 9.26,11.89 Z M 9.26,10.41 V 6.33 L 6.45,10.41 Z'/>
+</svg>

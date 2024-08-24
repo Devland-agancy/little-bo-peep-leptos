@@ -13,7 +13,6 @@
     
     |> Image
         src images/svg_ch3_f_box.svg
-        container_classes mb-4
 
     An input goes in via the input tube, is
     processed according to the function's rule,
@@ -549,7 +548,6 @@
 
     |> Image
         src images/svg_ch3_zero_to_the_x.svg
-        container_classes mb-4
 
     (Pretty cool, no?)
 

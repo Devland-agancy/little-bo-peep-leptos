@@ -1995,10 +1995,10 @@
             For example, the derivative of curve 
             |> InlineImage
                 src images/svg_ch4_17_particle1_inline.svg
-            highlighted below in red, is curve 
+            , highlighted below in red, is curve 
             |> InlineImage
                 src images/svg_ch4_17_particle5_inline.svg
-            highlighted in blue:
+            , highlighted in blue:
 
             |> Image
                 src images/svg_ch4_17_actual_functions_with_highlights.svg
@@ -3084,7 +3084,8 @@
             $$
             when it is nonzero (for displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_5.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet5.svg
             the velocity might seem more like $-6.8\te{c}\hlfbk/\hlfbk\te{s}$ 
             at the least, but we've already made more
             significant errors while eyeballing the durations, so
@@ -3109,7 +3110,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_1.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet1.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.5\te{s}\,\,=\,\,-3.375\,\te{cells}$
                 
@@ -3120,7 +3122,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_2.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet2.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
 
@@ -3128,7 +3131,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_3.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet3.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
 
@@ -3136,7 +3140,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_4.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet4.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,2.7\,\te{cells}$
 
@@ -3144,7 +3149,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_5.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet5.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
 
@@ -3152,7 +3158,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_pacman1_pellet_6.svg
+                class ch4_pacman1_inline_number_pellet
+                    src images/svg_ch4_pacman1_pellet6.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
 
@@ -3166,11 +3173,13 @@
             But these are approximate numbers and the
             true values must be integers, except for
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_1.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet1.svg
             . (Because we don't know where Pacman started
             out. For
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_6.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet6.svg
             &ensp;the next displacement, if you look back at
             the graphs, is horizontal, so yes.) In fact,
             if you look at the maze,
@@ -3262,10 +3271,12 @@
             The maze fits these constraints in only two places
             (note that
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_2.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet2.svg
             &ensp;and 
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_4.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet4.svg
             &ensp;equal $-3\te{c}$ and $3\te{c}$, in each
             case):
 
@@ -3290,13 +3301,15 @@
 
             Because displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_7.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet7.svg
             &ensp;is horizontal to the right the only possible
             remaining solution is the right-hand one,
             or else Pacman would collide with the ghost cage,
             with displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_6.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet6.svg
             &ensp;equal to 6c not 7c, or else Pacman would 
             collide with a wall:
 
@@ -3312,7 +3325,8 @@
 
             it seems that displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_7.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet7.svg
             &ensp;brings Pacman all the way around the maze to
             the left edge of the ghost cage, like so...
 
@@ -3331,21 +3345,26 @@
 
             displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_8.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet8.svg
             &ensp;must be $-3$c or $-4$c;
             must actually be $-3$c since displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_9.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet9.svg
             is to the right; so, notwithstanding the exact 
             length of displacement
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_9.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet9.svg
             , there is only one possibility for displacements
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_1.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet1.svg
             through
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_8.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet8.svg
             :
 
             |> Image
@@ -3354,10 +3373,12 @@
 
             So at $t = 49$s, between displacements
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_7.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet7.svg
             &ensp;and
             |> InlineImage
-                src images/svg_ch4_pacman1_pellet_8.svg
+                class ch4_pacman1_inline_number_pellet
+                src images/svg_ch4_pacman1_pellet8.svg
             , Pacman is immediately to the left of the ghost cage. 
 
 
@@ -5290,28 +5311,36 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 , 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
 
             At $t = 0$ the white particles are just a
             translate of the original particles, such
@@ -5417,7 +5446,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x$
 
             for the function that gives 
@@ -5428,7 +5458,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x : \rr \ra \rr$
 
             to emphasize that WE ARE TALKING ABOUT A FUNCTION, e.g.,
@@ -5437,7 +5468,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x(2)$
 
             is the $x$-coordinate of 
@@ -5448,7 +5480,8 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y$
 
             for the function that gives
@@ -5462,10 +5495,12 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x$
 
             because the rate of change of the 
@@ -5477,16 +5512,20 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x\,\!\!\!' + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x$
             
             by adding two such equations together; this can also be
@@ -5497,16 +5536,20 @@
                 
                 $($
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x)' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x$
             
             by the sum rule;
@@ -5514,113 +5557,141 @@
             try to <i>define</i>
             the original particles 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p1.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p1_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p2.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p2_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p3.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p3_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p4.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;by setting...
 
             |> div
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_y$
 
             ...and see if these definitions satisfy the constraints
@@ -5637,169 +5708,217 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_y =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_x =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_y =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_x =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_y =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_y =$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y$
 
                 ...or...
@@ -5808,73 +5927,89 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1.svg
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y$
 
             ...cutting out the middle computation, 
@@ -5888,121 +6023,153 @@
                 align center
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1black_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3black_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y(0) = $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y(0) + $
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4black
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4black_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y(0)$
 
             ...or...
@@ -6011,132 +6178,164 @@
                 align center
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p1white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p1white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p2white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p2white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p3white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p3white_inline.svg
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
+                    class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src images/svg_ch4_circle_at_2_4_p4white
+                    class ch4_inline_blackwhite_particles
+                    src images/svg_ch4_circle_at_2_4_p4white_inline.svg
                 $_y(0)$
 
             ...cutting out the middle computation, which is to
             say that the positions at time $t = 0$ of our 
             newly-defined particles
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p1.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p1_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p2.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p2_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p3.svg
-            &ensp;and 
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p3_inline.svg
+            &ensp;and
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p4.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;are the translate of the white particle
             positions at $t = 0$ back up and to the right
             by the vector $(2, 4)$, which brings those
             positions back to the original positions of
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p1.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p1_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p2.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p2_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p3.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p3_inline.svg
             &ensp;and 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p4.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;as they appear in the problem statement! I.e.,
             our newly-defined
             particles 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p1.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p1_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p2.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p2_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p3.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p3_inline.svg
             &ensp;and 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p4.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;are in the desired place at $t = 0$!
 
             In other words, the proposed definitions of
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p1.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p1_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p2.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p2_inline.svg
             , 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p3.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p3_inline.svg
             &ensp;and 
             |> InlineImage
-                src images/svg_ch4_circle_at_2_4_p4.svg
+                class ch4_inline_blackwhite_particles
+                src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;“work” in the sense of satisfying all the conditions
             of the problem statement, and are, indeed, the
             solution we seek.
