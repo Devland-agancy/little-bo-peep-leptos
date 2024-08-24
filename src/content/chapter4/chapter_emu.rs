@@ -1075,7 +1075,7 @@
             $y = g'(x)$:
 
             |> Image
-                src images/svg_ch4_sketch_the_middle_a_sol2.svg        
+                src images/svg_ch4_sketch_the_middle_a_sol2.svg
 
             But the graph of $g''(x)$ indicates more,
             namely that $g'(x)$ has a slope that rises 
@@ -1084,13 +1084,13 @@
             falling again to $0.6$ past $x = 2$:
 
             |> Image
-                src images/svg_ch4_sketch_the_middle_a_sol3.svg        
+                src images/svg_ch4_sketch_the_middle_a_sol3.svg
 
             As a second step, we thus “bend into shape”
             our previous sketch to produce these slopes...
 
             |> Image
-                src images/svg_ch4_sketch_the_middle_a_sol4.svg        
+                src images/svg_ch4_sketch_the_middle_a_sol4.svg
 
     		...achieving our final answer. 
 
@@ -1100,7 +1100,7 @@
             derivative looks like so:
 
             |> Image
-                src images/svg_ch4_sketch_the_middle_a_sol5.svg        
+                src images/svg_ch4_sketch_the_middle_a_sol5.svg
 
 
     |> Exercise
