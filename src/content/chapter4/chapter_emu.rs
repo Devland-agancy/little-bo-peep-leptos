@@ -2182,7 +2182,7 @@
             (x, f(x))
             $$
             |> ImageLeft
-                svg_ch4_new_quatient_x_fx_cloud.svg
+                src images/svg_ch4_new_quatient_x_fx_cloud.svg
 
             at one end, and
 
@@ -2190,7 +2190,7 @@
             (x + h, f(x + h))
             $$
             |> ImageRight
-                svg_ch4_new_quatient_x_fxplush_cloud.svg
+                src images/svg_ch4_new_quatient_x_fxplush_cloud.svg
 
             at the other end. (This is also the case
             if $h$ is negative, by the way.)
@@ -2279,7 +2279,7 @@
         on the $t$-number line, to be clear):
 
         |> ImageLeft
-            src images/svg_ch4_RATS_corridor.svg
+            src images/svg_ch4_RATS_corridor_cloud.svg
 
         |> ol
             style margin:0 1.5em 1em 2em
@@ -2375,6 +2375,9 @@
             $$
 
             for $f = AB$.
+
+            |> ImageLeft
+                src images/svg_ch4_RATS_for_f_equals_AB_cloud.svg
 
             The first term on the right-hand side, for
             its part, approaches
@@ -4604,9 +4607,15 @@
             velocity vector) brushed clockwise along 
             the path of the velocity vector:
 
+            |> Image
+                src images/svg_what_is_the_acceleration_vector_uncentered.svg
+
             Or, if we translate the acceleration vector back 
             to the origin and trace out its path over time 
             (either way is fine):
+
+            |> Image
+                src images/svg_what_is_the_acceleration_vector_centered.svg
 
             |> Pause
             _Note 1._
@@ -4963,7 +4972,7 @@
             particle—are therefore as follows:
 
             |> Image
-                svg_ch4_four_particles_radius_3_four_minis.svg
+                src images/svg_ch4_four_particles_radius_3_four_minis.svg
 
             (In particular, the purple particle's position
             ends up being the velocity of the red particle,
@@ -5159,7 +5168,7 @@
         is at $x = 1$:
 
         |> Image
-            src svg_ch4_three_one_dimensional_particles.svg
+            src images/svg_ch4_three_one_dimensional_particles.svg
 
         If the velocity of the yellow particle is set to track
         the position of the blue particle and vice-versa, 
@@ -5181,7 +5190,7 @@
             accelerating rate:
 
             |> Image
-                src svg_ch4_three_one_dimensional_particles_blue_yellow.svg
+                src images/svg_ch4_three_one_dimensional_particles_blue_yellow.svg
 
             If we add the graph of the red particle to the
             mix, it is simply the mirror image of the
@@ -5189,7 +5198,7 @@
             ($y$ axis that is ironically labeled “$x$”):
         
             |> Image
-                src svg_ch4_three_one_dimensional_particles_blue_yellow_red.svg
+                src images/svg_ch4_three_one_dimensional_particles_blue_yellow_red.svg
 
             Indeed, for the red graph,
 
@@ -5231,7 +5240,7 @@
         centered at $(2, 4)$ in the plane:
 
         |> Image
-            src svg_ch4_circle_at_2_4.svg
+            src images/svg_ch4_circle_at_2_4.svg
 
         The velocity of each particle is set to 
         the position of the next particle clockwise
@@ -5260,7 +5269,7 @@
             off to $(+\infty, +\infty)$.
 
             |> ImageRight
-                src svg_ch4_circle_at_2_4_with_some_vectors_cloud.svg
+                src images/svg_ch4_circle_at_2_4_with_some_vectors_cloud.svg
 
             For $t < 0$ motion will be
             down and to the left, at least initially—it
@@ -5281,28 +5290,28 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 , 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
 
             At $t = 0$ the white particles are just a
             translate of the original particles, such
@@ -5310,7 +5319,7 @@
             centered at $(0, 0)$:
 
             |> Image
-                src svg_ch4_circle_at_2_4_white_version.svg
+                src images/svg_ch4_circle_at_2_4_white_version.svg
             
             The black particles, for their part, are
             piled on top of one another at $(x, y) = (2, 4)$ at $t = 0$, 
@@ -5318,7 +5327,7 @@
             of different colors, like a UNO card:
 
             |> Image
-                src svg_ch4_circle_at_2_4_black_version.svg
+                src images/svg_ch4_circle_at_2_4_black_version.svg
 
             Within each group we set the velocity of
             the purple particle to the position of the
@@ -5359,7 +5368,7 @@
             __length of the position vector__
 
             |> ImageRight
-                src svg_ch4_circle_at_2_4_position_equals_velocity_cloud.svg
+                src images/svg_ch4_circle_at_2_4_position_equals_velocity_cloud.svg
 
             of said particles, is equal to the
 
@@ -5374,7 +5383,7 @@
             and $(2, 4)$...
 
             |> Image
-                src svg_ch4_circle_at_2_4_UNO_with_gradated_line.svg
+                src images/svg_ch4_circle_at_2_4_UNO_with_gradated_line.svg
             
             ...indicating the distance to the origin,
             the black particles behave like a 
@@ -5384,7 +5393,7 @@
             its position on this line:
 
             |> Image
-                src svg_ch4_circle_at_2_4_UNO_flat_half_line.svg
+                src images/svg_ch4_circle_at_2_4_UNO_flat_half_line.svg
             
             The behavior of such a particle is
             identical to the behavior of the red
@@ -5397,7 +5406,7 @@
             (!!)
 
             |> ImageLeft
-                src svg_ch4_circle_at_2_4_sqrt_20_cloud.svg
+                src images/svg_ch4_circle_at_2_4_sqrt_20_cloud.svg
            
             This describes an “understandable”
             behavior of the black and white particles.
@@ -5408,7 +5417,7 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x$
 
             for the function that gives 
@@ -5419,7 +5428,7 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x : \rr \ra \rr$
 
             to emphasize that WE ARE TALKING ABOUT A FUNCTION, e.g.,
@@ -5428,7 +5437,7 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x(2)$
 
             is the $x$-coordinate of 
@@ -5439,7 +5448,7 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_y$
 
             for the function that gives
@@ -5453,10 +5462,10 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_x$
 
             because the rate of change of the 
@@ -5468,16 +5477,16 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x\,\!\!\!' + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_x$
             
             by adding two such equations together; this can also be
@@ -5488,16 +5497,16 @@
                 
                 $($
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black
+                    src images/svg_ch4_circle_at_2_4_p1black
                 $_x)' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black
+                    src images/svg_ch4_circle_at_2_4_p1black
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black
+                    src images/svg_ch4_circle_at_2_4_p2black
                 $_x$
             
             by the sum rule;
@@ -5505,113 +5514,113 @@
             try to <i>define</i>
             the original particles 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p1.svg
+                src images/svg_ch4_circle_at_2_4_p1.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p2.svg
+                src images/svg_ch4_circle_at_2_4_p2.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p3.svg
+                src images/svg_ch4_circle_at_2_4_p3.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p4.svg
+                src images/svg_ch4_circle_at_2_4_p4.svg
             &ensp;by setting...
 
             |> div
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_x = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_y = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_x$
                 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_y$
 
             ...and see if these definitions satisfy the constraints
@@ -5628,169 +5637,169 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_x =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_y =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_x =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white.svg
+                    src images/svg_ch4_circle_at_2_4_p2white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black.svg
+                    src images/svg_ch4_circle_at_2_4_p2black.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_y =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_x =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white.svg
+                    src images/svg_ch4_circle_at_2_4_p3white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black.svg
+                    src images/svg_ch4_circle_at_2_4_p3black.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_y =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_x\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_x + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_x =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white.svg
+                    src images/svg_ch4_circle_at_2_4_p4white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black.svg
+                    src images/svg_ch4_circle_at_2_4_p4black.svg
                 $_y\!\rt{0.05})' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white.svg
+                    src images/svg_ch4_circle_at_2_4_p1white.svg
                 $_y + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black.svg
+                    src images/svg_ch4_circle_at_2_4_p1black.svg
                 $_y =$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_y$
 
                 ...or...
@@ -5799,73 +5808,73 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_x\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_x$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4.svg
                 $_y\,\!\!\!' = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1.svg
+                    src images/svg_ch4_circle_at_2_4_p1.svg
                 $_y$
 
             ...cutting out the middle computation, 
@@ -5879,121 +5888,121 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1
                 $_x(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_x(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black
+                    src images/svg_ch4_circle_at_2_4_p1black
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1
                 $_y(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_y(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1black
+                    src images/svg_ch4_circle_at_2_4_p1black
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2
                 $_x(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_x(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black
+                    src images/svg_ch4_circle_at_2_4_p2black
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2
                 $_y(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_y(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2black
+                    src images/svg_ch4_circle_at_2_4_p2black
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3
                 $_x(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_x(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black
+                    src images/svg_ch4_circle_at_2_4_p3black
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3
                 $_y(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_y(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3black
+                    src images/svg_ch4_circle_at_2_4_p3black
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4
                 $_x(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_x(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black
+                    src images/svg_ch4_circle_at_2_4_p4black
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4
                 $_y(0) = $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_y(0) + $
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4black
+                    src images/svg_ch4_circle_at_2_4_p4black
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_y(0)$
 
             ...or...
@@ -6002,132 +6011,132 @@
                 align center
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p1white
+                    src images/svg_ch4_circle_at_2_4_p1white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p2white
+                    src images/svg_ch4_circle_at_2_4_p2white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p3white
+                    src images/svg_ch4_circle_at_2_4_p3white
                 $_y(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4
                 $_x(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_x(0)$
 
                 |> br
 
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4
                 $_y(0) = 2\,\,+$
                 |> InlineImage
-                    src svg_ch4_circle_at_2_4_p4white
+                    src images/svg_ch4_circle_at_2_4_p4white
                 $_y(0)$
 
             ...cutting out the middle computation, which is to
             say that the positions at time $t = 0$ of our 
             newly-defined particles
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p1.svg
+                src images/svg_ch4_circle_at_2_4_p1.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p2.svg
+                src images/svg_ch4_circle_at_2_4_p2.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p3.svg
+                src images/svg_ch4_circle_at_2_4_p3.svg
             &ensp;and 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p4.svg
+                src images/svg_ch4_circle_at_2_4_p4.svg
             &ensp;are the translate of the white particle
             positions at $t = 0$ back up and to the right
             by the vector $(2, 4)$, which brings those
             positions back to the original positions of
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p1.svg
+                src images/svg_ch4_circle_at_2_4_p1.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p2.svg
+                src images/svg_ch4_circle_at_2_4_p2.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p3.svg
+                src images/svg_ch4_circle_at_2_4_p3.svg
             &ensp;and 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p4.svg
+                src images/svg_ch4_circle_at_2_4_p4.svg
             &ensp;as they appear in the problem statement! I.e.,
             our newly-defined
             particles 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p1.svg
+                src images/svg_ch4_circle_at_2_4_p1.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p2.svg
+                src images/svg_ch4_circle_at_2_4_p2.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p3.svg
+                src images/svg_ch4_circle_at_2_4_p3.svg
             &ensp;and 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p4.svg
+                src images/svg_ch4_circle_at_2_4_p4.svg
             &ensp;are in the desired place at $t = 0$!
 
             In other words, the proposed definitions of
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p1.svg
+                src images/svg_ch4_circle_at_2_4_p1.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p2.svg
+                src images/svg_ch4_circle_at_2_4_p2.svg
             , 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p3.svg
+                src images/svg_ch4_circle_at_2_4_p3.svg
             &ensp;and 
             |> InlineImage
-                src svg_ch4_circle_at_2_4_p4.svg
+                src images/svg_ch4_circle_at_2_4_p4.svg
             &ensp;“work” in the sense of satisfying all the conditions
             of the problem statement, and are, indeed, the
             solution we seek.
@@ -6148,7 +6157,7 @@
             end up like so, locally around $t = 0$:
             
             |> Image
-                src svg_ch4_circle_at_2_4_solution_curves.svg
+                src images/svg_ch4_circle_at_2_4_solution_curves.svg
             
             The above plot goes from $t = -5$ to 
             $t \approx 1$—winding further back in time would produce
@@ -6208,7 +6217,7 @@
             Recall the curves from Exercise 12:
 
             |> Image
-                src svg_ch4_cosine_recall.svg
+                src images/svg_ch4_cosine_recall.svg
 
             The blue curve is the derivative of the red curve
             but is also the horizontal translate of the red curve by
@@ -6219,7 +6228,7 @@
             $$
 
             |> ImageLeft
-                src svg_ch4_cosine_recall_cloud.svg
+                src images/svg_ch4_cosine_recall_cloud.svg
 
             is the distance between adjacent bumps. Thus if
 
@@ -6325,7 +6334,7 @@
                     the fact that $f + g = g + f$ for all $f, g : \rr \ra \rr$_
 
             |> ImageLeft
-                src svg_ch4_express_the_f_g_h_A_B_C_D_cloud.svg
+                src images/svg_ch4_express_the_f_g_h_A_B_C_D_cloud.svg
 
             For the real numbers:
 
