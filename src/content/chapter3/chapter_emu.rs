@@ -541,7 +541,7 @@
     $$
     0^x = 
     \begin{cases} 0 & \te{if } x > 0\\
-                  1 & \te{if } x = 0\\
+    1 & \te{if } x = 0\\
     \te{undefined} & \te{if }x &lt; 0 \end{cases}
     $$
     
