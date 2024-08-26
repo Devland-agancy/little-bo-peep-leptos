@@ -3,6 +3,8 @@
 extern crate proc_macro;
 extern crate nom;
 
+use elm_parser::counter::counter_commands::CounterCommand;
+use elm_parser::counter::counters::Counters;
 use elm_parser::desugarer::{AttachToEnum, Desugarer, IgnoreOptions, ParagraphIndentOptions};
 use elm_parser::emitter::Emitter;
 use elm_parser::parser::Parser;
@@ -79,8 +81,14 @@ pub fn elm(input: TokenStream) -> TokenStream {
         elm.value()
     };
 
-    let mut json = Parser::new();
+    let mut counters = Counters::new();
+
+    let mut json = Parser::new(&mut counters);
     let json_tree = json.export_json(&elm_string, None, false);
+
+    //let mut counter_command = CounterCommand::new(&mut counters, &json_tree);
+    //let mut json: DataCell = serde_json::from_str(&json_tree).unwrap();
+    //let json_tree = counter_command.run(&mut json);
 
     let mut desugarer: Desugarer = Desugarer::new(json_tree.as_str(), json.id);
     desugarer = desugarer
@@ -148,8 +156,10 @@ pub fn elm(input: TokenStream) -> TokenStream {
 
     let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
 
-    let emitter: Emitter =
-        Emitter::new(vec!["img", "col", "SectionDivider", "InlineImage", "StarDivider"]);
+    let mut emitter: Emitter = Emitter::new(
+        &json_value,
+        vec!["img", "col", "SectionDivider", "InlineImage", "StarDivider"],
+    );
     let leptos_code = emitter.emit_json(&json_value);
 
     let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
