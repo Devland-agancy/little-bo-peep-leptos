@@ -203,7 +203,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
 
         <div
           node_ref=node_ref
-          class="flex flex-col transition-all"
+          class="transition-all"
           class=("-translate-y-full", move || !solution_open())
           style=move || { format!("transition-duration: {}ms", transition_duration()) }
 
