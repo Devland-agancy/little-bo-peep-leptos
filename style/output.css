@@ -833,10 +833,6 @@ video {
   width: 30%;
 }
 
-.w-\[350px\] {
-  width: 350px;
-}
-
 .w-\[3rem\] {
   width: 3rem;
 }
@@ -1980,4 +1976,8 @@ table.first-line tr td:first-child {
   .lg\:transition-none {
     transition-property: none;
   }
+}
+
+.\[\&\>ul\]\:mb-\[8px\]>ul {
+  margin-bottom: 8px;
 }
