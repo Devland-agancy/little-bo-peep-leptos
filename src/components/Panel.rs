@@ -54,7 +54,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 
           class="select-none overscroll-none absolute right-0 w-[16rem] sm:w-[22rem] z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
-          <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
+          <div class="select-none scrollbar-hidden sm:h-full p-4 overflow-y-hidden">
 
             {render_content_for_article!(
                 "chapters", r#"
@@ -93,7 +93,7 @@ pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     let GlobalState { on_mobile, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <h1 class="text-3xl font-baskerville-italic my-5 flex justify-between items-center">
+      <h1 class="text-3xl font-baskerville-italic my-[3px] flex justify-between items-center">
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
         {label}
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>
