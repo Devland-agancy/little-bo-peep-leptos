@@ -93,6 +93,10 @@ pub fn App(cx: Scope) -> impl IntoView {
         defer="true"
       />
 
+      <Script defer="true" src="https://www.googletagmanager.com/gtag/js?id=G-MYGJLZN3X3" />
+      <Script src="/analytics.js" defer="true"/>
+
+
       {render_based_on_env!(
         r#"<Link href="/images/book_favicon_sized_v2_dev.svg" rel="icon"/>"#,
         r#"<Link href="/images/book_favicon_sized_v2.png" rel="icon"/>"#
