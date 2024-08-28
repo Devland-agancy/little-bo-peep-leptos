@@ -1258,6 +1258,10 @@ video {
   font-size: 2.5rem;
 }
 
+.text-\[2rem\] {
+  font-size: 2rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1291,6 +1295,10 @@ video {
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
+}
+
+.overline {
+  text-decoration-line: overline;
 }
 
 .opacity-0 {
@@ -1789,6 +1797,33 @@ span .MathJax_SVG{
 
 .flip-y {
   transform: rotateY(180deg);
+}
+
+table.first-line {
+  border-collapse: collapse;
+}
+
+table.first-line tr:first-of-type {
+  border-bottom: 1px solid black;
+}
+
+table.first-line tr:first-of-type td {
+  padding-bottom: 5px;
+}
+
+table.first-line tr:nth-child(2) td {
+  padding-top: 5px;
+}
+
+table.first-line tr td {
+  border-left: thin solid black;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+table.first-line tr td:first-child {
+  border-left: none;
 }
 
 .hover\:border-b-0:hover {

@@ -50,7 +50,7 @@ pub fn Body(cx: Scope) -> impl IntoView {
 #[component]
 pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     view! { cx,
-      <h1 class="text-3xl sm:text-[2.1rem] font-baskerville-italic mb-5 flex justify-between items-center">
+      <h1 class="text-[2rem] sm:text-[2.1rem] font-baskerville-italic mb-5 flex justify-between items-center">
         <img src="/images/title_line.svg" class="w-[30%] sm:w-36"/>
         {label}
         <img src="/images/title_line.svg" class="rotate-180 w-[30%] sm:w-36"/>
