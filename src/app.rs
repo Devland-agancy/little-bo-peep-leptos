@@ -76,7 +76,7 @@ pub fn App(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        let cb = Closure::wrap(Box::new(move |e: Event| {
+        let cb = Closure::wrap(Box::new(move |_: Event| {
             math_rendered.set(true);
         }) as Box<dyn FnMut(_)>);
 
