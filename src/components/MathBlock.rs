@@ -5,6 +5,7 @@ use html::Div;
 use leptos::*;
 use leptos_use::use_event_listener;
 
+use crate::constants::DESKTOP_CENTERED_PARAGRAPH_WIDTH;
 use crate::global_state::GlobalState;
 
 #[derive(PartialEq)]
@@ -24,7 +25,11 @@ pub fn MathBlock(
 ) -> impl IntoView {
     let node_ref = create_node_ref::<Div>(cx);
     let (is_wide, set_is_wide) = create_signal(cx, false);
-    let GlobalState { math_rendered, .. } = use_context(cx).unwrap();
+    let GlobalState {
+        math_rendered,
+        on_mobile,
+        ..
+    } = use_context(cx).unwrap();
 
     create_effect(cx, move |_| {
         math_rendered();
@@ -37,7 +42,11 @@ pub fn MathBlock(
                         .item(0);
                     if math_box.is_some() {
                         let math_box_width = math_box.unwrap().client_width() as f64;
-                        let window_width = window().inner_width().unwrap().as_f64().unwrap();
+                        let window_width = if on_mobile() {
+                            window().inner_width().unwrap().as_f64().unwrap()
+                        } else {
+                            DESKTOP_CENTERED_PARAGRAPH_WIDTH
+                        };
                         if math_box_width > window_width {
                             set_is_wide(true);
                         }
@@ -56,7 +65,11 @@ pub fn MathBlock(
                     .item(0);
                 if math_box.is_some() {
                     let math_box_width = math_box.unwrap().client_width() as f64;
-                    let window_width = window().inner_width().unwrap().as_f64().unwrap();
+                    let window_width = if on_mobile() {
+                        window().inner_width().unwrap().as_f64().unwrap()
+                    } else {
+                        DESKTOP_CENTERED_PARAGRAPH_WIDTH
+                    };
                     if math_box_width > window_width {
                         set_is_wide(true);
                     } else {
@@ -73,6 +86,7 @@ pub fn MathBlock(
         id=id
         class="mathblock block-element text-xl col-start-2 hidden-on-startup relative h-fit"
         class=("wide", is_wide)
+        class=("wide_desktop", move || is_wide() && !on_mobile())
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {

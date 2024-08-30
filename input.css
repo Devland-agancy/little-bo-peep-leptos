@@ -61,9 +61,19 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
- .MathJax_SVG_Display{
+
+.MathJax_SVG_Display{
   margin-bottom: 0 !important;
-} 
+}
+
+.wide_desktop .MathJax_SVG_Display{
+  right: 50%;
+}
+
+.wide_desktop .MathJax_SVG{
+  margin-right: -100% !important;
+}
+
 .hidden-on-startup {
   max-height: 0;
   height: 0;
