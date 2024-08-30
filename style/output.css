@@ -1754,7 +1754,6 @@ span .MathJax_SVG{
 }
 
 .example > .spacer:last-child,
-.sec:nth-last-child(6) > .spacer:last-child,
 .solution .spacer:last-child,
 .spacer:has(+ .pr > :first-child.block-element),
 .pr:has( > :first-child.block-element) + .spacer
