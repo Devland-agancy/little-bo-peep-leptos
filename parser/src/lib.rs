@@ -184,7 +184,7 @@ fn get_content(path_str: &str) -> Result<String, Error> {
         let path = entry.path();
         let metadata = fs::metadata(&path)?;
 
-        if entry.file_name() == "parent_emu.rs" {
+        if entry.file_name() == "__parent_emu.rs" {
             let mut file_content = fs::read_to_string(path).unwrap();
             file_content = remove_comment_symbols(&file_content);
             book.push_str(&file_content);
