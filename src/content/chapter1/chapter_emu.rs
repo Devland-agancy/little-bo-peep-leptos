@@ -1167,8 +1167,8 @@
                 offset_x -6rem
                 offset_y 1.2rem
                 src images/25.svg
-                children_y 25%
-                children_x 37%
+                children_y 13%
+                children_x 41%
                 use_squiggle_on_mobile false 
 
                 $$
@@ -1185,8 +1185,8 @@
                 offset_x -6rem
                 offset_y 1.2rem
                 src images/26.svg
-                children_y 26%
-                children_x 37%
+                children_y 15%
+                children_x 41%
                 use_squiggle_on_mobile false
 
                 $$
@@ -1223,7 +1223,7 @@
                 src images/27.svg
                 offset_y 2rem
                 y 12%
-                children_y 31%
+                children_y 27%
                 children_x 23%
                 clickable_on_desktop true
 

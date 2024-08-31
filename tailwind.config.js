@@ -10,6 +10,11 @@ module.exports = {
         "baskerville-bold": ["Baskerville Bold"],
         "baskerville-italic": ["Baskerville Italic"],
         clickerscript: ["Clicker Script"],
+        merriweather: ["Merriweather"],
+        "merriweather-bold": ["Merriweather Bold"],
+        "merriweather-black": ["Merriweather Black"],
+        "lora-italic": ["Lora Italic"],
+        lora: ["Lora"],
       },
       width: {
         128: "32.5rem",

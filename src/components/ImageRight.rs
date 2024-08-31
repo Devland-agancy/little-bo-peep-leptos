@@ -41,6 +41,7 @@ pub fn ImageRight(
         on_mobile,
         tab,
         solutions_state,
+        math_rendered,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
 
@@ -88,6 +89,44 @@ pub fn ImageRight(
                 Duration::from_secs(3),
             );
         });
+    });
+
+    let (use_sq, set_use_sq) = create_signal(cx, true);
+    // hide squiggle if math is wide
+    create_effect(cx, move |_| {
+        math_rendered();
+        edge_signal();
+        set_timeout(
+            move || {
+                if edge_signal() == "paragraph_edge" {
+                    if let Some(node) = node_ref() {
+                        if let Some(prev_sibling) = node.previous_element_sibling() {
+                            if prev_sibling.class_list().contains("mathblock-span") {
+                                if let Some(prev_sibling) = prev_sibling.previous_element_sibling()
+                                {
+                                    if prev_sibling.class_list().contains("wide") {
+                                        set_use_sq(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else if edge_signal() == "formula_edge" {
+                    if let Some(node) = node_ref() {
+                        if let Some(parent) = node.parent_element() {
+                            if let Some(parent) = parent.parent_element() {
+                                if let Some(parent) = parent.parent_element() {
+                                    if parent.class_list().contains("wide") {
+                                        set_use_sq(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            Duration::from_secs(5), // this must be more that duration to add wide class in mathblock component
+        );
     });
 
     view! { cx,
@@ -142,7 +181,7 @@ pub fn ImageRight(
           class=("outline", move || show_areas())
         >
 
-          <div class="absolute" style=move || format!("top: {children_y}; left: {children_x}")>
+          <div class="absolute z-10" style=move || format!("top: {children_y}; left: {children_x}")>
             {children(cx)}
           </div>
           <img
@@ -177,9 +216,9 @@ pub fn ImageRight(
           ></div>
         </div>
 
-        <Show fallback=|_| () when=move || use_squiggle_on_mobile>
+        <Show fallback=|_| () when=move || use_squiggle_on_mobile && use_sq()>
           <div
-            class="block sm:hidden absolute"
+            class="squiggle block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas())
             class=("outline-[#3f9aff7d]", move || show_areas())
             class=("outline", move || show_areas())

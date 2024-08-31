@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.6 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -686,16 +686,20 @@ video {
   margin-bottom: 1.2em;
 }
 
+.mb-\[2\.3rem\] {
+  margin-bottom: 2.3rem;
+}
+
 .mb-\[40px\] {
   margin-bottom: 40px;
 }
 
-.ml-6 {
-  margin-left: 1.5rem;
+.mb-\[7px\] {
+  margin-bottom: 7px;
 }
 
-.mt-4 {
-  margin-top: 1rem;
+.ml-6 {
+  margin-left: 1.5rem;
 }
 
 .mt-6 {
@@ -706,12 +710,16 @@ video {
   margin-top: 1.4em;
 }
 
+.mt-\[15px\] {
+  margin-top: 15px;
+}
+
 .mt-\[2px\] {
   margin-top: 2px;
 }
 
-.mt-\[45px\] {
-  margin-top: 45px;
+.mt-\[5px\] {
+  margin-top: 5px;
 }
 
 .block {
@@ -762,8 +770,8 @@ video {
   height: 3.5rem;
 }
 
-.h-4 {
-  height: 1rem;
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-8 {
@@ -784,10 +792,6 @@ video {
 
 .h-\[40px\] {
   height: 40px;
-}
-
-.h-\[5\.25rem\] {
-  height: 5.25rem;
 }
 
 .h-fit {
@@ -816,16 +820,28 @@ video {
   width: 3.5rem;
 }
 
-.w-2\/3 {
-  width: 66.666667%;
-}
-
-.w-4 {
-  width: 1rem;
+.w-5 {
+  width: 1.25rem;
 }
 
 .w-8 {
   width: 2rem;
+}
+
+.w-\[16rem\] {
+  width: 16rem;
+}
+
+.w-\[30\%\] {
+  width: 30%;
+}
+
+.w-\[3rem\] {
+  width: 3rem;
+}
+
+.w-\[40px\] {
+  width: 40px;
 }
 
 .w-\[4400px\] {
@@ -850,6 +866,10 @@ video {
   min-width: 45px;
 }
 
+.max-w-\[80\%\] {
+  max-width: 80%;
+}
+
 .max-w-full {
   max-width: 100%;
 }
@@ -861,10 +881,6 @@ video {
 
 .max-w-none {
   max-width: none;
-}
-
-.max-w-xs {
-  max-width: 20rem;
 }
 
 .shrink-0 {
@@ -910,6 +926,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.rotate-180 {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .rotate-\[91deg\] {
   --tw-rotate: 91deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -951,10 +972,6 @@ video {
   cursor: pointer;
 }
 
-.touch-none {
-  touch-action: none;
-}
-
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -975,10 +992,6 @@ video {
 
 .grid-cols-\[1500px_100\%_1500px\] {
   grid-template-columns: 1500px 100% 1500px;
-}
-
-.flex-row-reverse {
-  flex-direction: row-reverse;
 }
 
 .flex-col {
@@ -1005,8 +1018,16 @@ video {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-2 {
   gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
 }
 
 .self-start {
@@ -1117,9 +1138,9 @@ video {
   padding-right: 1rem;
 }
 
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.px-\[1em\] {
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .pb-1\.5 {
@@ -1170,6 +1191,10 @@ video {
   padding-top: 1rem;
 }
 
+.pt-\[0\.6em\] {
+  padding-top: 0.6em;
+}
+
 .pt-\[21px\] {
   padding-top: 21px;
 }
@@ -1214,6 +1239,14 @@ video {
   font-family: Clicker Script;
 }
 
+.font-lora {
+  font-family: Lora;
+}
+
+.font-merriweather {
+  font-family: Merriweather;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1224,9 +1257,12 @@ video {
   line-height: 2.25rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-\[2\.5rem\] {
+  font-size: 2.5rem;
+}
+
+.text-\[2rem\] {
+  font-size: 2rem;
 }
 
 .text-sm {
@@ -1251,6 +1287,10 @@ video {
   line-height: 2.25rem;
 }
 
+.leading-\[1\] {
+  line-height: 1;
+}
+
 .leading-\[28px\] {
   line-height: 28px;
 }
@@ -1258,6 +1298,10 @@ video {
 .text-stone-900 {
   --tw-text-opacity: 1;
   color: rgb(28 25 23 / var(--tw-text-opacity));
+}
+
+.overline {
+  text-decoration-line: overline;
 }
 
 .opacity-0 {
@@ -1362,6 +1406,36 @@ video {
   src: url("/fonts/ClickerScript-Regular.ttf")
 }
 
+@font-face {
+  font-family: "Merriweather";
+
+  src: url("/fonts/Merriweather-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Bold";
+
+  src: url("/fonts/Merriweather-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Black";
+
+  src: url("/fonts/Merriweather-Black.ttf")
+}
+
+@font-face {
+  font-family: "Lora Italic";
+
+  src: url("/fonts/Lora-italic.ttf")
+}
+
+@font-face {
+  font-family: "Lora";
+
+  src: url("/fonts/Lora.ttf")
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -1380,6 +1454,14 @@ video {
 
 .MathJax_SVG_Display{
   margin-bottom: 0 !important;
+}
+
+.wide_desktop .MathJax_SVG_Display{
+  right: 50%;
+}
+
+.wide_desktop .MathJax_SVG{
+  margin-right: -100% !important;
 }
 
 .hidden-on-startup {
@@ -1680,10 +1762,10 @@ span .MathJax_SVG{
 }
 
 .example > .spacer:last-child,
-.sec:nth-last-child(6) > .spacer:last-child,
 .solution .spacer:last-child,
 .spacer:has(+ .pr > :first-child.block-element),
-.pr:has( > :first-child.block-element) + .spacer
+.pr:has( > :first-child.block-element) + .spacer,
+.pr:has( > :last-child.side-img) + .spacer
 {
   height: 0;
 }
@@ -1712,6 +1794,47 @@ span .MathJax_SVG{
 
 .mathblock-span:has(+ .mathblock) {
   margin-bottom: 0;
+}
+
+.dots {
+  flex-grow: 1;
+  height: 2px;
+  background: left / 100% 1px;
+  background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
+  background-size: 7px 1px;
+  margin: 0 5px;
+  position: relative;
+}
+
+.flip-y {
+  transform: rotateY(180deg);
+}
+
+table.first-line {
+  border-collapse: collapse;
+}
+
+table.first-line tr:first-of-type {
+  border-bottom: 1px solid black;
+}
+
+table.first-line tr:first-of-type td {
+  padding-bottom: 5px;
+}
+
+table.first-line tr:nth-child(2) td {
+  padding-top: 5px;
+}
+
+table.first-line tr td {
+  border-left: thin solid black;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+table.first-line tr td:first-child {
+  border-left: none;
 }
 
 .hover\:border-b-0:hover {
@@ -1746,6 +1869,10 @@ span .MathJax_SVG{
     grid-column-start: 2;
   }
 
+  .sm\:mb-\[2\.6rem\] {
+    margin-bottom: 2.6rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -1760,6 +1887,22 @@ span .MathJax_SVG{
 
   .sm\:h-full {
     height: 100%;
+  }
+
+  .sm\:w-24 {
+    width: 6rem;
+  }
+
+  .sm\:w-36 {
+    width: 9rem;
+  }
+
+  .sm\:w-\[22rem\] {
+    width: 22rem;
+  }
+
+  .sm\:w-\[60px\] {
+    width: 60px;
   }
 
   .sm\:translate-x-0 {
@@ -1801,13 +1944,16 @@ span .MathJax_SVG{
     line-height: 2.5rem;
   }
 
-  .sm\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+  .sm\:text-\[2\.1rem\] {
+    font-size: 2.1rem;
   }
 
   .sm\:leading-5 {
     line-height: 1.25rem;
+  }
+
+  .sm\:leading-8 {
+    line-height: 2rem;
   }
 
   .sm\:leading-\[32\.5px\] {
@@ -1852,3 +1998,6 @@ span .MathJax_SVG{
   }
 }
 
+.\[\&\>ul\]\:mb-\[8px\]>ul {
+  margin-bottom: 8px;
+}

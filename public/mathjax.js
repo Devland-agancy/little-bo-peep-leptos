@@ -15,6 +15,12 @@ MathJax.Hub.Register.StartupHook("End", function () {
     elem.classList.add("animate-appear");
   });
 
+  const event = new CustomEvent("math-rendered", {
+    bubbles: true,
+  });
+
+  document.dispatchEvent(event);
+
   setTimeout((e) => {
     let scrollValue = localStorage.getItem(
       `${location.pathname.split("/")[2]}_scroll`

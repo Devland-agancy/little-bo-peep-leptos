@@ -620,7 +620,7 @@
         |> ImageRight
             src images/54.svg
             offset_x -6rem
-            children_y 41.5%
+            children_y 34.5%
             children_x 29%
             clickable_on_desktop true
 

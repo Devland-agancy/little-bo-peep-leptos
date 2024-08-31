@@ -22,6 +22,31 @@
   src: url("/fonts/ClickerScript-Regular.ttf")
 }
 
+@font-face {
+  font-family: "Merriweather";
+  src: url("/fonts/Merriweather-Regular.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Bold";
+  src: url("/fonts/Merriweather-Bold.ttf")
+}
+
+@font-face {
+  font-family: "Merriweather Black";
+  src: url("/fonts/Merriweather-Black.ttf")
+}
+
+@font-face {
+  font-family: "Lora Italic";
+  src: url("/fonts/Lora-italic.ttf")
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora.ttf")
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }
@@ -36,9 +61,19 @@
 .MathJax_SVG svg{
   display: inline-block;
 }
- .MathJax_SVG_Display{
+
+.MathJax_SVG_Display{
   margin-bottom: 0 !important;
-} 
+}
+
+.wide_desktop .MathJax_SVG_Display{
+  right: 50%;
+}
+
+.wide_desktop .MathJax_SVG{
+  margin-right: -100% !important;
+}
+
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -268,10 +303,10 @@ span .MathJax_SVG{
 
 
 .example > .spacer:last-child,
-.sec:nth-last-child(6) > .spacer:last-child,
 .solution .spacer:last-child,
 .spacer:has(+ .pr > :first-child.block-element),
-.pr:has( > :first-child.block-element) + .spacer
+.pr:has( > :first-child.block-element) + .spacer,
+.pr:has( > :last-child.side-img) + .spacer
 {
   height: 0;
 }
@@ -302,3 +337,38 @@ span .MathJax_SVG{
   margin-bottom: 0;
 }
 
+.dots {
+  flex-grow: 1;
+  height: 2px;
+  background: left / 100% 1px;
+  background-image: linear-gradient(to right, #000 2px, rgba(0, 0, 0, 0) 2px);
+  background-size: 7px 1px;
+  margin: 0 5px;
+  position: relative;
+}
+
+.flip-y {
+  transform: rotateY(180deg);
+}
+
+table.first-line {
+  border-collapse: collapse;
+}
+table.first-line tr:first-of-type {
+  border-bottom: 1px solid black;
+}
+table.first-line tr:first-of-type td {
+  padding-bottom: 5px;
+}
+table.first-line tr:nth-child(2) td {
+  padding-top: 5px;
+}
+table.first-line tr td {
+  border-left: thin solid black;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+table.first-line tr td:first-child {
+  border-left: none;
+}
