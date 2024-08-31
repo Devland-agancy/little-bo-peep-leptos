@@ -1057,7 +1057,7 @@
 
             |> ImageRight
                 src images/24.svg
-                offset_y 2.5rem
+                offset_y 3.5rem
                 y 12%
                 children_x 30%
                 children_y 30%

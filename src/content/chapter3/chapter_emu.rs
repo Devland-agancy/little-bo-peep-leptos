@@ -533,15 +533,16 @@
     further than the function
 
     $$
-    {\Large x \ra 0^x}
+    \Large x \ra 0^x
     $$
     
     as it so happens that
     
     $$
-    {0^x = \begin{cases} 0 & \te{if } x > 0\\
+    0^x = 
+    \begin{cases} 0 & \te{if } x > 0\\
     1 & \te{if } x = 0\\
-    \te{undefined} & \te{if }x &lt; 0 \end{cases}}
+    \te{undefined} & \te{if }x &lt; 0 \end{cases}
     $$
     
     which implies a discontinuity in the graph of
@@ -1208,19 +1209,23 @@
 
         Rewrite
         
-        $$
-        \tag{A}
-        (f \circ (g \circ h))(x)
-        $$
+        |> div
+            style font-size:1.1em
+        
+            $$
+            \tag{A}(f \circ (g \circ h))(x)
+            $$
         
         without using “$\circ$”, using only the 
         “definitional equation of function 
         composition”, which is namely
         
-        $$
-        \tag{AA}
-        (r \circ s)(x) = r(s(x))
-        $$
+        |> div
+            style font-size:1.1em
+
+            $$
+            \tag{AA}(r \circ s)(x) = r(s(x))
+            $$
         
         (where $r$ and $s$ are functions); plz
         note that you will have to apply (AA) 
@@ -1237,20 +1242,36 @@
             |> ImageLeft
                 src images/svg_r_s_substitution_1_1.1em_cloud.svg
                 popup true
+                offset_x 1em
+                offset_y -0.5em
 
-            $$
-            {(f \circ (g \circ h))(x) = \f((g \circ h)(x))}
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                (f \circ (g \circ h))(x) = \f((g \circ h)(x))
+                $$
+            
             ...which already constitutes progress towards
             our goal, since only one copy of “$\circ$” 
             exists on the right-hand side! But
-            $$
-            {(g \circ h)(x) = g(h(x))}
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                (g \circ h)(x) = g(h(x))
+                $$
+
             by the “definitional equation” again, so
-            $$
-            {f((g \circ h)(x)) = \f(g(h(x)))}
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                f((g \circ h)(x)) = \f(g(h(x)))
+                $$
+
             ...and this completes the computation!
         
             |> Pause
@@ -1260,7 +1281,7 @@
             into a single string of equalities:
 
             |> Image
-                src images/svg_first_victim_second_victim_1_1em_v2.svg
+                src images/svg_first_victim_second_victim_1_1em.svg
 
     |> Exercise
 
@@ -1278,21 +1299,27 @@
             world:
 
             |> Image
-                src images/svg_inner_outer_1_1em_v2.svg
+                src images/svg_inner_outer_1_1em.svg
 
             So the first step is...
             
-            $$
-            ((f \circ g) \circ h)(x) = (f \circ g)(h(x))
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                ((f \circ g) \circ h)(x) = (f \circ g)(h(x))
+                $$
             
             ...by setting $r = f \circ g$, $s = h$ in
             the definitional equation, and the second step
             is...
-            
-            $$
-            (f \circ g)(h(x)) = \f(g(h(x)))
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                (f \circ g)(h(x)) = \f(g(h(x)))
+                $$
             
             ...by setting $r = f$, $s = g$, and while
             replacing “$x$” by “$h(x)$”.
@@ -1301,40 +1328,75 @@
 
             _Note 1._
             The fact that
-            $$
-            (f \circ (g \circ h))(x)
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                (f \circ (g \circ h))(x)
+                $$
+
             and
-            $$
-            ((f \circ g) \circ h)(x)
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                ((f \circ g) \circ h)(x)
+                $$
+
             both evaluate to
-            $$
-            f(g(h(x)))
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                f(g(h(x)))
+                $$
+
             actually implies that
-            $$
-            f \circ (g \circ h)
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                f \circ (g \circ h)
+                $$
+
             and
-            $$
-            (f \circ g) \circ h
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                (f \circ g) \circ h
+                $$
+
             are the same function; this function is namely
             the function that maps $x$ to $f(g(h(x)))$ for 
             all $x$ (or
-            $$
-            x \ra f(g(h(x)))
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                x \ra f(g(h(x)))
+                $$
+
             in lambda notation).
 
             |> Pause
 
             _Note 2._
             Because of this, we can write
-            $$
-            f \circ g \circ h
-            $$
+
+            |> div
+                style font-size:1.1em
+
+                $$
+                f \circ g \circ half
+                $$
+
             without any parentheses. (The point is: either
             way you parenthesize it you obtain the same 
             function, so why bother?)
@@ -1344,9 +1406,12 @@
             _Note 3._
             The fact that
 
-            $$
-            {(a + b) + c = a + (b + c)}
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                {(a + b) + c = a + (b + c)}
+                $$
 
             for all numbers $a$, $b$, $c$ is known as the
 
@@ -1354,9 +1419,12 @@
 
             of addition; likewise, the fact that
 
-            $$
-            (ab)c = a(bc)
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                (ab)c = a(bc)
+                $$
 
             for all numbers $a$, $b$, $c$ is known as the
 
@@ -1365,9 +1433,12 @@
             of multiplication; and again likewise,
             the fact that
 
-            $$
-            {(f \circ g) \circ h  =  f \circ (g \circ h)}
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                {(f \circ g) \circ h  =  f \circ (g \circ h)}
+                $$
 
             for all functions $f$, $g$, $h$ is known 
             as the
@@ -1397,14 +1468,14 @@
 
             |> DisplayCentered 
 
-                ${\Large h(}$
+                $\Large h($
                 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
-                ${\Large{}) =}$
+                $\Large{}) =$
                 
                 |> InlineImage
                     src images/svg_composition_icon_die_3.svg
@@ -1435,14 +1506,14 @@
 
             |> DisplayCentered 
 
-                ${\Large g(h(}$
+                $\Large g(h($
 
                 |> InlineImage
                     src images/svg_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
-                ${\Large{})){}=}$
+                $\Large{})){}=$
 
                 |> InlineImage
                     src images/svg_composition_icon_fence.svg
@@ -1548,9 +1619,12 @@
             because VX-11/78A maps $0$ to $3.5$ and maps 
             $1$ to $2.5$. (The presence of an ordered pair
             
-            $$
-            (a, b)
-            $$
+            |> div
+                style font-size:1.1em
+
+                $$
+                (a, b)
+                $$
 
             means that input $a$ produces output $b$.) So 
             two functions are equal if and only if they 
