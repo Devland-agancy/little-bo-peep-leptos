@@ -37,7 +37,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
       <div
         id="sidebar"
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
-        class=("duration-300", menu_closed) // disappear
+        class=("duration-500", menu_closed) // disappear
         class=("duration-200", move || !menu_closed()) //appear
 
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })

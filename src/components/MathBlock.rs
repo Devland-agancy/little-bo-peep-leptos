@@ -103,3 +103,27 @@ pub fn MathBlock(
       <span class="mathblock-span"></span>
     }
 }
+
+#[component]
+pub fn CustomBlock(
+    cx: Scope,
+    children: Children,
+    #[prop(default = "")] style: &'static str,
+) -> impl IntoView {
+    let node_ref = create_node_ref::<Div>(cx);
+    let (is_wide, set_is_wide) = create_signal(cx, false);
+    let GlobalState {
+        math_rendered,
+        on_mobile,
+        ..
+    } = use_context(cx).unwrap();
+
+    view! { cx,
+      <div
+        class="mathblock block-element"
+        style=style
+      >
+        {children(cx)}
+      </div>
+    }
+}

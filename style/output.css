@@ -1841,6 +1841,10 @@ table.first-line tr td:first-child {
   border-left: none;
 }
 
+.mathblock .mathblock{
+  font-size: inherit;
+}
+
 .hover\:border-b-0:hover {
   border-bottom-width: 0px;
 }

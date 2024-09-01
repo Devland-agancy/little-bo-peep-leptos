@@ -159,7 +159,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_types = article_types.value();
     let article_types = article_types.split(" ");
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = None;
+    let elm_only_for: Option<u8> = Some(3);
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
@@ -375,7 +375,7 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
         let entry = entry.unwrap();
         let path = entry.path();
         let file_name = path.file_name().unwrap().to_str().unwrap_or("");
-        if file_name == "parent_emu.rs" {
+        if file_name == "__parent_emu.rs" {
             let parent_emu = fs::read_to_string(path);
             if parent_emu.is_err() {
                 panic!("Path not found {}", path_str)
