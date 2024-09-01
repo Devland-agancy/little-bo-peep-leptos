@@ -138,6 +138,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
                 "List",
                 "Grid",
                 "DisplayCentered",
+                "CustomBlock",
             ],
             tags_with_non_indent_first_child: vec![
                 "Section",

@@ -372,3 +372,7 @@ table.first-line tr td {
 table.first-line tr td:first-child {
   border-left: none;
 }
+
+.mathblock .mathblock{
+  font-size: inherit;
+}

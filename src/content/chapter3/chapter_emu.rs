@@ -1209,7 +1209,7 @@
 
         Rewrite
         
-        |> div
+        |> CustomBlock
             style font-size:1.1em
         
             $$
@@ -1220,7 +1220,7 @@
         “definitional equation of function 
         composition”, which is namely
         
-        |> div
+        |> CustomBlock
             style font-size:1.1em
 
             $$
@@ -1245,7 +1245,7 @@
                 offset_x 1em
                 offset_y -0.5em
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1256,7 +1256,7 @@
             our goal, since only one copy of “$\circ$” 
             exists on the right-hand side! But
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1265,7 +1265,7 @@
 
             by the “definitional equation” again, so
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1303,7 +1303,7 @@
 
             So the first step is...
             
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1314,7 +1314,7 @@
             the definitional equation, and the second step
             is...
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1329,7 +1329,7 @@
             _Note 1._
             The fact that
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1338,7 +1338,7 @@
 
             and
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1347,7 +1347,7 @@
 
             both evaluate to
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1356,7 +1356,7 @@
 
             actually implies that
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1365,7 +1365,7 @@
 
             and
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1376,7 +1376,7 @@
             the function that maps $x$ to $f(g(h(x)))$ for 
             all $x$ (or
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1390,7 +1390,7 @@
             _Note 2._
             Because of this, we can write
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1406,7 +1406,7 @@
             _Note 3._
             The fact that
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1419,7 +1419,7 @@
 
             of addition; likewise, the fact that
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1433,7 +1433,7 @@
             of multiplication; and again likewise,
             the fact that
 
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
@@ -1619,7 +1619,7 @@
             because VX-11/78A maps $0$ to $3.5$ and maps 
             $1$ to $2.5$. (The presence of an ordered pair
             
-            |> div
+            |> CustomBlock
                 style font-size:1.1em
 
                 $$
