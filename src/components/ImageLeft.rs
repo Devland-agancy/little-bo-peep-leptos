@@ -135,7 +135,7 @@ pub fn ImageLeft(
           class=("outline-[#3f9aff7d]", move || show_areas())
           class=("outline", move || show_areas())
         >
-          <div style=move || {
+          <div class="z-10" style=move || {
               format!(" top: {}; left: {}", children_y, children_x)
           }>{children(cx)}</div>
           <img

@@ -397,7 +397,7 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
         src="/images/seperator.png"
         height="50px"
         width="160px"
-        container_classes="flex items-center mt-[45px] mb-[40px]"
+        container_classes="flex items-center mt-[15px] mb-[40px]"
       >
         ""
       </Image>

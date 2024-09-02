@@ -1,2 +1,2 @@
 pub mod chapter_emu;
-pub mod parent_emu;
+pub mod __parent_emu;

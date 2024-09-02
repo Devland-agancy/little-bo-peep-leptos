@@ -37,6 +37,9 @@ pub fn Panel(cx: Scope) -> impl IntoView {
       <div
         id="sidebar"
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
+        class=("duration-500", menu_closed) // disappear
+        class=("duration-200", move || !menu_closed()) //appear
+
         style=move || format!("transform: translateX({})", if menu_closed() { "100%" } else { "0" })
       >
 
@@ -54,7 +57,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 
           class="select-none overscroll-none absolute right-0 w-[16rem] sm:w-[22rem] z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
-          <div class="select-none scrollbar-hidden sm:h-full px-4 py-3 overflow-y-hidden">
+          <div class="select-none scrollbar-hidden sm:h-full pt-[0.6em] px-[1em] overflow-y-hidden [&>ul]:mb-[8px]">
 
             {render_content_for_article!(
                 "chapters", r#"
@@ -93,7 +96,7 @@ pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
     let GlobalState { on_mobile, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <h1 class="text-3xl font-baskerville-italic my-5 flex justify-between items-center">
+      <h1 class="text-3xl font-baskerville-italic mt-[5px] mb-[7px] flex justify-between items-center">
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
         {label}
         <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>

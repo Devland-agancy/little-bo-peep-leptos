@@ -105,6 +105,7 @@
 
     |> StarDivider
 
+<<<<<<< HEAD
     (The main thing to understand about Example
     1 is that
 
@@ -117,6 +118,8 @@
     is the horizontal change from $A$ to $B$.)
 
 
+=======
+>>>>>>> develop
 |> Section
 
     *Sign Combinations.*
@@ -381,11 +384,9 @@
 
     *Solving for “rise” and “run”.*
     Multiplying
-
     $$
     \te{slope} = {\te{rise} \over \te{run}}
     $$
-
     on each side by “run” gives
 
     $$
@@ -621,7 +622,7 @@
         |> ImageRight
             src images/54.svg
             offset_x -6rem
-            children_y 41.5%
+            children_y 34.5%
             children_x 29%
             clickable_on_desktop true
 
@@ -721,8 +722,7 @@
             _Note 1._
             More generally, a line of slope $p$ is
             perpendicular to a line of slope $-1/p$, for
-            all $p \ne 0$. By a similar drawing, for
-            $p > 0$:
+            all $p \ne 0$. By a similar drawing:
 
             |> Image
                 src images/58.svg
@@ -744,14 +744,11 @@
                     img_position bottom
                     use_squiggle_on_mobile false
 
-            If you're curious, a drawing for the case
-            $p < 0$...
-
-            |> Image
-                src images/61.svg
-
-            ...is like so, but it doesn't really add
-            anything new.
+            (If the axes are oriented the usual way then 
+            the above drawing covers all the cases $p > 0$,
+            whereas if we flip the two number axes to point
+            down/left the above drawing covers all the cases 
+            $p < 0$—magic!)
 
     |> Exercise
 
@@ -896,10 +893,11 @@
             |> Pause
 
             _Note 1._
-            As explained in Chapter 3, an empty circle of this type
+            As explained in Chapter 3, an empty circle of
+            this type
 
             |> Image
-                src images/65.svg
+                src images/svg_empty_circle_alone.svg
 
             indicates a “missing” value. Specifically, in
             our case, the vertical velocity is _undefined_
@@ -960,7 +958,7 @@
 
             is the rise from the $y$-intercept to
             $(x_0, y_0)$ regardless of the sign of $p$ or
-            $x_0$ (because “$x_0$” is the run in all cases),
+            $x_0$ (because $x_0$ is the run in all cases),
             making
 
             $$ y_0 - px_0 $$

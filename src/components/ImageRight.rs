@@ -181,7 +181,7 @@ pub fn ImageRight(
           class=("outline", move || show_areas())
         >
 
-          <div class="absolute" style=move || format!("top: {children_y}; left: {children_x}")>
+          <div class="absolute z-10" style=move || format!("top: {children_y}; left: {children_x}")>
             {children(cx)}
           </div>
           <img
