@@ -105,7 +105,6 @@
 
     |> StarDivider
 
-<<<<<<< HEAD
     (The main thing to understand about Example
     1 is that
 
@@ -118,8 +117,6 @@
     is the horizontal change from $A$ to $B$.)
 
 
-=======
->>>>>>> develop
 |> Section
 
     *Sign Combinations.*

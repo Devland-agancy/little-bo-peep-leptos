@@ -3,8 +3,8 @@
 |> Image
     src images/svg_ch4_polaroids.svg
 
-|> Section
-    
+|> Section    
+
     *Definitions.*
     The _derivative_ of a function
     
@@ -31,9 +31,9 @@
     “before”], $y = f'(x)$ [$=$ “after”]. (Meaning,
     the “after” graph records the slope of the 
     “before” graph.) E.g.:
-	
+
     |> Image
-    	src images/svg_ch4_explanation1.svg
+        src images/svg_ch4_explanation1.svg
 
     Note that $f'\!$ (read “$f$ prime”) remains 
     undefined where $y = f(x)$ has a sharp “corner” 
