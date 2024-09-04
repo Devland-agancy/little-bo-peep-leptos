@@ -30,6 +30,7 @@ pub fn ImageLeft(
     #[prop(default = false)] clickable_on_desktop: bool,
     #[prop(default = "")] padding: &'static str,
     #[prop(default = false)] popup: bool,
+    #[prop(default = "")] width: &'static str,
 
     children: Children,
 ) -> impl IntoView {

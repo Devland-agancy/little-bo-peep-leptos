@@ -94,8 +94,8 @@ pub fn elm(input: TokenStream) -> TokenStream {
     desugarer = desugarer
         .pre_process_exercises()
         .add_increamental_attr(vec![("Solution", "solution_number")])
-        .auto_increamental_title("Exercise", "Exercise")
-        .auto_increamental_title("Example", "Example")
+        // .auto_increamental_title("Exercise", "Exercise")
+        // .auto_increamental_title("Example", "Example")
         .wrap_block_delimited("InnerParagraph")
         .wrap_children(
             vec!["Section", "Solution", "Example", "Exercise"],
@@ -163,6 +163,7 @@ pub fn elm(input: TokenStream) -> TokenStream {
         "SectionDivider",
         "InlineImage",
         "StarDivider",
+        "br",
     ]);
     let leptos_code = emitter.emit_json(&json_value);
 

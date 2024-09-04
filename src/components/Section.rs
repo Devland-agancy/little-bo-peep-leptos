@@ -5,6 +5,7 @@ use leptos::*;
 pub fn Section(
     cx: Scope,
     #[prop(default = true)] divider: bool,
+    #[prop(default = "")] counter: &'static str,
 
     children: Children,
 ) -> impl IntoView {

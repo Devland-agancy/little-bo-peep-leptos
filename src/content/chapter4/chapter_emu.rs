@@ -1,5 +1,4 @@
 /*
-
 |> Image
     src images/svg_ch4_polaroids.svg
 
@@ -64,8 +63,8 @@
     tangents, and so leave a missing value for
     the derivative:
 
-	|> Image
-		src images/svg_ch4_explanation_one_sided_tangent.svg
+    |> Image
+        src images/svg_ch4_explanation_one_sided_tangent.svg
 
     (In other words, “half-tangents” do not actually 
     count as tangents.) 
@@ -96,20 +95,20 @@
     (the one with the closed endpoints):
 
     |> Image
-		src images/svg_ch4_curve_to_sketch.svg
+        src images/svg_ch4_curve_to_sketch.svg
 
     One method is simply to eyeball the slope at 
     a few points along the curve, plot these 
     values and interpolate:
-	
+    
     |> Image
-    	src images/svg_ch4_first_derivative_sketch.svg
+        src images/svg_ch4_first_derivative_sketch.svg
 
     |> ImageRight
-		src images/svg_ch4_polaroid_cloud.svg
+        src images/svg_ch4_polaroid_cloud.svg
     
     ...voilà!
-	
+    
     An alternate approach is to start by
     determining intervals on which the derivative
     is positive and negative, and then to 
@@ -117,11 +116,11 @@
     smallest) value of the derivative in each 
     interval:
 
-	|> Image
-		src images/svg_ch4_second_derivative_sketch_pt1.svg
+    |> Image
+        src images/svg_ch4_second_derivative_sketch_pt1.svg
 
-	|> Image
-		src images/svg_ch4_second_derivative_sketch_pt2.svg
+    |> Image
+        src images/svg_ch4_second_derivative_sketch_pt2.svg
 
     The result (at bottom right)
     is a charming “robosketch” of the true
@@ -165,7 +164,7 @@
 
     __~ the derivative of a constant function
     is the zero function ~__
-	
+    
     or, more shortly,
     
     __~ the derivative of a constant is zero ~__
@@ -221,26 +220,26 @@
     |> Example
 
         One has
-		$$
-		(x \ra 3x + 1)' = (x \ra 3)
-		$$
-		as per
-		$$
-		(x \ra Ax + B)' = (x \ra A)
-		$$
-		with $A = 3$, $B = 1$.
+        $$
+        (x \ra 3x + 1)' = (x \ra 3)
+        $$
+        as per
+        $$
+        (x \ra Ax + B)' = (x \ra A)
+        $$
+        with $A = 3$, $B = 1$.
 
     |> Example
 
         One has
-		$$
-		(x \ra 12 - x)' = (x \ra -1)
-		$$
-		as per
-		$$
-		(x \ra Ax + B)' = (x \ra A)
-		$$
-		with $A = -1$, $B = 12$.
+        $$
+        (x \ra 12 - x)' = (x \ra -1)
+        $$
+        as per
+        $$
+        (x \ra Ax + B)' = (x \ra A)
+        $$
+        with $A = -1$, $B = 12$.
 
 |> Section
 
@@ -262,38 +261,38 @@
     of...
 
     |> ul
-		|> li
+        |> li
 
-			seconds on the $x$ axis, meters on the 
+            seconds on the $x$ axis, meters on the 
             $y$ axis
 
     |> ImageRight
-		src images/svg_ch4_units1_cloud.svg
+        src images/svg_ch4_units1_cloud.svg
     
     ...then the “after” graph will have units of...
-	
+    
     |> ul
         |> li
 
-    		seconds on the $x$ axis, meters per
+            seconds on the $x$ axis, meters per
             second on the $y$ axis
 
     ...while if the “before” graph has units of...
-	
+    
     |> ul
         |> li
 
-			years on the $x$ axis, dollars on the
+            years on the $x$ axis, dollars on the
             $y$ axis
-	
+    
     |> Image
-		src images/svg_ch4_units2_cloud.svg
+        src images/svg_ch4_units2_cloud.svg
 
     ...then the “after” graph will have units of...
 
-	|> ul
+    |> ul
         |> li
-			years on the $x$ axis, dollars per
+            years on the $x$ axis, dollars per
             year on the $y$ axis
 
     ...and so on.
@@ -315,7 +314,7 @@
 
 |> Section
 
-	*The second derivative.*
+    *The second derivative.*
     The _second derivative_ of $f$ is the derivative
     of the derivative of $f$. It is written “$f''$”:
 
@@ -395,13 +394,13 @@
 
     |> Example
 
-		More generally,
+        More generally,
 
-		$$
-		\,\,\,(x \ra ax + b)'' = (x \ra 0)
-		$$
+        $$
+        \,\,\,(x \ra ax + b)'' = (x \ra 0)
+        $$
 
-		for all $a, b \in \rr$, by a similar computation;
+        for all $a, b \in \rr$, by a similar computation;
         a.k.a.:
 
         __~ the second derivative of an affine function is zero ~__
@@ -420,17 +419,18 @@
     have a negative second derivative:
 
     |> Image
-		src images/svg_ch4_bendiness.svg
+        src images/svg_ch4_bendiness.svg
 
     Reason like this: the second derivative is 
     |> del
+
         “the rate of change of the rate of change”.
     Sorry: “the rate of change of the slope”. 
     (Same difference.) Ergo, if the second derivative
     is positive, the slope is increasing; if the
     second derivative is negative, the slope is 
     decreasing. Moreover, an
-		
+        
     __increasing__
 
     slope gives curves a “bending upwards” shape, while a
@@ -438,7 +438,7 @@
     __decreasing__
     
     slope gives curves a “bending downward” shape!
-	
+    
     To emphasize, if the second derivative is some
 
     -|LARGE POSITIVE NUMBER|-
@@ -471,7 +471,7 @@
     while curves with decreasing (technically: 
     _nonincreasing_) slope are called _concave_.
     Viz:
-	
+    
     |> Image
         src images/svg_ch4_convex_concave.svg
 
@@ -480,23 +480,23 @@
     interface between convex and concave sections
     of a graph:
 
-	|> Image
-		src images/svg_ch4_inflection_point.svg
+    |> Image
+        src images/svg_ch4_inflection_point.svg
 
     |> Example
 
         The fact that
-		
+        
         $$
-		(x \ra 3x + 1)'' = (x \ra 0)
-		$$
-		
+        (x \ra 3x + 1)'' = (x \ra 0)
+        $$
+        
         indicates that the graph
-		
+        
         $$
-		y = 3x + 1
-		$$
-		
+        y = 3x + 1
+        $$
+        
         is neither “bending upwards” nor “bending 
         downwards”—$0$ is neither positive, nor negative.
 
@@ -507,22 +507,22 @@
     A graph of the form...
 
     |> Image
-		src images/svg_ch4_position_by_time.svg
+        src images/svg_ch4_position_by_time.svg
 
     ...describes _position as a function of time_
     (look at the units); the derivative...
 
     |> Image
-		src images/svg_ch4_position_by_time_der.svg
+        src images/svg_ch4_position_by_time_der.svg
 
     |> ImageRight
-		src images/svg_ch4_position_by_time_cloud.svg
+        src images/svg_ch4_position_by_time_cloud.svg
 
     ...describes _velocity as a function of time_;
     finally, the second derivative...
 
     |> Image
-		src images/svg_ch4_position_by_time_der_der.svg
+        src images/svg_ch4_position_by_time_der_der.svg
 
     |> ImageLeft
         src images/svg_ch4_position_by_time_der_cloud.svg
@@ -550,9 +550,9 @@
     to the graph $y = f'(t)$ has a “rise” measured
     in meters per second and a “run” measured in 
     seconds:
-	
+    
     |> Image
-		src images/svg_ch4_position_by_time_tangent.svg
+        src images/svg_ch4_position_by_time_tangent.svg
     
     The ratio “rise over run” has the form
 
@@ -585,58 +585,58 @@
     *Note.*
 
     The exotic units
-		$$
-		%\left[{\te{m} \over \,\te{s}\!{\,}^2}\right]
-		{\te{m} \over \,\te{s}\!{\,}^2}
-		%\te{m}/\te{s}\!{\,}^2
-		$$
-		can be read
-	</p><p class="cq">
-		meters per second squared
-	</p><p class="acq">
-		which sounds pretty cryptic, unfortunately, or
-	</p><p class="cq">
-		meters per second per second
-	</p><p class="acq">
-		which is better, or (slight difference!)
-	</p><p class="cq">
-		meters per second, per second
-	</p><p class="acq">
-		which is even better because it “shows” acceleration to be a number 
-		of m$/$s per second. (Acceleration _is_ a number of m$/$s per second, 
-		no?)
+    $$
+    %\left[{\te{m} \over \,\te{s}\!{\,}^2}\right]
+    {\te{m} \over \,\te{s}\!{\,}^2}
+    %\te{m}/\te{s}\!{\,}^2
+    $$
+    can be read
+    </p><p class="cq">
+    meters per second squared
+    </p><p class="acq">
+    which sounds pretty cryptic, unfortunately, or
+    </p><p class="cq">
+    meters per second per second
+    </p><p class="acq">
+    which is better, or (slight difference!)
+    </p><p class="cq">
+    meters per second, per second
+    </p><p class="acq">
+    which is even better because it “shows” acceleration to be a number 
+    of m$/$s per second. (Acceleration _is_ a number of m$/$s per second, 
+    no?)
 
     |> Example
 
-		Over a period of $10$s, an object that is
+        Over a period of $10$s, an object that is
         accelerating at a constant rate of
-		
+        
         $$
-		2{\te{m}/\te{s}\!{\,}^2}
-		$$
-		
+        2{\te{m}/\te{s}\!{\,}^2}
+        $$
+        
         increases its velocity by
 
-		$$
-		(2{\te{m}/\te{s}\!{\,}^2}) \times\, (10\te{s}) = 20{\te{m}/\te{s}}
-		$$
+        $$
+        (2{\te{m}/\te{s}\!{\,}^2}) \times\, (10\te{s}) = 20{\te{m}/\te{s}}
+        $$
 
         |> ImageRight
             src images/svg_ch4_unit_cancellation_cloud.svg
-		
+        
         according to the template
-		
+        
         $$
-		(\te{rate of change}) \times \te{(amount of time)}\\
-		= \te{(amount of change)}
-		$$
-		
+        (\te{rate of change}) \times \te{(amount of time)}\\
+        = \te{(amount of change)}
+        $$
+        
         or, more specifically,
 
         $$
-		(\te{acceleration}) \times (\te{amount of time}) =\\ (\te{change in velocity})
-		$$
-		
+        (\te{acceleration}) \times (\te{amount of time}) =\\ (\te{change in velocity})
+        $$
+        
         since acceleration is the rate of change of
         velocity.
 
@@ -1052,7 +1052,7 @@
         |> Image
             src images/svg_ch4_sketch_the_middle_a.svg
     
-		...what can you say about $g'(x)$?
+        ...what can you say about $g'(x)$?
         (Produce the best sketch of $g'(x)$ that
         you can, taking into account all the
         information above.) (Don't get us wrong:
@@ -1092,7 +1092,7 @@
             |> Image
                 src images/svg_ch4_sketch_the_middle_a_sol4.svg
 
-    		...achieving our final answer. 
+            ...achieving our final answer. 
 
             |> Pause
 
@@ -1115,7 +1115,7 @@
 
         |> Solution
             
-		    Firstly, the graph of $h(x)$ seems to have
+            Firstly, the graph of $h(x)$ seems to have
             slope $0$ around $x = 0.6$...
 
             |> Image
@@ -1154,7 +1154,7 @@
             |> Image
                 src images/svg_ch4_sketch_the_middle_b_sol5.svg
 
-    		This gives us two more points on the graph
+            This gives us two more points on the graph
             $y = h'(x)$:
 
             |> Image
@@ -1167,7 +1167,7 @@
             |> Image
                 src images/svg_ch4_sketch_the_middle_b_sol7.svg
 
-    		...we extend these two new data points by
+            ...we extend these two new data points by
             segments of slope $-1/3$...
 
             |> Image
@@ -2107,6 +2107,7 @@
                 style margin:1em 1em 0em 2.5em
 
                 |> li
+
                     in 
                     |> span
                         style border:1px solid blue
@@ -2121,6 +2122,7 @@
                     the next, that affects the next, etc)
 
                 |> li
+                
                     in
                     |> span
                         style border:1px solid red
@@ -2297,6 +2299,7 @@
 
             |> li
                 style margin-top:0.5em
+                
                 |> del                
                 
                     when $B$'s tail is sticking out of the
@@ -3100,9 +3103,11 @@
 
             then gives us the following estimates for the
             |> del
+
                 amount of travel
             &ensp;
             |> del
+
                 during the
             &ensp;six displacements:
 
@@ -3110,7 +3115,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet1.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.5\te{s}\,\,=\,\,-3.375\,\te{cells}$
@@ -3122,7 +3127,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet2.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
@@ -3131,7 +3136,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet3.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
@@ -3140,7 +3145,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet4.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,2.7\,\te{cells}$
@@ -3149,7 +3154,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet5.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
@@ -3158,7 +3163,7 @@
                 align center
 
                 |> InlineImage
-                class ch4_pacman1_inline_number_pellet
+                    class ch4_pacman1_inline_number_pellet
                     src images/svg_ch4_pacman1_pellet6.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
@@ -3197,7 +3202,6 @@
             4
             $$
             |> ImageLeft
-                width 700px
                 src images/svg_ch4_pacman1_disp_4_cloud.svg
 
             and
@@ -3206,7 +3210,6 @@
             6
             $$
             |> ImageLeft
-                width 1400px
                 src images/svg_ch4_pacman1_disp_6_cloud.svg
 
             and
@@ -3215,7 +3218,6 @@
             7
             $$
             |> ImageLeft
-                width 700px
                 src images/svg_ch4_pacman1_disp_7_cloud.svg
 
             cells, with $5$ not being a possibility.
@@ -3943,7 +3945,6 @@
             as a pictorial inequality:
 
             |> Image
-                width 800px
                 src images/svg_ch4_one_long_line_inequality_1.svg
 
             But we can tighten the inequality by dividing the
@@ -3952,20 +3953,17 @@
             revisit the same topic in detail at some point):
 
             |> Image
-                width 800px
                 src images/svg_ch4_one_long_line_inequality_2.svg
 
             Or even:
 
             |> Image
-                width 800px
                 src images/svg_ch4_one_long_line_inequality_3.svg
 
             If we take this logic to its bitter conclusion, we
             find the _e_quality:
 
             |> Image
-                width 800px
                 src images/svg_ch4_one_long_line_equality.svg
 
             And because the S-curve is centrally symmetric
@@ -4143,7 +4141,6 @@
             
             $$
             (f(gh))(u)
-            
             $$
             
             for arbitrary $u$, which completes the proof.
@@ -4255,7 +4252,7 @@
             $$
             \begin{align}
             (fg)(u) &= f(u) \cdot g(u) \\
-                    &= g(u) \cdot f(u) \up{1.5}\\
+            &= g(u) \cdot f(u) \up{1.5}\\
             &= (gf)(u) \up{1.5}
             \end{align}
             $$
@@ -6538,8 +6535,8 @@
             For the real numbers:
 
             |> ul
-
                 style margin:1em 0 0 2.5em
+                
                 |> li
                 
                     _the associativity of [real number] multiplication is

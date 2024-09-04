@@ -4,11 +4,13 @@ use leptos::*;
 pub fn InlineImage(
     cx: Scope,
     src: &'static str,
-    width: &'static str,
+    #[prop(default = "")] width: &'static str,
     #[prop(default = "")] height: &'static str,
     #[prop(default = "")] y_anchor: &'static str,
     #[prop(default = "")] margin_left: &'static str,
     #[prop(default = "")] margin_right: &'static str,
+    #[prop(default = "")] class: &'static str,
+    #[prop(default = "")] style: &'static str,
     #[prop(default = false)] space_left: bool,
     #[prop(default = false)] space_right: bool,
 ) -> impl IntoView {
@@ -20,11 +22,11 @@ pub fn InlineImage(
         " "
       </Show>
       <img
-        class="bg-cover inline-block relative"
+        class=move || format!("bg-cover inline-block relative {class}")
         src=src
         style=move || {
             format!(
-                "width: {}; height: {}; top: {}; margin-left: {}; margin-right: {};",
+                "width: {}; height: {}; top: {}; margin-left: {}; margin-right: {}; {style}",
                 width,
                 height,
                 y_anchor,
