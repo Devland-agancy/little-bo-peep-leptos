@@ -261,6 +261,7 @@
     of...
 
     |> ul
+
         |> li
 
             seconds on the $x$ axis, meters on the 
@@ -272,6 +273,7 @@
     ...then the “after” graph will have units of...
     
     |> ul
+    
         |> li
 
             seconds on the $x$ axis, meters per
@@ -280,6 +282,7 @@
     ...while if the “before” graph has units of...
     
     |> ul
+    
         |> li
 
             years on the $x$ axis, dollars on the
@@ -2053,6 +2056,7 @@
                 style margin:20px 20px 0px 50px
 
                 |> li
+                
                     the red arrows indicate which particle
                     takes its velocity from the position
                     of which other particle; for example,
@@ -2060,6 +2064,7 @@
                     position of particle 5
                 
                 |> li
+
                     particles that occupy the same starting
                     position on the unit circle appear
                     stacked together, as a representation
@@ -2122,7 +2127,7 @@
                     the next, that affects the next, etc)
 
                 |> li
-                
+
                     in
                     |> span
                         style border:1px solid red
@@ -3202,6 +3207,7 @@
             4
             $$
             |> ImageLeft
+                width 700px
                 src images/svg_ch4_pacman1_disp_4_cloud.svg
 
             and
@@ -3210,6 +3216,7 @@
             6
             $$
             |> ImageLeft
+                width 1400px
                 src images/svg_ch4_pacman1_disp_6_cloud.svg
 
             and
@@ -3218,6 +3225,7 @@
             7
             $$
             |> ImageLeft
+                width 700px
                 src images/svg_ch4_pacman1_disp_7_cloud.svg
 
             cells, with $5$ not being a possibility.
@@ -3945,6 +3953,7 @@
             as a pictorial inequality:
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_1.svg
 
             But we can tighten the inequality by dividing the
@@ -3953,17 +3962,20 @@
             revisit the same topic in detail at some point):
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_2.svg
 
             Or even:
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_inequality_3.svg
 
             If we take this logic to its bitter conclusion, we
             find the _e_quality:
 
             |> Image
+                width 800px
                 src images/svg_ch4_one_long_line_equality.svg
 
             And because the S-curve is centrally symmetric
@@ -6536,7 +6548,7 @@
 
             |> ul
                 style margin:1em 0 0 2.5em
-                
+
                 |> li
                 
                     _the associativity of [real number] multiplication is
@@ -6563,5 +6575,4 @@
             of function addition, but it is easy to prove! (For other 
             proofs see Exercise 32, Exercise 33, as well as
             Exercise 9, Chapter 3.)
-
 */
