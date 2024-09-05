@@ -114,6 +114,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
         "SectionDivider",
         "InlineImage",
         "StarDivider",
+        "br",
     ]);
 
     let leptos_code = emitter.split_and_emit(&json_counter, "Book");

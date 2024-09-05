@@ -2009,3 +2009,11 @@ table.first-line tr td:first-child {
 .\[\&\>ul\]\:mb-\[8px\]>ul {
   margin-bottom: 8px;
 }
+
+.ch4_pacman1_inline_number_pellet {
+  height:0.9em;
+}
+
+.ch4_inline_blackwhite_particles {
+  height:0.9em;
+}

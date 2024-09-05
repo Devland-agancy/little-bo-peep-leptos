@@ -12,8 +12,7 @@
     “input tube” and an “output tube”:
     
     |> Image
-        src images/svg_f_box.svg
-        container_classes mb-4
+        src images/svg_ch3_f_box.svg
 
     An input goes in via the input tube, is
     processed according to the function's rule,
@@ -252,19 +251,19 @@
     For example, here is a graph of VX-11/78A:
 
     |> Image
-        src images/svg_vx1178A.svg
+        src images/svg_ch3_vx1178A.svg
 
     The graph has only two points, because VX-78/11A 
     is defined at only two values. One point is...
         
     |> Image
-        src images/svg_vx1178A_@0_with_cors.svg
+        src images/svg_ch3_vx1178A_@0_with_cors.svg
 
     ...$(0, 3.5)$, because VX-78/11A maps $0$ to 
     $3.5$, while the other point is...
         
     |> Image
-        src images/svg_vx1178A_@1_with_cors.svg
+        src images/svg_ch3_vx1178A_@1_with_cors.svg
 
     ...$(1, 2.5)$, because VX-78/11A maps $1$ to $2.5$.
 
@@ -275,21 +274,21 @@
         $x = 1$):
 
         |> Image
-            src images/svg_x_squared_1_worked.svg
+            src images/svg_ch3_x_squared_1_worked.svg
 
         Among all the points on this graph that we 
         could discuss, let us name, say, the point 
         $(0.75, 0.5625)$...
 
         |> Image
-            src images/svg_x_squared_2_worked.svg
+            src images/svg_ch3_x_squared_2_worked.svg
 
         ...which finds itself on the graph, namely, 
         because the square of $0.75$ is 
         $0.5625 = 9/16$.
 
         |> ImageLeft
-            src images/svg_0.5625_cloud.svg
+            src images/svg_ch3_0.5625_cloud.svg
             line -1
             offset_y 0em
 
@@ -461,7 +460,7 @@
     For example, this particular graph...
 
     |> Image
-        src images/svg_wiggle_graph.svg
+        src images/svg_ch3_wiggle_graph.svg
 
     is a function graph (or locally at least, from
     what we can see), because every vertical line 
@@ -469,10 +468,10 @@
     graph...
 
     |> Image
-        src images/svg_circle.svg
+        src images/svg_ch3_circle.svg
 
     |> ImageRight
-        src images/svg_crossing_cloud_circle.svg
+        src images/svg_ch3_crossing_cloud_circle.svg
         use_squiggle_on_mobile false
 
     ...is not the graph of any function, because 
@@ -484,7 +483,7 @@
     in the vein of the previous figure...
 
     |> Image
-        src images/svg_empty_circle.svg
+        src images/svg_ch3_empty_circle.svg
         container_classes pt-4 mb-3
 
     ...means that the point in question is _excluded_ 
@@ -497,7 +496,7 @@
         This _upper semicircle_ of unit radius...
 
         |> Image
-            src images/svg_semicircle.svg
+            src images/svg_ch3_semicircle.svg
 
         ...passes the vertical line test, and, hence, 
         defines a function.
@@ -508,13 +507,13 @@
         This graph defines a function...
 
         |> Image
-            src images/svg_factory_function.svg
+            src images/svg_ch3_factory_function.svg
 
         ...because it passes the vertical line test, 
         while this graph does not define a function...
 
         |> Image
-            src images/svg_factory_nonfunction.svg
+            src images/svg_ch3_factory_nonfunction.svg
         
         ...because it does _not_ pass the vertical 
         line test!
@@ -549,8 +548,7 @@
     $y = 0^x$ at $x = 0$, as pictured here:
 
     |> Image
-        src images/svg_zero_to_the_x.svg
-        container_classes mb-4
+        src images/svg_ch3_zero_to_the_x.svg
 
     (Pretty cool, no?)
 
@@ -751,7 +749,7 @@
     there is no constant $a_0$!
 
     |> Image
-        src images/svg_affine_linear_cloud.svg
+        src images/svg_ch3_affine_linear_cloud.svg
 
 
 |> Section
@@ -767,7 +765,7 @@
     $$
 
     |> ImageRight
-        src images/svg_quadratic_linear_constant_cloud.svg
+        src images/svg_ch3_quadratic_linear_constant_cloud.svg
         edge formula_edge
 
     then the quadratic term is $-a_2x^2$, not 
@@ -782,7 +780,7 @@
     $$
 
     |> ImageRight
-        src images/svg_a1_x1_cloud.svg
+        src images/svg_ch3_a1_x1_cloud.svg
 
     for all $x$, and 
 
@@ -791,7 +789,7 @@
     $$
 
     |> ImageRight
-        src images/svg_a0_x0_cloud.svg
+        src images/svg_ch3_a0_x0_cloud.svg
 
     for all $x$ (even $x = 0$), namely.
 
@@ -901,7 +899,7 @@
         to use “$\floor{x}$” in your formula:
 
         |> Image
-            src images/svg_factory_roof_graph.svg
+            src images/svg_ch3_factory_roof_graph.svg
 
         |> Solution
         
@@ -912,7 +910,7 @@
             staircase-shaped graph:
 
             |> Image
-                src images/svg_floor_graph.svg
+                src images/svg_ch3_floor_graph.svg
 
             (For example, $\floor{1} = 1$ because the 
             greatest integer less than or equal to $1$ 
@@ -925,7 +923,7 @@
             roof” graph in the statement, are equal:
 
             |> Image
-                src images/svg_factory_roof_graph_with_displacement_arrows_worked.svg
+                src images/svg_ch3_factory_roof_graph_with_displacement_arrows_worked.svg
 
             The red dot to the left of $x$ has $x$-coordinate
             $\floor{x}$, so the horizontal displacement is 
@@ -949,7 +947,7 @@
         ‘$\lfloor \cdot \rfloor$’ as a building block:
 
         |> Image
-            src images/svg_factory_roof_stretched_x2_graph_worked.svg
+            src images/svg_ch3_factory_roof_stretched_x2_graph_worked.svg
 
         |> Solution
 
@@ -959,7 +957,7 @@
             4):
 
             |> Image
-                src images/svg_factory_roof_stretched_and_compressed.svg
+                src images/svg_ch3_factory_roof_stretched_and_compressed.svg
 
             Indeed, the two graphs featured above differ
             only by a horizontal dilation; dividing the 
@@ -981,7 +979,7 @@
             in DESMOS. Viz:
 
             |> Image
-                src images/png_desmos_composition_0_c.png
+                src images/png_ch3_desmos_composition_0_c.png
                 width 1400px
 
             |> Pause
@@ -991,13 +989,13 @@
             then “f(x/2)”, viz:
 
             |> Image
-                src images/png_desmos_composition_1_c.png
+                src images/png_ch3_desmos_composition_1_c.png
                 width 1400px
 
             Or we can be even fancier:
 
             |> Image
-                src images/png_desmos_composition_2_b.png
+                src images/png_ch3_desmos_composition_2_b.png
                 width 1400px
             
             What you see above (the graph in orange) is 
@@ -1006,7 +1004,7 @@
             “input tube” and “output tube” sides of a function...
 
             |> Image
-                src images/svg_f_box_inverted.svg
+                src images/svg_ch3_f_box_inverted.svg
 
             ...(compared to the drawing at the top of the
             chapter), then the composition of $\f$ and $g$,
@@ -1026,7 +1024,7 @@
             like so:
 
             |> Image
-                src images/svg_f_box_g_box.svg
+                src images/svg_ch3_f_box_g_box.svg
 
             In other words, $g$'s output is passed on to $\f$ 
             for further processing. (A certain movie called
@@ -1035,7 +1033,7 @@
             (To be perfectly clear,
 
             |> Image
-                src images/svg_f_circle_g_and_f_box_g_box.svg
+                src images/svg_ch3_f_circle_g_and_f_box_g_box.svg
 
             $f \circ g$ is a _function_, defined as the
             above assemblage of “$g$ first, $f$ second”.)
@@ -1079,7 +1077,7 @@
         like these:
     
         |> Image
-            src images/svg_factory_roof_x2_worked.svg
+            src images/svg_ch3_factory_roof_x2_worked.svg
 
         |> Solution
 
@@ -1109,12 +1107,12 @@
             find a formula  for the function depicted here:
 
             |> Image
-                src images/svg_factory_roof_stretched_x3_translated_1_worked.svg
+                src images/svg_ch3_factory_roof_stretched_x3_translated_1_worked.svg
         
             And that formula is...
         
             |> Image
-                src images/svg_factory_roof_stretched_x3_translated_1_explanation.svg
+                src images/svg_ch3_factory_roof_stretched_x3_translated_1_explanation.svg
 
             ...iiiiiiiS...
             $$
@@ -1127,13 +1125,13 @@
             (to go from ”
             
             |> InlineImage
-                src images/svg_3_3_grid_1.svg
+                src images/svg_ch3_3_3_grid_1.svg
                 width 0.9em
 
             ” to “
 
             |> InlineImage
-                src images/svg_3_3_grid_2.svg
+                src images/svg_ch3_3_3_grid_2.svg
                 width 0.9em
 
             ”, namely), meaning that the final answer is
@@ -1162,7 +1160,7 @@
         is a function whose graph looks like so...
 
         |> Image
-            src images/svg_cosine.svg
+            src images/svg_ch3_cosine.svg
 
         ...then does the function...
         $$
@@ -1177,7 +1175,7 @@
             from the graph $y = \cos(x)$:
 
             |> Image
-                src images/svg_cosine_1000x_worked.svg
+                src images/svg_ch3_cosine_1000x_worked.svg
 
             By the first step, a
 
@@ -1240,7 +1238,7 @@
             in (AA) yields
 
             |> ImageLeft
-                src images/svg_r_s_substitution_1_1.1em_cloud.svg
+                src images/svg_ch3_r_s_substitution_1_1.1em_cloud.svg
                 popup true
                 offset_x 1em
                 offset_y -0.5em
@@ -1446,7 +1444,7 @@
             __associativity__
 
             |> ImageRight
-                src images/svg_associativity_cloud.svg
+                src images/svg_ch3_associativity_cloud.svg
 
             of function composition.
         
@@ -1458,7 +1456,7 @@
             uses this picture:
 
             |> Image
-                src images/svg_truth_be_said.svg
+                src images/svg_ch3_truth_be_said.svg
 
             In the above $A$, $B$, $C$, $D$ are sets 
             while the arrows encode functions $f$, $g$ 
@@ -1471,14 +1469,14 @@
                 $\Large h($
                 
                 |> InlineImage
-                    src images/svg_composition_icon_clubs.svg
+                    src images/svg_ch3_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
                 $\Large{}) =$
                 
                 |> InlineImage
-                    src images/svg_composition_icon_die_3.svg
+                    src images/svg_ch3_composition_icon_die_3.svg
                     width 1.25rem
                     y_anchor -3px
                     margin_left .5rem
@@ -1487,7 +1485,7 @@
             because the arrow that originates at 
 
             |> InlineImage
-                src images/svg_composition_icon_clubs.svg
+                src images/svg_ch3_composition_icon_clubs.svg
                 width 1rem
                 y_anchor -4px
                 space_left true
@@ -1496,7 +1494,7 @@
             in set $D$ lands at 
             
             |> InlineImage
-                src images/svg_composition_icon_die_3.svg
+                src images/svg_ch3_composition_icon_die_3.svg
                 width 1.25rem
                 y_anchor -4px
                 space_left true
@@ -1509,14 +1507,14 @@
                 $\Large g(h($
 
                 |> InlineImage
-                    src images/svg_composition_icon_clubs.svg
+                    src images/svg_ch3_composition_icon_clubs.svg
                     width 1rem
                     y_anchor -3px
 
                 $\Large{})){}=$
 
                 |> InlineImage
-                    src images/svg_composition_icon_fence.svg
+                    src images/svg_ch3_composition_icon_fence.svg
                     width 2.3rem
                     y_anchor -4px
                     space_left true
@@ -1526,7 +1524,7 @@
             that originates at
             
             |> InlineImage
-                src images/svg_composition_icon_die_3.svg
+                src images/svg_ch3_composition_icon_die_3.svg
                 width 1.25rem
                 y_anchor -4px
                 space_left true
@@ -1535,7 +1533,7 @@
             in set $C$ lands at
 
             |> InlineImage
-                src images/svg_composition_icon_fence.svg
+                src images/svg_ch3_composition_icon_fence.svg
                 width 2.3rem
                 y_anchor -4px
                 space_left true
@@ -1550,13 +1548,13 @@
             middle left:
 
             |> Image
-                src images/svg_truth_be_said_right_first.svg
+                src images/svg_ch3_truth_be_said_right_first.svg
                 width 2000px
                 
             We can also get rid of $B$ first, $C$ second:
 
             |> Image
-                src images/svg_truth_be_said_left_first.svg
+                src images/svg_ch3_truth_be_said_left_first.svg
                 width 2000px
 
             The first order of computation corresponds
@@ -1984,21 +1982,21 @@
             anything happens:
         
             |> Image
-                src images/svg_x0_y0_step0.svg
+                src images/svg_ch3_x0_y0_step0.svg
                 width 760px
         
             After vertically translating by $-y_0$ 
             the roots will therefore be at $x = \pm\sqrt{y_0}$:
         
             |> Image
-                src images/svg_x0_y0_step1_alone.svg
+                src images/svg_ch3_x0_y0_step1_alone.svg
                 width 760px
         
             Then after horizontally translating by $x_0$
             the roots mosey over to $x = x_0\pm\sqrt{y_0}$:
 
             |> Image
-                src images/svg_x0_y0_step2_alone.svg
+                src images/svg_ch3_x0_y0_step2_alone.svg
                 width 760px
 
             Lastly, vertical scaling does not affect 
@@ -2007,7 +2005,7 @@
             axis (here $a \approx 1.7$):
 
             |> Image
-                src images/svg_x0_y0_step3_alone.svg
+                src images/svg_ch3_x0_y0_step3_alone.svg
                 width 760px
 
             So the roots are at: $x = x_0 \pm \sqrt{y_0}$.
@@ -2378,13 +2376,13 @@
             ...we pair the $x$ with $6$...
 
             |> Image
-                src images/svg_connection_x_6.svg
+                src images/svg_ch3_connection_x_6.svg
             
             ...and $6$ becomes the value to use for $x$
             in “$x^3$”:
 
             |> Image
-                src images/svg_connection_x_6_in_computation.svg
+                src images/svg_ch3_connection_x_6_in_computation.svg
             
             ...; in an expression such as...
             $$
@@ -2393,13 +2391,13 @@
             ...we also pair the $x$ with $6$...
 
             |> Image
-                src images/svg_connection_x_6_again.svg
+                src images/svg_ch3_connection_x_6_again.svg
             
             ...and $6$ becomes the value to use for $x$
             in “$y \ra x^3y$”:
         
             |> Image
-                src images/svg_connection_x_6_again_in_computation.svg
+                src images/svg_ch3_connection_x_6_again_in_computation.svg
             
             ...(in this case the result is not a number,
             but a function—a function is a mathematical 
@@ -2413,13 +2411,13 @@
             ...we pair the $x$ with $6$ and the $y$ with $8$...
         
             |> Image
-                src images/svg_connection_x_y_6_8.svg
+                src images/svg_ch3_connection_x_y_6_8.svg
 
             ...and $6$ and $8$ become respectively the 
             values to use for $x$ and $y$ in “$x^3y$”:
         
             |> Image
-                src images/svg_connection_x_y_6_8_in_computation.svg
+                src images/svg_ch3_connection_x_y_6_8_in_computation.svg
             
             ...; now in an expression such as...
             
@@ -2431,14 +2429,14 @@
             $x$ with $5$, and the $h$ with $0.1$...
         
             |> Image
-                src images/svg_connection_f_x_h.svg
+                src images/svg_ch3_connection_f_x_h.svg
             
             ...and $x \ra x^2$, $5$ and $0.1$ become
             respectively the values to use for $f$, $x$
             and $h$ in “${f(x + h) - f(x)\over h}$”:
         
             |> Image
-                src images/svg_connection_f_x_h_in_computation.svg
+                src images/svg_ch3_connection_f_x_h_in_computation.svg
             
             ...; evaluating...
             $$

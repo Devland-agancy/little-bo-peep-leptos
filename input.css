@@ -351,6 +351,14 @@ span .MathJax_SVG{
   transform: rotateY(180deg);
 }
 
+.ch4_pacman1_inline_number_pellet {
+  height: 0.9em;
+  transform: translate(0, 0.05em);
+}
+
+.ch4_blackwhite_particles_pellet {
+  height: 0.9em;
+  transform: translate(0, 0.05em);
 table.first-line {
   border-collapse: collapse;
 }
@@ -375,4 +383,12 @@ table.first-line tr td:first-child {
 
 .mathblock .mathblock{
   font-size: inherit;
+}
+
+.ch4_pacman1_inline_number_pellet {
+  height:0.9em;
+}
+
+.ch4_inline_blackwhite_particles {
+  height:0.9em;
 }
