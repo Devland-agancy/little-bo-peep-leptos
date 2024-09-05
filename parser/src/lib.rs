@@ -119,13 +119,13 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
 
     let leptos_code = emitter.split_and_emit(&json_counter, "Book");
 
-    let mut json_file = File::create("src/res").unwrap();
-    match json_file.write_all(elm_string.as_bytes()) {
-        Ok(_) => {
-            println!("Json written to json_output.json successfully");
-        }
-        Err(error) => println!("Error writing to json_output.json: {}", error),
-    }
+    // let mut json_file = File::create("src/res").unwrap();
+    // match json_file.write_all(elm_string.as_bytes()) {
+    //     Ok(_) => {
+    //         println!("Json written to json_output.json successfully");
+    //     }
+    //     Err(error) => println!("Error writing to json_output.json: {}", error),
+    // }
 
     leptos_code
 }
