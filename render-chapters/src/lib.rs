@@ -162,7 +162,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_types = article_types.value();
     let article_types: std::str::Split<'_, &str> = article_types.split(" ");
     let mut modules = String::new();
-    let show_only: Option<usize> = Some(1);
+    let show_only: Option<usize> = None;
 
     let types = article_types
         .clone()
