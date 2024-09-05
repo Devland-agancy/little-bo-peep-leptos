@@ -469,14 +469,13 @@
     $$x = c$$
 
     |> ImageLeft
-        src images/50.svg
+        src images/svg_vertical_line_equation.svg
         offset_y 1rem
         offset_x 4rem
         use_squiggle_on_mobile false
 
-    (see Fig. 1) where 
-    $c \in \rr$ is a constant, similarly to
-    the more familiar equation
+    (see Fig. 1) where $c \in \rr$ is a constant, 
+    similarly to the more familiar equation
 
     $$y = b$$
 
@@ -497,7 +496,7 @@
     and slope $-1$.
 
     |> ImageRight
-        src images/51.svg
+        src images/svg_3_plus_minus_one_times_x_cloud.svg
         line 1
         offset_x 2rem
 
@@ -561,7 +560,9 @@
     or km/hour, etc, depends on the exact units involved.)
 
     Terminology-wise, slopes are often known as
+
     __rates of change__
+
     in the presence of units. More particularly, in the
     common case when the $x$-axis denotes time, the
     formula

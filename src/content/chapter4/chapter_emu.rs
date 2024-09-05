@@ -45,6 +45,7 @@
         src images/svg_ch4_explanation2.svg
 
     |> ImageRight
+        offset_y 10%
         src images/svg_ch4_explanation2_cloud.svg
 
     In fact,
@@ -57,11 +58,12 @@
 
     ...with the understanding that $f'(a)$ is 
     undefined if a tangent line does not exist 
-    or if the tangent is vertical. But note 
-    that—you couldn't guess, it's by definition—the 
-    endpoints of a curve do not count as having 
-    tangents, and so leave a missing value for
-    the derivative:
+    or if the tangent is vertical. But for one 
+    last asterisk—and speaking of the existence,
+    or not, of the tangent—note that the endpoint
+    of a curve does not count as having a tangent,
+    and therefore leaves a missing value for the 
+    derivative:
 
     |> Image
         src images/svg_ch4_explanation_one_sided_tangent.svg
@@ -89,7 +91,7 @@
 
 |> Section
 
-    *Sketching a Derivative.
+    *Sketching a Derivative.*
     Say that you would like to sketch the derivative
     of the “before” function from the last “before”/“after” pair above
     (the one with the closed endpoints):
@@ -169,12 +171,7 @@
     
     __~ the derivative of a constant is zero ~__
  
-    (the way people usually state it), or
-
-    __~ the derivative of the constant function
-    $y = b$ is the constant function $y = 0$ ~__
-
-    more longly.
+    (the way people usually state it).
 
 |> Section
 
@@ -200,7 +197,7 @@
     derivative! ($\,$Just like in the case of a
     constant function, the derivative leaves no
     trace of $B$'s value—and for the same reason
-    that $B$ effects a vertical translation that
+    that $B$ effects a vertical translation, which
     does not change the slope of anything.)
     
     In words:
@@ -216,7 +213,6 @@
     (The “linear term” of $y = ax + b$ is $ax$, 
     of coefficient $a$.)
 
-|> Section
     |> Example
 
         One has
@@ -288,7 +284,7 @@
             years on the $x$ axis, dollars on the
             $y$ axis
     
-    |> Image
+    |> ImageLeft
         src images/svg_ch4_units2_cloud.svg
 
     ...then the “after” graph will have units of...
@@ -360,9 +356,6 @@
     squint and start re-counting the apostrophes 
     several times over.
 
-
-|> Section
-
     |> Example
 
         We have
@@ -371,8 +364,8 @@
         (x \ra 3x + 1)'' = (x \ra 0)
         $$
 
-    |> ImageRight
-        src images/svg_ch4_3x_plus_one_and_second_cloud.svg
+        |> ImageRight
+            src images/svg_ch4_3x_plus_one_and_second_cloud.svg
 
     because, firstly,
 
@@ -586,7 +579,6 @@
     |> StarDivider
 
     *Note.*
-
     The exotic units
     $$
     %\left[{\te{m} \over \,\te{s}\!{\,}^2}\right]
@@ -594,20 +586,20 @@
     %\te{m}/\te{s}\!{\,}^2
     $$
     can be read
-    </p><p class="cq">
-    meters per second squared
-    </p><p class="acq">
+    
+    __meters per second squared__
+
     which sounds pretty cryptic, unfortunately, or
-    </p><p class="cq">
-    meters per second per second
-    </p><p class="acq">
+    
+    __meters per second per second__
+
     which is better, or (slight difference!)
-    </p><p class="cq">
-    meters per second, per second
-    </p><p class="acq">
-    which is even better because it “shows” acceleration to be a number 
-    of m$/$s per second. (Acceleration _is_ a number of m$/$s per second, 
-    no?)
+    
+    __meters per second, per second__
+
+    which is even better because it “shows” acceleration
+    to be a number of m$/$s per second. (Acceleration _is_
+    a number of m$/$s per second, no?)
 
     |> Example
 
@@ -674,7 +666,7 @@
     balance under constant acceleration, but, 
     rather, when some some _jerk_ occurs in 
     the movement of their train or subway car,
-    etc. What we are trying to say is that
+    etc. In fact,
 
     __constant acceleration__
 
@@ -768,9 +760,9 @@
             |> Image
                 src images/svg_ch4_slope_one_half_see_saw_derivative.svg
 
-        (The derivative is $1/2$ when the slope is $1/2$,
-        is $-1/2$ when the slope is $-1/2$, and is undefined at
-        the corners.)
+            (The derivative is $1/2$ when the slope is $1/2$,
+            is $-1/2$ when the slope is $-1/2$, and is undefined at
+            the corners.)
 
     |> Exercise
 
@@ -791,11 +783,9 @@
             |> Image
                 src images/svg_ch4_one_over_x.svg
         
-        As one can see, the slope is very negative
-        near $x = 0$, on either side. So the answer is:
-        “very large negative”.
-    
-
+            As one can see, the slope is very negative
+            near $x = 0$, on either side. So the answer is:
+            “very large negative”.
 
     |> Exercise
     
@@ -1550,7 +1540,7 @@
         How can we generate the following set of
         curves by rotating points around a circle,
         and tracking their $x$-coordinates? (This
-        graph is an exact $2$&nothing;$\times$ [“two
+        graph is an exact $2$&#x200b;$\times$ [“two
         x”] vertical dilation of the graph in Exercise
         12.) Should we use a circle of radius $2$,
         or make the points go twice as fast? Or both?
@@ -1666,7 +1656,7 @@
 
             The velocity vectors are
 
-            __NOT__
+            -|NOT|-
 
             tangent to the unit circle, and so the
             particles will leave the circle!
@@ -1758,7 +1748,15 @@
             out to infinity.
 
             |> ImageLeft
+                offset_x 1.5em
                 src images/svg_ch4_5_euler_spiral_figure.svg
+                children_x 50%
+                children_y 2em
+
+                |> span
+                    font-size 1.4em
+
+                    Fig. 1
 
             In any case [take two] the point is that
             whether or not you are one of the wizards,
@@ -1820,7 +1818,6 @@
             $f''''' = f^{(5)}$ equals $f$.
 
             |> Pause
-
             _Note 1._
             If you graph the $x$-coordinates of the
             5 particles over time, each in their 
@@ -2087,7 +2084,7 @@
             velocity vectors are exactly tangent to
             the unit circle
 
-            __EXCEPT__
+            -|EXCEPT|-
             
             for particle 14, whose velocity vector, 
             being the position of particle 1, is straight
@@ -2128,7 +2125,7 @@
 
                 |> li
 
-                    in
+                    in 
                     |> span
                         style border:1px solid red
                         
@@ -2196,7 +2193,9 @@
             $$
             (x + h, f(x + h))
             $$
+
             |> ImageRight
+                offset_y -0.5em
                 src images/svg_ch4_new_quatient_x_fxplush_cloud.svg
 
             at the other end. (This is also the case
@@ -2286,6 +2285,8 @@
         on the $t$-number line, to be clear):
 
         |> ImageLeft
+            offset_x 0.5em
+            offset_y -0.5em
             src images/svg_ch4_RATS_corridor_cloud.svg
 
         |> ol
@@ -2835,9 +2836,8 @@
         |> ImageRight
             src images/svg_ch4_big_product_parchment_cloud.svg
         
-        ...approach as $h$ goes to $0$,
-        if $A_1, \dots, A_n$ $: \rr \ra \rr$ are
-        differentiable at the point $t_0$?
+        ...approach as $h$ goes to $0$, if $A_1, \dots, A_n$ 
+        $: \rr \ra \rr$ are differentiable at the point $t_0$?
 
         |> Solution
 
@@ -3044,6 +3044,7 @@
             src images/svg_ch4_pacman1_hor0.svg
 
         |> ImageLeft
+            offset_y 1em
             src images/svg_ch4_pacman1_x_prime_t_scloud.svg
 
         |> Image
@@ -3093,7 +3094,7 @@
             when it is nonzero (for displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet5.svg
+                src images/svg_ch4_pacman1_pellet5_inline.svg
             the velocity might seem more like $-6.8\te{c}\hlfbk/\hlfbk\te{s}$ 
             at the least, but we've already made more
             significant errors while eyeballing the durations, so
@@ -3121,7 +3122,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet1.svg
+                    src images/svg_ch4_pacman1_pellet1_inline.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.5\te{s}\,\,=\,\,-3.375\,\te{cells}$
                 
@@ -3133,7 +3134,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet2.svg
+                    src images/svg_ch4_pacman1_pellet2_inline.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
 
@@ -3142,7 +3143,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet3.svg
+                    src images/svg_ch4_pacman1_pellet3_inline.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
 
@@ -3151,7 +3152,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet4.svg
+                    src images/svg_ch4_pacman1_pellet4_inline.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,2.7\,\te{cells}$
 
@@ -3160,7 +3161,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet5.svg
+                    src images/svg_ch4_pacman1_pellet5_inline.svg
                     style margin-right:1em
                 $-6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.4\te{s}\,\,=\,\,-2.7\,\te{cells}$
 
@@ -3169,7 +3170,7 @@
 
                 |> InlineImage
                     class ch4_pacman1_inline_number_pellet
-                    src images/svg_ch4_pacman1_pellet6.svg
+                    src images/svg_ch4_pacman1_pellet6_inline.svg
                     style margin-right:1em
                 $6.75\te{c}\hlfbk/\hlfbk\te{s}\,\,\times\,\,0.9\te{s}\,\,=\,\,6.075\,\te{cells}$
 
@@ -3184,12 +3185,12 @@
             true values must be integers, except for
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet1.svg
+                src images/svg_ch4_pacman1_pellet1_inline.svg
             . (Because we don't know where Pacman started
             out. For
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet6.svg
+                src images/svg_ch4_pacman1_pellet6_inline.svg
             &ensp;the next displacement, if you look back at
             the graphs, is horizontal, so yes.) In fact,
             if you look at the maze,
@@ -3282,11 +3283,11 @@
             (note that
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet2.svg
+                src images/svg_ch4_pacman1_pellet2_inline.svg
             &ensp;and 
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet4.svg
+                src images/svg_ch4_pacman1_pellet4_inline.svg
             &ensp;equal $-3\te{c}$ and $3\te{c}$, in each
             case):
 
@@ -3312,14 +3313,14 @@
             Because displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet7.svg
+                src images/svg_ch4_pacman1_pellet7_inline.svg
             &ensp;is horizontal to the right the only possible
             remaining solution is the right-hand one,
             or else Pacman would collide with the ghost cage,
             with displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet6.svg
+                src images/svg_ch4_pacman1_pellet6_inline.svg
             &ensp;equal to 6c not 7c, or else Pacman would 
             collide with a wall:
 
@@ -3336,7 +3337,7 @@
             it seems that displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet7.svg
+                src images/svg_ch4_pacman1_pellet7_inline.svg
             &ensp;brings Pacman all the way around the maze to
             the left edge of the ghost cage, like so...
 
@@ -3356,25 +3357,25 @@
             displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet8.svg
+                src images/svg_ch4_pacman1_pellet8_inline.svg
             &ensp;must be $-3$c or $-4$c;
             must actually be $-3$c since displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet9.svg
+                src images/svg_ch4_pacman1_pellet9_inline.svg
             is to the right; so, notwithstanding the exact 
             length of displacement
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet9.svg
+                src images/svg_ch4_pacman1_pellet9_inline.svg
             , there is only one possibility for displacements
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet1.svg
+                src images/svg_ch4_pacman1_pellet1_inline.svg
             through
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet8.svg
+                src images/svg_ch4_pacman1_pellet8_inline.svg
             :
 
             |> Image
@@ -3384,11 +3385,11 @@
             So at $t = 49$s, between displacements
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet7.svg
+                src images/svg_ch4_pacman1_pellet7_inline.svg
             &ensp;and
             |> InlineImage
                 class ch4_pacman1_inline_number_pellet
-                src images/svg_ch4_pacman1_pellet8.svg
+                src images/svg_ch4_pacman1_pellet8_inline.svg
             , Pacman is immediately to the left of the ghost cage. 
 
 
@@ -4638,20 +4639,21 @@
             the path of the velocity vector:
 
             |> Image
-                src images/svg_what_is_the_acceleration_vector_uncentered.svg
+                src images/svg_ch4_what_is_the_acceleration_vector_uncentered.svg
 
             Or, if we translate the acceleration vector back 
             to the origin and trace out its path over time 
             (either way is fine):
 
             |> Image
-                src images/svg_what_is_the_acceleration_vector_centered.svg
+                src images/svg_ch4_what_is_the_acceleration_vector_centered.svg
 
             |> Pause
             _Note 1._
-            You truly have to think of the acceleration vector as
-            “the velocity of the velocity vector”—if the velocity vector
-            is changing, the acceleration vector is nonzero!
+            You truly have to think of the acceleration
+            vector as “the velocity of the velocity 
+            vector”—if the velocity vector is changing, the
+            acceleration vector is nonzero!
 
     |> Exercise
 
@@ -4739,7 +4741,7 @@
             While the particle goes around a circle of 
             radius $r$, the velocity vector goes around a
             circle of radius $v$. (Indeed
-            <span class="nobreak">$v$,</span>
+            $v$,
             being the speed, is the length of the velocity
             vector, and the length of the velocity vector is the radius 
             of the circle traced by the velocity vector.)
@@ -5561,10 +5563,8 @@
                     src images/svg_ch4_circle_at_2_4_p2black_inline.svg
                 $_x$
             
-            by the sum rule;
-            but this gives us an idea!; we can
-            try to <i>define</i>
-            the original particles 
+            by the sum rule; but this gives us an idea!; we can
+            try to _define_ the original particles 
             |> InlineImage
                 class ch4_inline_blackwhite_particles
                 src images/svg_ch4_circle_at_2_4_p1_inline.svg
@@ -5719,7 +5719,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1_inline.svg
-                $_x\,\!\!\!' = $
+                $_x\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1white_inline.svg
@@ -5746,7 +5746,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1_inline.svg
-                $_y\,\!\!\!' = $
+                $_y\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p1white_inline.svg
@@ -5773,7 +5773,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2_inline.svg
-                $_x\,\!\!\!' = $
+                $_x\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2white_inline.svg
@@ -5800,7 +5800,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2_inline.svg
-                $_y\,\!\!\!' = $
+                $_y\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p2white_inline.svg
@@ -5827,7 +5827,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3_inline.svg
-                $_x\,\!\!\!' = $
+                $_x\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3white_inline.svg
@@ -5854,7 +5854,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3_inline.svg
-                $_y\,\!\!\!' = $
+                $_y\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p3white_inline.svg
@@ -5881,7 +5881,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4_inline.svg
-                $_x\,\!\!\!' = $
+                $_x\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4white_inline.svg
@@ -5908,7 +5908,7 @@
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4_inline.svg
-                $_y\,\!\!\!' = $
+                $_y\,\!\!\!' = ($
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
                     src images/svg_ch4_circle_at_2_4_p4white_inline.svg
@@ -5930,7 +5930,7 @@
                     src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y$
 
-                ...or...
+            ...or...
 
             |> div
                 align center
@@ -6021,8 +6021,7 @@
                     src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y$
 
-            ...cutting out the middle computation, 
-            so the constraints
+            ...cutting out the middle computation, so the constraints
             relating particle velocities to particle positions are
             satisfied (e.g., the velocity vector of the purple particle
             is the position vector of the yellow particle); 
@@ -6071,7 +6070,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6090,7 +6089,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p2.svg
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6109,7 +6108,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6128,7 +6127,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p3.svg
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6147,7 +6146,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6166,7 +6165,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p4.svg
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y(0) = $
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6188,7 +6187,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6199,7 +6198,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p1
+                    src images/svg_ch4_circle_at_2_4_p1_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6210,7 +6209,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6221,7 +6220,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p2
+                    src images/svg_ch4_circle_at_2_4_p2_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6232,7 +6231,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6243,7 +6242,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p3
+                    src images/svg_ch4_circle_at_2_4_p3_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6254,7 +6253,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_x(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6265,7 +6264,7 @@
 
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
-                    src images/svg_ch4_circle_at_2_4_p4
+                    src images/svg_ch4_circle_at_2_4_p4_inline.svg
                 $_y(0) = 2\,\,+$
                 |> InlineImage
                     class ch4_inline_blackwhite_particles
@@ -6274,7 +6273,7 @@
 
             ...cutting out the middle computation, which is to
             say that the positions at time $t = 0$ of our 
-            newly-defined particles
+            newly-defined particles 
             |> InlineImage
                 class ch4_inline_blackwhite_particles
                 src images/svg_ch4_circle_at_2_4_p1_inline.svg
@@ -6293,7 +6292,7 @@
             &ensp;are the translate of the white particle
             positions at $t = 0$ back up and to the right
             by the vector $(2, 4)$, which brings those
-            positions back to the original positions of
+            positions back to the original positions of 
             |> InlineImage
                 class ch4_inline_blackwhite_particles
                 src images/svg_ch4_circle_at_2_4_p1_inline.svg
@@ -6329,7 +6328,7 @@
                 src images/svg_ch4_circle_at_2_4_p4_inline.svg
             &ensp;are in the desired place at $t = 0$!
 
-            In other words, the proposed definitions of
+            In other words, the proposed definitions of 
             |> InlineImage
                 class ch4_inline_blackwhite_particles
                 src images/svg_ch4_circle_at_2_4_p1_inline.svg
@@ -6350,15 +6349,13 @@
             solution we seek.
 
             Qualitatively, this implies that the particles
-            can be understood as four particles 
-            rotating at unit speed around a circle of
-            radius $1$ (the white particles)
-            where the center of circle (the UNO
-            particle) is moving at exponential rate along a 
-            half-line. 
-            In particular, the particles remain at 
-            constant distance from one another 
-            for all $t$, whether that seems intuitive or not.
+            can be understood as four particles rotating at 
+            unit speed around a circle of radius $1$ (the 
+            white particles) where the center of circle (the 
+            UNO particle) is moving at exponential rate along
+            a half-line. In particular, the particles remain
+            at constant distance from one another for all $t$,
+            whether that seems intuitive or not.
 
             Concretely, 
             the particle trajectories
@@ -6572,7 +6569,7 @@
             |> Pause
             _Note 1._
             We never took the time to prove the associativity
-            of function addition, but it is easy to prove! (For other 
-            proofs see Exercise 32, Exercise 33, as well as
-            Exercise 9, Chapter 3.)
+            of function addition, but it is easy to prove! 
+            (For other proofs see Exercise 32, Exercise 33, as
+            well as Exercise 9, Chapter 3.)
 */
