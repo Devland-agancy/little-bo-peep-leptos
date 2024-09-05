@@ -1,6 +1,6 @@
 /*
 
-|> Chapter
-    title Powers of 10
+|> Bootcamp
+    title Powers of 100
 
 */

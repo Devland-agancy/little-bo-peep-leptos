@@ -1,101 +1,44 @@
 #![allow(unused_imports)]
-#[macro_use]
-extern crate proc_macro;
-extern crate nom;
 
 use elm_parser::counter::counter_commands::CounterCommand;
 use elm_parser::counter::counters::Counters;
+use elm_parser::datacell::Datacell::DataCell;
 use elm_parser::desugarer::{AttachToEnum, Desugarer, IgnoreOptions, ParagraphIndentOptions};
 use elm_parser::emitter::Emitter;
 use elm_parser::parser::Parser;
-use elm_parser::parser_helpers::DataCell;
 
 use leptos::error::Error;
-use proc_macro::TokenStream;
-use proc_macro2::Ident;
 use quote::quote;
 use serde_json;
+use std::cmp::Ordering;
 use std::env;
 use std::fs;
-use syn::{parse_macro_input, LitStr};
+use std::fs::File;
+use std::io::Write;
 
-struct Input {
-    cx: Ident,
-    elm: LitStr,
-}
-
-impl syn::parse::Parse for Input {
-    fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
-        let cx: syn::Ident = input.parse()?;
-        input.parse::<syn::Token![,]>()?;
-        let elm: LitStr = input.parse()?;
-        Ok(Input { cx, elm })
+pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(String, String)> {
+    let path = env::current_dir().unwrap();
+    let path_string = format!("{}/src/content", path.display());
+    let res = get_content(path_string.as_str(), article_types, show_only);
+    if res.is_err() {
+        panic!("Error");
     }
-}
+    let elm_string = res.unwrap();
 
-#[proc_macro]
-pub fn elm(input: TokenStream) -> TokenStream {
-    let input_tokens = parse_macro_input!(input as Input);
-    // Extract the HTML string
-    let _cx = input_tokens.cx;
-    let elm: LitStr = input_tokens.elm;
+    let mut json = Parser::new();
+    let parsed_json_string = json.export_json(&elm_string, None, false);
 
-    let elm_string = if elm.value().starts_with("file:") {
-        let mut path = env::current_dir().unwrap();
-        path.pop();
-        let _path_string = format!("{}/src/content", path.display());
-        //let _res = get_content(path_string.as_str());
-        // if let Ok(content) = res {
-        //     content
-        // } else {
-        //     panic!("Error");
-        // }
+    let mut desugarer: Desugarer = Desugarer::new(parsed_json_string.as_str(), json.id);
+    let types: Vec<String> = article_types
+        .iter()
+        .map(|x| (x.as_str()[0..1].to_uppercase() + &x[1..]).to_string())
+        .collect();
 
-        let file = format!(
-            "{}{}",
-            env::current_dir().unwrap().display(),
-            &elm.value()[5..]
-        );
-
-        match fs::read_to_string(file) {
-            Ok(contents) => {
-                let mut lines = contents.lines();
-
-                // Skip the first line
-                if let Some(_) = lines.next() {
-                    let mut output = String::new();
-
-                    // Iterate over the remaining lines, excluding the last line
-                    for line in lines.clone().take(lines.count() - 1) {
-                        output.push_str(line);
-                        output.push('\n');
-                    }
-                    output
-                } else {
-                    "File is empty".to_string()
-                }
-            }
-            Err(_) => "File not found".to_string(),
-        }
-    } else {
-        elm.value()
-    };
-
-    let mut counters = Counters::new();
-
-    let mut json = Parser::new(&mut counters);
-    let json_tree = json.export_json(&elm_string, None, false);
-
-    //let mut counter_command = CounterCommand::new(&mut counters, &json_tree);
-    //let mut json: DataCell = serde_json::from_str(&json_tree).unwrap();
-    //let json_tree = counter_command.run(&mut json);
-
-    let mut desugarer: Desugarer = Desugarer::new(json_tree.as_str(), json.id);
     desugarer = desugarer
         .pre_process_exercises()
-        .add_increamental_attr(vec![("Solution", "solution_number")])
-        .auto_increamental_title("Exercise", "Exercise")
-        .auto_increamental_title("Example", "Example")
+        .add_increamental_attr(vec![("Solution", "solution_number")], &types)
+        .auto_increamental_title("Exercise", "Exercise", &types)
+        .auto_increamental_title("Example", "Example", &types)
         .wrap_block_delimited("InnerParagraph")
         .wrap_children(
             vec!["Section", "Solution", "Example", "Exercise"],
@@ -155,49 +98,113 @@ pub fn elm(input: TokenStream) -> TokenStream {
         .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"))
         .auto_convert_to_float(vec!["line", "padding_left"]);
 
-    let json_value: DataCell = serde_json::from_str(&desugarer.json).unwrap();
+    let mut desugarer_json: DataCell = serde_json::from_str(&desugarer.json).unwrap();
 
-    let mut emitter: Emitter = Emitter::new(
-        &json_value,
-        vec!["img", "col", "SectionDivider", "InlineImage", "StarDivider"],
-    );
-    let leptos_code = emitter.emit_json(&json_value);
+    // counter
+    let mut counters = Counters::new();
+    counters.get_counters_from_json(&desugarer_json);
+    let mut counter_command = CounterCommand::new(&mut counters, &desugarer.json);
+    let json_counter_string = counter_command.run(&mut desugarer_json);
 
-    let parsed_code = leptos_code.parse::<proc_macro2::TokenStream>().unwrap();
+    let json_counter: DataCell = serde_json::from_str(&json_counter_string).unwrap();
 
-    let output = quote! {
-        view! {
-            cx, #parsed_code
+    let mut emitter: Emitter = Emitter::new(vec![
+        "img",
+        "col",
+        "SectionDivider",
+        "InlineImage",
+        "StarDivider",
+    ]);
+
+    let leptos_code = emitter.split_and_emit(&json_counter, "Book");
+
+    let mut json_file = File::create("src/res").unwrap();
+    match json_file.write_all(elm_string.as_bytes()) {
+        Ok(_) => {
+            println!("Json written to json_output.json successfully");
         }
-    };
-    output.into()
+        Err(error) => println!("Error writing to json_output.json: {}", error),
+    }
+
+    leptos_code
 }
 
-fn get_content(path_str: &str) -> Result<String, Error> {
+fn get_content(
+    path_str: &str,
+    article_types: &Vec<String>,
+    show_only: Option<usize>,
+) -> Result<String, Error> {
     //read directory files
+    let mut entries: Vec<_> = fs::read_dir(path_str)
+        .unwrap()
+        .collect::<Result<Vec<_>, _>>()
+        .unwrap();
+    entries.sort_by(|a, b| a.file_name().cmp(&b.file_name()));
 
-    let entries = fs::read_dir(path_str).unwrap();
+    entries.sort_by(|a, b| {
+        let a_name = a.file_name().into_string().unwrap();
+        let b_name = b.file_name().into_string().unwrap();
+
+        let a_index = article_types
+            .iter()
+            .position(|t| a_name.contains(t))
+            .unwrap_or(usize::MAX); // Assign max index if not found
+        let b_index = article_types
+            .iter()
+            .position(|t| b_name.contains(t))
+            .unwrap_or(usize::MAX); // Assign max index if not found
+
+        // Sort based on found index, prioritize existing matches
+        if a_index == b_index {
+            a_name.cmp(&b_name) // If both match or both don't, sort alphabetically
+        } else if a_index < b_index {
+            Ordering::Less
+        } else {
+            Ordering::Greater
+        }
+    });
+
     let mut chapter = String::new();
     let mut book = String::new();
 
+    entries.iter().any(|en| {
+        if en.file_name() == "__parent_emu.rs" {
+            let mut file_content = fs::read_to_string(en.path()).unwrap();
+            file_content = remove_comment_symbols(&file_content);
+            book.push_str(&file_content);
+            return true;
+        }
+        false
+    });
+
     for entry in entries {
-        let entry = entry?;
         let path = entry.path();
         let metadata = fs::metadata(&path)?;
 
-        if entry.file_name() == "__parent_emu.rs" {
-            let mut file_content = fs::read_to_string(path).unwrap();
-            file_content = remove_comment_symbols(&file_content);
-            book.push_str(&file_content);
-        } else if entry.file_name() == "chapter_emu.rs" {
+        if article_types
+            .iter()
+            .map(|at| at.to_string() + "_emu.rs")
+            .collect::<String>()
+            .contains(&entry.file_name().into_string().unwrap())
+        {
             let mut file_content = fs::read_to_string(path).unwrap();
             file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
             chapter.push_str(&with_indent);
         } else if metadata.is_dir() {
-            if let Ok(nested_content) = get_content(&path.to_str().unwrap()) {
-                let with_indent = add_indent(&nested_content);
-                book.push_str(&with_indent);
+            if show_only.is_none()
+                || entry
+                    .file_name()
+                    .to_str()
+                    .unwrap()
+                    .contains(&show_only.unwrap().to_string().as_str())
+            {
+                if let Ok(nested_content) =
+                    get_content(&path.to_str().unwrap(), article_types, show_only)
+                {
+                    let with_indent = add_indent(&nested_content);
+                    book.push_str(&with_indent);
+                }
             }
         };
     }
@@ -230,22 +237,4 @@ fn add_indent(content: &str) -> String {
         indented_first_line.push('\n');
     }
     indented_first_line
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_get_content() {
-        let mut path = env::current_dir().unwrap();
-        path.pop();
-        let path_string = format!("{}/src/content", path.display());
-        let res = get_content(path_string.as_str());
-        if let Ok(content) = res {
-            panic!("content {}", content);
-        } else {
-            panic!("Error");
-        }
-    }
 }

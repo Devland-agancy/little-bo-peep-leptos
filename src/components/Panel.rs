@@ -1,5 +1,4 @@
 use crate::components::Checkbox::Checkbox;
-use crate::components::Section::Spacer;
 use crate::{constants::HAMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::*;
 use render_chapters::{render_articles_list, render_based_on_env, render_content_for_article};

@@ -25,7 +25,6 @@ use crate::components::Span::*;
 use crate::components::Table::Table;
 
 use crate::constants::MENU_ITEMS;
-use elm_to_view::elm;
 use leptos::*;
 use render_chapters::render_article_modules;
 

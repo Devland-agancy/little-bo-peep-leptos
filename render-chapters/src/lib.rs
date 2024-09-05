@@ -3,12 +3,15 @@
 extern crate proc_macro;
 extern crate nom;
 
+use elm_to_view::parse;
 use leptos::error::Error;
 use proc_macro::Ident;
 use proc_macro::TokenStream;
 use quote::quote;
 use serde_json;
+use std::collections::HashMap;
 use std::env;
+use std::fmt::format;
 use std::fs;
 use std::fs::read_to_string;
 use std::fs::ReadDir;
@@ -68,9 +71,9 @@ fn read_content_dir() -> ReadDir {
     entries.unwrap()
 }
 
-fn get_sorted_articles(article_type: ArticleType) -> Vec<(u8, PathBuf)> {
+fn get_sorted_articles(article_type: ArticleType) -> Vec<(usize, PathBuf)> {
     let entries = read_content_dir();
-    let mut articles = Vec::<(u8, PathBuf)>::new();
+    let mut articles = Vec::<(usize, PathBuf)>::new();
     for entry in entries {
         let entry = entry.unwrap();
         let path = entry.path();
@@ -79,7 +82,7 @@ fn get_sorted_articles(article_type: ArticleType) -> Vec<(u8, PathBuf)> {
 
         if metadata.is_dir() && ends_with_article_number(&path, &article_type) {
             let last_char = path_str.chars().last().unwrap();
-            let article_number = last_char.to_digit(10).unwrap() as u8;
+            let article_number = last_char.to_digit(10).unwrap() as usize;
             articles.push((article_number, path));
         };
     }
@@ -157,18 +160,58 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
     let article_types: LitStr = input_tokens.article_type;
     let article_types = article_types.value();
-    let article_types = article_types.split(" ");
+    let article_types: std::str::Split<'_, &str> = article_types.split(" ");
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = None;
+    let show_only: Option<usize> = Some(1);
+
+    let types = article_types
+        .clone()
+        .into_iter()
+        .map(|at| {
+            let article_type: ArticleType = ArticleType::from_str(at);
+            article_type.to_str().to_string()
+        })
+        .collect();
+
+    let book = parse(&types, show_only);
+
+    let mut hashmap: HashMap<String, String> = HashMap::new();
+    let mut count = 0;
+    let mut curr_article_type = &book[0].0;
+    book.iter().for_each(|article| {
+        if curr_article_type != &article.0 {
+            count = 1;
+            curr_article_type = &article.0;
+        } else {
+            count += 1;
+        }
+        hashmap.insert(format!("{}{count}", article.0), article.1.clone());
+    });
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
-        let article_type_str = article_type.to_str();
         let article_type_upper_str = article_type.to_upper_str();
+        let article_type_str = article_type.to_str();
 
         let articles = get_sorted_articles(article_type);
+
+        modules.push_str(&format!(
+            r#"
+            #[component]
+            pub fn {article_type_upper_str}(cx: Scope, children: Children, title: &'static str) -> impl IntoView {{
+                view! {{ cx,
+                {{children(cx)}}
+                }}
+            }}
+            "#
+        ));
+
         for (i, path) in articles {
             let (title, mobile_title) = get_article_title(&path);
+            let mut content = &String::new();
+            if show_only.is_some_and(|s| s == i) {
+                content = hashmap.get(&format!("{article_type_str}{i}")).unwrap();
+            }
             modules.push_str(&format!(
                 r#"
                 #[component]
@@ -183,9 +226,9 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
 
                 #[component]
                 fn {article_type_upper_str}{i}Body(cx: Scope) -> impl IntoView {{
-                    {}! {{
+                    view! {{
                     cx,
-                    "file:/src/content/{article_type_str}{i}/{article_type_str}_emu.rs"
+                    {}
                     }}
                 }}
             "#,
@@ -194,10 +237,10 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                 } else {
                     format!(r#"mobile_title="{mobile_title}""#)
                 },
-                if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
-                    "elm"
+                if show_only.is_some_and(|s| s != i) {
+                    "".to_string()
                 } else {
-                    "view"
+                    content.to_string()
                 }
             ));
         }

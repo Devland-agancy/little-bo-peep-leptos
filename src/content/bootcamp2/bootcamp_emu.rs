@@ -828,6 +828,7 @@
         the logarithm base $10$ of $0.00001$ is $-5$.
 
 |> Exercises
+
     |> Exercise
         
         Compute $2^{-2}$, $2^{-3}$ and $2^{-4}$ by hand.
