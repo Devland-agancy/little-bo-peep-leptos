@@ -359,6 +359,8 @@ span .MathJax_SVG{
 .ch4_blackwhite_particles_pellet {
   height: 0.9em;
   transform: translate(0, 0.05em);
+}
+
 table.first-line {
   border-collapse: collapse;
 }
@@ -391,4 +393,10 @@ table.first-line tr td:first-child {
 
 .ch4_inline_blackwhite_particles {
   height:0.9em;
+}
+
+.displayed-image {
+  max-width: -moz-available;
+  max-width: -webkit-fill-available;
+  max-width: fill-available;
 }

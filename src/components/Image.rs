@@ -81,7 +81,7 @@ pub fn Image(
 
         class=move || {
             format!(
-                "relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {}",
+                "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {}",
                 container_classes,
             )
         }
