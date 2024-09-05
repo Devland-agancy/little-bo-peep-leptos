@@ -23,7 +23,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     } = use_context::<GlobalState>(cx).unwrap();
 
     let transition_duration = move || {
-        if solution_transition_duration.get().len() > 0 {
+        if solution_transition_duration.get().len() > solution_number {
             solution_transition_duration.get()[solution_number]
         } else {
             1000
@@ -31,7 +31,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     };
 
     let solution_open = move || {
-        if solutions_state.get().len() > 0 {
+        if solutions_state.get().len() > solution_number {
             solutions_state.get()[solution_number]
         } else {
             false
@@ -95,11 +95,13 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
     create_effect(cx, move |_| {
         set_timeout(
             move || {
-                GlobalState::update_solutions_state(
-                    solution_transition_duration,
-                    solution_number,
-                    min(1000, node_ref().unwrap().offset_height()),
-                );
+                if let Some(node_ref) = node_ref() {
+                    GlobalState::update_solutions_state(
+                        solution_transition_duration,
+                        solution_number,
+                        min(1000, node_ref.offset_height()),
+                    );
+                }
             },
             Duration::from_secs(3),
         );
@@ -225,7 +227,7 @@ where
         solutions_state, ..
     } = use_context::<GlobalState>(cx).unwrap();
     let solution_open = move || {
-        if solutions_state.get().len() > 0 {
+        if solutions_state.get().len() > solution_number {
             solutions_state.get()[solution_number]
         } else {
             false

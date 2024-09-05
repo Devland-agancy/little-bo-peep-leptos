@@ -220,7 +220,14 @@ pub fn Exercises(cx: Scope, labels: Vec<&'static str>, children: ChildrenFn) -> 
         solution_transition_duration,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-    let solution_open = move || solutions_state.get()[selected_tab()];
+
+    let solution_open = move || {
+        if solutions_state.get().len() > selected_tab() {
+            solutions_state.get()[selected_tab()]
+        } else {
+            false
+        }
+    };
 
     global_labels.set(labels.clone());
     tab.set(selected_tab());
@@ -448,7 +455,7 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let solution_open = move || {
-        if solutions_state.get().len() > 0 {
+        if solutions_state.get().len() > tab.get() {
             solutions_state.get()[tab.get()]
         } else {
             false
