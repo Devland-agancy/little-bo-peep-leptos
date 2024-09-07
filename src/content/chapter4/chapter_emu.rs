@@ -291,6 +291,7 @@
 
     |> ul
         |> li
+        
             years on the $x$ axis, dollars per
             year on the $y$ axis
 
