@@ -5,7 +5,7 @@ use elm_parser::counter::counters::Counters;
 use elm_parser::datacell::Datacell::DataCell;
 use elm_parser::desugarer::{AttachToEnum, Desugarer, IgnoreOptions, ParagraphIndentOptions};
 use elm_parser::emitter::Emitter;
-use elm_parser::parser::Parser;
+use elm_parser::parser::{Parser, ParserError};
 
 use leptos::error::Error;
 use quote::quote;
@@ -19,7 +19,13 @@ use std::io::Write;
 pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(String, String)> {
     let path = env::current_dir().unwrap();
     let path_string = format!("{}/src/content", path.display());
-    let res = get_content(path_string.as_str(), article_types, show_only);
+    let mut files_with_lines_number = vec![];
+    let res = get_content(
+        path_string.as_str(),
+        article_types,
+        show_only,
+        &mut files_with_lines_number,
+    );
     if res.is_err() {
         panic!("Error");
     }
@@ -27,6 +33,30 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
 
     let mut json = Parser::new();
     let parsed_json_string = json.export_json(&elm_string, None, false);
+
+    if let Err(err) = parsed_json_string {
+        match err {
+            ParserError::ExtraSpacesError(line) | ParserError::None4xSpacesError(line) => {
+                //since our files are merged we need to get the file and relevant line
+                let mut temp = 0;
+                let mut i = 0;
+                let mut file_line_error = line;
+                while temp <= line {
+                    temp += files_with_lines_number[i].1;
+                    i += 1;
+                    if temp > line {
+                        file_line_error -= files_with_lines_number[i].1;
+                    }
+                }
+                let file_with_error = &files_with_lines_number[i - 1].0;
+                panic!(
+                    "\nError on File: {file_with_error} \nOn line: {file_line_error} \nMessage: {} ",
+                    err.to_string_without_line()
+                );
+            }
+        }
+    }
+    let parsed_json_string = parsed_json_string.unwrap();
 
     let mut desugarer: Desugarer = Desugarer::new(parsed_json_string.as_str(), json.id);
     let types: Vec<String> = article_types
@@ -131,17 +161,23 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
     leptos_code
 }
 
+struct Content {
+    /// full book string
+    result: String,
+    files_with_lines_number: Vec<(String, usize)>,
+}
+
 fn get_content(
     path_str: &str,
     article_types: &Vec<String>,
     show_only: Option<usize>,
+    files_with_lines_number: &mut Vec<(String, usize)>,
 ) -> Result<String, Error> {
     //read directory files
     let mut entries: Vec<_> = fs::read_dir(path_str)
         .unwrap()
         .collect::<Result<Vec<_>, _>>()
         .unwrap();
-    entries.sort_by(|a, b| a.file_name().cmp(&b.file_name()));
 
     entries.sort_by(|a, b| {
         let a_name = a.file_name().into_string().unwrap();
@@ -174,6 +210,8 @@ fn get_content(
             let mut file_content = fs::read_to_string(en.path()).unwrap();
             file_content = remove_comment_symbols(&file_content);
             book.push_str(&file_content);
+            let lines_count = file_content.lines().count();
+            files_with_lines_number.push((en.path().to_str().unwrap().to_string(), lines_count));
             return true;
         }
         false
@@ -189,10 +227,12 @@ fn get_content(
             .collect::<String>()
             .contains(&entry.file_name().into_string().unwrap())
         {
-            let mut file_content = fs::read_to_string(path).unwrap();
+            let mut file_content = fs::read_to_string(&path).unwrap();
             file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
             chapter.push_str(&with_indent);
+            let lines_count = file_content.lines().count();
+            files_with_lines_number.push((path.to_str().unwrap().to_string(), lines_count));
         } else if metadata.is_dir() {
             if show_only.is_none()
                 || entry
@@ -201,9 +241,12 @@ fn get_content(
                     .unwrap()
                     .contains(&show_only.unwrap().to_string().as_str())
             {
-                if let Ok(nested_content) =
-                    get_content(&path.to_str().unwrap(), article_types, show_only)
-                {
+                if let Ok(nested_content) = get_content(
+                    &path.to_str().unwrap(),
+                    article_types,
+                    show_only,
+                    files_with_lines_number,
+                ) {
                     let with_indent = add_indent(&nested_content);
                     book.push_str(&with_indent);
                 }
