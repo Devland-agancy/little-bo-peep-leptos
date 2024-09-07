@@ -209,7 +209,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
         for (i, path) in articles {
             let (title, mobile_title) = get_article_title(&path);
             let mut content = &String::new();
-            if show_only.is_some_and(|s| s == i) {
+            if show_only.is_none() || show_only.is_some_and(|s| s == i) {
                 content = hashmap.get(&format!("{article_type_str}{i}")).unwrap();
             }
             modules.push_str(&format!(
