@@ -14,7 +14,9 @@ use std::env;
 use std::fmt::format;
 use std::fs;
 use std::fs::read_to_string;
+use std::fs::File;
 use std::fs::ReadDir;
+use std::io::Write;
 use std::path::PathBuf;
 use syn::{parse_macro_input, LitStr};
 
@@ -185,7 +187,14 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
         } else {
             count += 1;
         }
-        hashmap.insert(format!("{}{count}", article.0), article.1.clone());
+        if show_only.is_some() {
+            hashmap.insert(
+                format!("{}{}", article.0, show_only.unwrap()),
+                article.1.clone(),
+            );
+        } else {
+            hashmap.insert(format!("{}{count}", article.0), article.1.clone());
+        }
     });
 
     for article_type_str in article_types {
@@ -442,6 +451,21 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
         panic!("Could not find title attribute");
     };
     (title, mobile_title)
+}
+
+fn write_to_file(file_path: &str, contents: &str) {
+    let mut json_file: File = match File::create(file_path) {
+        Ok(file) => file,
+        Err(error) => {
+            println!("Error creating file: {}", error);
+            return;
+        }
+    };
+
+    match json_file.write_all(contents.as_bytes()) {
+        Ok(_) => (),
+        Err(error) => println!("Error writing to {file_path}: {error}"),
+    }
 }
 
 #[cfg(test)]

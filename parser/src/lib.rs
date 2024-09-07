@@ -82,6 +82,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
                 "Grid",
                 "DisplayCentered",
                 "CustomBlock",
+                "ul",
             ],
             tags_with_non_indent_first_child: vec![
                 "Section",
