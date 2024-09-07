@@ -56,7 +56,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 
           class="select-none overscroll-none absolute right-0 w-[16rem] sm:w-[22rem] z-40 bg-stone-100 overflow-scroll translate-y-0 sm:translate-y-[-1px]"
         >
-          <div class="select-none scrollbar-hidden sm:h-full pt-[0.6em] px-[1em] overflow-y-hidden [&>ul]:mb-[8px]">
+          <div class="select-none scrollbar-hidden sm:h-full pt-[0.6em] px-[1em] overflow-y-hidden [&>ul]:mb-[8px] [&>ul]:p-0">
 
             {render_content_for_article!(
                 "chapters", r#"

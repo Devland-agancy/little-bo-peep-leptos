@@ -28,7 +28,7 @@ pub fn Body(cx: Scope) -> impl IntoView {
             <Title label="Chapters"/>
         "#
           )}
-          <ul class="leading-9 lg:leading-10 text-2xl lg:text-3xl">
+          <ul class="p-0 leading-9 lg:leading-10 text-2xl lg:text-3xl">
             {render_articles_list!("chapters")}
           </ul> <Spacer/>
           {render_content_for_article!(
@@ -37,7 +37,7 @@ pub fn Body(cx: Scope) -> impl IntoView {
           "#
           )}
           <ul
-            class="leading-9 lg:leading-10 text-2xl lg:text-3xl"
+            class="p-0 leading-9 lg:leading-10 text-2xl lg:text-3xl"
             class=("text-right", move || !btc_alignment_on_left())
           >
             {render_articles_list!("bootcamps")}
