@@ -114,6 +114,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
                 "DisplayCentered",
                 "CustomBlock",
                 "ul",
+                "div",
             ],
             tags_with_non_indent_first_child: vec![
                 "Section",
