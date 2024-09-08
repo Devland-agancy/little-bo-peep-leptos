@@ -43,12 +43,13 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
                 let mut file_line_error = line;
                 while temp <= line {
                     temp += files_with_lines_number[i].1;
-                    i += 1;
-                    if temp > line {
+                    if temp <= line {
                         file_line_error -= files_with_lines_number[i].1;
                     }
+                    i += 1;
                 }
                 let file_with_error = &files_with_lines_number[i - 1].0;
+                file_line_error = file_line_error + 2; // comment symbol line
                 panic!(
                     "\nError on File: {file_with_error} \nOn line: {file_line_error} \nMessage: {} ",
                     err.to_string_without_line()
