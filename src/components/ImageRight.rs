@@ -188,7 +188,7 @@ pub fn ImageRight(
           <img
             node_ref=image_ref
             src=src
-            class=("max-w-max", || width == "")
+            class=("max-w-max", move || width == "")
             style=move || {
                 format!(
                     "transform: {};
