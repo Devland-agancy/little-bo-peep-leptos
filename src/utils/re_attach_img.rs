@@ -4,7 +4,7 @@ use web_sys::Node;
 
 use super::element_contains_child::element_contains_child;
 
-pub fn attach_img_to_math(node_ref: &NodeRef<Div>) {
+pub fn re_attach_img(node_ref: &NodeRef<Div>) {
     if let Some(node) = node_ref() {
         let parent = node.parent_element().unwrap();
 
@@ -13,6 +13,12 @@ pub fn attach_img_to_math(node_ref: &NodeRef<Div>) {
             .unwrap()
             .class_list()
             .contains(&"mathblock");
+
+        let parent_is_image = parent
+            .first_element_child()
+            .unwrap()
+            .class_list()
+            .contains(&"displayed-image");
 
         if parent_is_math {
             let math_element = element_contains_child(&parent, "MathJax_SVG");
@@ -23,6 +29,17 @@ pub fn attach_img_to_math(node_ref: &NodeRef<Div>) {
 
                 if let Some(img) = img_from_dom {
                     let _ = math_element.append_with_node_1(&Node::from(img));
+                }
+            }
+        } else {
+            let image_container = parent.first_element_child().unwrap().first_element_child();
+
+            if let Some(image_container) = image_container {
+                let img_from_dom =
+                    element_contains_child(&parent.parent_element().unwrap(), "side-img");
+
+                if let Some(img) = img_from_dom {
+                    let _ = image_container.append_with_node_1(&Node::from(img));
                 }
             }
         }
@@ -44,6 +61,12 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
             .class_list()
             .contains(&"mathblock");
 
+        let parent_is_image = parent
+            .first_element_child()
+            .unwrap()
+            .class_list()
+            .contains(&"displayed-image");
+
         if parent_is_math {
             let math_element = element_contains_child(&parent, "MathJax_SVG");
 
@@ -53,6 +76,19 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
 
                 set_anchor_x(if math_width > screen_width {
                     "formula_edge"
+                } else {
+                    "paragraph_edge"
+                })
+            }
+        } else if parent_is_image {
+            let image_container = parent.first_element_child().unwrap().first_element_child();
+
+            if let Some(image_container) = image_container {
+                let image_width = image_container.client_width();
+                let screen_width = parent.first_element_child().unwrap().client_width();
+
+                set_anchor_x(if image_width > screen_width {
+                    "image_edge"
                 } else {
                     "paragraph_edge"
                 })

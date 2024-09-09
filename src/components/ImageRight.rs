@@ -3,7 +3,7 @@ use std::time::Duration;
 use crate::{
     global_state::GlobalState,
     page::state::PageState,
-    utils::attach_img_to_math::{attach_img_to_math, choose_default_anchor},
+    utils::re_attach_img::{choose_default_anchor, re_attach_img},
 };
 use leptos::{
     html::{Div, Img},
@@ -82,8 +82,8 @@ pub fn ImageRight(
                     if edge == "" {
                         choose_default_anchor(&node_ref, set_edge_signal);
                     }
-                    if edge_signal() == "formula_edge" {
-                        attach_img_to_math(&node_ref);
+                    if edge_signal() == "formula_edge" || edge_signal() == "image_edge" {
+                        re_attach_img(&node_ref);
                     }
                 },
                 Duration::from_secs(3),

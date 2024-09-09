@@ -1,7 +1,7 @@
 use crate::{
     global_state::GlobalState,
     page::state::PageState,
-    utils::attach_img_to_math::{attach_img_to_math, choose_default_anchor},
+    utils::re_attach_img::{choose_default_anchor, re_attach_img},
 };
 use leptos::{
     html::{Div, Img},
@@ -17,8 +17,8 @@ pub fn ImageLeft(
     #[prop(default = true)] _attached: bool,
     #[prop(default = "center")] img_position: &'static str, // bot, top, center
     #[prop(default = "center")] y: &'static str,            // bot, top, center of pivot ( red dot )
-    #[prop(default = "")] edge: &'static str,               // formula_edge, paragraph_edge
-    #[prop(optional)] line: f32, // which paragraph line pivot is attached to
+    #[prop(default = "")] edge: &'static str, // formula_edge, paragraph_edge, image_edge
+    #[prop(optional)] line: f32,              // which paragraph line pivot is attached to
 
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
@@ -76,12 +76,12 @@ pub fn ImageLeft(
     create_effect(cx, move |_| {
         set_timeout(
             move || {
-                // choose max width betweem formula and screen as default value for edge
+                // choose max width betweem formula/image and screen as default value for edge
                 if edge == "" {
                     choose_default_anchor(&node_ref, set_edge_signal);
                 }
-                if edge_signal() == "formula_edge" {
-                    attach_img_to_math(&node_ref);
+                if edge_signal() == "formula_edge" || edge_signal() == "image_edge" {
+                    re_attach_img(&node_ref);
                 }
             },
             Duration::from_secs(3),
@@ -109,7 +109,7 @@ pub fn ImageLeft(
             format!("top: {}; left: {}", line_str, left_pos)
         }
 
-        class="absolute -translate-x-1/2 w-1 h-1"
+        class="side-img absolute -translate-x-1/2 w-1 h-1"
       >
 
         <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas())></div>
