@@ -142,12 +142,13 @@ pub fn ImageLeft(
           <img
             node_ref=image_ref
             src=src
-            class="max-w-max"
+            class=("max-w-max", move || width == "")
             style=move || {
                 format!(
                     "transform: {};
-               transform-origin: 100% 51% 0px;
-               transition: {}s;",
+                    transform-origin: 100% 51% 0px;
+                    transition: {}s;
+                    width: {width}",
                     if !popup || (popup && solution_fully_opened())  { "scale(1)" } else { "scale(1, 0)" },
                     if !popup || (popup && solution_fully_opened())  { "0.5" } else { "0" },
                 )

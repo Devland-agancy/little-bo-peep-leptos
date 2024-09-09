@@ -30,6 +30,7 @@ pub fn ImageRight(
     #[prop(default = "")] children_y: &'static str,
     #[prop(default = false)] clickable_on_desktop: bool,
     #[prop(default = "")] padding: &'static str,
+    #[prop(default = "")] width: &'static str,
     #[prop(default = false)] popup: bool,
 
     children: Children,
@@ -187,12 +188,13 @@ pub fn ImageRight(
           <img
             node_ref=image_ref
             src=src
-            class="max-w-max"
+            class=("max-w-max", || width == "")
             style=move || {
                 format!(
                     "transform: {};
-          transform-origin: 100% 51% 0px;
-          transition: {}s;",
+                    transform-origin: 100% 51% 0px;
+                    transition: {}s;
+                    width: {width};",
                     if !popup || (popup && solution_fully_opened())  { "scale(1)" } else { "scale(1, 0)" },
                     if !popup || (popup && solution_fully_opened())  { "0.5" } else { "0" },
                 )
