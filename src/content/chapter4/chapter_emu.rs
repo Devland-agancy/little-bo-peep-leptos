@@ -297,7 +297,9 @@
     ...and so on.
 
     Units might additionally prompt us to refer
-    to $f'$ as <br>the
+    to $f'$ as 
+    |> br
+    the
 
     __rate of change__
     

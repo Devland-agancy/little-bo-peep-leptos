@@ -80,6 +80,10 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
                     attach_to: AttachToEnum::BOTH,
                 },
                 IgnoreOptions {
+                    element: "br",
+                    attach_to: AttachToEnum::BOTH,
+                },
+                IgnoreOptions {
                     element: "ImageRight",
                     attach_to: AttachToEnum::BEFORE,
                 },
@@ -115,6 +119,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
                 "CustomBlock",
                 "ul",
                 "div",
+                "br",
             ],
             tags_with_non_indent_first_child: vec![
                 "Section",
