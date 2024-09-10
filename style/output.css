@@ -431,10 +431,6 @@
   max-width: max-content
 }
 
-.max-w-none {
-  max-width: none
-}
-
 .shrink-0 {
   flex-shrink: 0
 }
