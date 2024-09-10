@@ -11,12 +11,29 @@ use leptos::error::Error;
 use quote::quote;
 use serde_json;
 use std::cmp::Ordering;
+use std::collections::HashMap;
 use std::env;
 use std::fs;
 use std::fs::File;
 use std::io::Write;
+use std::str::Lines;
 
-pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(String, String)> {
+fn write_to_file(file_path: &str, contents: &str) {
+    let mut json_file: File = match File::create(file_path) {
+        Ok(file) => file,
+        Err(error) => {
+            println!("Error creating file: {}", error);
+            return;
+        }
+    };
+
+    match json_file.write_all(contents.as_bytes()) {
+        Ok(_) => println!("file written"),
+        Err(error) => println!("Error writing to {file_path}: {error}"),
+    }
+}
+
+pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<String, String> {
     let path = env::current_dir().unwrap();
     let path_string = format!("{}/src/content", path.display());
     let mut files_with_lines_number = vec![];
@@ -25,11 +42,17 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
         article_types,
         show_only,
         &mut files_with_lines_number,
+        None,
     );
     if res.is_err() {
         panic!("Error");
     }
+
     let elm_string = res.unwrap();
+    // write_to_file(
+    //     &format!("{}/src/content/res.emu", path.display()),
+    //     &elm_string,
+    // );
 
     let mut json = Parser::new();
     let parsed_json_string = json.export_json(&elm_string, None, false);
@@ -155,7 +178,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
         "br",
     ]);
 
-    let leptos_code = emitter.split_and_emit(&json_counter, "Book");
+    let parsed_map = emitter.split_and_emit(&json_counter, "Book");
 
     // let mut json_file = File::create("src/res").unwrap();
     // match json_file.write_all(elm_string.as_bytes()) {
@@ -165,13 +188,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> Vec<(Stri
     //     Err(error) => println!("Error writing to json_output.json: {}", error),
     // }
 
-    leptos_code
-}
-
-struct Content {
-    /// full book string
-    result: String,
-    files_with_lines_number: Vec<(String, usize)>,
+    parsed_map
 }
 
 fn get_content(
@@ -179,6 +196,7 @@ fn get_content(
     article_types: &Vec<String>,
     show_only: Option<usize>,
     files_with_lines_number: &mut Vec<(String, usize)>,
+    parent_file_name: Option<&str>,
 ) -> Result<String, Error> {
     //read directory files
     let mut entries: Vec<_> = fs::read_dir(path_str)
@@ -212,11 +230,29 @@ fn get_content(
     let mut chapter = String::new();
     let mut book = String::new();
 
+    let mut parent_exists = false;
     entries.iter().any(|en| {
         if en.file_name() == "__parent_emu.rs" {
+            parent_exists = true;
             let mut file_content = fs::read_to_string(en.path()).unwrap();
             file_content = remove_comment_symbols(&file_content);
+
+            if let Some(parent_file_name) = parent_file_name {
+                let mut new_content = String::new();
+                for line in file_content.lines() {
+                    if line.trim().starts_with("|> ") {
+                        new_content.push_str(line.trim_end());
+                        new_content.push_str(&parent_file_name[parent_file_name.len() - 1..]);
+                        new_content.push('\n');
+                    } else {
+                        new_content.push_str(line);
+                        new_content.push('\n');
+                    }
+                }
+                file_content = new_content
+            }
             book.push_str(&file_content);
+
             let lines_count = file_content.lines().count();
             files_with_lines_number.push((en.path().to_str().unwrap().to_string(), lines_count));
             return true;
@@ -224,10 +260,16 @@ fn get_content(
         false
     });
 
+    if !parent_exists {
+        panic!("No parent file")
+    }
     for entry in entries {
         let path = entry.path();
         let metadata = fs::metadata(&path)?;
-
+        let file_name = entry.file_name().to_str().unwrap().to_string();
+        if file_name.starts_with("#") {
+            continue;
+        }
         if article_types
             .iter()
             .map(|at| at.to_string() + "_emu.rs")
@@ -238,6 +280,7 @@ fn get_content(
             file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
             chapter.push_str(&with_indent);
+
             let lines_count = file_content.lines().count();
             files_with_lines_number.push((path.to_str().unwrap().to_string(), lines_count));
         } else if metadata.is_dir() {
@@ -253,6 +296,7 @@ fn get_content(
                     article_types,
                     show_only,
                     files_with_lines_number,
+                    Some(file_name.as_str()),
                 ) {
                     let with_indent = add_indent(&nested_content);
                     book.push_str(&with_indent);

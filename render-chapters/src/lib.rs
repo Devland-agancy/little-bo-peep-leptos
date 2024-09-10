@@ -81,7 +81,9 @@ fn get_sorted_articles(article_type: ArticleType) -> Vec<(usize, PathBuf)> {
         let path = entry.path();
         let metadata = fs::metadata(&path).unwrap();
         let path_str = path.to_str().unwrap();
-
+        if entry.file_name().to_str().unwrap().starts_with("#") {
+            continue;
+        }
         if metadata.is_dir() && ends_with_article_number(&path, &article_type) {
             let last_char = path_str.chars().last().unwrap();
             let article_number = last_char.to_digit(10).unwrap() as usize;
@@ -177,25 +179,25 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
 
     let book = parse(&types, show_only);
 
-    let mut hashmap: HashMap<String, String> = HashMap::new();
-    let mut count = 0;
-    let mut curr_article_type = &book[0].0;
-    book.iter().for_each(|article| {
-        if curr_article_type != &article.0 {
-            count = 1;
-            curr_article_type = &article.0;
-        } else {
-            count += 1;
-        }
-        if show_only.is_some() {
-            hashmap.insert(
-                format!("{}{}", article.0, show_only.unwrap()),
-                article.1.clone(),
-            );
-        } else {
-            hashmap.insert(format!("{}{count}", article.0), article.1.clone());
-        }
-    });
+    // let mut hashmap: HashMap<String, String> = HashMap::new();
+    // let mut count = 0;
+    // let mut curr_article_type = &book[0].0;
+    // book.iter().for_each(|article| {
+    //     if curr_article_type != &article.0 {
+    //         count = 1;
+    //         curr_article_type = &article.0;
+    //     } else {
+    //         count += 1;
+    //     }
+    //     if show_only.is_some() {
+    //         hashmap.insert(
+    //             format!("{}{}", article.0, show_only.unwrap()),
+    //             article.1.clone(),
+    //         );
+    //     } else {
+    //         hashmap.insert(format!("{}{count}", article.0), article.1.clone());
+    //     }
+    // });
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
@@ -204,22 +206,11 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
 
         let articles = get_sorted_articles(article_type);
 
-        modules.push_str(&format!(
-            r#"
-            #[component]
-            pub fn {article_type_upper_str}(cx: Scope, children: Children, title: &'static str) -> impl IntoView {{
-                view! {{ cx,
-                {{children(cx)}}
-                }}
-            }}
-            "#
-        ));
-
         for (i, path) in articles {
             let (title, mobile_title) = get_article_title(&path);
             let mut content = &String::new();
             if show_only.is_none() || show_only.is_some_and(|s| s == i) {
-                content = hashmap.get(&format!("{article_type_str}{i}")).unwrap();
+                content = book.get(&format!("{article_type_str}{i}")).unwrap();
             }
             modules.push_str(&format!(
                 r#"
@@ -240,6 +231,14 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                     {}
                     }}
                 }}
+
+                #[component]
+                pub fn {article_type_upper_str}{i}(cx: Scope, children: Children, title: &'static str) -> impl IntoView {{
+                    view! {{ cx,
+                    {{children(cx)}}
+                    }}
+                }}
+
             "#,
                 if mobile_title.is_empty() {
                     "".to_string()
@@ -441,15 +440,10 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
                     mobile_title += line.trim().split_once(" ").unwrap().1;
                 }
             }
-            if title.is_empty() {
-                panic!("title is empty");
-            };
             return (title, mobile_title);
         }
     }
-    if title.is_empty() {
-        panic!("Could not find title attribute");
-    };
+
     (title, mobile_title)
 }
 
