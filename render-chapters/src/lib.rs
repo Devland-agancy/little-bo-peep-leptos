@@ -160,6 +160,28 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
 }
 
 #[proc_macro]
+pub fn render_mods(input: TokenStream) -> TokenStream {
+    let input_tokens = parse_macro_input!(input as Input);
+    let article_types: LitStr = input_tokens.article_type;
+    let article_types = article_types.value();
+    let article_types: std::str::Split<'_, &str> = article_types.split(" ");
+
+    let mut modules = String::new();
+    for article_type_str in article_types {
+        let article_type: ArticleType = ArticleType::from_str(article_type_str);
+        let article_type_str = article_type.to_str();
+
+        let articles = get_sorted_articles(article_type);
+        for (i, _) in articles {
+            modules.push_str(&format!("pub mod {article_type_str}{i};"))
+        }
+    }
+    let parsed_code = modules.parse::<proc_macro2::TokenStream>().unwrap();
+    let output = quote! { #parsed_code };
+    parsed_code.into()
+}
+
+#[proc_macro]
 pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
     let article_types: LitStr = input_tokens.article_type;
@@ -178,26 +200,6 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
         .collect();
 
     let book = parse(&types, show_only);
-
-    // let mut hashmap: HashMap<String, String> = HashMap::new();
-    // let mut count = 0;
-    // let mut curr_article_type = &book[0].0;
-    // book.iter().for_each(|article| {
-    //     if curr_article_type != &article.0 {
-    //         count = 1;
-    //         curr_article_type = &article.0;
-    //     } else {
-    //         count += 1;
-    //     }
-    //     if show_only.is_some() {
-    //         hashmap.insert(
-    //             format!("{}{}", article.0, show_only.unwrap()),
-    //             article.1.clone(),
-    //         );
-    //     } else {
-    //         hashmap.insert(format!("{}{count}", article.0), article.1.clone());
-    //     }
-    // });
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
