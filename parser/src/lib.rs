@@ -126,36 +126,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         )
         .wrap_children(vec!["Grid"], "Span", &None)
         .wrap_children(vec!["List"], "Item", &None)
-        .add_indent(&ParagraphIndentOptions {
-            tags_before_non_indents: vec![
-                "Image",
-                "DisplayImage",
-                "Pause",
-                "StarDivider",
-                "MathBlock",
-                "Table",
-                "SectionDivider",
-                "Example",
-                "List",
-                "Grid",
-                "DisplayCentered",
-                "CustomBlock",
-                "ul",
-                "div",
-                "br",
-            ],
-            tags_with_non_indent_first_child: vec![
-                "Section",
-                "Example",
-                "Solution",
-                "Table",
-                "td",
-                "ImageLink",
-                "ExerciseQuestion",
-                "Exercise",
-                "Item",
-            ],
-        })
+        .add_indent()
         .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"))
         .auto_convert_to_float(vec!["line", "padding_left"]);
 
