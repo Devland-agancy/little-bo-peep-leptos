@@ -87,7 +87,7 @@ pub fn ImageRight(
                         re_attach_img(&node_ref);
                     }
                 },
-                Duration::from_secs(3),
+                Duration::from_secs(5),
             );
         });
     });
