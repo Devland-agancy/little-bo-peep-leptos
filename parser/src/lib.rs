@@ -43,16 +43,17 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         show_only,
         &mut files_with_lines_number,
         None,
+        0,
     );
     if res.is_err() {
         panic!("Error");
     }
 
     let elm_string = res.unwrap();
-    // write_to_file(
-    //     &format!("{}/src/content/res.emu", path.display()),
-    //     &elm_string,
-    // );
+    write_to_file(
+        &format!("{}/src/content/res.emu", path.display()),
+        &elm_string,
+    );
 
     let mut json = Parser::new();
     let parsed_json_string = json.export_json(&elm_string, None, false);
@@ -168,6 +169,7 @@ fn get_content(
     show_only: Option<usize>,
     files_with_lines_number: &mut Vec<(String, usize)>,
     parent_file_name: Option<&str>,
+    recursive_num: usize,
 ) -> Result<String, Error> {
     //read directory files
     let mut entries: Vec<_> = fs::read_dir(path_str)
@@ -175,28 +177,36 @@ fn get_content(
         .collect::<Result<Vec<_>, _>>()
         .unwrap();
 
-    entries.sort_by(|a, b| {
-        let a_name = a.file_name().into_string().unwrap();
-        let b_name = b.file_name().into_string().unwrap();
+    if article_types.len() > 0 {
+        entries.sort_by(|a, b| {
+            let a_name = a.file_name().into_string().unwrap();
+            let b_name = b.file_name().into_string().unwrap();
 
-        let a_index = article_types
-            .iter()
-            .position(|t| a_name.contains(t))
-            .unwrap_or(usize::MAX); // Assign max index if not found
-        let b_index = article_types
-            .iter()
-            .position(|t| b_name.contains(t))
-            .unwrap_or(usize::MAX); // Assign max index if not found
+            let a_index = article_types
+                .iter()
+                .position(|t| a_name.contains(t))
+                .unwrap_or(usize::MAX); // Assign max index if not found
+            let b_index = article_types
+                .iter()
+                .position(|t| b_name.contains(t))
+                .unwrap_or(usize::MAX); // Assign max index if not found
 
-        // Sort based on found index, prioritize existing matches
-        if a_index == b_index {
-            a_name.cmp(&b_name) // If both match or both don't, sort alphabetically
-        } else if a_index < b_index {
-            Ordering::Less
-        } else {
-            Ordering::Greater
-        }
-    });
+            // Sort based on found index, prioritize existing matches
+            if a_index == b_index {
+                a_name.cmp(&b_name) // If both match or both don't, sort alphabetically
+            } else if a_index < b_index {
+                Ordering::Less
+            } else {
+                Ordering::Greater
+            }
+        });
+    } else {
+        entries.sort_by(|a, b| {
+            let a_name = a.file_name().into_string().unwrap();
+            let b_name = b.file_name().into_string().unwrap();
+            a_name.cmp(&b_name)
+        })
+    }
 
     let mut chapter = String::new();
     let mut book = String::new();
@@ -211,7 +221,8 @@ fn get_content(
             if let Some(parent_file_name) = parent_file_name {
                 let mut new_content = String::new();
                 for line in file_content.lines() {
-                    if line.trim().starts_with("|> ") {
+                    if recursive_num == 1 && line.trim().starts_with("|> ") {
+                        // append article number to the tag
                         new_content.push_str(line.trim_end());
                         new_content.push_str(&parent_file_name[parent_file_name.len() - 1..]);
                         new_content.push('\n');
@@ -241,15 +252,11 @@ fn get_content(
         if file_name.starts_with("#") {
             continue;
         }
-        if article_types
-            .iter()
-            .map(|at| at.to_string() + "_emu.rs")
-            .collect::<String>()
-            .contains(&entry.file_name().into_string().unwrap())
-        {
+        if file_name.ends_with("_emu.rs") && file_name != "__parent_emu.rs" {
             let mut file_content = fs::read_to_string(&path).unwrap();
             file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
+            chapter.push_str("\n");
             chapter.push_str(&with_indent);
 
             let lines_count = file_content.lines().count();
@@ -264,10 +271,11 @@ fn get_content(
             {
                 if let Ok(nested_content) = get_content(
                     &path.to_str().unwrap(),
-                    article_types,
+                    &vec![],
                     show_only,
                     files_with_lines_number,
                     Some(file_name.as_str()),
+                    recursive_num + 1,
                 ) {
                     let with_indent = add_indent(&nested_content);
                     book.push_str(&with_indent);
