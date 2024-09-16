@@ -31,7 +31,7 @@ pub fn re_attach_img(node_ref: &NodeRef<Div>) {
                     let _ = math_element.append_with_node_1(&Node::from(img));
                 }
             }
-        } else {
+        } else if parent_is_image {
             let image_container = parent.first_element_child().unwrap().first_element_child();
 
             if let Some(image_container) = image_container {
@@ -53,7 +53,7 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
             return;
         }
 
-        let parent = node.parent_element().unwrap();
+        let parent = parent.unwrap();
 
         let parent_is_math = parent
             .first_element_child()
@@ -73,7 +73,6 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
             if let Some(math_element) = math_element {
                 let math_width = math_element.client_width();
                 let screen_width = parent.first_element_child().unwrap().client_width();
-
                 set_anchor_x(if math_width > screen_width {
                     "formula_edge"
                 } else {

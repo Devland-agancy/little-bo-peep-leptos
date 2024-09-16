@@ -1134,6 +1134,20 @@ select {
   margin-right: -100% !important;
 }
 
+.pr:has( > .wide_desktop) {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pr:has( > .wide) {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.pr:has(> .wide) > .side-img > .squiggle {
+  display: none;
+}
+
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -1529,7 +1543,7 @@ table.first-line tr td:first-child {
   height:0.9em;
 }
 
-.displayed-image {
+.fill-available {
   max-width: -moz-available;
   max-width: -webkit-fill-available;
   max-width: fill-available;
