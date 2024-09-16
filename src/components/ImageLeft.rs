@@ -1,8 +1,4 @@
-use crate::{
-    global_state::GlobalState,
-    page::state::PageState,
-    utils::re_attach_img::{choose_default_anchor, re_attach_img},
-};
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{
     html::{Div, Img},
     *,
@@ -71,22 +67,6 @@ pub fn ImageLeft(
     });
 
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
-    let (edge_signal, set_edge_signal) = create_signal(cx, edge);
-
-    create_effect(cx, move |_| {
-        set_timeout(
-            move || {
-                // choose max width betweem formula/image and screen as default value for edge
-                if edge == "" {
-                    choose_default_anchor(&node_ref, set_edge_signal);
-                }
-                if edge_signal() == "formula_edge" || edge_signal() == "image_edge" {
-                    re_attach_img(&node_ref);
-                }
-            },
-            Duration::from_secs(3),
-        );
-    });
 
     view! { cx,
       <div
@@ -105,7 +85,7 @@ pub fn ImageLeft(
                     _ => y.to_string(),
                 };
             }
-            let left_pos = if edge_signal() == "formula_edge" { "0" } else { "0.5rem" };
+            let left_pos = "0.5rem" ;
             format!("top: {}; left: {}", line_str, left_pos)
         }
 
