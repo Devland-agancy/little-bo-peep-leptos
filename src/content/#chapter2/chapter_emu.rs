@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Slopes.*
@@ -962,4 +961,3 @@
             $$ y_0 - px_0 $$
 
             the $y$-intercept in all cases.
-*/

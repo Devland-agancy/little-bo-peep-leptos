@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *The Second Derivative of Position.*
@@ -243,4 +242,3 @@
     (i.e., $f - g$) of two functions from $\rr$ to
     $\rr$ appear here for the first time! (We are
     “completing our collection”.)
-*/

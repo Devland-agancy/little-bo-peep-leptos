@@ -1,4 +1,3 @@
-/*
 |> Image
     src images/svg_ch4_polaroids.svg
 
@@ -72,5 +71,3 @@
 
     (In other words, “half-tangents” do not actually 
     count as tangents.) 
-
-*/

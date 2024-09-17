@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     Sketch the velocity vector, acceleration vector,
@@ -346,4 +345,3 @@
         $925.\overline{925}$ radii per second, to bring it down
         to more “human” dimensions.) (You can also say
         $925.\overline{925}$ _radians_ per second.)
-*/

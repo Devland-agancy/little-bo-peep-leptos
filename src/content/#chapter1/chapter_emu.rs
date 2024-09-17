@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Square Roots.*
@@ -1277,4 +1276,3 @@
             
             is _less_ than $1/10^3$, so the error is _less_
             than $0.001$.)
-*/

@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Vocabulary.*
@@ -100,5 +99,3 @@
     __~ the derivative of a constant is zero ~__
  
     (the way people usually state it).
-
-*/

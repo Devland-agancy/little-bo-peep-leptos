@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Terminology.*
@@ -1321,5 +1320,3 @@
             \Large F\mu^{-2}\rho = 1
             $$
             (since $v^0 = 1$, $F^1 = F$).
-
-*/

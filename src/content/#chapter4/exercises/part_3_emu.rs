@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     Where is the rate of change of the function
@@ -905,5 +904,3 @@
         around in a circle—it's just that your
         circle could be centered anywhere, not
         necessarily at $(0, 0)$!)
-
-*/

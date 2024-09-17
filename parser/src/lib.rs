@@ -73,7 +73,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
                     i += 1;
                 }
                 let file_with_error = &files_with_lines_number[i - 1].0;
-                file_line_error = file_line_error + 2; // comment symbol line
+                file_line_error = file_line_error;
                 panic!(
                     "\nError on File: {file_with_error} \nOn line: {file_line_error} \nMessage: {} ",
                     err.to_string_without_line()
@@ -227,7 +227,6 @@ fn get_content(
         if en.file_name() == "__parent_emu.rs" {
             parent_exists = true;
             let mut file_content = fs::read_to_string(en.path()).unwrap();
-            file_content = remove_comment_symbols(&file_content);
             if let Some(parent_file_name) = parent_file_name {
                 let mut new_content = String::new();
                 for line in file_content.lines() {
@@ -264,7 +263,6 @@ fn get_content(
         }
         if file_name.ends_with("_emu.rs") && file_name != "__parent_emu.rs" {
             let mut file_content = fs::read_to_string(&path).unwrap();
-            file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
             book.push_str("\n");
             book.push_str(&with_indent);

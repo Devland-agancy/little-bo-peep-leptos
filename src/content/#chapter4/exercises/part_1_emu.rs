@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     Sketch the derivative of a function with the
@@ -194,5 +193,3 @@
         denotes the input, and the $x$ that is used as
         a placeholder to describe how the first function
         acts.
-
-*/

@@ -1,5 +1,3 @@
-/*
-
 |> Exercise
 
     Continuing with the fundraising rat as in the 
@@ -303,4 +301,3 @@
 
         |> Image
             src images/svg_ch4_velocity_vector_radius_3_speed_2_with_position.svg
-*/

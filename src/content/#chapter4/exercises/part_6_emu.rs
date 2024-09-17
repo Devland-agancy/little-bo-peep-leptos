@@ -1,4 +1,3 @@
-/*
 
 |> Exercise
 
@@ -717,5 +716,3 @@
         You don't need to know anything about “$f$”
         or “$g$” to answer this question. You only need to
         know what “$f \circ g$” is. 
-
-*/

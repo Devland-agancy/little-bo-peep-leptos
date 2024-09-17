@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     Add elements to the following drawing...
@@ -528,4 +527,3 @@
         left- and right-hand sides. (The difference being
         namely “($c$ times $f$) prime” on the left vs. “c
         times ($f$ prime)” on the right.)
-*/

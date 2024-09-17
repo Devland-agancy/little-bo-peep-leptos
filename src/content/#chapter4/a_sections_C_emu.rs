@@ -1,4 +1,3 @@
-/*
 
 |> Section
 
@@ -138,5 +137,3 @@
     emphasis has to do with the fact that, in a
     general graph, the slope of the tangent
     keeps changing from point to point.
-
-*/

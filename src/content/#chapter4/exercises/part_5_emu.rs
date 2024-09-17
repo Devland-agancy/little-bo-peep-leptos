@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     The solution to the previous exercise
@@ -1018,5 +1017,3 @@
         Feel free to follow Pacman all the way
         to the end of the timeseries. He ends up somewhere
         near...
-
-*/

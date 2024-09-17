@@ -1,4 +1,3 @@
-/*
 |> Section
     
     *Syntax.*
@@ -2459,5 +2458,3 @@
             {1.01 \over 0.1} = 1.01 \times 10 = 10.1
             $$
             ...result! (The answer is: ten point one.)
-
-*/

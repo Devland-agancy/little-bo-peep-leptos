@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Notation.*
@@ -371,4 +370,3 @@
     has an _undefined_ value—the same way, say, that division by
     $0$ is undefined in $\rr$. 
     (Well, anyway, end of lesson.)
-*/

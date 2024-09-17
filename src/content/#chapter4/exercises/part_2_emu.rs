@@ -1,4 +1,3 @@
-/*
 |> Exercise
 
     Complete the missing units for each strip
@@ -293,4 +292,3 @@
         is twice as large!), whereas “run” stays
         the same. (So the slope of the tangent has
         doubled, so the derivative is doubled.)
-*/

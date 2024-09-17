@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *The second derivative.*
@@ -183,6 +182,3 @@
         
         is neither “bending upwards” nor “bending 
         downwards”—$0$ is neither positive, nor negative.
-
-
-*/

@@ -1,5 +1,3 @@
-/*
-
 |> Exercise
 
     Imagine a single particle in a one-dimensional
@@ -1483,4 +1481,3 @@
         of function addition, but it is easy to prove! 
         (For other proofs see Exercise 32, Exercise 33, as
         well as Exercise 9, Chapter 3.)
-*/

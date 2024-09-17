@@ -1,760 +1,380 @@
-
 |> Book
     title
-    mobile_title
-
+    mobile_titlee
     
-    |> Chapter4
-        title Derivatives
+    |> Bootcamp1
+        title Sets
     
     
-        |> Image
-            src images/svg_ch4_polaroids.svg
+        |> Section
         
-        |> Section    
+            *Notation.*
+            Curly braces typically denote the beginning
+            “$\{$” and ending “$\}$” of a collection of 
+            elements, otherwise known as a _set_.
+            For example, this is a set containing the 
+            numbers $1$, $2$ and $3$ (and nothing else):
+            
+            $$\Large\{1, 2, 3\}$$
+            
+            Also,
         
-            *Definitions.*
-            The _derivative_ of a function
-            
-            $$
-            f : \rr \ra \rr
-            $$
-            
-            is a (new) function
-            
-            $$
-            f' : \rr \ra \rr
-            $$
-            
-            that gives the slope of $f$ at each point. 
-            In other words
-            
-            $$
-            f'(a)
-            $$
-            
-            is the slope of the graph $y = f(x)$ at
-            $x = a$. And—surprise!—each pair of graphs
-            above is a pair of the form $y = f(x)$ [$=$
-            “before”], $y = f'(x)$ [$=$ “after”]. (Meaning,
-            the “after” graph records the slope of the 
-            “before” graph.) E.g.:
+            $$\Large\{1\}$$
         
-            |> Image
-                src images/svg_ch4_explanation1.svg
+            is a set containing just the number $1$, while
+            
+            $$\Large\{1, 3\}$$
+            
+            is a set containing just the numbers $1$ 
+            and $3$, etc. Even,
+            
+            $$\Large\{\}$$
+            
+            is an _empty_ set, a set with no elements! 
         
-            Note that $f'\!$ (read “$f$ prime”) remains 
-            undefined where $y = f(x)$ has a sharp “corner” 
-            and no well-defined slope. By opposition, if 
-            there is a well-defined tangent line to 
-            $y = f(x)$ at $x = a$ the slope of this
-            tangent line supplies the value of $f'(a)$:
+        |> Section
         
-            |> Image
-                src images/svg_ch4_explanation2.svg
+            *What it does.*
+            The “API” (a computer science notion,
+            roughly meaning
+            
+            __the interface offered to the outside world__
+        
+            as in, for example, the buttons and clock 
+            display and door handle of a microwave oven) 
+            of a set consists of just one functionality: 
+            a set can answer questions of the form
+        
+            __do you contain ... ?__
+        
+            and nothing else.
+            For example, you could ask a set
+        
+            __do you contain 3?__
+        
+            to which $\{1, 3\}$ would answer “yes”, but
+            $\{ 1\}$ would answer “no”, or
+        
+            __do you contain 2?__
+        
+            to which $\{1\}$ and $\{1, 3\}$ would
+            both answer “no”, but $\{1, 2, 3\}$ would
+            answer “yes”.
+        
+            Notation-wise, the expression
+            
+            $$\Large x \in A$$
+            
+            means
+        
+            __$A$ contains $x$__
+                
+            or 
+            
+            __$A$ answers “yes” to the
+            question “do you contain $x$?”__
+            
+            equivalently. [One can also say
+            
+            __$x$ in $A$__
+                
+            or 
+                
+            __$x$ is in $A$__
+                
+            or 
+            
+            __$x$ is an element of $A$__
+        
+            depending on one's mood and/or tastes.]
+            As in all of mathematics, any such statement 
+            evaluates to either “true” or “false”.
+            For example,
+            
+            $$\Large 1 \in \{1, 2\}$$
+            
+            is true, because $1$ _is_ an element of the set 
+            $\{1, 2\}$, whereas
+            
+            $$\Large 3 \in \{1, 2\}$$
+        
+            is false, because $3$ _is not_ 
+            an element of the set $\{1, 2\}$. 
+        
+        |> Section
+        
+            *Set Equality.*
+            Two sets are deemed to be 
+            equal if and only if they
+            answer the same to
+            all “do you contain ...?” questions.
+            For example, while
+            $$
+            \Large\{2, 1\}
+            $$
+            might look superficially different from
+            $$
+            \Large\{1, 2\}
+            $$
+            these sets are actually one and the same, because they both
+            answer “yes” to
+        
+            __do you contain 1?__
+            __do you contain 2?__
+                
+            and answer “no” to all else. For that matter,
+            $$
+            \Large\{1, 1, 2\}
+            $$
+            might also look superficially different from
+            $$
+            \Large\{1, 2\}
+            $$
+            but since both sets answer “yes” to
+        
+            __do you contain 1?__
+            __do you contain 2?__
+                
+            and answer “no” to all else,
+            they are by definition the same.
+        
+            (These examples demonstrate that human notation 
+            is redundant: there are several different ways of 
+            writing down the same set. They also demonstrate
+            that sets do not keep track of the
+            
+            __order__
+            
+            nor of the
+            
+            __multiplicity__
+            
+            of their elements. Such notions are simply not part
+            of the “API” of a set.)
+        
+            Moreover, any empty set is equal to any other 
+            empty set. Equality follows because both sets 
+            answer all questions the same way: they both 
+            answer “no” to everything. So there is
+                
+            __one__
+            
+            and only one empty set. Therefore, mathematicians speak of
+            
+            __the__
+            
+            empty set—the one and only!
+        
+        |> Section
+        
+            *Second notation for the empty set.* 
+            While the empty set can be written
+            $$
+            \Large \{\}
+            $$
+            another available notation is
+            $$
+            \Large \phi
+            $$
+            which is the Greek letter phi, read “fee”. (Or “fie”?
+            Hum.) (Or you can just say “the empty set”, and
+            keep it safe.)
+        
+        |> Section
+        
+            *Sets within sets.*
+            Sets can be nested much like Russian dolls.
+            In fact, the result of doing this might even look like a little bit
+            like a Russian doll (no?):
+            $$
+            \Large \{\{\{\{\}\}\}\}
+            $$
+            The above is “a set containing a set containing a set
+            containing a set containing the empty set”. Eschewing complete
+            adherence to the Russian doll aesthetic, we could also write
+            $$
+            \Large \{\{\{\phi\}\}\}
+            $$
+            for the same thing, given that $\phi = \{\}$.
+        
+            Mind you, concerning this example, that
+            $$
+            \Large \{\{\} \} \ne \{\}
+            $$
         
             |> ImageRight
-                y top
-                offset_y 1em
-                offset_x -5em
-                src images/svg_ch4_explanation2_cloud.svg
+                src images/svg_empty_set_cloud.svg
+                offset_x 1em
         
-            In fact,
-            we can
-            succinctly describe the derivative by...
-        
+            because a box containing an empty box is not the same
+            thing as an empty box! Specifically,
             $$
-            f'(a) = \te{[slope of tangent line to $y = f(x)$ at $x = a$]}
+            \Large \{ \{\} \}
             $$
-        
-            ...with the understanding that $f'(a)$ is 
-            undefined if a tangent line does not exist 
-            or if the tangent is vertical. But for one 
-            last asterisk—and speaking of the existence,
-            or not, of the tangent—note that the endpoint
-            of a curve does not count as having a tangent,
-            and therefore leaves a missing value for the 
-            derivative:
-        
-            |> Image
-                src images/svg_ch4_explanation_one_sided_tangent.svg
-        
-            (In other words, “half-tangents” do not actually 
-            count as tangents.) 
-        
-    
-        |> Section
-        
-            *Vocabulary.*
-            A function $f : \rr \ra \rr$ is
-        
-            __differentiable__
-        
-            if $\dom\,f' = \dom\,f$. Also, if $a, b \in \rr$, 
-            $a < b$, $f$ is
-            
-            __differentiable on $[a,b]$__
-            
-            if $[a,b] \subseteq \dom \,f'$. Lastly, $f$ is
-            
-            __differentiable at $a$__
-            
-            if $a \in \dom\,f'$.
+            answers “yes” to the question “do you contain 
+            $\{\}$?”
+            (a.k.a., “do you contain $\phi$?”) 
+            whereas
+            $$
+            \Large \{\}
+            $$
+            answers “no” to the same question. (Indeed, while the empty set
+            _contains_ nothing, it _is_ something.) Similarly,
+            $$
+            \Large \{\{\{\}\} \} \ne \{\{\}\}
+            $$
+            etc, etc: adding a new outer layer changes the whole set each time.
         
         |> Section
         
-            *Sketching a Derivative.*
-            Say that you would like to sketch the derivative
-            of the “before” function from the last “before”/“after” pair above
-            (the one with the closed endpoints):
+            *Set union and set intersection.*
+            The so-called _union_
+            of two sets $A$ and
+            $B$ is written 
+            $$\Large A \cup B$$
+            and consists of the set of all things that are either in $A$ or in 
+            $B.$
+            For example,
+            $$
+            \Large \{1, 2\} \cup \{2, 5\} = \{1, 2, 5\}
+            $$
+            as $1$, $2$ and $5$ are the only elements to find
+            themselves either in
+            $\{1, 2\}$ or in $\{2, 5\}$.
+            The so-called _intersection_ of two sets $A$ and
+            $B$ is written 
+            $$\Large A \cap B$$
+            and consists of the set of all things that are both in $A$ and in 
+            $B$.
+            For example,
+            $$
+            \Large \{1, 2\} \cap \{2, 5\} = \{2\}
+            $$
+            as $2$ is the only element that is both in
+            $\{1, 2\}$ and in $\{2, 5\}$.
         
-            |> Image
-                src images/svg_ch4_curve_to_sketch.svg
-        
-            One method is simply to eyeball the slope at 
-            a few points along the curve, plot these 
-            values and interpolate:
+            Note that
+            $$
+            \Large x \in (A \cup B)
+            $$
+            if and only if
+            $$
+            \Large x \in A
+            $$
+            _or_
+            $$
+            \Large x \in B
+            $$
+            because that's how we defined “union”. (Replace “or”
+            by “and” to get a definition of intersection.)
+            In fact, a logician would define the union of two sets by an
+            abstruse expression of the type
+            $$
+            \Large x \in (A \cup B) \iff (x \in A) \vee (x \in B)
+            $$
+            read
             
-            |> Image
-                src images/svg_ch4_first_derivative_sketch.svg
-        
-            |> ImageRight
-                src images/svg_ch4_polaroid_cloud.svg
+            __an element $x$ is in the thing I call “$A \cup B$”
+            if and only if $x$ is in $A$ or $x$ is in $B$__
+                
+            as “$\!\!\iff\!\!$” means “if and only if” and
+            “$\vee$” means “or”. (You can figure out the 
+            similar definition for the intersection of two sets
+            if we tell you that
             
-            ...voilà!
-            
-            An alternate approach is to start by
-            determining intervals on which the derivative
-            is positive and negative, and then to 
-            interpolate via the largest (respectively, 
-            smallest) value of the derivative in each 
-            interval:
+            $$\Large \wedge$$
         
-            |> Image
-                src images/svg_ch4_second_derivative_sketch_pt1.svg
-        
-            |> Image
-                src images/svg_ch4_second_derivative_sketch_pt2.svg
-        
-            The result (at bottom right)
-            is a charming “robosketch” of the true
-            derivative! (Well, charming in our opinion,
-            at least.)
+            means “and”.)
         
         
         |> Section
         
-            *Derivative of a constant function.*
-            A constant function is a function of the form 
+            *Sets encountered in calculus.*
+            In calculus, you will see sets such as _the real numbers_
             $$
-            x \ra B
+            \Large\rr
             $$
-            for some $B \in \rr$ independent of $x$.
-            The graph of the constant function is the line 
+            which is an infinite set containing all “ordinary”
+            decimal numbers, or such as _the integers_
             $$
-            y = B
+            \Large\zz
             $$
-            of slope $0$. So
+            which contains all “whole” numbers, including the
+            negative ones. You might also encounter
+            _the natural numbers_
+            $$
+            \Large\nn
+            $$
+            which contains only those integers that are greater than $0$ (i.e.,
+            $\nn = \{1, 2, 3, \ldots \}$).
+                
+            Secondly—and this pretty much wraps it up for those sets 
+            that are commonly seen in calculus—you will
+            encounter _intervals_. For example,
+            $$
+            \Large [a, b]
+            $$
+            is a _closed interval_, consisting of all (real) numbers 
+            greater than or equal to $a$, and less than or equal to $b$. Or
+            $$
+            \Large [a, b)
+            $$
+            is a _half-open_ interval, consisting of all real numbers
+            greater than or equal to $a$, and less than $b$. Etc.
         
+            Note that
             $$
-            (x \ra B)' = (x \ra 0)
+            \Large (-\infty, \infty) = \rr
             $$
-        
-            |> ImageLeft
-                src images/svg_ch4_constant_derivative_cloud.svg
-        
-            because at each $x$-value you find a slope of
-            $0$, when you look up (down?) at the graph.
-        
-            If we refer to
+            since
             $$
-            x \ra 0
+            \Large (-\infty, \infty)
             $$
-            as the
-        
-            __zero function__
-        
-            we can summarize the situation by saying that
-        
-            __~ the derivative of a constant function
-            is the zero function ~__
+            (which is an _open_ interval, by the way) means
             
-            or, more shortly,
+            __the set of real numbers with no bound below,
+            and no bound above__
             
-            __~ the derivative of a constant is zero ~__
-         
-            (the way people usually state it).
-        
-    
+            which is all of $\rr$.
         
         |> Section
         
-            *Derivative of an affine function.*
-            An affine function is a function of the form
+            *Sets not encountered in calculus.*
+            If you take a more advanced course, you might encounter 
+            the so-called _set of extended real numbers_,
+            written
             $$
-            x \ra Ax + B
+            \Large\overline{\rr}
             $$
-            for constants $A$, $B \in \rr$.
-            The graph of $x \ra Ax + B$ is a line of 
-            slope $A$, so
-        
+            and which consists of all the numbers in $\rr$, plus the formal 
+            symbols “$-\infty$”, “$\infty$” as well:
             $$
-            (x \ra Ax + B)' = (x \ra A)
+            \Large\overline{\rr} = \rr \cup \{-\infty, \infty\}
             $$
+            (I.e., ...well, you get it!)
         
-            |> ImageLeft
-                src images/svg_ch4_affine_derivative_cloud.svg
-        
-            because the slope of a line of slope $A$ is
-            $A$, no matter where you put yourself on the
-            line. In particular, $B$ plays no role in the
-            derivative! ($\,$Just like in the case of a
-            constant function, the derivative leaves no
-            trace of $B$'s value—and for the same reason
-            that $B$ effects a vertical translation, which
-            does not change the slope of anything.)
-            
-            In words:
-            
-            __~ the derivative of the affine function 
-            $y = ax + b$ is the constant function $y = a$ ~__
-        
-            Or, flexing our linguistic prowess a tad more:
-        
-            __~ the derivative of an affine function is 
-            the coefficient of its linear term ~__
-            
-            (The “linear term” of $y = ax + b$ is $ax$, 
-            of coefficient $a$.)
-        
-            |> Example
-        
-                One has
-                $$
-                (x \ra 3x + 1)' = (x \ra 3)
-                $$
-                as per
-                $$
-                (x \ra Ax + B)' = (x \ra A)
-                $$
-                with $A = 3$, $B = 1$.
-        
-            |> Example
-        
-                One has
-                $$
-                (x \ra 12 - x)' = (x \ra -1)
-                $$
-                as per
-                $$
-                (x \ra Ax + B)' = (x \ra A)
-                $$
-                with $A = -1$, $B = 12$.
-        
-        |> Section
-        
-            *Units of the Derivative.*
-            If units are present, we have
+            You can view $\overline{\rr}$ as a kind “closed interval”
+            version of $\rr$, that is, think of $\overline{\rr}$ as being
+            the closed interval
             $$
-            \te{$y$ axis units for $f'$} \,= {\te{$y$ axis units for $\f$} \over \te{$x$ axis units for $\f$}}
+            \Large [-\infty, \infty]
             $$
-            because a value output by $\f'$ is the 
-            _slope_ of a tangent line attached to the 
-            graph $y = f(x)$, and
+            with the two infinite endpoints _included_.
+        
+            Does all this have any “real meaning”? Good question! The answer
+            is: _not until you give it one_.
+        
+            E.g. (to give you a brief flavor, before we move on forever from the topic),
+            the value of something like
             $$
-            \te{$x$ axis units for $f'$}\, = \rt{0.02}\,\te{$x$ axis units for $f$}
+            \Large 0.5+ \infty
             $$
-            because an input for $\f'$ is, originally, 
-            an input for $\f$.
-        
-            For example, if the “before” graph has units 
-            of...
-        
-            |> ul
-        
-                |> li
-        
-                    seconds on the $x$ axis, meters on the 
-                    $y$ axis
-        
-            |> ImageRight
-                src images/svg_ch4_units1_cloud.svg
-            
-            ...then the “after” graph will have units of...
-            
-            |> ul
-            
-                |> li
-        
-                    seconds on the $x$ axis, meters per
-                    second on the $y$ axis
-        
-            ...while if the “before” graph has units of...
-            
-            |> ul
-            
-                |> li
-        
-                    years on the $x$ axis, dollars on the
-                    $y$ axis
-            
-            |> ImageLeft
-                src images/svg_ch4_units2_cloud.svg
-        
-            ...then the “after” graph will have units of...
-        
-            |> ul
-                |> li
-                    years on the $x$ axis, dollars per
-                    year on the $y$ axis
-        
-            ...and so on.
-        
-            Units might additionally prompt us to refer
-            to $f'$ as 
-            |> br
-            the
-        
-            __rate of change__
-            
-            of $f$, or, depending, as the
-        
-            __instantaneous__
-        
-            rate of change of $f$. The latter bit of
-            emphasis has to do with the fact that, in a
-            general graph, the slope of the tangent
-            keeps changing from point to point.
-        
-    
-        |> Section
-        
-            *The second derivative.*
-            The _second derivative_ of $f$ is the derivative
-            of the derivative of $f$. It is written “$f''$”:
-        
+            must be _defined_. (It is defined to be $\infty$, in case you're curious.
+            In fact, one has $a + \infty = \infty$ for any $a \ne -\infty$.) And some things
+            remain explicitly _undefined_. For example, the expression
             $$
-            \,\,\,f'' = (f')'.
+            \Large (-\infty) + \infty
             $$
-        
-            Likewise, we have, e.g.,
-        
-            $$
-            \begin{align}
-            \up{0.95}f''' &= (f'')'\\
-            \up{1.25}f'''' &= (f''')'\\
-            \up{1.25}f''''\psa' &= (f'''')'\\
-            \end{align}
-            $$
-        
-            these being, namely, the _third_, _fourth_
-            and _fifth_ derivatives of $f$. One can also 
-            write
-            
-            $$
-            f^{(n)}
-            $$
-            
-            for the $n$-th derivative of $f$, so that, for
-            example,
-        
-            $$
-            f^{(7)}
-            $$
-        
-            means the same as
-        
-            $$
-            f'''''''
-            $$
-        
-            but with the advantage that you don't have to
-            squint and start re-counting the apostrophes 
-            several times over.
-        
-            |> Example
-        
-                We have
-        
-                $$
-                (x \ra 3x + 1)'' = (x \ra 0)
-                $$
-        
-                |> ImageRight
-                    src images/svg_ch4_3x_plus_one_and_second_cloud.svg
-        
-            because, firstly,
-        
-            $$
-            (x \ra 3x + 1)' = (x \ra 3)
-            $$
-        
-            and, secondly,
-        
-            $$
-            (x \ra 3)' = (x \ra 0)
-            $$
-        
-            so that, from start to finish,
-        
-            $$
-            (x \ra 3x + 1)'' =  ((x \ra 3x + 1)')' = (x \ra 3)' = (x \ra 0)
-            $$
-        
-            where we unpeel the onion starting from the
-            inside. (Physically difficult.)
-        
-            |> Example
-        
-                More generally,
-        
-                $$
-                \,\,\,(x \ra ax + b)'' = (x \ra 0)
-                $$
-        
-                for all $a, b \in \rr$, by a similar computation;
-                a.k.a.:
-        
-                __~ the second derivative of an affine function is zero ~__
-                    
-                |> ImageLeft
-                    src images/svg_ch4_adding_statements_cloud.svg
-        
-        |> Section
-        
-            *Geometric interpretation of the second derivative.*
-            The sign of the second derivative—whether
-            it is positive or negative—indicates whether
-            a graph is “bending upwards” or “bending 
-            downwards”. Upward-bending graphs have a positive
-            second derivative, whereas downward-bending graphs
-            have a negative second derivative:
-        
-            |> Image
-                src images/svg_ch4_bendiness.svg
-        
-            Reason like this: the second derivative is 
-            |> del
-        
-                “the rate of change of the rate of change”.
-            Sorry: “the rate of change of the slope”. 
-            (Same difference.) Ergo, if the second derivative
-            is positive, the slope is increasing; if the
-            second derivative is negative, the slope is 
-            decreasing. Moreover, an
-                
-            __increasing__
-        
-            slope gives curves a “bending upwards” shape, while a
-        
-            __decreasing__
-            
-            slope gives curves a “bending downward” shape!
-            
-            To emphasize, if the second derivative is some
-        
-            -|LARGE POSITIVE NUMBER|-
-        
-            then the slope is increasing at that rate, 
-            which could result in a sharp bend upwards
-            in the graph (unless you are near vertical
-            already—you can't see the difference between
-            slope $100$ and slope $1000$ very well, at most
-            scales—nor between $-1000$ and $-100$, for that
-            matter).
-        
-            Likewise, if the second derivative is some
-            
-            -|LARGE NEGATIVE NUMBER|-
-        
-            then the slope is decreasing at [the absolute 
-            value of] that rate, which could result in 
-            a sharp bend downwards in the graph (unless
-            you are near vertical already, once again,
-            because verticality can disguise the presence
-            of a significant change in slope, once again).
-        
-        
-        |> Section
-        
-            *Vocabulary #1.*
-            Curves with increasing (technically: 
-            _nondecreasing_) slope are called _convex_, 
-            while curves with decreasing (technically: 
-            _nonincreasing_) slope are called _concave_.
-            Viz:
-            
-            |> Image
-                src images/svg_ch4_convex_concave.svg
-        
-            *Vocabulary #2.*
-            An _inflection point_ is a point at the
-            interface between convex and concave sections
-            of a graph:
-        
-            |> Image
-                src images/svg_ch4_inflection_point.svg
-        
-            |> Example
-        
-                The fact that
-                
-                $$
-                (x \ra 3x + 1)'' = (x \ra 0)
-                $$
-                
-                indicates that the graph
-                
-                $$
-                y = 3x + 1
-                $$
-                
-                is neither “bending upwards” nor “bending 
-                downwards”—$0$ is neither positive, nor negative.
-        
-        
-    
-        |> Section
-        
-            *The Second Derivative of Position.*
-            A graph of the form...
-        
-            |> Image
-                src images/svg_ch4_position_by_time.svg
-        
-            ...describes _position as a function of time_
-            (look at the units); the derivative...
-        
-            |> Image
-                src images/svg_ch4_position_by_time_der.svg
-        
-            |> ImageRight
-                src images/svg_ch4_position_by_time_cloud.svg
-        
-            ...describes _velocity as a function of time_;
-            finally, the second derivative...
-        
-            |> Image
-                src images/svg_ch4_position_by_time_der_der.svg
-        
-            |> ImageLeft
-                src images/svg_ch4_position_by_time_der_cloud.svg
-        
-            ...describes
-        
-            __the rate of change of velocity__
-        
-            also known as the
-        
-            __acceleration__
-            
-            as a function of time.
-            
-            Note that the units on the $y$ axis of the
-            second derivative are given by
-        
-            $$
-            {\te{$y$ axis units for $f'$} \over \te{$x$ axis units for $f'$}} = 
-            {\te{m}/\te{s} \over \te{s}} = 
-            {\te{m} \over \rt{0.1}\te{s}\!{\,}^2}
-            $$
-        
-            because $f'' = (f')'$. The point is, a tangent
-            to the graph $y = f'(t)$ has a “rise” measured
-            in meters per second and a “run” measured in 
-            seconds:
-            
-            |> Image
-                src images/svg_ch4_position_by_time_tangent.svg
-            
-            The ratio “rise over run” has the form
-        
-            $$
-            {\te{m}/\te{s} \over \te{s}} 
-            = {\te{m} \over \te{s}} \times {1 \over \te{s}}
-            = {\te{m} \over \te{s}\!{\,}^2}
-            $$
-        
-            which produces the above-mentioned units of
-            the second derivative. Also note that a ratio of
-            the form
-        
-            $$
-            {\te{difference in velocity} \over \te{amount of time}}
-            $$
-        
-            is, indeed, an acceleration, in that acceleration
-            is defined as “the increase in velocity per unit 
-            time”.
-        
-            To summarize:
-            
-            __~ velocity is the derivative of position ~__
-        
-            __~ acceleration is the derivative of velocity ~__
-        
-            |> StarDivider
-        
-            *Note.*
-            The exotic units
-            $$
-            %\left[{\te{m} \over \,\te{s}\!{\,}^2}\right]
-            {\te{m} \over \,\te{s}\!{\,}^2}
-            %\te{m}/\te{s}\!{\,}^2
-            $$
-            can be read
-            
-            __meters per second squared__
-        
-            which sounds pretty cryptic, unfortunately, or
-            
-            __meters per second per second__
-        
-            which is better, or (slight difference!)
-            
-            __meters per second, per second__
-        
-            which is even better because it “shows” acceleration
-            to be a number of m$/$s per second. (Acceleration _is_
-            a number of m$/$s per second, no?)
-        
-            |> Example
-        
-                Over a period of $10$s, an object that is
-                accelerating at a constant rate of
-                
-                $$
-                2{\te{m}/\te{s}\!{\,}^2}
-                $$
-                
-                increases its velocity by
-        
-                $$
-                (2{\te{m}/\te{s}\!{\,}^2}) \times\, (10\te{s}) = 20{\te{m}/\te{s}}
-                $$
-        
-                |> ImageRight
-                    src images/svg_ch4_unit_cancellation_cloud.svg
-                
-                according to the template
-                
-                $$
-                (\te{rate of change}) \times \te{(amount of time)}\\
-                = \te{(amount of change)}
-                $$
-                
-                or, more specifically,
-        
-                $$
-                (\te{acceleration}) \times (\te{amount of time}) =\\ (\te{change in velocity})
-                $$
-                
-                since acceleration is the rate of change of
-                velocity.
-        
-        
-        |> Section
-        
-            *The Jerk.*
-            The rate of change of acceleration has a
-            name as well, being known as the
-        
-            __jerk__
-        
-            in physics. The units of jerk (or “the”
-            units of jerk, since any units of same 
-            _dimension_ would do as well) are
-        
-            $$
-            {\te{m} \over \,\te{s}\!{\,}^3}
-            $$
-        
-            or
-        
-            __meters per second, per second, per second__
-        
-            which is mildly amusing. Basically, the
-            jerk specifies how many _meters per second,
-            per second_ (a measure of acceleration!)
-            is being gained or lost _per second_.
-        
-            The word “jerk” is aptly chosen,
-            too, considering that people don't lose 
-            balance under constant acceleration, but, 
-            rather, when some some _jerk_ occurs in 
-            the movement of their train or subway car,
-            etc. In fact,
-        
-            __constant acceleration__
-        
-            and
-        
-            __zero jerk__
-        
-            are synonymous, insofar as the everyday 
-            world is concerned—which is good, because
-            these notions are also equivalent in the
-            mathematical realm, what with jerk being
-            the derivative of acceleration!
-        
-            *Postscript: Sums, Products, Quotients,
-            and Differences of Functions.*
-            Coming briefly back to Chapter 3-related
-            matters, if
-        
-            $$
-            f, g : \rr \ra \rr
-            $$
-        
-            then
-        
-            $$
-            f \circ g = (x \ra f(g(x)))
-            $$
-            $$
-            f + g = (x \ra f(x) + g(x))
-            $$
-            $$
-            fg = (x \ra f(x)g
-            (x))
-            $$
-            $$
-            {f/g} = (x \ra {f(x)/g(x)})
-            $$
-            $$
-            f - g = (x \ra f(x) - g(x))
-            $$
-        
-            with each equation being a _definition_. 
-            The notation
-        
-            $$
-            f \circ g
-            $$
-        
-            goes back to Exercise 5 of Chapter 3, with
-            the little circle “$\circ$” being known as
-            the _composition operator_, while the sum
-        
-            $$
-            f + g
-            $$
-        
-            and product
-        
-            $$
-            fg
-            $$
-        
-            of functions already appear in Exercise 18 of
-            Chapter 3, also. On the other hand, the
-            
-            __quotient__
-        
-            (i.e., $f/g$) and
-        
-            __difference__
-        
-            (i.e., $f - g$) of two functions from $\rr$ to
-            $\rr$ appear here for the first time! (We are
-            “completing our collection”.)
+            has an _undefined_ value—the same way, say, that division by
+            $0$ is undefined in $\rr$. 
+            (Well, anyway, end of lesson.)
