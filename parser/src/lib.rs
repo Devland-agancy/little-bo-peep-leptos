@@ -204,11 +204,22 @@ fn get_content(
         entries.sort_by(|a, b| {
             let a_name = a.file_name().into_string().unwrap();
             let b_name = b.file_name().into_string().unwrap();
-            a_name.cmp(&b_name)
+
+            // sort files before folders
+            let a_is_file = a.file_type().unwrap().is_file();
+            let b_is_file = b.file_type().unwrap().is_file();
+
+            return a_name.cmp(&b_name);
+            return if a_is_file == b_is_file {
+                a_name.cmp(&b_name)
+            } else if a_is_file {
+                Ordering::Less
+            } else {
+                Ordering::Greater
+            };
         })
     }
 
-    let mut chapter = String::new();
     let mut book = String::new();
 
     let mut parent_exists = false;
@@ -217,7 +228,6 @@ fn get_content(
             parent_exists = true;
             let mut file_content = fs::read_to_string(en.path()).unwrap();
             file_content = remove_comment_symbols(&file_content);
-
             if let Some(parent_file_name) = parent_file_name {
                 let mut new_content = String::new();
                 for line in file_content.lines() {
@@ -256,34 +266,28 @@ fn get_content(
             let mut file_content = fs::read_to_string(&path).unwrap();
             file_content = remove_comment_symbols(&file_content);
             let with_indent = add_indent(&file_content);
-            chapter.push_str("\n");
-            chapter.push_str(&with_indent);
+            book.push_str("\n");
+            book.push_str(&with_indent);
 
             let lines_count = file_content.lines().count();
             files_with_lines_number.push((path.to_str().unwrap().to_string(), lines_count));
         } else if metadata.is_dir() {
-            if show_only.is_none()
-                || entry
-                    .file_name()
-                    .to_str()
-                    .unwrap()
-                    .contains(&show_only.unwrap().to_string().as_str())
-            {
-                if let Ok(nested_content) = get_content(
-                    &path.to_str().unwrap(),
-                    &vec![],
-                    show_only,
-                    files_with_lines_number,
-                    Some(file_name.as_str()),
-                    recursive_num + 1,
-                ) {
-                    let with_indent = add_indent(&nested_content);
-                    book.push_str(&with_indent);
-                }
+            // book.push_str("&with_indent");
+
+            if let Ok(nested_content) = get_content(
+                &path.to_str().unwrap(),
+                &vec![],
+                show_only,
+                files_with_lines_number,
+                Some(file_name.as_str()),
+                recursive_num + 1,
+            ) {
+                let with_indent = add_indent(&nested_content);
+                book.push_str(&with_indent);
             }
         };
     }
-    book.push_str(&chapter);
+
     Ok(book)
 }
 
@@ -292,12 +296,18 @@ fn remove_comment_symbols(content: &str) -> String {
     let mut lines = content.lines();
 
     // Skip the first line
-    if let Some(_) = lines.next() {
-        // Iterate over the remaining lines, excluding the last line
-        for line in lines.clone().take(lines.count() - 1) {
+    if !lines.nth(0).unwrap().contains("/*") {
+        for line in lines.clone() {
             output.push_str(line);
             output.push('\n');
         }
+        return output;
+    }
+
+    // Iterate over the remaining lines, excluding the last line
+    for line in lines.clone().take(lines.count() - 1) {
+        output.push_str(line);
+        output.push('\n');
     }
     output
 }
