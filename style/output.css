@@ -435,6 +435,10 @@
   flex-shrink: 0
 }
 
+.grow {
+  flex-grow: 1
+}
+
 .table-fixed {
   table-layout: fixed
 }
@@ -868,6 +872,12 @@
   opacity: 1
 }
 
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+}
+
 .outline {
   outline-style: solid
 }
@@ -886,6 +896,11 @@
 
 .outline-black {
   outline-color: #000
+}
+
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .filter {
@@ -1001,6 +1016,8 @@
   box-sizing: border-box;
   border: 0 solid #e5e7eb;
   margin: 0;
+  --desktop-text-column-width: 488px;
+  --desktop-text-column-padding: 16px;
 }
 
 a {
@@ -1126,26 +1143,41 @@ select {
   margin-bottom: 0 !important;
 }
 
-.wide_desktop .MathJax_SVG_Display{
+/* .wide_desktop .MathJax_SVG_Display{
   right: 50%;
 }
 
 .wide_desktop .MathJax_SVG{
   margin-right: -100% !important;
-}
+} */
 
-.pr:has( > .wide_desktop) {
+.pr:has( > .mathblock.desktop) {
   left: 50%;
   transform: translateX(-50%);
 }
 
-.pr:has( > .wide) {
+.pr:has( > .mathblock) {
   width: -moz-max-content;
   width: max-content;
+  min-width: var(--desktop-text-column-width);
 }
+
+/* 
+.pr:has( > .wide) {
+   width: max-content;
+} */
 
 .pr:has(> .wide) > .side-img > .squiggle {
   display: none;
+}
+
+.text {
+  display: inline-block;
+  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+}
+
+.indent-10 > .text {
+  display: inline;
 }
 
 .hidden-on-startup {
@@ -1298,7 +1330,7 @@ span .MathJax_SVG{
 @media (min-width: 520px) {
   .gridColsWidth {
     /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
-    grid-template-columns: 1fr 488px 1fr;
+    grid-template-columns: 1fr var(--desktop-text-column-width) 1fr;
   }
 }
 

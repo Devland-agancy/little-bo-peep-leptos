@@ -52,6 +52,9 @@
   box-sizing: border-box;
   border: 0 solid #e5e7eb;
   margin: 0;
+
+  --desktop-text-column-width: 488px;
+  --desktop-text-column-padding: 16px;
 }
 
 a {
@@ -176,25 +179,35 @@ select {
   margin-bottom: 0 !important;
 }
 
-.wide_desktop .MathJax_SVG_Display{
+/* .wide_desktop .MathJax_SVG_Display{
   right: 50%;
 }
 
 .wide_desktop .MathJax_SVG{
   margin-right: -100% !important;
-}
+} */
 
-.pr:has( > .wide_desktop) {
+.pr:has( > .mathblock.desktop) {
   left: 50%;
   transform: translateX(-50%);
 }
 
-.pr:has( > .wide) {
-   width: max-content;
+.pr:has( > .mathblock) {
+  width: max-content;
+  min-width: var(--desktop-text-column-width);
 }
 
 .pr:has(> .wide) > .side-img > .squiggle {
   display: none;
+}
+
+.text {
+  display: inline-block;
+  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+}
+
+.indent-10 > .text {
+  display: inline;
 }
 
 .hidden-on-startup {
@@ -345,7 +358,7 @@ span .MathJax_SVG{
 @media (min-width: 520px) {
   .gridColsWidth {
     /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
-    grid-template-columns: 1fr 488px 1fr;
+    grid-template-columns: 1fr var(--desktop-text-column-width) 1fr;
   }
 }
 
