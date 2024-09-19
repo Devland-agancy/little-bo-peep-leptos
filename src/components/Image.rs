@@ -104,7 +104,7 @@ pub fn Image(
             format!(
                 "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {} {}",
                 container_classes,
-                if is_wider_than_text() {"wide wide_desktop w-max"} else { "fill-available" }
+                if is_wider_than_text() {"wide-displayed-image w-max"} else { "fill-available" }
             )
         }
       >

@@ -1143,43 +1143,6 @@ select {
   margin-bottom: 0 !important;
 }
 
-/* .wide_desktop .MathJax_SVG_Display{
-  right: 50%;
-}
-
-.wide_desktop .MathJax_SVG{
-  margin-right: -100% !important;
-} */
-
-.pr:has( > .mathblock.desktop) {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.pr:has( > .mathblock) {
-  width: -moz-max-content;
-  width: max-content;
-  min-width: var(--desktop-text-column-width);
-}
-
-/* 
-.pr:has( > .wide) {
-   width: max-content;
-} */
-
-.pr:has(> .wide) > .side-img > .squiggle {
-  display: none;
-}
-
-.text {
-  display: inline-block;
-  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
-}
-
-.indent-10 > .text {
-  display: inline;
-}
-
 .hidden-on-startup {
   max-height: 0;
   height: 0;
@@ -1579,6 +1542,32 @@ table.first-line tr td:first-child {
   max-width: -moz-available;
   max-width: -webkit-fill-available;
   max-width: fill-available;
+}
+
+.pr:has( > .mathblock.desktop),
+.wide-displayed-image
+{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pr:has( > .mathblock) {
+  width: -moz-max-content;
+  width: max-content;
+  min-width: var(--desktop-text-column-width);
+}
+
+.pr:has(> .wide) > .side-img > .squiggle {
+  display: none;
+}
+
+.text {
+  display: inline-block;
+  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+}
+
+.indent-10 > .text {
+  display: inline;
 }
 
 .hover\:border-b-0:hover {
