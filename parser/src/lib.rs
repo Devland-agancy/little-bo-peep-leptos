@@ -204,19 +204,7 @@ fn get_content(
         entries.sort_by(|a, b| {
             let a_name = a.file_name().into_string().unwrap();
             let b_name = b.file_name().into_string().unwrap();
-
-            // sort files before folders
-            let a_is_file = a.file_type().unwrap().is_file();
-            let b_is_file = b.file_type().unwrap().is_file();
-
             return a_name.cmp(&b_name);
-            return if a_is_file == b_is_file {
-                a_name.cmp(&b_name)
-            } else if a_is_file {
-                Ordering::Less
-            } else {
-                Ordering::Greater
-            };
         })
     }
 
