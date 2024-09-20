@@ -50,10 +50,10 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
     }
 
     let elm_string = res.unwrap();
-    write_to_file(
-        &format!("{}/src/content/res.emu", path.display()),
-        &elm_string,
-    );
+    // write_to_file(
+    //     &format!("{}/src/content/res.emu", path.display()),
+    //     &elm_string,
+    // );
 
     let mut json = Parser::new();
     let parsed_json_string = json.export_json(&elm_string, None, false);

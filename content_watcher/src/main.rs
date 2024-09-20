@@ -25,16 +25,16 @@ fn main() -> Result<()> {
     loop {
         match rx.recv() {
             Ok(event) => {
-                if let Ok(event) = event {
-                    if let EventKind::Modify(_) = event.kind {
-                        let mut file = OpenOptions::new()
-                            .write(true)
-                            .append(true)
-                            .open("../src/app.rs")
-                            .unwrap();
+                if let Ok(_) = event {
+                    println!("Content changed !!");
 
-                        let _ = writeln!(file, "");
-                    }
+                    let mut file = OpenOptions::new()
+                        .write(true)
+                        .append(true)
+                        .open("../src/app.rs")
+                        .unwrap();
+
+                    let _ = writeln!(file, "");
                 } else {
                     println!("Event error {:?}", event.err().unwrap())
                 }
