@@ -516,7 +516,7 @@ table.first-line tr td:first-child {
 
 .pr:has( > .mathblock) {
   width: max-content;
-  min-width: var(--desktop-text-column-width);
+  min-width: min(100vw, var(--desktop-text-column-width));
 }
 
 .pr:has(> .wide) > .side-img > .squiggle {
@@ -531,3 +531,10 @@ table.first-line tr td:first-child {
 .indent-10 > .text {
   display: inline;
 }
+
+/* @media (min-width: 100vw) {
+  .pr:has( > .mathblock) {
+    left: 50%;
+  transform: translateX(-50%);
+  }
+} */
