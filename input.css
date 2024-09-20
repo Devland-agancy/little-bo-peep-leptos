@@ -49,6 +49,119 @@
 
 * {
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+  margin: 0;
+
+  --desktop-text-column-width: 488px;
+  --desktop-text-column-padding: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
 }
 
 .MathJax_SVG{
@@ -64,14 +177,6 @@
 
 .MathJax_SVG_Display{
   margin-bottom: 0 !important;
-}
-
-.wide_desktop .MathJax_SVG_Display{
-  right: 50%;
-}
-
-.wide_desktop .MathJax_SVG{
-  margin-right: -100% !important;
 }
 
 .hidden-on-startup {
@@ -222,7 +327,7 @@ span .MathJax_SVG{
 @media (min-width: 520px) {
   .gridColsWidth {
     /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
-    grid-template-columns: 1fr 488px 1fr;
+    grid-template-columns: 1fr var(--desktop-text-column-width) 1fr;
   }
 }
 
@@ -303,7 +408,7 @@ span .MathJax_SVG{
 
 
 .example > .spacer:last-child,
-.solution .spacer:last-child,
+/* .solution .spacer:last-child, */
 .spacer:has(+ .pr > :first-child.block-element),
 .pr:has( > :first-child.block-element) + .spacer,
 .pr:has( > :last-child.side-img) + .spacer
@@ -351,6 +456,16 @@ span .MathJax_SVG{
   transform: rotateY(180deg);
 }
 
+.ch4_pacman1_inline_number_pellet {
+  height: 0.9em;
+  transform: translate(0, 0.05em);
+}
+
+.ch4_blackwhite_particles_pellet {
+  height: 0.9em;
+  transform: translate(0, 0.05em);
+}
+
 table.first-line {
   border-collapse: collapse;
 }
@@ -376,3 +491,51 @@ table.first-line tr td:first-child {
 .mathblock .mathblock{
   font-size: inherit;
 }
+
+.ch4_pacman1_inline_number_pellet {
+  height:0.9em;
+}
+
+.ch4_inline_blackwhite_particles {
+  height:0.9em;
+}
+
+.fill-available {
+  max-width: -moz-available;
+  max-width: -webkit-fill-available;
+  max-width: fill-available;
+}
+
+
+.pr:has( > .mathblock.desktop),
+.pr:has( > .displayed-image)
+{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pr:has( > .mathblock),
+.pr:has( > .displayed-image){
+  width: max-content;
+  min-width: min(100vw, var(--desktop-text-column-width));
+}
+
+.pr:has(> .wide) > .side-img > .squiggle {
+  display: none;
+}
+
+.text {
+  display: inline-block;
+  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+}
+
+.indent-10 > .text {
+  display: inline;
+}
+
+/* @media (min-width: 100vw) {
+  .pr:has( > .mathblock) {
+    left: 50%;
+  transform: translateX(-50%);
+  }
+} */

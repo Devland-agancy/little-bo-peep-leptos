@@ -87,6 +87,8 @@ pub fn MathBlock(
         class="mathblock block-element text-xl col-start-2 hidden-on-startup relative h-fit"
         class=("wide", is_wide)
         class=("wide_desktop", move || is_wide() && !on_mobile())
+        class=("desktop", move || !on_mobile())
+
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {
@@ -97,7 +99,6 @@ pub fn MathBlock(
             )
         }
       >
-
         {children(cx)}
       </div>
       <span class="mathblock-span"></span>

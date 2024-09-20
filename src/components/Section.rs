@@ -43,3 +43,15 @@ pub fn Spacer(
       </div>
     };
 }
+
+#[component]
+pub fn Center(
+    cx: Scope,
+    children: Children,
+    #[prop(default = "")] style: &'static str,
+) -> impl IntoView {
+    return view! { cx,
+      <div class="block-element" align="center" style=style>{children(cx)}</div>
+      <Spacer />
+    };
+}

@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Notation.*
@@ -9,6 +8,12 @@
     numbers $1$, $2$ and $3$ (and nothing else):
     
     $$\Large\{1, 2, 3\}$$
+
+    |> Image
+        src images/svg_ch4_position_by_time_der.svg
+
+    |> ImageRight
+        src images/svg_ch4_position_by_time_cloud.svg
     
     Also,
 
@@ -371,4 +376,3 @@
     has an _undefined_ value—the same way, say, that division by
     $0$ is undefined in $\rr$. 
     (Well, anyway, end of lesson.)
-*/

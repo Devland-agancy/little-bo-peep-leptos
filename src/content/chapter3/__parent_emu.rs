@@ -1,6 +1,4 @@
-/*
 
 |> Chapter
     title Functions
 
-*/

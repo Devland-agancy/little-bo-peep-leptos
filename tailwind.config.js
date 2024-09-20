@@ -3,6 +3,9 @@ module.exports = {
   content: {
     files: ["*.html", "./src/**/*.rs", "**/*.emu"],
   },
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
       fontFamily: {

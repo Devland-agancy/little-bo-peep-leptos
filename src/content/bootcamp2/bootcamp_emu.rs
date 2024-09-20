@@ -1,4 +1,3 @@
-/*
 |> Section
 
     *Terminology.*
@@ -67,28 +66,28 @@
     As $n$ successive divisions
     by $10$ is the same as one division by $10^n$, one also has
     $$
-    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{A}
+    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{*}
     $$
     for every positive integer $n$, which gives an alternate means of computing $10^{-n}$.
-    Moreover, (A) actually holds for
+    Moreover, (*) actually holds for
     
     __every__
     
     integer $n$, which is mildly important. In more
-    detail, (A) holds for $n = 0$ by inspection, and (A) 
+    detail, (*) holds for $n = 0$ by inspection, and (*) 
     is equivalent to the identity
 
     |> ImageLeft
         src images/svg_zero_verification_cloud.svg
 
     $$
-    \Large 10^{-n}10^n = 1 \tag{AA}
+    \Large 10^{-n}10^n = 1 \tag{**}
     $$
 
     which holds for $n$ if and only if it holds for
     $-n$. (By which we mean: replacing “$n$” by “$-n$”
-    in (AA) lands you right back on (AA), due to the fact
-    that $-{(-n)} = n$.) (So, namely, if (AA) holds for all
+    in (**) lands you right back on (**), due to the fact
+    that $-{(-n)} = n$.) (So, namely, if (**) holds for all
     positive values of $\hspace{0.05em}n$, then it holds
     for all negative values of $n$, as well.)
 
@@ -106,7 +105,7 @@
     \Large ab = 1 \qquad a = {1 \over b} \qquad b = {1 \over a}
     $$
     ...and any one of these equations implies the other two.
-    Thus, either of (A) and (AA) expresses the
+    Thus, either of (*) and (**) expresses the
 
     __reciprocality__
     
@@ -1321,5 +1320,3 @@
             \Large F\mu^{-2}\rho = 1
             $$
             (since $v^0 = 1$, $F^1 = F$).
-
-*/

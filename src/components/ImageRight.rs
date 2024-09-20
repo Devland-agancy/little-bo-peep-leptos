@@ -1,10 +1,6 @@
 use std::time::Duration;
 
-use crate::{
-    global_state::GlobalState,
-    page::state::PageState,
-    utils::attach_img_to_math::{attach_img_to_math, choose_default_anchor},
-};
+use crate::{global_state::GlobalState, page::state::PageState};
 use leptos::{
     html::{Div, Img},
     *,
@@ -30,6 +26,7 @@ pub fn ImageRight(
     #[prop(default = "")] children_y: &'static str,
     #[prop(default = false)] clickable_on_desktop: bool,
     #[prop(default = "")] padding: &'static str,
+    #[prop(default = "")] width: &'static str,
     #[prop(default = false)] popup: bool,
 
     children: Children,
@@ -41,7 +38,6 @@ pub fn ImageRight(
         on_mobile,
         tab,
         solutions_state,
-        math_rendered,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
 
@@ -72,69 +68,13 @@ pub fn ImageRight(
     let node_ref = create_node_ref::<Div>(cx);
     let image_ref = create_node_ref::<Img>(cx);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
-    let (edge_signal, set_edge_signal) = create_signal(cx, edge);
-
-    create_effect(cx, move |_| {
-        request_animation_frame(move || {
-            set_timeout(
-                move || {
-                    // choose max width betweem formula and screen as default value for edge
-                    if edge == "" {
-                        choose_default_anchor(&node_ref, set_edge_signal);
-                    }
-                    if edge_signal() == "formula_edge" {
-                        attach_img_to_math(&node_ref);
-                    }
-                },
-                Duration::from_secs(3),
-            );
-        });
-    });
-
-    let (use_sq, set_use_sq) = create_signal(cx, true);
-    // hide squiggle if math is wide
-    create_effect(cx, move |_| {
-        math_rendered();
-        edge_signal();
-        set_timeout(
-            move || {
-                if edge_signal() == "paragraph_edge" {
-                    if let Some(node) = node_ref() {
-                        if let Some(prev_sibling) = node.previous_element_sibling() {
-                            if prev_sibling.class_list().contains("mathblock-span") {
-                                if let Some(prev_sibling) = prev_sibling.previous_element_sibling()
-                                {
-                                    if prev_sibling.class_list().contains("wide") {
-                                        set_use_sq(false);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else if edge_signal() == "formula_edge" {
-                    if let Some(node) = node_ref() {
-                        if let Some(parent) = node.parent_element() {
-                            if let Some(parent) = parent.parent_element() {
-                                if let Some(parent) = parent.parent_element() {
-                                    if parent.class_list().contains("wide") {
-                                        set_use_sq(false);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            Duration::from_secs(5), // this must be more that duration to add wide class in mathblock component
-        );
-    });
 
     view! { cx,
       <div
         node_ref=node_ref
         style=move || {
             let line_str: String;
-            let mut left_pos = "calc(100% - 0.5rem)".to_string();
+            let left_pos = "calc(100% - 0.5rem)".to_string();
             if line > 0.0 {
                 line_str = ((line - 0.5) * line_height()).to_string() + "px";
             } else if line < 0.0 {
@@ -146,9 +86,6 @@ pub fn ImageRight(
                     "center" => "50%".to_string(),
                     _ => y.to_string(),
                 };
-            }
-            if edge_signal() == "formula_edge" {
-                left_pos = "100%".to_string();
             }
             format!("top: {}; left: {}", line_str, left_pos)
         }
@@ -187,12 +124,13 @@ pub fn ImageRight(
           <img
             node_ref=image_ref
             src=src
-            class="max-w-max"
+            class=("max-w-max", move || width == "")
             style=move || {
                 format!(
                     "transform: {};
-          transform-origin: 100% 51% 0px;
-          transition: {}s;",
+                    transform-origin: 100% 51% 0px;
+                    transition: {}s;
+                    width: {width};",
                     if !popup || (popup && solution_fully_opened())  { "scale(1)" } else { "scale(1, 0)" },
                     if !popup || (popup && solution_fully_opened())  { "0.5" } else { "0" },
                 )
@@ -216,7 +154,7 @@ pub fn ImageRight(
           ></div>
         </div>
 
-        <Show fallback=|_| () when=move || use_squiggle_on_mobile && use_sq()>
+        <Show fallback=|_| () when=move || use_squiggle_on_mobile>
           <div
             class="squiggle block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas())
@@ -229,7 +167,6 @@ pub fn ImageRight(
                 )
             }
           >
-
             <img src="/images/squiggle.png" class="h-11 min-w-[45px]"/>
           </div>
         </Show>
