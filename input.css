@@ -526,7 +526,7 @@ table.first-line tr td:first-child {
 
 .text {
   display: inline-block;
-  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+  max-width: min(calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2), calc(100vw - var(--desktop-text-column-padding) * 2))
 }
 
 .indent-10 > .text {
