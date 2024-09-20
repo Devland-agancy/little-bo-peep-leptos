@@ -21,3 +21,5 @@ playwright/.cache/
 .direnv
 
 .env
+
+src/content/res.emu
