@@ -234,7 +234,11 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                     view! {{
                     cx,
                     {}
+                    }}
+                }}
+
                 #[component]
+                pub fn {article_type_upper_str}{article_i}(cx: Scope, children: Children, title: &'static str) -> impl IntoView {{
                     view! {{ cx,
                     {{children(cx)}}
                     }}
