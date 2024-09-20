@@ -1,3 +1,3 @@
 |> Book
     title
-    mobile_titlee
+    mobile_title
