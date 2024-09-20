@@ -10,19 +10,6 @@
     f : \rr \ra \rr 
     $$
 
-    The graphs below are the horizontal and
-    vertical velocities...
-
-    |> Image
-        src images/svg_ch4_pacman1_hor0.svg
-
-    |> ImageLeft
-        offset_y 1em
-        src images/svg_ch4_pacman1_x_prime_t_scloud.svg
-
-    |> Image
-        src images/svg_ch4_pacman1_ver0.svg
-    
     is a (new) function
     
     $$
