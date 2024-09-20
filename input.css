@@ -508,13 +508,14 @@ table.first-line tr td:first-child {
 
 
 .pr:has( > .mathblock.desktop),
-.wide-displayed-image
+.pr:has( > .displayed-image)
 {
   left: 50%;
   transform: translateX(-50%);
 }
 
-.pr:has( > .mathblock) {
+.pr:has( > .mathblock),
+.pr:has( > .displayed-image){
   width: max-content;
   min-width: min(100vw, var(--desktop-text-column-width));
 }
