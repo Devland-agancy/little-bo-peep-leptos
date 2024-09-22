@@ -1,24 +1,31 @@
-# spotlighter
+# How to use
 
-[![Package Version](https://img.shields.io/hexpm/v/spotlighter)](https://hex.pm/packages/spotlighter)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/spotlighter/)
+First make sure you are in spotlighter directory : cd spotlighter
 
-```sh
-gleam add spotlighter@1
+3 commands are available
+
+**comment**  
+
+if used alone it will comment every thing inside content dir , if a file or a folder path is given it will comment it.
+
 ```
-```gleam
-import spotlighter
-
-pub fn main() {
-  // TODO: An example of the project in use
-}
+gleam run comment 
+gleam run comment chapter4/section_emu.rs
 ```
 
-Further documentation can be found at <https://hexdocs.pm/spotlighter>.
+**uncomment** 
 
-## Development
+if used alone it will uncomment every thing inside content dir , if a file or a folder path is given it will comment it . Not when a file/folder is commented . don't add the "#" in the command . just write the name
 
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
+```
+gleam run uncomment 
+gleam run uncomment chapter4/section_emu.rs
+```
+
+**spotlight**
+
+uncomment a file or a directory and its children and its ascendors . and comments its siblings and its ascendors siblings
+
+```
+gleam run spotlight chapter4/exercises
 ```
