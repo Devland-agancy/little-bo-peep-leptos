@@ -3,6 +3,7 @@ import gleam/io
 import gleam/list
 import gleam/result
 import gleam/string
+import shellout
 import simplifile
 
 fn path_from_reversed_path(reversed_path: List(String)) -> String {
@@ -67,27 +68,14 @@ fn uncomment_if_possible(name: String, reversed_parent_path: List(String)) {
   comment_or_uncomment_if_possible(name, reversed_parent_path, False)
 }
 
-fn is_file_default_false(path: String) -> Bool {
-  result.unwrap(simplifile.is_file(path), False)
-}
-
-fn is_directory_default_false(path: String) -> Bool {
-  result.unwrap(simplifile.is_directory(path), False)
-}
-
 fn rename_if_different(from: String, to: String) -> Nil {
   io.println("trying to rename " <> from <> " to " <> to)
   case from == to {
     True -> Nil
     False -> {
-      case is_file_default_false(from) {
-        True -> result.unwrap(simplifile.rename_file(from, to), Nil)
-        False ->
-          case is_directory_default_false(from) {
-            True -> result.unwrap(simplifile.rename_directory(from, to), Nil)
-            False -> Nil
-          }
-      }
+      let _ =
+        shellout.command(run: "git", in: ".", with: ["mv", from, to], opt: [])
+      Nil
     }
   }
 }
