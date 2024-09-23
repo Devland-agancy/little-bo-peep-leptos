@@ -105,6 +105,7 @@ fn spotlight_recursive(reversed_path_pieces: List(String)) -> Nil {
           simplifile.read_directory(path_from_reversed_path(rest)),
           [],
         )
+      io.debug(path_from_reversed_path(rest))
       case list.any(sibling_names, string.starts_with(_, "__parent")) {
         False -> Nil
         True -> {
@@ -174,15 +175,13 @@ fn remove_ending_forward_slash(path: String) -> String {
 }
 
 fn src_content_path_to_path(src_content_path: String) {
-  { content_dir <> remove_starting_forward_slash(src_content_path) }
+  remove_starting_forward_slash(src_content_path)
   |> remove_ending_forward_slash
 }
 
 // *****************
 // ORIGINAL API FUNCTIONS
 // *****************
-
-const content_dir = "../src/content/"
 
 fn comment_children(src_content_parent_path, real_name) {
   { src_content_parent_path <> "/" <> real_name }
