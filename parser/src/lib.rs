@@ -240,7 +240,7 @@ fn get_content(
     });
 
     if !parent_exists {
-        panic!("No parent file")
+        panic!("No parent file on {path_str}")
     }
     for entry in entries {
         let path = entry.path();
