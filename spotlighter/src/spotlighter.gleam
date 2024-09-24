@@ -12,8 +12,16 @@ fn path_from_reversed_path(reversed_path: List(String)) -> String {
   |> string.join("/")
 }
 
+fn drop_last(s: String, char: String) {
+  case string.ends_with(s, char) {
+    True -> string.drop_right(s, 1)
+    False -> s
+  }
+}
+
 fn reversed_path_from_path(path: String) -> List(String) {
   path
+  |> drop_last("/")
   |> string.split("/")
   |> list.reverse
 }
@@ -80,10 +88,6 @@ fn rename_if_different(from: String, to: String) -> Nil {
   }
 }
 
-fn equal_up_to_hashtags(name1: String, name2: String) {
-  remove_hashtag_if_there(name1) == remove_hashtag_if_there(name2)
-}
-
 fn spotlight_recursive(reversed_path_pieces: List(String)) -> Nil {
   case reversed_path_pieces {
     [] -> Nil
@@ -93,17 +97,12 @@ fn spotlight_recursive(reversed_path_pieces: List(String)) -> Nil {
           simplifile.read_directory(path_from_reversed_path(rest)),
           [],
         )
-      io.debug(path_from_reversed_path(rest))
       case list.any(sibling_names, string.starts_with(_, "__parent")) {
         False -> Nil
         True -> {
           uncomment_if_possible(first, rest)
-          list.each(sibling_names, fn(name) {
-            case equal_up_to_hashtags(first, name) {
-              True -> Nil
-              False -> comment_if_possible(name, rest)
-            }
-          })
+          list.each(sibling_names, comment_if_possible(_, rest))
+          uncomment_if_possible(first, rest)
           spotlight_recursive(rest)
         }
       }
@@ -139,60 +138,18 @@ fn comment_recursive(
   }
 }
 
-fn comment_children_johns_version(
-  path,
-  want_commented: Bool,
-  including_root: Bool,
-) {
-  reversed_path_from_path(path)
-  |> comment_recursive(want_commented, including_root)
-}
-
-fn remove_starting_forward_slash(path: String) -> String {
-  case string.starts_with(path, "/") {
-    True -> string.drop_left(path, 1)
-    False -> path
-  }
-}
-
-fn remove_ending_forward_slash(path: String) -> String {
-  case string.ends_with(path, "/") {
-    True -> string.drop_right(path, 1)
-    False -> path
-  }
-}
-
-fn src_content_path_to_path(src_content_path: String) {
-  remove_starting_forward_slash(src_content_path)
-  |> remove_ending_forward_slash
-}
-
 // *****************
 // ORIGINAL API FUNCTIONS
 // *****************
 
-fn comment_children(src_content_parent_path, real_name) {
-  { src_content_parent_path <> "/" <> real_name }
-  |> src_content_path_to_path
-  |> comment_children_johns_version(True, False)
+fn spotlight(path) {
+  let pieces = reversed_path_from_path(path)
+  comment_recursive(pieces, False, False)
+  spotlight_recursive(pieces)
 }
 
-fn un_comment_children(src_content_parent_path, real_name) {
-  { src_content_parent_path <> "/" <> real_name }
-  |> src_content_path_to_path
-  |> comment_children_johns_version(False, False)
-}
-
-fn spotlight(src_content_path) {
-  let path = src_content_path_to_path(src_content_path)
-  comment_children_johns_version(path, False, False)
-  spotlight_recursive(reversed_path_from_path(path))
-}
-
-fn comment(src_content_path, want_commented: Bool) {
-  let pieces =
-    reversed_path_from_path(src_content_path_to_path(src_content_path))
-  case pieces {
+fn comment(path, want_commented: Bool) {
+  case reversed_path_from_path(path) {
     [] -> Nil
     [first, ..rest] ->
       comment_or_uncomment_if_possible(first, rest, want_commented)
@@ -207,14 +164,6 @@ pub fn main() {
         "comment" -> comment(dir_path, True)
         "uncomment" -> comment(dir_path, False)
         "spotlight" -> spotlight(dir_path)
-        _ -> io.println("Usage: spotlighter comment/spotlight <path>")
-      }
-    }
-    [command] -> {
-      case command {
-        "comment" -> comment_children("", "")
-        "uncomment" -> un_comment_children("", "")
-        "spotlight" -> io.println("spotlight something inside content dir")
         _ -> io.println("Usage: spotlighter comment/spotlight <path>")
       }
     }
