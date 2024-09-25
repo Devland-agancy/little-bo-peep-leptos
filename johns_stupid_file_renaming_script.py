@@ -1,7 +1,7 @@
 import os
 
 
-f = open("/Users/jpsteinb/github.com/Devland-agancy/little-bo-peep-leptos/src/content/chapter3/chapter_emu.rs")
+f = open("/Users/jpsteinb/github.com/Devland-agancy/little-bo-peep-leptos/src/content/chapter3/chapter.emu")
 
 
 filenames_to_rename = []

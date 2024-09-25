@@ -212,7 +212,7 @@ fn get_content(
 
     let mut parent_exists = false;
     entries.iter().any(|en| {
-        if en.file_name() == "__parent_emu.rs" {
+        if en.file_name() == "__parent.emu" {
             parent_exists = true;
             let mut file_content = fs::read_to_string(en.path()).unwrap();
             if let Some(parent_file_name) = parent_file_name {
@@ -249,7 +249,7 @@ fn get_content(
         if file_name.starts_with("#") {
             continue;
         }
-        if file_name.ends_with("_emu.rs") && file_name != "__parent_emu.rs" {
+        if file_name.ends_with(".emu") && file_name != "__parent.emu" {
             let mut file_content = fs::read_to_string(&path).unwrap();
             let with_indent = add_indent(&file_content);
             book.push_str("\n");

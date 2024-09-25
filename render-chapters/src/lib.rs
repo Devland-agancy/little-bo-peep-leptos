@@ -432,7 +432,7 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
         let entry = entry.unwrap();
         let path = entry.path();
         let file_name = path.file_name().unwrap().to_str().unwrap_or("");
-        if file_name == "__parent_emu.rs" {
+        if file_name == "__parent.emu" {
             let parent_emu = fs::read_to_string(path);
             if parent_emu.is_err() {
                 panic!("Path not found {}", path_str)
