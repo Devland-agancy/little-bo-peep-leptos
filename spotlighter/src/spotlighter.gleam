@@ -77,10 +77,10 @@ fn uncomment_if_possible(name: String, reversed_parent_path: List(String)) {
 }
 
 fn rename_if_different(from: String, to: String) -> Nil {
-  io.println("trying to rename " <> from <> " to " <> to)
   case from == to {
     True -> Nil
     False -> {
+      io.println("trying to rename " <> from <> " to " <> to)
       let _ =
         shellout.command(run: "git", in: ".", with: ["mv", from, to], opt: [])
       Nil
@@ -100,7 +100,6 @@ fn spotlight_recursive(reversed_path_pieces: List(String)) -> Nil {
       case list.any(sibling_names, string.starts_with(_, "__parent")) {
         False -> Nil
         True -> {
-          uncomment_if_possible(first, rest)
           list.each(sibling_names, comment_if_possible(_, rest))
           uncomment_if_possible(first, rest)
           spotlight_recursive(rest)
@@ -156,40 +155,6 @@ fn comment(path, want_commented: Bool) {
   }
 }
 
-// fn last(path) {
-//   result.unwrap(list.last(string.split(path, "/")), "")
-// }
-
-// fn popped_last(path) {
-//   string.split(path, "/")
-//   |> list.take(list.length(string.split(path, "/")) - 1)
-//   |> string.join("/")
-// }
-
-// fn change_ext(name) {
-//   string.replace(name, ".rs", ".emu")
-// }
-
-// fn rrr(path) {
-//   case result.unwrap(simplifile.is_file(path), False) {
-//     True -> {
-//       case string.ends_with(last(path), ".rs") {
-//         True -> {
-//           rename_if_different(
-//             path,
-//             popped_last(path) <> "/" <> change_ext(last(path)),
-//           )
-//         }
-//         False -> Nil
-//       }
-//     }
-//     False -> {
-//       let children = result.unwrap(simplifile.read_directory(path), [])
-//       list.each(children, fn(child) { rrr(path <> "/" <> child) })
-//     }
-//   }
-// }
-
 pub fn main() {
   let args = argv.load().arguments
   case args {
@@ -199,7 +164,6 @@ pub fn main() {
         "uncomment" -> comment(dir_path, False)
         "spotlight" -> spotlight(dir_path)
 
-        // "rename" -> rrr(dir_path)
         _ -> io.println("Usage: spotlighter comment/spotlight <path>")
       }
     }
