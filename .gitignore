@@ -22,4 +22,4 @@ playwright/.cache/
 
 .env
 
-src/content/res.emu
+src/res.emu

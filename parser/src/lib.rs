@@ -50,10 +50,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
     }
 
     let elm_string = res.unwrap();
-    write_to_file(
-        &format!("{}/src/content/res.emu", path.display()),
-        &elm_string,
-    );
+    write_to_file(&format!("{}/src/res.emu", path.display()), &elm_string);
 
     let mut json = Parser::new();
     let parsed_json_string = json.export_json(&elm_string, None, false);
@@ -89,41 +86,44 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         .map(|x| (x.as_str()[0..1].to_uppercase() + &x[1..]).to_string())
         .collect();
 
+    let wrap_ignored_elements = Some(vec![
+        IgnoreOptions {
+            element: "InlineImage",
+            attach_to: AttachToEnum::BOTH,
+        },
+        IgnoreOptions {
+            element: "br",
+            attach_to: AttachToEnum::BOTH,
+        },
+        IgnoreOptions {
+            element: "ImageRight",
+            attach_to: AttachToEnum::BEFORE,
+        },
+        IgnoreOptions {
+            element: "ImageLeft",
+            attach_to: AttachToEnum::BEFORE,
+        },
+        IgnoreOptions {
+            element: "del",
+            attach_to: AttachToEnum::BOTH,
+        },
+        IgnoreOptions {
+            element: "Space",
+            attach_to: AttachToEnum::BEFORE,
+        },
+    ]);
+
     desugarer = desugarer
         .pre_process_exercises()
         .add_increamental_attr(vec![("Solution", "solution_number")], &types)
         .auto_increamental_title("Exercise", "Exercise", &types)
         .auto_increamental_title("Example", "Example", &types)
         .wrap_block_delimited("InnerParagraph")
+        .wrap_children(vec!["Section"], "Paragraph", &wrap_ignored_elements)
         .wrap_children(
-            vec!["Section", "Solution", "Example", "Exercise"],
-            "Paragraph",
-            &Some(vec![
-                IgnoreOptions {
-                    element: "InlineImage",
-                    attach_to: AttachToEnum::BOTH,
-                },
-                IgnoreOptions {
-                    element: "br",
-                    attach_to: AttachToEnum::BOTH,
-                },
-                IgnoreOptions {
-                    element: "ImageRight",
-                    attach_to: AttachToEnum::BEFORE,
-                },
-                IgnoreOptions {
-                    element: "ImageLeft",
-                    attach_to: AttachToEnum::BEFORE,
-                },
-                IgnoreOptions {
-                    element: "del",
-                    attach_to: AttachToEnum::BOTH,
-                },
-                IgnoreOptions {
-                    element: "Space",
-                    attach_to: AttachToEnum::BEFORE,
-                },
-            ]),
+            vec!["Solution", "Example", "Exercise"],
+            "InnerParagraph",
+            &wrap_ignored_elements,
         )
         .wrap_children(vec!["Grid"], "Span", &None)
         .wrap_children(vec!["List"], "Item", &None)

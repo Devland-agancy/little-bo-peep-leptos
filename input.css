@@ -404,14 +404,17 @@ span .MathJax_SVG{
 
 .spacer{
   height: 1.5rem;
+  /* display: inline-block; */
 }
 
 
 .example > .spacer:last-child,
-/* .solution .spacer:last-child, */
-.spacer:has(+ .pr > :first-child.block-element),
 .pr:has( > :first-child.block-element) + .spacer,
-.pr:has( > :last-child.side-img) + .spacer
+.pr:has( > :last-child.side-img) + .spacer,
+/* with slice */
+.spacer:has(+ .slice > .pr > :first-child.block-element),
+.slice:has(> .pr > :first-child.block-element) + .spacer,
+.slice:has(> .pr > :last-child.side-img) + .spacer
 {
   height: 0;
 }
@@ -423,13 +426,14 @@ span .MathJax_SVG{
 
 .pr:has(.pause) + .spacer,
 .mathblock + .spacer,
-.pr:has(.solution) + .spacer
+.pr:has(.solution) + .spacer,
+.spacer:has(+ .pr > :first-child.block-element)
 {
   display: none;
 }
 
 .indent-fix {
-  height: 0;
+  height: .5rem;
 }
 
 .mathblock-span {
