@@ -42,7 +42,7 @@ pub fn ImageRight(
     } = use_context::<GlobalState>(cx).unwrap();
 
     let solution_open = move || {
-        if solutions_state.get().len() > 0 {
+        if solutions_state.get().len() > tab.get() {
             solutions_state.get()[tab.get()]
         } else {
             false

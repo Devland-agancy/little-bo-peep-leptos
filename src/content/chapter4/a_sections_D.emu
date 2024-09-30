@@ -124,7 +124,7 @@
     
     To emphasize, if the second derivative is some
 
-    -|LARGE POSITIVE NUMBER|-
+    _|LARGE POSITIVE NUMBER|_
 
     then the slope is increasing at that rate, 
     which could result in a sharp bend upwards
@@ -136,7 +136,7 @@
 
     Likewise, if the second derivative is some
     
-    -|LARGE NEGATIVE NUMBER|-
+    _|LARGE NEGATIVE NUMBER|_
 
     then the slope is decreasing at [the absolute 
     value of] that rate, which could result in 

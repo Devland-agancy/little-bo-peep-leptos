@@ -56,6 +56,7 @@ pub fn Paragraph(
     });
 
     view! { cx,
+    <div class=format!("slice colmuns relative text-xl -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth")>
       <span
         id=id
         node_ref=node_ref
@@ -80,6 +81,52 @@ pub fn Paragraph(
 
         {children(cx)}
       </span>
-      <Spacer/>
+    </div>
+    <Spacer/>
+    }
+}
+
+#[component]
+pub fn InnerParagraph(
+    cx: Scope,
+    children: Children,
+    #[prop(default = Indent::None)] indent: Indent,
+    #[prop(default = Align::None)] align: Align,
+    #[prop(optional)] id: &'static str,
+    #[prop(optional)] classes: &'static str,
+    #[prop(default = false)] no_padding: bool,
+) -> impl IntoView {
+    let GlobalState {
+        burger_background,
+        show_areas,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
+
+    view! { cx,
+
+      <span
+        id=id
+        class=format!("pr col-start-2 block relative {}", classes)
+        class=("indent-10", indent == Indent::Line)
+        class=("pl-10", indent == Indent::Block)
+        class=("text-center", align == Align::Center)
+        class=("my-2", align == Align::Center)
+        class=("text-right", align == Align::Right)
+        class=("text-left", align == Align::None)
+        class=("test-bg", move || show_areas())
+        style=format!(
+            "text-indent: {}; padding-left: {}; padding-right: {}",
+            match indent {
+                Indent::Custom(s) => s,
+                _ => "",
+            },
+            if !no_padding { TEXT_LEFT_PADDING } else { "0" },
+            if !no_padding { TEXT_RIGHT_PADDING } else { "0" },
+        )
+      >
+
+        {children(cx)}
+      </span>
+    <Spacer/>
     }
 }
