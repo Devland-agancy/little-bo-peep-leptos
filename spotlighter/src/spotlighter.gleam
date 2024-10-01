@@ -80,7 +80,7 @@ fn rename_if_different(from: String, to: String) -> Nil {
   case from == to {
     True -> Nil
     False -> {
-      io.println("trying to rename " <> from <> " to " <> to)
+      io.println("renaming " <> from <> " to " <> to)
       let _ =
         shellout.command(run: "git", in: ".", with: ["mv", from, to], opt: [])
       Nil
@@ -137,10 +137,6 @@ fn comment_recursive(
   }
 }
 
-// *****************
-// ORIGINAL API FUNCTIONS
-// *****************
-
 fn spotlight(path) {
   let pieces = reversed_path_from_path(path)
   comment_recursive(pieces, False, False)
@@ -156,17 +152,19 @@ fn comment(path, want_commented: Bool) {
 }
 
 pub fn main() {
+  io.println("")
+
   let args = argv.load().arguments
   case args {
-    [command, dir_path] -> {
+    [command, dir_path] ->
       case command {
         "comment" -> comment(dir_path, True)
         "uncomment" -> comment(dir_path, False)
-        "spotlight" -> spotlight(dir_path)
-
-        _ -> io.println("Usage: spotlighter comment/spotlight <path>")
+        _ -> io.println("usage: ./spotlight [comment|uncomment] <path>")
       }
-    }
-    _ -> io.println("Usage: spotlighter comment/spotlight <path>")
+
+    [dir_path] -> spotlight(dir_path)
+
+    _ -> io.println("usage: ./spotlight [comment|uncomment] <path>")
   }
 }
