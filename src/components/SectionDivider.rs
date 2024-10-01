@@ -1,5 +1,6 @@
 use crate::{
     components::Image::Image,
+    components::Paragraph::Paragraph,
     components::Section::{Pause, Spacer},
     constants::SECTION_DIVIDER_ACTIVATION_HEIGHT,
     global_state::GlobalState,
@@ -42,10 +43,12 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
         fallback=move |_| view! { cx, <Pause>""</Pause> }
         when=move || !hidden() && show_section_divider()
       >
-        <Image src="/images/section_divider.svg" width="100%" image_classes="col-start-2">
+      <Paragraph>
+        <Image container_classes="section-divider" src="/images/section_divider.svg" width="100%" >
           ""
           <Spacer/>
         </Image>
+      </Paragraph>
       </Show>
     }
 }
