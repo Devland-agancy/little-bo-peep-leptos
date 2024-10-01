@@ -414,7 +414,8 @@ span .MathJax_SVG{
 /* with slice */
 .spacer:has(+ .slice > .pr > :first-child.block-element),
 .slice:has(> .pr > :first-child.block-element) + .spacer,
-.slice:has(> .pr > :last-child.side-img) + .spacer
+.slice:has(> .pr > :last-child.side-img) + .spacer,
+.section-divider .spacer
 {
   height: 0;
 }
@@ -536,6 +537,8 @@ table.first-line tr td:first-child {
 .indent-10 > .text {
   display: inline;
 }
+
+
 
 /* @media (min-width: 100vw) {
   .pr:has( > .mathblock) {
