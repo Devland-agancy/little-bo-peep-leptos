@@ -96,11 +96,7 @@ pub fn InnerParagraph(
     #[prop(optional)] classes: &'static str,
     #[prop(default = false)] no_padding: bool,
 ) -> impl IntoView {
-    let GlobalState {
-        burger_background,
-        show_areas,
-        ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
 
     view! { cx,
 

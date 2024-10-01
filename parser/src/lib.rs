@@ -111,6 +111,10 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
             element: "Space",
             attach_to: AttachToEnum::BEFORE,
         },
+        IgnoreOptions {
+            element: "Pause",
+            attach_to: AttachToEnum::NONE,
+        },
     ]);
 
     desugarer = desugarer

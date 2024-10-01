@@ -9,7 +9,7 @@ pub fn Section(
     children: Children,
 ) -> impl IntoView {
     return view! { cx,
-      <div class="sec col-start-2">{children(cx)}</div>
+      <div class="sec">{children(cx)}</div>
       <Show fallback=|_| () when=move || divider>
         <SectionDivider/>
       </Show>
@@ -18,17 +18,17 @@ pub fn Section(
 
 #[component]
 pub fn Paragraphs(cx: Scope, children: Children) -> impl IntoView {
-    return view! { cx, <div class="col-start-2">{children(cx)}</div> };
+    return view! { cx, <div class="">{children(cx)}</div> };
 }
 
 #[component]
 pub fn Example(cx: Scope, children: Children) -> impl IntoView {
-    return view! { cx, <div class="example col-start-2 !mt-0">{children(cx)}</div> };
+    return view! { cx, <div class="example !mt-0">{children(cx)}</div> };
 }
 
 #[component]
 pub fn Pause(cx: Scope, children: Children) -> impl IntoView {
-    return view! { cx, <div class="col-start-2 pause">{children(cx)}</div> };
+    return view! { cx, <div class="pause">{children(cx)}</div> };
 }
 
 #[component]
@@ -38,7 +38,7 @@ pub fn Spacer(
     #[prop(default = false)] before: bool,
 ) -> impl IntoView {
     return view! { cx,
-      <div class="col-start-2 spacer" class=("inner-spacer", inner) class=("before-spacer", before)>
+      <div class="spacer" class=("inner-spacer", inner) class=("before-spacer", before)>
         ""
       </div>
     };
