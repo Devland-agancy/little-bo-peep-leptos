@@ -507,7 +507,7 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
       </div>
 
       <div
-        class="transition-all"
+        class="transition-all col-start-2"
         style=move || {
             format!(
                 "height: {}px; background-color: {}; transition-duration: {}ms",
