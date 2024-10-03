@@ -29,8 +29,10 @@ pub fn Image(
     let GlobalState {
         show_areas,
         margin_scroll_value,
+        on_mobile,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
+    let (opened, set_opened) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
         if image_ref().is_some() {
@@ -90,6 +92,8 @@ pub fn Image(
         });
     });
     view! { cx,
+      // on desktop . both divs should be max-width
+      // on mobile . if opened is true . image should be max-width else it should fit to screen
       <div
         node_ref=image_ref
         style=move || {
@@ -99,17 +103,19 @@ pub fn Image(
                 if show_padding() { padding_right } else { 0_f64 },
             )
         }
-
         class=move || {
             format!(
-                "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto {} {}",
-                container_classes,
-                if is_wider_than_text() {"wide-displayed-image w-max"} else { "fill-available" }
+                "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto transition-all {}",
+                container_classes
+
             )
         }
+        class=("fill-available", move || !is_wider_than_text())
+
+        class=("opened-displayed-image", move || !on_mobile() || opened())
+        class=("w-max", move ||  !on_mobile()  || opened())
       >
         <div
-            class="w-max"
             style=move || {
                 format!(
                     "height: {};
@@ -121,26 +127,24 @@ pub fn Image(
                     width,
                 )
             }
+            class="transition-all"
+            class=("max-width-screen", move || on_mobile() && !opened())
+            class=("w-max", move || !on_mobile() || opened() )
+
         >
             <img
-                on:click=move |e| {
-                    if cloud_image && is_wider_than_screen() && page_state() == PageState::ShowArticle {
-                        e.stop_propagation();
-                        set_page_state
-                            .update(|value| {
-                                *value = PageState::ShowRight;
-                            });
-                        margin_scroll_value
-                            .update(|val| {
-                                *val = 100_f64;
-                            })
+                on:click=move |_| {
+                    if on_mobile()  {
+                        set_opened(!opened());
+                    } else {
+                        set_opened(false);
                     }
                 }
 
                 id=id
                 src=src
-
                 style=move || format!("height: {height}")
+                class="m-auto"
                 class=("outline-[20px]", move || show_areas() && cloud_image && is_wider_than_screen())
                 class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wider_than_screen())
                 class=("outline", move || show_areas() && cloud_image && is_wider_than_screen())

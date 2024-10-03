@@ -111,13 +111,11 @@ pub fn InnerParagraph(
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas())
         style=format!(
-            "text-indent: {}; padding-left: {}; padding-right: {}",
+            "text-indent: {};",
             match indent {
                 Indent::Custom(s) => s,
                 _ => "",
             },
-            if !no_padding { TEXT_LEFT_PADDING } else { "0" },
-            if !no_padding { TEXT_RIGHT_PADDING } else { "0" },
         )
       >
 

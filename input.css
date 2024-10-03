@@ -511,6 +511,9 @@ table.first-line tr td:first-child {
   max-width: fill-available;
 }
 
+.max-width-screen {
+  max-width: var(--desktop-text-column-width);
+}
 
 .pr:has( > .mathblock.desktop),
 .pr:has( > .displayed-image)
@@ -520,8 +523,12 @@ table.first-line tr td:first-child {
 }
 
 .pr:has( > .mathblock),
-.pr:has( > .displayed-image){
+.pr:has( > .opened-displayed-image) {
   width: max-content;
+}
+
+.pr:has( > .mathblock),
+.pr:has( > .displayed-image){
   min-width: min(100vw, var(--desktop-text-column-width));
 }
 
