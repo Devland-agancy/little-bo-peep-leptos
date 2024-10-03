@@ -1463,7 +1463,7 @@ span .MathJax_SVG{
 }
 
 .indent-fix {
-  height: .5rem;
+  height: 0;
 }
 
 .mathblock-span {
