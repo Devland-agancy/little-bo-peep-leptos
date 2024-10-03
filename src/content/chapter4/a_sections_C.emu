@@ -83,7 +83,6 @@
     of...
 
     |> ul
-
         |> li
 
             seconds on the $x$ axis, meters on the 
@@ -94,8 +93,7 @@
     
     ...then the “after” graph will have units of...
     
-    |> ul
-    
+    |> ul    
         |> li
 
             seconds on the $x$ axis, meters per
