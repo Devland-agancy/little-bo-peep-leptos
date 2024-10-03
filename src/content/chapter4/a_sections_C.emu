@@ -67,15 +67,19 @@
 
     *Units of the Derivative.*
     If units are present, we have
+    
     $$
     \te{$y$ axis units for $f'$} \,= {\te{$y$ axis units for $\f$} \over \te{$x$ axis units for $\f$}}
     $$
-    because a value output by $\f'$ is the 
-    _slope_ of a tangent line attached to the 
+    
+    because a value output by $\f'$ is the
+    _slope_ of a tangent line attached to the
     graph $y = f(x)$, and
+    
     $$
     \te{$x$ axis units for $f'$}\, = \rt{0.02}\,\te{$x$ axis units for $f$}
     $$
+    
     because an input for $\f'$ is, originally, 
     an input for $\f$.
 
@@ -102,7 +106,6 @@
     ...while if the “before” graph has units of...
     
     |> ul
-    
         |> li
 
             years on the $x$ axis, dollars on the
@@ -115,15 +118,14 @@
 
     |> ul
         |> li
+
             years on the $x$ axis, dollars per
             year on the $y$ axis
 
     ...and so on.
 
     Units might additionally prompt us to refer
-    to $f'$ as 
-    |> br
-    the
+    to $f'$ as the
 
     __rate of change__
     
