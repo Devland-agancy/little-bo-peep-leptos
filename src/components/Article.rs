@@ -86,12 +86,12 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <ColumnButtonRight/>
           <Show when=move || state_changed_by_scroll() fallback=move |_| ()>
             <div
-              class="fixed bottom-5 right-5">
-              <img
-              class="w-12 ml-[24px]"
-              src="/images/tab-to-recenter.gif"
-              />
-              <p>"Tab to recenter"</p>
+              class="fixed bottom-0 left-0 bg-[#b5815e] p-2 w-full">
+              // <img
+              // class="w-12 ml-[24px]"
+              // src="/images/tab-to-recenter.gif"
+              // />
+              <p class="w-fit m-auto font-bold">"Tap to recenter"</p>
             </div>
           </Show>
         </div>
