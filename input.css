@@ -420,7 +420,8 @@ span .MathJax_SVG{
   height: 0;
 }
 
-.spacer:has(+ .text)
+.spacer:has(+ .text),
+.sec > .spacer:last-child
 {
   height: 1.5rem;
 }
@@ -512,7 +513,7 @@ table.first-line tr td:first-child {
 }
 
 .max-width-screen {
-  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
+  max-width: calc(100vw - var(--desktop-text-column-padding) * 2);
 }
 
 .pr:has( > .mathblock.desktop),
