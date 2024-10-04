@@ -126,8 +126,8 @@
   position: relative
 }
 
-.bottom-5 {
-  bottom: 1.25rem
+.bottom-0 {
+  bottom: 0px
 }
 
 .left-0 {
@@ -152,10 +152,6 @@
 
 .right-0 {
   right: 0px
-}
-
-.right-5 {
-  right: 1.25rem
 }
 
 .top-14 {
@@ -655,6 +651,11 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
+.bg-\[\#b5815e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(181 129 94 / var(--tw-bg-opacity))
+}
+
 .bg-\[\#c1ebff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(193 235 255 / var(--tw-bg-opacity))
@@ -699,6 +700,10 @@
 
 .p-0 {
   padding: 0px
+}
+
+.p-2 {
+  padding: 0.5rem
 }
 
 .p-4 {
@@ -845,6 +850,10 @@
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem
+}
+
+.font-bold {
+  font-weight: 700
 }
 
 .italic {
