@@ -410,11 +410,11 @@ span .MathJax_SVG{
 
 .example > .spacer:last-child,
 .pr:has( > :first-child.block-element) + .spacer,
-.pr:has( > :last-child.side-img) + .spacer,
+.pr:has( :last-child.side-img) + .spacer,
 /* with slice */
 .spacer:has(+ .slice > .pr > :first-child.block-element),
 .slice:has(> .pr > :first-child.block-element) + .spacer,
-.slice:has(> .pr > :last-child.side-img) + .spacer,
+.slice:not(:last-child):has(> .pr :last-child.side-img) + .spacer,
 .section-divider .spacer
 {
   height: 0;
@@ -512,7 +512,7 @@ table.first-line tr td:first-child {
 }
 
 .max-width-screen {
-  max-width: var(--desktop-text-column-width);
+  max-width: calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2);
 }
 
 .pr:has( > .mathblock.desktop),
