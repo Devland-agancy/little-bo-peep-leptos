@@ -84,16 +84,16 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           </div>
           <ColumnButtonLeft/>
           <ColumnButtonRight/>
-          <Show when=move || state_changed_by_scroll() fallback=move |_| ()>
-            <div
-              class="fixed bottom-0 left-0 bg-[#b5815e] p-2 w-full">
-              <img
-                class="w-fit m-auto"
-                src="/images/svg_tap_to_recenter_text.svg"
-              />
-              // <p class="w-fit m-auto font-bold">"Tap to recenter"</p>
-            </div>
-          </Show>
+          <div
+            class="fixed left-0 bg-[#b5815e] p-2 w-full transition-all"
+            class=("bottom-0", state_changed_by_scroll)
+            class=("bottom-[-5%]", move || !state_changed_by_scroll())
+            >
+            <img
+              class="w-fit m-auto"
+              src="/images/svg_tap_to_recenter_text.svg"
+            />
+          </div>
         </div>
       </div>
       <MathJaxTypeset/>

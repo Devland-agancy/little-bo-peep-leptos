@@ -130,6 +130,10 @@
   bottom: 0px
 }
 
+.bottom-\[-5\%\] {
+  bottom: -5%
+}
+
 .left-0 {
   left: 0px
 }
@@ -1575,18 +1579,10 @@ table.first-line tr td:first-child {
 }
 
 .pr:has( > .mathblock),
-.pr:has( > .opened-displayed-image) {
-  width: -moz-max-content;
-  width: max-content;
-}
-
-.pr:has( > .closed-displayed-image) {
-  max-width: calc(100vw - var(--desktop-text-column-padding) * 2);
-}
-
-.pr:has( > .mathblock),
 .pr:has( > .displayed-image){
   min-width: min(100vw, var(--desktop-text-column-width));
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .pr:has(> .wide) > .side-img > .squiggle {
