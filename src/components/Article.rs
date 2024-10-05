@@ -87,11 +87,11 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <Show when=move || state_changed_by_scroll() fallback=move |_| ()>
             <div
               class="fixed bottom-0 left-0 bg-[#b5815e] p-2 w-full">
-              // <img
-              // class="w-12 ml-[24px]"
-              // src="/images/tab-to-recenter.gif"
-              // />
-              <p class="w-fit m-auto font-bold">"Tap to recenter"</p>
+              <img
+                class="w-fit m-auto"
+                src="/images/svg_tap_to_recenter_text.svg"
+              />
+              // <p class="w-fit m-auto font-bold">"Tap to recenter"</p>
             </div>
           </Show>
         </div>
