@@ -524,13 +524,9 @@ table.first-line tr td:first-child {
 }
 
 .pr:has( > .mathblock),
-.pr:has( > .opened-displayed-image) {
-  width: max-content;
-}
-
-.pr:has( > .mathblock),
 .pr:has( > .displayed-image){
   min-width: min(100vw, var(--desktop-text-column-width));
+  width: max-content;
 }
 
 .pr:has(> .wide) > .side-img > .squiggle {
@@ -546,7 +542,13 @@ table.first-line tr td:first-child {
   display: inline;
 }
 
+.unglow {
+  background: radial-gradient(circle, white, white);
+}
 
+.glow {
+  background: radial-gradient(circle, #f9ddff, white);
+}
 
 /* @media (min-width: 100vw) {
   .pr:has( > .mathblock) {

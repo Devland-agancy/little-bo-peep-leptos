@@ -105,15 +105,12 @@ pub fn Image(
         }
         class=move || {
             format!(
-                "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto transition-all {}",
+                "displayed-image relative col-start-2 scrollbar-hidden sm:overflow-x-visible m-auto transition-all w-max {}",
                 container_classes
 
             )
         }
         class=("fill-available", move || !is_wider_than_text())
-
-        class=("opened-displayed-image", move || !on_mobile() || opened())
-        class=("w-max", move ||  !on_mobile()  || opened())
       >
         <div
             style=move || {
@@ -127,10 +124,7 @@ pub fn Image(
                     width,
                 )
             }
-            class="transition-all"
-            class=("max-width-screen", move || on_mobile() && !opened())
-            class=("w-max", move || !on_mobile() || opened() )
-
+            class="w-max"
         >
             <img
                 on:click=move |_| {
@@ -144,7 +138,9 @@ pub fn Image(
                 id=id
                 src=src
                 style=move || format!("height: {height}")
-                class="m-auto"
+                class="m-auto transition-all"
+                class=("max-width-screen", move || on_mobile() && !opened())
+
                 class=("outline-[20px]", move || show_areas() && cloud_image && is_wider_than_screen())
                 class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wider_than_screen())
                 class=("outline", move || show_areas() && cloud_image && is_wider_than_screen())
