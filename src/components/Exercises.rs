@@ -462,18 +462,27 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
     };
 
     let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
+
+    let transition_duration = move || {
+        if solution_transition_duration().len() > tab.get() {
+            solution_transition_duration()[tab.get()]
+        } else {
+            1000
+        }
+    };
+
     create_effect(cx, move |_| {
         if solution_open() {
             set_timeout(
                 move || set_solution_fully_opened(true),
-                Duration::from_millis(solution_transition_duration()[tab.get()] as u64),
+                Duration::from_millis(transition_duration() as u64),
             )
         } else {
             set_solution_fully_opened(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
                 move || set_solution_fully_opened(false),
-                Duration::from_millis(solution_transition_duration()[tab.get()] as u64),
+                Duration::from_millis(transition_duration() as u64),
             )
         }
     });
@@ -483,12 +492,12 @@ pub fn Exercise(cx: Scope, children: ChildrenFn) -> impl IntoView {
         if solution_open() {
             set_timeout(
                 move || set_bot_div(false),
-                Duration::from_millis(solution_transition_duration()[tab.get()] as u64),
+                Duration::from_millis(transition_duration() as u64),
             )
         } else {
             set_timeout(
                 move || set_bot_div(true),
-                Duration::from_millis(solution_transition_duration()[tab.get()] as u64),
+                Duration::from_millis(transition_duration() as u64),
             )
         }
     });
