@@ -848,10 +848,6 @@
   line-height: 1.75rem
 }
 
-.font-bold {
-  font-weight: 700
-}
-
 .italic {
   font-style: italic
 }
@@ -1473,7 +1469,7 @@ span .MathJax_SVG{
 .spacer:has(+ .text),
 .sec > .spacer:last-child
 {
-  height: 1.5rem;
+  height: 1.5rem !important;
 }
 
 .pr:has(.pause) + .spacer,

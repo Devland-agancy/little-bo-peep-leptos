@@ -423,7 +423,7 @@ span .MathJax_SVG{
 .spacer:has(+ .text),
 .sec > .spacer:last-child
 {
-  height: 1.5rem;
+  height: 1.5rem !important;
 }
 
 .pr:has(.pause) + .spacer,
