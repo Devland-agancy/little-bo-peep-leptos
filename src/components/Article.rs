@@ -85,14 +85,13 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <ColumnButtonLeft/>
           <ColumnButtonRight/>
           <div
-            class="fixed left-0 bg-[#b5815e] p-2 w-full transition-all"
-            class=("bottom-0", state_changed_by_scroll)
+            class="fixed left-0 bg-[#b5815e] p-2 w-full transition-all duration-500"
+            class=("bottom-0", move || state_changed_by_scroll())
             class=("bottom-[-5%]", move || !state_changed_by_scroll())
             >
-            <img
-              class="w-fit m-auto"
-              src="/images/svg_tap_to_recenter_text.svg"
-            />
+            <p
+              class="w-fit m-auto font-BowlbyOne"
+            >"tap to recenter"</p>
           </div>
         </div>
       </div>

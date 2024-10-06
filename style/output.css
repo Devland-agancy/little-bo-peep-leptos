@@ -800,6 +800,10 @@
   text-indent: 2.5rem
 }
 
+.font-BowlbyOne {
+  font-family: BowlbyOne
+}
+
 .font-baskerville {
   font-family: Baskerville Regular
 }
@@ -1026,6 +1030,12 @@
   font-family: "Lora";
 
   src: url("/fonts/Lora.ttf")
+}
+
+@font-face {
+  font-family: "BowlbyOne";
+
+  src: url("/fonts/BowlbyOne-Regular.ttf")
 }
 
 * {

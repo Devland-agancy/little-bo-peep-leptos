@@ -18,6 +18,7 @@ module.exports = {
         "merriweather-black": ["Merriweather Black"],
         "lora-italic": ["Lora Italic"],
         lora: ["Lora"],
+        BowlbyOne: ["BowlbyOne"],
       },
       width: {
         128: "32.5rem",
