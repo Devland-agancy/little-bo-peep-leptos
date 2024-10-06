@@ -30,8 +30,6 @@ pub fn ImageLeft(
 
     children: Children,
 ) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let show_left = move || page_state() == PageState::ShowLeft;
     let image_ref = create_node_ref::<Img>(cx);
     let node_ref = create_node_ref::<Div>(cx);
     let GlobalState {
@@ -110,7 +108,6 @@ pub fn ImageLeft(
           }
 
           class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100 z-10 absolute w-max"
-          class=("pointer-events-none", show_left)
           class=("lg:pointer-events-none", move || !clickable_on_desktop)
           class=("outline-[20px]", move || show_areas())
           class=("outline-[#3f9aff7d]", move || show_areas())

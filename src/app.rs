@@ -21,9 +21,6 @@ use web_sys::{ScrollBehavior, ScrollToOptions};
 pub fn App(cx: Scope) -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context(cx);
-    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
-    provide_context(cx, set_page_state);
-    provide_context(cx, page_state);
 
     let (menu_state, set_menu_state) = create_signal(cx, MenuState::Closed);
     provide_context(cx, set_menu_state);
@@ -144,42 +141,3 @@ pub fn App(cx: Scope) -> impl IntoView {
       <SVGDefinitions/>
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

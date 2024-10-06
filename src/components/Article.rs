@@ -1,4 +1,6 @@
-use crate::page::state::PageState;
+use std::time::Duration;
+
+use crate::global_state::GlobalState;
 use ev::click;
 use leptos::{
     ev::{scrollend, touchend},
@@ -11,11 +13,9 @@ use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let show_article = move || page_state() == PageState::ShowArticle;
     let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
     // can_click is for disabling click on page transition
-    let (state_changed_by_scroll, set_state_changed_by_scroll) = create_signal(cx, false);
+    let GlobalState { margin_mode, .. } = use_context::<GlobalState>(cx).unwrap();
 
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
@@ -24,20 +24,19 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         window().scroll_with_scroll_to_options(&options);
 
         let scroll_back = move || {
-            if show_article() {
-                let mut options = ScrollToOptions::new();
+            let mut options = ScrollToOptions::new();
 
-                if !state_changed_by_scroll()
-                    && window().scroll_x().unwrap() > 1300.0
-                    && window().scroll_x().unwrap() < 1700.0
-                {
-                    options.left(1500.0);
-                    options.behavior(ScrollBehavior::Smooth);
-                    window().scroll_with_scroll_to_options(&options);
-                    return ();
-                } else {
-                    set_state_changed_by_scroll(true);
-                }
+            if !margin_mode()
+                && window().scroll_x().unwrap() > 1300.0
+                && window().scroll_x().unwrap() < 1700.0
+            {
+                options.left(1500.0);
+                options.behavior(ScrollBehavior::Smooth);
+                window().scroll_with_scroll_to_options(&options);
+                margin_mode.set(false);
+                return ();
+            } else {
+                margin_mode.set(true);
             }
         };
 
@@ -58,7 +57,12 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                         options.behavior(ScrollBehavior::Smooth);
                         options.left(1500.0);
                         window().scroll_with_scroll_to_options(&options);
-                        set_state_changed_by_scroll(false);
+                        set_timeout(
+                            move || {
+                                margin_mode.set(false);
+                            },
+                            Duration::from_millis(100),
+                        );
                     }
                 }
             }
@@ -72,7 +76,6 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         <div
           node_ref=article_node
           class="relative flex justify-center align-center w-full pb-14 min-h-screen left-[1500px]"
-          class=("", show_article)
           id="Article"
         >
           <div class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0">
@@ -86,8 +89,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <ColumnButtonRight/>
           <div
             class="fixed left-0 bg-[#b5815e] p-2 w-full transition-all duration-500"
-            class=("bottom-0", move || state_changed_by_scroll())
-            class=("bottom-[-6%]", move || !state_changed_by_scroll())
+            class=("bottom-0", move || margin_mode())
+            class=("bottom-[-6%]", move || !margin_mode())
             >
             <p
               class="w-fit m-auto font-BowlbyOne"
@@ -115,45 +118,20 @@ pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 
 #[component]
 pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-
-    let show_left = move || page_state() == PageState::ShowLeft;
-    let show_article = move || page_state() == PageState::ShowArticle;
-
     view! { cx,
       <div
         style="width: 1500px;"
-        class="z-40 transition duration-300 absolute grid grid-cols-4 justify-end items-center w-full h-full translate-x-3/4 lg:translate-x-[85%]"
-        class=("opacity-0", show_article)
-        class=("pointer-events-none", show_article)
-        class=("opacity-100", show_left)
-        class=("-translate-x-3/4", || true)
-        class=("lg:-translate-x-[85%]", || true)
-        class=("opacity-100", || true)
+        class="z-40 transition duration-300 absolute grid grid-cols-4 justify-end items-center w-full h-full translate-x-3/4 lg:translate-x-[85%] opacity-100 pointer-events-none"
       ></div>
     }
 }
 
 #[component]
 pub fn ColumnButtonLeft(cx: Scope) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-
-    let show_right = move || page_state() == PageState::ShowRight;
-    let show_left = move || page_state() == PageState::ShowLeft;
-    let show_article = move || page_state() == PageState::ShowArticle;
-
     view! { cx,
       <div
         style="width: 1500px;"
-        class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full lg:translate-0"
-        class=("opacity-0", show_article)
-        class=("pointer-events-none", show_article)
-        class=("opacity-100", show_right)
-        class=("-translate-x-3/4", || true)
-        class=("lg:-translate-x-[85%]", show_right)
-        class=("opacity-100", || true)
-        class=("translate-x-3/4", show_left)
-        class=("lg:translate-x-[85%]", || true)
+        class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full -translate-x-3/4 lg:translate-x-[85%] pointer-events-none"
       ></div>
     }
 }

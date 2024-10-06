@@ -14,6 +14,7 @@ pub struct GlobalState {
     pub solution_transition_duration: RwSignal<Vec<i32>>,
     pub btc_alignment_on_left: RwSignal<bool>,
     pub math_rendered: RwSignal<bool>,
+    pub margin_mode: RwSignal<bool>,
 }
 
 impl GlobalState {
@@ -31,6 +32,7 @@ impl GlobalState {
             solution_transition_duration: create_rw_signal(cx, vec![]),
             btc_alignment_on_left: create_rw_signal(cx, false),
             math_rendered: create_rw_signal(cx, false),
+            margin_mode: create_rw_signal(cx, false),
         }
     }
 

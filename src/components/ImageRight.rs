@@ -31,8 +31,6 @@ pub fn ImageRight(
 
     children: Children,
 ) -> impl IntoView {
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
-    let show_right = move || page_state() == PageState::ShowRight;
     let GlobalState {
         show_areas,
         on_mobile,
@@ -111,7 +109,6 @@ pub fn ImageRight(
           }
 
           class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute w-max"
-          class=("pointer-events-none", show_right)
           class=("lg:pointer-events-none", move || !clickable_on_desktop)
           class=("outline-[20px]", move || show_areas())
           class=("outline-[#3f9aff7d]", move || show_areas())
