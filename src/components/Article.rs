@@ -87,7 +87,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           <div
             class="fixed left-0 bg-[#b5815e] p-2 w-full transition-all duration-500"
             class=("bottom-0", move || state_changed_by_scroll())
-            class=("bottom-[-5%]", move || !state_changed_by_scroll())
+            class=("bottom-[-6%]", move || !state_changed_by_scroll())
             >
             <p
               class="w-fit m-auto font-BowlbyOne"
