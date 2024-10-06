@@ -56,7 +56,7 @@ pub fn Paragraph(
     });
 
     view! { cx,
-    <div class=format!("slice colmuns relative text-xl -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth")>
+    <div class=format!("slice colmuns relative text-xl leading-[1.5em] -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth")>
       <span
         id=id
         node_ref=node_ref
