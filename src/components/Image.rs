@@ -23,13 +23,11 @@ pub fn Image(
     let (is_wider_than_screen, set_is_wider_than_screen) = create_signal(cx, false);
     let (is_wider_than_text, set_is_wider_than_text) = create_signal(cx, false);
     let (show_padding, set_show_padding) = create_signal(cx, true);
-
-    let set_page_state = use_context::<WriteSignal<PageState>>(cx).unwrap();
-    let page_state = use_context::<ReadSignal<PageState>>(cx).unwrap();
     let GlobalState {
         show_areas,
         margin_scroll_value,
         on_mobile,
+        margin_mode,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
     let (opened, set_opened) = create_signal(cx, false);
@@ -128,9 +126,9 @@ pub fn Image(
         >
             <img
                 on:click=move |_| {
-                    if on_mobile()  {
+                    if on_mobile() && !margin_mode() {
                         set_opened(!opened());
-                    } else {
+                    } else if !margin_mode() {
                         set_opened(false);
                     }
                 }
@@ -138,7 +136,7 @@ pub fn Image(
                 id=id
                 src=src
                 style=move || format!("height: {height}")
-                class="m-auto transition-all"
+                class="m-auto transition-all duration-500"
                 class=("max-width-screen", move || on_mobile() && !opened())
 
                 class=("outline-[20px]", move || show_areas() && cloud_image && is_wider_than_screen())
