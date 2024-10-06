@@ -12,12 +12,18 @@ pub fn Indent(cx: Scope, children: Children) -> impl IntoView {
         route();
         if let Some(node) = node_ref() {
             if let Some(parent) = node.parent_element() {
-                if let Some(parent) = parent.parent_element() {
-                    if let Some(prev_sibling) = parent.previous_element_sibling() {
-                        if prev_sibling.class_list().contains("spacer") {
-                            let indent_fix = Array::of1(&"indent-fix".into());
-                            let _ = prev_sibling.class_list().add(&indent_fix);
-                        }
+                // parent is div with class .pr
+                // if it has a sibling we add indent-fix to it else we add indent-fix to the sibling of grandparent div with class .slice
+                let mut selected_parent = parent.clone();
+                if parent.previous_element_sibling().is_none() {
+                    if let Some(grand_parent) = parent.parent_element() {
+                        selected_parent = grand_parent.clone();
+                    }
+                }
+                if let Some(prev_sibling) = selected_parent.previous_element_sibling() {
+                    if prev_sibling.class_list().contains("spacer") {
+                        let indent_fix = Array::of1(&"indent-fix".into());
+                        let _ = prev_sibling.class_list().add(&indent_fix);
                     }
                 }
             }

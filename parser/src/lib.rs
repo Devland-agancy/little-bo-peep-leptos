@@ -131,7 +131,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         )
         .wrap_children(vec!["Grid"], "Span", &None)
         .wrap_children(vec!["List"], "Item", &None)
-        .add_indent()
+        .add_indent(&vec!["Paragraph", "InnerParagraph"])
         .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"))
         .auto_convert_to_float(vec!["line", "padding_left"]);
 
