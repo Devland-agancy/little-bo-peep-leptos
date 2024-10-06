@@ -38,7 +38,7 @@ pub fn Spacer(
     #[prop(default = false)] before: bool,
 ) -> impl IntoView {
     return view! { cx,
-      <div class="spacer" class=("inner-spacer", inner) class=("before-spacer", before)>
+      <div class="spacer col-start-2" class=("inner-spacer", inner) class=("before-spacer", before)>
         ""
       </div>
     };
