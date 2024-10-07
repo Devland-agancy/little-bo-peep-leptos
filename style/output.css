@@ -130,8 +130,8 @@
   bottom: 0px
 }
 
-.bottom-\[-6\%\] {
-  bottom: -6%
+.bottom-\[-2em\] {
+  bottom: -2em
 }
 
 .left-0 {
@@ -651,11 +651,6 @@
   border-color: rgb(0 0 0 / var(--tw-border-opacity))
 }
 
-.bg-\[\#b5815e\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(181 129 94 / var(--tw-bg-opacity))
-}
-
 .bg-\[\#c1ebff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(193 235 255 / var(--tw-bg-opacity))
@@ -663,6 +658,10 @@
 
 .bg-\[\#ebe3a0b0\] {
   background-color: #ebe3a0b0
+}
+
+.bg-\[\#ffb380ff\] {
+  background-color: #ffb380ff
 }
 
 .bg-blue-900 {
@@ -702,12 +701,12 @@
   padding: 0px
 }
 
-.p-2 {
-  padding: 0.5rem
-}
-
 .p-4 {
   padding: 1rem
+}
+
+.p-\[\.2rem\] {
+  padding: .2rem
 }
 
 .px-4 {
@@ -836,6 +835,10 @@
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem
+}
+
+.text-\[15px\] {
+  font-size: 15px
 }
 
 .text-\[2\.5rem\] {
