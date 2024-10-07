@@ -1,4 +1,6 @@
+use crate::components::Link::CustomLink;
 use crate::components::Panel::MenuState;
+
 use crate::constants::{HAMBURGER_MENU_SCROLLY_END_FADE, HAMBURGER_MENU_SCROLLY_START_FADE};
 use crate::{constants::HAMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::{ev::scroll, *};
@@ -26,9 +28,9 @@ fn Title(cx: Scope) -> impl IntoView {
     view! { cx,
       <div class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0" id="Header">
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">
-          <a on:click=move |_| route.set("/") href="/">
+          <CustomLink href="/">
             "Little Bo Peep"
-          </a>
+          </CustomLink>
         </div>
       </div>
     }

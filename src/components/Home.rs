@@ -1,6 +1,8 @@
 use crate::components::Columns::*;
+use crate::components::Link::CustomLink;
 use crate::components::Paragraph::*;
 use crate::components::Section::*;
+
 use leptos::*;
 
 use crate::global_state::GlobalState;
@@ -69,16 +71,16 @@ pub fn MenuItem(
     let GlobalState { route, .. } = use_context(cx).unwrap();
 
     view! { cx,
-      <a
-        href=["/article/", href].concat()
+      <CustomLink
+        base_href="/article/"
+        href=href
         class="flex items-baseline justify-between"
-        on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
         <span class="dots"></span>
         <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
         <span class="hidden sm:block">{label}</span>
-      </a>
+      </CustomLink>
     }
 }
 

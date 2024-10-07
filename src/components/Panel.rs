@@ -1,6 +1,11 @@
+use std::rc::Rc;
+
 use crate::components::Checkbox::Checkbox;
+use crate::components::Link::CustomLink;
+
 use crate::{constants::HAMBURGER_MENU_HEIGHT, global_state::GlobalState};
 use leptos::*;
+use leptos_router::{use_location, use_navigate, NavigateOptions, State};
 use render_chapters::{render_articles_list, render_based_on_env, render_content_for_article};
 
 #[derive(Debug, Clone, PartialEq, Copy)]
@@ -111,20 +116,18 @@ pub fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    let GlobalState { route, .. } = use_context(cx).unwrap();
-
     view! { cx,
-      <a
-        href=["/article/", href].concat()
+    <CustomLink
+        base_href="/article/"
+        href=href
         class="flex items-baseline justify-between leading-9 sm:leading-8 text-2xl"
-        on:click=move |_| route.set(href)
       >
         <span class="block">{article_type}</span>
         <span class="dots"></span>
 
         <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
         <span class="hidden sm:block">{label}</span>
-      </a>
+      </CustomLink>
     }
 }
 
