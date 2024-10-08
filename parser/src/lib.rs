@@ -244,7 +244,7 @@ fn get_content(
     });
 
     if !parent_exists {
-        panic!("No parent file on {path_str}")
+        panic!("missing __parent file in {path_str}")
     }
     for entry in entries {
         let path = entry.path();
@@ -254,7 +254,7 @@ fn get_content(
             continue;
         }
         if file_name.ends_with(".emu") && file_name != "__parent.emu" {
-            let mut file_content = fs::read_to_string(&path).unwrap();
+            let file_content = fs::read_to_string(&path).unwrap();
             let with_indent = add_indent(&file_content);
             book.push_str("\n");
             book.push_str(&with_indent);
@@ -281,7 +281,7 @@ fn get_content(
     Ok(book)
 }
 
-fn remove_comment_symbols(content: &str) -> String {
+fn _remove_comment_symbols(content: &str) -> String {
     let mut output = String::new();
     let mut lines = content.lines();
 

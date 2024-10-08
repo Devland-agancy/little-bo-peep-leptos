@@ -23,8 +23,6 @@ pub fn Header(cx: Scope) -> impl IntoView {
 
 #[component]
 fn Title(cx: Scope) -> impl IntoView {
-    let GlobalState { route, .. } = use_context(cx).unwrap();
-
     view! { cx,
       <div class="select-none w-full pl-4 grid gridColsWidth h-full border-r-0" id="Header">
         <div class="font-clickerscript text-3xl pt-2 self-end sm:col-start-2 sm:pl-2 pb-2">

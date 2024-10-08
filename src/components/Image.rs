@@ -11,7 +11,7 @@ pub fn Image(
     src: &'static str,
     #[prop(default = "")] id: &'static str,
     #[prop(default = "")] container_classes: &'static str,
-    #[prop(default = "")] image_classes: &'static str,
+    #[prop(default = "")] _image_classes: &'static str,
     #[prop(default = "")] height: &'static str,
     #[prop(default = "")] width: &'static str,
     #[prop(default = 0_f64)] padding_left: f64,
@@ -25,7 +25,6 @@ pub fn Image(
     let (show_padding, set_show_padding) = create_signal(cx, true);
     let GlobalState {
         show_areas,
-        margin_scroll_value,
         on_mobile,
         margin_mode,
         ..

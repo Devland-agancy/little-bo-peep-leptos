@@ -1,3 +1,6 @@
+#![allow(unused_imports)]
+#![allow(dead_code)]
+
 use crate::components::Article::Article;
 use crate::components::Header::{Header, MenuButton};
 use crate::components::Panel::{MenuState, Panel};

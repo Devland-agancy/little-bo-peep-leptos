@@ -68,8 +68,6 @@ pub fn MenuItem(
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    let GlobalState { route, .. } = use_context(cx).unwrap();
-
     view! { cx,
       <CustomLink
         base_href="/article/"

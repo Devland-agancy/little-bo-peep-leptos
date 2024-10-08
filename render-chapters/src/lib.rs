@@ -1,4 +1,6 @@
 #![allow(unused_imports)]
+#![allow(dead_code)]
+
 #[macro_use]
 extern crate proc_macro;
 extern crate nom;
@@ -179,7 +181,6 @@ pub fn render_mods(input: TokenStream) -> TokenStream {
         }
     }
     let parsed_code = modules.parse::<proc_macro2::TokenStream>().unwrap();
-    let output = quote! { #parsed_code };
     parsed_code.into()
 }
 
@@ -278,7 +279,7 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
 
     let mut list = String::new();
     let articles = get_sorted_articles(article_type);
-    for (i, (article_i, path)) in articles.iter().enumerate() {
+    for (i, (_, path)) in articles.iter().enumerate() {
         let (title, mobile_title) = get_article_title(&path);
         let number = i + 1;
         list.push_str(&format!(

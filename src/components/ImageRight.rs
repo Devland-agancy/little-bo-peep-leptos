@@ -14,7 +14,7 @@ pub fn ImageRight(
     #[prop(default = true)] _attached: bool,
     #[prop(default = "center")] img_position: &'static str,
     #[prop(default = "center")] y: &'static str,
-    #[prop(default = "")] edge: &'static str,
+    #[prop(default = "")] _edge: &'static str,
     #[prop(optional)] line: f32,
 
     #[prop(default = "0px")] offset_y: &'static str,

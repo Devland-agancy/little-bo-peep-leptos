@@ -13,8 +13,8 @@ pub fn ImageLeft(
     #[prop(default = true)] _attached: bool,
     #[prop(default = "center")] img_position: &'static str, // bot, top, center
     #[prop(default = "center")] y: &'static str,            // bot, top, center of pivot ( red dot )
-    #[prop(default = "")] edge: &'static str, // formula_edge, paragraph_edge, image_edge
-    #[prop(optional)] line: f32,              // which paragraph line pivot is attached to
+    #[prop(default = "")] _edge: &'static str, // formula_edge, paragraph_edge, image_edge
+    #[prop(optional)] line: f32,               // which paragraph line pivot is attached to
 
     #[prop(default = "0px")] offset_y: &'static str,
     #[prop(default = "0px")] offset_x: &'static str,
