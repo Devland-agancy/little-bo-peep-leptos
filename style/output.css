@@ -837,8 +837,8 @@
   line-height: 2.25rem
 }
 
-.text-\[15px\] {
-  font-size: 15px
+.text-\[14px\] {
+  font-size: 14px
 }
 
 .text-\[2\.5rem\] {
@@ -881,11 +881,6 @@
 
 .leading-\[28px\] {
   line-height: 28px
-}
-
-.text-stone-900 {
-  --tw-text-opacity: 1;
-  color: rgb(28 25 23 / var(--tw-text-opacity))
 }
 
 .overline {
@@ -1650,11 +1645,6 @@ table.first-line tr td:first-child {
 
 .hover\:fill-stone-600:hover {
   fill: #57534e
-}
-
-.hover\:text-sky-800:hover {
-  --tw-text-opacity: 1;
-  color: rgb(7 89 133 / var(--tw-text-opacity))
 }
 
 @media (min-width: 520px) {
