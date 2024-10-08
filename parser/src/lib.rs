@@ -152,6 +152,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         "InlineImage",
         "StarDivider",
         "br",
+        "Space",
     ]);
 
     let parsed_map = emitter.split_and_emit(&json_counter, "Book");
