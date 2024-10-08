@@ -40,6 +40,7 @@ module.exports = {
       },
       transitionProperty: {
         dropdown: "all 1s",
+        "image-scale": "all 300ms ease-in-out",
       },
       keyframes: {
         appear: {
