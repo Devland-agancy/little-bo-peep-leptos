@@ -15,11 +15,7 @@ use web_sys::{ScrollBehavior, ScrollToOptions};
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
     // can_click is for disabling click on page transition
-    let GlobalState {
-        on_mobile,
-        margin_mode,
-        ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState { margin_mode, .. } = use_context::<GlobalState>(cx).unwrap();
 
     create_effect(cx, move |_| {
         let mut options = ScrollToOptions::new();
@@ -99,11 +95,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             <p
               class="w-fit m-auto font-BowlbyOne text-[14px]"
             >
-              <Show when=move || on_mobile() fallback=move |_|
-                "CLICK TO RECENTER".into_view(cx)
-              >
-                "TAP TO RECENTER"
-              </Show>
+              "TAP TO RECENTER"
             </p>
           </div>
         </div>
