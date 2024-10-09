@@ -100,9 +100,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
               class="w-fit m-auto font-BowlbyOne text-[14px]"
             >
               <Show when=move || on_mobile() fallback=move |_|
-                "CLICK ANYWHERE TO RECENTER".into_view(cx)
+                "CLICK TO RECENTER".into_view(cx)
               >
-                "TAP ANYWHERE TO RECENTER"
+                "TAP TO RECENTER"
               </Show>
             </p>
           </div>
