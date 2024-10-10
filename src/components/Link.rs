@@ -16,7 +16,9 @@ pub fn CustomLink(
     children: Children,
 ) -> impl IntoView {
     let navigate = Rc::new(use_navigate(cx));
-    let GlobalState { route, .. } = use_context(cx).unwrap();
+    let GlobalState {
+        route, margin_mode, ..
+    } = use_context(cx).unwrap();
 
     view! { cx,
       <a
@@ -32,6 +34,7 @@ pub fn CustomLink(
               },
           );
           route.set(href);
+          margin_mode.set(false);
         }
     >
         {children(cx)}
