@@ -25,3 +25,4 @@ pub mod Space;
 pub mod Span;
 pub mod StarDivider;
 pub mod Table;
+pub mod TapToRecenter;
