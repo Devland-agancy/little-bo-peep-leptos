@@ -15,23 +15,27 @@ use web_sys::{ScrollBehavior, ScrollToOptions};
 pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
     // can_click is for disabling click on page transition
-    let GlobalState { margin_mode, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState {
+        margin_mode,
+        on_mobile,
+        ..
+    } = use_context::<GlobalState>(cx).unwrap();
 
     create_effect(cx, move |_| {
-        let mut options = ScrollToOptions::new();
-        options.left(1500.0);
-        options.behavior(ScrollBehavior::Instant);
+        let options = ScrollToOptions::new();
+        options.set_left(1500.0);
+        options.set_behavior(ScrollBehavior::Instant);
         window().scroll_with_scroll_to_options(&options);
 
         let scroll_back = move || {
-            let mut options = ScrollToOptions::new();
+            let options = ScrollToOptions::new();
 
             if !margin_mode()
                 && window().scroll_x().unwrap() > 1300.0
                 && window().scroll_x().unwrap() < 1700.0
             {
-                options.left(1500.0);
-                options.behavior(ScrollBehavior::Smooth);
+                options.set_left(1500.0);
+                options.set_behavior(ScrollBehavior::Smooth);
                 window().scroll_with_scroll_to_options(&options);
                 margin_mode.set(false);
                 return ();
@@ -53,9 +57,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
                     if sidebar.contains(Some(element)) {}
 
                     if !sidebar.contains(Some(element)) && !menu_btn.contains(Some(element)) {
-                        let mut options = ScrollToOptions::new();
-                        options.behavior(ScrollBehavior::Smooth);
-                        options.left(1500.0);
+                        let options = ScrollToOptions::new();
+                        options.set_behavior(ScrollBehavior::Smooth);
+                        options.set_left(1500.0);
                         window().scroll_with_scroll_to_options(&options);
                         set_timeout(
                             move || {
@@ -87,17 +91,19 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
           </div>
           <ColumnButtonLeft/>
           <ColumnButtonRight/>
-          <div
-            class="fixed left-0 bg-[#ffb380ff] p-[.2rem] w-full transition-all duration-500"
-            class=("bottom-0", move || margin_mode())
-            class=("bottom-[-2em]", move || !margin_mode())
+          <Show when=move || on_mobile() fallback=move |_| () >
+            <div
+              class="fixed left-0 bg-[#ffb380ff] p-[.2rem] w-full transition-all duration-500"
+              class=("bottom-0", move || margin_mode())
+              class=("bottom-[-2em]", move || !margin_mode())
             >
             <p
-              class="w-fit m-auto font-BowlbyOne text-[14px]"
+            class="w-fit m-auto font-BowlbyOne text-[14px]"
             >
               "TAP TO RECENTER"
             </p>
           </div>
+        </Show>
         </div>
       </div>
       <MathJaxTypeset/>
