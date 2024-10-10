@@ -147,8 +147,8 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
               let should_scroll_to_button_first = element_pos
                   > GREEN_DIV_HEIGHT as f64 + 40_f64 + 56_f64;
               if solution_open() && should_scroll_to_button_first {
-                  let mut options = ScrollIntoViewOptions::new();
-                  options.behavior(ScrollBehavior::Smooth);
+                  let options = ScrollIntoViewOptions::new();
+                  options.set_behavior(ScrollBehavior::Smooth);
                   document()
                       .get_element_by_id("exo")
                       .unwrap()

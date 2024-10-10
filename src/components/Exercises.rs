@@ -165,8 +165,8 @@ fn EndLabelsView(cx: Scope, vec: Vec<&'static str>, selected_tab: usize) -> impl
         xmlns="http://www.w3.org/2000/svg"
         class="tab cursor-pointer overflow-visible z-10"
         on:click=move |_| {
-            let mut options = ScrollIntoViewOptions::new();
-            options.behavior(ScrollBehavior::Smooth);
+            let options = ScrollIntoViewOptions::new();
+            options.set_behavior(ScrollBehavior::Smooth);
             document()
                 .get_element_by_id("exo")
                 .unwrap()
