@@ -69,9 +69,9 @@ pub fn App(cx: Scope) -> impl IntoView {
             _ => {}
         }
 
-        let mut options = ScrollToOptions::new();
-        options.left(1500.0);
-        options.behavior(ScrollBehavior::Instant);
+        let options = ScrollToOptions::new();
+        options.set_left(1500.0);
+        options.set_behavior(ScrollBehavior::Instant);
         window().scroll_with_scroll_to_options(&options);
     });
 
