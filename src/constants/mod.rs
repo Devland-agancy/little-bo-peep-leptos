@@ -13,7 +13,7 @@ pub const SHOW_CLICKABLE_ITEMS_BORDERS: bool = true;
 
 pub const GREEN_DIV_HEIGHT: u16 = 600;
 
-pub const MOBILE_MAX_WIDTH: u16 = 520;
+pub const MOBILE_SCREEN_MAX_WIDTH: u16 = 520;
 
 pub const SECTION_DIVIDER_ACTIVATION_HEIGHT: u16 = 520;
 

@@ -5,7 +5,7 @@ use crate::components::Article::Article;
 use crate::components::Header::{Header, MenuButton};
 use crate::components::Panel::{MenuState, Panel};
 use crate::components::TapToRecenter::TapToRecenter;
-use crate::constants::MOBILE_MAX_WIDTH;
+use crate::constants::MOBILE_SCREEN_MAX_WIDTH;
 use crate::error_template::{AppError, ErrorTemplate};
 use crate::global_state::GlobalState;
 use crate::page::article::*;
@@ -88,11 +88,14 @@ pub fn App(cx: Scope) -> impl IntoView {
     });
 
     create_effect(cx, move |_| {
-        on_mobile.set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+        on_mobile.set(
+            window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64,
+        );
 
         window_event_listener(resize, move |_| {
-            on_mobile
-                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+            on_mobile.set(
+                window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64,
+            );
         });
     });
 

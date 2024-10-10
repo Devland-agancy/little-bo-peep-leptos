@@ -1,4 +1,4 @@
-use crate::constants::{MOBILE_MAX_WIDTH, TEXT_X_PADDING};
+use crate::constants::{MOBILE_SCREEN_MAX_WIDTH, TEXT_X_PADDING};
 use leptos::{html::Table, *};
 
 #[component]
@@ -15,7 +15,7 @@ pub fn Table(
     let (scaled_down, set_scaled_down) = create_signal(cx, true);
 
     create_effect(cx, move |_| {
-        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64
             && sm_cols.len() > 0
         {
             set_cols(sm_cols.clone())
