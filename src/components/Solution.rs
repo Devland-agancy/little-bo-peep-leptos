@@ -1,6 +1,6 @@
 use crate::{
     components::Section::Spacer,
-    constants::{GREEN_DIV_HEIGHT, TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING},
+    constants::{GREEN_DIV_HEIGHT, TEXT_X_PADDING},
     global_state::GlobalState,
 };
 use leptos::{
@@ -137,7 +137,7 @@ pub fn Solution(cx: Scope, solution_number: usize, children: Children) -> impl I
       <div
         node_ref=button
         class="relative col-start-2"
-        style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
+        style=format!("padding-inline: {}", TEXT_X_PADDING)
       >
         <SolutionSVG
           solution_number=solution_number

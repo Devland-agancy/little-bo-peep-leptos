@@ -20,8 +20,7 @@ pub const SECTION_DIVIDER_ACTIVATION_HEIGHT: u16 = 520;
 pub const CENTERED_PARAGRAPH_X_MARGIN: &'static str = "1rem";
 pub const DESKTOP_CENTERED_PARAGRAPH_WIDTH: f64 = 488.0 - 16.0 * 2.0;
 
-pub const TEXT_LEFT_PADDING: &'static str = "1rem";
-pub const TEXT_RIGHT_PADDING: &'static str = "1rem";
+pub const TEXT_X_PADDING: &'static str = "1rem";
 
 pub const HAMBURGER_MENU_HEIGHT: f64 = 56.0;
 

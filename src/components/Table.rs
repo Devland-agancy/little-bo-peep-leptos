@@ -1,4 +1,4 @@
-use crate::constants::{MOBILE_MAX_WIDTH, TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
+use crate::constants::{MOBILE_MAX_WIDTH, TEXT_X_PADDING};
 use leptos::{html::Table, *};
 
 #[component]
@@ -57,7 +57,7 @@ pub fn Table(
             "col-start-2 min-h-fit w-fit relative left-1/2 -translate-x-1/2 {}",
             classes,
         )
-        style=format!("padding-left: {}; padding-right: {}", TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING)
+        style=format!("padding-inline: {}", TEXT_X_PADDING)
       >
         <table
           node_ref=table

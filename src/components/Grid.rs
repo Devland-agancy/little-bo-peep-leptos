@@ -1,5 +1,5 @@
 use crate::components::Span::Span;
-use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
+use crate::constants::TEXT_X_PADDING;
 use leptos::ev::resize;
 use leptos::*;
 
@@ -88,8 +88,8 @@ pub fn Grid(
                 margin_bottom,
                 place_items,
                 gap,
-                if with_padding { TEXT_LEFT_PADDING } else { "0px" },
-                if with_padding { TEXT_RIGHT_PADDING } else { "0px" },
+                if with_padding { TEXT_X_PADDING } else { "0px" },
+                if with_padding { TEXT_X_PADDING } else { "0px" },
             )
         }
       >

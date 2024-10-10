@@ -1,5 +1,5 @@
 use crate::components::Section::Spacer;
-use crate::constants::{TEXT_LEFT_PADDING, TEXT_RIGHT_PADDING};
+use crate::constants::TEXT_X_PADDING;
 use crate::global_state::GlobalState;
 use leptos::{
     ev::{resize, scroll},
@@ -69,13 +69,12 @@ pub fn Paragraph(
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas())
         style=format!(
-            "text-indent: {}; padding-left: {}; padding-right: {}",
+            "text-indent: {}; padding-inline: {};",
             match indent {
                 Indent::Custom(s) => s,
                 _ => "",
             },
-            if !no_padding { TEXT_LEFT_PADDING } else { "0" },
-            if !no_padding { TEXT_RIGHT_PADDING } else { "0" },
+            if !no_padding { TEXT_X_PADDING } else { "0" },
         )
       >
 
@@ -116,8 +115,8 @@ pub fn InnerParagraph(
                 Indent::Custom(s) => s,
                 _ => "",
             },
-            if !no_padding { TEXT_LEFT_PADDING } else { "0" },
-            if !no_padding { TEXT_RIGHT_PADDING } else { "0" },
+            if !no_padding { TEXT_X_PADDING } else { "0" },
+            if !no_padding { TEXT_X_PADDING } else { "0" },
         )
       >
 
