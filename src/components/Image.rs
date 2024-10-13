@@ -29,7 +29,6 @@ pub fn Image(
         margin_mode,
         ..
     } = use_context::<GlobalState>(cx).unwrap();
-    let (opened, set_opened) = create_signal(cx, false);
 
     create_effect(cx, move |_| {
         if image_ref().is_some() {
@@ -88,6 +87,36 @@ pub fn Image(
             }
         });
     });
+
+    let (scaled_down, set_scaled_down) = create_signal(cx, on_mobile());
+
+    let calc_scale = move || {
+        if let Some(image) = image_ref() {
+            let image_width = image.offset_width() as f64;
+            let screen_width = window().inner_width().unwrap().as_f64().unwrap();
+            if screen_width < image_width && scaled_down() {
+                screen_width / (image_width + 32.0)
+            } else {
+                1.0
+            }
+        } else {
+            1.0
+        }
+    };
+
+    let calc_margin = move || {
+        if let Some(image) = image_ref() {
+            let image_width = image.offset_width() as f64;
+            let screen_width = window().inner_width().unwrap().as_f64().unwrap();
+            if screen_width < image_width && scaled_down() {
+                -((1.0 - (screen_width / (image_width + 32.0))) / 2.0) * 100.0
+            } else {
+                0.0
+            }
+        } else {
+            0.0
+        }
+    };
     view! { cx,
       // on desktop . both divs should be max-width
       // on mobile . if opened is true . image should be max-width else it should fit to screen
@@ -95,9 +124,10 @@ pub fn Image(
         node_ref=image_ref
         style=move || {
             format!(
-                "padding-left: {}px; padding-right: {}px;",
+                "padding-left: {}px; padding-right: {}px; margin-block: {}%",
                 if show_padding() { padding_left } else { 0_f64 },
                 if show_padding() { padding_right } else { 0_f64 },
+                calc_margin()
             )
         }
         class=move || {
@@ -125,18 +155,14 @@ pub fn Image(
         >
             <img
                 on:click=move |_| {
-                    if on_mobile() && !margin_mode() {
-                        set_opened(!opened());
-                    } else if !margin_mode() {
-                        set_opened(false);
-                    }
+                    set_scaled_down(!scaled_down())
                 }
 
                 id=id
                 src=src
-                style=move || format!("height: {height};")
+                style=move || format!("height: {height}; scale: {}; ", calc_scale())
                 class="m-auto transition-image-scale"
-                class=("max-width-screen", move || on_mobile() && !opened())
+
 
                 class=("outline-[20px]", move || show_areas() && cloud_image && is_wider_than_screen())
                 class=("outline-[#3f9aff7d]", move || show_areas() && cloud_image && is_wider_than_screen())
