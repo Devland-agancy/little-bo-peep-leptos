@@ -156,7 +156,7 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
     let parsed_code = routes.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         view! {
-            cx,
+            
             #parsed_code
         }
     };
@@ -221,8 +221,8 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
             modules.push_str(&format!(
                 r#"
                 #[component]
-                pub fn {article_type_upper_str}{article_i}View(cx: Scope) -> impl IntoView {{
-                    view! {{ cx,
+                pub fn {article_type_upper_str}{article_i}View() -> impl IntoView {{
+                    view! {{ 
                     <ArticleTitle label="{article_type_upper_str} {number}: {title}" {}/>
                     <Columns>
                         <{article_type_upper_str}{article_i}Body />
@@ -231,17 +231,17 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                 }}
 
                 #[component]
-                fn {article_type_upper_str}{article_i}Body(cx: Scope) -> impl IntoView {{
+                fn {article_type_upper_str}{article_i}Body() -> impl IntoView {{
                     view! {{
-                    cx,
+                    
                     {}
                     }}
                 }}
 
                 #[component]
-                pub fn {article_type_upper_str}{article_i}(cx: Scope, children: Children, title: &'static str) -> impl IntoView {{
-                    view! {{ cx,
-                    {{children(cx)}}
+                pub fn {article_type_upper_str}{article_i}( children: Children, title: &'static str) -> impl IntoView {{
+                    view! {{ 
+                    {{children()}}
                     }}
                 }}
 
@@ -289,7 +289,7 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
         ));
     }
 
-    list = format!("view! {{ cx, {} }}", list);
+    list = format!("view! {{ {} }}", list);
 
     let parsed_code = list.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
@@ -331,7 +331,7 @@ pub fn render_content_for_article(input: TokenStream) -> TokenStream {
         res.push_str(content_to_render.value().as_str());
     }
 
-    res = format!("view! {{ cx, {} }}", res);
+    res = format!("view! {{ {} }}", res);
 
     let parsed_code = res.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
@@ -370,7 +370,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                cx,
+                
                 #parsed_code
             }
         };
@@ -382,7 +382,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                cx,
+                
                 #parsed_code
             }
         };

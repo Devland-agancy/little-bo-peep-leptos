@@ -1,15 +1,15 @@
 use leptos::*;
 
 #[component]
-pub fn List(cx: Scope, #[prop(default = true)] indent: bool, children: Children) -> impl IntoView {
-    view! { cx,
+pub fn List( #[prop(default = true)] indent: bool, children: Children) -> impl IntoView {
+    view! { 
       <ol class=("ml-6", indent) class="px-4 list-decimal">
-        {children(cx)}
+        {children()}
       </ol>
     }
 }
 
 #[component]
-pub fn Item(cx: Scope, children: Children) -> impl IntoView {
-    view! { cx, <li>{children(cx)}</li> }
+pub fn Item( children: Children) -> impl IntoView {
+    view! { <li>{children()}</li> }
 }

@@ -5,7 +5,7 @@ use web_sys::Node;
 use super::element_contains_child::element_contains_child;
 
 pub fn re_attach_img(node_ref: &NodeRef<Div>) {
-    if let Some(node) = node_ref() {
+    if let Some(node) = node_ref.get() {
         let parent = node.parent_element().unwrap();
 
         let parent_is_math = parent
@@ -47,7 +47,7 @@ pub fn re_attach_img(node_ref: &NodeRef<Div>) {
 }
 
 pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<&str>) {
-    if let Some(node) = node_ref() {
+    if let Some(node) = node_ref.get() {
         let parent = node.parent_element();
         if parent.is_none() {
             return;
@@ -73,7 +73,7 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
             if let Some(math_element) = math_element {
                 let math_width = math_element.client_width();
                 let screen_width = parent.first_element_child().unwrap().client_width();
-                set_anchor_x(if math_width > screen_width {
+                set_anchor_x.set(if math_width > screen_width {
                     "formula_edge"
                 } else {
                     "paragraph_edge"
@@ -86,7 +86,7 @@ pub fn choose_default_anchor(node_ref: &NodeRef<Div>, set_anchor_x: WriteSignal<
                 let image_width = image_container.client_width();
                 let screen_width = parent.first_element_child().unwrap().client_width();
 
-                set_anchor_x(if image_width > screen_width {
+                set_anchor_x.set(if image_width > screen_width {
                     "image_edge"
                 } else {
                     "paragraph_edge"

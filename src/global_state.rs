@@ -1,4 +1,4 @@
-use leptos::{create_rw_signal, RwSignal, Scope, SignalGet, SignalSet};
+use leptos::{create_rw_signal, RwSignal, SignalGet, SignalSet};
 
 #[derive(Copy, Clone, Debug)]
 pub struct GlobalState {
@@ -18,21 +18,21 @@ pub struct GlobalState {
 }
 
 impl GlobalState {
-    pub fn new(cx: Scope) -> Self {
+    pub fn new() -> Self {
         Self {
-            show_areas: create_rw_signal(cx, false),
-            show_section_divider: create_rw_signal(cx, false),
-            burger_background: create_rw_signal(cx, true),
-            tab: create_rw_signal(cx, 0),
-            labels: create_rw_signal(cx, vec![]),
-            margin_scroll_value: create_rw_signal(cx, 0_f64),
-            route: create_rw_signal(cx, ""),
-            on_mobile: create_rw_signal(cx, true),
-            solutions_state: create_rw_signal(cx, vec![]),
-            solution_transition_duration: create_rw_signal(cx, vec![]),
-            btc_alignment_on_left: create_rw_signal(cx, false),
-            math_rendered: create_rw_signal(cx, false),
-            margin_mode: create_rw_signal(cx, false),
+            show_areas: create_rw_signal(false),
+            show_section_divider: create_rw_signal(false),
+            burger_background: create_rw_signal(true),
+            tab: create_rw_signal(0),
+            labels: create_rw_signal(vec![]),
+            margin_scroll_value: create_rw_signal(0_f64),
+            route: create_rw_signal(""),
+            on_mobile: create_rw_signal(true),
+            solutions_state: create_rw_signal(vec![]),
+            solution_transition_duration: create_rw_signal(vec![]),
+            btc_alignment_on_left: create_rw_signal(false),
+            math_rendered: create_rw_signal(false),
+            margin_mode: create_rw_signal(false),
         }
     }
 

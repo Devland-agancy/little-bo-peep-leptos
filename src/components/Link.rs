@@ -8,19 +8,19 @@ use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
 pub fn CustomLink(
-    cx: Scope,
+    
     href: &'static str,
     #[prop(default = "")] class: &'static str,
     #[prop(default = "")] base_href: &'static str,
 
     children: Children,
 ) -> impl IntoView {
-    let navigate = Rc::new(use_navigate(cx));
+    let navigate = Rc::new(use_navigate());
     let GlobalState {
         route, margin_mode, ..
-    } = use_context(cx).unwrap();
+    } = use_context().unwrap();
 
-    view! { cx,
+    view! { 
       <a
         class=move || format!("link cursor-pointer {}",class)
         on:click=move |_| {
@@ -37,7 +37,7 @@ pub fn CustomLink(
           margin_mode.set(false);
         }
     >
-        {children(cx)}
+        {children()}
       </a>
     }
 }

@@ -1,8 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn Checkbox(cx: Scope, value: RwSignal<bool>) -> impl IntoView {
-    view! { cx,
+pub fn Checkbox( value: RwSignal<bool>) -> impl IntoView {
+    view! { 
       <div
         on:click=move |_| { value.set(!value.get()) }
 

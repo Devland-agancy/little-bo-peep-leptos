@@ -25,7 +25,6 @@ pub enum Align {
 
 #[component]
 pub fn Paragraph(
-    cx: Scope,
     children: Children,
     #[prop(default = Indent::None)] indent: Indent,
     #[prop(default = Align::None)] align: Align,
@@ -37,12 +36,12 @@ pub fn Paragraph(
         burger_background,
         show_areas,
         ..
-    } = use_context::<GlobalState>(cx).unwrap();
-    let node_ref = create_node_ref::<Span>(cx);
+    } = use_context::<GlobalState>().unwrap();
+    let node_ref = create_node_ref::<Span>();
 
-    create_effect(cx, move |_| {
+    create_effect(move |_| {
         let toggle = move || {
-            if let Some(span) = node_ref() {
+            if let Some(span) = node_ref.get() {
                 burger_background.set(
                     window().inner_width().unwrap().as_f64().unwrap()
                         - span.get_bounding_client_rect().right()
@@ -51,11 +50,11 @@ pub fn Paragraph(
             }
         };
         toggle();
-        let _ = use_event_listener(cx, window(), scroll, move |_| toggle());
-        let _ = use_event_listener(cx, window(), resize, move |_| toggle());
+        let _ = use_event_listener(window(), scroll, move |_| toggle());
+        let _ = use_event_listener(window(), resize, move |_| toggle());
     });
 
-    view! { cx,
+    view! {
     <div class=format!("slice colmuns relative text-xl leading-[1.5em] -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth")>
       <span
         id=id
@@ -67,7 +66,7 @@ pub fn Paragraph(
         class=("my-2", align == Align::Center)
         class=("text-right", align == Align::Right)
         class=("text-left", align == Align::None)
-        class=("test-bg", move || show_areas())
+        class=("test-bg", move || show_areas.get())
         style=format!(
             "text-indent: {}; padding-inline: {};",
             match indent {
@@ -78,7 +77,7 @@ pub fn Paragraph(
         )
       >
 
-        {children(cx)}
+        {children()}
       </span>
     </div>
     <Spacer/>
@@ -87,7 +86,6 @@ pub fn Paragraph(
 
 #[component]
 pub fn InnerParagraph(
-    cx: Scope,
     children: Children,
     #[prop(default = Indent::None)] indent: Indent,
     #[prop(default = Align::None)] align: Align,
@@ -95,9 +93,9 @@ pub fn InnerParagraph(
     #[prop(optional)] classes: &'static str,
     #[prop(default = false)] no_padding: bool,
 ) -> impl IntoView {
-    let GlobalState { show_areas, .. } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState { show_areas, .. } = use_context::<GlobalState>().unwrap();
 
-    view! { cx,
+    view! {
 
       <span
         id=id
@@ -108,7 +106,7 @@ pub fn InnerParagraph(
         class=("my-2", align == Align::Center)
         class=("text-right", align == Align::Right)
         class=("text-left", align == Align::None)
-        class=("test-bg", move || show_areas())
+        class=("test-bg", move || show_areas.get())
         style=format!(
             "text-indent: {}; padding-left: {}; padding-right: {}",
             match indent {
@@ -120,7 +118,7 @@ pub fn InnerParagraph(
         )
       >
 
-        {children(cx)}
+        {children()}
       </span>
     <Spacer/>
     }

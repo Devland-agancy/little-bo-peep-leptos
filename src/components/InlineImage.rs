@@ -2,7 +2,6 @@ use leptos::*;
 
 #[component]
 pub fn InlineImage(
-    cx: Scope,
     src: &'static str,
     #[prop(default = "")] width: &'static str,
     #[prop(default = "")] height: &'static str,
@@ -14,9 +13,9 @@ pub fn InlineImage(
     #[prop(default = false)] space_left: bool,
     #[prop(default = false)] space_right: bool,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
       <Show
-          fallback=move |_| ""
+          fallback=move || ""
           when=move || space_left
         >
         " "
@@ -36,7 +35,7 @@ pub fn InlineImage(
         }
       />
       <Show
-          fallback=move |_| ""
+          fallback=move || ""
           when=move || space_right
         >
         " "

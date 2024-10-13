@@ -1,10 +1,10 @@
 use leptos::*;
 
 #[component]
-pub fn Math(cx: Scope, children: Children) -> impl IntoView {
-    view! { cx,
+pub fn Math( children: Children) -> impl IntoView {
+    view! { 
       <span class="w-fit inline-flex items-baseline indent-0 hidden-on-startup">
-        {children(cx)}
+        {children()}
       </span>
     }
 }

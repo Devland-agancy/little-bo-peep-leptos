@@ -4,8 +4,8 @@ use crate::components::ArticleTitle::*;
 use crate::components::Home::*;
 
 #[component]
-pub fn View(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn View() -> impl IntoView {
+    view! { 
       <ArticleTitle label=""/>
       <Body />
     }

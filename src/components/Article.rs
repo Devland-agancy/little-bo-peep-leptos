@@ -12,16 +12,11 @@ use wasm_bindgen::JsCast;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
 #[component]
-pub fn Article(cx: Scope, children: Children) -> impl IntoView {
-    let article_node: NodeRef<Div> = create_node_ref::<Div>(cx);
+pub fn Article(children: Children) -> impl IntoView {
     // can_click is for disabling click on page transition
-    let GlobalState {
-        margin_mode,
-        on_mobile,
-        ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    let GlobalState { margin_mode, .. } = use_context::<GlobalState>().unwrap();
 
-    create_effect(cx, move |_| {
+    create_effect(move |_| {
         let options = ScrollToOptions::new();
         options.set_left(1500.0);
         options.set_behavior(ScrollBehavior::Instant);
@@ -30,7 +25,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
         let scroll_back = move || {
             let options = ScrollToOptions::new();
 
-            if !margin_mode()
+            if !margin_mode.get()
                 && window().scroll_x().unwrap() > 1300.0
                 && window().scroll_x().unwrap() < 1700.0
             {
@@ -44,12 +39,12 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             }
         };
 
-        let _ = use_event_listener(cx, document(), scrollend, move |_| scroll_back());
-        let _ = use_event_listener(cx, document(), touchend, move |_| scroll_back());
+        let _ = use_event_listener(document(), scrollend, move |_| scroll_back());
+        let _ = use_event_listener(document(), touchend, move |_| scroll_back());
     });
 
-    create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, document(), click, move |ev| {
+    create_effect(move |_| {
+        let _ = use_event_listener(document(), click, move |ev| {
             if let Some(target) = ev.target() {
                 let sidebar = document().get_element_by_id("sidebar").unwrap();
                 let menu_btn = document().get_element_by_id("menu-button").unwrap();
@@ -74,11 +69,9 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
     });
 
     // for right_images we autoscroll to their position
-    view! { cx,
+    view! {
       <div class="">
-
         <div
-          node_ref=article_node
           class="relative flex justify-center align-center w-full pb-14 min-h-screen left-[1500px]"
           id="Article"
         >
@@ -86,7 +79,7 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
             // for left image we transle based on image width
 
             <div class="font-baskerville w-full">
-              {children(cx)}
+              {children()}
             </div>
           </div>
           <ColumnButtonLeft/>
@@ -99,8 +92,8 @@ pub fn Article(cx: Scope, children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn MathJaxTypeset() -> impl IntoView {
+    view! {
       <script>
         window.MathJax.typesetPromise().then(() => {
             document.querySelectorAll(".hidden-on-startup").forEach((elem) => {
@@ -113,8 +106,8 @@ pub fn MathJaxTypeset(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn ColumnButtonRight() -> impl IntoView {
+    view! {
       <div
         style="width: 1500px;"
         class="z-40 transition duration-300 absolute grid grid-cols-4 justify-end items-center w-full h-full translate-x-3/4 lg:translate-x-[85%] opacity-100 pointer-events-none"
@@ -123,8 +116,8 @@ pub fn ColumnButtonRight(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn ColumnButtonLeft(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn ColumnButtonLeft() -> impl IntoView {
+    view! {
       <div
         style="width: 1500px;"
         class="z-40 transition duration-300 lg:hidden absolute grid grid-cols-4 justify-end items-center w-full h-full -translate-x-3/4 lg:translate-x-[85%] pointer-events-none"

@@ -3,6 +3,6 @@ use crate::components::Span::*;
 use leptos::*;
 
 #[component]
-pub fn StarDivider(cx: Scope) -> impl IntoView {
-    return view! { cx, <Span align=Align::Center>"* * * *"</Span> };
+pub fn StarDivider() -> impl IntoView {
+    return view! { <Span align=Align::Center>"* * * *"</Span> };
 }

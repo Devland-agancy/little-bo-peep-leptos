@@ -17,16 +17,17 @@ pub enum MenuState {
 }
 
 #[component]
-pub fn Panel(cx: Scope) -> impl IntoView {
-    let menu_state = use_context::<ReadSignal<MenuState>>(cx).unwrap();
-    let menu_closed =
-        move || menu_state() == MenuState::Closed || menu_state() == MenuState::ClosedPressed;
+pub fn Panel() -> impl IntoView {
+    let menu_state = use_context::<ReadSignal<MenuState>>().unwrap();
+    let menu_closed = move || {
+        menu_state.get() == MenuState::Closed || menu_state.get() == MenuState::ClosedPressed
+    };
     let GlobalState {
         show_areas,
         show_section_divider,
         btc_alignment_on_left,
         ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    } = use_context::<GlobalState>().unwrap();
 
     let toggle_scroll = move |overflow: &str| {
         let body = document().body().unwrap();
@@ -37,7 +38,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
         }
     };
 
-    view! { cx,
+    view! {
       <div
         id="sidebar"
         class="w-full z-50 fixed translate-x-0 translate-y-0 right-0 top-14 flex self-start font-baskerville text-xl leading-3 sm:leading-5 select-none transition ease-linear  duration-300"
@@ -75,7 +76,7 @@ pub fn Panel(cx: Scope) -> impl IntoView {
             )}
             <ul class=(
                 "text-right",
-                move || !btc_alignment_on_left(),
+                move || !btc_alignment_on_left.get(),
             )>{render_articles_list!("bootcamps")}</ul> <Title label="Options"/>
             <Option signal=show_areas label="Areas"/>
             {render_based_on_env!(
@@ -96,27 +97,26 @@ pub fn Panel(cx: Scope) -> impl IntoView {
 }
 
 #[component]
-pub fn Title(cx: Scope, label: &'static str) -> impl IntoView {
-    let GlobalState { on_mobile, .. } = use_context(cx).unwrap();
+pub fn Title(label: &'static str) -> impl IntoView {
+    let GlobalState { on_mobile, .. } = use_context().unwrap();
 
-    view! { cx,
+    view! {
       <h1 class="text-3xl font-baskerville-italic mt-[5px] mb-[7px] flex justify-between items-center">
-        <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
+        <img src=move|| format!("/images/title_line{}.svg", if on_mobile.get() {"_panel"} else {""} ) class="w-[3rem] sm:w-24"/>
         {label}
-        <img src=move|| format!("/images/title_line{}.svg", if on_mobile() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>
+        <img src=move|| format!("/images/title_line{}.svg", if on_mobile.get() {"_panel"} else {""} ) class="rotate-180 w-[3rem] sm:w-24"/>
       </h1>
     }
 }
 
 #[component]
 pub fn MenuItem(
-    cx: Scope,
     href: &'static str,
     article_type: &'static str,
     label: &'static str,
     #[prop(optional)] on_mobile: &'static str,
 ) -> impl IntoView {
-    view! { cx,
+    view! {
     <CustomLink
         base_href="/article/"
         href=href
@@ -132,8 +132,8 @@ pub fn MenuItem(
 }
 
 #[component]
-pub fn Option(cx: Scope, signal: RwSignal<bool>, label: &'static str) -> impl IntoView {
-    view! { cx,
+pub fn Option(signal: RwSignal<bool>, label: &'static str) -> impl IntoView {
+    view! {
       <div class="flex justify-between items-center text-2xl pb-1.5 sm:pb-2">
         <p>{label}</p>
         <Checkbox value=signal/>

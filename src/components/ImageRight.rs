@@ -8,7 +8,6 @@ use leptos::{
 
 #[component]
 pub fn ImageRight(
-    cx: Scope,
     src: &'static str,
     #[prop(default = true)] use_squiggle_on_mobile: bool,
     #[prop(default = true)] _attached: bool,
@@ -37,7 +36,7 @@ pub fn ImageRight(
         tab,
         solutions_state,
         ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    } = use_context::<GlobalState>().unwrap();
 
     let solution_open = move || {
         if solutions_state.get().len() > tab.get() {
@@ -46,30 +45,28 @@ pub fn ImageRight(
             false
         }
     };
-    let (solution_fully_opened, set_solution_fully_opened) = create_signal(cx, solution_open());
-    create_effect(cx, move |_| {
+
+    let (solution_fully_opened, set_solution_fully_opened) = create_signal(solution_open());
+    create_effect(move |_| {
         if solution_open() {
             set_timeout(
-                move || set_solution_fully_opened(true),
+                move || set_solution_fully_opened.set(true),
                 Duration::from_millis(1000),
             )
         } else {
-            set_solution_fully_opened(false);
+            set_solution_fully_opened.set(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
-                move || set_solution_fully_opened(false),
+                move || set_solution_fully_opened.set(false),
                 Duration::from_millis(1000),
             )
         }
     });
 
-    let node_ref = create_node_ref::<Div>(cx);
-    let image_ref = create_node_ref::<Img>(cx);
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
 
-    view! { cx,
+    view! {
       <div
-        node_ref=node_ref
         style=move || {
             let line_str: String;
             let left_pos = "calc(100% - 0.5rem)".to_string();
@@ -90,7 +87,7 @@ pub fn ImageRight(
 
         class="side-img absolute -translate-x-1/2 w-1 h-1 "
       >
-        <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas())></div>
+        <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas.get())></div>
 
         <div
           style=move || {
@@ -110,16 +107,15 @@ pub fn ImageRight(
 
           class="flex shrink-0 transition-opacity duration-300 lg:transition-none lg:opacity-100  z-10 absolute w-max"
           class=("lg:pointer-events-none", move || !clickable_on_desktop)
-          class=("outline-[20px]", move || show_areas())
-          class=("outline-[#3f9aff7d]", move || show_areas())
-          class=("outline", move || show_areas())
+          class=("outline-[20px]", move || show_areas.get())
+          class=("outline-[#3f9aff7d]", move || show_areas.get())
+          class=("outline", move || show_areas.get())
         >
 
           <div class="absolute z-10" style=move || format!("top: {children_y}; left: {children_x}")>
-            {children(cx)}
+            {children()}
           </div>
           <img
-            node_ref=image_ref
             src=src
             class=("max-w-max", move || width == "")
             style=move || {
@@ -128,8 +124,8 @@ pub fn ImageRight(
                     transform-origin: 100% 51% 0px;
                     transition: {}s;
                     width: {width};",
-                    if !popup || (popup && solution_fully_opened())  { "scale(1)" } else { "scale(1, 0)" },
-                    if !popup || (popup && solution_fully_opened())  { "0.5" } else { "0" },
+                    if !popup || (popup && solution_fully_opened.get())  { "scale(1)" } else { "scale(1, 0)" },
+                    if !popup || (popup && solution_fully_opened.get())  { "0.5" } else { "0" },
                 )
             }
           />
@@ -147,16 +143,16 @@ pub fn ImageRight(
             }
 
             class="absolute left-0 w-1 h-1"
-            class=("bg-blue-900", move || show_areas())
+            class=("bg-blue-900", move || show_areas.get())
           ></div>
         </div>
 
-        <Show fallback=|_| () when=move || use_squiggle_on_mobile>
+        <Show fallback=|| () when=move || use_squiggle_on_mobile>
           <div
             class="squiggle block sm:hidden absolute"
-            class=("outline-[20px]", move || show_areas())
-            class=("outline-[#3f9aff7d]", move || show_areas())
-            class=("outline", move || show_areas())
+            class=("outline-[20px]", move || show_areas.get())
+            class=("outline-[#3f9aff7d]", move || show_areas.get())
+            class=("outline", move || show_areas.get())
 
             style=move || {
                 format!(
