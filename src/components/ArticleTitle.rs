@@ -22,7 +22,6 @@ pub fn ArticleTitle(
     let _ = use_event_listener(use_window(), resize, move |_| {
         if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64 {
             set_mobile.set(true);
-            set_x.set(true);
         } else {
             set_mobile.set(false);
         }

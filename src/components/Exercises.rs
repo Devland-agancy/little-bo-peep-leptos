@@ -220,16 +220,16 @@ pub fn Exercises(labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoVi
         ..
     } = use_context::<GlobalState>().unwrap();
 
-    let solution_open = move || {
+    let solution_open = create_memo(move |_| {
         if solutions_state.get().len() > selected_tab.get() {
             solutions_state.get()[selected_tab.get()]
         } else {
             false
         }
-    };
+    });
 
     global_labels.set(labels.clone());
-    tab.set(selected_tab.get());
+    tab.set(selected_tab.get_untracked());
 
     let location = use_location();
     let url_params = location.clone().query;
@@ -305,7 +305,7 @@ pub fn Exercises(labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoVi
     });
 
     create_effect(move |_| {
-        solution_open();
+        solution_open.get();
         selected_tab.get();
         set_timeout(
             move || match window().local_storage() {
@@ -313,7 +313,7 @@ pub fn Exercises(labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoVi
                     let exo = Exercice {
                         ex_number: selected_tab.get().to_string(),
                         ex_chapter: chapter.get(),
-                        ex_opened: solution_open().to_string(),
+                        ex_opened: solution_open.get().to_string(),
                     };
                     let selected_exo = format!("{}_exercice", exo.ex_chapter);
                     let ex_opened = format!("{}_exo_{}_opened", exo.ex_chapter, exo.ex_number);
@@ -452,51 +452,53 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
         solution_transition_duration,
         ..
     } = use_context::<GlobalState>().unwrap();
-    let solution_open = move || {
+
+    let solution_open = create_memo(move |_| {
         if solutions_state.get().len() > tab.get() {
             solutions_state.get()[tab.get()]
         } else {
             false
         }
-    };
+    });
 
-    let (solution_fully_opened, set_solution_fully_opened) = create_signal(solution_open());
+    let (solution_fully_opened, set_solution_fully_opened) =
+        create_signal(solution_open.get_untracked());
 
-    let transition_duration = move || {
+    let transition_duration = create_memo(move |_| {
         if solution_transition_duration.get().len() > tab.get() {
             solution_transition_duration.get()[tab.get()]
         } else {
             1000
         }
-    };
+    });
 
     create_effect(move |_| {
-        if solution_open() {
+        if solution_open.get() {
             set_timeout(
                 move || set_solution_fully_opened.set(true),
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
             )
         } else {
             set_solution_fully_opened.set(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
                 move || set_solution_fully_opened.set(false),
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
             )
         }
     });
 
     let (bot_div, set_bot_div) = create_signal(true);
     create_effect(move |_| {
-        if solution_open() {
+        if solution_open.get() {
             set_timeout(
                 move || set_bot_div.set(false),
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
             )
         } else {
             set_timeout(
                 move || set_bot_div.set(true),
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
             )
         }
     });
@@ -506,12 +508,12 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
       <div class="col-start-2 h-[31px]"></div>
       <div
         class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
-        style=move || format!("transition-duration: {}ms", if solution_open() { 1000 } else { 100 })
+        style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
 
-        class=("opacity-0", move || !(solution_open() && solution_fully_opened.get()))
+        class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
         class=("delay-[2s]", move || bot_div.get())
       >
-        <EndLabelsView vec=labels.get() selected_tab=tab.get()/>
+        <EndLabelsView vec=labels.get_untracked() selected_tab=tab.get_untracked()/>
       </div>
 
       <div
@@ -519,9 +521,9 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
         style=move || {
             format!(
                 "height: {}px; background-color: {}; transition-duration: {}ms",
-                if !solution_open() || bot_div.get() { GREEN_DIV_HEIGHT } else { 0 },
+                if !solution_open.get() || bot_div.get() { GREEN_DIV_HEIGHT } else { 0 },
                 if show_areas.get() { "#00440050" } else { "" },
-                if solution_open() { 1000 } else { 0 },
+                if solution_open.get() { 1000 } else { 0 },
             )
         }
       >

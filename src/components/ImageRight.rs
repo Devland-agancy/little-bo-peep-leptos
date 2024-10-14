@@ -42,17 +42,18 @@ pub fn ImageRight(
         ..
     } = use_context::<GlobalState>().unwrap();
 
-    let solution_open = move || {
+    let solution_open = create_memo(move |_| {
         if solutions_state.get().len() > tab.get() {
             solutions_state.get()[tab.get()]
         } else {
             false
         }
-    };
+    });
 
-    let (solution_fully_opened, set_solution_fully_opened) = create_signal(solution_open());
+    let (solution_fully_opened, set_solution_fully_opened) =
+        create_signal(solution_open.get_untracked());
     create_effect(move |_| {
-        if solution_open() {
+        if solution_open.get() {
             set_timeout(
                 move || set_solution_fully_opened.set(true),
                 Duration::from_millis(1000),
@@ -74,7 +75,7 @@ pub fn ImageRight(
 
     create_effect(move |_| {
         let cb = Closure::wrap(Box::new(move |_: Event| {
-            if let Some(container_ref) = container_ref.get() {
+            if let Some(container_ref) = container_ref.get_untracked() {
                 let prev_sibling = container_ref.previous_element_sibling().unwrap();
 
                 let scale_value_from_prev_sibling = cast_element_to_html_element(prev_sibling)

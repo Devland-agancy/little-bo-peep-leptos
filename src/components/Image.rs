@@ -96,7 +96,7 @@ pub fn Image(
         }
     });
 
-    let (scaled_down, set_scaled_down) = create_signal(on_mobile.get());
+    let (scaled_down, set_scaled_down) = create_signal(on_mobile.get_untracked());
     let image_ref = create_node_ref::<html::Img>();
     let (scale_value, set_scale_value) = create_signal(1.0);
 
@@ -104,11 +104,11 @@ pub fn Image(
         scaled_down.get(); // re_calculate on scaled_down change
 
         request_animation_frame(move || {
-            if let Some(image) = image_ref.get() {
+            if let Some(image) = image_ref.get_untracked() {
                 let image_width = image.natural_width() as f64;
                 let screen_width = window().inner_width().unwrap().as_f64().unwrap();
 
-                if screen_width < image_width && scaled_down.get() {
+                if screen_width < image_width && scaled_down.get_untracked() {
                     set_scale_value.set(screen_width / (image_width + 32.0))
                 } else {
                     set_scale_value.set(1.0)
