@@ -1,10 +1,14 @@
-use std::time::Duration;
-
-use crate::{global_state::GlobalState, page::state::PageState};
+use crate::{
+    global_state::GlobalState, page::state::PageState,
+    utils::cast_element_to_html_element::cast_element_to_html_element,
+};
+use ev::Event;
 use leptos::{
     html::{Div, Img},
     *,
 };
+use std::time::Duration;
+use wasm_bindgen::{closure::Closure, JsCast};
 
 #[component]
 pub fn ImageRight(
@@ -64,9 +68,35 @@ pub fn ImageRight(
     });
 
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
+    let container_ref = create_node_ref::<Div>();
+    let (scale, set_scale) = create_signal("1".to_string());
+    let (attached_to_image, set_attached_to_image) = create_signal(false);
+
+    create_effect(move |_| {
+        let cb = Closure::wrap(Box::new(move |_: Event| {
+            if let Some(container_ref) = container_ref.get() {
+                let prev_sibling = container_ref.previous_element_sibling().unwrap();
+
+                let scale_value_from_prev_sibling = cast_element_to_html_element(prev_sibling)
+                    .unwrap()
+                    .dataset()
+                    .get("scale_side_images");
+
+                if scale_value_from_prev_sibling.is_some() {
+                    set_scale.set(scale_value_from_prev_sibling.unwrap());
+                    set_attached_to_image.set(true);
+                }
+            }
+        }) as Box<dyn FnMut(_)>);
+
+        let _ = document()
+            .add_event_listener_with_callback("image_scale", &cb.as_ref().unchecked_ref());
+        cb.forget();
+    });
 
     view! {
       <div
+        node_ref=container_ref
         style=move || {
             let line_str: String;
             let left_pos = "calc(100% - 0.5rem)".to_string();
@@ -92,7 +122,7 @@ pub fn ImageRight(
         <div
           style=move || {
               format!(
-                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}",
+                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}; scale: {}",
                   offset_x,
                   if offset_y.contains("%") { "0px" } else { offset_y },
                   match img_position {
@@ -102,6 +132,7 @@ pub fn ImageRight(
                   },
                   if offset_y.contains("%") { offset_y } else { "0px" },
                   padding,
+                  scale.get()
               )
           }
 
@@ -147,7 +178,7 @@ pub fn ImageRight(
           ></div>
         </div>
 
-        <Show fallback=|| () when=move || use_squiggle_on_mobile>
+        <Show fallback=|| () when=move || use_squiggle_on_mobile && !attached_to_image.get()>
           <div
             class="squiggle block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas.get())

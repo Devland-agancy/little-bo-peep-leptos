@@ -7,7 +7,7 @@ use leptos::{
     html::Div,
     *,
 };
-use leptos_use::use_event_listener;
+use leptos_use::{use_document, use_event_listener};
 use wasm_bindgen::JsCast;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
@@ -43,29 +43,26 @@ pub fn Article(children: Children) -> impl IntoView {
         let _ = use_event_listener(document(), touchend, move |_| scroll_back());
     });
 
-    create_effect(move |_| {
-        let _ = use_event_listener(document(), click, move |ev| {
-            if let Some(target) = ev.target() {
-                let sidebar = document().get_element_by_id("sidebar").unwrap();
-                let menu_btn = document().get_element_by_id("menu-button").unwrap();
-                if let Some(element) = target.dyn_ref::<web_sys::Element>() {
-                    if sidebar.contains(Some(element)) {}
-
-                    if !sidebar.contains(Some(element)) && !menu_btn.contains(Some(element)) {
-                        let options = ScrollToOptions::new();
-                        options.set_behavior(ScrollBehavior::Smooth);
-                        options.set_left(1500.0);
-                        window().scroll_with_scroll_to_options(&options);
-                        set_timeout(
-                            move || {
-                                margin_mode.set(false);
-                            },
-                            Duration::from_millis(100),
-                        );
-                    }
+    let _ = use_event_listener(use_document(), click, move |ev| {
+        if let Some(target) = ev.target() {
+            let sidebar = document().get_element_by_id("sidebar").unwrap();
+            let menu_btn = document().get_element_by_id("menu-button").unwrap();
+            if let Some(element) = target.dyn_ref::<web_sys::Element>() {
+                if sidebar.contains(Some(element)) {}
+                if !sidebar.contains(Some(element)) && !menu_btn.contains(Some(element)) {
+                    let options = ScrollToOptions::new();
+                    options.set_behavior(ScrollBehavior::Smooth);
+                    options.set_left(1500.0);
+                    window().scroll_with_scroll_to_options(&options);
+                    set_timeout(
+                        move || {
+                            margin_mode.set(false);
+                        },
+                        Duration::from_millis(100),
+                    );
                 }
             }
-        });
+        }
     });
 
     // for right_images we autoscroll to their position
