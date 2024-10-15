@@ -54,14 +54,18 @@ pub fn ImageLeft(
     create_effect(move |_| {
         if solution_open.get() {
             set_timeout(
-                move || set_solution_fully_opened.set_untracked(true),
+                move || {
+                    let _ = set_solution_fully_opened.try_set(true);
+                },
                 Duration::from_millis(1000),
             )
         } else {
             set_solution_fully_opened.set_untracked(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
-                move || set_solution_fully_opened.set(false),
+                move || {
+                    let _ = set_solution_fully_opened.try_set(false);
+                },
                 Duration::from_millis(1000),
             )
         }

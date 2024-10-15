@@ -475,14 +475,18 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
     create_effect(move |_| {
         if solution_open.get() {
             set_timeout(
-                move || set_solution_fully_opened.set(true),
+                move || {
+                    let _ = set_solution_fully_opened.try_set(true);
+                },
                 Duration::from_millis(transition_duration.get() as u64),
             )
         } else {
             set_solution_fully_opened.set(false);
             set_timeout(
                 // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
-                move || set_solution_fully_opened.set(false),
+                move || {
+                    let _ = set_solution_fully_opened.try_set(false);
+                },
                 Duration::from_millis(transition_duration.get() as u64),
             )
         }
@@ -492,12 +496,16 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
     create_effect(move |_| {
         if solution_open.get() {
             set_timeout(
-                move || set_bot_div.set(false),
+                move || {
+                    let _ = set_bot_div.try_set(false);
+                },
                 Duration::from_millis(transition_duration.get() as u64),
             )
         } else {
             set_timeout(
-                move || set_bot_div.set(true),
+                move || {
+                    let _ = set_bot_div.try_set(true);
+                },
                 Duration::from_millis(transition_duration.get() as u64),
             )
         }
