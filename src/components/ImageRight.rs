@@ -7,7 +7,7 @@ use leptos::{
     html::{Div, Img},
     *,
 };
-use std::time::Duration;
+use std::{cell::RefCell, time::Duration};
 use wasm_bindgen::{closure::Closure, JsCast};
 
 #[component]
@@ -74,8 +74,9 @@ pub fn ImageRight(
     let (attached_to_image, set_attached_to_image) = create_signal(false);
 
     create_effect(move |_| {
+        let container_ref = RefCell::new(container_ref.get());
         let cb = Closure::wrap(Box::new(move |_: Event| {
-            if let Some(container_ref) = container_ref.get_untracked() {
+            if let Some(container_ref) = container_ref.take() {
                 let prev_sibling = container_ref.previous_element_sibling().unwrap();
 
                 let scale_value_from_prev_sibling = cast_element_to_html_element(prev_sibling)

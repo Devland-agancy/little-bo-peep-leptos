@@ -32,11 +32,11 @@ pub fn MathBlock(
 
     create_effect(move |_| {
         math_rendered.get();
+        let node_ref = node_ref.get();
         set_timeout(
             move || {
-                if node_ref.get().is_some() {
+                if node_ref.is_some() {
                     let math_box = node_ref
-                        .get()
                         .unwrap()
                         .get_elements_by_tag_name(child_tag)
                         .item(0);
@@ -58,7 +58,7 @@ pub fn MathBlock(
     });
     create_effect(move |_| {
         let _ = use_event_listener(window(), resize, move |_| {
-            if node_ref.get().is_some() {
+            if node_ref.get_untracked().is_some() {
                 let math_box = node_ref
                     .get()
                     .unwrap()

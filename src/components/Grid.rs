@@ -46,7 +46,7 @@ pub fn Grid(
     create_effect(move |_| {
         sm_activated.get(); // re-render on change
         request_animation_frame(move || {
-            if let Some(parent_span) = parent_span.get() {
+            if let Some(parent_span) = parent_span.get_untracked() {
                 let children = parent_span.children();
                 for i in 0..children.length() {
                     let mut position = i as f64;
