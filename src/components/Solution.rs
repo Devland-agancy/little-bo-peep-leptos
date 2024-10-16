@@ -10,7 +10,7 @@ use leptos::{
 };
 use leptos_router::{use_navigate, NavigateOptions, State};
 use leptos_use::use_event_listener;
-use std::{cell::RefCell, cmp::min};
+use std::cmp::min;
 use std::{sync::Arc, time::Duration};
 use web_sys::{MouseEvent, ScrollBehavior, ScrollIntoViewOptions};
 
@@ -44,20 +44,17 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
     let button = create_node_ref::<Div>();
 
     create_effect(move |_| {
-        let node_ref = RefCell::new(node_ref.get());
-        let node_ref_clone = node_ref.clone();
-
-        if node_ref.take().is_some() {
+        if node_ref.get().is_some() {
             if solution_open.get() {
-                if node_ref.take().unwrap().offset_height() == 0 {
+                if node_ref.get().unwrap().offset_height() == 0 {
                     set_timeout(
                         move || {
-                            set_content_height.set(node_ref.take().unwrap().offset_height());
+                            set_content_height.set(node_ref.get().unwrap().offset_height());
                         },
                         Duration::from_secs(1),
                     )
                 } else {
-                    set_content_height.set(node_ref.take().unwrap().offset_height());
+                    set_content_height.set(node_ref.get().unwrap().offset_height());
                 }
             } else {
                 set_content_height.set(0)
@@ -66,14 +63,11 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
 
         set_timeout(
             move || {
-                if node_ref_clone.take().is_some() {
-                    // tre get untracked is used in case of route change before timeout ends
-                    if let Some(solution_open) = solution_open.try_get_untracked() {
-                        if solution_open {
-                            set_content_height.set(node_ref_clone.take().unwrap().offset_height());
-                        } else {
-                            set_content_height.set(0)
-                        }
+                if node_ref.get().is_some() {
+                    if solution_open.get() {
+                        set_content_height.set(node_ref.get().unwrap().offset_height());
+                    } else {
+                        set_content_height.set(0)
                     }
                 }
             },
@@ -82,18 +76,16 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
     });
 
     create_effect(move |_| {
-        let node_ref = node_ref.get();
-
         let _ = use_event_listener(window(), resize, move |_| {
             GlobalState::update_solutions_state(
                 solution_transition_duration,
                 solution_number,
-                min(1000, node_ref.as_ref().unwrap().offset_height()),
+                min(1000, node_ref.get().unwrap().offset_height()),
             );
 
-            if node_ref.is_some() {
-                if solution_open.get_untracked() {
-                    set_content_height.set(node_ref.as_ref().unwrap().offset_height());
+            if node_ref.get().is_some() {
+                if solution_open.get() {
+                    set_content_height.set(node_ref.get().unwrap().offset_height());
                 } else {
                     set_content_height.set(0)
                 }
