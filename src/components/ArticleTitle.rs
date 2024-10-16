@@ -2,8 +2,9 @@ use crate::constants::{
     CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP, CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE,
     CHAPTER_TITLE_TOP_MARGIN_DESKTOP, CHAPTER_TITLE_TOP_MARGIN_MOBILE, MOBILE_SCREEN_MAX_WIDTH,
 };
+use console_log::log;
 use leptos::{ev::resize, *};
-use leptos_use::use_event_listener;
+use leptos_use::{use_event_listener, use_window};
 
 #[component]
 pub fn ArticleTitle(
@@ -17,13 +18,13 @@ pub fn ArticleTitle(
         if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64 {
             set_mobile.set(true)
         }
-        let _ = use_event_listener(window(), resize, move |_| {
-            if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64 {
-                set_mobile.set(true)
-            } else {
-                set_mobile.set(false)
-            }
-        });
+    });
+    let _ = use_event_listener(use_window(), resize, move |_| {
+        if window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64 {
+            set_mobile.set(true);
+        } else {
+            set_mobile.set(false);
+        }
     });
 
     view! {

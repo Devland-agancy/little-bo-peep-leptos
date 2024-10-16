@@ -68,7 +68,7 @@ pub fn Table(
           }
         >
           <colgroup>
-            {_cols.get()
+            {_cols.get_untracked()
                 .into_iter()
                 .map(|w| {
                     view! {
