@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use crate::{
     global_state::GlobalState, page::state::PageState,
     utils::cast_element_to_html_element::cast_element_to_html_element,
@@ -99,28 +101,37 @@ pub fn Image(
     let (scaled_down, set_scaled_down) = create_signal(on_mobile.get_untracked());
     let image_ref = create_node_ref::<html::Img>();
     let (scale_value, set_scale_value) = create_signal(1.0);
+    let (image_original_width, set_image_original_width) = create_signal(-1.0); // -1 means we still didn't get the value
 
     create_effect(move |_| {
-        scaled_down.get(); // re_calculate on scaled_down change
-
+        let image_ref = image_ref.get();
+        // natural width doesn't work on safari so we have to save original width value before scaling down
         request_animation_frame(move || {
-            if let Some(image) = image_ref.get_untracked() {
-                let image_width = image.natural_width() as f64;
-                let screen_width = window().inner_width().unwrap().as_f64().unwrap();
+            if let Some(image) = image_ref {
+                set_image_original_width.set(image.natural_width() as f64);
+            }
+        });
+    });
 
-                if screen_width < image_width && scaled_down.get_untracked() {
-                    set_scale_value.set(screen_width / (image_width + 32.0))
-                } else {
-                    set_scale_value.set(1.0)
-                }
+    create_effect(move |_| {
+        let scaled_down = scaled_down.get(); // re_calculate on scaled_down change
+
+        if image_original_width.get() > 0.0 {
+            let image_width = image_original_width.get();
+            let screen_width = window().inner_width().unwrap().as_f64().unwrap();
+            if screen_width < image_width && scaled_down {
+                set_scale_value.set(screen_width / (image_width + 32.0))
             } else {
                 set_scale_value.set(1.0)
             }
-            let custom_event = CustomEvent::new("image_scale");
-            if let Ok(custom_event) = custom_event {
-                let _ = document().dispatch_event(&custom_event);
-            }
-        });
+        } else {
+            set_scale_value.set(1.0)
+        }
+        // dispatch event to scale down side images with it
+        let custom_event = CustomEvent::new("image_scale");
+        if let Ok(custom_event) = custom_event {
+            let _ = document().dispatch_event(&custom_event);
+        }
     });
 
     view! {
@@ -172,7 +183,7 @@ pub fn Image(
                 src=src
                 style=move || format!("height: {height};")
                 class="m-auto transition-image-scale"
-                class=("max-width-screen", move || on_mobile.get() && scaled_down.get())
+                class=("max-width-screen", move || image_original_width.get() > 0.0 && on_mobile.get() && scaled_down.get())
 
                 class=("outline-[20px]", move || show_areas.get() && cloud_image && is_wider_than_screen.get())
                 class=("outline-[#3f9aff7d]", move || show_areas.get() && cloud_image && is_wider_than_screen.get())
