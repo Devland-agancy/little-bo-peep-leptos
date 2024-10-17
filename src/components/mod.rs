@@ -3,6 +3,7 @@ pub mod ArticleTitle;
 pub mod Checkbox;
 pub mod Columns;
 pub mod Exercises;
+pub mod Footer;
 pub mod Grid;
 pub mod Header;
 pub mod Home;

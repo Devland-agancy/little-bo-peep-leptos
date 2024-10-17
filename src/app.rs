@@ -2,6 +2,7 @@
 #![allow(dead_code)]
 
 use crate::components::Article::Article;
+use crate::components::Footer::Footer;
 use crate::components::Header::{Header, MenuButton};
 use crate::components::Panel::{MenuState, Panel};
 use crate::components::TapToRecenter::TapToRecenter;
@@ -141,8 +142,9 @@ pub fn App() -> impl IntoView {
             <Article>
                 <Header/>
                 {render_article_routes!("chapters bootcamps")}
+                <TapToRecenter />
             </Article>
-            <TapToRecenter />
+            <Footer />
         </main>
     </Router>
     <SVGDefinitions/>
