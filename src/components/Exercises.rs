@@ -151,58 +151,6 @@ fn LabelsView(
     }
 }
 
-#[component]
-fn EndLabelsView(vec: Vec<&'static str>, selected_tab: usize) -> impl IntoView {
-    let (_vec, _) = create_signal(vec);
-
-    view! {
-      <svg
-        width="43"
-        height="43"
-        viewBox="0 0 43 43"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="tab cursor-pointer overflow-visible z-10"
-        on:click=move |_| {
-            let options = ScrollIntoViewOptions::new();
-            options.set_behavior(ScrollBehavior::Smooth);
-            document()
-                .get_element_by_id("exo")
-                .unwrap()
-                .scroll_into_view_with_scroll_into_view_options(&options);
-        }
-      >
-
-        <path
-          class="overflow-visible"
-          d="M35.4941 1H6.65545C3.53203 1 1 3.53203 1 6.65545V35.4941C1 38.6175 3.53203 41.1495 6.65545 41.1495H35.4941C38.6175 41.1495 41.1495 38.6175 41.1495 35.4941V6.65545C41.1495 3.53203 38.6175 1 35.4941 1Z"
-          fill="#EEFFAA"
-          fill-opacity="0.4"
-          stroke="black"
-          stroke-width="1.5"
-          stroke-miterlimit="2"
-        ></path>
-        <Show
-          fallback=move || {
-              view! {
-                <path
-                  d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z"
-                  fill="black"
-                ></path>
-              }
-          }
-
-          when=move || selected_tab == _vec.get().len() - 1
-        >
-          <path
-            d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z"
-            fill="black"
-          ></path>
-        </Show>
-
-      </svg>
-    }
-}
 #[derive(Clone)]
 pub struct SelectedTab {
     pub tab: ReadSignal<usize>,
@@ -445,7 +393,6 @@ pub fn Exercises(labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoVi
 #[component]
 pub fn Exercise(children: ChildrenFn) -> impl IntoView {
     let GlobalState {
-        labels,
         tab,
         solutions_state,
         show_areas,
@@ -461,34 +408,11 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
         }
     });
 
-    let (solution_fully_opened, set_solution_fully_opened) =
-        create_signal(solution_open.get_untracked());
-
     let transition_duration = create_memo(move |_| {
         if solution_transition_duration.get().len() > tab.get() {
             solution_transition_duration.get()[tab.get()]
         } else {
             1000
-        }
-    });
-
-    create_effect(move |_| {
-        if solution_open.get() {
-            set_timeout(
-                move || {
-                    let _ = set_solution_fully_opened.try_set(true);
-                },
-                Duration::from_millis(transition_duration.get() as u64),
-            )
-        } else {
-            set_solution_fully_opened.set(false);
-            set_timeout(
-                // sometimes the above line executes before 1 second of the above block is passed so we make sure is stays false
-                move || {
-                    let _ = set_solution_fully_opened.try_set(false);
-                },
-                Duration::from_millis(transition_duration.get() as u64),
-            )
         }
     });
 
@@ -513,17 +437,6 @@ pub fn Exercise(children: ChildrenFn) -> impl IntoView {
 
     view! {
       {children()}
-      <div class="col-start-2 h-[31px]"></div>
-      <div
-        class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
-        style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
-
-        class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
-        class=("delay-[2s]", move || bot_div.get())
-      >
-        <EndLabelsView vec=labels.get_untracked() selected_tab=tab.get_untracked()/>
-      </div>
-
       <div
         class="transition-all col-start-2"
         style=move || {

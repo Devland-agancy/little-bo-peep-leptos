@@ -22,13 +22,13 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
         ..
     } = use_context::<GlobalState>().unwrap();
 
-    let transition_duration = move || {
+    let transition_duration = create_memo(move |_| {
         if solution_transition_duration.get().len() > solution_number {
             solution_transition_duration.get()[solution_number]
         } else {
             1000
         }
-    };
+    });
 
     let solution_open = create_memo(move |_| {
         if solutions_state.get().len() > solution_number {
@@ -120,7 +120,7 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
         if solution_open.get() {
             let timeout_handle = set_timeout_with_handle(
                 move || set_solution_fully_opened.set(true),
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
             );
             set_handle.set(Some(timeout_handle))
         } else {
@@ -133,7 +133,26 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
                 move || {
                     let _ = set_solution_fully_opened.try_set(false);
                 },
-                Duration::from_millis(transition_duration() as u64),
+                Duration::from_millis(transition_duration.get() as u64),
+            )
+        }
+    });
+
+    let (bot_div, set_bot_div) = create_signal(true);
+    create_effect(move |_| {
+        if solution_open.get() {
+            set_timeout(
+                move || {
+                    let _ = set_bot_div.try_set(false);
+                },
+                Duration::from_millis(transition_duration.get() as u64),
+            )
+        } else {
+            set_timeout(
+                move || {
+                    let _ = set_bot_div.try_set(true);
+                },
+                Duration::from_millis(transition_duration.get() as u64),
             )
         }
     });
@@ -203,23 +222,68 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
             format!(
                 "height: {}px; transition-duration: {}ms",
                 content_height.get(),
-                transition_duration(),
+                transition_duration.get(),
             )
         }
       >
-
         <div
           node_ref=node_ref
           class="transition-all"
           class=("-translate-y-full", move || !solution_open.get())
-          style=move || { format!("transition-duration: {}ms", transition_duration()) }
-
+          style=move || { format!("transition-duration: {}ms", transition_duration.get()) }
           class=("transition-all", move || transition.get())
         >
           {children()}
         </div>
 
+        <div
+          class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
+          style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
+
+          class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
+          class=("delay-[2s]", move || bot_div.get())
+        >
+          <BackupArrow />
+        </div>
       </div>
+    }
+}
+
+#[component]
+fn BackupArrow() -> impl IntoView {
+    view! {
+      <svg
+        width="43"
+        height="43"
+        viewBox="0 0 43 43"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="tab cursor-pointer overflow-visible z-10"
+        on:click=move |_| {
+            let options = ScrollIntoViewOptions::new();
+            options.set_behavior(ScrollBehavior::Smooth);
+            document()
+                .get_element_by_id("exo")
+                .unwrap()
+                .scroll_into_view_with_scroll_into_view_options(&options);
+        }
+      >
+
+        <path
+          class="overflow-visible"
+          d="M35.4941 1H6.65545C3.53203 1 1 3.53203 1 6.65545V35.4941C1 38.6175 3.53203 41.1495 6.65545 41.1495H35.4941C38.6175 41.1495 41.1495 38.6175 41.1495 35.4941V6.65545C41.1495 3.53203 38.6175 1 35.4941 1Z"
+          fill="#EEFFAA"
+          fill-opacity="0.4"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-miterlimit="2"
+        >
+        </path>
+        <path
+        d="M20 32C20 32.5523 20.4477 33 21 33C21.5523 33 22 32.5523 22 32H20ZM21 11L15.2265 21H26.7735L21 11ZM22 32L22 20H20L20 32H22Z"
+        fill="black"
+        ></path>
+      </svg>
     }
 }
 
