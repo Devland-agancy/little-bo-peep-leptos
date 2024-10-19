@@ -75,6 +75,8 @@ pub fn ImageRight(
     let line_height = move || if on_mobile.get() { 28.0 } else { 32.5 };
     let container_ref = create_node_ref::<Div>();
     let (scale, set_scale) = create_signal("1".to_string());
+    let (transform_origin, set_transform_origin) = create_signal("unset".to_string());
+
     let (attached_to_image, set_attached_to_image) = create_signal(false);
 
     create_effect(move |_| {
@@ -88,7 +90,8 @@ pub fn ImageRight(
                     .get("scale_side_images");
 
                 if scale_value_from_prev_sibling.is_some() {
-                    let _ = set_scale.try_set(scale_value_from_prev_sibling.unwrap());
+                    let _ = set_scale.try_set(scale_value_from_prev_sibling.clone().unwrap());
+                    let _  = set_transform_origin.try_set(format!("calc({} * 100%) top 0", scale_value_from_prev_sibling.unwrap()));
                     let _ = set_attached_to_image.try_set(true);
                 }
             }
@@ -127,7 +130,7 @@ pub fn ImageRight(
         <div
           style=move || {
               format!(
-                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}; scale: {}",
+                  "left: {}; top: calc(50% + {}); transform: translateY(calc(-50% + {} + {})); padding: {}; scale: {}; transform-origin: {}",
                   offset_x,
                   if offset_y.contains("%") { "0px" } else { offset_y },
                   match img_position {
@@ -137,7 +140,8 @@ pub fn ImageRight(
                   },
                   if offset_y.contains("%") { offset_y } else { "0px" },
                   padding,
-                  scale.get()
+                  scale.get(),
+                  transform_origin.get()
               )
           }
 
