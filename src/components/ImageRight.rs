@@ -39,6 +39,7 @@ pub fn ImageRight(
         on_mobile,
         tab,
         solutions_state,
+        show_squiggles,
         ..
     } = use_context::<GlobalState>().unwrap();
 
@@ -187,7 +188,7 @@ pub fn ImageRight(
           ></div>
         </div>
 
-        <Show fallback=|| () when=move || use_squiggle_on_mobile && !attached_to_image.get()>
+        <Show fallback=|| () when=move || use_squiggle_on_mobile && show_squiggles.get() && !attached_to_image.get()>
           <div
             class="squiggle block sm:hidden absolute"
             class=("outline-[20px]", move || show_areas.get())

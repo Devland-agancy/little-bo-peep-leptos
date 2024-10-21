@@ -3,6 +3,7 @@ use leptos::{create_rw_signal, RwSignal, SignalGet, SignalSet};
 #[derive(Copy, Clone, Debug)]
 pub struct GlobalState {
     pub show_areas: RwSignal<bool>,
+    pub show_squiggles: RwSignal<bool>,
     pub burger_background: RwSignal<bool>,
     pub tab: RwSignal<usize>,
     pub labels: RwSignal<Vec<&'static str>>,
@@ -21,6 +22,7 @@ impl GlobalState {
     pub fn new() -> Self {
         Self {
             show_areas: create_rw_signal(false),
+            show_squiggles: create_rw_signal(false),
             show_section_divider: create_rw_signal(false),
             burger_background: create_rw_signal(true),
             tab: create_rw_signal(0),

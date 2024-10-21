@@ -26,6 +26,7 @@ pub fn Panel() -> impl IntoView {
         show_areas,
         show_section_divider,
         btc_alignment_on_left,
+        show_squiggles,
         ..
     } = use_context::<GlobalState>().unwrap();
 
@@ -85,6 +86,16 @@ pub fn Panel() -> impl IntoView {
                   <Option 
                     signal=show_section_divider
                     label="Section Dividers"
+                  />
+                "##,
+                ""
+            )}
+            {render_based_on_env!(
+                r##"
+                /* show_squiggles */
+                  <Option 
+                    signal=show_squiggles
+                    label="Section Squiggles"
                   />
                 "##,
                 ""
