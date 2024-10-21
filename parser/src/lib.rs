@@ -116,6 +116,15 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
             attach_to: AttachToEnum::NONE,
         },
     ]);
+    // let mut article_types_patterns = Vec::new();
+
+    // let mut pattern = &'static str;
+    // for _type in article_types {
+    //     pattern = capitalize_first_char(format!("{_type}\\d+").as_str());
+    //     article_types_patterns.push(pattern.as_str());
+    // }
+    // article_types_patterns.extend(vec!["Section"]);
+  //  article_types_patterns = article_types_patterns.iter().map(|t| t);
 
     desugarer = desugarer
         .pre_process_exercises()
@@ -123,7 +132,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         .auto_increamental_title("Exercise", "Exercise", &types)
         .auto_increamental_title("Example", "Example", &types)
         .wrap_block_delimited("InnerParagraph")
-        .wrap_children(vec!["Section"], "Paragraph", &wrap_ignored_elements)
+        .wrap_children(vec!["Chapter\\d+", "Bootcamp\\d+", "Section"], "Paragraph", &wrap_ignored_elements)
         .wrap_children(
             vec!["Solution", "Example", "Exercise"],
             "InnerParagraph",
@@ -132,7 +141,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         .wrap_children(vec!["Grid"], "Span", &None)
         .wrap_children(vec!["List"], "Item", &None)
         .add_indent(&vec!["Paragraph", "InnerParagraph"])
-        .add_attribute(vec!["Solution", "Example"], ("no_padding", "true"))
+        .add_attribute(vec!["Example"], ("no_padding", "true"))
         .auto_convert_to_float(vec!["line", "padding_left"]);
 
     let mut desugarer_json: DataCell = serde_json::from_str(&desugarer.json).unwrap();
