@@ -86,7 +86,7 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         .map(|x| (x.as_str()[0..1].to_uppercase() + &x[1..]).to_string())
         .collect();
 
-    let wrap_ignored_elements = Some(vec![
+    let wrap_ignored_elements = vec![
         IgnoreOptions {
             element: "InlineImage",
             attach_to: AttachToEnum::BOTH,
@@ -115,7 +115,18 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
             element: "Pause",
             attach_to: AttachToEnum::NONE,
         },
-    ]);
+    ];
+
+    let article_first_level_elements_to_ignore = wrap_ignored_elements.iter().chain(vec![
+        IgnoreOptions {
+            element: "Section",
+            attach_to: AttachToEnum::NONE,
+        },
+        IgnoreOptions {
+            element: "Exercises",
+            attach_to: AttachToEnum::NONE,
+        }].iter()).cloned().collect();
+   
     // let mut article_types_patterns = Vec::new();
 
     // let mut pattern = &'static str;
@@ -132,11 +143,11 @@ pub fn parse(article_types: &Vec<String>, show_only: Option<usize>) -> HashMap<S
         .auto_increamental_title("Exercise", "Exercise", &types)
         .auto_increamental_title("Example", "Example", &types)
         .wrap_block_delimited("InnerParagraph")
-        .wrap_children(vec!["Chapter\\d+", "Bootcamp\\d+", "Section"], "Paragraph", &wrap_ignored_elements)
+        .wrap_children(vec!["Chapter\\d+", "Bootcamp\\d+", "Section"], "Paragraph", &Some(article_first_level_elements_to_ignore))
         .wrap_children(
             vec!["Solution", "Example", "Exercise"],
             "InnerParagraph",
-            &wrap_ignored_elements,
+            &Some(wrap_ignored_elements),
         )
         .wrap_children(vec!["Grid"], "Span", &None)
         .wrap_children(vec!["List"], "Item", &None)
