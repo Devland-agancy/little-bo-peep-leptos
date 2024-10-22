@@ -95,7 +95,7 @@ pub fn Panel() -> impl IntoView {
                 /* show_squiggles */
                   <Option 
                     signal=show_squiggles
-                    label="Section Squiggles"
+                    label="Squiggles"
                   />
                 "##,
                 ""
