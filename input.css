@@ -4,52 +4,52 @@
 
 @font-face {
   font-family: "Baskerville Regular";
-  src: url("/fonts/Baskerville-Regular.ttf")
+  src: url("/fonts/Baskerville-Regular.ttf");
 }
 
 @font-face {
   font-family: "Baskerville Bold";
-  src: url("/fonts/Baskerville-Bold.ttf")
+  src: url("/fonts/Baskerville-Bold.ttf");
 }
 
 @font-face {
   font-family: "Baskerville Italic";
-  src: url("/fonts/Baskerville-Italic.ttf")
+  src: url("/fonts/Baskerville-Italic.ttf");
 }
 
 @font-face {
   font-family: "Clicker Script";
-  src: url("/fonts/ClickerScript-Regular.ttf")
+  src: url("/fonts/ClickerScript-Regular.ttf");
 }
 
 @font-face {
   font-family: "Merriweather";
-  src: url("/fonts/Merriweather-Regular.ttf")
+  src: url("/fonts/Merriweather-Regular.ttf");
 }
 
 @font-face {
   font-family: "Merriweather Bold";
-  src: url("/fonts/Merriweather-Bold.ttf")
+  src: url("/fonts/Merriweather-Bold.ttf");
 }
 
 @font-face {
   font-family: "Merriweather Black";
-  src: url("/fonts/Merriweather-Black.ttf")
+  src: url("/fonts/Merriweather-Black.ttf");
 }
 
 @font-face {
   font-family: "Lora Italic";
-  src: url("/fonts/Lora-italic.ttf")
+  src: url("/fonts/Lora-italic.ttf");
 }
 
 @font-face {
   font-family: "Lora";
-  src: url("/fonts/Lora.ttf")
+  src: url("/fonts/Lora.ttf");
 }
 
 @font-face {
   font-family: "BowlbyOne";
-  src: url("/fonts/BowlbyOne-Regular.ttf")
+  src: url("/fonts/BowlbyOne-Regular.ttf");
 }
 
 * {
@@ -122,9 +122,9 @@ button,
 }
 
 button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
+input:where([type="button"]),
+input:where([type="reset"]),
+input:where([type="submit"]) {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -169,18 +169,18 @@ select {
   text-transform: none;
 }
 
-.MathJax_SVG{
+.MathJax_SVG {
   font-size: 100%;
   position: relative;
   width: -moz-fit-content !important;
   width: fit-content !important;
   margin: auto !important;
 }
-.MathJax_SVG svg{
+.MathJax_SVG svg {
   display: inline-block;
 }
 
-.MathJax_SVG_Display{
+.MathJax_SVG_Display {
   margin-bottom: 0 !important;
 }
 
@@ -188,13 +188,13 @@ select {
   max-height: 0;
   height: 0;
   opacity: 0;
-} 
+}
 
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
 }
 
-.scrollbar-hidden{
+.scrollbar-hidden {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer and Edge */
 }
@@ -203,13 +203,13 @@ mjx-container {
   width: 100%;
 }
 
-span .MathJax_SVG{
+span .MathJax_SVG {
   display: ruby !important;
   margin: 0 !important;
 }
 
-.menu-icon-svg{
-  transition: all 0.3s ease;;
+.menu-icon-svg {
+  transition: all 0.3s ease;
 }
 
 .close-icon-svg-1 {
@@ -246,7 +246,7 @@ span .MathJax_SVG{
 
 /* solution svg css */
 
-.solution_button_svg{
+.solution_button_svg {
   transform: translateX(32%);
 }
 
@@ -286,7 +286,7 @@ span .MathJax_SVG{
   stroke-width: 3;
 }
 
-.focus_alpha_fill{
+.focus_alpha_fill {
   fill: #0000;
 }
 
@@ -328,7 +328,6 @@ span .MathJax_SVG{
   fill: black;
 }
 
-
 @media (min-width: 520px) {
   .gridColsWidth {
     /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
@@ -348,70 +347,126 @@ span .MathJax_SVG{
   border-bottom: thin solid black;
 }
 
-.lines tr td:first-child{
+.lines tr td:first-child {
   border-left: none;
 }
 
-.lines tr td:last-child{
+.lines tr td:last-child {
   border-right: none;
 }
 
-.lines tr:first-child{
+.lines tr:first-child {
   border-top: none;
 }
 
-.lines tr:last-child{
+.lines tr:last-child {
   border-bottom: none;
 }
 
-
-.grid-cols-1	{grid-template-columns: repeat(1, 1fr);}
-.grid-cols-2	{grid-template-columns: repeat(2, 1fr);}
-.grid-cols-3	{grid-template-columns: repeat(3, 1fr);}
-.grid-cols-4	{grid-template-columns: repeat(4, 1fr);}
-.grid-cols-5	{grid-template-columns: repeat(5, 1fr);}
-.grid-cols-6	{grid-template-columns: repeat(6, 1fr);}
-.grid-cols-7	{grid-template-columns: repeat(7, 1fr);}
-.grid-cols-8	{grid-template-columns: repeat(8, 1fr);}
-.grid-cols-9	{grid-template-columns: repeat(9, 1fr);}
-.grid-cols-10	{grid-template-columns: repeat(10, 1fr);}
-.grid-cols-11	{grid-template-columns: repeat(11, 1fr);}
-.grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
-
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid-cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+.grid-cols-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+.grid-cols-7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+.grid-cols-8 {
+  grid-template-columns: repeat(8, 1fr);
+}
+.grid-cols-9 {
+  grid-template-columns: repeat(9, 1fr);
+}
+.grid-cols-10 {
+  grid-template-columns: repeat(10, 1fr);
+}
+.grid-cols-11 {
+  grid-template-columns: repeat(11, 1fr);
+}
+.grid-cols-12 {
+  grid-template-columns: repeat(12, 1fr);
+}
 
 @media (min-width: 520px) {
+  .sm\:grid-cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sm\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .sm\:grid-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .sm\:grid-cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .sm\:grid-cols-7 {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .sm\:grid-cols-8 {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  .sm\:grid-cols-9 {
+    grid-template-columns: repeat(9, 1fr);
+  }
+  .sm\:grid-cols-10 {
+    grid-template-columns: repeat(10, 1fr);
+  }
+  .sm\:grid-cols-11 {
+    grid-template-columns: repeat(11, 1fr);
+  }
+  .sm\:grid-cols-12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
 
-.sm\:grid-cols-1	{grid-template-columns: repeat(1, 1fr);}
-.sm\:grid-cols-2	{grid-template-columns: repeat(2, 1fr);}
-.sm\:grid-cols-3	{grid-template-columns: repeat(3, 1fr);}
-.sm\:grid-cols-4	{grid-template-columns: repeat(4, 1fr);}
-.sm\:grid-cols-5	{grid-template-columns: repeat(5, 1fr);}
-.sm\:grid-cols-6	{grid-template-columns: repeat(6, 1fr);}
-.sm\:grid-cols-7	{grid-template-columns: repeat(7, 1fr);}
-.sm\:grid-cols-8	{grid-template-columns: repeat(8, 1fr);}
-.sm\:grid-cols-9	{grid-template-columns: repeat(9, 1fr);}
-.sm\:grid-cols-10	{grid-template-columns: repeat(10, 1fr);}
-.sm\:grid-cols-11	{grid-template-columns: repeat(11, 1fr);}
-.sm\:grid-cols-12	{grid-template-columns: repeat(12, 1fr);}
-
-.center-on-mobile {
-  grid-column: 1/-1;
+  .center-on-mobile {
+    grid-column: 1/-1;
+  }
 }
-}
 
-.nowrap, .nobreak, .nolinebreak {
+.nowrap,
+.nobreak,
+.nolinebreak {
   white-space: nowrap;
 }
 
 .test-bg {
-  background-image: linear-gradient(to right, transparent 0%, transparent 16px, #d1d1f7 16px, #d1d1f7 50%, #e6bbff 50%, #e6bbff calc(100% - 16px), transparent calc(100% - 16px), transparent 100%);
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 16px,
+    #d1d1f7 16px,
+    #d1d1f7 50%,
+    #e6bbff 50%,
+    #e6bbff calc(100% - 16px),
+    transparent calc(100% - 16px),
+    transparent 100%
+  );
 }
 
-.spacer{
+.spacer {
   height: 1.5rem;
   /* display: inline-block; */
 }
-
 
 .example > .spacer:last-child,
 .pr:has( > :first-child.block-element) + .spacer,
@@ -420,22 +475,19 @@ span .MathJax_SVG{
 .spacer:has(+ .slice > .pr > :first-child.block-element),
 .slice:has(> .pr > :first-child.block-element) + .spacer,
 .slice:not(:last-child):has(> .pr :last-child.side-img) + .spacer,
-.section-divider .spacer
-{
+.section-divider .spacer {
   height: 0;
 }
 
 .spacer:has(+ .text),
-.sec > .spacer:last-child
-{
+.sec > .spacer:last-child {
   height: 1.5rem !important;
 }
 
 .pr:has(.pause) + .spacer,
 .mathblock + .spacer,
 .pr:has(.solution) + .spacer,
-.spacer:has(+ .pr > :first-child.block-element)
-{
+.spacer:has(+ .pr > :first-child.block-element) {
   display: none;
 }
 
@@ -446,7 +498,7 @@ span .MathJax_SVG{
 .mathblock-span {
   display: block;
   margin-bottom: 1em;
-  background-color: #fff
+  background-color: #fff;
 }
 
 .mathblock-span:has(+ .mathblock) {
@@ -499,16 +551,16 @@ table.first-line tr td:first-child {
   border-left: none;
 }
 
-.mathblock .mathblock{
+.mathblock .mathblock {
   font-size: inherit;
 }
 
 .ch4_pacman1_inline_number_pellet {
-  height:0.9em;
+  height: 0.9em;
 }
 
 .ch4_inline_blackwhite_particles {
-  height:0.9em;
+  height: 0.9em;
 }
 
 .fill-available {
@@ -521,15 +573,30 @@ table.first-line tr td:first-child {
   max-width: calc(100vw - var(--desktop-text-column-padding) * 2);
 }
 
-.pr:has( > .mathblock.desktop),
-.pr:has( > .displayed-image)
-{
+.pr:has(.mathblock.desktop),
+.pr:has(> .displayed-image),
+.pr .mathblock.desktop:not(:only-child) {
   left: 50%;
   transform: translateX(-50%);
 }
 
-.pr:has( > .mathblock),
-.pr:has( > .displayed-image){
+.pr .mathblock.desktop:not(:only-child) {
+  /* when math isn't only child of .pr . it should be maxed width so it gets centered */
+  /* This will cause problem with side images  */
+  width: max-content;
+}
+
+.pr:has(> .mathblock) {
+  width: min(100vw, var(--desktop-text-column-width));
+}
+
+.pr:has(> .mathblock:only-child),
+/* use only child to solve this kind of markup
+lorem1
+$$ xx $$ // there's no spaces above and below so this means the math will endup in the same .pr as lorem1 and lorem2
+lorem2
+*/
+.pr:has(> .displayed-image) {
   min-width: min(100vw, var(--desktop-text-column-width));
   width: max-content;
 }
@@ -540,7 +607,12 @@ table.first-line tr td:first-child {
 
 .text {
   display: inline-block;
-  max-width: min(calc(var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2), calc(100vw - var(--desktop-text-column-padding) * 2))
+  max-width: min(
+    calc(
+      var(--desktop-text-column-width) - var(--desktop-text-column-padding) * 2
+    ),
+    calc(100vw - var(--desktop-text-column-padding) * 2)
+  );
 }
 
 .indent-10 > .text,
