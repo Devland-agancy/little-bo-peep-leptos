@@ -234,16 +234,15 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
           class=("transition-all", move || transition.get())
         >
           {children()}
-        </div>
+            <div
+                class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
+                style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
 
-        <div
-          class="text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
-          style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
-
-          class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
-          class=("delay-[2s]", move || bot_div.get())
-        >
-          <BackupArrow />
+                class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
+                class=("delay-[2s]", move || bot_div.get())
+            >
+                <BackupArrow />
+            </div>
         </div>
       </div>
     }

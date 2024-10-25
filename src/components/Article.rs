@@ -69,7 +69,7 @@ pub fn Article(children: Children) -> impl IntoView {
     view! {
       <div class="">
         <div
-          class="relative flex justify-center align-center w-full pb-14 min-h-screen left-[1500px]"
+          class="relative flex justify-center align-center w-full min-h-screen left-[1500px]"
           id="Article"
         >
           <div class="w-full transition duration-300 sm:overflow-visible sm:translate-x-0">
