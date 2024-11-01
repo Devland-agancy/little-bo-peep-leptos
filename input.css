@@ -495,8 +495,8 @@ span .MathJax_SVG {
   height: 0;
 }
 
-.solution .transition-all .spacer {
-  height: 35px;
+.spacer:has(+ .backup-arrow) {
+  height: 32px;
 }
 
 .mathblock-span {
