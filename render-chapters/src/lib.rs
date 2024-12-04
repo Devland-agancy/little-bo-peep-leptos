@@ -5,7 +5,7 @@
 extern crate proc_macro;
 extern crate nom;
 
-use elm_to_view::parse;
+//use elm_to_view::parse;
 use leptos::error::Error;
 use proc_macro::Ident;
 use proc_macro::TokenStream;
@@ -20,6 +20,7 @@ use std::fs::File;
 use std::fs::ReadDir;
 use std::io::Write;
 use std::path::PathBuf;
+use std::process::Command;
 use syn::{parse_macro_input, LitStr};
 
 #[derive(Clone, Copy)]
@@ -184,6 +185,18 @@ pub fn render_mods(input: TokenStream) -> TokenStream {
     parsed_code.into()
 }
 
+fn read_article_file(path: &str) -> String {
+    // run gleam script to generate emitted leptos from markup
+     let _ = Command::new("./parser")
+        .args(["src/content", "--emit", "leptos", "--output", "render-chapters/splits"])
+        .output()
+        .expect("Failed to run gleam parser script");
+
+    let dir = env::current_dir().unwrap();
+    let file_content = fs::read_to_string(format!("{}/render-chapters/splits/{}.rs", dir.display(), path)).unwrap();
+    file_content
+}
+
 #[proc_macro]
 pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
@@ -191,18 +204,6 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_types = article_types.value();
     let article_types: std::str::Split<'_, &str> = article_types.split(" ");
     let mut modules = String::new();
-    let show_only: Option<usize> = None;
-
-    let types = article_types
-        .clone()
-        .into_iter()
-        .map(|at| {
-            let article_type: ArticleType = ArticleType::from_str(at);
-            article_type.to_str().to_string()
-        })
-        .collect();
-
-    let book = parse(&types, show_only);
 
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
@@ -214,10 +215,8 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
         for (i, (article_i, path)) in articles.iter().enumerate() {
             let number = i + 1;
             let (title, mobile_title) = get_article_title(&path);
-            let mut content = &String::new();
-            if show_only.is_none() || show_only.is_some_and(|s| s == i) {
-                content = book.get(&format!("{article_type_str}{article_i}")).unwrap();
-            }
+            let content = &read_article_file(&format!("{article_type_str}{article_i}"));
+
             modules.push_str(&format!(
                 r#"
                 #[component]
@@ -232,10 +231,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
 
                 #[component]
                 fn {article_type_upper_str}{article_i}Body() -> impl IntoView {{
-                    view! {{
-                    
                     {}
-                    }}
                 }}
 
                 #[component]
@@ -251,11 +247,8 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                 } else {
                     format!(r#"mobile_title="{mobile_title}""#)
                 },
-                if show_only.is_some_and(|s| s != i) {
-                    "".to_string()
-                } else {
-                    content.to_string()
-                }
+                                    content.to_string()
+
             ));
         }
     }

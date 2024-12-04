@@ -1,6 +1,6 @@
 use crate::components::Columns::*;
 use crate::components::Link::CustomLink;
-use crate::components::Paragraph::*;
+use crate::components::VerticalChunk::*;
 use crate::components::Section::*;
 
 use leptos::*;
@@ -17,8 +17,7 @@ pub fn Body() -> impl IntoView {
 
     view! {
       <Columns>
-        <Paragraph>
-
+        <VerticalChunk>
           <h1 class="leading-[1] text-[2.5rem] font-merriweather mb-[2.3rem] sm:mb-[2.6rem] gap-4 flex justify-center items-center font-lora">
             //<img src="/images/table_of_contents.svg" class="w-[40px] sm:w-[60px]"/>
             <TitleSVG />
@@ -44,7 +43,7 @@ pub fn Body() -> impl IntoView {
           >
             {render_articles_list!("bootcamps")}
           </ul>
-        </Paragraph>
+        </VerticalChunk>
       </Columns>
     }
 }

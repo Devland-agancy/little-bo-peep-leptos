@@ -34,7 +34,7 @@ gloo-timers = { version = "0.2", features = ["futures"] }
 rand = "0.8"
 serde_json = "1.0.108"
 serde = "1.0.192"
-elm_to_view = { path = "parser" }
+#elm_to_view = { path = "parser" }
 render-chapters = { path = "render-chapters" }
 js-sys = "0.3.69"
 

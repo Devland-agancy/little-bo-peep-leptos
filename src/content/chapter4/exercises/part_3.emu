@@ -417,7 +417,7 @@
 
         The velocity vectors are
 
-        -|NOT|-
+        _|NOT|_
 
         tangent to the unit circle, and so the
         particles will leave the circle!
@@ -845,7 +845,7 @@
         velocity vectors are exactly tangent to
         the unit circle
 
-        -|EXCEPT|-
+        _|EXCEPT|_
         
         for particle 14, whose velocity vector, 
         being the position of particle 1, is straight

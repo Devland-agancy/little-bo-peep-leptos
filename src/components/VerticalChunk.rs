@@ -24,9 +24,9 @@ pub enum Align {
 }
 
 #[component]
-pub fn Paragraph(
+pub fn VerticalChunk(
     children: Children,
-    #[prop(default = Indent::None)] indent: Indent,
+    #[prop(default = false)] indent: bool,
     #[prop(default = Align::None)] align: Align,
     #[prop(optional)] id: &'static str,
     #[prop(optional)] classes: &'static str,
@@ -60,19 +60,15 @@ pub fn Paragraph(
         id=id
         node_ref=node_ref
         class=format!("pr col-start-2 block relative {}", classes)
-        class=("indent-10", indent == Indent::Line)
-        class=("pl-10", indent == Indent::Block)
+        class=("indent-10", indent)
+        class=("pl-10", indent)
         class=("text-center", align == Align::Center)
         class=("my-2", align == Align::Center)
         class=("text-right", align == Align::Right)
         class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas.get())
         style=format!(
-            "text-indent: {}; padding-inline: {};",
-            match indent {
-                Indent::Custom(s) => s,
-                _ => "",
-            },
+            "padding-inline: {};",
             if !no_padding { TEXT_X_PADDING } else { "0" },
         )
       >
@@ -80,7 +76,6 @@ pub fn Paragraph(
         {children()}
       </span>
     </div>
-    <Spacer/>
     }
 }
 

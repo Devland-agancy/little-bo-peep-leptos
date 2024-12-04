@@ -31,8 +31,8 @@ pub fn ImageRight(
     #[prop(default = "")] padding: &'static str,
     #[prop(default = "")] width: &'static str,
     #[prop(default = false)] popup: bool,
+    #[prop(optional)] children: Option<Children>,
 
-    children: Children,
 ) -> impl IntoView {
     let GlobalState {
         show_areas,
@@ -154,7 +154,7 @@ pub fn ImageRight(
         >
 
           <div class="absolute z-10" style=move || format!("top: {children_y}; left: {children_x}")>
-            {children()}
+            {children.map(|c| c())}
           </div>
           <img
             src=src

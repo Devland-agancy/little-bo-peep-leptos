@@ -1,5 +1,5 @@
 use crate::constants::CENTERED_PARAGRAPH_X_MARGIN;
-use crate::{components::Paragraph::Align, global_state::GlobalState};
+use crate::{components::VerticalChunk::Align, global_state::GlobalState};
 use leptos::*;
 
 #[component]
@@ -44,3 +44,4 @@ pub fn DisplayCentered(
       </Span>
     }
 }
+

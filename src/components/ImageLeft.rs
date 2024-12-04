@@ -31,8 +31,8 @@ pub fn ImageLeft(
     #[prop(default = "")] padding: &'static str,
     #[prop(default = false)] popup: bool,
     #[prop(default = "")] width: &'static str,
+    #[prop(optional)] children: Option<Children>,
 
-    children: Children,
 ) -> impl IntoView {
     let GlobalState {
         show_areas,
@@ -158,7 +158,7 @@ pub fn ImageLeft(
         >
           <div class="z-10" style=move || {
               format!(" top: {}; left: {}", children_y, children_x)
-          }>{children()}</div>
+          }>{children.map(|c| c())}</div>
           <img
             src=src
             class=("max-w-max", move || width == "")

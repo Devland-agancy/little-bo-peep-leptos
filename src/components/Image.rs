@@ -19,7 +19,7 @@ pub fn Image(
     #[prop(default = 0_f64)] padding_left: f64,
     #[prop(default = 0_f64)] padding_right: f64,
     #[prop(default = false)] cloud_image: bool,
-    children: Children,
+    #[prop(optional)] children: Option<Children>,
 ) -> impl IntoView {
     let container_ref = create_node_ref::<Div>();
     let (is_wider_than_screen, set_is_wider_than_screen) = create_signal(false);
@@ -190,7 +190,7 @@ pub fn Image(
                 class=("outline", move || show_areas.get() && cloud_image && is_wider_than_screen.get())
             />
         </div>
-        {children()}
+        {children.map(|c| c())}
       </div>
     }
 }

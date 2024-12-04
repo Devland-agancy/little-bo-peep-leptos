@@ -22,8 +22,10 @@ pub fn Example(children: Children) -> impl IntoView {
 }
 
 #[component]
-pub fn Pause(children: Children) -> impl IntoView {
-    return view! { <div class="pause">{children()}</div> };
+pub fn Pause(
+    #[prop(optional)] children: Option<Children>,
+) -> impl IntoView {
+    return view! { <div class="pause">{children.map(|c| c())}</div> };
 }
 
 #[component]

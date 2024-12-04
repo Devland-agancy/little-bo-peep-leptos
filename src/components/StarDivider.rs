@@ -1,4 +1,4 @@
-use crate::components::Paragraph::Align;
+use crate::components::VerticalChunk::Align;
 use crate::components::Span::*;
 use leptos::*;
 
