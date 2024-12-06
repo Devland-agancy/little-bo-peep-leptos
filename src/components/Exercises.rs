@@ -376,7 +376,7 @@ pub fn Exercises(labels: Vec<&'static str>, children: ChildrenFn) -> impl IntoVi
         children=move |label| {
             view! {
               <div
-                class="slice text-xl grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth relative -translate-x-[1500px] sm:translate-x-0 transition-opacity duration-500 "
+                class="transition-opacity duration-500 "
                 class=("opacity-0", move || selected_tab.get() != label.0)
                 class=("h-0", move || selected_tab.get() != label.0)
                 class=("transition-none", move || selected_tab.get() != label.0)

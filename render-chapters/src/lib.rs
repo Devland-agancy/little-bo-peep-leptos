@@ -142,11 +142,11 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
         let articles = get_sorted_articles(article_type);
 
-        for (i, (article_i, _)) in articles.iter().enumerate() {
+        for (i, (_, _)) in articles.iter().enumerate() {
             let number = i + 1;
 
             routes.push_str(&format!(
-                r#"<Route path="/article/{}_{number}" view=crate::page::article::{}{article_i}View />"#,
+                r#"<Route path="/article/{}_{number}" view=crate::page::article::{}{number}View />"#,
                 article_type.to_abrv(),
                 article_type.to_upper_str()
             ));
@@ -187,8 +187,18 @@ pub fn render_mods(input: TokenStream) -> TokenStream {
 
 fn read_article_file(path: &str) -> String {
     // run gleam script to generate emitted leptos from markup
-     let _ = Command::new("./parser")
-        .args(["src/content", "--emit", "leptos", "--output", "render-chapters/splits"])
+
+     for entry in fs::read_dir("render-chapters/splits").unwrap() {
+        let entry = entry.unwrap();
+        let file_path = entry.path();
+        
+        if file_path.is_file() {
+            let _ = fs::remove_file(file_path);
+        }
+    }
+    
+    let _ = Command::new("./parser")
+        .args(["src/content", "--emit-book", "leptos", "--output", "render-chapters/splits"])
         .output()
         .expect("Failed to run gleam parser script");
 
@@ -212,30 +222,30 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
 
         let articles = get_sorted_articles(article_type);
 
-        for (i, (article_i, path)) in articles.iter().enumerate() {
+        for (i, (_, path)) in articles.iter().enumerate() {
             let number = i + 1;
             let (title, mobile_title) = get_article_title(&path);
-            let content = &read_article_file(&format!("{article_type_str}{article_i}"));
+            let content = &read_article_file(&format!("{article_type_str}{number}"));
 
             modules.push_str(&format!(
                 r#"
                 #[component]
-                pub fn {article_type_upper_str}{article_i}View() -> impl IntoView {{
+                pub fn {article_type_upper_str}{number}View() -> impl IntoView {{
                     view! {{ 
                     <ArticleTitle label="{article_type_upper_str} {number}: {title}" {}/>
                     <Columns>
-                        <{article_type_upper_str}{article_i}Body />
+                        <{article_type_upper_str}{number}Body />
                     </Columns>
                     }}
                 }}
 
                 #[component]
-                fn {article_type_upper_str}{article_i}Body() -> impl IntoView {{
+                fn {article_type_upper_str}{number}Body() -> impl IntoView {{
                     {}
                 }}
 
                 #[component]
-                pub fn {article_type_upper_str}{article_i}( children: Children, title: &'static str) -> impl IntoView {{
+                pub fn {article_type_upper_str}{number}( children: Children, title: &'static str) -> impl IntoView {{
                     view! {{ 
                     {{children()}}
                     }}
@@ -247,7 +257,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
                 } else {
                     format!(r#"mobile_title="{mobile_title}""#)
                 },
-                                    content.to_string()
+                content.to_string()
 
             ));
         }

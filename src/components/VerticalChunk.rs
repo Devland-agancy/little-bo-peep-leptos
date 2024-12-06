@@ -25,12 +25,10 @@ pub enum Align {
 
 #[component]
 pub fn VerticalChunk(
-    children: Children,
+    #[prop(optional)] children: Option<Children>,
     #[prop(default = false)] indent: bool,
-    #[prop(default = Align::None)] align: Align,
     #[prop(optional)] id: &'static str,
     #[prop(optional)] classes: &'static str,
-    #[prop(default = false)] no_padding: bool,
 ) -> impl IntoView {
     let GlobalState {
         burger_background,
@@ -55,25 +53,16 @@ pub fn VerticalChunk(
     });
 
     view! {
-    <div class=format!("slice colmuns relative text-xl leading-[1.5em] -translate-x-[1500px] sm:translate-x-0 grid grid-cols-[1500px_100%_1500px] sm:grid gridColsWidth")>
+    <div class=format!("slice {classes}")>
       <span
         id=id
         node_ref=node_ref
-        class=format!("pr col-start-2 block relative {}", classes)
+        class=format!("block")
         class=("indent-10", indent)
         class=("pl-10", indent)
-        class=("text-center", align == Align::Center)
-        class=("my-2", align == Align::Center)
-        class=("text-right", align == Align::Right)
-        class=("text-left", align == Align::None)
         class=("test-bg", move || show_areas.get())
-        style=format!(
-            "padding-inline: {};",
-            if !no_padding { TEXT_X_PADDING } else { "0" },
-        )
       >
-
-        {children()}
+        {children.map(|c| c())}
       </span>
     </div>
     }

@@ -10,18 +10,20 @@ pub fn CenterDisplay(
     let GlobalState { show_areas, .. } = use_context::<GlobalState>().unwrap();
 
     view! {
-      <span
+      <div
         style=format!("margin-inline: {CENTERED_PARAGRAPH_X_MARGIN}")
         class=move || {
             format!(
-                "text-center block {} {}",
+                "slice text-center block {} {}",
                 classes,
                 if show_areas.get() { "bg-[#ebe3a0b0]" } else { "" }
             )
         }
       >
-        {children()}
-      </span>
+        <div>
+          {children()}
+        </div>
+      </div>
     }
 }
 
@@ -33,18 +35,20 @@ pub fn CentralItalicDisplay(
     let GlobalState { show_areas, .. } = use_context::<GlobalState>().unwrap();
 
     view! {
-      <span
+      <div
         style=format!("margin-inline: {CENTERED_PARAGRAPH_X_MARGIN}")
         class=move || {
             format!(
-                "font-baskerville-italic text-center block {} {}",
+                "slice font-baskerville-italic text-center block {} {}",
                 classes,
                 if show_areas.get() { "bg-[#ebe3a0b0]" } else { "" }
             )
         }
       >
-        {children()}
-      </span>
+        <div>
+          {children()}
+        </div>
+      </div>
     }
 }
 

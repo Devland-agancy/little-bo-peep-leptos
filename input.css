@@ -169,6 +169,33 @@ select {
   text-transform: none;
 }
 
+/* Delimiters */
+b {
+  font-weight: bolder;
+  font-family: "Baskerville Bold";
+}
+
+i {
+  font-family: "Baskerville Italic";
+}
+
+/* Slice */
+.slice {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  font-size: 1.25rem; /* Equivalent to text-xl */
+  line-height: 1.5em;
+}
+
+.slice > * {
+  width: min(var(--desktop-text-column-width), 100%);
+  padding-inline: var(--desktop-text-column-padding);
+}
+
+/* MathJax */
+
 .MathJax_SVG {
   font-size: 100%;
   position: relative;
@@ -181,7 +208,7 @@ select {
 }
 
 .MathJax_SVG_Display {
-  margin-bottom: 0 !important;
+  margin: 0 !important;
 }
 
 .hidden-on-startup {
@@ -328,13 +355,6 @@ span .MathJax_SVG {
   fill: black;
 }
 
-@media (min-width: 520px) {
-  .gridColsWidth {
-    /* DESKTOP_TEXT_WIDTH_WITH_MARGIN Constant */
-    grid-template-columns: 1fr var(--desktop-text-column-width) 1fr;
-  }
-}
-
 .lines tr td {
   text-align: center;
   border-left: thin solid black;
@@ -468,35 +488,8 @@ span .MathJax_SVG {
   /* display: inline-block; */
 }
 
-.example > .spacer:last-child,
-.pr:has( > :first-child.block-element) + .spacer,
-.pr:has( :last-child.side-img) + .spacer,
-/* with slice */
-.spacer:has(+ .slice > .pr > :first-child.block-element),
-.slice:has(> .pr > :first-child.block-element) + .spacer,
-.slice:not(:last-child):has(> .pr :last-child.side-img) + .spacer,
-.section-divider .spacer {
-  height: 0;
-}
-
-.spacer:has(+ .text),
-.sec > .spacer:last-child {
-  height: 1.5rem !important;
-}
-
-.pr:has(.pause) + .spacer,
-.mathblock + .spacer,
-.pr:has(.solution) + .spacer,
-.spacer:has(+ .pr > :first-child.block-element) {
-  display: none;
-}
-
 .indent-fix {
   height: 0;
-}
-
-.spacer:has(+ .backup-arrow) {
-  height: 32px;
 }
 
 .mathblock-span {

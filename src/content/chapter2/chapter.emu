@@ -10,6 +10,11 @@
 
     To explain, the slope of a line is...
 
+    $$ 
+    {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} 
+    {y_2 - y_1 \over x_2 - x_1}\qquad\,\,\,\,\,\te{and}\,\,\,\,\,\qquad{y_1 - y_2 \over x_1 - x_2} 
+    $$
+
     __the number of units the line goes up with each
     unit to the right__
 

@@ -82,7 +82,6 @@ pub fn ImageLeft(
     create_effect(move |_| {
         let container_ref = Box::new(container_ref.get());
         let cb = Closure::wrap(Box::new(move |_: Event| {
-
             if let Some(container_ref) = container_ref.borrow() {
                 let prev_sibling = container_ref.previous_element_sibling().unwrap();
                 let scale_value_from_prev_sibling = cast_element_to_html_element(prev_sibling)
@@ -127,7 +126,7 @@ pub fn ImageLeft(
             format!("top: {}; left: {}", line_str, left_pos)
         }
 
-        class="side-img absolute -translate-x-1/2 w-1 h-1"
+        class="side-img absolute -translate-x-1/2 !w-1 !p-0 h-1"
       >
 
         <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas.get())></div>

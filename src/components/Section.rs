@@ -4,7 +4,7 @@ use leptos::*;
 #[component]
 pub fn Section(#[prop(default = true)] divider: bool, children: Children) -> impl IntoView {
     return view! {
-      <div class="sec">{children()}</div>
+      <section class="sec">{children()}</section>
       <Show fallback=|| () when=move || divider>
         <SectionDivider/>
       </Show>
@@ -18,7 +18,7 @@ pub fn Paragraphs(children: Children) -> impl IntoView {
 
 #[component]
 pub fn Example(children: Children) -> impl IntoView {
-    return view! { <div class="example !mt-0">{children()}</div> };
+    return children();
 }
 
 #[component]

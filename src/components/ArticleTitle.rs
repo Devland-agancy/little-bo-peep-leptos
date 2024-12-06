@@ -5,6 +5,7 @@ use crate::constants::{
 use console_log::log;
 use leptos::{ev::resize, *};
 use leptos_use::{use_event_listener, use_window};
+use crate::components::VerticalChunk::*;
 
 #[component]
 pub fn ArticleTitle(
@@ -28,29 +29,31 @@ pub fn ArticleTitle(
     });
 
     view! {
-      <div class="sm:grid gridColsWidth pt-14">
+      <VerticalChunk 
+        classes="pt-14" 
+        >
         <h1
-          class=format!("sm:col-start-2 text-3xl sm:text-4xl p-4 {class}")
+          class=format!("sm:col-start-2 text-3xl sm:text-4xl py-4 {class}")
           style=move || {
-              format!(
-                  "margin-top: {};margin-bottom: {}",
-                  if mobile.get() {
-                      CHAPTER_TITLE_TOP_MARGIN_MOBILE
-                  } else {
-                      CHAPTER_TITLE_TOP_MARGIN_DESKTOP
-                  },
-                  if mobile.get() {
-                      CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE
-                  } else {
-                      CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP
-                  },
-              )
-          }
+                format!(
+                    "margin-top: {};margin-bottom: {}",
+                    if mobile.get() {
+                        CHAPTER_TITLE_TOP_MARGIN_MOBILE
+                    } else {
+                        CHAPTER_TITLE_TOP_MARGIN_DESKTOP
+                    },
+                    if mobile.get() {
+                        CHAPTER_TITLE_BOTTOM_MARGIN_MOBILE
+                    } else {
+                        CHAPTER_TITLE_BOTTOM_MARGIN_DESKTOP
+                    },
+                )
+            }
         >
 
           <span class="sm:hidden">{if on_mobile == "" { label } else { on_mobile }}</span>
           <span class="hidden sm:block">{label}</span>
         </h1>
-      </div>
+      </VerticalChunk>
     }
 }

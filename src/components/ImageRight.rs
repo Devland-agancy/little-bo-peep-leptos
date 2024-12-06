@@ -124,7 +124,7 @@ pub fn ImageRight(
             format!("top: {}; left: {}", line_str, left_pos)
         }
 
-        class="side-img absolute -translate-x-1/2 w-1 h-1 "
+        class="side-img absolute -translate-x-1/2 !w-1 !p-0  h-1 "
       >
         <div class="w-1 h-1 relative z-20" class=("bg-red-500", move || show_areas.get())></div>
 

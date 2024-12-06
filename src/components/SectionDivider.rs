@@ -43,10 +43,10 @@ pub fn SectionDivider() -> impl IntoView {
         fallback=move || view! { <Pause>""</Pause> }
         when=move || !hidden.get() && show_section_divider.get()
       >
+      <div class="spacer"></div>
       <VerticalChunk>
         <Image container_classes="section-divider" src="/images/section_divider.svg" width="100%" >
           ""
-          <Spacer/>
         </Image>
       </VerticalChunk>
       </Show>

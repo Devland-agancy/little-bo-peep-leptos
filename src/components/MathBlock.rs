@@ -85,11 +85,10 @@ pub fn MathBlock(
       <div
         node_ref=node_ref
         id=id
-        class="mathblock block-element text-xl col-start-2 hidden-on-startup relative h-fit"
+        class="mathblock slice hidden-on-startup h-fit"
         class=("wide", is_wide)
         class=("wide_desktop", move || is_wide.get() && !on_mobile.get())
         class=("desktop", move || !on_mobile.get())
-
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {
@@ -102,7 +101,7 @@ pub fn MathBlock(
       >
         {children()}
       </div>
-      <span class="mathblock-span"></span>
+      //<span class="mathblock-span"></span>
     }
 }
 

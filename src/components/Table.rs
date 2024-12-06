@@ -53,14 +53,13 @@ pub fn Table(
     view! {
       <div
         class=format!(
-            "col-start-2 min-h-fit w-fit relative left-1/2 -translate-x-1/2 {}",
+            "slice {}",
             classes,
         )
-        style=format!("padding-inline: {}", TEXT_X_PADDING)
       >
         <table
           node_ref=table
-          class="table-fixed max-w-full w-full transition-image-scale"
+          class="table-fixed max-w-full transition-image-scale"
           class=("lines", move || lines)
           style=move || format!("transform: scale({}); margin-block: {}%;{}", calc_scale(), calc_margin() ,style)
           on:click=move |_|{

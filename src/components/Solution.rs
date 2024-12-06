@@ -210,10 +210,9 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
               );
           }
         />
-
       </div>
       <div
-        class="solution col-start-2 transition-[height]  relative"
+        class="solution col-start-2 transition-[height] relative"
         class=("pointer-events-none", move || !solution_open.get())
         class=("animated-height-full", move || solution_open.get())
         class=("overflow-y-clip", move || !solution_fully_opened.get())
@@ -235,7 +234,7 @@ pub fn Solution(solution_number: usize, children: Children) -> impl IntoView {
         >
           {children()}
             <div
-                class="backup-arrow text-xl flex items-center justify-center gap-2 col-start-2 transition-opacity"
+                class="backup-arrow mt-[32px] flex items-center justify-center col-start-2 transition-opacity"
                 style=move || format!("transition-duration: {}ms", if solution_open.get() { 1000 } else { 100 })
 
                 class=("opacity-0", move || !(solution_open.get() && solution_fully_opened.get()))
