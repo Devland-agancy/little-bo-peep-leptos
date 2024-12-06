@@ -157,7 +157,7 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
     let parsed_code = routes.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         view! {
-            
+
             #parsed_code
         }
     };
@@ -185,25 +185,28 @@ pub fn render_mods(input: TokenStream) -> TokenStream {
     parsed_code.into()
 }
 
-fn read_article_file(path: &str) -> String {
+fn parser_markup() {
     // run gleam script to generate emitted leptos from markup
-
-     for entry in fs::read_dir("render-chapters/splits").unwrap() {
-        let entry = entry.unwrap();
-        let file_path = entry.path();
-        
-        if file_path.is_file() {
-            let _ = fs::remove_file(file_path);
-        }
-    }
-    
     let _ = Command::new("./parser")
-        .args(["src/content", "--emit-book", "leptos", "--output", "render-chapters/splits"])
+        .args([
+            "src/content",
+            "--emit-book",
+            "leptos",
+            "--output",
+            "render-chapters/splits",
+        ])
         .output()
         .expect("Failed to run gleam parser script");
+}
 
+fn read_article_file(path: &str) -> String {
     let dir = env::current_dir().unwrap();
-    let file_content = fs::read_to_string(format!("{}/render-chapters/splits/{}.rs", dir.display(), path)).unwrap();
+    let file_content = fs::read_to_string(format!(
+        "{}/render-chapters/splits/{}.rs",
+        dir.display(),
+        path
+    ))
+    .unwrap();
     file_content
 }
 
@@ -215,6 +218,7 @@ pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let article_types: std::str::Split<'_, &str> = article_types.split(" ");
     let mut modules = String::new();
 
+    parser_markup();
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
         let article_type_upper_str = article_type.to_upper_str();
@@ -373,7 +377,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                
+
                 #parsed_code
             }
         };
@@ -385,7 +389,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                
+
                 #parsed_code
             }
         };
