@@ -1,0 +1,184 @@
+|> Section
+
+    *The second derivative.*
+    The _second derivative_ of $f$ is the derivative
+    of the derivative of $f$. It is written “$f''$”:
+
+    $$
+    \,\,\,f'' = (f')'.
+    $$
+
+    Likewise, we have, e.g.,
+
+    $$
+    \begin{align}
+    \up{0.95}f''' &= (f'')'\\
+    \up{1.25}f'''' &= (f''')'\\
+    \up{1.25}f''''\psa' &= (f'''')'\\
+    \end{align}
+    $$
+
+    these being, namely, the _third_, _fourth_
+    and _fifth_ derivatives of $f$. One can also 
+    write
+    
+    $$
+    f^{(n)}
+    $$
+    
+    for the $n$-th derivative of $f$, so that, for
+    example,
+
+    $$
+    f^{(7)}
+    $$
+
+    means the same as
+
+    $$
+    f'''''''
+    $$
+
+    but with the advantage that you don't have to
+    squint and start re-counting the apostrophes 
+    several times over.
+
+    |> Example
+
+        We have
+
+        $$
+        (x \ra 3x + 1)'' = (x \ra 0)
+        $$
+
+        |> ImageRight
+            src images/svg_ch4_3x_plus_one_and_second_cloud.svg
+
+    because, firstly,
+
+    $$
+    (x \ra 3x + 1)' = (x \ra 3)
+    $$
+
+    and, secondly,
+
+    $$
+    (x \ra 3)' = (x \ra 0)
+    $$
+
+    so that, from start to finish,
+
+    $$
+    (x \ra 3x + 1)'' =  ((x \ra 3x + 1)')' = (x \ra 3)' = (x \ra 0)
+    $$
+
+    where we unpeel the onion starting from the
+    inside. (Physically difficult.)
+
+    |> Example
+
+        More generally,
+
+        $$
+        \,\,\,(x \ra ax + b)'' = (x \ra 0)
+        $$
+
+        for all $a, b \in \rr$, by a similar computation;
+        a.k.a.:
+
+        __~ the second derivative of an affine function is zero ~__
+            
+        |> ImageLeft
+            src images/svg_ch4_adding_statements_cloud.svg
+
+|> Section
+
+    *Geometric interpretation of the second derivative.*
+    The sign of the second derivative—whether
+    it is positive or negative—indicates whether
+    a graph is “bending upwards” or “bending 
+    downwards”. Upward-bending graphs have a positive
+    second derivative, whereas downward-bending graphs
+    have a negative second derivative:
+
+    |> Image
+        src images/svg_ch4_bendiness.svg
+
+    Reason like this: the second derivative is 
+    |> del
+
+        “the rate of change of the rate of change”.
+    Sorry: “the rate of change of the slope”. 
+    (Same difference.) Ergo, if the second derivative
+    is positive, the slope is increasing; if the
+    second derivative is negative, the slope is 
+    decreasing. Moreover, an
+        
+    __increasing__
+
+    slope gives curves a “bending upwards” shape, while a
+
+    __decreasing__
+    
+    slope gives curves a “bending downward” shape!
+    
+    To emphasize, if the second derivative is some
+
+    _|LARGE POSITIVE NUMBER|_
+
+    then the slope is increasing at that rate, 
+    which could result in a sharp bend upwards
+    in the graph (unless you are near vertical
+    already—you can't see the difference between
+    slope $100$ and slope $1000$ very well, at most
+    scales—nor between $-1000$ and $-100$, for that
+    matter).
+
+    Likewise, if the second derivative is some
+    
+    _|LARGE NEGATIVE NUMBER|_
+
+    then the slope is decreasing at [the absolute 
+    value of] that rate, which could result in 
+    a sharp bend downwards in the graph (unless
+    you are near vertical already, once again,
+    because verticality can disguise the presence
+    of a significant change in slope, once again).
+
+
+|> Section
+
+    *Vocabulary #1.*
+    Curves with increasing (technically: 
+    _nondecreasing_) slope are called _convex_, 
+    while curves with decreasing (technically: 
+    _nonincreasing_) slope are called _concave_.
+    Viz:
+    
+    |> Image
+        src images/svg_ch4_convex_concave.svg
+
+    *Vocabulary #2.*
+    An _inflection point_ is a point at the
+    interface between convex and concave sections
+    of a graph:
+
+    |> Image
+        src images/svg_ch4_inflection_point.svg
+
+    |> Example
+
+        The fact that
+        
+        $$
+        (x \ra 3x + 1)'' = (x \ra 0)
+        $$
+        
+        indicates that the graph
+        
+        $$
+        y = 3x + 1
+        $$
+        
+        is neither “bending upwards” nor “bending 
+        downwards”—$0$ is neither positive, nor negative.

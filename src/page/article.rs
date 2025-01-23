@@ -14,7 +14,7 @@ use crate::components::InlineImage::*;
 use crate::components::List::*;
 use crate::components::Math::*;
 use crate::components::MathBlock::*;
-use crate::components::Paragraph::*;
+use crate::components::VerticalChunk::*;
 use crate::components::Section::*;
 use crate::components::SectionDivider::*;
 use crate::components::StarDivider::*;
@@ -22,10 +22,10 @@ use crate::components::StarDivider::*;
 use crate::components::Solution::*;
 use crate::components::Space::*;
 use crate::components::Span::*;
+use crate::components::Delimiters::*;
 use crate::components::Table::Table;
 
 use crate::constants::MENU_ITEMS;
-use elm_to_view::elm;
 use leptos::*;
 use render_chapters::render_article_modules;
 

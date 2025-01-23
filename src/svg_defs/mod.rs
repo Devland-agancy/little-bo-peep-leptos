@@ -1,8 +1,8 @@
 use leptos::*;
 
 #[component]
-pub fn SVGDefinitions(cx: Scope) -> impl IntoView {
-    view! { cx,
+pub fn SVGDefinitions() -> impl IntoView {
+    view! { 
       <svg class="h-0">
         <defs>
 

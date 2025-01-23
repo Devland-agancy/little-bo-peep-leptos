@@ -21,3 +21,6 @@ playwright/.cache/
 .direnv
 
 .env
+
+src/res.emu
+render-chapters/splits

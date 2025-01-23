@@ -15,7 +15,6 @@ pub enum Height {
 }
 #[component]
 pub fn MathBlock(
-    cx: Scope,
     children: Children,
     #[prop(default = "")] id: &'static str,
     #[prop(default = Height::Small)] _height: Height,
@@ -23,32 +22,33 @@ pub fn MathBlock(
     #[prop(default = 0)] margin_left: i16,
     #[prop(default = "svg")] child_tag: &'static str,
 ) -> impl IntoView {
-    let node_ref = create_node_ref::<Div>(cx);
-    let (is_wide, set_is_wide) = create_signal(cx, false);
+    let node_ref = create_node_ref::<Div>();
+    let (is_wide, set_is_wide) = create_signal(false);
     let GlobalState {
         math_rendered,
         on_mobile,
         ..
-    } = use_context(cx).unwrap();
+    } = use_context().unwrap();
 
-    create_effect(cx, move |_| {
-        math_rendered();
+    create_effect(move |_| {
+        math_rendered.get();
+        let node_ref = node_ref.get();
         set_timeout(
             move || {
-                if node_ref().is_some() {
-                    let math_box = node_ref()
+                if node_ref.is_some() {
+                    let math_box = node_ref
                         .unwrap()
                         .get_elements_by_tag_name(child_tag)
                         .item(0);
                     if math_box.is_some() {
                         let math_box_width = math_box.unwrap().client_width() as f64;
-                        let window_width = if on_mobile() {
+                        let window_width = if on_mobile.get() {
                             window().inner_width().unwrap().as_f64().unwrap()
                         } else {
                             DESKTOP_CENTERED_PARAGRAPH_WIDTH
                         };
                         if math_box_width > window_width {
-                            set_is_wide(true);
+                            set_is_wide.set(true);
                         }
                     }
                 }
@@ -56,37 +56,39 @@ pub fn MathBlock(
             Duration::from_secs(4),
         );
     });
-    create_effect(cx, move |_| {
-        let _ = use_event_listener(cx, window(), resize, move |_| {
-            if node_ref().is_some() {
-                let math_box = node_ref()
+    create_effect(move |_| {
+        let _ = use_event_listener(window(), resize, move |_| {
+            if node_ref.get_untracked().is_some() {
+                let math_box = node_ref
+                    .get()
                     .unwrap()
                     .get_elements_by_tag_name(child_tag)
                     .item(0);
                 if math_box.is_some() {
                     let math_box_width = math_box.unwrap().client_width() as f64;
-                    let window_width = if on_mobile() {
+                    let window_width = if on_mobile.get() {
                         window().inner_width().unwrap().as_f64().unwrap()
                     } else {
                         DESKTOP_CENTERED_PARAGRAPH_WIDTH
                     };
                     if math_box_width > window_width {
-                        set_is_wide(true);
+                        set_is_wide.set(true);
                     } else {
-                        set_is_wide(false);
+                        set_is_wide.set(false);
                     }
                 }
             }
         });
     });
 
-    view! { cx,
+    view! {
       <div
         node_ref=node_ref
         id=id
-        class="mathblock block-element text-xl col-start-2 hidden-on-startup relative h-fit"
+        class="mathblock slice hidden-on-startup h-fit"
         class=("wide", is_wide)
-        class=("wide_desktop", move || is_wide() && !on_mobile())
+        class=("wide_desktop", move || is_wide.get() && !on_mobile.get())
+        class=("desktop", move || !on_mobile.get())
 
         style=format!("margin-right: {}px", margin_right)
         style=move || {
@@ -97,33 +99,20 @@ pub fn MathBlock(
             )
         }
       >
-
-        {children(cx)}
+        {children()}
       </div>
-      <span class="mathblock-span"></span>
+      //<span class="mathblock-span"></span>
     }
 }
 
 #[component]
-pub fn CustomBlock(
-    cx: Scope,
-    children: Children,
-    #[prop(default = "")] style: &'static str,
-) -> impl IntoView {
-    let node_ref = create_node_ref::<Div>(cx);
-    let (is_wide, set_is_wide) = create_signal(cx, false);
-    let GlobalState {
-        math_rendered,
-        on_mobile,
-        ..
-    } = use_context(cx).unwrap();
-
-    view! { cx,
+pub fn CustomBlock(children: Children, #[prop(default = "")] style: &'static str) -> impl IntoView {
+    view! {
       <div
         class="mathblock block-element"
         style=style
       >
-        {children(cx)}
+        {children()}
       </div>
     }
 }

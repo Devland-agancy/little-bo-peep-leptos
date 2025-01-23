@@ -1,0 +1,373 @@
+|> Section
+
+    *Notation.*
+    Curly braces typically denote the beginning
+    “$\{$” and ending “$\}$” of a collection of 
+    elements, otherwise known as a _set_.
+    For example, this is a set containing the 
+    numbers $1$, $2$ and $3$ (and nothing else):
+    
+    $$\Large\{1, 2, 3\}$$
+
+    Also,
+
+    $$\Large\{1\}$$
+
+    is a set containing just the number $1$, while
+    
+    $$\Large\{1, 3\}$$
+    
+    is a set containing just the numbers $1$ 
+    and $3$, etc. Even,
+    
+    $$\Large\{\}$$
+    
+    is an _empty_ set, a set with no elements! 
+
+|> Section
+
+    *What it does.*
+    The “API” (a computer science notion,
+    roughly meaning
+    
+    __the interface offered to the outside world__
+
+    as in, for example, the buttons and clock 
+    display and door handle of a microwave oven) 
+    of a set consists of just one functionality: 
+    a set can answer questions of the form
+
+    __do you contain ... ?__
+
+    and nothing else.
+    For example, you could ask a set
+
+    __do you contain 3?__
+
+    to which $\{1, 3\}$ would answer “yes”, but
+    $\{ 1\}$ would answer “no”, or
+
+    __do you contain 2?__
+
+    to which $\{1\}$ and $\{1, 3\}$ would
+    both answer “no”, but $\{1, 2, 3\}$ would
+    answer “yes”.
+
+    Notation-wise, the expression
+    
+    $$\Large x \in A$$
+    
+    means
+
+    __$A$ contains $x$__
+        
+    or 
+    
+    __$A$ answers “yes” to the
+    question “do you contain $x$?”__
+    
+    equivalently. [One can also say
+    
+    __$x$ in $A$__
+        
+    or 
+        
+    __$x$ is in $A$__
+        
+    or 
+    
+    __$x$ is an element of $A$__
+
+    depending on one's mood and/or tastes.]
+    As in all of mathematics, any such statement 
+    evaluates to either “true” or “false”.
+    For example,
+    
+    $$\Large 1 \in \{1, 2\}$$
+    
+    is true, because $1$ _is_ an element of the set 
+    $\{1, 2\}$, whereas
+    
+    $$\Large 3 \in \{1, 2\}$$
+
+    is false, because $3$ _is not_ 
+    an element of the set $\{1, 2\}$. 
+
+|> Section
+
+    *Set Equality.*
+    Two sets are deemed to be 
+    equal if and only if they
+    answer the same to
+    all “do you contain ...?” questions.
+    For example, while
+    $$
+    \Large\{2, 1\}
+    $$
+    might look superficially different from
+    $$
+    \Large\{1, 2\}
+    $$
+    these sets are actually one and the same, because they both
+    answer “yes” to
+
+    __do you contain 1?__
+    __do you contain 2?__
+        
+    and answer “no” to all else. For that matter,
+    $$
+    \Large\{1, 1, 2\}
+    $$
+    might also look superficially different from
+    $$
+    \Large\{1, 2\}
+    $$
+    but since both sets answer “yes” to
+
+    __do you contain 1?__
+    __do you contain 2?__
+        
+    and answer “no” to all else,
+    they are by definition the same.
+
+    (These examples demonstrate that human notation 
+    is redundant: there are several different ways of 
+    writing down the same set. They also demonstrate
+    that sets do not keep track of the
+    
+    __order__
+    
+    nor of the
+    
+    __multiplicity__
+    
+    of their elements. Such notions are simply not part
+    of the “API” of a set.)
+
+    Moreover, any empty set is equal to any other 
+    empty set. Equality follows because both sets 
+    answer all questions the same way: they both 
+    answer “no” to everything. So there is
+        
+    __one__
+    
+    and only one empty set. Therefore, mathematicians speak of
+    
+    __the__
+    
+    empty set—the one and only!
+
+|> Section
+
+    *Second notation for the empty set.* 
+    While the empty set can be written
+    $$
+    \Large \{\}
+    $$
+    another available notation is
+    $$
+    \Large \phi
+    $$
+    which is the Greek letter phi, read “fee”. (Or “fie”?
+    Hum.) (Or you can just say “the empty set”, and
+    keep it safe.)
+
+|> Section
+
+    *Sets within sets.*
+    Sets can be nested much like Russian dolls.
+    In fact, the result of doing this might even look like a little bit
+    like a Russian doll (no?):
+    $$
+    \Large \{\{\{\{\}\}\}\}
+    $$
+    The above is “a set containing a set containing a set
+    containing a set containing the empty set”. Eschewing complete
+    adherence to the Russian doll aesthetic, we could also write
+    $$
+    \Large \{\{\{\phi\}\}\}
+    $$
+    for the same thing, given that $\phi = \{\}$.
+
+    Mind you, concerning this example, that
+    
+    $$
+    \Large \{\{\} \} \ne \{\}
+    $$
+
+    |> ImageRight
+        src images/svg_empty_set_cloud.svg
+        offset_x 1em
+
+    because a box containing an empty box is not the same
+    thing as an empty box! Specifically,
+    $$
+    \Large \{ \{\} \}
+    $$
+    answers “yes” to the question “do you contain 
+    $\{\}$?”
+    (a.k.a., “do you contain $\phi$?”) 
+    whereas
+    $$
+    \Large \{\}
+    $$
+    answers “no” to the same question. (Indeed, while the empty set
+    _contains_ nothing, it _is_ something.) Similarly,
+    $$
+    \Large \{\{\{\}\} \} \ne \{\{\}\}
+    $$
+    etc, etc: adding a new outer layer changes the whole set each time.
+
+|> Section
+
+    *Set union and set intersection.*
+    The so-called _union_
+    of two sets $A$ and
+    $B$ is written 
+    $$\Large A \cup B$$
+    and consists of the set of all things that are either in $A$ or in 
+    $B.$
+    For example,
+    $$
+    \Large \{1, 2\} \cup \{2, 5\} = \{1, 2, 5\}
+    $$
+    as $1$, $2$ and $5$ are the only elements to find
+    themselves either in
+    $\{1, 2\}$ or in $\{2, 5\}$.
+    The so-called _intersection_ of two sets $A$ and
+    $B$ is written 
+    $$\Large A \cap B$$
+    and consists of the set of all things that are both in $A$ and in 
+    $B$.
+    For example,
+    $$
+    \Large \{1, 2\} \cap \{2, 5\} = \{2\}
+    $$
+    as $2$ is the only element that is both in
+    $\{1, 2\}$ and in $\{2, 5\}$.
+
+    Note that
+    $$
+    \Large x \in (A \cup B)
+    $$
+    if and only if
+    $$
+    \Large x \in A
+    $$
+    _or_
+    $$
+    \Large x \in B
+    $$
+    because that's how we defined “union”. (Replace “or”
+    by “and” to get a definition of intersection.)
+    In fact, a logician would define the union of two sets by an
+    abstruse expression of the type
+    $$
+    \Large x \in (A \cup B) \iff (x \in A) \vee (x \in B)
+    $$
+    read
+    
+    __an element $x$ is in the thing I call “$A \cup B$”
+    if and only if $x$ is in $A$ or $x$ is in $B$__
+        
+    as “$\!\!\iff\!\!$” means “if and only if” and
+    “$\vee$” means “or”. (You can figure out the 
+    similar definition for the intersection of two sets
+    if we tell you that
+    
+    $$\Large \wedge$$
+
+    means “and”.)
+
+
+|> Section
+
+    *Sets encountered in calculus.*
+    In calculus, you will see sets such as _the real numbers_
+    $$
+    \Large\rr
+    $$
+    which is an infinite set containing all “ordinary”
+    decimal numbers, or such as _the integers_
+    $$
+    \Large\zz
+    $$
+    which contains all “whole” numbers, including the
+    negative ones. You might also encounter
+    _the natural numbers_
+    $$
+    \Large\nn
+    $$
+    which contains only those integers that are greater than $0$ (i.e.,
+    $\nn = \{1, 2, 3, \ldots \}$).
+        
+    Secondly—and this pretty much wraps it up for those sets 
+    that are commonly seen in calculus—you will
+    encounter _intervals_. For example,
+    $$
+    \Large [a, b]
+    $$
+    is a _closed interval_, consisting of all (real) numbers 
+    greater than or equal to $a$, and less than or equal to $b$. Or
+    $$
+    \Large [a, b)
+    $$
+    is a _half-open_ interval, consisting of all real numbers
+    greater than or equal to $a$, and less than $b$. Etc.
+
+    Note that
+    $$
+    \Large (-\infty, \infty) = \rr
+    $$
+    since
+    $$
+    \Large (-\infty, \infty)
+    $$
+    (which is an _open_ interval, by the way) means
+    
+    __the set of real numbers with no bound below,
+    and no bound above__
+    
+    which is all of $\rr$.
+
+|> Section
+
+    *Sets not encountered in calculus.*
+    If you take a more advanced course, you might encounter 
+    the so-called _set of extended real numbers_,
+    written
+    $$
+    \Large\overline{\rr}
+    $$
+    and which consists of all the numbers in $\rr$, plus the formal 
+    symbols “$-\infty$”, “$\infty$” as well:
+    $$
+    \Large\overline{\rr} = \rr \cup \{-\infty, \infty\}
+    $$
+    (I.e., ...well, you get it!)
+
+    You can view $\overline{\rr}$ as a kind “closed interval”
+    version of $\rr$, that is, think of $\overline{\rr}$ as being
+    the closed interval
+    $$
+    \Large [-\infty, \infty]
+    $$
+    with the two infinite endpoints _included_.
+
+    Does all this have any “real meaning”? Good question! The answer
+    is: _not until you give it one_.
+
+    E.g. (to give you a brief flavor, before we move on forever from the topic),
+    the value of something like
+    $$
+    \Large 0.5+ \infty
+    $$
+    must be _defined_. (It is defined to be $\infty$, in case you're curious.
+    In fact, one has $a + \infty = \infty$ for any $a \ne -\infty$.) And some things
+    remain explicitly _undefined_. For example, the expression
+    $$
+    \Large (-\infty) + \infty
+    $$
+    has an _undefined_ value—the same way, say, that division by
+    $0$ is undefined in $\rr$. 
+    (Well, anyway, end of lesson.)

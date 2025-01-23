@@ -1,18 +1,26 @@
 #![allow(unused_imports)]
+#![allow(dead_code)]
+
 #[macro_use]
 extern crate proc_macro;
 extern crate nom;
 
+//use elm_to_view::parse;
 use leptos::error::Error;
 use proc_macro::Ident;
 use proc_macro::TokenStream;
 use quote::quote;
 use serde_json;
+use std::collections::HashMap;
 use std::env;
+use std::fmt::format;
 use std::fs;
 use std::fs::read_to_string;
+use std::fs::File;
 use std::fs::ReadDir;
+use std::io::Write;
 use std::path::PathBuf;
+use std::process::Command;
 use syn::{parse_macro_input, LitStr};
 
 #[derive(Clone, Copy)]
@@ -68,18 +76,20 @@ fn read_content_dir() -> ReadDir {
     entries.unwrap()
 }
 
-fn get_sorted_articles(article_type: ArticleType) -> Vec<(u8, PathBuf)> {
+fn get_sorted_articles(article_type: ArticleType) -> Vec<(usize, PathBuf)> {
     let entries = read_content_dir();
-    let mut articles = Vec::<(u8, PathBuf)>::new();
+    let mut articles = Vec::<(usize, PathBuf)>::new();
     for entry in entries {
         let entry = entry.unwrap();
         let path = entry.path();
         let metadata = fs::metadata(&path).unwrap();
         let path_str = path.to_str().unwrap();
-
+        if entry.file_name().to_str().unwrap().starts_with("#") {
+            continue;
+        }
         if metadata.is_dir() && ends_with_article_number(&path, &article_type) {
             let last_char = path_str.chars().last().unwrap();
-            let article_number = last_char.to_digit(10).unwrap() as u8;
+            let article_number = last_char.to_digit(10).unwrap() as usize;
             articles.push((article_number, path));
         };
     }
@@ -132,9 +142,11 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
         let articles = get_sorted_articles(article_type);
 
-        for (i, _) in &articles {
+        for (i, (_, _)) in articles.iter().enumerate() {
+            let number = i + 1;
+
             routes.push_str(&format!(
-                r#"<Route path="/article/{}_{i}" view=crate::page::article::{}{i}View />"#,
+                r#"<Route path="/article/{}_{number}" view=crate::page::article::{}{number}View />"#,
                 article_type.to_abrv(),
                 article_type.to_upper_str()
             ));
@@ -145,7 +157,7 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
     let parsed_code = routes.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
         view! {
-            cx,
+
             #parsed_code
         }
     };
@@ -153,52 +165,104 @@ pub fn render_article_routes(input: TokenStream) -> TokenStream {
 }
 
 #[proc_macro]
+pub fn render_mods(input: TokenStream) -> TokenStream {
+    let input_tokens = parse_macro_input!(input as Input);
+    let article_types: LitStr = input_tokens.article_type;
+    let article_types = article_types.value();
+    let article_types: std::str::Split<'_, &str> = article_types.split(" ");
+
+    let mut modules = String::new();
+    for article_type_str in article_types {
+        let article_type: ArticleType = ArticleType::from_str(article_type_str);
+        let article_type_str = article_type.to_str();
+
+        let articles = get_sorted_articles(article_type);
+        for (i, _) in articles {
+            modules.push_str(&format!("pub mod {article_type_str}{i};"))
+        }
+    }
+    let parsed_code = modules.parse::<proc_macro2::TokenStream>().unwrap();
+    parsed_code.into()
+}
+
+fn parser_markup() {
+    // run gleam script to generate emitted leptos from markup
+    let _ = Command::new("./parser")
+        .args([
+            "src/content",
+            "--emit-book",
+            "leptos",
+            "--output",
+            "render-chapters/splits",
+        ])
+        .output()
+        .expect("Failed to run gleam parser script");
+}
+
+fn read_article_file(path: &str) -> String {
+    let dir = env::current_dir().unwrap();
+    let file_content = fs::read_to_string(format!(
+        "{}/render-chapters/splits/{}.rs",
+        dir.display(),
+        path
+    ))
+    .unwrap();
+    file_content
+}
+
+#[proc_macro]
 pub fn render_article_modules(input: TokenStream) -> TokenStream {
     let input_tokens = parse_macro_input!(input as Input);
     let article_types: LitStr = input_tokens.article_type;
     let article_types = article_types.value();
-    let article_types = article_types.split(" ");
+    let article_types: std::str::Split<'_, &str> = article_types.split(" ");
     let mut modules = String::new();
-    let elm_only_for: Option<u8> = None;
 
+    parser_markup();
     for article_type_str in article_types {
         let article_type: ArticleType = ArticleType::from_str(article_type_str);
-        let article_type_str = article_type.to_str();
         let article_type_upper_str = article_type.to_upper_str();
+        let article_type_str = article_type.to_str();
 
         let articles = get_sorted_articles(article_type);
-        for (i, path) in articles {
+
+        for (i, (_, path)) in articles.iter().enumerate() {
+            let number = i + 1;
             let (title, mobile_title) = get_article_title(&path);
+            let content = &read_article_file(&format!("{article_type_str}{number}"));
+
             modules.push_str(&format!(
                 r#"
                 #[component]
-                pub fn {article_type_upper_str}{i}View(cx: Scope) -> impl IntoView {{
-                    view! {{ cx,
-                    <ArticleTitle label="{article_type_upper_str} {i}: {title}" {}/>
+                pub fn {article_type_upper_str}{number}View() -> impl IntoView {{
+                    view! {{ 
+                    <ArticleTitle label="{article_type_upper_str} {number}: {title}" {}/>
                     <Columns>
-                        <{article_type_upper_str}{i}Body />
+                        <{article_type_upper_str}{number}Body />
                     </Columns>
                     }}
                 }}
 
                 #[component]
-                fn {article_type_upper_str}{i}Body(cx: Scope) -> impl IntoView {{
-                    {}! {{
-                    cx,
-                    "file:/src/content/{article_type_str}{i}/{article_type_str}_emu.rs"
+                fn {article_type_upper_str}{number}Body() -> impl IntoView {{
+                    {}
+                }}
+
+                #[component]
+                pub fn {article_type_upper_str}{number}( children: Children, title: &'static str) -> impl IntoView {{
+                    view! {{ 
+                    {{children()}}
                     }}
                 }}
+
             "#,
                 if mobile_title.is_empty() {
                     "".to_string()
                 } else {
                     format!(r#"mobile_title="{mobile_title}""#)
                 },
-                if elm_only_for.is_none() || elm_only_for.is_some_and(|e| e == i) {
-                    "elm"
-                } else {
-                    "view"
-                }
+                content.to_string()
+
             ));
         }
     }
@@ -222,16 +286,17 @@ pub fn render_articles_list(input: TokenStream) -> TokenStream {
 
     let mut list = String::new();
     let articles = get_sorted_articles(article_type);
-    for (i, path) in articles {
+    for (i, (_, path)) in articles.iter().enumerate() {
         let (title, mobile_title) = get_article_title(&path);
+        let number = i + 1;
         list.push_str(&format!(
             r#"
-            <MenuItem article_type="{i}" label="{title}" on_mobile="{mobile_title}" href="{article_type_abrv}_{i}"/>
+            <MenuItem article_type="{number}" label="{title}" on_mobile="{mobile_title}" href="{article_type_abrv}_{number}"/>
             "#
         ));
     }
 
-    list = format!("view! {{ cx, {} }}", list);
+    list = format!("view! {{ {} }}", list);
 
     let parsed_code = list.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
@@ -273,7 +338,7 @@ pub fn render_content_for_article(input: TokenStream) -> TokenStream {
         res.push_str(content_to_render.value().as_str());
     }
 
-    res = format!("view! {{ cx, {} }}", res);
+    res = format!("view! {{ {} }}", res);
 
     let parsed_code = res.parse::<proc_macro2::TokenStream>().unwrap();
     let output = quote! {
@@ -312,7 +377,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                cx,
+
                 #parsed_code
             }
         };
@@ -324,7 +389,7 @@ pub fn render_based_on_env(input: TokenStream) -> TokenStream {
             .unwrap();
         let output = quote! {
             view!{
-                cx,
+
                 #parsed_code
             }
         };
@@ -375,7 +440,7 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
         let entry = entry.unwrap();
         let path = entry.path();
         let file_name = path.file_name().unwrap().to_str().unwrap_or("");
-        if file_name == "__parent_emu.rs" {
+        if file_name == "__parent.emu" {
             let parent_emu = fs::read_to_string(path);
             if parent_emu.is_err() {
                 panic!("Path not found {}", path_str)
@@ -389,16 +454,26 @@ fn get_article_title(path: &PathBuf) -> (String, String) {
                     mobile_title += line.trim().split_once(" ").unwrap().1;
                 }
             }
-            if title.is_empty() {
-                panic!("title is empty");
-            };
             return (title, mobile_title);
         }
     }
-    if title.is_empty() {
-        panic!("Could not find title attribute");
-    };
+
     (title, mobile_title)
+}
+
+fn write_to_file(file_path: &str, contents: &str) {
+    let mut json_file: File = match File::create(file_path) {
+        Ok(file) => file,
+        Err(error) => {
+            println!("Error creating file: {}", error);
+            return;
+        }
+    };
+
+    match json_file.write_all(contents.as_bytes()) {
+        Ok(_) => (),
+        Err(error) => println!("Error writing to {file_path}: {error}"),
+    }
 }
 
 #[cfg(test)]

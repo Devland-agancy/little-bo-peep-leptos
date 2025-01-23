@@ -3,6 +3,9 @@ module.exports = {
   content: {
     files: ["*.html", "./src/**/*.rs", "**/*.emu"],
   },
+  corePlugins: {
+    preflight: false,
+  },
   theme: {
     extend: {
       fontFamily: {
@@ -15,6 +18,7 @@ module.exports = {
         "merriweather-black": ["Merriweather Black"],
         "lora-italic": ["Lora Italic"],
         lora: ["Lora"],
+        BowlbyOne: ["BowlbyOne"],
       },
       width: {
         128: "32.5rem",
@@ -36,6 +40,7 @@ module.exports = {
       },
       transitionProperty: {
         dropdown: "all 1s",
+        "image-scale": "all 300ms ease-in-out",
       },
       keyframes: {
         appear: {

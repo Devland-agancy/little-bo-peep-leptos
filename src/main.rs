@@ -1,34 +1,33 @@
 #[cfg(feature = "ssr")]
 #[tokio::main]
 async fn main() {
-    use axum::{routing::post, Router};
-    use leptos::*;
+    use axum::Router;
+    use leptos::{logging::log, *};
     use leptos_axum::{generate_route_list, LeptosRoutes};
-    use little_bo_peep::app::*;
-    use little_bo_peep::fileserv::file_and_error_handler;
+    use little_bo_peep::{app::*, fallback::file_and_error_handler};
 
-    // Setting get_configuration(None) means we'll be using cargo-leptos's env values
-    // For deployment these variables are:
-    // <https://github.com/leptos-rs/little-bo-peep#executing-a-server-on-a-remote-machine-without-the-toolchain>
-    // Alternately a file can be specified such as Some("Cargo.toml")
-    // The file would need to be included with the executable when moved to deployment
     let conf = get_configuration(None).await.unwrap();
+    let addr = conf.leptos_options.site_addr;
     let leptos_options = conf.leptos_options;
-    let addr = leptos_options.site_addr;
-    let routes = generate_route_list(|cx| view! { cx, <App/> }).await;
+    // Generate the list of routes in your Leptos App
+    let routes = generate_route_list(App);
 
-    // build our application with a route
+    // Explicit server function registration is no longer required
+    // on the main branch. On 0.3.0 and earlier, uncomment the lines
+    // below to register the server functions.
+    // _ = GetPost::register();
+    // _ = ListPostMetadata::register();
+
     let app = Router::new()
-        .route("/api/*fn_name", post(leptos_axum::handle_server_fns))
-        .leptos_routes(&leptos_options, routes, |cx| view! { cx, <App/> })
+        .leptos_routes(&leptos_options, routes, || view! { <App/> })
         .fallback(file_and_error_handler)
         .with_state(leptos_options);
 
     // run our app with hyper
     // `axum::Server` is a re-export of `hyper::Server`
     log!("listening on http://{}", &addr);
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+    axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }

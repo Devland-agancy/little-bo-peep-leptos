@@ -1,0 +1,1324 @@
+|> Section
+
+    *Terminology.*
+    The expression below is called a _power_; 
+    the number at the bottom of the power is called
+    the _base_ (of the power); the number at the top
+    is called the _exponent_:
+
+    |> Image
+        src images/svg_base_exponent.svg
+
+    The whole expression is read $\mathit{10}$ _to the power_ $\mathit{3}$, and the
+    general process of taking a power is called _exponentiation_.
+
+
+|> Section
+
+    *Integer powers of 10.*
+    We define
+    $$
+    \Large 10^{\hspace{0.2ex}n}
+    $$
+    as follows, if $n$ is a nonnegative integer: start
+    from $1$ and multiply by $10$ $n$ times. We also define
+    $$
+    \Large 10^{-n}
+    $$
+    as follows, if $n$ is a positive integer: start from $1$ and divide
+    by $10$ $n$ times. 
+
+    For example,
+    $$
+    \Large 10^4 = 1 \times 10 \times 10 \times 10 \times 10 = 10000
+    $$
+    $$
+    \Large 10^3 = 1 \times 10 \times 10 \times 10 = 1000
+    $$
+    $$
+    \Large 10^2 = 1 \times 10 \times 10 = 100
+    $$
+    $$
+    \Large 10^1 = 1 \times 10 = 10
+    $$
+
+    $$
+    \Large 10^0 = 1 = 1
+    $$
+    |> ImageLeft
+        src images/svg_ten_to_the_0_cloud.svg
+
+
+    (where, in the last line, $1$ is multiplied by $10$ _zero times_,
+    as per the exponent, which is zero) by the first definition, while
+    $$
+    \Large 10^{-1} = 1\,/\,10 = 0.1
+    $$
+    $$
+    \Large 10^{-2} = (1\,/\, 10)\,/\,10 = 0.01
+    $$
+    $$
+    \Large 10^{-3} = ((1\,/\, 10)\,/\,10)\,/\,10 = 0.001
+    $$
+    $$
+    \Large 10^{-4} = (((1\,/\, 10)\,/\,10)\,/\, 10)\,/\, 10 = 0.0001
+    $$
+    by the second definition.
+            
+    As $n$ successive divisions
+    by $10$ is the same as one division by $10^n$, one also has
+    $$
+    \Large 10^{-n} = {1 \over 10^{\hspace{0.2ex}n}}\tag{A}
+    $$
+    for every positive integer $n$, which gives an alternate means of computing $10^{-n}$.
+    Moreover, (A) actually holds for
+    
+    __every__
+    
+    integer $n$, which is mildly important. In more
+    detail, (A) holds for $n = 0$ by inspection, and (A) 
+    is equivalent to the identity
+
+    |> ImageLeft
+        src images/svg_zero_verification_cloud.svg
+
+    $$
+    \Large 10^{-n}10^n = 1 \tag{AA}
+    $$
+
+    which holds for $n$ if and only if it holds for
+    $-n$. (By which we mean: replacing “$n$” by “$-n$”
+    in (AA) lands you right back on (AA), due to the fact
+    that $-{(-n)} = n$.) (So, namely, if (AA) holds for all
+    positive values of $\hspace{0.05em}n$, then it holds
+    for all negative values of $n$, as well.)
+
+    |> Pause
+
+    *Vocabulary.*
+    Numbers $a$ and $b$ such that
+    $$
+    \Large ab = 1
+    $$
+    are _reciprocal_.
+    If $a$ and $b$ are reciprocal, then 
+    these equations are satisfied...
+    $$
+    \Large ab = 1 \qquad a = {1 \over b} \qquad b = {1 \over a}
+    $$
+    ...and any one of these equations implies the other two.
+    Thus, either of (A) and (AA) expresses the
+
+    __reciprocality__
+    
+    of $10^n$ and $10^{-n}$.
+
+
+|> Section
+
+    *Other bases.*
+    Integer powers of other nonzero bases are defined similarly, e.g.,
+    $$
+    \Large 2^{-2}
+    $$
+    is defined as $1$ divided by $2$ twice, etc.
+
+    However, a small quirk occurs for base $0$: as one cannot
+    divide by $0$, negative powers of $0$ remain undefined. E.g.,
+    $$
+    \Large 0^{-2}
+    $$
+    would be “$1$ divided by $0$ twice”, but this
+    is undefined. 
+    Hence $0^{-1}$, $0^{-2}$, etc, remain undefined.
+
+    Also (in case you're wondering) $0^0 = 1$.
+    You can see this by writing down the first few powers of $0$ in descending order:
+    $$
+    \Large 0^3 = 1 \times 0 \times 0 \times 0 = 0
+    $$
+    $$
+    \Large 0^2 = 1 \times 0 \times 0 = 0
+    $$
+    $$
+    \Large 0^1 = 1 \times 0 = 0
+    $$
+    $$
+    \Large 0^0 = 1 = 1
+    $$
+    In other words, every positive power of $0$ is zero, 
+    but when it comes to $0^0$,
+    the ‘$0\hspace{0.12ex}$’ in the
+    exponent “wins out” over the ‘$0\hspace{0.12ex}$’ in the base, 
+    making the result $1$.
+
+    Note that mathematicians sometimes refer 
+    to a power with an exponent of $0$ as an
+
+    __empty product__
+
+    and they will repeatedly admonish that
+
+    __an empty product is $\mathit{1}$__
+    
+    in the sense that “all products start at 
+    $1$”, and that if you start at $1$ and don't
+    multiply anything in, you stay at $1$.
+
+
+|> Section
+
+    *Additivity of exponents.*
+    If you think about it,
+    $$
+    \Large 10^{13} \times 10^{14} = 10^{\hspace{0.1ex}27}
+    $$
+    because $13$ multiplications by $10$ followed
+    by $14$ multiplications by $10$ makes $13 + 14 = 27$
+    multiplications by $10$.
+
+    More generally,
+    $$
+    \Large 10^{\hspace{0.1ex}n} \times 10^{\hspace{0.1ex}m} = 10^{\hspace{0.1ex}n + m}
+    $$
+    for all $n$ and $m$ (and other bases than $10$),
+    which is known as
+
+    __additivity of exponents__
+    
+    and which is sometimes paraphrased by saying
+    that
+
+    __the product of the powers is the power of the sum__
+    
+    where _the product of the powers_ refers to
+    “$10^n \times 10^m$” and _the power of the sum_
+    refers to “$10^{n+m}$”. (Or for some other base.)
+
+
+|> Section
+
+    *The third law of exponents.*
+    Also, if you think about it,
+    $$
+    \Large (10^{13})^{14} = 10^{13\cdot 14}
+    $$
+    because multiplying $14$ times by $10^{13}$ is like
+    multiplying $13\cdot 14$ times by $10$. More
+    generally,
+    $$
+    \Large (10^n)^m = 10^{nm}
+    $$
+    for all $n$ and $m$. This is known as “the third law 
+    of exponents”. 
+
+    On this subject, note that if one writes
+    $$
+    \Large a^{b^{c}}
+    $$
+    [“$a$ to the power $b$ to the power $c$”]
+    there is a seeming ambiguity: does it mean
+    $$
+    \Large a^{\left(b^{c}\right)}
+    $$
+    [“$a$ to the power [$b$ to the power $c$]”]
+    or does it mean
+    $$
+    \Large (a^{b})^{c}
+    $$
+    [“[$a$ to the power $b$] to the power $c$”]...?
+    Well, because the second way can be written
+    $$
+    \Large a^{bc}
+    $$
+    by the third law of exponents, the second way already has  
+    “its own” notation, and therefore the convention is that... 
+    $$
+    \Large a^{b^c}
+    $$
+    ...absolutely always means... 
+    $$
+    \Large a^{\left(b^c\right)}
+    $$
+    ...!
+
+
+|> Section
+
+    *Famous powers of 10.*
+    Many human languages have special names for
+    various integer powers of $10$, due to the fact
+    that many of our ancestors chose to count in base
+    $10$.
+
+    In English, e.g., these are some of the “famous”
+    powers of $10$:
+
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
+
+                    $n$
+                |> td
+                    align center
+
+                    $\,\,10^n$
+                |> td
+                    align center
+
+                    name
+            |> tr
+                |> td
+                    align center
+
+                    $0$
+                |> td
+                    align center
+
+                    $1$
+                |> td
+                    align center
+
+                    _one_
+
+            |> tr
+                |> td
+                    align center
+
+                    $1$
+                |> td
+                    align center
+
+                    $10$
+                |> td
+                    align center
+
+                    _ten_
+            |> tr
+                |> td
+                    align center
+
+                    $2$
+                |> td
+                    align center
+
+                    $100$
+                |> td
+                    align center
+
+                    _hundred_
+            |> tr
+                |> td
+                    align center
+
+                    $3$
+                |> td
+                    align center
+
+                    $1000$
+                |> td
+                    align center
+
+                    _thousand_
+            |> tr
+                |> td
+                    align center
+
+                    $6$
+                |> td
+                    align center
+
+                    $1\,000\,000$
+                |> td
+                    align center
+
+                    _million_
+            |> tr
+                |> td
+                    align center
+
+                    $9$
+                |> td
+                    align center
+
+                    $1\,000\,000\,000$
+                |> td
+                    align center
+
+                    _billion_
+            |> tr
+                |> td
+                    align center
+
+                    $12$
+                |> td
+                    align center
+
+                    $1\,000\,000\,000\,000$
+                |> td
+                    align center
+
+                    _trillion_
+
+    |> Pause
+
+    One can note that
+    __one million is a thousand thousand__
+    because
+    $$
+    \Large 1000 \times 1000 = 1000\hspace{0.3ex}000
+    $$
+    by counting zeroes, or, equivalently, because
+    $$
+    \Large 10^3 \times 10^3 = 10^6
+    $$
+    by additivity of exponents. Similarly, note that
+    
+    __one billion is a thousand million__
+
+    |> ImageLeft
+        src images/svg_ten_to_the_3_times_ten_to_the_6_cloud.svg
+
+    and __one trillion is a thousand billion__
+    
+    |> ImageLeft
+        src images/svg_ten_to_the_3_times_ten_to_the_9_cloud.svg
+    
+    and also (while we're at it)
+    
+    __one trillion is a million million__
+    
+    |> ImageRight
+        src images/svg_ten_to_the_6_times_ten_to_the_6_cloud.svg
+    
+    as can be seen, for example, by replacing “billion”
+    with “thousand million” in the previous sentence and
+    then further replacing “thousand thousand” with “million”
+    in _that_ sentence.
+
+
+|> Section
+
+    *Negative exponent prefixes.*
+    For negative exponents we simply say “one tenth”
+    instead of “ten”, etc. Specifically, the table looks
+    like so:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 60px
+            |> col
+                width 200px
+            |> col
+                width 140px
+            |> tr
+                |> td
+                    align center
+
+                    $n$
+                |> td
+                    align center
+
+                    $\,\,10^n$
+                |> td
+                    align center
+
+                    name
+            |> tr
+                |> td
+                    align center
+
+                    $-1$
+                |> td
+                    align center
+
+                    $0.1$
+                |> td
+                    align center
+
+                    _one tenth_
+            |> tr
+                |> td
+                    align center
+
+                    $-2$
+                |> td
+                    align center
+
+                    $0.01$
+                |> td
+                    align center
+
+                    _one hundredth_
+            |> tr
+                |> td
+                    align center
+
+                    $-3$
+                |> td
+                    align center
+
+                    $0.001$
+                |> td
+                    align center
+
+                    _one thousandth_
+            |> tr
+                |> td
+                    align center
+
+                    $-6$
+                |> td
+                    align center
+
+                    $0.000001$
+                |> td
+                    align center
+
+                    _one millionth_
+            |> tr
+                |> td
+                    align center
+
+                    $-9$
+                |> td
+                    align center
+
+                    $0.000000001$
+                |> td
+                    align center
+
+                    _one trillionth_
+
+    |> Pause
+
+    In passing, note how the standard decimal expansion
+    for $10^{-1}$ contains exactly one ${0}$:
+
+    |> Image
+        src images/svg_one_blue_one_image_equation.svg
+    
+    Likewise, the standard decimal expansion for $10^{-2}$
+    contains exactly two $0$'s...
+    
+    |> Image
+        src images/svg_two_blue_one_image_equation.svg
+    
+    ...and so on, which is a possible trick to check 
+    one's work and avoid mistakes.
+
+    However, there also exist negative exponent
+    
+    __prefixes__
+    
+    that people use to qualify other measures. For
+    example, a
+    
+    __millimeter__
+    
+    is $10^{-3}$ meters, i.e., one thousandth of
+    a meter, because “milli” happens to be the prefix
+    for $10^{-3}$. Here is a list of the most common
+    such prefixes:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+
+            |> col
+                width 120px
+            |> col
+                width 120px
+
+            |> tr
+                |> td
+                    align center
+
+                    power
+                |> td
+                    align center
+
+                    prefix
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-1}$
+                |> td
+                    align center
+
+                    _deci_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-2}$
+                |> td
+                    align center
+
+                    _centi_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-3}$
+                |> td
+                    align center
+
+                    _milli_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-6}$
+                |> td
+                    align center
+
+                    _micro_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-9}$
+                |> td
+                    align center
+
+                    _nano_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-12}$
+                |> td
+                    align center
+
+                    _pico_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{-15}$
+                |> td
+                    align center
+
+                    _femto_
+
+    |> Pause
+
+    (Funny how the prefixes switch from 
+    ending in ‘i’ to ending in ‘o’ after 
+    $10^{-3}$.) (Well, anyway.)
+
+    To give an idea of scale,
+    
+    __micrometers__
+    
+    are smaller than the smallest animal
+    cells (human red blood cells, which 
+    are among the smallest animal cells,
+    have a diameter of
+    $7$~$9$ $\mu\textrm{m}$) (nb: “$\mu$”
+    stands for “micro” and “$\mu$m” stands
+    for “micrometer”). Next down,
+    
+    __nanometers__
+    
+    happen to be smaller than the diameter
+    of DNA, with DNA having a diameter of
+    about $2.5$nm (“nm” = “nanometer”).
+
+    *Positive exponent prefixes.*
+    There exists a similar set of prefixes
+    for positve powers of $10$. Going up
+    to $10^{15}$, these are:
+    
+    |> div
+        align center
+
+        |> table
+            class first-line
+            margin-top 1em
+            margin-bottom 1em
+            
+            |> col
+                width 120px
+            |> col
+                width 120px
+            |> tr
+                |> td
+                    align center
+
+                    power
+                |> td
+                    align center
+
+                    prefix
+            |> tr
+                |> td
+                    align center
+
+                    $10^1$
+                |> td
+                    align center
+
+                    _deca_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{2}$
+                |> td
+                    align center
+
+                    _hecto_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{3}$
+                |> td
+                    align center
+
+                    _kilo_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{6}$
+                |> td
+                    align center
+
+                    _mega_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{9}$
+                |> td
+                    align center
+
+                    _giga_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{12}$
+                |> td
+                    align center
+
+                    _tera_
+            |> tr
+                |> td
+                    align center
+
+                    $10^{15}$
+                |> td
+                    align center
+
+                    _peta_
+
+    |> Pause
+
+    For example, a
+    
+    __kilometer__
+    
+    is a thousand meters
+    [b/$\!\hspace{0.1ex}\rm{c}$ “kilo” = thousand], 
+    while a
+    
+    __terabyte__
+    
+    is a trillion bytes [b/$\!\hspace{0.1ex}\rm{c}$ “tera” = trillion].
+    (In case you don't know, by the way, 
+    a __byte__ is a unit of computer memory
+    that is equal to $8$ _bits_, with a _bit_
+    being a single 0/1 value.)
+
+    *Logarithms base 10.*
+    Every positive number can be uniquely 
+    written as “ten to the power something”.
+    This “something” will heretofore be called
+    the _logarithm base $\mathit{10}$_ of that 
+    (positive) number.
+
+    For example,
+    $$
+    \Large 100
+    $$
+    can be uniquely written as “ten to the power
+    something”. To wit, $100$ is, of course,
+    
+    __ten to the power $\mathit{2}$__
+
+    and this means that
+    $$
+    \Large 2
+    $$
+    is the logarithm base $10$ of $100$.
+
+    |> Example
+
+        It so happens that
+        $$
+        \Large 99 = 10^{1.99563519...}
+        $$
+        under an extended definition of exponentiation that allows us to 
+        compute $10^x$ for every $x \in \rr$. 
+        So 
+        $$
+        \Large 1.99563519...
+        $$
+        is the logarithm base $10$ of $99$.
+
+    |> Example
+
+        It so happens that
+        $$
+        \Large 98 = 10^{1.99122607...}
+        $$
+        under the same extended definition, so 
+        $$
+        \Large 1.99122607...
+        $$
+        is the logarithm base $10$ of $98$.
+
+    |> Example
+
+        Since
+        $$
+        \Large 0.1 = 10^{-1}
+        $$
+        the logarithm base $10$ of $0.1$ is $-1$.
+
+    |> Example
+
+        Since
+        $$
+        \Large 0.00001 = 10^{-5}
+        $$
+
+        |> ImageRight
+            src images/svg_ten_to_the_-5_cloud.svg
+        
+        the logarithm base $10$ of $0.00001$ is $-5$.
+
+|> Exercises
+
+    |> Exercise
+        
+        Compute $2^{-2}$, $2^{-3}$ and $2^{-4}$ by hand.
+
+        |> Solution
+
+            Since $2^{-1} = 1/2 = 0.5$, one has
+            $$
+            \Large 2^{-2} = {2^{-1}\over 2} = {0.5 \over 2} = 0.25
+            $$
+            $$
+            \Large 2^{-3} = {2^{-2}\over 2} = {0.25 \over 2} = 0.125
+            $$
+            $$
+            \Large 2^{-4} = {2^{-3}\over 2} = {0.125 \over 2} = 0.0625
+            $$
+            respectively.            
+
+            _Notes._ 
+            For the last computation, $0.125$ can be viewed 
+            as twelve hundredths plus $5$ thousandths:
+
+            |> Image
+                src images/svg_0.125_twelve_5.svg
+            
+            Half of twelve hundredths is six hundredths, and 
+            half of $5$ thousandths is $2.5$ thousandths:
+            
+            |> Image
+                src images/svg_06_and_0025.svg
+            
+            ...so $0.125/2$ is $0.06 + 0.0025 = 0.0625$.
+
+    |> Exercise
+
+        Compute $100/16$ by hand.
+
+        |> Solution
+
+            We have
+            $$
+            \Large {1 \over 16} = {1 \over 2\cdot 2\cdot 2\cdot 2} = 2^{-4} = 0.0625
+            $$
+            so
+            $$
+            \Large {100 \over 16} = 100 \cdot {1 \over 16} = 100\cdot 0.0625 = 6.25
+            $$
+            and that's all there is to it! (Or you could repeatedly divide $100$ by $2$,
+            until you reach $6.25$, after the fourth division.)
+
+    |> Exercise
+
+        If “万” is Chinese for _ten thousand_, what is “万万” in English?
+        What about “万万万”?
+
+        |> Solution
+
+            “万万” is “ten thousand ten thousand”, or
+            $$
+            \Large 10^4 \times 10^4 = 10^8
+            $$
+            or _one hundred million_ since $10^8 = 10^2 \times 10^6$ is a hundred times a 
+            million. Similarly, “万万万” is 
+            $$
+            \Large 10^4 \times 10^4 \times 10^4 = 10^{12}
+            $$
+            which is just one trillion.
+
+            |> Pause
+
+            _Notes._
+            Rearranging
+            
+            __ten thousand ten thousand__
+            
+            to
+            
+            __ten ten thousand thousand__
+            
+            directly leads us to “hundred million” 
+            without having to use exponents, since ten
+            times ten is a hundred and since a thousand 
+            times a thousand is a million.
+        
+            (Similarly,
+            
+            __ten thousand ten thousand ten thousand__
+            
+            becomes
+            
+            __ten ten ten thousand thousand thousand__
+            
+            after rearrangement, which can be seen to
+            equal one trillion because “ten ten ten” is
+            a thousand.)
+
+    |> Exercise
+
+        How many millimeters in a kilometer? 
+        How many kilometers in a millimeter?
+
+        |> Solution
+
+            There are $10^3$ millimeters in a meter 
+            (_milli_ = thousandth) and $10^3$ meters
+            in a kilometer, so there are 
+            $10^3 \times 10^3 = 10^6$ 
+            millimeters in a kilometer.
+
+            From there, it automatically follows that
+            there are $1/10^6 = 10^{-6}$ kilometers in
+            a millimeter.
+
+            (Or you can run the reverse reasoning: 
+            There are $10^{-3}$ kilometers in a meter, 
+            and $10^{-3}$ meters in a millimeter, 
+            so $10^{-3} \times 10^{-3} = 10^{-6}$ 
+            kilometers in a millimeter.)
+
+    |> Exercise
+
+        How many kilometers is $10^{24}$ millimeters?
+
+        |> Solution
+
+            We have
+            $$
+            \Large 1\textrm{mm} = 10^{-6}\textrm{km}
+            $$
+            by the previous problem, so 
+            $$
+            \Large 10^{24} \textrm{mm} = 10^{24}\cdot 10^{-6}\textrm{km} = 10^{18}\textrm{km}
+            $$
+            by direct substitution. (You can do that with
+            units.) The answer is therefore: $10^{18}$.
+    
+    |> Exercise
+
+        If the US yearly budget is $4$ trillion
+        dollars, what percentage of the budget is
+        one hundred billion \$?
+
+        |> Solution
+
+            One hundred billion is $10\%$ of one trillion [cf.: 
+            $10^2 \times 10^9 = {1 \over 10}\times 10^{12}$]
+            and one trillion is a quarter of $4$ 
+            trillion, so the answer is ${1\over 4}\cdot 10\% = 2.5\%$.
+
+            |> Pause
+
+            _Postscript_:
+            There is no such thing as “the U.S. budget”. A
+            monetarily sovereign nation _spends_ its currency
+            into existence. (And taxes it out of existence.)
+
+
+    |> Exercise
+    
+        What is the logarithm base $10$ of one trillion?
+
+        |> Solution
+
+            $12$, because one trillion is $10^{12}$.
+
+    |> Exercise
+    
+        What is the logarithm base $10$ of $1$?
+
+        |> Solution
+            
+            $0$, because $1 = 10^0$.
+    
+    |> Exercise
+    
+        What is the logarithm base $10$ of: _a trillion times a billion times a million times a thousand_?
+
+        |> Solution
+
+            Since 
+            $$
+            %\Large 10^{12}\times 10^{9}\times 10^{6}\times 10^3 = 10^{12+9+6+3} = 10^{30}
+            \Large 10^{12}\times 10^{9}\times 10^{6}\times 10^3 = 10^{12+9+6+3}
+            $$
+            the answer is $12+9+6+3$, i.e., $30$. 
+
+
+    |> Exercise
+    
+        Evaluate:
+        $$
+        \Large {10^6 \cdot 10^{-12} \cdot 10^{10} \over 10^{-4}\cdot 10^{-4}} 
+        $$
+
+        |> Solution
+
+            We have
+            $$
+            \Large {10^6 \cdot 10^{-12} \cdot 10^{10} \over 10^{-4}\cdot 10^{-4}} = {10^{6-12+10} \over 10^{-4 -4}} = {10^4 \over 10^{-8}}
+            $$
+            and
+            $$
+            \Large {10^4 \over 10^{-8}} = 10^4 \cdot {1 \over 10^{-8}} = 10^4\cdot 10^{-(-8)}
+            $$
+            and
+            $$
+            \Large 10^4\cdot 10^{-(-8)} = 10^4\cdot 10^8 = 10^{4 + 8} = 10^{12}
+            $$
+            so the answer is $10^{12}$.
+
+    |> Exercise
+        
+        How many _millibits_ in a _gigabyte_?
+
+        |> Solution
+
+            Presumably, there are $1000$ “millibits”
+            (whatever those are, we can go along with
+            the joke here) in one bit. Since there are
+            eight bits in a byte, and a million bytes 
+            in a gigabyte, this means that there would
+            be
+            $$
+            \Large 1000 \times 8 \times 10^6 = 8 \times 10^9
+            $$
+            or $8$ billion “millibits” per gigabyte.
+            (But to reiterate, there is no such thing 
+            as a “millibit”; a bit is a _discrete_—i.e., 
+            indivisible—unit of computer memory.)
+
+
+    |> Exercise
+            
+        It so happens that 
+        $$
+        \Large 6.25
+        $$ 
+        (i.e., the value of $100/16$) is also
+        famous for being equal to $2.5^2$. (You can 
+        verify that
+        $$
+        \Large 25^2 = 625
+        $$
+        and, by shifting two decimal places, one
+        finds $2.5^2 = 6.25$.) Can you elucidate
+        why it would be that
+        $$
+        \Large {100 \over 16} = 2.5^2
+        $$
+        by using some kind of algebra?
+
+        |> Solution
+
+            One has
+            $$
+            \Large {100 \over 16} = {10^2 \over 4^2} = \left(\!{10\over 4}\!\right)^{\!\!2} = \left(\!{5\over 2}\!\right)^{\!\!2}
+            $$
+            and $5/2 = 2.5$. (Ta-daa!)
+        
+    |> Exercise
+
+        Prove that
+        $$
+        \Large {10^n \over \vphantom{10^{A^n}}10^m} = 10^{n-m}
+        $$
+        for all integers $n$ and $m$. (You can
+        take for granted any identity that is stated
+        in this 
+        |> del
+
+            chapter
+        bootcamp.)
+
+        |> Solution
+
+            Here is the “proof” that your professor is 
+            hoping for:
+
+            |> Image
+                src images/svg_start_end_proof.svg
+            
+            The point is that the second equality uses the identity
+            $$
+            \Large {1 \over 10^m} = 10^{-m}
+            $$
+            stated earlier in the chapter as (A), while the third equality uses
+            additivity of exponents, also stated earlier. (So: We are only using “known”
+            facts, alongside some ordinary arithmetic.)
+
+            |> Pause
+
+            _Notes._
+            The identity proved in this exercise, 
+            when generalized to any base, 
+            is one of the “laws of exponents”, whose complete list 
+            (even more-than-complete, other sources list fewer laws)
+            is as follows (minus fine print):
+
+            |> Image
+                src images/svg_laws_exp.svg
+
+            The first law can be recognized as “additivity of exponents”
+            while the second law 
+            is the above-mentioned generalization of this exercise's result.
+            (Nb: Concerning the next-to-last law, note that, <i>by definition</i>,
+            $$
+            \Large \left({a\over b}\right)^{\!-1} = {1 \over \left( {a \over b}\right)} 
+            $$
+            and it so happens that
+            $$
+            \Large {1 \over \left( {a \over b}\right)} = {b \over a}
+            $$
+            for all $a, b \ne 0$, by some principle of elementary arithmetic.)
+
+    |> Exercise
+
+        Rewrite each of these expressions... 
+        $$
+        \Large {L \over T}
+        $$
+        $$
+        \Large {M (L/T) \over T}
+        $$
+        $$
+        \Large \left.{ML \over T^2 } \right/ \left({L^2} {(L/T) \over L}\right) 
+        $$
+        ...in the form...
+        $$
+        \Large M^aL^bT^c
+        $$
+        ...for some integer exponents $a$, $b$, $c$.
+        
+        |> Solution
+
+            We have (#1)
+            $$
+            \Large {L \over T} = LT^{-1} = M^0L^1T^{-1}
+            $$
+            since
+            $$
+            \Large {L \over T} = L\cdot {1\over T} = LT^{-1}
+            $$
+            and (#2)
+            $$
+            \Large {M (L/T) \over T} = MLT^{-2} = M^1L^1T^{-2}
+            $$
+            since
+            $$
+            \Large {L/T \over T} = {L\over T}\cdot{1 \over T} = {L \over T^2} = LT^{-2}
+            $$
+            and (#3)
+            $$
+            \Large \left.{ML \over T^2 } \right/ \left({L^2} {(L/T) \over L}\right) = ML^{-1}T^{-1} = M^1L^{-1}T^{-1}
+            $$
+            since
+            $$
+            \Large L^2{L/T\over L} = L^2{1/T \over 1} = {L^2\over T}
+            $$
+            and
+            $$
+            \Large \left.{ML \over T^2 } \right/ {L^2\over T} = {ML\over T^2}\cdot {T\over L^2} = {M \over TL} = MT^{-1}L^{-1}
+            $$
+            given that ${1\over T} = T^{-1}$, ${1\over L}=L^{-1}$.
+
+    |> Exercise
+
+        Find integers $a$, $b$ and $c$ such that
+        $$
+        \Large v^aF^b\mu^c\rho = 1
+        $$
+        where $v$, $F$, $\mu$ and $\rho$ are defined as below.
+        $$
+        \Large v = {L \over T}
+        $$
+        $$
+        \Large F = {ML \over T^2}
+        $$
+        $$
+        \Large \mu = {M \over TL }
+        $$
+        $$
+        \Large \rho = {M \over L^3}
+        $$
+
+        |> Solution
+
+            Firstly we can rewrite $v$, $F$, $\mu$, $\rho$
+            in the canonical form $M^xL^yT^z$
+            for integers $x$, $y$, $z$ (as in the previous
+            exercise):
+            $$
+            \Large v = LT^{-1} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large F = MLT^{-2} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \mu = MT^{-1}L^{-1} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \rho = ML^{-3}
+            $$
+            (Ok.) Nextly, we compute $v^a$, $F^b$, $\mu^c$
+            by applying the fourth law of exponents (note e.g.
+            that $(T^{-1})^a = T^{(-1)a} = T^{-a}$, etc):
+            $$
+            \Large v^a = L^aT^{-a} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large F^b = M^{b}L^bT^{-2b} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \mu^c = M^cT^{-c}L^{-c} \vphantom{\rho = ML^{-3}}
+            $$
+            $$
+            \Large \rho = ML^{-3}
+            $$
+            (In the last line we just restated $\rho$.)
+            Then $v^aF^b\mu^c\rho$ becomes
+            $$
+            \Large M^{b+c+1}L^{a+b-c-3}T^{-a-2b-c}
+            $$
+            by multiplying everything together and using
+            additivity of exponents. (E.g., $M^bM^cM = M^{b+c+1}$,
+            and so on.) This expression equals 
+            $$
+            \Large 1
+            $$ 
+            independently of the values of $M$, $L$, $T$
+            if and only if...
+            
+            __the three exponents are zero__
+            
+            ...(!!!) which means that we need to find values
+            $a$, $b$ and $c$ such that these three equations...
+            $$
+            \Large b + c + 1 = 0
+            $$
+            $$
+            \Large a + b - c - 3 = 0
+            $$
+            $$
+            \Large -a -2b - c = 0
+            $$
+
+            |> ImageRight
+                src images/svg_add_equations_cloud.svg
+                offset_y 1em
+
+            ...are satisfied! Adding the second and 
+            third equation together, we find 
+            $$
+            \Large -b -2c -3 = 0
+            $$
+            and adding this last equation to the first
+            equation above, we find 
+            $$
+            \Large -c -2 = 0
+            $$
+            which implies that $-c = 2$, i.e., that $c = -2$. 
+            Plugging $c = -2$ into the first of our three
+            equations, we find
+            $$
+            \Large b + (-2) + 1 = 0
+            $$
+            or
+            $$
+            \Large b - 1 = 0
+            $$
+            which implies that $b = 1$. Lastly, plugging
+            $b = 1$, $c = -2$ in our second equation above
+            gives us 
+            $$
+            \Large a + 1 - (-2) - 3 = 0
+            $$
+            which implies that $a = 0$ since $1-(-2)-3 = 0$.
+            (One can finally check that 
+            setting $a=0$, $b = 1$, $c=-2$ satisfies that
+            third equation, $-a-2b-c=0$, which it does.)
+
+            In summary, the solution is $a = 0$, $b = 1$,
+            $c = -2$; we have discovered that 
+            $$
+            \Large v^0 F^1 \mu^{-2} \rho = 1
+            $$
+            under the given definitions of $v$, $F$, $\mu$
+            and $\rho$, or which is to say, we have discovered
+            that
+            $$
+            \Large F\mu^{-2}\rho = 1
+            $$
+            (since $v^0 = 1$, $F^1 = F$).

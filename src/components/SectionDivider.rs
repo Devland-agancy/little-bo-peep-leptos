@@ -1,5 +1,6 @@
 use crate::{
     components::Image::Image,
+    components::VerticalChunk::VerticalChunk,
     components::Section::{Pause, Spacer},
     constants::SECTION_DIVIDER_ACTIVATION_HEIGHT,
     global_state::GlobalState,
@@ -8,26 +9,26 @@ use leptos::{ev::resize, *};
 use leptos_use::use_event_listener;
 
 #[component]
-pub fn SectionDivider(cx: Scope) -> impl IntoView {
-    let (hidden, set_hidden) = create_signal(cx, false);
+pub fn SectionDivider() -> impl IntoView {
+    let (hidden, set_hidden) = create_signal(false);
 
-    create_effect(cx, move |_| {
+    create_effect(move |_| {
         request_animation_frame(move || {
             if window().inner_height().unwrap().as_f64().unwrap()
                 >= SECTION_DIVIDER_ACTIVATION_HEIGHT as f64
             {
-                set_hidden(false)
+                set_hidden.set(false)
             } else {
-                set_hidden(true)
+                set_hidden.set(true)
             };
 
-            let _ = use_event_listener(cx, window(), resize, move |_| {
+            let _ = use_event_listener(window(), resize, move |_| {
                 if window().inner_height().unwrap().as_f64().unwrap()
                     >= SECTION_DIVIDER_ACTIVATION_HEIGHT as f64
                 {
-                    set_hidden(false)
+                    set_hidden.set(false)
                 } else {
-                    set_hidden(true)
+                    set_hidden.set(true)
                 }
             });
         });
@@ -35,17 +36,19 @@ pub fn SectionDivider(cx: Scope) -> impl IntoView {
     let GlobalState {
         show_section_divider,
         ..
-    } = use_context::<GlobalState>(cx).unwrap();
+    } = use_context::<GlobalState>().unwrap();
 
-    view! { cx,
+    view! {
       <Show
-        fallback=move |_| view! { cx, <Pause>""</Pause> }
-        when=move || !hidden() && show_section_divider()
+        fallback=move || view! { <Pause>""</Pause> }
+        when=move || !hidden.get() && show_section_divider.get()
       >
-        <Image src="/images/section_divider.svg" width="100%" image_classes="col-start-2">
+      <div class="spacer"></div>
+      <VerticalChunk>
+        <Image container_classes="section-divider" src="/images/section_divider.svg" width="100%" >
           ""
-          <Spacer/>
         </Image>
+      </VerticalChunk>
       </Show>
     }
 }

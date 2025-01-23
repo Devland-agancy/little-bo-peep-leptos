@@ -1,0 +1,139 @@
+
+|> Section
+
+    *Derivative of an affine function.*
+    An affine function is a function of the form
+    $$
+    x \ra Ax + B
+    $$
+    for constants $A$, $B \in \rr$.
+    The graph of $x \ra Ax + B$ is a line of 
+    slope $A$, so
+
+    $$
+    (x \ra Ax + B)' = (x \ra A)
+    $$
+
+    |> ImageLeft
+        src images/svg_ch4_affine_derivative_cloud.svg
+
+    because the slope of a line of slope $A$ is
+    $A$, no matter where you put yourself on the
+    line. In particular, $B$ plays no role in the
+    derivative! ($\,$Just like in the case of a
+    constant function, the derivative leaves no
+    trace of $B$'s value—and for the same reason
+    that $B$ effects a vertical translation, which
+    does not change the slope of anything.)
+    
+    In words:
+    
+    __~ the derivative of the affine function 
+    $y = ax + b$ is the constant function $y = a$ ~__
+
+    Or, flexing our linguistic prowess a tad more:
+
+    __~ the derivative of an affine function is 
+    the coefficient of its linear term ~__
+    
+    (The “linear term” of $y = ax + b$ is $ax$, 
+    of coefficient $a$.)
+
+    |> Example
+
+        One has
+        $$
+        (x \ra 3x + 1)' = (x \ra 3)
+        $$
+        as per
+        $$
+        (x \ra Ax + B)' = (x \ra A)
+        $$
+        with $A = 3$, $B = 1$.
+
+    |> Example
+
+        One has
+        $$
+        (x \ra 12 - x)' = (x \ra -1)
+        $$
+        as per
+        $$
+        (x \ra Ax + B)' = (x \ra A)
+        $$
+        with $A = -1$, $B = 12$.
+
+|> Section
+
+    *Units of the Derivative.*
+    If units are present, we have
+    
+    $$
+    \te{$y$ axis units for $f'$} \,= {\te{$y$ axis units for $\f$} \over \te{$x$ axis units for $\f$}}
+    $$
+    
+    because a value output by $\f'$ is the
+    _slope_ of a tangent line attached to the
+    graph $y = f(x)$, and
+    
+    $$
+    \te{$x$ axis units for $f'$}\, = \rt{0.02}\,\te{$x$ axis units for $f$}
+    $$
+    
+    because an input for $\f'$ is, originally, 
+    an input for $\f$.
+
+    For example, if the “before” graph has units 
+    of...
+
+    |> ul
+        |> li
+
+            seconds on the $x$ axis, meters on the 
+            $y$ axis
+
+    |> ImageRight
+        src images/svg_ch4_units1_cloud.svg
+    
+    ...then the “after” graph will have units of...
+    
+    |> ul    
+        |> li
+
+            seconds on the $x$ axis, meters per
+            second on the $y$ axis
+
+    ...while if the “before” graph has units of...
+    
+    |> ul
+        |> li
+
+            years on the $x$ axis, dollars on the
+            $y$ axis
+    
+    |> ImageLeft
+        src images/svg_ch4_units2_cloud.svg
+
+    ...then the “after” graph will have units of...
+
+    |> ul
+        |> li
+
+            years on the $x$ axis, dollars per
+            year on the $y$ axis
+
+    ...and so on.
+
+    Units might additionally prompt us to refer
+    to $f'$ as the
+
+    __rate of change__
+    
+    of $f$, or, depending, as the
+
+    __instantaneous__
+
+    rate of change of $f$. The latter bit of
+    emphasis has to do with the fact that, in a
+    general graph, the slope of the tangent
+    keeps changing from point to point.

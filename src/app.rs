@@ -1,13 +1,18 @@
+#![allow(unused_imports)]
+#![allow(dead_code)]
+
 use crate::components::Article::Article;
+use crate::components::Footer::Footer;
 use crate::components::Header::{Header, MenuButton};
 use crate::components::Panel::{MenuState, Panel};
-use crate::constants::MOBILE_MAX_WIDTH;
-use crate::error_template::{AppError, ErrorTemplate};
+use crate::components::TapToRecenter::TapToRecenter;
+use crate::constants::MOBILE_SCREEN_MAX_WIDTH;
 use crate::global_state::GlobalState;
 use crate::page::article::*;
 use crate::page::state::PageState;
 use crate::svg_defs::SVGDefinitions;
 use ev::Event;
+use lazy_static::lazy_static;
 use leptos::ev::resize;
 use leptos::*;
 use leptos_meta::*;
@@ -17,34 +22,34 @@ use wasm_bindgen::closure::Closure;
 use wasm_bindgen::JsCast;
 use web_sys::{ScrollBehavior, ScrollToOptions};
 
+use serde::{Deserialize, Serialize};
+use thiserror::Error;
+
 #[component]
-pub fn App(cx: Scope) -> impl IntoView {
+pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
-    provide_meta_context(cx);
-    let (page_state, set_page_state) = create_signal(cx, PageState::ShowArticle);
-    provide_context(cx, set_page_state);
-    provide_context(cx, page_state);
+    provide_meta_context();
 
-    let (menu_state, set_menu_state) = create_signal(cx, MenuState::Closed);
-    provide_context(cx, set_menu_state);
-    provide_context(cx, menu_state);
+    let (menu_state, set_menu_state) = create_signal(MenuState::Closed);
+    provide_context(set_menu_state);
+    provide_context(menu_state);
 
-    let (solution_open, set_solution_open) = create_signal(cx, false);
-    provide_context(cx, set_solution_open);
-    provide_context(cx, solution_open);
+    let (solution_open, set_solution_open) = create_signal(false);
+    provide_context(set_solution_open);
+    provide_context(solution_open);
 
-    let (route, set_route) = create_signal(cx, "");
-    provide_context(cx, set_route);
-    provide_context(cx, route);
+    let (route, set_route) = create_signal("");
+    provide_context(set_route);
+    provide_context(route);
 
-    provide_context(cx, GlobalState::new(cx));
+    provide_context(GlobalState::new());
     let GlobalState {
         route,
         on_mobile,
         math_rendered,
         ..
-    } = use_context(cx).unwrap();
-    create_effect(cx, move |_| {
+    } = use_context().unwrap();
+    create_effect(move |_| {
         // execute on every route change
         route.get();
         math_rendered.set(false);
@@ -69,13 +74,13 @@ pub fn App(cx: Scope) -> impl IntoView {
             _ => {}
         }
 
-        let mut options = ScrollToOptions::new();
-        options.left(1500.0);
-        options.behavior(ScrollBehavior::Instant);
+        let options = ScrollToOptions::new();
+        options.set_left(1500.0);
+        options.set_behavior(ScrollBehavior::Instant);
         window().scroll_with_scroll_to_options(&options);
     });
 
-    create_effect(cx, move |_| {
+    create_effect(move |_| {
         let cb = Closure::wrap(Box::new(move |_: Event| {
             math_rendered.set(true);
         }) as Box<dyn FnMut(_)>);
@@ -86,17 +91,19 @@ pub fn App(cx: Scope) -> impl IntoView {
         cb.forget();
     });
 
-    create_effect(cx, move |_| {
-        on_mobile.set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+    create_effect(move |_| {
+        on_mobile.set(
+            window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64,
+        );
 
         window_event_listener(resize, move |_| {
-            on_mobile
-                .set(window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_MAX_WIDTH as f64);
+            on_mobile.set(
+                window().inner_width().unwrap().as_f64().unwrap() <= MOBILE_SCREEN_MAX_WIDTH as f64,
+            );
         });
     });
 
     view! {
-      cx,
       // injects a stylesheet into the document <head>
       // id=leptos means cargo-leptos will hot-reload this stylesheet
       <Stylesheet id="leptos" href="/pkg/little-bo-peep.css"/>
@@ -126,20 +133,251 @@ pub fn App(cx: Scope) -> impl IntoView {
       )}
 
       // content for this welcome page
-      <Router fallback=|cx| {
-          let mut outside_errors = Errors::default();
-          outside_errors.insert_with_default_key(AppError::NotFound);
-          view! { cx, <ErrorTemplate outside_errors/> }.into_view(cx)
-      }>
+
+    <Router fallback=|| view! { "Page not found." }.into_view()>
         <main>
-          <MenuButton/>
-          <Panel />
-          <Article>
-            <Header/>
-              {render_article_routes!("chapters bootcamps")}
-          </Article>
+            <MenuButton/>
+            <Panel />
+            <Article>
+                <Header/>
+                {render_article_routes!("chapters bootcamps")}
+                <TapToRecenter />
+            </Article>
+            <Footer ></Footer>
         </main>
-      </Router>
-      <SVGDefinitions/>
+    </Router>
+    <SVGDefinitions/>
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
