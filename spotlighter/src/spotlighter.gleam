@@ -17,7 +17,7 @@ fn path_from_reversed_path(reversed_path: List(String)) -> String {
 
 fn drop_last(s: String, char: String) {
   case string.ends_with(s, char) {
-    True -> string.drop_right(s, 1)
+    True -> string.drop_end(s, 1)
     False -> s
   }
 }
