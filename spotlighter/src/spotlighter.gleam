@@ -247,15 +247,12 @@ fn announce_error(message: String) -> fn() -> Nil {
 pub fn main() {
   let paths = argv.load().arguments
 
-  // io.println("welcome to spotlight: " <> ins(paths))
-
   use <- on_true_on_false(
     list.is_empty(paths),
     announce_error("spotlight error: no paths given"),
   )
 
   let assert [first, ..] = paths
-
   let assert Ok(last) = list.last(paths)
 
   let paths = case string.starts_with(last, "-show") {
@@ -263,7 +260,9 @@ pub fn main() {
     False -> paths
   }
 
-  let f = fn(path) { inverted_path_pieces(path) |> get_root |> list.reverse |> string.join("/") }
+  let f = fn(path) {
+    inverted_path_pieces(path) |> get_root |> list.reverse |> string.join("/")
+  }
 
   use _ <- on_error_on_ok(
     all_equal_evaluations(paths, f),
