@@ -42,7 +42,7 @@ fn add_hashtag_if_appropriate(name: String) -> String {
 
 fn remove_hashtag_if_there(name: String) -> String {
   case string.starts_with(name, "#") {
-    True -> string.drop_left(name, 1)
+    True -> string.drop_start(name, 1)
     False -> name
   }
 }
