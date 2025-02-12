@@ -19,5 +19,5 @@ simplifile = ">= 2.1.0 and < 3.0.0"
 shellout = ">= 1.6.0 and < 2.0.0"
 
 [dev-dependencies]
-gleeunit = ">= 1.0.0 and < 2.0.0"
+# gleeunit = ">= 1.0.0 and < 2.0.0"
 gleescript = ">= 1.4.0 and < 2.0.0"

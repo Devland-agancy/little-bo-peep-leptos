@@ -3,11 +3,9 @@ import gleam/io
 import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/result
-import gleam/string
+import gleam/string.{inspect as ins}
 import shellout
 import simplifile
-
-const ins = string.inspect
 
 fn path_from_reversed_path(reversed_path: List(String)) -> String {
   reversed_path
